@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "sourceScriptId": "sets-v2-04-set-equality",
+  "title": "04_set_equality",
+  "editedDurationSeconds": 280.40000000000026,
+  "timeline": [
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 0.29000000000000004,
+      "sourceEnd": 1.53,
+      "editedStart": 0,
+      "editedEnd": 1.24
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 4.65,
+      "sourceEnd": 22.270000000000003,
+      "editedStart": 1.24,
+      "editedEnd": 18.860000000000003
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 27.499999999999996,
+      "sourceEnd": 60.32000000000001,
+      "editedStart": 18.860000000000003,
+      "editedEnd": 51.68000000000001
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 61.199999999999996,
+      "sourceEnd": 61.620000000000005,
+      "editedStart": 51.68000000000001,
+      "editedEnd": 52.100000000000016
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 62.9,
+      "sourceEnd": 63.84,
+      "editedStart": 52.100000000000016,
+      "editedEnd": 53.04000000000002
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 75.86999999999999,
+      "sourceEnd": 93.81,
+      "editedStart": 53.04000000000002,
+      "editedEnd": 70.98000000000003
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 94.66999999999999,
+      "sourceEnd": 106.09,
+      "editedStart": 70.98000000000003,
+      "editedEnd": 82.40000000000005
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 107.89,
+      "sourceEnd": 111.27000000000001,
+      "editedStart": 82.40000000000005,
+      "editedEnd": 85.78000000000006
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 112.30999999999999,
+      "sourceEnd": 114.19000000000001,
+      "editedStart": 85.78000000000006,
+      "editedEnd": 87.66000000000008
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 119.19,
+      "sourceEnd": 120.33000000000001,
+      "editedStart": 87.66000000000008,
+      "editedEnd": 88.8000000000001
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 128.46000000000004,
+      "sourceEnd": 135.45999999999998,
+      "editedStart": 88.8000000000001,
+      "editedEnd": 95.80000000000004
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 138.8,
+      "sourceEnd": 157.85999999999999,
+      "editedStart": 95.80000000000004,
+      "editedEnd": 114.86000000000001
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 158.92000000000002,
+      "sourceEnd": 175.07999999999998,
+      "editedStart": 114.86000000000001,
+      "editedEnd": 131.01999999999998
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 178.78000000000003,
+      "sourceEnd": 180.48,
+      "editedStart": 131.01999999999998,
+      "editedEnd": 132.71999999999994
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 181.88000000000002,
+      "sourceEnd": 189.71999999999997,
+      "editedStart": 132.71999999999994,
+      "editedEnd": 140.5599999999999
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 191.14000000000001,
+      "sourceEnd": 215.89999999999998,
+      "editedStart": 140.5599999999999,
+      "editedEnd": 165.31999999999985
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 217.70000000000002,
+      "sourceEnd": 219.73999999999998,
+      "editedStart": 165.31999999999985,
+      "editedEnd": 167.35999999999981
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 223.3,
+      "sourceEnd": 233.95999999999998,
+      "editedStart": 167.35999999999981,
+      "editedEnd": 178.01999999999978
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 236.34000000000003,
+      "sourceEnd": 241.49999999999997,
+      "editedStart": 178.01999999999978,
+      "editedEnd": 183.17999999999972
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 242.64000000000001,
+      "sourceEnd": 248.37999999999997,
+      "editedStart": 183.17999999999972,
+      "editedEnd": 188.91999999999967
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 249.76000000000002,
+      "sourceEnd": 257.3,
+      "editedStart": 188.91999999999967,
+      "editedEnd": 196.45999999999967
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 260.98999999999995,
+      "sourceEnd": 265.61,
+      "editedStart": 196.45999999999967,
+      "editedEnd": 201.07999999999973
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 268.16999999999996,
+      "sourceEnd": 272.63000000000005,
+      "editedStart": 201.07999999999973,
+      "editedEnd": 205.53999999999982
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 274.84999999999997,
+      "sourceEnd": 278.6,
+      "editedStart": 205.53999999999982,
+      "editedEnd": 209.28999999999988
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 287.29999999999995,
+      "sourceEnd": 290.53000000000003,
+      "editedStart": 209.28999999999988,
+      "editedEnd": 212.51999999999995
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 292.12999999999994,
+      "sourceEnd": 293.83000000000004,
+      "editedStart": 212.51999999999995,
+      "editedEnd": 214.22000000000006
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 294.92999999999995,
+      "sourceEnd": 296.77000000000004,
+      "editedStart": 214.22000000000006,
+      "editedEnd": 216.06000000000014
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "Beat 6: present the higher-category philosophy without naming a person",
+      "sourceStart": 299.82,
+      "sourceEnd": 307.98,
+      "editedStart": 216.06000000000014,
+      "editedEnd": 224.22000000000017
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "Beat 6: present the higher-category philosophy without naming a person",
+      "sourceStart": 310.08,
+      "sourceEnd": 366.26000000000005,
+      "editedStart": 224.22000000000017,
+      "editedEnd": 280.4000000000002
+    }
+  ]
+}

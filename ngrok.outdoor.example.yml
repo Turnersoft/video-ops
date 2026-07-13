@@ -1,0 +1,14 @@
+version: "3"
+# outdoor:all → agent ngrok + remotion/expo public tunnels (see ngrok.outdoor.yml)
+
+tunnels:
+  agent:
+    addr: 8788
+    proto: http
+    domain: scanning-glisten-upturned.ngrok-free.dev
+  remotion:
+    addr: 3000
+    proto: http
+  expo:
+    addr: 8081
+    proto: http

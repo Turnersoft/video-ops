@@ -1,0 +1,374 @@
+{
+  "version": 4,
+  "scriptId": "algebra-05-equivalence-weaker-than-equality",
+  "title": "algebra_05_equivalence_weaker_than_equality",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "The concept — set-builder language",
+      "durationSeconds": 38,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "math-board sequential reveal — One concept → Set-builder → Membership → Representative.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "math-board",
+        "heading": "Equivalence class membership",
+        "reveal": "sequential",
+        "beats": [
+          {
+            "atSeconds": 0,
+            "label": "One concept",
+            "detail": "Membership in [x] — the equivalence class of x"
+          },
+          {
+            "atSeconds": 3,
+            "label": "Set-builder",
+            "detail": "[x] = { y ∈ X | x ~ y }",
+            "emphasis": [
+              "[x]",
+              "∈",
+              "~"
+            ]
+          },
+          {
+            "atSeconds": 7.5,
+            "label": "Membership",
+            "detail": "y ∈ [x]  ↔  x ~ y",
+            "emphasis": [
+              "↔",
+              "∈"
+            ]
+          },
+          {
+            "atSeconds": 10,
+            "label": "Representative",
+            "detail": "x is the chosen label for the bucket"
+          }
+        ]
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Hi friends, welcome back. This is Turner.\nOne concept today: membership in an equivalence class.",
+            "durationSeconds": 9,
+            "visualNotes": "math-board heading: Equivalence class membership\nreveal: One concept — Membership in [x], the equivalence class of x.",
+            "allowScriptChange": false
+          },
+          {
+            "say": "Pick a representative x. The class is every y tied to x by the relation.\nTextbook set-builder: all y such that x is related to y.",
+            "durationSeconds": 14,
+            "visualNotes": "math-board: [x] = { y ∈ X | x ~ y }\nemphasis: [x], ∈, ~",
+            "allowScriptChange": false
+          },
+          {
+            "say": "Formal membership: y is in the class of x if and only if x is related to y.\nThat biconditional is the whole idea — nothing else in this clip.",
+            "durationSeconds": 15,
+            "visualNotes": "math-board: y ∈ [x]  ↔  x ~ y\nemphasis: ↔, ∈\nthen Representative — x is the chosen label for the bucket.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "title": "Turn-Lang vs Lean — same biconditional",
+      "durationSeconds": 62,
+      "layout": "dual-panel",
+      "burnCaptions": true,
+      "visualNotes": "Side-by-side compare — caption beats on both sides at each say line.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Same concept in Turn-Lang and Lean — who reads closer to the textbook?",
+            "durationSeconds": 6,
+            "visualNotes": "Open both panes. Point at the named Turn structure versus Lean theorem title.",
+            "lean": {
+              "code": "theorem eqvClass_mem_iff (x y : α) :\n  y ∈ s.eqvClass x ↔ s x y := by\n  simp [Setoid.eqvClass]",
+              "highlights": [
+                "eqvClass_mem_iff"
+              ],
+              "goal": [
+                "eqvClass"
+              ]
+            },
+            "turn": {
+              "code": "structure EquivalenceClass<\n    X: Set<Any>,\n    E: EquivalenceRelation<X>,\n    x in X,\n>: Set<Any> {\n    laws {\n        def {\n            forall y in X |- y in self <-> [x y] in E;\n        },",
+              "highlights": [
+                "EquivalenceClass"
+              ],
+              "knowledge": [
+                "EquivalenceClass"
+              ]
+            },
+            "focus": "both",
+            "allowScriptChange": false
+          },
+          {
+            "say": "Turn names the bucket: EquivalenceClass, with representative x and relation E.",
+            "durationSeconds": 9,
+            "visualNotes": "Highlight representative x and relation E on Turn; Setoid packaging on Lean.",
+            "lean": {
+              "code": "as before",
+              "highlights": [
+                "Setoid"
+              ],
+              "goal": [
+                "Setoid"
+              ]
+            },
+            "turn": {
+              "code": "as before",
+              "highlights": [
+                "x in X",
+                "E: EquivalenceRelation"
+              ],
+              "knowledge": [
+                "EquivalenceClass"
+              ]
+            },
+            "focus": "both",
+            "allowScriptChange": false
+          },
+          {
+            "say": "The def law is exactly set-builder membership: y in the class if and only if x is related to y.",
+            "durationSeconds": 11,
+            "visualNotes": "Caption both sides on the biconditional / def law.",
+            "lean": {
+              "code": "as before",
+              "highlights": [
+                "↔"
+              ],
+              "goal": [
+                "↔"
+              ]
+            },
+            "turn": {
+              "code": "as before",
+              "highlights": [
+                "def",
+                "<->"
+              ],
+              "knowledge": [
+                "Def"
+              ]
+            },
+            "focus": "both",
+            "allowScriptChange": false
+          },
+          {
+            "say": "Lean packages the relation in a Setoid — the class is eqvClass x, a computed set.",
+            "durationSeconds": 8,
+            "visualNotes": "Contrast Turn membership law with Lean computed eqvClass.",
+            "lean": {
+              "code": "as before",
+              "highlights": [
+                "eqvClass"
+              ],
+              "goal": [
+                "eqvClass",
+                "s x y"
+              ]
+            },
+            "turn": {
+              "code": "as before",
+              "highlights": [
+                "y in self",
+                "[x y] in E"
+              ],
+              "knowledge": [
+                "Def"
+              ]
+            },
+            "focus": "both",
+            "allowScriptChange": false
+          },
+          {
+            "say": "Membership is still a biconditional — but the bucket is not its own structure with an explicit law block.",
+            "durationSeconds": 10,
+            "visualNotes": "Keep both panes; stress Turn's named law block versus Lean infrastructure.",
+            "lean": {
+              "code": "as before",
+              "highlights": [
+                "Setoid"
+              ],
+              "goal": [
+                "Setoid",
+                "eqvClass"
+              ]
+            },
+            "turn": {
+              "code": "as before",
+              "highlights": [
+                "laws",
+                "def"
+              ],
+              "knowledge": [
+                "Def"
+              ]
+            },
+            "focus": "both",
+            "allowScriptChange": false
+          },
+          {
+            "say": "Lean proves it by unfolding eqvClass; Turn states the law where the book puts the definition.",
+            "durationSeconds": 9,
+            "visualNotes": "Lean simp unfold vs Turn def law in source.",
+            "lean": {
+              "code": "as before",
+              "highlights": [
+                "simp",
+                "Setoid.eqvClass"
+              ],
+              "goal": [
+                "Setoid.eqvClass"
+              ]
+            },
+            "turn": {
+              "code": "as before",
+              "highlights": [
+                "def"
+              ],
+              "knowledge": [
+                "Def"
+              ]
+            },
+            "focus": "both",
+            "allowScriptChange": false
+          },
+          {
+            "say": "For teaching the meaning of equivalence class, Turn's named structure matches the book line for line.",
+            "durationSeconds": 9,
+            "visualNotes": "Hold both panes for the teaching claim; next scene is the math-board verdict.",
+            "lean": {
+              "code": "as before",
+              "highlights": [
+                "eqvClass_mem_iff"
+              ],
+              "goal": [
+                "↔"
+              ]
+            },
+            "turn": {
+              "code": "as before",
+              "highlights": [
+                "EquivalenceClass"
+              ],
+              "knowledge": [
+                "EquivalenceClass"
+              ]
+            },
+            "focus": "both",
+            "allowScriptChange": false
+          }
+        ],
+        "display": {
+          "editorFontScale": 0.7,
+          "leanEditorFontScale": 0.8,
+          "renderFontScale": 0.85
+        }
+      }
+    },
+    {
+      "index": 3,
+      "title": "Verdict — who is closer to the original meaning?",
+      "durationSeconds": 34,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "math-board verdict — Textbook → Turn-Lang → Lean 4 → Verdict callout.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "math-board",
+        "heading": "Who matches the textbook?",
+        "reveal": "sequential",
+        "beats": [
+          {
+            "atSeconds": 0,
+            "label": "Textbook",
+            "detail": "[x] = { y | x ~ y }  and  y ∈ [x] ↔ x ~ y"
+          },
+          {
+            "atSeconds": 3.5,
+            "label": "Turn-Lang",
+            "detail": "EquivalenceClass + def law: y ∈ self ↔ (x,y) ∈ E"
+          },
+          {
+            "atSeconds": 7,
+            "label": "Lean 4",
+            "detail": "y ∈ s.eqvClass x ↔ s x y  (unfold eqvClass to see the set)"
+          },
+          {
+            "atSeconds": 10.5,
+            "label": "Verdict",
+            "detail": "Turn names the bucket where the book does",
+            "diagram": "turn-structure"
+          }
+        ],
+        "callout": {
+          "atSeconds": 10.5,
+          "title": "Turn-Lang",
+          "detail": "Closer to set-builder introduction"
+        }
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Textbook: a set of y values, membership spelled as a biconditional with the relation.",
+            "durationSeconds": 9,
+            "visualNotes": "math-board heading: Who matches the textbook?\nTextbook: [x] = { y | x ~ y } and y ∈ [x] ↔ x ~ y",
+            "allowScriptChange": false
+          },
+          {
+            "say": "Turn: EquivalenceClass is that set, def law is the biconditional — visible in source and render.",
+            "durationSeconds": 10,
+            "visualNotes": "math-board: Turn-Lang — EquivalenceClass + def law: y ∈ self ↔ (x,y) ∈ E",
+            "allowScriptChange": false
+          },
+          {
+            "say": "Lean: correct math, but eqvClass is infrastructure — you unfold to see the set-builder meaning.",
+            "durationSeconds": 8,
+            "visualNotes": "math-board: Lean 4 — y ∈ s.eqvClass x ↔ s x y (unfold eqvClass to see the set)",
+            "allowScriptChange": false
+          },
+          {
+            "say": "Verdict: Turn-Lang stays closer to how the concept is introduced on the page.",
+            "durationSeconds": 7,
+            "visualNotes": "math-board Verdict: Turn names the bucket where the book does\ncallout: Turn-Lang — Closer to set-builder introduction",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    }
+  ]
+}

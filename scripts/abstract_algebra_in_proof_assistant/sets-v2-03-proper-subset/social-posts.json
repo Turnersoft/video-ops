@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "scriptId": "sets-v2-03-proper-subset",
+  "titleEnglish": "3. Proper Subset: why Lean doesn't model and name it directly?!",
+  "titleChina": "3. Proper Subset：为什么 Lean 不直接建模并命名它？！",
+  "title": "3. Proper Subset: why Lean doesn't model and name it directly?!",
+  "generatedAt": "2026-07-13T06:15:40.660Z",
+  "source": {
+    "promotionalDescription": "Hook: Proper subset feels obvious in a textbook — Lean often refuses to give it a first-class name. This episode explains why the proof assistant prefers the subset relation plus inequality, what that buys you, and how Turn-Lang still lets you say the idea clearly on camera. Series episode 3 · #TurnLang #Lean4 #Mathlib #ProperSubset #FormalMethods",
+    "socialTitleEnglish": "3. Proper Subset: why Lean doesn't model and name it directly?!",
+    "socialTitleChina": "3. Proper Subset：为什么 Lean 不直接建模并命名它？！"
+  },
+  "english": {
+    "youtube": {
+      "title": "3. Proper Subset: why Lean doesn't model and name it directly?!",
+      "body": "Hook: Proper subset feels obvious in a textbook — Lean often refuses to give it a first-class name. This episode explains why the proof assistant prefers the subset relation plus inequality, what that buys you, and how Turn-Lang still lets you say the idea clearly on camera. Series episode 3 · #TurnLang #Lean4 #Mathlib #ProperSubset #FormalMethods\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "x": {
+      "title": "3. Proper Subset: why Lean doesn't model and name it directly?!",
+      "body": "Hook: Proper subset feels obvious in a textbook — Lean often refuses to give it a first-class name. This episode explains why the proof assistant prefers the subset relation plus inequality, what that buys you, and how Turn-Lang still lets you say the idea clearly on camera. Ser…"
+    },
+    "linkedin": {
+      "title": "3. Proper Subset: why Lean doesn't model and name it directly?!",
+      "body": "3. Proper Subset: why Lean doesn't model and name it directly?!\n\nHook: Proper subset feels obvious in a textbook — Lean often refuses to give it a first-class name. This episode explains why the proof assistant prefers the subset relation plus inequality, what that buys you, and how Turn-Lang still lets you say the idea clearly on camera. Series episode 3 · #TurnLang #Lean4 #Mathlib #ProperSubset #FormalMethods\n\nThis episode is part of the Abstract Algebra in a Proof Assistant series on Turn-Lang — textbook-shaped formal mathematics you can film outdoors and verify in Lean 4 / Turn-Lang.\n\nWhat you will see in the video:\n• A textbook beat you can say on camera\n• The Lean 4 modeling choice (and what it refuses to pretend)\n• The Turn-Lang compare so the obligation is visible\n\nWatch the short, then open the linked editor if you want to step through the proof assistant view yourself.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "instagram": {
+      "title": "3. Proper Subset: why Lean doesn't model and name it directly?!",
+      "body": "Hook: Proper subset feels obvious in a textbook — Lean often refuses to give it a first-class name. This episode explains why the proof assistant prefers the subset relation plus inequality, what that buys you, and how Turn-Lang still lets you say the idea clearly on camera. Series episode 3 · #TurnLang #Lean4 #Mathlib #ProperSubset #FormalMethods\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "tiktok": {
+      "title": "3. Proper Subset: why Lean doesn't model and name it directly?!",
+      "body": "Hook: Proper subset feels obvious in a textbook — Lean often refuses to give it a first-class name. This episode explains why the proof assistant prefers the subset relation plus inequality, what that buys you, and how Turn-Lang still lets you say the idea clearly on camera. Series episode 3 · #TurnLang #Lean4 #Mathlib #ProperSubset #FormalMethods\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "facebook": {
+      "title": "3. Proper Subset: why Lean doesn't model and name it directly?!",
+      "body": "Hook: Proper subset feels obvious in a textbook — Lean often refuses to give it a first-class name. This episode explains why the proof assistant prefers the subset relation plus inequality, what that buys you, and how Turn-Lang still lets you say the idea clearly on camera. Series episode 3 · #TurnLang #Lean4 #Mathlib #ProperSubset #FormalMethods\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "bluesky": {
+      "title": "3. Proper Subset: why Lean doesn't model and name it directly?!",
+      "body": "Hook: Proper subset feels obvious in a textbook — Lean often refuses to give it a first-class name. This episode explains why the proof assistant prefers the subset relation plus inequality, what that buys you, and how Turn-Lang still lets you say the idea clearly on camera. Series episode 3 · #Tur…"
+    }
+  },
+  "china": {
+    "bilibili": {
+      "title": "3. Proper Subset：为什么 Lean 不直接建模并命名它？！",
+      "body": "Hook: Proper subset feels obvious in a textbook — Lean often refuses to give it a first-class name. This episode explains why the proof assistant prefers the subset relation plus inequality, what that buys you, and how Turn-Lang still lets you say the idea clearly on camera. Series episode 3 · #TurnLang #Lean4 #Mathlib #ProperSubset #FormalMethods\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论\n（请翻译为中文后发布）"
+    },
+    "douyin": {
+      "title": "Proper subset — variant on the same relation",
+      "body": "Proper subset — variant on the same relation\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "xiaohongshu": {
+      "title": "Proper subset — var…",
+      "body": "Proper subset — variant on the same relation\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "weibo": {
+      "title": "Proper subset — variant on the same relation",
+      "body": "Proper subset — variant on the same relation\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "wechat_channels": {
+      "title": "Proper subset — variant on the same relation",
+      "body": "Proper subset — variant on the same relation\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "kuaishou": {
+      "title": "Proper subset — variant on the same relation",
+      "body": "Proper subset — variant on the same relation\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    }
+  }
+}

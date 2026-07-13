@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Cover concept layer: equivalence (420×260) — static layout reference; Remotion animates via ConceptCoverDiagram -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260" width="420" height="260">
+  <ellipse cx="210" cy="145.60000000000002" rx="80.1" ry="60.1" fill="rgba(88, 196, 221, 0.12)" stroke="#58c4dd" stroke-width="2" stroke-dasharray="6 5"/>
+  <circle cx="147.1" cy="145.6" r="21.5" fill="#f7c948"/>
+  <text x="147.1" y="150.6" text-anchor="middle" fill="#1a1b22" font-size="16" font-weight="700">a</text>
+  <circle cx="210.0" cy="94.1" r="21.5" fill="#f7c948"/>
+  <text x="210.0" y="99.1" text-anchor="middle" fill="#1a1b22" font-size="16" font-weight="700">b</text>
+  <circle cx="272.9" cy="145.6" r="21.5" fill="#f7c948"/>
+  <text x="272.9" y="150.6" text-anchor="middle" fill="#1a1b22" font-size="16" font-weight="700">c</text>
+  <circle cx="210.0" cy="197.1" r="21.5" fill="#f7c948"/>
+  <text x="210.0" y="202.1" text-anchor="middle" fill="#1a1b22" font-size="16" font-weight="700">d</text>
+  <text x="210" y="228.8" text-anchor="middle" fill="#e8e6e3" font-size="20">[a] = {a,b,c,d}</text>
+</svg>

@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "typing": {
+    "charsPerSecond": 28,
+    "fullText": "structure IsCauchy<a: Sequence>: Prop {\n    laws {\n        def {\n            forall epsilon: Rational where { |- RatLT(Zero, epsilon) },\n            exists N: Natural where { |- NatGE<N, NatOne> },\n            forall j k: Natural where { |- NatGE<j, N>; |- NatGE<k, N>; }\n            |- RatEpsilonClose(a.apply(j), a.apply(k), epsilon)\n        }\n    }\n}"
+  },
+  "proofPanel": {
+    "steps": [
+      {
+        "label": "open goal",
+        "goal": "⊢ target proposition"
+      },
+      {
+        "label": "apply tactic",
+        "goal": "subgoal after apply"
+      },
+      {
+        "label": "close branch",
+        "goal": "no open goals"
+      }
+    ]
+  },
+  "interactions": [
+    {
+      "atSeconds": 1.5,
+      "kind": "click-proof-step",
+      "stepIndex": 0
+    },
+    {
+      "atSeconds": 3.2,
+      "kind": "click-proof-step",
+      "stepIndex": 1
+    },
+    {
+      "atSeconds": 5,
+      "kind": "click-branch",
+      "branchId": "main"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "scriptId": "algebra-02-invertible-bijective-proof",
+  "titleEnglish": "algebra_02_invertible_bijective_proof",
+  "titleChina": "algebra_02_invertible_bijective_proof",
+  "title": "algebra_02_invertible_bijective_proof",
+  "generatedAt": "2026-07-13T06:15:39.778Z",
+  "source": {
+    "playlist": "abstract algebra: formalized from scratch with turn-lang",
+    "promotionalDescription": "Textbooks say invertible means bijective, but the proof needs evidence: an inverse witness and composition laws. Turn lets you step through that evidence instead of trusting the slogan.",
+    "audience": "Abstract algebra students past Judson 1.25, anyone learning function proofs"
+  },
+  "english": {
+    "youtube": {
+      "title": "algebra_02_invertible_bijective_proof",
+      "body": "Textbooks say invertible means bijective, but the proof needs evidence: an inverse witness and composition laws. Turn lets you step through that evidence instead of trusting the slogan.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "x": {
+      "title": "algebra_02_invertible_bijective_proof",
+      "body": "Textbooks say invertible means bijective, but the proof needs evidence: an inverse witness and composition laws. Turn lets you step through that evidence instead of trusting the slogan. #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Ma…"
+    },
+    "linkedin": {
+      "title": "algebra_02_invertible_bijective_proof",
+      "body": "algebra_02_invertible_bijective_proof\n\nTextbooks say invertible means bijective, but the proof needs evidence: an inverse witness and composition laws. Turn lets you step through that evidence instead of trusting the slogan.\n\nThis episode is part of the Abstract Algebra in a Proof Assistant series on Turn-Lang — textbook-shaped formal mathematics you can film outdoors and verify in Lean 4 / Turn-Lang.\n\nWhat you will see in the video:\n• A textbook beat you can say on camera\n• The Lean 4 modeling choice (and what it refuses to pretend)\n• The Turn-Lang compare so the obligation is visible\n\nWatch the short, then open the linked editor if you want to step through the proof assistant view yourself.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "instagram": {
+      "title": "algebra_02_invertible_bijective_proof",
+      "body": "Textbooks say invertible means bijective, but the proof needs evidence: an inverse witness and composition laws. Turn lets you step through that evidence instead of trusting the slogan.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "tiktok": {
+      "title": "algebra_02_invertible_bijective_proof",
+      "body": "Textbooks say invertible means bijective, but the proof needs evidence: an inverse witness and composition laws. Turn lets you step through that evidence instead of trusting the slogan.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "facebook": {
+      "title": "algebra_02_invertible_bijective_proof",
+      "body": "Textbooks say invertible means bijective, but the proof needs evidence: an inverse witness and composition laws. Turn lets you step through that evidence instead of trusting the slogan.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "bluesky": {
+      "title": "algebra_02_invertible_bijective_proof",
+      "body": "Textbooks say invertible means bijective, but the proof needs evidence: an inverse witness and composition laws. Turn lets you step through that evidence instead of trusting the slogan. #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgeb…"
+    }
+  },
+  "china": {
+    "bilibili": {
+      "title": "algebra_02_invertible_bijective_proof",
+      "body": "Textbooks say invertible means bijective, but the proof needs evidence: an inverse witness and composition laws. Turn lets you step through that evidence instead of trusting the slogan.\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论\n（请翻译为中文后发布）"
+    },
+    "douyin": {
+      "title": "An Inverse Is Evidence You Can Use, Not Just a Word",
+      "body": "Textbooks say invertible means bijective, but the proof needs evidence: an inverse witness and composition laws. Turn lets you step through that evidence instead of trusting the slogan.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "xiaohongshu": {
+      "title": "An Inverse Is Evide…",
+      "body": "Textbooks say invertible means bijective, but the proof needs evidence: an inverse witness and composition laws. Turn lets you step through that evidence instead of trusting the slogan.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "weibo": {
+      "title": "An Inverse Is Evidence You Can Use, Not Just a Word",
+      "body": "Textbooks say invertible means bijective, but the proof needs evidence: an inverse witness and composition laws. Turn lets you step through that evidence instead of trusting the slogan.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "wechat_channels": {
+      "title": "An Inverse Is Evidence You Can Use, Not Just a Word",
+      "body": "Textbooks say invertible means bijective, but the proof needs evidence: an inverse witness and composition laws. Turn lets you step through that evidence instead of trusting the slogan.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "kuaishou": {
+      "title": "An Inverse Is Evidence You Can Use, Not Just a Word",
+      "body": "Textbooks say invertible means bijective, but the proof needs evidence: an inverse witness and composition laws. Turn lets you step through that evidence instead of trusting the slogan.\n\n#TurnLang #形式化方法 #抽象代数"
+    }
+  }
+}

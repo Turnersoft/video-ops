@@ -1,0 +1,249 @@
+{
+  "version": 1,
+  "scriptId": "sets-v2-04-set-equality",
+  "source": "speech-alignment",
+  "generatedAt": "2026-07-13T06:15:39.337Z",
+  "videoSrc": "takes/take-mrhmharr/pipeline/cut/cut-mriq7mo6/edited-good-intervals.mp4",
+  "editedDurationSeconds": 291.82,
+  "burnCaptions": true,
+  "burnCaptionsZh": true,
+  "beatDurationsSeconds": [
+    21.12,
+    73.48,
+    55.14,
+    37.94,
+    39.48,
+    64.66
+  ],
+  "captionSegments": [
+    {
+      "text": "Hi friends, welcome back.",
+      "atSeconds": 0.06,
+      "durationSeconds": 1.16,
+      "zh": "大家好，欢迎回来。"
+    },
+    {
+      "text": "The best way to formalize the math concept is to",
+      "atSeconds": 1.56,
+      "durationSeconds": 1.78,
+      "zh": "真正理解一个数学概念的最好方式，就是把它形式化。"
+    },
+    {
+      "text": "The best way to understand the math concept is to formalize it the day we formalize set equality and a textbook Definition looks really simple to set IE core when each one is a subset of the other But if we want to formalize this statement, we still need to understand what you cosine actually means in sine proof system And this is more complicated than I think",
+      "atSeconds": 3.34,
+      "durationSeconds": 17.78,
+      "zh": "上期结尾讲到集合相等。"
+    },
+    {
+      "text": "So you call doesn't always mean being the same atomically So one plus one equals two is not the same Automically because they have different expression literally, but they are methodically the same And this is the kind of equality that we want to prove This is the only meaningful equality and there's another equality, which is one equal one things like Because the left hand side right hand side are the same and these are not worth proving But they're still very useful because they show up at the end of every proof for this meaningful equality It just just to close the proof So",
+      "atSeconds": 21.12,
+      "durationSeconds": 32.98,
+      "zh": "首先，我们要把等号这个符号和“相同”这个概念分开。"
+    },
+    {
+      "text": "in lean we can write A equal to B and",
+      "atSeconds": 56.92,
+      "durationSeconds": 2.42,
+      "zh": "在 Lean 里，只要两边类型相同，就可以写 a 等于 b，而且不需要先实现相等类型类。"
+    },
+    {
+      "text": "Notice that we do not implement the equal equality type class first because the quality signs built in notation for value Just like other problem in languages, but there are other, but there are two different kind of equality here Definition equalities and propositional equalities the former is just In a predefined equalities that the computers can still check automatically Even though two sides are different Proposition just means that something you need to prove, but after you prove there the",
+      "atSeconds": 59.34,
+      "durationSeconds": 18.1,
+      "zh": "但这里有两个层次。"
+    },
+    {
+      "text": "Proof engine can still apply it as if it is a",
+      "atSeconds": 89.02,
+      "durationSeconds": 3.54,
+      "zh": "定义相等表示两边归约后是同一个项，所以 rfl 能完成证明。"
+    },
+    {
+      "text": "Computer rule So",
+      "atSeconds": 92.56,
+      "durationSeconds": 2.04,
+      "zh": "命题相等则是一条真正的陈述，也就是 a 等于 b。"
+    },
+    {
+      "text": "now the question is now",
+      "atSeconds": 94.6,
+      "durationSeconds": 1.3,
+      "zh": "现在的问题是，什么时候我们才能在 Lean 里写等号？"
+    },
+    {
+      "text": "the question is when can we even write the equal sign in lean so both sides must be exactly the same type",
+      "atSeconds": 95.9,
+      "durationSeconds": 7.16,
+      "zh": "两边必须具有完全相同的类型。"
+    },
+    {
+      "text": "So two natural numbers So two as a natural number and two as an integer cannot be compared directly They look like the same number to us, but lean to see two different types So we first cast the natural number into integer and then equality makes sense So now set A and set B have types set alpha so that they can compare directly and",
+      "atSeconds": 103.06,
+      "durationSeconds": 1.28,
+      "zh": "所以 Nat 里的 2 和 Int 里的 2 不能直接比较。"
+    },
+    {
+      "text": "Lean defines it using this very simple expression of Of subset that we have before and it allows you to convert two mutual subset expressions into You can even it implies an equality of a equals B",
+      "atSeconds": 123.56,
+      "durationSeconds": 16.32,
+      "zh": "对我们来说它们像同一个数字，但 Lean 看见的是两个类型。"
+    },
+    {
+      "text": "So if x belongs to a",
+      "atSeconds": 139.88,
+      "durationSeconds": 1.86,
+      "zh": "先把 Nat 转成 Int，等式才有意义。"
+    },
+    {
+      "text": "When x belongs to be for every x then the two set are equal in now and in our textbook.",
+      "atSeconds": 141.74,
+      "durationSeconds": 5.44,
+      "zh": "集合 A 和 B 都具有 Set α 类型，所以 A 等于 B 是合法陈述，而且同样不需要相等类型类。"
+    },
+    {
+      "text": "This is exactly what the mutual subset is",
+      "atSeconds": 147.36,
+      "durationSeconds": 2.38,
+      "zh": "但要怎么证明？"
+    },
+    {
+      "text": "So now turn lang it makes a different choice We do not want to use the equals sign everywhere and suddenly assume that every structure have the same meaning of equality Let's look at the end notations index here It binds the visible a equals to be to a name the relation called set equal That means the equal sign is only the notation in order to use this Set equal you have to call the set equal set equal a relation with the brackets containing a and b",
+      "atSeconds": 149.74,
+      "durationSeconds": 24.92,
+      "zh": "现在 Turn-Lang 做了另一种选择。"
+    },
+    {
+      "text": "And the body of this relation is just what we have is just a mb Subset to each other and there's two statements psi are very clear and",
+      "atSeconds": 176.86,
+      "durationSeconds": 10.82,
+      "zh": "我们不希望到处使用等号，然后默默假设每种结构里的相等都具有同一个含义。"
+    },
+    {
+      "text": "next if we compare a function equals It has the same kind of problems though, so",
+      "atSeconds": 187.68,
+      "durationSeconds": 5.32
+    },
+    {
+      "text": "The two functions equal they cannot be exactly the same and they make a different body",
+      "atSeconds": 193,
+      "durationSeconds": 5.9,
+      "zh": "接下来，函数也有同样的问题。"
+    },
+    {
+      "text": "And they came they may return actually different types They want me to return natural number when we return integer even though the the value are the same",
+      "atSeconds": 198.9,
+      "durationSeconds": 7.7,
+      "zh": "两个函数可以用完全不同的代码写出来。"
+    },
+    {
+      "text": "So on the lean side it uses funk dot e xt Which turns which which is another",
+      "atSeconds": 206.6,
+      "durationSeconds": 4.78,
+      "zh": "但如果每个输入都得到相同输出，数学上我们希望把它们看成同一个函数。"
+    },
+    {
+      "text": "Theorem attached to funk that tells you that you can just rewrite",
+      "atSeconds": 211.38,
+      "durationSeconds": 4.62,
+      "zh": "在 Lean 这边，funext 把逐点相同变成函数相等。"
+    },
+    {
+      "text": "Fx equal to gx to f equals g for our four x there So on the turnlens side we name the relation function equal and again the visible equal sign is attached by notation and So the notation tells us exactly what the observation must agree",
+      "atSeconds": 216,
+      "durationSeconds": 3.91,
+      "zh": "所以对每个 x，证明 f(x) 等于 g(x)，Lean 就给出 f 等于 g。"
+    },
+    {
+      "text": "Which is on every output",
+      "atSeconds": 223.3,
+      "durationSeconds": 1.86,
+      "zh": "在 Turn 这边，我们把这个关系命名为 FunctionEq。"
+    },
+    {
+      "text": "Every input so",
+      "atSeconds": 225.16,
+      "durationSeconds": 2,
+      "zh": "同样，画面上的等号由记号绑定。"
+    },
+    {
+      "text": "finally let's move one level higher in category theory We have to be very careful not to say to object are literally equal When you know what we really mean is isomorphic for example two groups can use the complete different underlying elements So as raw data's they are not equal But if there is an isomorphism that preserve multiplication identity in inverse Then from the group theory perspective they have the same structure and that connects back to everything We just did for set we compare numbers Function will compare outputs For structured objects we compare structure preserving maps and in higher category theory We even those maps can have higher comparisons.",
+      "atSeconds": 227.16,
+      "durationSeconds": 8.32,
+      "zh": "最后，我们再往高一层。"
+    },
+    {
+      "text": "So in in one of the type theory equality proves behaves like Paps so the real question is is not only are those two things you call the real question is At which level of mathematics should we treat them as the same?",
+      "atSeconds": 271.04,
+      "durationSeconds": 15.44,
+      "zh": "在范畴论里必须非常小心，不要在真正想表达同构时，说两个对象字面相等。"
+    },
+    {
+      "text": "So there is a real lessons of equality.",
+      "atSeconds": 286.48,
+      "durationSeconds": 2.46,
+      "zh": "例如两个群可以使用完全不同的底层元素。"
+    },
+    {
+      "text": "So I hope you enjoyed this video.",
+      "atSeconds": 289.5,
+      "durationSeconds": 1.48,
+      "zh": "所以作为原始数据，它们并不相等。"
+    },
+    {
+      "text": "See you next time",
+      "atSeconds": 291.12,
+      "durationSeconds": 0.6,
+      "zh": "但如果存在一个保持乘法、单位元和逆元的同构，那么从群论角度看，它们具有相同结构。"
+    }
+  ],
+  "mergedBeats": [
+    {
+      "slideId": "beat-01",
+      "beatIndex": 0,
+      "editedStart": 0,
+      "editedEnd": 21.12,
+      "durationSeconds": 21.12,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-02",
+      "beatIndex": 1,
+      "editedStart": 21.12,
+      "editedEnd": 94.6,
+      "durationSeconds": 73.48,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-03",
+      "beatIndex": 2,
+      "editedStart": 94.6,
+      "editedEnd": 149.74,
+      "durationSeconds": 55.14,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-04",
+      "beatIndex": 3,
+      "editedStart": 149.74,
+      "editedEnd": 187.68,
+      "durationSeconds": 37.94,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-05",
+      "beatIndex": 4,
+      "editedStart": 187.68,
+      "editedEnd": 227.16,
+      "durationSeconds": 39.48,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-06",
+      "beatIndex": 5,
+      "editedStart": 227.16,
+      "editedEnd": 291.82,
+      "durationSeconds": 64.66,
+      "lastSpokenWord": ""
+    }
+  ]
+}

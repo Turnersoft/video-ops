@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "sets-v2-04-outdoor",
+  "title": "Set equality outdoors",
+  "language": "en",
+  "mode": "manual",
+  "countdownSeconds": 3,
+  "defaultFontScale": 1,
+  "slides": [
+    {
+      "id": "hook",
+      "title": "Open SetEq",
+      "durationSeconds": 28,
+      "body": "Welcome back. Last clip ended with not SetEq. Today we finally open SetEq. The textbook rule is simple. Two sets are equal when A is a subset of B and B is a subset of A. But the real question is not the rule. The real question is what the equals sign means inside a proof assistant.",
+      "notes": "Point at the SetEq image. Keep it casual."
+    },
+    {
+      "id": "rfl",
+      "title": "Scanner vs receipt",
+      "durationSeconds": 26,
+      "body": "Start with a tiny Lean example. n plus zero equals n closes by rfl. That means the checker can scan both sides, compute, and see the same thing. But zero plus n equals n is also true, and rfl does not close it. Now you need Nat dot zero add. So one equality was seen by the scanner, and the other needed a receipt."
+    },
+    {
+      "id": "path",
+      "title": "Higher sameness",
+      "durationSeconds": 36,
+      "body": "This is where the Emily Riehl idea fits. In higher category theory, you often should not ask whether two things are literally the same object. You ask whether there is a structure-preserving equivalence between them. In HoTT, equality proofs behave like paths, and univalence says an equivalence of types can be used as equality."
+    }
+  ]
+}

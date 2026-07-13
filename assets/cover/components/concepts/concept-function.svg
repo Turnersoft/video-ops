@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Cover concept layer: function (420×260) — static layout reference; Remotion animates via ConceptCoverDiagram -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260" width="420" height="260">
+  <ellipse cx="92.4" cy="145.6" rx="58.8" ry="57.2" fill="rgba(88,196,221,0.12)" stroke="#58c4dd" stroke-width="2.4"/>
+  <ellipse cx="327.6" cy="145.6" rx="58.8" ry="57.2" fill="rgba(247,201,72,0.12)" stroke="#f7c948" stroke-width="2.4"/>
+  <text x="92.4" y="78.0" text-anchor="middle" fill="#58c4dd" font-size="22" font-weight="700">A</text>
+  <text x="327.6" y="78.0" text-anchor="middle" fill="#f7c948" font-size="22" font-weight="700">B</text>
+  <line x1="142.8" y1="145.6" x2="277.2" y2="145.6" stroke="#e8e6e3" stroke-width="3"/>
+  <text x="210" y="228.8" text-anchor="middle" fill="#e8e6e3" font-size="20">f : A → B</text>
+</svg>

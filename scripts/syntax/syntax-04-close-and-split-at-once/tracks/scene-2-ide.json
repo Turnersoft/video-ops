@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "typing": {
+    "charsPerSecond": 28,
+    "fullText": "witness confirm {\n    at goal {\n        C.1 { specialize Classes.1 for C as D into hRep ... }\n        C.2 { ... }\n        cover { witness EquivalenceClass<X, E, x> for C ... }\n        disjoint { witness hRepA.witness for x in hRepA ... }\n    }\n}"
+  },
+  "proofPanel": {
+    "steps": [
+      {
+        "label": "open goal",
+        "goal": "⊢ target proposition"
+      },
+      {
+        "label": "apply tactic",
+        "goal": "subgoal after apply"
+      },
+      {
+        "label": "close branch",
+        "goal": "no open goals"
+      }
+    ]
+  },
+  "interactions": [
+    {
+      "atSeconds": 1.5,
+      "kind": "click-proof-step",
+      "stepIndex": 0
+    },
+    {
+      "atSeconds": 3.2,
+      "kind": "click-proof-step",
+      "stepIndex": 1
+    },
+    {
+      "atSeconds": 5,
+      "kind": "click-branch",
+      "branchId": "main"
+    }
+  ]
+}

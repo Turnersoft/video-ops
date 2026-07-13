@@ -1,0 +1,145 @@
+{
+  "version": 4,
+  "scriptId": "why-need-01-cauchy-where-bundle",
+  "title": "why_need_01_cauchy_where_bundle",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "Open the Tao file",
+      "durationSeconds": 18,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Show the file path in the editor tab. Start on the `IsCauchy` structure.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Open `5.1_Cauchy_Sequences__h1ta6tfvqbykppzu84hh.turn` in the Turn-Lang workspace."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Hi friends, welcome back. This is Turner.\nSo we are formalizing Tao's Analysis, chapter five, Cauchy sequences.\nOpen the real file with me. This is not a toy example. This is the actual chapter source.",
+            "durationSeconds": 18,
+            "visualNotes": "Open `5.1_Cauchy_Sequences__h1ta6tfvqbykppzu84hh.turn` in the Turn-Lang workspace.\nShow the file path in the editor tab. Start on the `IsCauchy` structure.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "title": "Read the definition on screen",
+      "durationSeconds": 19,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Highlight each `where` clause one at a time: epsilon, N, j and k.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-2-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Look at the law for `IsCauchy`.\nEpsilon must be positive. N must be at least one. j and k must both be at least N.\nIn a textbook these are listed as separate bullets. Here they sit in one `where` block.",
+            "durationSeconds": 19,
+            "visualNotes": "Highlight each `where` clause one at a time: epsilon, N, j and k.\nturn-ide track: tracks/scene-2-ide.json",
+            "turn": {
+              "code": "structure IsCauchy<a: Sequence>: Prop {\n    laws {\n        def {\n            forall epsilon: Rational where { |- RatLT(Zero, epsilon) },\n            exists N: Natural where { |- NatGE<N, NatOne> },\n            forall j k: Natural where { |- NatGE<j, N>; |- NatGE<k, N>; }\n            |- RatEpsilonClose(a.apply(j), a.apply(k), epsilon)\n        }\n    }\n}",
+              "highlights": [
+                "where { |- RatLT(Zero, epsilon) }",
+                "where { |- NatGE<N, NatOne> }",
+                "where { |- NatGE<j, N>; |- NatGE<k, N>; }"
+              ]
+            },
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "title": "Why a bundle beats one big And",
+      "durationSeconds": 17,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Do not rewrite the code live. Just point.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Keep the same `IsCauchy` block on screen. Cursor on the semicolon-separated `where` lines."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "You could mash all of this into one giant conjunction.\nBut then you lose the shape of the definition.\nThe bundle says: these are the side conditions checked together when you instantiate the structure.",
+            "durationSeconds": 17,
+            "visualNotes": "Keep the same `IsCauchy` block on screen. Cursor on the semicolon-separated `where` lines.\nDo not rewrite the code live. Just point.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "title": "Close",
+      "durationSeconds": 13,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Calm close in the workspace.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "End on the rendered math for `IsCauchy` if available, otherwise the source block."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "So when you read Turn-Lang, look for the `where` blocks.\nThat is often where the textbook's fine print lives.\nSubscribe, and we will keep formalizing Tao together.",
+            "durationSeconds": 13,
+            "visualNotes": "End on the rendered math for `IsCauchy` if available, otherwise the source block.\nCalm close in the workspace.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    }
+  ]
+}

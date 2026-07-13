@@ -1,0 +1,138 @@
+# stage-run 2026-07-12T10:29:13.382Z
+jobId=job-take-mrhmharr
+scriptId=sets-v2-04-set-equality
+takeId=take-mrhmharr
+stage=cut
+runId=cut-mrhniip1
+
+[2026-07-12T10:29:13.382Z] Starting cut
+[2026-07-12T10:29:13.383Z] Preparing cut inputs
+[2026-07-12T10:29:13.383Z] Declip from slide events and NG markers
+[2026-07-12T10:29:13.383Z] $ deno run --allow-all /Users/johndoe/Documents/company/video_ops/outdoor_post/main.ts ai-edit --video /Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/source.mp4 --script /Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/export/sets-v2-04-set-equality-outdoor-script.json --take /Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/take.json --out-dir /Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhniip1 --no-transcribe
+[stderr] ffmpeg version 7.1 Copyright (c) 2000-2024 the FFmpeg developers
+[stderr]   built with Apple clang version 15.0.0 (clang-1500.1.0.2.5)
+[stderr]   configuration: --prefix=/opt/homebrew/Cellar/ffmpeg/7.1_3 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags='-Wl,-ld_classic' --enable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libaribb24 --enable-libbluray --enable-libdav1d --enable-libharfbuzz --enable-libjxl --enable-libmp3lame --enable-libopus --enable-librav1e --enable-librist --enable-librubberband --enable-libsnappy --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtesseract --enable-libtheora --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-lzma --enable-libfontconfig --enable-libfreetype --enable-frei0r --enable-libass --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libspeex --enable-libsoxr --enable-libzmq --enable-libzimg --disable-libjack --disable-indev=jack --enable-videotoolbox --enable-audiotoolbox --enable-neon
+[stderr]   libavutil      59. 39.100 / 59. 39.100
+[stderr]   libavcodec     61. 19.100 / 61. 19.100
+[stderr]   libavformat    61.  7.100 / 61.  7.100
+[stderr]   libavdevice    61.  3.100 / 61.  3.100
+[stderr]   libavfilter    10.  4.100 / 10.  4.100
+[stderr]   libswscale      8.  3.100 /  8.  3.100
+[stderr]   libswresample   5.  3.100 /  5.  3.100
+[stderr]   libpostproc    58.  3.100 / 58.  3.100
+[stderr] Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/source.mp4':
+[stderr]   Metadata:
+[stderr]     major_brand     : qt  
+[stderr]     minor_version   : 0
+[stderr]     compatible_brands: qt  
+[stderr]     creation_time   : 2026-07-12T09:54:07.000000Z
+[stderr]   Duration: 00:06:08.94, start: 0.000000, bitrate: 2946 kb/s
+[stderr]   Stream #0:0[0x1](und): Video: hevc (Main) (hvc1 / 0x31637668), yuv420p(tv, smpte170m/bt709/bt709), 640x480, 2834 kb/s, 29.95 fps, 29.83 tbr, 600 tbn (default)
+[stderr]       Metadata:
+[stderr]         creation_time   : 2026-07-12T09:54:07.000000Z
+[stderr]         handler_name    : Core Media Video
+[stderr]         vendor_id       : [0][0][0][0]
+[stderr]         encoder         : HEVC
+[stderr]       Side data:
+[stderr]         displaymatrix: rotation of -180.00 degrees
+[stderr]   Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, mono, fltp, 100 kb/s (default)
+[stderr]       Metadata:
+[stderr]         creation_time   : 2026-07-12T09:54:07.000000Z
+[stderr]         handler_name    : Core Media Audio
+[stderr]         vendor_id       : [0][0][0][0]
+[stderr]   Stream #0:2[0x3](und): Data: none (mebx / 0x7862656D) (default)
+[stderr]       Metadata:
+[stderr]         creation_time   : 2026-07-12T09:54:07.000000Z
+[stderr]         handler_name    : Core Media Metadata
+[stderr] Stream mapping:
+[stderr]   Stream #0:0 -> #0:0 (hevc (native) -> h264 (libx264))
+[stderr]   Stream #0:1 -> #0:1 (aac (native) -> aac (native))
+[stderr] Press [q] to stop, [?] for help
+[stderr] [libx264 @ 0x116606790] using cpu capabilities: ARMv8 NEON
+[stderr] [libx264 @ 0x116606790] profile High, level 3.0, 4:2:0, 8-bit
+[stderr] [libx264 @ 0x116606790] 264 - core 164 r3108 31e19f9 - H.264/MPEG-4 AVC codec - Copyleft 2003-2023 - http://www.videolan.org/x264.html - options: cabac=1 ref=1 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=2 psy=1 psy_rd=1.00:0.00 mixed_ref=0 me_range=16 chroma_me=1 trellis=0 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=0 threads=15 lookahead_threads=3 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=1 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=10 rc=crf mbtree=1 crf=18.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+[stderr] Output #0, mp4, to '/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhniip1/chunks/chunk-000.mp4':
+[stderr]   Metadata:
+[stderr]     major_brand     : qt  
+[stderr]     minor_version   : 0
+[stderr]     compatible_brands: qt  
+[stderr]     encoder         : Lavf61.7.100
+[stderr]   Stream #0:0(und): Video: h264 (avc1 / 0x31637661), yuv420p(tv, smpte170m/bt709/bt709, progressive), 640x480, q=2-31, 29.83 fps, 11456 tbn (default)
+[stderr]       Metadata:
+[stderr]         creation_time   : 2026-07-12T09:54:07.000000Z
+[stderr]         handler_name    : Core Media Video
+[stderr]         vendor_id       : [0][0][0][0]
+[stderr]         encoder         : Lavc61.19.100 libx264
+[stderr]       Side data:
+[stderr]         cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+[stderr]   Stream #0:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, mono, fltp, 69 kb/s (default)
+[stderr]       Metadata:
+[stderr]         creation_time   : 2026-07-12T09:54:07.000000Z
+[stderr]         handler_name    : Core Media Audio
+[stderr]         vendor_id       : [0][0][0][0]
+[stderr]         encoder         : Lavc61.19.100 aac
+[stderr] frame=  299 fps=0.0 q=24.0 size=    6912KiB time=00:00:09.95 bitrate=5687.8kbits/s speed=19.7x    [stderr] frame=  645 fps=639 q=24.0 size=   14336KiB time=00:00:21.55 bitrate=5448.9kbits/s dup=0 drop=2 speed=21.4x    [stderr] frame=  997 fps=659 q=24.0 size=   20736KiB time=00:00:33.31 bitrate=5098.4kbits/s dup=0 drop=4 speed=  22x    [stderr] frame= 1331 fps=660 q=24.0 size=   27648KiB time=00:00:44.51 bitrate=5088.1kbits/s dup=0 drop=6 speed=22.1x    [stderr] frame= 1648 fps=653 q=24.0 size=   36864KiB time=00:00:55.17 bitrate=5473.5kbits/s dup=0 drop=7 speed=21.9x    [stderr] frame= 2003 fps=661 q=24.0 size=   44288KiB time=00:01:07.07 bitrate=5409.2kbits/s dup=0 drop=9 speed=22.1x    [stderr] frame= 2390 fps=677 q=24.0 size=   50688KiB time=00:01:20.04 bitrate=5187.6kbits/s dup=0 drop=11 speed=22.7x    [stderr] frame= 2757 fps=684 q=24.0 size=   57856KiB time=00:01:32.34 bitrate=5132.4kbits/s dup=0 drop=13 speed=22.9x    [stderr] frame= 3082 fps=679 q=24.0 size=   67328KiB time=00:01:43.24 bitrate=5342.4kbits/s dup=0 drop=14 speed=22.8x    [stderr] frame= 3398 fps=674 q=24.0 size=   77312KiB time=00:01:53.83 bitrate=5563.8kbits/s dup=0 drop=16 speed=22.6x    [stderr] frame= 3719 fps=671 q=24.0 size=   86784KiB time=00:02:04.55 bitrate=5707.6kbits/s dup=0 drop=18 speed=22.5x    [stderr] frame= 4105 fps=679 q=24.0 size=   93696KiB time=00:02:17.53 bitrate=5581.0kbits/s dup=0 drop=20 speed=22.7x    [stderr] frame= 4432 fps=676 q=24.0 size=  101376KiB time=00:02:28.45 bitrate=5594.0kbits/s dup=0 drop=21 speed=22.7x    [stderr] frame= 4745 fps=673 q=24.0 size=  109568KiB time=00:02:38.98 bitrate=5645.8kbits/s dup=0 drop=21 speed=22.5x    [stderr] frame= 5040 fps=667 q=24.0 size=  118016KiB time=00:02:48.83 bitrate=5726.1kbits/s dup=0 drop=22 speed=22.3x    [stderr] frame= 5324 fps=661 q=24.0 size=  124160KiB time=00:02:58.39 bitrate=5701.6kbits/s dup=0 drop=23 speed=22.1x    [stderr] frame= 5691 fps=665 q=24.0 size=  131584KiB time=00:03:10.69 bitrate=5652.7kbits/s dup=0 drop=26 speed=22.3x    [stderr] frame= 6052 fps=667 q=24.0 size=  139008KiB time=00:03:22.79 bitrate=5615.3kbits/s dup=0 drop=27 speed=22.4x    [stderr] frame= 6429 fps=672 q=24.0 size=  144896KiB time=00:03:35.43 bitrate=5509.9kbits/s dup=0 drop=30 speed=22.5x    [stderr] frame= 6789 fps=674 q=24.0 size=  148992KiB time=00:03:47.49 bitrate=5365.1kbits/s dup=0 drop=32 speed=22.6x    [stderr] frame= 7137 fps=674 q=24.0 size=  156672KiB time=00:03:59.16 bitrate=5366.5kbits/s dup=0 drop=33 speed=22.6x    [stderr] frame= 7443 fps=671 q=24.0 size=  165376KiB time=00:04:09.41 bitrate=5431.7kbits/s dup=0 drop=33 speed=22.5x    [stderr] frame= 7748 fps=668 q=24.0 size=  173312KiB time=00:04:19.60 bitrate=5468.9kbits/s dup=0 drop=34 speed=22.4x    [stderr] frame= 8077 fps=668 q=24.0 size=  181504KiB time=00:04:30.67 bitrate=5493.3kbits/s dup=0 drop=34 speed=22.4x    [stderr] frame= 8414 fps=668 q=24.0 size=  190208KiB time=00:04:41.96 bitrate=5526.1kbits/s dup=0 drop=34 speed=22.4x    [stderr] frame= 8752 fps=668 q=24.0 size=  198656KiB time=00:04:53.26 bitrate=5549.3kbits/s dup=0 drop=35 speed=22.4x    [stderr] frame= 9086 fps=668 q=24.0 size=  206080KiB time=00:05:04.49 bitrate=5544.3kbits/s dup=0 drop=35 speed=22.4x    [stderr] frame= 9407 fps=667 q=24.0 size=  213504KiB time=00:05:15.21 bitrate=5548.6kbits/s dup=0 drop=36 speed=22.3x    [stderr] frame= 9752 fps=667 q=24.0 size=  221440KiB time=00:05:26.81 bitrate=5550.6kbits/s dup=0 drop=37 speed=22.4x    [stderr] frame=10125 fps=670 q=24.0 size=  228352KiB time=00:05:39.31 bitrate=5513.0kbits/s dup=0 drop=39 speed=22.4x    [stderr] frame=10521 fps=673 q=24.0 size=  232704KiB time=00:05:52.55 bitrate=5407.1kbits/s dup=0 drop=41 speed=22.6x    [stderr] frame=10897 fps=676 q=24.0 size=  237568KiB time=00:06:05.16 bitrate=5329.6kbits/s dup=0 drop=43 speed=22.6x    [stderr] [out#0/mp4 @ 0x116605970] video:237163KiB audio:3148KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.162064%
+[stderr] frame=11008 fps=677 q=-1.0 Lsize=  240701KiB time=00:06:08.91 bitrate=5344.9kbits/s dup=0 drop=43 speed=22.7x    
+[stderr] [libx264 @ 0x116606790] frame I:57    Avg QP:18.92  size: 59991
+[stderr] [libx264 @ 0x116606790] frame P:3728  Avg QP:21.54  size: 36130
+[stderr] [libx264 @ 0x116606790] frame B:7223  Avg QP:24.94  size: 14501
+[stderr] [libx264 @ 0x116606790] consecutive B-frames:  7.4% 12.3%  9.5% 70.9%
+[stderr] [libx264 @ 0x116606790] mb I  I16..4:  8.0%  9.0% 83.0%
+[stderr] [libx264 @ 0x116606790] mb P  I16..4:  6.9%  5.9% 13.7%  P16..4: 21.1% 19.9% 29.3%  0.0%  0.0%    skip: 3.2%
+[stderr] [libx264 @ 0x116606790] mb B  I16..4:  1.4%  0.7%  1.0%  B16..8: 29.2% 17.3% 10.4%  direct:16.7%  skip:23.3%  L0:27.6% L1:31.8% BI:40.6%
+[stderr] [libx264 @ 0x116606790] 8x8 transform intra:21.5% inter:33.0%
+[stderr] [libx264 @ 0x116606790] coded y,uvDC,uvAC intra: 69.2% 61.6% 31.8% inter: 50.9% 23.9% 3.1%
+[stderr] [libx264 @ 0x116606790] i16 v,h,dc,p: 72% 12% 12%  4%
+[stderr] [libx264 @ 0x116606790] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 21% 20% 21%  3%  8%  7%  7%  6%  7%
+[stderr] [libx264 @ 0x116606790] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 16% 18% 14%  4% 13%  8% 10%  7% 10%
+[stderr] [libx264 @ 0x116606790] i8c dc,h,v,p: 58% 18% 17%  7%
+[stderr] [libx264 @ 0x116606790] Weighted P-Frames: Y:16.6% UV:2.1%
+[stderr] [libx264 @ 0x116606790] kb/s:5265.37
+[stderr] [aac @ 0x107665f40] Qavg: 199.934
+[stderr] ffmpeg version 7.1 Copyright (c) 2000-2024 the FFmpeg developers
+[stderr]   built with Apple clang version 15.0.0 (clang-1500.1.0.2.5)
+[stderr]   configuration: --prefix=/opt/homebrew/Cellar/ffmpeg/7.1_3 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags='-Wl,-ld_classic' --enable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libaribb24 --enable-libbluray --enable-libdav1d --enable-libharfbuzz --enable-libjxl --enable-libmp3lame --enable-libopus --enable-librav1e --enable-librist --enable-librubberband --enable-libsnappy --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtesseract --enable-libtheora --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-lzma --enable-libfontconfig --enable-libfreetype --enable-frei0r --enable-libass --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libspeex --enable-libsoxr --enable-libzmq --enable-libzimg --disable-libjack --disable-indev=jack --enable-videotoolbox --enable-audiotoolbox --enable-neon
+[stderr]   libavutil      59. 39.100 / 59. 39.100
+[stderr]   libavcodec     61. 19.100 / 61. 19.100
+[stderr]   libavformat    61.  7.100 / 61.  7.100
+[stderr]   libavdevice    61.  3.100 / 61.  3.100
+[stderr]   libavfilter    10.  4.100 / 10.  4.100
+[stderr]   libswscale      8.  3.100 /  8.  3.100
+[stderr]   libswresample   5.  3.100 /  5.  3.100
+[stderr]   libpostproc    58.  3.100 / 58.  3.100
+[stderr] [mov,mp4,m4a,3gp,3g2,mj2 @ 0x145805dc0] Auto-inserting h264_mp4toannexb bitstream filter
+[stderr] Input #0, concat, from '/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhniip1/chunks/concat.txt':
+[stderr]   Duration: N/A, start: -0.021333, bitrate: 5335 kb/s
+[stderr]   Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, smpte170m/bt709/bt709, progressive), 640x480, 5265 kb/s, 29.83 fps, 29.83 tbr, 11456 tbn
+[stderr]       Metadata:
+[stderr]         handler_name    : Core Media Video
+[stderr]         vendor_id       : [0][0][0][0]
+[stderr]         encoder         : Lavc61.19.100 libx264
+[stderr]   Stream #0:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, mono, fltp, 69 kb/s
+[stderr]       Metadata:
+[stderr]         handler_name    : Core Media Audio
+[stderr]         vendor_id       : [0][0][0][0]
+[stderr] Stream mapping:
+[stderr]   Stream #0:0 -> #0:0 (copy)
+[stderr]   Stream #0:1 -> #0:1 (copy)
+[stderr] Output #0, mp4, to '/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhniip1/edited-good-intervals.mp4':
+[stderr]   Metadata:
+[stderr]     encoder         : Lavf61.7.100
+[stderr]   Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, smpte170m/bt709/bt709, progressive), 640x480, q=2-31, 5265 kb/s, 29.83 fps, 29.83 tbr, 11456 tbn
+[stderr]       Metadata:
+[stderr]         handler_name    : Core Media Video
+[stderr]         vendor_id       : [0][0][0][0]
+[stderr]         encoder         : Lavc61.19.100 libx264
+[stderr]   Stream #0:1(und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, mono, fltp, 69 kb/s
+[stderr]       Metadata:
+[stderr]         handler_name    : Core Media Audio
+[stderr]         vendor_id       : [0][0][0][0]
+[stderr] Press [q] to stop, [?] for help
+[stderr] [out#0/mp4 @ 0x144641f00] video:237165KiB audio:3148KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.162090%
+[stderr] frame=11008 fps=0.0 q=-1.0 Lsize=  240703KiB time=00:06:08.93 bitrate=5344.6kbits/s speed=2.14e+03x    
+[stdout] Edited video: /Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhniip1/edited-good-intervals.mp4
+[stdout] Analysis: /Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhniip1/analysis.json
+[stdout] Remotion visual plan: /Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhniip1/remotion-visual-plan.json
+[2026-07-12T10:29:29.990Z] exit 0
+[2026-07-12T10:29:29.991Z] Cut complete
+[2026-07-12T10:29:29.991Z] cut complete

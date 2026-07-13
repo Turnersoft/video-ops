@@ -1,0 +1,34 @@
+{
+  "recentIngests": [
+    {
+      "takeId": "take-mrhmharr",
+      "inboxDir": "/Users/johndoe/Library/Mobile Documents/com~apple~CloudDocs/TurnOutdoor/inbox",
+      "videoPath": "/Users/johndoe/Library/Mobile Documents/com~apple~CloudDocs/TurnOutdoor/inbox/take-mrhmharr.mp4",
+      "videoFileName": "take-mrhmharr.mp4",
+      "manifestPath": "/Users/johndoe/Library/Mobile Documents/com~apple~CloudDocs/TurnOutdoor/inbox/take-mrhmharr.json",
+      "manifestFileName": "take-mrhmharr.json",
+      "scriptId": "sets-v2-04-set-equality",
+      "scriptTitle": "04_set_equality",
+      "status": "ingested",
+      "updatedAt": "2026-07-12T10:12:10.921Z",
+      "ingestedAt": "2026-07-12T10:12:10.921Z",
+      "jobId": "job-take-mrhmharr",
+      "takeDir": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr"
+    },
+    {
+      "takeId": "take-mrhjew5h",
+      "inboxDir": "/Users/johndoe/Library/Mobile Documents/com~apple~CloudDocs/TurnOutdoor/inbox",
+      "videoPath": "/Users/johndoe/Library/Mobile Documents/com~apple~CloudDocs/TurnOutdoor/inbox/take-mrhjew5h.mp4",
+      "videoFileName": "take-mrhjew5h.mp4",
+      "manifestPath": "/Users/johndoe/Library/Mobile Documents/com~apple~CloudDocs/TurnOutdoor/inbox/take-mrhjew5h.json",
+      "manifestFileName": "take-mrhjew5h.json",
+      "scriptId": "sets-v2-04-set-equality",
+      "scriptTitle": "04_set_equality",
+      "status": "ingested",
+      "updatedAt": "2026-07-12T09:03:57.334Z",
+      "ingestedAt": "2026-07-12T09:03:57.334Z",
+      "jobId": "job-take-mrhjew5h",
+      "takeDir": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhjew5h"
+    }
+  ]
+}

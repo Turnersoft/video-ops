@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Cover concept layer: { tactics } (420×260) — static layout reference; Remotion animates via ConceptCoverDiagram -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260" width="420" height="260">
+  <rect x="165.8" y="112.0" width="88.4" height="67.2" rx="20" fill="rgba(88, 196, 221, 0.1)" stroke="rgba(88, 196, 221, 0.85)" stroke-width="2.6"/>
+  <text x="210" y="153.6" text-anchor="middle" fill="#e8e6e3" font-size="14.1" font-family="Georgia, serif" font-weight="700">{ tactics }</text>
+</svg>

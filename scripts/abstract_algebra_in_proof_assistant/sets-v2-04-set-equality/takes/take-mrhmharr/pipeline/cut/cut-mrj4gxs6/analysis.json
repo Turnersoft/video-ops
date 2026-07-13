@@ -1,0 +1,1533 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-13T11:12:00.837Z",
+  "sourceVideo": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/stabilize/stabilize-mriqdtnm/stabilized.mp4",
+  "sourceScript": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/export/sets-v2-04-set-equality-outdoor-script.json",
+  "sourceTake": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/take.json",
+  "durationSeconds": 369.041,
+  "sourceDurationSeconds": 369.041,
+  "transcriptSegments": [
+    {
+      "start": 0.27,
+      "end": 3.57,
+      "text": "Hi friends, welcome back. The best way to formalize the math concept is to"
+    },
+    {
+      "start": 4.55,
+      "end": 9.67,
+      "text": "The best way to understand the math concept is to formalize it the day we formalize set equality and a textbook"
+    },
+    {
+      "start": 9.67,
+      "end": 13.99,
+      "text": "Definition looks really simple to set IE core when each one is a subset of the other"
+    },
+    {
+      "start": 14.45,
+      "end": 20.19,
+      "text": "But if we want to formalize this statement, we still need to understand what you cosine actually means in sine proof system"
+    },
+    {
+      "start": 20.19,
+      "end": 22.37,
+      "text": "And this is more complicated than I think"
+    },
+    {
+      "start": 27.4,
+      "end": 31.1,
+      "text": "So you call doesn't always mean being the same atomically"
+    },
+    {
+      "start": 31.1,
+      "end": 35.12,
+      "text": "So one plus one equals two is not the same"
+    },
+    {
+      "start": 35.12,
+      "end": 39.88,
+      "text": "Automically because they have different expression literally, but they are methodically the same"
+    },
+    {
+      "start": 39.88,
+      "end": 43.4,
+      "text": "And this is the kind of equality that we want to prove"
+    },
+    {
+      "start": 43.4,
+      "end": 49.54,
+      "text": "This is the only meaningful equality and there's another equality, which is one equal one things like"
+    },
+    {
+      "start": 49.54,
+      "end": 53.92,
+      "text": "Because the left hand side right hand side are the same and these are not worth proving"
+    },
+    {
+      "start": 53.92,
+      "end": 60.42,
+      "text": "But they're still very useful because they show up at the end of every proof for this meaningful equality"
+    },
+    {
+      "start": 61.1,
+      "end": 64.08,
+      "text": "It just just to close the proof"
+    },
+    {
+      "start": 64.08,
+      "end": 74.77,
+      "text": "So in lean we can write A equal to B and"
+    },
+    {
+      "start": 75.77,
+      "end": 83.37,
+      "text": "Notice that we do not implement the equal equality type class first because the quality signs built in notation for value"
+    },
+    {
+      "start": 83.37,
+      "end": 88.91,
+      "text": "Just like other problem in languages, but there are other, but there are two different kind of equality here"
+    },
+    {
+      "start": 88.91,
+      "end": 93.91,
+      "text": "Definition equalities and propositional equalities the former is just"
+    },
+    {
+      "start": 94.57,
+      "end": 99.43,
+      "text": "In a predefined equalities that the computers can still check automatically"
+    },
+    {
+      "start": 99.43,
+      "end": 101.43,
+      "text": "Even though two sides are different"
+    },
+    {
+      "start": 101.43,
+      "end": 106.19,
+      "text": "Proposition just means that something you need to prove, but after you prove there the"
+    },
+    {
+      "start": 107.79,
+      "end": 111.37,
+      "text": "Proof engine can still apply it as if it is a"
+    },
+    {
+      "start": 112.21,
+      "end": 113.33,
+      "text": "Computer rule"
+    },
+    {
+      "start": 113.33,
+      "end": 135.56,
+      "text": "So now the question is now the question is when can we even write the equal sign in lean so both sides must be exactly the same type"
+    },
+    {
+      "start": 136.64,
+      "end": 137.96,
+      "text": "So two natural numbers"
+    },
+    {
+      "start": 138.7,
+      "end": 143.9,
+      "text": "So two as a natural number and two as an integer cannot be compared directly"
+    },
+    {
+      "start": 143.9,
+      "end": 147.58,
+      "text": "They look like the same number to us, but lean to see two different types"
+    },
+    {
+      "start": 147.58,
+      "end": 152.5,
+      "text": "So we first cast the natural number into integer and then equality makes sense"
+    },
+    {
+      "start": 152.5,
+      "end": 157.96,
+      "text": "So now set A and set B have types set alpha so that they can compare directly and"
+    },
+    {
+      "start": 158.82,
+      "end": 162.1,
+      "text": "Lean defines it using this very simple expression of"
+    },
+    {
+      "start": 162.1,
+      "end": 170.6,
+      "text": "Of subset that we have before and it allows you to convert two mutual subset expressions into"
+    },
+    {
+      "start": 170.6,
+      "end": 175.18,
+      "text": "You can even it implies an equality of a equals B"
+    },
+    {
+      "start": 178.68,
+      "end": 180.58,
+      "text": "So if x belongs to a"
+    },
+    {
+      "start": 181.78,
+      "end": 189.82,
+      "text": "When x belongs to be for every x then the two set are equal in now and in our textbook. This is exactly what the mutual subset is"
+    },
+    {
+      "start": 191.04,
+      "end": 194.02,
+      "text": "So now turn lang it makes a different choice"
+    },
+    {
+      "start": 194.02,
+      "end": 200.32,
+      "text": "We do not want to use the equals sign everywhere and suddenly assume that every structure have the same meaning of equality"
+    },
+    {
+      "start": 200.96,
+      "end": 203.9,
+      "text": "Let's look at the end notations index here"
+    },
+    {
+      "start": 203.9,
+      "end": 209.3,
+      "text": "It binds the visible a equals to be to a name the relation called set equal"
+    },
+    {
+      "start": 209.3,
+      "end": 213.8,
+      "text": "That means the equal sign is only the notation in order to use this"
+    },
+    {
+      "start": 213.8,
+      "end": 219.84,
+      "text": "Set equal you have to call the set equal set equal a relation with the brackets containing a and b"
+    },
+    {
+      "start": 223.2,
+      "end": 228.66,
+      "text": "And the body of this relation is just what we have is just a mb"
+    },
+    {
+      "start": 229.3,
+      "end": 238.9,
+      "text": "Subset to each other and there's two statements psi are very clear and next if we compare a function equals"
+    },
+    {
+      "start": 238.9,
+      "end": 241.6,
+      "text": "It has the same kind of problems though, so"
+    },
+    {
+      "start": 242.54,
+      "end": 248.48,
+      "text": "The two functions equal they cannot be exactly the same and they make a different body"
+    },
+    {
+      "start": 249.66,
+      "end": 252.54,
+      "text": "And they came they may return actually different types"
+    },
+    {
+      "start": 252.54,
+      "end": 258.68,
+      "text": "They want me to return natural number when we return integer even though the the value are the same"
+    },
+    {
+      "start": 260.89,
+      "end": 264.17,
+      "text": "So on the lean side it uses funk dot e xt"
+    },
+    {
+      "start": 264.81,
+      "end": 266.71,
+      "text": "Which turns which which is another"
+    },
+    {
+      "start": 268.07,
+      "end": 272.73,
+      "text": "Theorem attached to funk that tells you that you can just rewrite"
+    },
+    {
+      "start": 274.75,
+      "end": 279.31,
+      "text": "Fx equal to gx to f equals g for our four x there"
+    },
+    {
+      "start": 279.31,
+      "end": 286.19,
+      "text": "So on the turnlens side we name the relation function equal and again the visible equal sign is attached by notation and"
+    },
+    {
+      "start": 286.93,
+      "end": 290.63,
+      "text": "So the notation tells us exactly what the observation must agree"
+    },
+    {
+      "start": 292.03,
+      "end": 293.93,
+      "text": "Which is on every output"
+    },
+    {
+      "start": 294.83,
+      "end": 303.24,
+      "text": "Every input so finally let's move one level higher in category theory"
+    },
+    {
+      "start": 303.24,
+      "end": 307.96,
+      "text": "We have to be very careful not to say to object are literally equal"
+    },
+    {
+      "start": 308.52,
+      "end": 316.56,
+      "text": "When you know what we really mean is isomorphic for example two groups can use the complete different underlying elements"
+    },
+    {
+      "start": 317.2,
+      "end": 319.48,
+      "text": "So as raw data's they are not equal"
+    },
+    {
+      "start": 319.48,
+      "end": 325.24,
+      "text": "But if there is an isomorphism that preserve multiplication identity in inverse"
+    },
+    {
+      "start": 325.84,
+      "end": 330.54,
+      "text": "Then from the group theory perspective they have the same structure and that connects back to everything"
+    },
+    {
+      "start": 330.54,
+      "end": 333.44,
+      "text": "We just did for set we compare numbers"
+    },
+    {
+      "start": 334.08,
+      "end": 335.6,
+      "text": "Function will compare outputs"
+    },
+    {
+      "start": 335.6,
+      "end": 342.34,
+      "text": "For structured objects we compare structure preserving maps and in higher category theory"
+    },
+    {
+      "start": 342.34,
+      "end": 349.84,
+      "text": "We even those maps can have higher comparisons. So in in one of the type theory equality proves behaves like"
+    },
+    {
+      "start": 349.84,
+      "end": 356.86,
+      "text": "Paps so the real question is is not only are those two things you call the real question is"
+    },
+    {
+      "start": 357.44,
+      "end": 361,
+      "text": "At which level of mathematics should we treat them as the same?"
+    },
+    {
+      "start": 361,
+      "end": 366.24,
+      "text": "So there is a real lessons of equality. So I hope you enjoyed this video. See you next time"
+    }
+  ],
+  "transcriptWordCount": 892,
+  "badIntervals": [
+    {
+      "start": 3.63,
+      "end": 4.49,
+      "reason": "word pause 0.98s; transcript pause 0.98s"
+    },
+    {
+      "start": 22.43,
+      "end": 27.34,
+      "reason": "word pause 5.03s; transcript pause 5.03s"
+    },
+    {
+      "start": 60.480000000000004,
+      "end": 61.04,
+      "reason": "word pause 0.68s"
+    },
+    {
+      "start": 62.04,
+      "end": 62.660000000000004,
+      "reason": "repeated word: just"
+    },
+    {
+      "start": 65.14,
+      "end": 72.25,
+      "reason": "word pause 7.23s"
+    },
+    {
+      "start": 74.83,
+      "end": 75.71,
+      "reason": "word pause 1.00s; transcript pause 1.00s"
+    },
+    {
+      "start": 93.97,
+      "end": 94.50999999999999,
+      "reason": "word pause 0.66s"
+    },
+    {
+      "start": 106.25,
+      "end": 107.73,
+      "reason": "word pause 1.60s; transcript pause 1.60s"
+    },
+    {
+      "start": 111.43,
+      "end": 112.14999999999999,
+      "reason": "word pause 0.84s; transcript pause 0.84s"
+    },
+    {
+      "start": 114.35000000000001,
+      "end": 119.03,
+      "reason": "word pause 4.80s"
+    },
+    {
+      "start": 120.49000000000001,
+      "end": 128.3,
+      "reason": "word pause 7.93s"
+    },
+    {
+      "start": 135.62,
+      "end": 136.57999999999998,
+      "reason": "word pause 1.08s; transcript pause 1.08s"
+    },
+    {
+      "start": 138.02,
+      "end": 138.64,
+      "reason": "word pause 0.74s"
+    },
+    {
+      "start": 158.02,
+      "end": 158.76,
+      "reason": "word pause 0.86s; transcript pause 0.86s"
+    },
+    {
+      "start": 175.24,
+      "end": 178.62,
+      "reason": "word pause 3.50s; transcript pause 3.50s"
+    },
+    {
+      "start": 180.64000000000001,
+      "end": 181.72,
+      "reason": "word pause 1.20s; transcript pause 1.20s"
+    },
+    {
+      "start": 189.88,
+      "end": 190.98,
+      "reason": "word pause 1.22s; transcript pause 1.22s"
+    },
+    {
+      "start": 216.06,
+      "end": 217.2,
+      "reason": "repeated phrase: set equal"
+    },
+    {
+      "start": 219.9,
+      "end": 223.14,
+      "reason": "word pause 3.36s; transcript pause 3.36s"
+    },
+    {
+      "start": 234.12,
+      "end": 236.18,
+      "reason": "word pause 2.18s"
+    },
+    {
+      "start": 241.66,
+      "end": 242.48,
+      "reason": "word pause 0.94s; transcript pause 0.94s"
+    },
+    {
+      "start": 248.54,
+      "end": 249.6,
+      "reason": "word pause 1.18s; transcript pause 1.18s"
+    },
+    {
+      "start": 257.71999999999997,
+      "end": 258.14,
+      "reason": "repeated word: the"
+    },
+    {
+      "start": 258.74,
+      "end": 260.83,
+      "reason": "word pause 2.21s; transcript pause 2.21s"
+    },
+    {
+      "start": 265.93,
+      "end": 266.55,
+      "reason": "repeated word: which"
+    },
+    {
+      "start": 266.77,
+      "end": 268.01,
+      "reason": "word pause 1.36s; transcript pause 1.36s"
+    },
+    {
+      "start": 272.79,
+      "end": 274.69,
+      "reason": "word pause 2.02s; transcript pause 2.02s"
+    },
+    {
+      "start": 278.76,
+      "end": 287.14,
+      "reason": "spoken NG phrase: again; word pause 0.74s"
+    },
+    {
+      "start": 290.69,
+      "end": 291.96999999999997,
+      "reason": "word pause 1.40s; transcript pause 1.40s"
+    },
+    {
+      "start": 293.99,
+      "end": 294.77,
+      "reason": "word pause 0.90s; transcript pause 0.90s"
+    },
+    {
+      "start": 296.93,
+      "end": 299.66,
+      "reason": "word pause 2.85s"
+    },
+    {
+      "start": 308.88,
+      "end": 309.92,
+      "reason": "filler aside: you know"
+    }
+  ],
+  "goodIntervals": [
+    {
+      "start": 0.21000000000000002,
+      "end": 3.55
+    },
+    {
+      "start": 4.57,
+      "end": 22.35
+    },
+    {
+      "start": 27.419999999999998,
+      "end": 60.400000000000006
+    },
+    {
+      "start": 61.12,
+      "end": 61.7
+    },
+    {
+      "start": 62.82,
+      "end": 65.06
+    },
+    {
+      "start": 72.33,
+      "end": 74.75
+    },
+    {
+      "start": 75.78999999999999,
+      "end": 93.89
+    },
+    {
+      "start": 94.58999999999999,
+      "end": 106.17
+    },
+    {
+      "start": 107.81,
+      "end": 111.35000000000001
+    },
+    {
+      "start": 112.22999999999999,
+      "end": 114.27000000000001
+    },
+    {
+      "start": 119.11,
+      "end": 120.41000000000001
+    },
+    {
+      "start": 128.38000000000002,
+      "end": 135.54
+    },
+    {
+      "start": 136.66,
+      "end": 137.94
+    },
+    {
+      "start": 138.72,
+      "end": 157.94
+    },
+    {
+      "start": 158.84,
+      "end": 175.16
+    },
+    {
+      "start": 178.70000000000002,
+      "end": 180.56
+    },
+    {
+      "start": 181.8,
+      "end": 189.79999999999998
+    },
+    {
+      "start": 191.06,
+      "end": 215.98
+    },
+    {
+      "start": 217.62,
+      "end": 219.82
+    },
+    {
+      "start": 223.22,
+      "end": 234.04
+    },
+    {
+      "start": 236.26000000000002,
+      "end": 241.57999999999998
+    },
+    {
+      "start": 242.56,
+      "end": 248.45999999999998
+    },
+    {
+      "start": 249.68,
+      "end": 257.38
+    },
+    {
+      "start": 260.90999999999997,
+      "end": 265.69
+    },
+    {
+      "start": 268.09,
+      "end": 272.71000000000004
+    },
+    {
+      "start": 274.77,
+      "end": 278.68
+    },
+    {
+      "start": 287.21999999999997,
+      "end": 290.61
+    },
+    {
+      "start": 292.04999999999995,
+      "end": 293.91
+    },
+    {
+      "start": 294.84999999999997,
+      "end": 296.85
+    },
+    {
+      "start": 299.74,
+      "end": 308.06
+    },
+    {
+      "start": 310,
+      "end": 366.34000000000003
+    }
+  ],
+  "baselineBadIntervals": [
+    {
+      "start": 3.63,
+      "end": 4.49,
+      "reason": "word pause 0.98s; transcript pause 0.98s"
+    },
+    {
+      "start": 22.43,
+      "end": 27.34,
+      "reason": "word pause 5.03s; transcript pause 5.03s"
+    },
+    {
+      "start": 60.480000000000004,
+      "end": 61.04,
+      "reason": "word pause 0.68s"
+    },
+    {
+      "start": 62.04,
+      "end": 62.660000000000004,
+      "reason": "repeated word: just"
+    },
+    {
+      "start": 65.14,
+      "end": 72.25,
+      "reason": "word pause 7.23s"
+    },
+    {
+      "start": 74.83,
+      "end": 75.71,
+      "reason": "word pause 1.00s; transcript pause 1.00s"
+    },
+    {
+      "start": 93.97,
+      "end": 94.50999999999999,
+      "reason": "word pause 0.66s"
+    },
+    {
+      "start": 106.25,
+      "end": 107.73,
+      "reason": "word pause 1.60s; transcript pause 1.60s"
+    },
+    {
+      "start": 111.43,
+      "end": 112.14999999999999,
+      "reason": "word pause 0.84s; transcript pause 0.84s"
+    },
+    {
+      "start": 114.35000000000001,
+      "end": 119.03,
+      "reason": "word pause 4.80s"
+    },
+    {
+      "start": 120.49000000000001,
+      "end": 128.3,
+      "reason": "word pause 7.93s"
+    },
+    {
+      "start": 135.62,
+      "end": 136.57999999999998,
+      "reason": "word pause 1.08s; transcript pause 1.08s"
+    },
+    {
+      "start": 138.02,
+      "end": 138.64,
+      "reason": "word pause 0.74s"
+    },
+    {
+      "start": 158.02,
+      "end": 158.76,
+      "reason": "word pause 0.86s; transcript pause 0.86s"
+    },
+    {
+      "start": 175.24,
+      "end": 178.62,
+      "reason": "word pause 3.50s; transcript pause 3.50s"
+    },
+    {
+      "start": 180.64000000000001,
+      "end": 181.72,
+      "reason": "word pause 1.20s; transcript pause 1.20s"
+    },
+    {
+      "start": 189.88,
+      "end": 190.98,
+      "reason": "word pause 1.22s; transcript pause 1.22s"
+    },
+    {
+      "start": 216.06,
+      "end": 217.2,
+      "reason": "repeated phrase: set equal"
+    },
+    {
+      "start": 219.9,
+      "end": 223.14,
+      "reason": "word pause 3.36s; transcript pause 3.36s"
+    },
+    {
+      "start": 234.12,
+      "end": 236.18,
+      "reason": "word pause 2.18s"
+    },
+    {
+      "start": 241.66,
+      "end": 242.48,
+      "reason": "word pause 0.94s; transcript pause 0.94s"
+    },
+    {
+      "start": 248.54,
+      "end": 249.6,
+      "reason": "word pause 1.18s; transcript pause 1.18s"
+    },
+    {
+      "start": 257.71999999999997,
+      "end": 258.14,
+      "reason": "repeated word: the"
+    },
+    {
+      "start": 258.74,
+      "end": 260.83,
+      "reason": "word pause 2.21s; transcript pause 2.21s"
+    },
+    {
+      "start": 265.93,
+      "end": 266.55,
+      "reason": "repeated word: which"
+    },
+    {
+      "start": 266.77,
+      "end": 268.01,
+      "reason": "word pause 1.36s; transcript pause 1.36s"
+    },
+    {
+      "start": 272.79,
+      "end": 274.69,
+      "reason": "word pause 2.02s; transcript pause 2.02s"
+    },
+    {
+      "start": 278.76,
+      "end": 287.14,
+      "reason": "spoken NG phrase: again; word pause 0.74s"
+    },
+    {
+      "start": 290.69,
+      "end": 291.96999999999997,
+      "reason": "word pause 1.40s; transcript pause 1.40s"
+    },
+    {
+      "start": 293.99,
+      "end": 294.77,
+      "reason": "word pause 0.90s; transcript pause 0.90s"
+    },
+    {
+      "start": 296.93,
+      "end": 299.66,
+      "reason": "word pause 2.85s"
+    },
+    {
+      "start": 308.88,
+      "end": 309.92,
+      "reason": "filler aside: you know"
+    }
+  ],
+  "baselineGoodIntervals": [
+    {
+      "start": 0.21000000000000002,
+      "end": 3.55
+    },
+    {
+      "start": 4.57,
+      "end": 22.35
+    },
+    {
+      "start": 27.419999999999998,
+      "end": 60.400000000000006
+    },
+    {
+      "start": 61.12,
+      "end": 61.7
+    },
+    {
+      "start": 62.82,
+      "end": 65.06
+    },
+    {
+      "start": 72.33,
+      "end": 74.75
+    },
+    {
+      "start": 75.78999999999999,
+      "end": 93.89
+    },
+    {
+      "start": 94.58999999999999,
+      "end": 106.17
+    },
+    {
+      "start": 107.81,
+      "end": 111.35000000000001
+    },
+    {
+      "start": 112.22999999999999,
+      "end": 114.27000000000001
+    },
+    {
+      "start": 119.11,
+      "end": 120.41000000000001
+    },
+    {
+      "start": 128.38000000000002,
+      "end": 135.54
+    },
+    {
+      "start": 136.66,
+      "end": 137.94
+    },
+    {
+      "start": 138.72,
+      "end": 157.94
+    },
+    {
+      "start": 158.84,
+      "end": 175.16
+    },
+    {
+      "start": 178.70000000000002,
+      "end": 180.56
+    },
+    {
+      "start": 181.8,
+      "end": 189.79999999999998
+    },
+    {
+      "start": 191.06,
+      "end": 215.98
+    },
+    {
+      "start": 217.62,
+      "end": 219.82
+    },
+    {
+      "start": 223.22,
+      "end": 234.04
+    },
+    {
+      "start": 236.26000000000002,
+      "end": 241.57999999999998
+    },
+    {
+      "start": 242.56,
+      "end": 248.45999999999998
+    },
+    {
+      "start": 249.68,
+      "end": 257.38
+    },
+    {
+      "start": 260.90999999999997,
+      "end": 265.69
+    },
+    {
+      "start": 268.09,
+      "end": 272.71000000000004
+    },
+    {
+      "start": 274.77,
+      "end": 278.68
+    },
+    {
+      "start": 287.21999999999997,
+      "end": 290.61
+    },
+    {
+      "start": 292.04999999999995,
+      "end": 293.91
+    },
+    {
+      "start": 294.84999999999997,
+      "end": 296.85
+    },
+    {
+      "start": 299.74,
+      "end": 308.06
+    },
+    {
+      "start": 310,
+      "end": 366.34000000000003
+    }
+  ],
+  "visualTimeline": [
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 0.21000000000000002,
+      "sourceEnd": 3.55,
+      "editedStart": 0,
+      "editedEnd": 3.34
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 4.57,
+      "sourceEnd": 22.35,
+      "editedStart": 3.34,
+      "editedEnd": 21.12
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 27.419999999999998,
+      "sourceEnd": 60.400000000000006,
+      "editedStart": 21.12,
+      "editedEnd": 54.10000000000001
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 61.12,
+      "sourceEnd": 61.7,
+      "editedStart": 54.10000000000001,
+      "editedEnd": 54.680000000000014
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 62.82,
+      "sourceEnd": 65.06,
+      "editedStart": 54.680000000000014,
+      "editedEnd": 56.920000000000016
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 72.33,
+      "sourceEnd": 74.75,
+      "editedStart": 56.920000000000016,
+      "editedEnd": 59.34000000000002
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 75.78999999999999,
+      "sourceEnd": 93.89,
+      "editedStart": 59.34000000000002,
+      "editedEnd": 77.44000000000003
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 94.58999999999999,
+      "sourceEnd": 106.17,
+      "editedStart": 77.44000000000003,
+      "editedEnd": 89.02000000000004
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 107.81,
+      "sourceEnd": 111.35000000000001,
+      "editedStart": 89.02000000000004,
+      "editedEnd": 92.56000000000004
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 112.22999999999999,
+      "sourceEnd": 114.27000000000001,
+      "editedStart": 92.56000000000004,
+      "editedEnd": 94.60000000000007
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 119.11,
+      "sourceEnd": 120.41000000000001,
+      "editedStart": 94.60000000000007,
+      "editedEnd": 95.90000000000008
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 128.38000000000002,
+      "sourceEnd": 135.54,
+      "editedStart": 95.90000000000008,
+      "editedEnd": 103.06000000000004
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 136.66,
+      "sourceEnd": 137.94,
+      "editedStart": 103.06000000000004,
+      "editedEnd": 104.34000000000005
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 138.72,
+      "sourceEnd": 157.94,
+      "editedStart": 104.34000000000005,
+      "editedEnd": 123.56000000000004
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 158.84,
+      "sourceEnd": 175.16,
+      "editedStart": 123.56000000000004,
+      "editedEnd": 139.88000000000005
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 178.70000000000002,
+      "sourceEnd": 180.56,
+      "editedStart": 139.88000000000005,
+      "editedEnd": 141.74000000000004
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 181.8,
+      "sourceEnd": 189.79999999999998,
+      "editedStart": 141.74000000000004,
+      "editedEnd": 149.74
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 191.06,
+      "sourceEnd": 215.98,
+      "editedStart": 149.74,
+      "editedEnd": 174.66
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 217.62,
+      "sourceEnd": 219.82,
+      "editedStart": 174.66,
+      "editedEnd": 176.85999999999999
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 223.22,
+      "sourceEnd": 234.04,
+      "editedStart": 176.85999999999999,
+      "editedEnd": 187.67999999999998
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 236.26000000000002,
+      "sourceEnd": 241.57999999999998,
+      "editedStart": 187.67999999999998,
+      "editedEnd": 192.99999999999994
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 242.56,
+      "sourceEnd": 248.45999999999998,
+      "editedStart": 192.99999999999994,
+      "editedEnd": 198.89999999999992
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 249.68,
+      "sourceEnd": 257.38,
+      "editedStart": 198.89999999999992,
+      "editedEnd": 206.5999999999999
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 260.90999999999997,
+      "sourceEnd": 265.69,
+      "editedStart": 206.5999999999999,
+      "editedEnd": 211.37999999999994
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 268.09,
+      "sourceEnd": 272.71000000000004,
+      "editedStart": 211.37999999999994,
+      "editedEnd": 216
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 274.77,
+      "sourceEnd": 278.68,
+      "editedStart": 216,
+      "editedEnd": 219.91000000000003
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 287.21999999999997,
+      "sourceEnd": 290.61,
+      "editedStart": 219.91000000000003,
+      "editedEnd": 223.30000000000007
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 292.04999999999995,
+      "sourceEnd": 293.91,
+      "editedStart": 223.30000000000007,
+      "editedEnd": 225.16000000000014
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 294.84999999999997,
+      "sourceEnd": 296.85,
+      "editedStart": 225.16000000000014,
+      "editedEnd": 227.1600000000002
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "Beat 6: present the higher-category philosophy without naming a person",
+      "sourceStart": 299.74,
+      "sourceEnd": 308.06,
+      "editedStart": 227.1600000000002,
+      "editedEnd": 235.4800000000002
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "Beat 6: present the higher-category philosophy without naming a person",
+      "sourceStart": 310,
+      "sourceEnd": 366.34000000000003,
+      "editedStart": 235.4800000000002,
+      "editedEnd": 291.8200000000002
+    }
+  ],
+  "baselineVisualTimeline": [
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 0.21000000000000002,
+      "sourceEnd": 3.55,
+      "editedStart": 0,
+      "editedEnd": 3.34
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 4.57,
+      "sourceEnd": 22.35,
+      "editedStart": 3.34,
+      "editedEnd": 21.12
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 27.419999999999998,
+      "sourceEnd": 60.400000000000006,
+      "editedStart": 21.12,
+      "editedEnd": 54.10000000000001
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 61.12,
+      "sourceEnd": 61.7,
+      "editedStart": 54.10000000000001,
+      "editedEnd": 54.680000000000014
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 62.82,
+      "sourceEnd": 65.06,
+      "editedStart": 54.680000000000014,
+      "editedEnd": 56.920000000000016
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 72.33,
+      "sourceEnd": 74.75,
+      "editedStart": 56.920000000000016,
+      "editedEnd": 59.34000000000002
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 75.78999999999999,
+      "sourceEnd": 93.89,
+      "editedStart": 59.34000000000002,
+      "editedEnd": 77.44000000000003
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 94.58999999999999,
+      "sourceEnd": 106.17,
+      "editedStart": 77.44000000000003,
+      "editedEnd": 89.02000000000004
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 107.81,
+      "sourceEnd": 111.35000000000001,
+      "editedStart": 89.02000000000004,
+      "editedEnd": 92.56000000000004
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 112.22999999999999,
+      "sourceEnd": 114.27000000000001,
+      "editedStart": 92.56000000000004,
+      "editedEnd": 94.60000000000007
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 119.11,
+      "sourceEnd": 120.41000000000001,
+      "editedStart": 94.60000000000007,
+      "editedEnd": 95.90000000000008
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 128.38000000000002,
+      "sourceEnd": 135.54,
+      "editedStart": 95.90000000000008,
+      "editedEnd": 103.06000000000004
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 136.66,
+      "sourceEnd": 137.94,
+      "editedStart": 103.06000000000004,
+      "editedEnd": 104.34000000000005
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 138.72,
+      "sourceEnd": 157.94,
+      "editedStart": 104.34000000000005,
+      "editedEnd": 123.56000000000004
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 158.84,
+      "sourceEnd": 175.16,
+      "editedStart": 123.56000000000004,
+      "editedEnd": 139.88000000000005
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 178.70000000000002,
+      "sourceEnd": 180.56,
+      "editedStart": 139.88000000000005,
+      "editedEnd": 141.74000000000004
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 181.8,
+      "sourceEnd": 189.79999999999998,
+      "editedStart": 141.74000000000004,
+      "editedEnd": 149.74
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 191.06,
+      "sourceEnd": 215.98,
+      "editedStart": 149.74,
+      "editedEnd": 174.66
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 217.62,
+      "sourceEnd": 219.82,
+      "editedStart": 174.66,
+      "editedEnd": 176.85999999999999
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 223.22,
+      "sourceEnd": 234.04,
+      "editedStart": 176.85999999999999,
+      "editedEnd": 187.67999999999998
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 236.26000000000002,
+      "sourceEnd": 241.57999999999998,
+      "editedStart": 187.67999999999998,
+      "editedEnd": 192.99999999999994
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 242.56,
+      "sourceEnd": 248.45999999999998,
+      "editedStart": 192.99999999999994,
+      "editedEnd": 198.89999999999992
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 249.68,
+      "sourceEnd": 257.38,
+      "editedStart": 198.89999999999992,
+      "editedEnd": 206.5999999999999
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 260.90999999999997,
+      "sourceEnd": 265.69,
+      "editedStart": 206.5999999999999,
+      "editedEnd": 211.37999999999994
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 268.09,
+      "sourceEnd": 272.71000000000004,
+      "editedStart": 211.37999999999994,
+      "editedEnd": 216
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 274.77,
+      "sourceEnd": 278.68,
+      "editedStart": 216,
+      "editedEnd": 219.91000000000003
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 287.21999999999997,
+      "sourceEnd": 290.61,
+      "editedStart": 219.91000000000003,
+      "editedEnd": 223.30000000000007
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 292.04999999999995,
+      "sourceEnd": 293.91,
+      "editedStart": 223.30000000000007,
+      "editedEnd": 225.16000000000014
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 294.84999999999997,
+      "sourceEnd": 296.85,
+      "editedStart": 225.16000000000014,
+      "editedEnd": 227.1600000000002
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "Beat 6: present the higher-category philosophy without naming a person",
+      "sourceStart": 299.74,
+      "sourceEnd": 308.06,
+      "editedStart": 227.1600000000002,
+      "editedEnd": 235.4800000000002
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "Beat 6: present the higher-category philosophy without naming a person",
+      "sourceStart": 310,
+      "sourceEnd": 366.34000000000003,
+      "editedStart": 235.4800000000002,
+      "editedEnd": 291.8200000000002
+    }
+  ],
+  "selectionAppliedAt": "2026-07-13T11:35:27.113Z",
+  "lastAppliedInputVideo": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/stabilize/stabilize-mriqdtnm/stabilized.mp4",
+  "appliedGoodIntervals": [
+    {
+      "start": 0.17,
+      "end": 1.5899999999999999
+    },
+    {
+      "start": 4.45,
+      "end": 22.470000000000002
+    },
+    {
+      "start": 27.299999999999997,
+      "end": 60.52
+    },
+    {
+      "start": 61,
+      "end": 62.16
+    },
+    {
+      "start": 62.48,
+      "end": 65.17999999999999
+    },
+    {
+      "start": 72.21000000000001,
+      "end": 74.86999999999999
+    },
+    {
+      "start": 75.67,
+      "end": 94.00999999999999
+    },
+    {
+      "start": 94.47,
+      "end": 106.28999999999999
+    },
+    {
+      "start": 107.69000000000001,
+      "end": 111.47
+    },
+    {
+      "start": 112.11,
+      "end": 114.39
+    },
+    {
+      "start": 118.99000000000001,
+      "end": 120.53
+    },
+    {
+      "start": 128.26000000000002,
+      "end": 135.66
+    },
+    {
+      "start": 138.6,
+      "end": 158.06
+    },
+    {
+      "start": 158.72,
+      "end": 175.28
+    },
+    {
+      "start": 178.58,
+      "end": 180.68
+    },
+    {
+      "start": 181.68,
+      "end": 189.92
+    },
+    {
+      "start": 190.94,
+      "end": 216.2
+    },
+    {
+      "start": 217.12,
+      "end": 219.94
+    },
+    {
+      "start": 223.1,
+      "end": 234.16
+    },
+    {
+      "start": 236.14000000000001,
+      "end": 241.7
+    },
+    {
+      "start": 242.44,
+      "end": 248.57999999999998
+    },
+    {
+      "start": 249.56,
+      "end": 257.84
+    },
+    {
+      "start": 260.78999999999996,
+      "end": 266.05
+    },
+    {
+      "start": 267.96999999999997,
+      "end": 272.83000000000004
+    },
+    {
+      "start": 274.65,
+      "end": 278.97
+    },
+    {
+      "start": 286.83,
+      "end": 290.73
+    },
+    {
+      "start": 294.72999999999996,
+      "end": 296.97
+    },
+    {
+      "start": 299.62,
+      "end": 308.06
+    },
+    {
+      "start": 309.88,
+      "end": 366.34000000000003
+    }
+  ]
+}

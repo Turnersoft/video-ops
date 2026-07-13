@@ -1,0 +1,145 @@
+{
+  "version": 4,
+  "scriptId": "syntax-01-trial-is-not-continuation",
+  "title": "syntax_01_trial_is_not_continuation",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "Open the proof with trials",
+      "durationSeconds": 16,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Use proof-slide or branch map if available.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Open the theorem starting at line 153. Show the `split_conjunction` proof with multiple `#!` lines."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Hi friends, welcome back.\nSo this is a real proof in our AATA library, symmetric halves of an asymmetric difference.\nYou will see `#!` markers in the script. Those mark trial branches.",
+            "durationSeconds": 16,
+            "visualNotes": "Open the theorem starting at line 153. Show the `split_conjunction` proof with multiple `#!` lines.\nUse proof-slide or branch map if available.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "title": "Parallel proofs at the same fork",
+      "durationSeconds": 26,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Show branch map with default arm and trial arms side by side (`1`, `1#1`, `1#2`). Point out trials are parallel slots, not indented children of the last tactic.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-2-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Here is the idea.\nAt this fork I already have a default proof line.\nWhen I add `#!`, I am plugging in another proof in parallel.\nSame goal, different strategy — maybe `assume` and `split`, maybe `contradiction`.\nI keep both in the file so I can compare them, fold the failed one, and move on.",
+            "durationSeconds": 26,
+            "visualNotes": "Show branch map with default arm and trial arms side by side (`1`, `1#1`, `1#2`). Point out trials are parallel slots, not indented children of the last tactic.\nturn-ide track: tracks/scene-2-ide.json",
+            "turn": {
+              "code": "split_conjunction {\n    assume h1\n    assume h2\n        assume g1\n            assume x1\n                assume y1\n                assume y2\n            #!\n            assume x2\n        assume g2\n        #!\n        ...\n} {\n    assume h1\n    #!\n    assume h2\n    ...\n}",
+              "highlights": [
+                "split_conjunction",
+                "#!"
+              ]
+            },
+            "focus": "turn",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "title": "Not a continuation of the line above",
+      "durationSeconds": 20,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Contrast a nested split subgoal (`1.1`) with a trial label (`1#1`).",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Branch map focused on one fork: main column down, trial columns to the right on the same row."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "One mistake people make: they think the trial continues the tactic right above it.\nIt does not.\nThe trial is its own parallel proof from the same fork point.\nThat is why proof-slide lays trials beside the main rail, not underneath the previous step.",
+            "durationSeconds": 20,
+            "visualNotes": "Branch map focused on one fork: main column down, trial columns to the right on the same row.\nContrast a nested split subgoal (`1.1`) with a trial label (`1#1`).",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "title": "Close",
+      "durationSeconds": 13,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "End on branch map or folded trials, not a title card.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Fold failed trials command or collapsed trial block in the editor, main proof still visible."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "So `#!` is for keeping experiments.\nPlug in multiple proofs, compare them, keep the winner.\nThat is how we explore without throwing away the work.",
+            "durationSeconds": 13,
+            "visualNotes": "Fold failed trials command or collapsed trial block in the editor, main proof still visible.\nEnd on branch map or folded trials, not a title card.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    }
+  ]
+}

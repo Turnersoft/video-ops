@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "scriptId": "pitfalls-01-surjective-quantifier-order",
+  "titleEnglish": "pitfalls_01_surjective_quantifier_order",
+  "titleChina": "pitfalls_01_surjective_quantifier_order",
+  "title": "pitfalls_01_surjective_quantifier_order",
+  "generatedAt": "2026-07-13T06:15:39.789Z",
+  "source": {
+    "playlist": "pitfalls of formal method",
+    "promotionalDescription": "In lecture you memorize a definition in words. In formal work, quantifier order *is* the definition — and Turn keeps that contract in the chapter file where you can read it."
+  },
+  "english": {
+    "youtube": {
+      "title": "pitfalls_01_surjective_quantifier_order",
+      "body": "In lecture you memorize a definition in words. In formal work, quantifier order *is* the definition — and Turn keeps that contract in the chapter file where you can read it.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory #FormalVerification"
+    },
+    "x": {
+      "title": "pitfalls_01_surjective_quantifier_order",
+      "body": "In lecture you memorize a definition in words. In formal work, quantifier order *is* the definition — and Turn keeps that contract in the chapter file where you can read it. #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #Abstr…"
+    },
+    "linkedin": {
+      "title": "pitfalls_01_surjective_quantifier_order",
+      "body": "pitfalls_01_surjective_quantifier_order\n\nIn lecture you memorize a definition in words. In formal work, quantifier order *is* the definition — and Turn keeps that contract in the chapter file where you can read it.\n\nThis episode is part of the Abstract Algebra in a Proof Assistant series on Turn-Lang — textbook-shaped formal mathematics you can film outdoors and verify in Lean 4 / Turn-Lang.\n\nWhat you will see in the video:\n• A textbook beat you can say on camera\n• The Lean 4 modeling choice (and what it refuses to pretend)\n• The Turn-Lang compare so the obligation is visible\n\nWatch the short, then open the linked editor if you want to step through the proof assistant view yourself.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory #FormalVerification"
+    },
+    "instagram": {
+      "title": "pitfalls_01_surjective_quantifier_order",
+      "body": "In lecture you memorize a definition in words. In formal work, quantifier order *is* the definition — and Turn keeps that contract in the chapter file where you can read it.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory #FormalVerification"
+    },
+    "tiktok": {
+      "title": "pitfalls_01_surjective_quantifier_order",
+      "body": "In lecture you memorize a definition in words. In formal work, quantifier order *is* the definition — and Turn keeps that contract in the chapter file where you can read it.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory #FormalVerification"
+    },
+    "facebook": {
+      "title": "pitfalls_01_surjective_quantifier_order",
+      "body": "In lecture you memorize a definition in words. In formal work, quantifier order *is* the definition — and Turn keeps that contract in the chapter file where you can read it.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory #FormalVerification"
+    },
+    "bluesky": {
+      "title": "pitfalls_01_surjective_quantifier_order",
+      "body": "In lecture you memorize a definition in words. In formal work, quantifier order *is* the definition — and Turn keeps that contract in the chapter file where you can read it. #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #Interact…"
+    }
+  },
+  "china": {
+    "bilibili": {
+      "title": "pitfalls_01_surjective_quantifier_order",
+      "body": "In lecture you memorize a definition in words. In formal work, quantifier order *is* the definition — and Turn keeps that contract in the chapter file where you can read it.\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论\n（请翻译为中文后发布）"
+    },
+    "douyin": {
+      "title": "Formal Work Punishes What You Thought the Definition S…",
+      "body": "In lecture you memorize a definition in words. In formal work, quantifier order *is* the definition — and Turn keeps that contract in the chapter file where you can read it.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "xiaohongshu": {
+      "title": "Formal Work Punishe…",
+      "body": "In lecture you memorize a definition in words. In formal work, quantifier order *is* the definition — and Turn keeps that contract in the chapter file where you can read it.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "weibo": {
+      "title": "Formal Work Punishes What You Thought the Definition Said",
+      "body": "In lecture you memorize a definition in words. In formal work, quantifier order *is* the definition — and Turn keeps that contract in the chapter file where you can read it.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "wechat_channels": {
+      "title": "Formal Work Punishes What You Thought the Definition Said",
+      "body": "In lecture you memorize a definition in words. In formal work, quantifier order *is* the definition — and Turn keeps that contract in the chapter file where you can read it.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "kuaishou": {
+      "title": "Formal Work Punishes What You Thought the Definition S…",
+      "body": "In lecture you memorize a definition in words. In formal work, quantifier order *is* the definition — and Turn keeps that contract in the chapter file where you can read it.\n\n#TurnLang #形式化方法 #抽象代数"
+    }
+  }
+}

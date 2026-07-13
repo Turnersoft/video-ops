@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "typing": {
+    "charsPerSecond": 28,
+    "fullText": "@notation(\"id\"_{S})\nstructure IdentityFunction<S: Set<Any>>: Function<S, S> { ... }\n\n        invertible: Prop {\n            |- exists InverseFunction<self>\n        }\n\nstructure InverseFunction<A B: Set<Any>, f: Function<A, B>>: Function<B, A> {\n    laws {\n        def {\n            |- {\n                Composition<self, f> = IdentityFunction<B>;\n                Composition<f, self> = IdentityFunction<A>;\n            }\n        }\n    }\n}"
+  },
+  "proofPanel": {
+    "steps": [
+      {
+        "label": "open goal",
+        "goal": "⊢ target proposition"
+      },
+      {
+        "label": "apply tactic",
+        "goal": "subgoal after apply"
+      },
+      {
+        "label": "close branch",
+        "goal": "no open goals"
+      }
+    ]
+  },
+  "interactions": [
+    {
+      "atSeconds": 1.5,
+      "kind": "click-proof-step",
+      "stepIndex": 0
+    },
+    {
+      "atSeconds": 3.2,
+      "kind": "click-proof-step",
+      "stepIndex": 1
+    },
+    {
+      "atSeconds": 5,
+      "kind": "click-branch",
+      "branchId": "main"
+    }
+  ]
+}

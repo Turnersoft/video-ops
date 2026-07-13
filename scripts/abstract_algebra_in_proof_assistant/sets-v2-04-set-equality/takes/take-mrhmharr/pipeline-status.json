@@ -1,0 +1,525 @@
+{
+  "schemaVersion": 2,
+  "status": "review",
+  "createdAt": "2026-07-12T10:12:10.921Z",
+  "updatedAt": "2026-07-13T11:24:32.396Z",
+  "selectedRuns": {
+    "cut": "cut-mrj4gxs6",
+    "align": "align-mrj4xibp",
+    "composite": "composite-mritwa30",
+    "social": "social-mrhwezbp",
+    "stabilize": "stabilize-mriqdtnm"
+  },
+  "runs": {
+    "cut": [
+      {
+        "runId": "cut-mrj4gxs6",
+        "status": "pending",
+        "createdAt": "2026-07-13T11:24:32.375Z",
+        "finishedAt": "2026-07-13T11:13:03.879Z",
+        "artifacts": {
+          "editedVideo": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrj4gxs6/edited-good-intervals.mp4",
+          "analysis": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrj4gxs6/analysis.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrj4gxs6/remotion-visual-plan.json",
+          "transcript": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrj4gxs6/transcript.verbose.json",
+          "inputVideo": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/stabilize/stabilize-mriqdtnm/stabilized.mp4",
+          "stabilizeRunId": "stabilize-mriqdtnm",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/cut/cut-mrj4gxs6/edited-good-intervals.mp4",
+          "lastAppliedInputVideo": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/stabilize/stabilize-mriqdtnm/stabilized.mp4",
+          "lastAppliedAt": "2026-07-13T11:24:32.375Z"
+        },
+        "builtFrom": {
+          "stabilize": "stabilize-mriqdtnm"
+        }
+      },
+      {
+        "runId": "cut-mriq7mo6",
+        "status": "pending",
+        "createdAt": "2026-07-13T08:52:58.081Z",
+        "finishedAt": "2026-07-13T04:33:44.498Z",
+        "artifacts": {
+          "editedVideo": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mriq7mo6/edited-good-intervals.mp4",
+          "analysis": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mriq7mo6/analysis.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mriq7mo6/remotion-visual-plan.json",
+          "transcript": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mriq7mo6/transcript.verbose.json",
+          "inputVideo": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/stabilize/stabilize-mripljg8/stabilized.mp4",
+          "stabilizeRunId": "stabilize-mripljg8",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/cut/cut-mriq7mo6/edited-good-intervals.mp4",
+          "lastAppliedInputVideo": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/stabilize/stabilize-mriqdtnm/stabilized.mp4",
+          "lastAppliedAt": "2026-07-13T08:52:58.081Z"
+        },
+        "builtFrom": {
+          "stabilize": "stabilize-mripljg8"
+        }
+      },
+      {
+        "runId": "cut-mrhvutes",
+        "status": "succeeded",
+        "createdAt": "2026-07-12T14:25:23.744Z",
+        "finishedAt": "2026-07-12T14:25:23.744Z",
+        "artifacts": {
+          "editedVideo": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhvutes/edited-good-intervals.mp4",
+          "analysis": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhvutes/analysis.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhvutes/remotion-visual-plan.json",
+          "transcript": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhvutes/transcript.verbose.json",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/cut/cut-mrhvutes/edited-good-intervals.mp4"
+        }
+      },
+      {
+        "runId": "cut-mrhswgb9",
+        "status": "succeeded",
+        "createdAt": "2026-07-12T13:00:44.962Z",
+        "finishedAt": "2026-07-12T13:00:44.961Z",
+        "artifacts": {
+          "editedVideo": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhswgb9/edited-good-intervals.mp4",
+          "analysis": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhswgb9/analysis.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhswgb9/remotion-visual-plan.json",
+          "transcript": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhswgb9/transcript.verbose.json",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/cut/cut-mrhswgb9/edited-good-intervals.mp4"
+        }
+      },
+      {
+        "runId": "cut-mrhnjx4j",
+        "status": "succeeded",
+        "createdAt": "2026-07-12T10:30:35.091Z",
+        "finishedAt": "2026-07-12T10:30:35.091Z",
+        "artifacts": {
+          "editedVideo": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhnjx4j/edited-good-intervals.mp4",
+          "analysis": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhnjx4j/analysis.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhnjx4j/remotion-visual-plan.json",
+          "transcript": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhnjx4j/transcript.verbose.json",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/cut/cut-mrhnjx4j/edited-good-intervals.mp4"
+        }
+      },
+      {
+        "runId": "cut-mrhniip1",
+        "status": "succeeded",
+        "createdAt": "2026-07-12T10:29:29.991Z",
+        "finishedAt": "2026-07-12T10:29:29.991Z",
+        "artifacts": {
+          "editedVideo": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhniip1/edited-good-intervals.mp4",
+          "analysis": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhniip1/analysis.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhniip1/remotion-visual-plan.json",
+          "transcript": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhniip1/transcript.verbose.json",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/cut/cut-mrhniip1/edited-good-intervals.mp4"
+        }
+      },
+      {
+        "runId": "cut-mrhn8anp",
+        "status": "failed",
+        "createdAt": "2026-07-12T10:21:25.422Z",
+        "finishedAt": "2026-07-12T10:21:25.421Z",
+        "error": "[2026-07-12T10:21:25.421Z] [2026-07-12T10:21:25.421Z] exit 1",
+        "errorCode": "transcription",
+        "errorTitle": "Speech transcription failed",
+        "errorHint": "On Mac: export OPENAI_API_KEY for cloud Whisper, or fix network and install local Whisper (pip install faster-whisper)."
+      },
+      {
+        "runId": "cut-mrhn7t3r",
+        "status": "failed",
+        "createdAt": "2026-07-12T10:21:06.538Z",
+        "finishedAt": "2026-07-12T10:21:06.538Z",
+        "error": "[2026-07-12T10:21:06.537Z] [2026-07-12T10:21:06.537Z] exit 1",
+        "errorCode": "transcription",
+        "errorTitle": "Speech transcription failed",
+        "errorHint": "On Mac: export OPENAI_API_KEY for cloud Whisper, or fix network and install local Whisper (pip install faster-whisper)."
+      },
+      {
+        "runId": "cut-mrhmwlre",
+        "status": "failed",
+        "createdAt": "2026-07-12T10:12:11.114Z",
+        "finishedAt": "2026-07-12T10:12:11.114Z",
+        "error": "[2026-07-12T10:12:11.114Z] [2026-07-12T10:12:11.114Z] exit 1",
+        "errorCode": "transcription",
+        "errorTitle": "Speech transcription failed",
+        "errorHint": "On Mac: export OPENAI_API_KEY for cloud Whisper, or fix network and install local Whisper (pip install faster-whisper)."
+      }
+    ],
+    "align": [
+      {
+        "runId": "align-mrj4xibp",
+        "status": "succeeded",
+        "createdAt": "2026-07-13T11:24:32.396Z",
+        "finishedAt": "2026-07-13T11:24:32.396Z",
+        "artifacts": {
+          "alignment": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrj4xibp/speech-alignment.json",
+          "outdoorAnimation": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrj4xibp/animation-outdoor.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrj4xibp/remotion-visual-plan.json",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/align/align-mrj4xibp/animation-outdoor.json"
+        },
+        "builtFrom": {
+          "cut": "cut-mrj4gxs6"
+        }
+      },
+      {
+        "runId": "align-mrj4ogj0",
+        "status": "succeeded",
+        "createdAt": "2026-07-13T11:17:30.167Z",
+        "finishedAt": "2026-07-13T11:17:30.167Z",
+        "artifacts": {
+          "alignment": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrj4ogj0/speech-alignment.json",
+          "outdoorAnimation": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrj4ogj0/animation-outdoor.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrj4ogj0/remotion-visual-plan.json",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/align/align-mrj4ogj0/animation-outdoor.json"
+        },
+        "builtFrom": {
+          "cut": "cut-mrj4gxs6"
+        }
+      },
+      {
+        "runId": "align-mrizil4a",
+        "status": "succeeded",
+        "createdAt": "2026-07-13T08:52:58.098Z",
+        "finishedAt": "2026-07-13T08:52:58.098Z",
+        "artifacts": {
+          "alignment": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrizil4a/speech-alignment.json",
+          "outdoorAnimation": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrizil4a/animation-outdoor.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrizil4a/remotion-visual-plan.json",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/align/align-mrizil4a/animation-outdoor.json"
+        },
+        "builtFrom": {
+          "cut": "cut-mriq7mo6"
+        }
+      },
+      {
+        "runId": "align-mritvyxm",
+        "status": "succeeded",
+        "createdAt": "2026-07-13T06:15:24.836Z",
+        "finishedAt": "2026-07-13T06:15:24.836Z",
+        "artifacts": {
+          "alignment": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mritvyxm/speech-alignment.json",
+          "outdoorAnimation": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mritvyxm/animation-outdoor.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mritvyxm/remotion-visual-plan.json",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/align/align-mritvyxm/animation-outdoor.json"
+        },
+        "builtFrom": {
+          "cut": "cut-mriq7mo6"
+        }
+      },
+      {
+        "runId": "align-mrirbwx5",
+        "status": "succeeded",
+        "createdAt": "2026-07-13T05:03:49.871Z",
+        "finishedAt": "2026-07-13T05:03:49.871Z",
+        "artifacts": {
+          "alignment": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrirbwx5/speech-alignment.json",
+          "outdoorAnimation": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrirbwx5/animation-outdoor.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrirbwx5/remotion-visual-plan.json",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/align/align-mrirbwx5/animation-outdoor.json"
+        },
+        "builtFrom": {
+          "cut": "cut-mriq7mo6"
+        }
+      },
+      {
+        "runId": "align-mrir2ybu",
+        "status": "succeeded",
+        "createdAt": "2026-07-13T04:56:51.793Z",
+        "finishedAt": "2026-07-13T04:56:51.793Z",
+        "artifacts": {
+          "alignment": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrir2ybu/speech-alignment.json",
+          "outdoorAnimation": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrir2ybu/animation-outdoor.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrir2ybu/remotion-visual-plan.json",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/align/align-mrir2ybu/animation-outdoor.json"
+        },
+        "builtFrom": {
+          "cut": "cut-mriq7mo6"
+        }
+      },
+      {
+        "runId": "align-mrir2x3u",
+        "status": "succeeded",
+        "createdAt": "2026-07-13T04:56:50.209Z",
+        "finishedAt": "2026-07-13T04:56:50.209Z",
+        "artifacts": {
+          "alignment": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrir2x3u/speech-alignment.json",
+          "outdoorAnimation": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrir2x3u/animation-outdoor.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrir2x3u/remotion-visual-plan.json",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/align/align-mrir2x3u/animation-outdoor.json"
+        },
+        "builtFrom": {
+          "cut": "cut-mriq7mo6"
+        }
+      },
+      {
+        "runId": "align-mriqztv5",
+        "status": "succeeded",
+        "createdAt": "2026-07-13T04:54:26.038Z",
+        "finishedAt": "2026-07-13T04:54:26.038Z",
+        "artifacts": {
+          "alignment": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mriqztv5/speech-alignment.json",
+          "outdoorAnimation": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mriqztv5/animation-outdoor.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mriqztv5/remotion-visual-plan.json",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/align/align-mriqztv5/animation-outdoor.json"
+        },
+        "builtFrom": {
+          "cut": "cut-mriq7mo6"
+        }
+      },
+      {
+        "runId": "align-mriqlk4y",
+        "status": "succeeded",
+        "createdAt": "2026-07-13T04:43:20.248Z",
+        "finishedAt": "2026-07-13T04:43:20.248Z",
+        "artifacts": {
+          "alignment": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mriqlk4y/speech-alignment.json",
+          "outdoorAnimation": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mriqlk4y/animation-outdoor.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mriqlk4y/remotion-visual-plan.json",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/align/align-mriqlk4y/animation-outdoor.json"
+        },
+        "builtFrom": {
+          "cut": "cut-mriq7mo6"
+        }
+      },
+      {
+        "runId": "align-mrikvosb",
+        "status": "succeeded",
+        "createdAt": "2026-07-13T02:03:15.136Z",
+        "finishedAt": "2026-07-13T02:03:15.136Z",
+        "artifacts": {
+          "alignment": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrikvosb/speech-alignment.json",
+          "outdoorAnimation": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrikvosb/animation-outdoor.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrikvosb/remotion-visual-plan.json",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/align/align-mrikvosb/animation-outdoor.json"
+        }
+      },
+      {
+        "runId": "align-mrhybyfb",
+        "status": "succeeded",
+        "createdAt": "2026-07-12T15:32:02.956Z",
+        "finishedAt": "2026-07-12T15:32:02.956Z",
+        "artifacts": {
+          "alignment": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrhybyfb/speech-alignment.json",
+          "outdoorAnimation": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrhybyfb/animation-outdoor.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrhybyfb/remotion-visual-plan.json",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/align/align-mrhybyfb/animation-outdoor.json"
+        }
+      },
+      {
+        "runId": "align-mrhvy8mh",
+        "status": "succeeded",
+        "createdAt": "2026-07-12T14:25:23.758Z",
+        "finishedAt": "2026-07-12T14:25:23.758Z",
+        "artifacts": {
+          "alignment": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrhvy8mh/speech-alignment.json",
+          "outdoorAnimation": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrhvy8mh/animation-outdoor.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrhvy8mh/remotion-visual-plan.json",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/align/align-mrhvy8mh/animation-outdoor.json"
+        }
+      },
+      {
+        "runId": "align-mrhvy8m9",
+        "status": "succeeded",
+        "createdAt": "2026-07-12T14:25:23.752Z",
+        "finishedAt": "2026-07-12T14:25:23.752Z",
+        "artifacts": {
+          "alignment": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrhvy8m9/speech-alignment.json",
+          "outdoorAnimation": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrhvy8m9/animation-outdoor.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrhvy8m9/remotion-visual-plan.json",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/align/align-mrhvy8m9/animation-outdoor.json"
+        }
+      },
+      {
+        "runId": "align-mrhsxdsy",
+        "status": "succeeded",
+        "createdAt": "2026-07-12T13:00:44.966Z",
+        "finishedAt": "2026-07-12T13:00:44.966Z",
+        "artifacts": {
+          "alignment": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrhsxdsy/speech-alignment.json",
+          "outdoorAnimation": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrhsxdsy/animation-outdoor.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrhsxdsy/remotion-visual-plan.json",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/align/align-mrhsxdsy/animation-outdoor.json"
+        }
+      },
+      {
+        "runId": "align-mrhnk9qr",
+        "status": "succeeded",
+        "createdAt": "2026-07-12T10:30:35.096Z",
+        "finishedAt": "2026-07-12T10:30:35.096Z",
+        "artifacts": {
+          "alignment": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrhnk9qr/speech-alignment.json",
+          "outdoorAnimation": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrhnk9qr/animation-outdoor.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/align/align-mrhnk9qr/remotion-visual-plan.json",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/align/align-mrhnk9qr/animation-outdoor.json"
+        }
+      }
+    ],
+    "composite": [
+      {
+        "runId": "composite-mritwa30",
+        "status": "succeeded",
+        "createdAt": "2026-07-13T06:24:18.394Z",
+        "finishedAt": "2026-07-13T06:24:18.394Z",
+        "artifacts": {
+          "portrait": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mritwa30/sets-v2-04-set-equality-outdoor-portrait.mp4",
+          "landscape": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mritwa30/sets-v2-04-set-equality-outdoor-landscape.mp4",
+          "manifest": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mritwa30/outdoor-manifest.json",
+          "portraitUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/composite/composite-mritwa30/sets-v2-04-set-equality-outdoor-portrait.mp4",
+          "landscapeUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/composite/composite-mritwa30/sets-v2-04-set-equality-outdoor-landscape.mp4"
+        },
+        "builtFrom": {
+          "align": "align-mritvyxm",
+          "cut": "cut-mriq7mo6"
+        }
+      },
+      {
+        "runId": "composite-mrirspkq",
+        "status": "succeeded",
+        "createdAt": "2026-07-13T05:26:00.266Z",
+        "finishedAt": "2026-07-13T05:26:00.266Z",
+        "artifacts": {
+          "portrait": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mrirspkq/sets-v2-04-set-equality-outdoor-portrait.mp4",
+          "landscape": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mrirspkq/sets-v2-04-set-equality-outdoor-landscape.mp4",
+          "manifest": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mrirspkq/outdoor-manifest.json",
+          "portraitUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/composite/composite-mrirspkq/sets-v2-04-set-equality-outdoor-portrait.mp4",
+          "landscapeUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/composite/composite-mrirspkq/sets-v2-04-set-equality-outdoor-landscape.mp4"
+        },
+        "builtFrom": {
+          "align": "align-mrirbwx5",
+          "cut": "cut-mriq7mo6"
+        }
+      },
+      {
+        "runId": "composite-mriqluj2",
+        "status": "succeeded",
+        "createdAt": "2026-07-13T04:54:26.033Z",
+        "finishedAt": "2026-07-13T04:54:26.032Z",
+        "artifacts": {
+          "portrait": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mriqluj2/sets-v2-04-set-equality-outdoor-portrait.mp4",
+          "landscape": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mriqluj2/sets-v2-04-set-equality-outdoor-landscape.mp4",
+          "manifest": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mriqluj2/outdoor-manifest.json",
+          "portraitUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/composite/composite-mriqluj2/sets-v2-04-set-equality-outdoor-portrait.mp4",
+          "landscapeUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/composite/composite-mriqluj2/sets-v2-04-set-equality-outdoor-landscape.mp4"
+        },
+        "builtFrom": {
+          "align": "align-mriqlk4y",
+          "cut": "cut-mriq7mo6"
+        }
+      },
+      {
+        "runId": "composite-mrhyf6sh",
+        "status": "succeeded",
+        "createdAt": "2026-07-12T15:44:00.356Z",
+        "finishedAt": "2026-07-12T15:44:00.356Z",
+        "artifacts": {
+          "portrait": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mrhyf6sh/sets-v2-04-set-equality-outdoor-portrait.mp4",
+          "landscape": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mrhyf6sh/sets-v2-04-set-equality-outdoor-landscape.mp4",
+          "manifest": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mrhyf6sh/outdoor-manifest.json",
+          "portraitUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/composite/composite-mrhyf6sh/sets-v2-04-set-equality-outdoor-portrait.mp4",
+          "landscapeUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/composite/composite-mrhyf6sh/sets-v2-04-set-equality-outdoor-landscape.mp4"
+        }
+      },
+      {
+        "runId": "composite-mrhvy8mn",
+        "status": "succeeded",
+        "createdAt": "2026-07-12T14:38:24.853Z",
+        "finishedAt": "2026-07-12T14:38:24.853Z",
+        "artifacts": {
+          "portrait": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mrhvy8mn/sets-v2-04-set-equality-outdoor-portrait.mp4",
+          "landscape": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mrhvy8mn/sets-v2-04-set-equality-outdoor-landscape.mp4",
+          "manifest": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mrhvy8mn/outdoor-manifest.json",
+          "portraitUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/composite/composite-mrhvy8mn/sets-v2-04-set-equality-outdoor-portrait.mp4",
+          "landscapeUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/composite/composite-mrhvy8mn/sets-v2-04-set-equality-outdoor-landscape.mp4"
+        }
+      },
+      {
+        "runId": "composite-mrhtlbcd",
+        "status": "succeeded",
+        "createdAt": "2026-07-12T13:32:12.539Z",
+        "finishedAt": "2026-07-12T13:32:12.539Z",
+        "artifacts": {
+          "portrait": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mrhtlbcd/sets-v2-04-set-equality-outdoor-portrait.mp4",
+          "landscape": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mrhtlbcd/sets-v2-04-set-equality-outdoor-landscape.mp4",
+          "manifest": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mrhtlbcd/outdoor-manifest.json",
+          "portraitUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/composite/composite-mrhtlbcd/sets-v2-04-set-equality-outdoor-portrait.mp4",
+          "landscapeUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/composite/composite-mrhtlbcd/sets-v2-04-set-equality-outdoor-landscape.mp4"
+        }
+      },
+      {
+        "runId": "composite-mrhsxdt3",
+        "status": "succeeded",
+        "createdAt": "2026-07-12T13:14:12.617Z",
+        "finishedAt": "2026-07-12T13:14:12.616Z",
+        "artifacts": {
+          "portrait": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mrhsxdt3/sets-v2-04-set-equality-outdoor-portrait.mp4",
+          "landscape": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mrhsxdt3/sets-v2-04-set-equality-outdoor-landscape.mp4",
+          "manifest": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mrhsxdt3/outdoor-manifest.json",
+          "portraitUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/composite/composite-mrhsxdt3/sets-v2-04-set-equality-outdoor-portrait.mp4",
+          "landscapeUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/composite/composite-mrhsxdt3/sets-v2-04-set-equality-outdoor-landscape.mp4"
+        }
+      },
+      {
+        "runId": "composite-mrhnk9qw",
+        "status": "cancelled",
+        "createdAt": "2026-07-12T12:59:58.898Z",
+        "finishedAt": "2026-07-12T12:59:58.898Z",
+        "error": "Stopped from iPhone before this stage finished.",
+        "errorCode": "cancelled",
+        "errorTitle": "Pipeline aborted"
+      }
+    ],
+    "social": [
+      {
+        "runId": "social-mrhwezbp",
+        "status": "succeeded",
+        "createdAt": "2026-07-12T14:38:24.856Z",
+        "finishedAt": "2026-07-12T14:38:24.856Z",
+        "artifacts": {
+          "socialPosts": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/social/social-mrhwezbp/social-posts.json"
+        }
+      },
+      {
+        "runId": "social-mrhteozu",
+        "status": "succeeded",
+        "createdAt": "2026-07-12T13:14:12.622Z",
+        "finishedAt": "2026-07-12T13:14:12.622Z",
+        "artifacts": {
+          "socialPosts": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/social/social-mrhteozu/social-posts.json"
+        }
+      }
+    ],
+    "stabilize": [
+      {
+        "runId": "stabilize-mriqdtnm",
+        "status": "succeeded",
+        "createdAt": "2026-07-13T04:39:25.401Z",
+        "finishedAt": "2026-07-13T04:39:25.401Z",
+        "artifacts": {
+          "stabilizedVideo": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/stabilize/stabilize-mriqdtnm/stabilized.mp4",
+          "transforms": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/stabilize/stabilize-mriqdtnm/transforms.trf",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/stabilize/stabilize-mriqdtnm/stabilized.mp4"
+        },
+        "builtFrom": {}
+      },
+      {
+        "runId": "stabilize-mripljg8",
+        "status": "succeeded",
+        "createdAt": "2026-07-13T04:17:26.182Z",
+        "finishedAt": "2026-07-13T04:17:26.182Z",
+        "artifacts": {
+          "stabilizedVideo": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/stabilize/stabilize-mripljg8/stabilized.mp4",
+          "transforms": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/stabilize/stabilize-mripljg8/transforms.trf",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/stabilize/stabilize-mripljg8/stabilized.mp4"
+        }
+      },
+      {
+        "runId": "stabilize-mriphjg6",
+        "status": "succeeded",
+        "createdAt": "2026-07-13T04:14:19.584Z",
+        "finishedAt": "2026-07-13T04:14:19.584Z",
+        "artifacts": {
+          "stabilizedVideo": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/stabilize/stabilize-mriphjg6/stabilized.mp4",
+          "transforms": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/stabilize/stabilize-mriphjg6/transforms.trf",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhmharr/artifacts/stabilize/stabilize-mriphjg6/stabilized.mp4"
+        }
+      }
+    ]
+  },
+  "autoRun": true,
+  "jobId": "job-take-mrhmharr",
+  "takeId": "take-mrhmharr",
+  "scriptId": "sets-v2-04-set-equality",
+  "scriptTitle": "04_set_equality",
+  "sourceVideoPath": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/source.mp4",
+  "takeManifestPath": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/take.json"
+}

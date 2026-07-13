@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "title": "Goals",
+  "hypotheses": [
+    { "name": "α", "type": "Type u_1" },
+    { "name": "R", "type": "α → α → Prop" },
+    { "name": "h", "type": "Equivalence R" },
+    { "name": "a", "type": "α" }
+  ],
+  "target": "∃ b, R a b",
+  "steps": [
+    {
+      "atSeconds": 0,
+      "label": "initial goal",
+      "hypotheses": [
+        { "name": "α", "type": "Type u_1" },
+        { "name": "R", "type": "α → α → Prop" },
+        { "name": "h", "type": "Equivalence R" },
+        { "name": "a", "type": "α" }
+      ],
+      "target": "∃ b, R a b"
+    },
+    {
+      "atSeconds": 3.5,
+      "label": "after obtain",
+      "hypotheses": [
+        { "name": "α", "type": "Type u_1" },
+        { "name": "R", "type": "α → α → Prop" },
+        { "name": "h", "type": "Equivalence R" },
+        { "name": "a", "type": "α" },
+        { "name": "b", "type": "α" },
+        { "name": "hb", "type": "R a b" }
+      ],
+      "target": "∃ b, R a b"
+    },
+    {
+      "atSeconds": 5.0,
+      "label": "closed",
+      "hypotheses": [
+        { "name": "α", "type": "Type u_1" },
+        { "name": "R", "type": "α → α → Prop" },
+        { "name": "h", "type": "Equivalence R" },
+        { "name": "a", "type": "α" }
+      ],
+      "target": "∃ b, R a b"
+    }
+  ]
+}

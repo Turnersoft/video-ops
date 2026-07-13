@@ -1,0 +1,168 @@
+{
+  "version": 4,
+  "scriptId": "why-need-05-keep-or-reject-before-ai-edits",
+  "title": "why_need_05_keep_or_reject_before_ai_edits",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "The fear we are fixing",
+      "durationSeconds": 15,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Stay calm — name the UX problem, not a competitor.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Generic \"file updated\" toast (mock) vs Turn editor with pending change banner."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Hi friends, welcome back.\nSo you asked the agent to help formalize a lemma.\nIn most tools the file just changes.\nYou are left diffing from memory.\nTurn does not do that.",
+            "durationSeconds": 15,
+            "visualNotes": "Generic \"file updated\" toast (mock) vs Turn editor with pending change banner.\nStay calm — name the UX problem, not a competitor.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "title": "Pending changes bar",
+      "durationSeconds": 12,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Use a small real `.turn` file edit if available.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Agent workbench → pending changes bar → list of proposed blocks with titles."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "The agent workbench shows pending changes before anything is final.\nI can see how many blocks are waiting and open the preview.",
+            "durationSeconds": 12,
+            "visualNotes": "Agent workbench → pending changes bar → list of proposed blocks with titles.\nUse a small real `.turn` file edit if available.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "title": "Inline Keep / Reject",
+      "durationSeconds": 21,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Zoom on one block; do not scroll through a huge patch.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Monaco with red/green preview zones → click Reject on one block → click Keep on another → file settles."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "In the editor, removed text is highlighted like a git diff.\nEach block has Keep and Reject right on the line.\nI read the tactic change, reject the wrong branch, keep the one that closes the goal.\nNothing else in the file moves without my click.",
+            "durationSeconds": 21,
+            "visualNotes": "Monaco with red/green preview zones → click Reject on one block → click Keep on another → file settles.\nZoom on one block; do not scroll through a huge patch.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "title": "Tie back to formalization",
+      "durationSeconds": 17,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Optional: agent timeline panel in background.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Proof panel goal unchanged until Keep → then tactic line updates and checker runs."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Formalization is already hard.\nThe agent can search the library and suggest a patch.\nBut the verifier and you stay in charge — the edit is a proposal until you keep it.",
+            "durationSeconds": 17,
+            "visualNotes": "Proof panel goal unchanged until Keep → then tactic line updates and checker runs.\nOptional: agent timeline panel in background.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 5,
+      "title": "Close",
+      "durationSeconds": 12,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "CTA: sign up, comment your theorem.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Workbench + outline of a real AATA theorem."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "So trustworthy AI math needs previews, not surprises.\nTry the workbench, and tell me what theorem you want the agent to formalize next.",
+            "durationSeconds": 12,
+            "visualNotes": "Workbench + outline of a real AATA theorem.\nCTA: sign up, comment your theorem.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    }
+  ]
+}

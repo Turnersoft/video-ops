@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-07-10T14:05:35.161Z",
+  "pip": {
+    "shape": "rectangle",
+    "x": 0.1,
+    "y": 0.54,
+    "w": 0.28,
+    "h": 0.38,
+    "objectPositionX": 0.62,
+    "objectPositionY": 0.42,
+    "scale": 1.28
+  },
+  "hintPanel": {
+    "x": 0.47,
+    "y": 0.16,
+    "w": 0.4,
+    "h": 0.28
+  }
+}

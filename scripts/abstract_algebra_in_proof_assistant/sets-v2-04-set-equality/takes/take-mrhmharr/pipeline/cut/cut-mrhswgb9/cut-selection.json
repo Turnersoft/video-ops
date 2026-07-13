@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "restoreBad": [],
+  "dropGood": [
+    {
+      "start": 1.77,
+      "end": 3.57
+    }
+  ],
+  "updatedAt": "2026-07-12T14:21:18.913Z"
+}

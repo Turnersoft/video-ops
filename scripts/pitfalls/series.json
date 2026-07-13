@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "id": "pitfalls",
+  "title": "Proof pitfalls",
+  "description": "Common mistakes when reading and writing formal proofs.",
+  "thumbnail": "shared/reference"
+}

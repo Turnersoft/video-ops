@@ -1,0 +1,20 @@
+:: Subchapter 5.1: Cauchy Sequences
+
+structure Sequence: Function<Natural, Rational> {
+    // Represented as a function from Naturals to Rationals
+}
+
+:: Definition 5.1.8
+:: Cauchy Sequence: forall epsilon > 0, exists N >= 1 s.t. forall j, k >= N, d(aj, ak) <= epsilon.
+
+structure IsCauchy<a: Sequence>: Prop {
+    laws {
+        def {
+            forall epsilon: Rational where { |- RatLT(Zero, epsilon) },
+            exists N: Natural where { |- NatGE<N, NatOne> },
+            forall j k: Natural where { |- NatGE<j, N>; |- NatGE<k, N>; }
+            |- RatEpsilonClose(a.apply(j), a.apply(k), epsilon)
+        }
+    }
+}
+

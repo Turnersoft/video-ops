@@ -1,0 +1,234 @@
+{
+  "version": 4,
+  "scriptId": "sets-v2-02-subset",
+  "title": "02_subset",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "Subset — Lean vs Turn",
+      "durationSeconds": 203,
+      "layout": "dual-panel",
+      "burnCaptions": true,
+      "visualNotes": "Continues sets-v2-01-set. 12 beats: textbook subset → hook → Lean foundation recap → protected def Subset → ∀⦃a⦄ body → ∈ from Set.Mem → instance LE → instance HasSubset → theorem subset_def/rfl → full Lean picture → Turn relation Subset → default ⊆ → proper ⊊ + SetEq → layout compare → CTA proper subset.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "compare": {
+        "display": {
+          "editorFontScale": 0.7000000000000001,
+          "leanEditorFontScale": 0.8,
+          "renderFontScale": 0.8500000000000001,
+          "textbookOverlay": {
+            "aataExcerpt": "sets-subset-definition",
+            "placement": "center"
+          }
+        },
+        "overlays": {
+          "textbook-subset": {
+            "type": "textbook",
+            "aataExcerpt": "sets-subset-definition",
+            "placement": "center"
+          }
+        },
+        "blocks": {},
+        "beats": [
+          {
+            "say": "Welcome back.\nIn last video we formalized the set,\nToday we formalize subset.\nThe textbook says A is a subset of B when every element of A is already in B.",
+            "durationSeconds": 17,
+            "turn": {
+              "code": "relation Subset(T: Any, A B: Set<T>): PropModified {\n    @notation({A} ~ \" ⊆ \" ~ {B})\n    default: Prop {\n        forall x: T |- x in A -> x in B\n   }\n}",
+              "highlights": [
+                "Set"
+              ]
+            },
+            "overlay": "textbook-subset",
+            "allowScriptChange": false
+          },
+          {
+            "say": "Here is the key idea, just like last time. Subset is not a new container. It is a proposition about two sets you already have. B is not built from A.",
+            "durationSeconds": 15,
+            "lean": {
+              "code": "-- Mathlib source: mathlib4/Mathlib/Data/Set/Defs.lean (recap from last clip)\ndef Set (α : Type u) := α → Prop",
+              "highlights": [
+                "def Set",
+                "α → Prop"
+              ]
+            },
+            "turn": {
+              "code": "as before"
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "Quick reminder, this is the same Mathlib file from the last clip. You still have def Set, Set dot Mem, and the Membership instance. Subset is going to build right on top of these.",
+            "durationSeconds": 15,
+            "lean": {
+              "code": "def Set (α : Type u) := α → Prop\n\nnamespace Set\n  protected def Mem (s : Set α) (a : α) : Prop :=\n    s a\n\n  instance : Membership α (Set α) :=\n    ⟨Set.Mem⟩",
+              "highlights": [
+                "protected def Mem",
+                "instance : Membership α (Set α)",
+                "⟨Set.Mem⟩"
+              ]
+            },
+            "turn": {
+              "code": "as before",
+              "highlights": [
+                "Set"
+              ]
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "First, protected def Subset. It takes s one and s two, both of type Set alpha. So it relates two sets, it does not create one.",
+            "durationSeconds": 12,
+            "lean": {
+              "code": "namespace Set\n  -- …Mem and Membership from last clip…\n\n  protected def Subset (s₁ s₂ : Set α) :=",
+              "highlights": [
+                "protected def Subset",
+                "s₁ s₂ : Set α"
+              ]
+            },
+            "turn": {
+              "code": "as before"
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "The body is for all a, a in s one implies a in s two.\nThat is exactly the textbook rule.\nThe double braces around a make it instance-implicit, so Lean again infer the element type for you.",
+            "durationSeconds": 19,
+            "lean": {
+              "code": "namespace Set\n  protected def Subset (s₁ s₂ : Set α) :=\n    ∀ ⦃a⦄, a ∈ s₁ → a ∈ s₂",
+              "highlights": [
+                "∀ ⦃a⦄, a ∈ s₁ → a ∈ s₂"
+              ]
+            },
+            "turn": {
+              "code": "as before"
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "Notice the in symbols here.\nThey still come from Set dot Mem in the last video.\nSo subset is just putting 2 of membership condition together in an implication.",
+            "durationSeconds": 15,
+            "lean": {
+              "code": "as before",
+              "highlights": [
+                "a ∈ s₁",
+                "a ∈ s₂"
+              ]
+            },
+            "turn": {
+              "code": "as before"
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "Now the registration, the same idea as Membership before.\nwe implement the typeclass LE on set so that we can have use the notation >= on 2 sets.\nAnd again, the angle brackets make Set.Subset the implementation of the only method in typeclass LE.",
+            "durationSeconds": 24,
+            "lean": {
+              "code": "protected def Subset (s₁ s₂ : Set α) :=\n    ∀ ⦃a⦄, a ∈ s₁ → a ∈ s₂\n\n  instance : LE (Set α) :=\n    ⟨Set.Subset⟩",
+              "highlights": [
+                "instance : LE (Set α)",
+                "⟨Set.Subset⟩"
+              ]
+            },
+            "turn": {
+              "code": "as before"
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "Then the typeclass HasSubset registers the subset symbol itself.\nBut it use the notation from LE that we just implemented.\nSo both <= notation and subset notation desugars to Set.Subset def of 2 sets",
+            "durationSeconds": 20,
+            "lean": {
+              "code": "protected def Subset (s₁ s₂ : Set α) :=\n    ∀ ⦃a⦄, a ∈ s₁ → a ∈ s₂\n\n  instance : LE (Set α) :=\n    ⟨Set.Subset⟩\n\n  instance : HasSubset (Set α) :=\n    ⟨(· ≤ ·)⟩\n\n-- A <= B and A ⊆ B desugars to Set.Subset A B",
+              "highlights": [
+                "instance : HasSubset (Set α)",
+                "⟨(· ≤ ·)⟩"
+              ]
+            },
+            "turn": {
+              "code": "as before"
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "So that is Lean's modelling of subset. One def for the rule, two instances to register the ordering and the symbol, and a theorem tying the notation to the for-all form.",
+            "durationSeconds": 16,
+            "lean": {
+              "code": "-- Mathlib source: mathlib4/Mathlib/Data/Set/Defs.lean\nnamespace Set\n  protected def Subset (s₁ s₂ : Set α) :=\n    ∀ ⦃a⦄, a ∈ s₁ → a ∈ s₂\n\n  instance : LE (Set α) :=\n    ⟨Set.Subset⟩\n\n  instance : HasSubset (Set α) :=\n    ⟨(· ≤ ·)⟩\n\nend Set",
+              "highlights": [
+                "protected def Subset",
+                "instance : LE (Set α)",
+                "instance : HasSubset (Set α)"
+              ]
+            },
+            "turn": {
+              "code": "as before"
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "Now Turn-Lang, same rule, declared as a relation.\nrelation Subset takes a type T and two sets A and B of type Set of T.\nPropModified means several proposition variants share the name.\nspoiler alert, we will talk about a special subset in next video",
+            "durationSeconds": 24,
+            "lean": {
+              "code": "as before"
+            },
+            "turn": {
+              "code": "relation Subset(T: Any, A B: Set<T>): PropModified {\n    @notation({A} ~ \" ⊆ \" ~ {B})\n    default: Prop {\n        forall x: T |- x in A -> x in B\n   }\n}",
+              "highlights": [
+                "relation Subset",
+                "A B: Set<T>",
+                "PropModified"
+              ]
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "Same mathematics, two layouts.\nLean splits definition of Subset and its notation apart.\nTurn keeps the relation and its notation together in one block.",
+            "durationSeconds": 14,
+            "lean": {
+              "code": "as before",
+              "highlights": [
+                "protected def Subset",
+                "instance : LE (Set α)",
+                "instance : HasSubset (Set α)"
+              ]
+            },
+            "turn": {
+              "code": "as before",
+              "highlights": [
+                "relation Subset",
+                "default"
+              ]
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "So Next clip is proper subset, the strict version, with extra drama.\nComment if you are stuck at anything, see you in the next one.",
+            "durationSeconds": 12,
+            "lean": {
+              "code": "as before"
+            },
+            "turn": {
+              "code": "as before"
+            },
+            "allowScriptChange": false
+          }
+        ]
+      }
+    }
+  ]
+}

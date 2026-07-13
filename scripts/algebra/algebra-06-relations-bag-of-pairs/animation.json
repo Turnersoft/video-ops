@@ -1,0 +1,140 @@
+{
+  "version": 4,
+  "scriptId": "algebra-06-relations-bag-of-pairs",
+  "title": "algebra_06_relations_bag_of_pairs",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "The experience",
+      "durationSeconds": 40,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "3b1b-style grid first: two columns, then a highlighted subset of allowed arrows.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Simple A × B grid with a few highlighted pairs — no Turn file yet."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Hi friends, welcome back. This is Turner.\nBefore we talk about functions, imagine a very simple table.\nOn the left are inputs you might choose from A.\nOn the right are outputs you might choose from B.\nA relation is just the list of pairings you allow.\nNot every possible pair has to be in the list — but every pair in the list must really be one A-object and one B-object.\nSo the question is: how does Turn-Lang keep illegal pairs out of the bag?",
+            "durationSeconds": 40,
+            "visualNotes": "Simple A × B grid with a few highlighted pairs — no Turn file yet.\n3b1b-style grid first: two columns, then a highlighted subset of allowed arrows.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "title": "The Turn wedge",
+      "durationSeconds": 21,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Outline: Relation as Set.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Scroll to `structure Relation` — show `laws { subset { ... } }` before expanding body."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "In Turn-Lang a relation is not a new species of object — it is a set with one membership law.\nEvery member must already live inside the Cartesian product.\nIllegal pairs cannot sneak in. You read that contract in the source.",
+            "durationSeconds": 21,
+            "visualNotes": "Scroll to `structure Relation` — show `laws { subset { ... } }` before expanding body.\nOutline: Relation as Set.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "title": "Math confirm",
+      "durationSeconds": 16,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Arrow Relation → Function in outline.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-3-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Here is how that looks in this chapter.\n`Subset(self, CartesianProduct<[A, B]>)` — that is the formal name for “pairs you allow.”\nFunctions refine this same object next — but first you need the bag.",
+            "durationSeconds": 16,
+            "visualNotes": "Flash `structure Function` header in outline — do not open body.\nArrow Relation → Function in outline.\nturn-ide track: tracks/scene-3-ide.json",
+            "turn": {
+              "code": "structure Relation<A B: Set<Any>>: Set<Any> {\n    laws {\n        subset {\n            |- Subset(self, CartesianProduct<[A, B]>)\n        }\n    }"
+            },
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "title": "Close",
+      "durationSeconds": 11,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "End card: full 1.2 video.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "File tab `02_sets_and_equivalence_relations.turn`."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Full chapter walkthrough in the long 1.2 video — link in description.\nComment which pair you would forbid first in your own relation.",
+            "durationSeconds": 11,
+            "visualNotes": "File tab `02_sets_and_equivalence_relations.turn`.\nEnd card: full 1.2 video.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    }
+  ]
+}

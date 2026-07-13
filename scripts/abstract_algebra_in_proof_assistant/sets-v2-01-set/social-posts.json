@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "scriptId": "sets-v2-01-set",
+  "titleEnglish": "1. Set: Lean don't model it as a container",
+  "titleChina": "1. Set：Lean 不把它建模成容器",
+  "title": "1. Set: Lean don't model it as a container",
+  "generatedAt": "2026-07-13T06:15:39.795Z",
+  "source": {
+    "promotionalDescription": "Hook: Lean does not treat a set like a bag you drop things into. In this episode we open Membership / ∈ wiring and show why the proof-assistant model is a predicate on types — then compare the same idea in Turn-Lang so you can film the intuition outdoors and verify it on screen. Tags and series: Abstract Algebra in a Proof Assistant · Judson §1.2 · #TurnLang #Lean4 #Mathlib #FormalMethods",
+    "socialTitleEnglish": "1. Set: Lean don't model it as a container",
+    "socialTitleChina": "1. Set：Lean 不把它建模成容器"
+  },
+  "english": {
+    "youtube": {
+      "title": "1. Set: Lean don't model it as a container",
+      "body": "Hook: Lean does not treat a set like a bag you drop things into. In this episode we open Membership / ∈ wiring and show why the proof-assistant model is a predicate on types — then compare the same idea in Turn-Lang so you can film the intuition outdoors and verify it on screen. Tags and series: Abstract Algebra in a Proof Assistant · Judson §1.2 · #TurnLang #Lean4 #Mathlib #FormalMethods\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "x": {
+      "title": "1. Set: Lean don't model it as a container",
+      "body": "Hook: Lean does not treat a set like a bag you drop things into. In this episode we open Membership / ∈ wiring and show why the proof-assistant model is a predicate on types — then compare the same idea in Turn-Lang so you can film the intuition outdoors and verify it on screen.…"
+    },
+    "linkedin": {
+      "title": "1. Set: Lean don't model it as a container",
+      "body": "1. Set: Lean don't model it as a container\n\nHook: Lean does not treat a set like a bag you drop things into. In this episode we open Membership / ∈ wiring and show why the proof-assistant model is a predicate on types — then compare the same idea in Turn-Lang so you can film the intuition outdoors and verify it on screen. Tags and series: Abstract Algebra in a Proof Assistant · Judson §1.2 · #TurnLang #Lean4 #Mathlib #FormalMethods\n\nThis episode is part of the Abstract Algebra in a Proof Assistant series on Turn-Lang — textbook-shaped formal mathematics you can film outdoors and verify in Lean 4 / Turn-Lang.\n\nWhat you will see in the video:\n• A textbook beat you can say on camera\n• The Lean 4 modeling choice (and what it refuses to pretend)\n• The Turn-Lang compare so the obligation is visible\n\nWatch the short, then open the linked editor if you want to step through the proof assistant view yourself.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "instagram": {
+      "title": "1. Set: Lean don't model it as a container",
+      "body": "Hook: Lean does not treat a set like a bag you drop things into. In this episode we open Membership / ∈ wiring and show why the proof-assistant model is a predicate on types — then compare the same idea in Turn-Lang so you can film the intuition outdoors and verify it on screen. Tags and series: Abstract Algebra in a Proof Assistant · Judson §1.2 · #TurnLang #Lean4 #Mathlib #FormalMethods\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "tiktok": {
+      "title": "1. Set: Lean don't model it as a container",
+      "body": "Hook: Lean does not treat a set like a bag you drop things into. In this episode we open Membership / ∈ wiring and show why the proof-assistant model is a predicate on types — then compare the same idea in Turn-Lang so you can film the intuition outdoors and verify it on screen. Tags and series: Abstract Algebra in a Proof Assistant · Judson §1.2 · #TurnLang #Lean4 #Mathlib #FormalMethods\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "facebook": {
+      "title": "1. Set: Lean don't model it as a container",
+      "body": "Hook: Lean does not treat a set like a bag you drop things into. In this episode we open Membership / ∈ wiring and show why the proof-assistant model is a predicate on types — then compare the same idea in Turn-Lang so you can film the intuition outdoors and verify it on screen. Tags and series: Abstract Algebra in a Proof Assistant · Judson §1.2 · #TurnLang #Lean4 #Mathlib #FormalMethods\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "bluesky": {
+      "title": "1. Set: Lean don't model it as a container",
+      "body": "Hook: Lean does not treat a set like a bag you drop things into. In this episode we open Membership / ∈ wiring and show why the proof-assistant model is a predicate on types — then compare the same idea in Turn-Lang so you can film the intuition outdoors and verify it on screen. Tags and series: Ab…"
+    }
+  },
+  "china": {
+    "bilibili": {
+      "title": "1. Set：Lean 不把它建模成容器",
+      "body": "Hook: Lean does not treat a set like a bag you drop things into. In this episode we open Membership / ∈ wiring and show why the proof-assistant model is a predicate on types — then compare the same idea in Turn-Lang so you can film the intuition outdoors and verify it on screen. Tags and series: Abstract Algebra in a Proof Assistant · Judson §1.2 · #TurnLang #Lean4 #Mathlib #FormalMethods\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论\n（请翻译为中文后发布）"
+    },
+    "douyin": {
+      "title": "Set — Lean Mem vs Turn-Lang container (60s)",
+      "body": "Set — 60s (Lean vs Turn-Lang)\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "xiaohongshu": {
+      "title": "Set — Lean Mem vs T…",
+      "body": "Set — 60s (Lean vs Turn-Lang)\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "weibo": {
+      "title": "Set — Lean Mem vs Turn-Lang container (60s)",
+      "body": "Set — 60s (Lean vs Turn-Lang)\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "wechat_channels": {
+      "title": "Set — Lean Mem vs Turn-Lang container (60s)",
+      "body": "Set — 60s (Lean vs Turn-Lang)\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "kuaishou": {
+      "title": "Set — Lean Mem vs Turn-Lang container (60s)",
+      "body": "Set — 60s (Lean vs Turn-Lang)\n\n#TurnLang #形式化方法 #抽象代数"
+    }
+  }
+}

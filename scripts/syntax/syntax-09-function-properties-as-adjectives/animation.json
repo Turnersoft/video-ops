@@ -1,0 +1,122 @@
+{
+  "version": 4,
+  "scriptId": "syntax-09-function-properties-as-adjectives",
+  "title": "syntax_09_function_properties_as_adjectives",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "The experience",
+      "durationSeconds": 31,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Warm tone — empathy for syntax shock.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Informal: “let f be an onto map” vs cluttered formal UI (generic, no tool dunk)."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Hi friends, welcome back.\nOnce a relation becomes a function, we start describing what kind of function it is.\nIs it onto?\nIs it one-to-one?\nIs it invertible?\nIn ordinary math these words behave like adjectives: an onto map, a one-to-one map.\nTurn keeps that shape — instead of bolting predicates on somewhere else in the syntax.",
+            "durationSeconds": 31,
+            "visualNotes": "Informal: “let f be an onto map” vs cluttered formal UI (generic, no tool dunk).\nWarm tone — empathy for syntax shock.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "title": "The Turn wedge",
+      "durationSeconds": 21,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Flash rendered `(surjective)f` if UI supports it.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-2-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Turn-Lang keeps adjectives on the `Function` structure in a `properties` block.\n`@notation(adjective)` means they render like words before the map — the way mathematicians write.\nThe laws still live here; you are not hiding them in tactic memory.",
+            "durationSeconds": 21,
+            "visualNotes": "Highlight `@notation(adjective)` before expanding quantifiers.\nFlash rendered `(surjective)f` if UI supports it.\nturn-ide track: tracks/scene-2-ide.json",
+            "turn": {
+              "code": "properties {\n        @notation(adjective)\n        surjective: Prop {",
+              "highlights": [
+                "@notation(adjective)"
+              ]
+            },
+            "focus": "turn",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "title": "Math confirm and close",
+      "durationSeconds": 18,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "CTA pitfalls-01.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-3-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Open one adjective — the quantifiers are the contract, and they stay in the file.\nPitfalls clip on when lecture shorthand and the checker disagree — link below.\nSubscribe for more syntax that stays readable at scale.",
+            "durationSeconds": 18,
+            "visualNotes": "Properties block in outline.\nCTA pitfalls-01.\nturn-ide track: tracks/scene-3-ide.json",
+            "turn": {
+              "code": "surjective: Prop {\n            forall b in range,\n            exists a in domain\n            |- apply(a) = b\n        }",
+              "highlights": [
+                "forall b in range",
+                "exists a in domain",
+                "apply(a) = b"
+              ]
+            },
+            "focus": "turn",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    }
+  ]
+}

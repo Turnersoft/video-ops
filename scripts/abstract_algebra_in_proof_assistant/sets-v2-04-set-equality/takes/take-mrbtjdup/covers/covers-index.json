@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "covers": [
+    {
+      "id": "cover-mrf6k5c9",
+      "label": "portrait still",
+      "path": "cover-mrf6k5c9/cover.jpg"
+    },
+    {
+      "id": "cover-mrf6l9iw",
+      "label": "landscape still",
+      "path": "cover-mrf6l9iw/cover.jpg"
+    }
+  ],
+  "platformCovers": {}
+}

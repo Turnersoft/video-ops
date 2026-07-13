@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 2,
+  "source": "slide-events",
+  "sourceScriptId": "sets-v2-04-set-equality",
+  "title": "04_set_equality",
+  "editedDurationSeconds": 328.25,
+  "timeline": [
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style. Textbook rule first, then the real question.",
+      "sourceStart": 0,
+      "sourceEnd": 21.67,
+      "editedStart": 0,
+      "editedEnd": 21.67
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality. Avoid the scanner/receipt metaphor.",
+      "sourceStart": 21.67,
+      "sourceEnd": 106.76,
+      "editedStart": 21.67,
+      "editedEnd": 106.76
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set.ext from first principles. Show the cross-type counterexample, then same-members and mutual-subset equivalence.",
+      "sourceStart": 106.76,
+      "sourceEnd": 174.67,
+      "editedStart": 106.76,
+      "editedEnd": 174.67
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation. Emphasize that the glyph is syntax and the named relation carries meaning.",
+      "sourceStart": 174.67,
+      "sourceEnd": 214.3,
+      "editedStart": 174.67,
+      "editedEnd": 214.3
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style.",
+      "sourceStart": 214.3,
+      "sourceEnd": 258.51,
+      "editedStart": 214.3,
+      "editedEnd": 258.51
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "Beat 6: present the higher-category philosophy without naming a person. Connect members, outputs, isomorphisms, and higher equivalence; finish with two differently presented but isomorphic groups.",
+      "sourceStart": 258.51,
+      "sourceEnd": 328.25,
+      "editedStart": 258.51,
+      "editedEnd": 328.25
+    }
+  ]
+}

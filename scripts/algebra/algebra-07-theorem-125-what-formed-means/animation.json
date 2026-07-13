@@ -1,0 +1,109 @@
+{
+  "version": 4,
+  "scriptId": "algebra-07-theorem-125-what-formed-means",
+  "title": "algebra_07_theorem_125_what_formed_means",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "The experience",
+      "durationSeconds": 38,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Classes as blobs covering X — visual optional.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Vague textbook line vs question “what object?” (conceptual)."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Hi friends, welcome back.\nTextbooks love phrases like “these objects form a partition.”\nIf you already understand the theorem, that sounds obvious.\nBut if you are learning, the word “form” hides the work.\nWhat are the pieces?\nWhat is the object being constructed?\nWhich facts about partitions have to be checked?\nIn Turn, “form a partition” becomes a concrete construction claim: build the `Partition` structure from exactly these equivalence classes.",
+            "durationSeconds": 38,
+            "visualNotes": "Vague textbook line vs question “what object?” (conceptual).\nClasses as blobs covering X — visual optional.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "title": "The Turn wedge",
+      "durationSeconds": 26,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Do not prove live.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-2-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Turn-Lang first defines the family `Classes` — every class is some equivalence class, every equivalence class appears.\nThe conclusion is not hand-waving: `exists Partition<X>[..Classes]`.\nSpread the family into the partition type — the structure you already read carries the laws.",
+            "durationSeconds": 26,
+            "visualNotes": "Highlight `exists Partition<X>[..Classes]`.\nDo not prove live.\nturn-ide track: tracks/scene-2-ide.json",
+            "turn": {
+              "code": "theorem \"equivalence classes form a partition (Judson Theorem 1.25 forward)\" {\n    forall X: Set<Any>,\n    forall E: EquivalenceRelation<X>,\n    exists Classes: Set<Set<Any>> where {\n        forall C in Classes,\n        exists x in X,\n        |- SetEq(C, EquivalenceClass<X, E, x>);\n        forall x' in X\n        |- EquivalenceClass<X, E, x'> in Classes;\n    },\n    |- exists Partition<X>[..Classes]\n}"
+            },
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "title": "Horizon and close",
+      "durationSeconds": 19,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "CTA why-need-06.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Flash `witness confirm { at goal {` header only."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "The proof is one big `witness confirm` — obligations named from the partition definition.\nThat is the why-need clip: C.1, C.2, cover, disjoint — not anonymous goals.\nFull proof in the file — link in description.",
+            "durationSeconds": 19,
+            "visualNotes": "Flash `witness confirm { at goal {` header only.\nCTA why-need-06.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    }
+  ]
+}

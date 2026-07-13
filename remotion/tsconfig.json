@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@turn-video-shared": ["../../basic_ui/src/shared/turn-video/index.ts"],
+      "@turn-video-shared/*": ["../../basic_ui/src/shared/turn-video/*"],
+      "@turn-user/*": ["../../codetree/turn/turn-user/*"]
+    }
+  },
+  "include": ["src/**/*", "scripts/**/*"],
+  "exclude": ["src/**/*.test.ts"]
+}

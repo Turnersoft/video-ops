@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 2,
+  "source": "speech-alignment",
+  "sourceScriptId": "sets-v2-04-set-equality",
+  "title": "Set equality — what equals means in a proof assistant",
+  "editedDurationSeconds": 158.42,
+  "timeline": [
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style. Textbook rule first, then the real question.",
+      "sourceStart": 0,
+      "sourceEnd": 19.51,
+      "editedStart": 0,
+      "editedEnd": 19.51
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: explain scanner and receipt through the rfl gotcha.",
+      "sourceStart": 19.51,
+      "sourceEnd": 46.91,
+      "editedStart": 19.51,
+      "editedEnd": 46.91
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: Lean Set.ext, Turn visible receipt shape.",
+      "sourceStart": 46.91,
+      "sourceEnd": 78.22,
+      "editedStart": 46.91,
+      "editedEnd": 78.22
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: Turn payoff for SetEq.",
+      "sourceStart": 78.22,
+      "sourceEnd": 99.84,
+      "editedStart": 78.22,
+      "editedEnd": 99.84
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style.",
+      "sourceStart": 99.84,
+      "sourceEnd": 127.14,
+      "editedStart": 99.84,
+      "editedEnd": 127.14
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "Beat 6: Emily Riehl / HoTT idea, carefully labeled informal.",
+      "sourceStart": 127.14,
+      "sourceEnd": 158.42,
+      "editedStart": 127.14,
+      "editedEnd": 158.42
+    }
+  ]
+}

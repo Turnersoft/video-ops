@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "id": "abstract_algebra_in_proof_assistant",
+  "title": "Abstract algebra in a proof assistant",
+  "description": "Sets micro-videos — Judson §1.2 split into compare beats with Lean and Turn-Lang.",
+  "thumbnail": "shared/background.png",
+  "playlist": "abstract algebra: formalized from scratch with turn-lang"
+}

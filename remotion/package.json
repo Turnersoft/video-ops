@@ -1,0 +1,46 @@
+{
+  "name": "turn-video-ops-remotion",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "sync": "npx tsx scripts/sync-animations.ts",
+    "sync:force": "npx tsx scripts/sync-animations.ts --force",
+    "ensure-public": "node scripts/ensure-public-dir.mjs",
+    "warm-knowledge": "node scripts/warmTurnKnowledgeCache.mjs",
+    "warm-knowledge:all": "node scripts/warmTurnKnowledgeCache.mjs --all",
+    "clean-build": "node scripts/clean-stale-build.mjs",
+    "postinstall": "bash scripts/link-knowledge-fonts.sh && npm run ensure-public",
+    "prep": "npm run sync && npm run ensure-public && npm run clean-build",
+    "prestudio": "npm run prep && npm run warm-knowledge:all",
+    "dev-api": "npx tsx ../../basic_ui/tooling/videoOpsDevApiServerCli.ts",
+    "dev-api:lan": "VIDEO_OPS_DEV_API_HOST=0.0.0.0 npx tsx ../../basic_ui/tooling/videoOpsDevApiServerCli.ts",
+    "studio": "npx tsx ../../basic_ui/tooling/videoOpsDevApiServerCli.ts & remotion studio",
+    "studio:lan": "deno run --allow-all ../bin/sync-outdoor-endpoints.ts; VIDEO_OPS_DEV_API_HOST=0.0.0.0 npx tsx ../../basic_ui/tooling/videoOpsDevApiServerCli.ts & remotion studio --hostname 0.0.0.0",
+    "prerender": "npm run prep",
+    "render": "npm run prerender && remotion render",
+    "render:script": "node scripts/render-script.mjs",
+    "render:edited": "node scripts/render-edited.mjs",
+    "render:outdoor": "node scripts/render-outdoor.mjs",
+    "upgrade": "remotion upgrade"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.286",
+    "@remotion/media-utils": "4.0.286",
+    "@yozora/react-mathjax": "^3.0.0-alpha.7",
+    "classnames": "^2.3.2",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.286"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.18",
+    "sass": "^1.83.0",
+    "sass-loader": "^16.0.4",
+    "style-loader": "^4.0.0",
+    "css-loader": "^7.1.2",
+    "tsx": "^4.19.2",
+    "typescript": "5.7.3",
+    "webpack": "^5.96.1"
+  }
+}

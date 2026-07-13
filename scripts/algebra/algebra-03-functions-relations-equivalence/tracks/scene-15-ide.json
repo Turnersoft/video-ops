@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "typing": {
+    "charsPerSecond": 28,
+    "fullText": "structure EquivalenceRelation<X: Set<Any>>: Relation<X, X> {\n    laws {\n        basic {\n            forall x y z in X\n            |- {\n                reflexive: [x x] in self;\n                symmetric: [x y] in self -> [y x] in self;\n                transitive: ([x y] in self and [y z] in self) -> [x z] in self;\n            }\n        },"
+  },
+  "proofPanel": {
+    "steps": [
+      {
+        "label": "open goal",
+        "goal": "⊢ target proposition"
+      },
+      {
+        "label": "apply tactic",
+        "goal": "subgoal after apply"
+      },
+      {
+        "label": "close branch",
+        "goal": "no open goals"
+      }
+    ]
+  },
+  "interactions": [
+    {
+      "atSeconds": 1.5,
+      "kind": "click-proof-step",
+      "stepIndex": 0
+    },
+    {
+      "atSeconds": 3.2,
+      "kind": "click-proof-step",
+      "stepIndex": 1
+    },
+    {
+      "atSeconds": 5,
+      "kind": "click-branch",
+      "branchId": "main"
+    }
+  ]
+}

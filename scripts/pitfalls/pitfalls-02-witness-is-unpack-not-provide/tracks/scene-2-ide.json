@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "typing": {
+    "charsPerSecond": 28,
+    "fullText": "disjoint {\n    ...\n    specialize Classes.1 for C as A into hRepA\n    witness hRepA.witness for x in hRepA\n    specialize Classes.1 for C as B into hRepB\n    witness hRepB.witness for x in hRepB\n    ...\n}"
+  },
+  "proofPanel": {
+    "steps": [
+      {
+        "label": "open goal",
+        "goal": "⊢ target proposition"
+      },
+      {
+        "label": "apply tactic",
+        "goal": "subgoal after apply"
+      },
+      {
+        "label": "close branch",
+        "goal": "no open goals"
+      }
+    ]
+  },
+  "interactions": [
+    {
+      "atSeconds": 1.5,
+      "kind": "click-proof-step",
+      "stepIndex": 0
+    },
+    {
+      "atSeconds": 3.2,
+      "kind": "click-proof-step",
+      "stepIndex": 1
+    },
+    {
+      "atSeconds": 5,
+      "kind": "click-branch",
+      "branchId": "main"
+    }
+  ]
+}

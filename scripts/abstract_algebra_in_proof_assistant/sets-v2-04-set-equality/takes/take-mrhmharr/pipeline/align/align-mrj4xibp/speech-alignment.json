@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "scriptId": "sets-v2-04-set-equality",
+  "generatedAt": "2026-07-13T11:24:32.393Z",
+  "sourceVideo": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrj4gxs6/edited-good-intervals.mp4",
+  "source": "slide-events",
+  "editedDurationSeconds": 284.09,
+  "beatDurationsSeconds": [
+    18.69,
+    72.84,
+    53.38,
+    37.7,
+    36.98,
+    64.5
+  ],
+  "boundaries": [
+    {
+      "beatIndex": 0,
+      "editedStart": 0,
+      "editedEnd": 18.69,
+      "durationSeconds": 18.69,
+      "lastSpokenWord": "",
+      "source": "slide-events"
+    },
+    {
+      "beatIndex": 1,
+      "editedStart": 18.69,
+      "editedEnd": 91.53,
+      "durationSeconds": 72.84,
+      "lastSpokenWord": "",
+      "source": "slide-events"
+    },
+    {
+      "beatIndex": 2,
+      "editedStart": 91.53,
+      "editedEnd": 144.91,
+      "durationSeconds": 53.38,
+      "lastSpokenWord": "",
+      "source": "slide-events"
+    },
+    {
+      "beatIndex": 3,
+      "editedStart": 144.91,
+      "editedEnd": 182.61,
+      "durationSeconds": 37.7,
+      "lastSpokenWord": "",
+      "source": "slide-events"
+    },
+    {
+      "beatIndex": 4,
+      "editedStart": 182.61,
+      "editedEnd": 219.59,
+      "durationSeconds": 36.98,
+      "lastSpokenWord": "",
+      "source": "slide-events"
+    },
+    {
+      "beatIndex": 5,
+      "editedStart": 219.59,
+      "editedEnd": 284.09,
+      "durationSeconds": 64.5,
+      "lastSpokenWord": "",
+      "source": "slide-events"
+    }
+  ],
+  "slideEventCount": 6
+}

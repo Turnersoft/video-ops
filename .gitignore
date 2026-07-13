@@ -1,0 +1,47 @@
+.DS_Store
+node_modules/
+remotion/node_modules/
+ios-teleprompter/node_modules/
+
+# Audio (local takes, pipeline intermediates, exports)
+*.wav
+*.mp3
+*.m4a
+*.aac
+*.flac
+*.ogg
+*.opus
+*.wma
+**/*.wav
+**/*.mp3
+**/*.m4a
+**/*.aac
+**/*.flac
+**/*.ogg
+**/*.opus
+**/*.wma
+
+# Video (renders, filmed takes, pipeline intermediates, exports)
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.m4v
+*.wmv
+*.flv
+**/*.mp4
+**/*.mov
+**/*.avi
+**/*.mkv
+**/*.webm
+**/*.m4v
+**/*.wmv
+**/*.flv
+
+# Stabilization transform binaries (video pipeline; often 100MB+)
+*.trf
+**/*.trf
+
+# Knowledge render cache (regenerated from turn-user)
+public/turn-knowledge-cache/

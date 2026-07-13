@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "scriptId": "sets-v2-10-complement",
+  "titleEnglish": "10_complement",
+  "titleChina": "10_complement",
+  "title": "10_complement",
+  "generatedAt": "2026-07-13T06:15:40.668Z",
+  "source": {
+    "playlist": "abstract algebra: formalized from scratch with turn-lang — script_v2 serial",
+    "promotionalDescription": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas."
+  },
+  "english": {
+    "youtube": {
+      "title": "10_complement",
+      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "x": {
+      "title": "10_complement",
+      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas. #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #…"
+    },
+    "linkedin": {
+      "title": "10_complement",
+      "body": "10_complement\n\nOne Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\nThis episode is part of the Abstract Algebra in a Proof Assistant series on Turn-Lang — textbook-shaped formal mathematics you can film outdoors and verify in Lean 4 / Turn-Lang.\n\nWhat you will see in the video:\n• A textbook beat you can say on camera\n• The Lean 4 modeling choice (and what it refuses to pretend)\n• The Turn-Lang compare so the obligation is visible\n\nWatch the short, then open the linked editor if you want to step through the proof assistant view yourself.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "instagram": {
+      "title": "10_complement",
+      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "tiktok": {
+      "title": "10_complement",
+      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "facebook": {
+      "title": "10_complement",
+      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "bluesky": {
+      "title": "10_complement",
+      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas. #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #Int…"
+    }
+  },
+  "china": {
+    "bilibili": {
+      "title": "10_complement",
+      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论\n（请翻译为中文后发布）"
+    },
+    "douyin": {
+      "title": "Complement — structure relative to universe U",
+      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "xiaohongshu": {
+      "title": "Complement — struct…",
+      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "weibo": {
+      "title": "Complement — structure relative to universe U",
+      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "wechat_channels": {
+      "title": "Complement — structure relative to universe U",
+      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "kuaishou": {
+      "title": "Complement — structure relative to universe U",
+      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+    }
+  }
+}

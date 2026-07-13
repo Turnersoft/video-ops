@@ -1,0 +1,114 @@
+{
+  "version": 4,
+  "scriptId": "syntax-07-function-refines-well-defined-relation",
+  "title": "syntax_07_function_refines_well_defined_relation",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "The experience",
+      "durationSeconds": 39,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Show relation table turning into a one-output machine. Question before symbols.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Pipeline sketch: one input → one output (no code yet)."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Hi friends, welcome back.\nIn the last clip, a relation was a table of allowed input-output pairs.\nNow imagine the table is supposed to behave like a machine.\nYou put in one input, and the machine is not allowed to return two different outputs.\nThat single-valued rule is the whole jump from relation to function.\nSo the design question is: should Turn invent a brand-new object, or reuse the relation we already understand?",
+            "durationSeconds": 39,
+            "visualNotes": "Pipeline sketch: one input → one output (no code yet).\nShow relation table turning into a one-output machine. Question before symbols.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "title": "The Turn wedge",
+      "durationSeconds": 21,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Highlight `exists unique b` then refinement line.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-2-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Turn-Lang puts single-valuedness on `Relation` as a named property — for each input, a unique output in the relation.\nThen `Function` refines that relation and adds `apply` — one inheritance line you can read on screen.",
+            "durationSeconds": 21,
+            "visualNotes": "`well_defined` on `Relation`, then:\nClick Relation → Function in outline.\nHighlight `exists unique b` then refinement line.\nturn-ide track: tracks/scene-2-ide.json",
+            "turn": {
+              "code": "structure Function<domain range: Set<Any>>: (well_defined)Relation<domain, range> {\n    @notation( {self} ~ \"(\" ~ {a} ~ \")\" )\n    apply(a: domain): range,",
+              "highlights": [
+                "(well_defined)Relation",
+                "apply(a: domain)"
+              ]
+            },
+            "focus": "turn",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "title": "Work beat and close",
+      "durationSeconds": 15,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "L5 one sentence; CTA pitfalls-04.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "`apply(a: domain)` highlighted."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Same idea in simulation — one input should not return two unrelated outputs.\nPitfalls clip on when rules fail that test — link in description.\nFull 1.2 walkthrough below.",
+            "durationSeconds": 15,
+            "visualNotes": "`apply(a: domain)` highlighted.\nL5 one sentence; CTA pitfalls-04.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    }
+  ]
+}

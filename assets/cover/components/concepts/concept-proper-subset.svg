@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Cover concept layer: proper-subset (420×260) — static layout reference; Remotion animates via ConceptCoverDiagram -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260" width="420" height="260">
+  <circle cx="210" cy="145.60000000000002" r="78.0" fill="rgba(88, 196, 221, 0.08)" stroke="rgba(88, 196, 221, 0.85)" stroke-width="2.8"/>
+  <text x="252.9" y="89.4" fill="#58c4dd" font-size="26" font-weight="700">B</text>
+  <circle cx="196.0" cy="131.6" r="40.6" fill="rgba(247, 201, 72, 0.18)" stroke="#f7c948" stroke-width="2.8"/>
+  <text x="196.0" y="139.6" text-anchor="middle" fill="#e8e6e3" font-size="22" font-weight="700">A</text>
+  <text x="221.7" y="188.5" fill="#f7c948" font-size="22" font-family="Georgia, serif" font-weight="700">A ⊊ B</text>
+</svg>

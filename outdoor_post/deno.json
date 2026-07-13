@@ -1,0 +1,20 @@
+{
+  "name": "turn-outdoor-post",
+  "version": "0.1.0",
+  "exports": "./main.ts",
+  "tasks": {
+    "check": "deno check main.ts",
+    "export-script": "deno run --allow-all main.ts export-outdoor-script",
+    "ai-edit": "deno run --allow-all main.ts ai-edit",
+    "align": "deno run --allow-all main.ts align-speech-to-beats",
+    "manifest": "deno run --allow-all main.ts build-outdoor-manifest"
+  },
+  "compilerOptions": {
+    "strict": true,
+    "lib": ["deno.ns", "deno.unstable", "esnext", "dom"]
+  },
+  "fmt": {
+    "lineWidth": 100,
+    "semiColons": true
+  }
+}

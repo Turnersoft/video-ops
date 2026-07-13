@@ -1,0 +1,77 @@
+{
+  "expo": {
+    "name": "Turn Outdoor Teleprompter",
+    "slug": "turn-outdoor-teleprompter",
+    "version": "0.1.0",
+    "orientation": "default",
+    "scheme": "turnteleprompter",
+    "userInterfaceStyle": "dark",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#020617"
+    },
+    "runtimeVersion": "0.1.0",
+    "updates": {
+      "enabled": false
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.turnlang.outdoorteleprompter",
+      "buildNumber": "1",
+      "entitlements": {
+        "com.apple.developer.icloud-container-identifiers": [
+          "iCloud.com.turnlang.outdoorteleprompter"
+        ],
+        "com.apple.developer.ubiquity-container-identifiers": [
+          "iCloud.com.turnlang.outdoorteleprompter"
+        ],
+        "com.apple.developer.icloud-services": ["CloudDocuments"]
+      },
+      "infoPlist": {
+        "UIFileSharingEnabled": true,
+        "LSSupportsOpeningDocumentsInPlace": true,
+        "ITSAppUsesNonExemptEncryption": false,
+        "UIBackgroundModes": ["fetch"],
+        "LSApplicationQueriesSchemes": ["App-Prefs", "App-prefs", "app-settings"],
+        "NSAppTransportSecurity": {
+          "NSAllowsLocalNetworking": true,
+          "NSExceptionDomains": {
+            "100.66.185.67": {
+              "NSExceptionAllowsInsecureHTTPLoads": true,
+              "NSIncludesSubdomains": false
+            }
+          }
+        }
+      }
+    },
+    "android": {
+      "package": "com.turnlang.outdoorteleprompter"
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow Turn Outdoor Teleprompter to film you while showing the script.",
+          "microphonePermission": "Allow Turn Outdoor Teleprompter to record your narration.",
+          "recordAudioAndroid": true
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Allow Turn Outdoor Teleprompter to save recorded takes to your library.",
+          "savePhotosPermission": "Allow Turn Outdoor Teleprompter to save recorded takes to your library.",
+          "isAccessMediaLocationEnabled": false
+        }
+      ],
+      "expo-asset",
+      "expo-font",
+      "expo-video"
+    ],
+    "extra": {
+      "scriptSchemaVersion": 1
+    }
+  }
+}

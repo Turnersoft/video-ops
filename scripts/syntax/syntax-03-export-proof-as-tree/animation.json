@@ -1,0 +1,106 @@
+{
+  "version": 4,
+  "scriptId": "syntax-03-export-proof-as-tree",
+  "title": "syntax_03_export_proof_as_tree",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "Open the branched proof",
+      "durationSeconds": 11,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "If branch map is not visible, open proof-slide mode first.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Proof-slide branch map for `\"Symmetric halves of asymmetric difference disjoint\"`."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Hi friends, welcome back.\nSame symmetric-halves proof in this chapter.\nThis time we care about the tree shape, not just the QED.",
+            "durationSeconds": 11,
+            "visualNotes": "Proof-slide branch map for `\"Symmetric halves of asymmetric difference disjoint\"`.\nIf branch map is not visible, open proof-slide mode first.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "title": "Export",
+      "durationSeconds": 11,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Show one exported file briefly in finder or preview.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Export menu → save branch map as `.txt` or `.svg`. Show a snippet of the exported tree listing `#!` nodes."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "From here I can export the branch forest.\nText for notes, SVG for a slide.\nStudents see which trials I tried and which branch survived.",
+            "durationSeconds": 11,
+            "visualNotes": "Export menu → save branch map as `.txt` or `.svg`. Show a snippet of the exported tree listing `#!` nodes.\nShow one exported file briefly in finder or preview.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "title": "Close",
+      "durationSeconds": 10,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Calm close.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Exported svg thumbnail beside the source file tab."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "So the proof is not trapped in the editor.\nThe real library proof exports like documentation.",
+            "durationSeconds": 10,
+            "visualNotes": "Exported svg thumbnail beside the source file tab.\nCalm close.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "sourceFile": "shared/reference/partition_equivalence.lean",
+  "sourceRange": { "startLine": 7, "endLine": 14 },
+  "typing": {
+    "charsPerSecond": 26,
+    "snippet": "example (h : Equivalence R) (a : α) :\n    ∃ b, R a b := by\n  obtain ⟨b, hb⟩ := equivalence_classes_cover h a\n  exact ⟨b, hb⟩"
+  },
+  "goalPanel": {
+    "exportPath": "tracks/scene-1-lean4-goal.json"
+  },
+  "highlights": [
+    { "text": "obtain ⟨b, hb⟩", "atSeconds": 3.5 },
+    { "text": "exact ⟨b, hb⟩", "atSeconds": 5.0 }
+  ]
+}

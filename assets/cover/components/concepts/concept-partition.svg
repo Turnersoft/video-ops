@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Cover concept layer: partition (420×260) — static layout reference; Remotion animates via ConceptCoverDiagram -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260" width="420" height="260">
+  <circle cx="210" cy="145.60000000000002" r="78.0" fill="rgba(255,255,255,0.04)" stroke="rgba(232, 230, 227, 0.28)" stroke-width="2"/>
+  <path d="M 210 145.60000000000002 L 210.0 67.6 A 78.0 78.0 0 0 1 277.5 184.6 Z" fill="#58c4dd33" stroke="#58c4dd" stroke-width="2"/>
+  <path d="M 210 145.60000000000002 L 277.5 184.6 A 78.0 78.0 0 0 1 142.5 184.6 Z" fill="#f7c94833" stroke="#f7c948" stroke-width="2"/>
+  <path d="M 210 145.60000000000002 L 142.5 184.6 A 78.0 78.0 0 0 1 210.0 67.6 Z" fill="#d946a833" stroke="#d946a8" stroke-width="2"/>
+  <text x="210" y="228.8" text-anchor="middle" fill="#e8e6e3" font-size="20">partition of X</text>
+</svg>

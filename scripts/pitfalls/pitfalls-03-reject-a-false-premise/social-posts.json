@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "scriptId": "pitfalls-03-reject-a-false-premise",
+  "titleEnglish": "pitfalls_03_reject_a_false_premise",
+  "titleChina": "pitfalls_03_reject_a_false_premise",
+  "title": "pitfalls_03_reject_a_false_premise",
+  "generatedAt": "2026-07-13T06:15:39.791Z",
+  "source": {
+    "playlist": "pitfalls of formal method",
+    "promotionalDescription": "Sometimes the exercise assumes something false — and no proof can fix that. Turn makes you notice before you waste an hour inventing steps."
+  },
+  "english": {
+    "youtube": {
+      "title": "pitfalls_03_reject_a_false_premise",
+      "body": "Sometimes the exercise assumes something false — and no proof can fix that. Turn makes you notice before you waste an hour inventing steps.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory #FormalVerification"
+    },
+    "x": {
+      "title": "pitfalls_03_reject_a_false_premise",
+      "body": "Sometimes the exercise assumes something false — and no proof can fix that. Turn makes you notice before you waste an hour inventing steps. #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProv…"
+    },
+    "linkedin": {
+      "title": "pitfalls_03_reject_a_false_premise",
+      "body": "pitfalls_03_reject_a_false_premise\n\nSometimes the exercise assumes something false — and no proof can fix that. Turn makes you notice before you waste an hour inventing steps.\n\nThis episode is part of the Abstract Algebra in a Proof Assistant series on Turn-Lang — textbook-shaped formal mathematics you can film outdoors and verify in Lean 4 / Turn-Lang.\n\nWhat you will see in the video:\n• A textbook beat you can say on camera\n• The Lean 4 modeling choice (and what it refuses to pretend)\n• The Turn-Lang compare so the obligation is visible\n\nWatch the short, then open the linked editor if you want to step through the proof assistant view yourself.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory #FormalVerification"
+    },
+    "instagram": {
+      "title": "pitfalls_03_reject_a_false_premise",
+      "body": "Sometimes the exercise assumes something false — and no proof can fix that. Turn makes you notice before you waste an hour inventing steps.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory #FormalVerification"
+    },
+    "tiktok": {
+      "title": "pitfalls_03_reject_a_false_premise",
+      "body": "Sometimes the exercise assumes something false — and no proof can fix that. Turn makes you notice before you waste an hour inventing steps.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory #FormalVerification"
+    },
+    "facebook": {
+      "title": "pitfalls_03_reject_a_false_premise",
+      "body": "Sometimes the exercise assumes something false — and no proof can fix that. Turn makes you notice before you waste an hour inventing steps.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory #FormalVerification"
+    },
+    "bluesky": {
+      "title": "pitfalls_03_reject_a_false_premise",
+      "body": "Sometimes the exercise assumes something false — and no proof can fix that. Turn makes you notice before you waste an hour inventing steps. #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory #For…"
+    }
+  },
+  "china": {
+    "bilibili": {
+      "title": "pitfalls_03_reject_a_false_premise",
+      "body": "Sometimes the exercise assumes something false — and no proof can fix that. Turn makes you notice before you waste an hour inventing steps.\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论\n（请翻译为中文后发布）"
+    },
+    "douyin": {
+      "title": "When the Homework Setup Is Already Wrong",
+      "body": "Sometimes the exercise assumes something false — and no proof can fix that. Turn makes you notice before you waste an hour inventing steps.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "xiaohongshu": {
+      "title": "When the Homework S…",
+      "body": "Sometimes the exercise assumes something false — and no proof can fix that. Turn makes you notice before you waste an hour inventing steps.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "weibo": {
+      "title": "When the Homework Setup Is Already Wrong",
+      "body": "Sometimes the exercise assumes something false — and no proof can fix that. Turn makes you notice before you waste an hour inventing steps.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "wechat_channels": {
+      "title": "When the Homework Setup Is Already Wrong",
+      "body": "Sometimes the exercise assumes something false — and no proof can fix that. Turn makes you notice before you waste an hour inventing steps.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "kuaishou": {
+      "title": "When the Homework Setup Is Already Wrong",
+      "body": "Sometimes the exercise assumes something false — and no proof can fix that. Turn makes you notice before you waste an hour inventing steps.\n\n#TurnLang #形式化方法 #抽象代数"
+    }
+  }
+}

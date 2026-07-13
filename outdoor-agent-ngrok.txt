@@ -1,0 +1,12 @@
+# Outdoor agent URL (paste in iPhone → Agent Settings)
+# Started: 2026-07-09T05:52:19.332Z
+
+AGENT_URL=https://scanning-glisten-upturned.ngrok-free.dev
+
+# iPhone teleprompter (separate process):
+#   cd ios-teleprompter && npm run start:ngrok
+#   paste exp://… from outdoor-expo-link.txt into Expo Go
+
+# Mac Video Ops dashboard (same Wi‑Fi as Mac):
+#   cd ../basic_ui && npm run dev:with-lsp
+#   open /video-ops → Outdoor jobs

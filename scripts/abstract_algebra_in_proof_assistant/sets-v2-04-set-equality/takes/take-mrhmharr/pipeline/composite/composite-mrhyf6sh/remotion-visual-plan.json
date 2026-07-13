@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 2,
+  "source": "slide-events",
+  "sourceScriptId": "sets-v2-04-set-equality",
+  "title": "04_set_equality",
+  "editedDurationSeconds": 318.83,
+  "timeline": [
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style. Textbook rule first, then the real question.",
+      "sourceStart": 0,
+      "sourceEnd": 19.13,
+      "editedStart": 0,
+      "editedEnd": 19.13
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality. Avoid the scanner/receipt metaphor.",
+      "sourceStart": 19.13,
+      "sourceEnd": 102.78,
+      "editedStart": 19.13,
+      "editedEnd": 102.78
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set.ext from first principles. Show the cross-type counterexample, then same-members and mutual-subset equivalence.",
+      "sourceStart": 102.78,
+      "sourceEnd": 169.25,
+      "editedStart": 102.78,
+      "editedEnd": 169.25
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation. Emphasize that the glyph is syntax and the named relation carries meaning.",
+      "sourceStart": 169.25,
+      "sourceEnd": 208.08,
+      "editedStart": 169.25,
+      "editedEnd": 208.08
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style.",
+      "sourceStart": 208.08,
+      "sourceEnd": 249.41,
+      "editedStart": 208.08,
+      "editedEnd": 249.41
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "Beat 6: present the higher-category philosophy without naming a person. Connect members, outputs, isomorphisms, and higher equivalence; finish with two differently presented but isomorphic groups.",
+      "sourceStart": 249.41,
+      "sourceEnd": 318.83,
+      "editedStart": 249.41,
+      "editedEnd": 318.83
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "version": 4,
+  "scriptId": "syntax-04-close-and-split-at-once",
+  "title": "syntax_04_close_and_split_at_once",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "The goal before confirm",
+      "durationSeconds": 14,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Show `[..Classes]` spread syntax on screen.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-1-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Hi friends, welcome back.\nEnd of Judson 1.25 forward proof.\nThe goal is `exists Partition<X>[..Classes]`.\nWe already built the class family `Classes` in the statement.",
+            "durationSeconds": 14,
+            "visualNotes": "Theorem conclusion:\nShow `[..Classes]` spread syntax on screen.\nturn-ide track: tracks/scene-1-ide.json",
+            "turn": {
+              "code": "|- exists Partition<X>[..Classes]",
+              "highlights": [
+                "[..Classes]"
+              ]
+            },
+            "focus": "turn",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "title": "One block, four named jobs",
+      "durationSeconds": 14,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Expand `cover` and `disjoint` briefly — point at law names matching the `Partition` structure.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-2-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "`witness confirm` closes the existential and immediately opens the checklist.\nCell nonempty, cell subset, cover, disjoint.\nAll in one block, all named.",
+            "durationSeconds": 14,
+            "visualNotes": "Expand `cover` and `disjoint` briefly — point at law names matching the `Partition` structure.\nturn-ide track: tracks/scene-2-ide.json",
+            "turn": {
+              "code": "witness confirm {\n    at goal {\n        C.1 { specialize Classes.1 for C as D into hRep ... }\n        C.2 { ... }\n        cover { witness EquivalenceClass<X, E, x> for C ... }\n        disjoint { witness hRepA.witness for x in hRepA ... }\n    }\n}",
+              "highlights": [
+                "witness confirm",
+                "C.1",
+                "C.2",
+                "cover",
+                "disjoint"
+              ]
+            },
+            "focus": "turn",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "title": "Close",
+      "durationSeconds": 8,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "End in workspace.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Cursor on `at goal {`."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "That is close-and-split in one move.\nThe real file is the reference implementation.",
+            "durationSeconds": 8,
+            "visualNotes": "Cursor on `at goal {`.\nEnd in workspace.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    }
+  ]
+}

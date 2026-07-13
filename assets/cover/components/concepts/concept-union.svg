@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Cover concept layer: union (420×260) — static layout reference; Remotion animates via ConceptCoverDiagram -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 260" width="420" height="260">
+  <circle cx="178.5" cy="145.60000000000002" r="57.2" fill="rgba(88, 196, 221, 0.12)" stroke="#58c4dd" stroke-width="2.6"/>
+  <circle cx="241.5" cy="145.60000000000002" r="57.2" fill="rgba(247, 201, 72, 0.12)" stroke="#f7c948" stroke-width="2.6"/>
+  <ellipse cx="210" cy="145.60000000000002" rx="31.5" ry="54.3" fill="rgba(167, 139, 250, 0.35)"/>
+  <text x="160.5" y="76.4" fill="#58c4dd" font-size="24" font-weight="700">A</text>
+  <text x="249.5" y="76.4" fill="#f7c948" font-size="24" font-weight="700">B</text>
+  <text x="210" y="228.8" text-anchor="middle" fill="#e8e6e3" font-size="22" font-family="Georgia, serif">A ∪ B</text>
+</svg>

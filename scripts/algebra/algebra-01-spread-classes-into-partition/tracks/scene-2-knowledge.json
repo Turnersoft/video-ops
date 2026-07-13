@@ -1,0 +1,174 @@
+{
+  "version": 1,
+  "sections": [
+    {
+      "id": "partition-nonempty",
+      "title": {
+        "segments": [{ "Text": "Nonempty" }]
+      },
+      "metadata": [["type", "law"]],
+      "content": {
+        "Math": {
+          "id": "math-nonempty",
+          "content": {
+            "Relationship": {
+              "lhs": {
+                "id": "math-c",
+                "content": {
+                  "Identifier": {
+                    "raw": null,
+                    "escaped": null,
+                    "body": "C",
+                    "pre_script": null,
+                    "mid_script": null,
+                    "post_script": null,
+                    "primes": 0,
+                    "is_function": false,
+                    "math_suffix": null,
+                    "is_routine_name": false
+                  }
+                }
+              },
+              "rhs": {
+                "id": "math-emptyset",
+                "content": {
+                  "Identifier": {
+                    "raw": null,
+                    "escaped": null,
+                    "body": "EmptySet",
+                    "pre_script": null,
+                    "mid_script": null,
+                    "post_script": null,
+                    "primes": 0,
+                    "is_function": false,
+                    "math_suffix": null,
+                    "is_routine_name": false
+                  }
+                }
+              },
+              "operator": "NotEqual"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "partition-subset",
+      "title": {
+        "segments": [{ "Text": "Subset" }]
+      },
+      "metadata": [["type", "law"]],
+      "content": {
+        "Math": {
+          "id": "math-subset",
+          "content": {
+            "FunctionCall": {
+              "name": {
+                "id": "fn-subset",
+                "content": {
+                  "Identifier": {
+                    "raw": null,
+                    "escaped": null,
+                    "body": "Subset",
+                    "pre_script": null,
+                    "mid_script": null,
+                    "post_script": null,
+                    "primes": 0,
+                    "is_function": true,
+                    "math_suffix": null,
+                    "is_routine_name": false
+                  }
+                }
+              },
+              "parameters": [
+                {
+                  "id": "param-c",
+                  "content": {
+                    "Identifier": {
+                      "raw": null,
+                      "escaped": null,
+                      "body": "C",
+                      "pre_script": null,
+                      "mid_script": null,
+                      "post_script": null,
+                      "primes": 0,
+                      "is_function": false,
+                      "math_suffix": null,
+                      "is_routine_name": false
+                    }
+                  }
+                },
+                {
+                  "id": "param-x",
+                  "content": {
+                    "Identifier": {
+                      "raw": null,
+                      "escaped": null,
+                      "body": "X",
+                      "pre_script": null,
+                      "mid_script": null,
+                      "post_script": null,
+                      "primes": 0,
+                      "is_function": false,
+                      "math_suffix": null,
+                      "is_routine_name": false
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "partition-disjoint",
+      "title": {
+        "segments": [{ "Text": "Disjoint" }]
+      },
+      "metadata": [["type", "law"]],
+      "content": {
+        "RichText": {
+          "segments": [
+            { "Text": "Pieces do " },
+            { "Text": "not" },
+            { "Text": " overlap" }
+          ]
+        }
+      }
+    },
+    {
+      "id": "partition-cover",
+      "title": {
+        "segments": [{ "Text": "Cover" }]
+      },
+      "metadata": [["type", "law"]],
+      "content": {
+        "RichText": {
+          "segments": [
+            { "Text": "Pieces cover " },
+            {
+              "Math": {
+                "id": "math-x-cover",
+                "content": {
+                  "Identifier": {
+                    "raw": null,
+                    "escaped": null,
+                    "body": "X",
+                    "pre_script": null,
+                    "mid_script": null,
+                    "post_script": null,
+                    "primes": 0,
+                    "is_function": false,
+                    "math_suffix": null,
+                    "is_routine_name": false
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

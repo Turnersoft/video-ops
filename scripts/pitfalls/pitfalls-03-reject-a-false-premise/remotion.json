@@ -1,0 +1,30 @@
+{
+  "format": "short",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "theme": "pitfalls",
+  "scenes": [
+    { "index": 1, "pip": null },
+    { "index": 2, "pip": null },
+    {
+      "index": 3,
+      "pip": {
+        "src": "shared/reference/turn-workspace.mp4",
+        "position": "bottom-right",
+        "widthFraction": 0.44,
+        "startFrom": 0,
+        "borderRadius": 16
+      }
+    },
+    {
+      "index": 4,
+      "pip": {
+        "src": "shared/reference/turn-workspace.mp4",
+        "position": "bottom-right",
+        "widthFraction": 0.44,
+        "startFrom": 12
+      }
+    }
+  ]
+}

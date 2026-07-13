@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "sourceFile": "shared/reference/02_sets_and_equivalence_relations.turn",
+  "sourceRange": { "startLine": 819, "endLine": 839 },
+  "typing": {
+    "charsPerSecond": 26,
+    "snippet": "structure[\n    C: Set<Any> where {\n        |- C != EmptySet;\n        |- Subset(C, X)\n    }\n] Partition<X: Set<Any>>: Set<Set<Any>> {\n    laws {\n        disjoint { ... },\n        cover { ... }\n    }\n}"
+  },
+  "knowledgePanel": {
+    "heading": "Knowledge",
+    "exportPath": "tracks/scene-2-knowledge.json",
+    "knowledgeDataPath": "tracks/scene-2-knowledge-data.json",
+    "focusLine": 819,
+    "scopedToSource": true
+  },
+  "captionBeats": [
+    {
+      "atSeconds": 0,
+      "editor": ["Partition"],
+      "knowledge": ["Partition"]
+    },
+    {
+      "atSeconds": 2.5,
+      "editor": ["EmptySet", "Subset"],
+      "knowledge": ["Nonempty", "Subset"]
+    },
+    {
+      "atSeconds": 5.5,
+      "editor": ["disjoint", "cover"],
+      "knowledge": ["Disjoint", "Cover"]
+    },
+    {
+      "atSeconds": 8.5,
+      "editor": ["Partition"],
+      "knowledge": ["Partition"]
+    },
+    {
+      "atSeconds": 11,
+      "editor": ["Partition"],
+      "knowledge": ["Partition"]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "typing": {
+    "charsPerSecond": 28,
+    "fullText": "theorem \"equivalence classes form a partition (Judson Theorem 1.25 forward)\" {\n    forall X: Set<Any>,\n    forall E: EquivalenceRelation<X>,\n    exists Classes: Set<Set<Any>> where { ... },\n    |- exists Partition<X>[..Classes]\n} proof {\n    witness confirm {\n        at goal {\n            C.1 { ... }\n            C.2 { ... }\n            cover { ... }\n            disjoint { ... }\n        }\n    }\n}"
+  },
+  "proofPanel": {
+    "steps": [
+      {
+        "label": "open goal",
+        "goal": "⊢ target proposition"
+      },
+      {
+        "label": "apply tactic",
+        "goal": "subgoal after apply"
+      },
+      {
+        "label": "close branch",
+        "goal": "no open goals"
+      }
+    ]
+  },
+  "interactions": [
+    {
+      "atSeconds": 1.5,
+      "kind": "click-proof-step",
+      "stepIndex": 0
+    },
+    {
+      "atSeconds": 3.2,
+      "kind": "click-proof-step",
+      "stepIndex": 1
+    },
+    {
+      "atSeconds": 5,
+      "kind": "click-branch",
+      "branchId": "main"
+    }
+  ]
+}

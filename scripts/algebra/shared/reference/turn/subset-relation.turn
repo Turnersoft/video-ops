@@ -1,0 +1,23 @@
+structure[T] Set<T: Any> {
+}
+
+relation Subset(T: Any, A B: Set<T>): PropModified {
+    @notation({A} ~ " ⊆ " ~ {B})
+    default: Prop {
+        forall x: T |- x in A -> x in B
+    },
+    @notation({A} ~ " ⊊ " ~ {B})
+    proper: Prop {
+        |- {
+            default(A, B);
+            not SetEq(A, B);
+        }
+    }
+}
+
+relation SetEq(T: Any, A B: Set<T>): Prop {
+    |- {
+        Subset(A, B);
+        Subset(B, A);
+    }
+}

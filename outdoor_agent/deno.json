@@ -1,0 +1,20 @@
+{
+  "name": "turn-outdoor-agent",
+  "version": "0.1.0",
+  "exports": "./main.ts",
+  "tasks": {
+    "start": "deno run --allow-all main.ts",
+    "start:lan": "deno run --allow-all main.ts --host 0.0.0.0",
+    "check": "deno check main.ts",
+    "run-stage": "deno run --allow-all main.ts run-stage",
+    "scan-inbox": "deno run --allow-all scan-inbox-once.ts"
+  },
+  "compilerOptions": {
+    "strict": true,
+    "lib": ["deno.ns", "deno.unstable", "esnext", "dom"]
+  },
+  "fmt": {
+    "lineWidth": 100,
+    "semiColons": true
+  }
+}

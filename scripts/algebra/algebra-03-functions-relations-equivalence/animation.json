@@ -1,0 +1,703 @@
+{
+  "version": 4,
+  "scriptId": "algebra-03-functions-relations-equivalence",
+  "title": "algebra_03_functions_relations_equivalence",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "Pick up where 1.1 stopped",
+      "durationSeconds": 24,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Title card at open: **1.2 Functions, Relations, and Equivalence**. Not on the final slide.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Open `02_sets_and_equivalence_relations.turn`. Scroll past the set-algebra block to `CartesianProduct`."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Hi friends, welcome back. This is Turner.\nIn video 1.1 we formalized sets in this file — union, intersection, De Morgan, all of that.\nNow we pick up in the same Turn-Lang file and finish section 1.2 of the book.\nThe full source is in the description link if you want to follow along.",
+            "durationSeconds": 24,
+            "visualNotes": "Open `02_sets_and_equivalence_relations.turn`. Scroll past the set-algebra block to `CartesianProduct`.\nTitle card at open: **1.2 Functions, Relations, and Equivalence**. Not on the final slide.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "title": "Follow the textbook subsection",
+      "durationSeconds": 23,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Split screen: XML left, turn file tab right.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "`sets.xml` subsection `sets-subsection-cartesian-products`. Sidebar defer: linear maps, inverse matrices, equivalent matrices, ℝ³."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Same workflow as 1.1.\nOpen `sets.xml` at *Cartesian Products and Mappings*.\nMark each bold term as we go: new structure, relation, or property on something we already have?\nWe follow the book’s order and skip examples that need matrices, ℝⁿ, or calculus.",
+            "durationSeconds": 23,
+            "visualNotes": "`sets.xml` subsection `sets-subsection-cartesian-products`. Sidebar defer: linear maps, inverse matrices, equivalent matrices, ℝ³.\nSplit screen: XML left, turn file tab right.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "title": "Cartesian product",
+      "durationSeconds": 38,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Highlight `for i in 1..n`, `@notation(chain`, and `CartesianProduct<[A, B]>` callout.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-3-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "The book starts with the Cartesian product.\nA times B is the set of ordered pairs — take one element from A, one from B, pair them up.\nIn Turn-Lang that is `CartesianProduct`.\nThe `for i in 1..n` block lists the factor sets A₁ through Aₙ.\n`@notation(chain(...))` renders them as A₁ × A₂ × … in math.\nFor the binary case — a relation from A to B — note we can just use an array: `CartesianProduct<[A, B]>`, same structure, n equals two.",
+            "durationSeconds": 38,
+            "visualNotes": "Highlight `for i in 1..n`, `@notation(chain`, and `CartesianProduct<[A, B]>` callout.\nturn-ide track: tracks/scene-3-ide.json",
+            "turn": {
+              "code": "@notation(chain({A_{i}}, \" × \"))\nstructure CartesianProduct<n: Int, for i in 1..n [A_{i}: Set<Any>]>: Set<Any> {\n    laws {\n        def {\n            forall x_{i} in A_{i} |- [x_{i}] in self\n        }\n    }\n}"
+            },
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "title": "ℝⁿ waits for Tao",
+      "durationSeconds": 19,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Sticky note: Tao real analysis — next video in that playlist.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "`sets.xml` ℝ³ sentence. Turn file cursor on `CartesianProduct`."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "The book then mentions ℝ cubed as an example of Aⁿ.\nReal numbers are their own formalization — Tao Analysis in our library, in a later video.\nHere we keep the generic `CartesianProduct` pattern.",
+            "durationSeconds": 19,
+            "visualNotes": "`sets.xml` ℝ³ sentence. Turn file cursor on `CartesianProduct`.\nSticky note: Tao real analysis — next video in that playlist.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 5,
+      "title": "Relations",
+      "durationSeconds": 36,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Show math render of ⊆ A × B. Animate `[a b] in self` → pair in A × B.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-5-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Next, we have relations.\nThink of a bag of ordered pairs — each pair picks something from A and something from B.\nThe book says that is a subset of A times B.\nIn Turn-Lang, `Relation` is itself a `Set` — and the `subset` law says every member of self must already be a pair in `CartesianProduct<[A, B]>`.\nSo the law is really a membership rule: nothing outside A × B can sneak in.",
+            "durationSeconds": 36,
+            "visualNotes": "Show math render of ⊆ A × B. Animate `[a b] in self` → pair in A × B.\nturn-ide track: tracks/scene-5-ide.json",
+            "turn": {
+              "code": "structure Relation<A B: Set<Any>>: Set<Any> {\n    laws {\n        subset {\n            |- Subset(self, CartesianProduct<[A, B]>)\n        }\n    }"
+            },
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 6,
+      "title": "Functions as mappings",
+      "durationSeconds": 38,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Flash `sets-figure-mappings` — f is a mapping, g is not. Highlight `apply(a: domain)`.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-6-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "A function is not a separate species — it is a relation that behaves like a machine.\nFeed in a, get exactly one b back; the pair [a b] is in the relation.\nTurn-Lang puts the uniqueness check on `Relation` as `well_defined`, then `Function` refines `(well_defined)Relation`.\nInstead of writing pairs by hand, we write f(a) — that is `apply` when you plug in a specific element a from the domain.",
+            "durationSeconds": 38,
+            "visualNotes": "Flash `sets-figure-mappings` — f is a mapping, g is not. Highlight `apply(a: domain)`.\nturn-ide track: tracks/scene-6-ide.json",
+            "turn": {
+              "code": "properties {\n        well_defined: Prop {\n            forall a in A,\n            exists unique b in B\n            |- { [a b] in self; }\n        }\n    }\n\n@notation({self} ~ \" from \" ~ {domain} ~ \" to \" ~ {range})\nstructure Function<domain range: Set<Any>>: (well_defined)Relation<domain, range> {\n    @notation( {self} ~ \"(\" ~ {a} ~ \")\" )\n    apply(a: domain): range,"
+            },
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 7,
+      "title": "Well-defined",
+      "durationSeconds": 44,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Side-by-side: ambiguous outputs vs unique b.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "`well_defined` block on `Relation`. Cross out f(p/q) paragraph in XML."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "The book’s classic trap is f(p/q) equals p on rationals.\nOne half and two fourths are the same input, but the rule would output 1 and 2 — two different answers for one number.\nThat is what “not well-defined” means in plain language: one input, more than one output.\nOur `well_defined` property formalizes exactly that — for each a, exists unique b with [a b] in the relation.\nWe do not need polynomial syntax in this video; the property already carries the intuition.",
+            "durationSeconds": 44,
+            "visualNotes": "`well_defined` block on `Relation`. Cross out f(p/q) paragraph in XML.\nSide-by-side: ambiguous outputs vs unique b.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 8,
+      "title": "Onto, one-to-one, bijective",
+      "durationSeconds": 40,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Pause on surjective quantifier order.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-8-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Next the book defines onto, one-to-one, and bijective maps.\nIn Turn-Lang these live in a `properties` block on `Function` — adjectives you can attach to a map, not the `Subset` relation from video 1.1.\nSurjective: for every b in the range, some a maps to it — forall b, then exists a.\nInjective: distinct inputs give distinct outputs.\nBijective bundles surjective and injective.\nThe `domain_def` law says apply(a) always lands in the range.",
+            "durationSeconds": 40,
+            "visualNotes": "Pause on surjective quantifier order.\nturn-ide track: tracks/scene-8-ide.json",
+            "turn": {
+              "code": "properties {\n        @notation(adjective)\n        surjective: Prop {\n            forall b in range,\n            exists a in domain\n            |- apply(a) = b\n        }\n        @notation(adjective)\n        injective: Prop {\n            forall a_1 a_2 in domain\n            |- a_1 != a_2 -> apply(a_1) != apply(a_2)\n        }\n        @notation(adjective)\n        bijective: (surjective, injective)\n        ...\n    }\n    laws {\n        domain_def {\n            forall a in domain |- apply(a) in range\n        }\n    }"
+            },
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 9,
+      "title": "Composition",
+      "durationSeconds": 19,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Flash `sets-figure-composition` from XML.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-9-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "The book defines composition next: f from A to B, g from B to C, and (g ∘ f)(x) equals g(f(x)).\nTurn-Lang: structure `Composition` — when you `apply` on a specific x, you run f first, then g.",
+            "durationSeconds": 19,
+            "visualNotes": "Flash `sets-figure-composition` from XML.\nturn-ide track: tracks/scene-9-ide.json",
+            "turn": {
+              "code": "@notation({g} ~ \" ∘ \" ~ {f})\nstructure Composition<A B C: Set<Any>, f: Function<A, B>, g: Function<B, C>>: Function<A, C> {\n    apply(domain: A): C\n    laws {\n        def {\n            forall x in A\n            |- apply(x) = g.apply(f.apply(x))\n        }\n    }\n}"
+            },
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 10,
+      "title": "Skip to the composition theorem",
+      "durationSeconds": 28,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Optional informal {1,2,3} permutation picture only.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Defer list in sidebar. Jump in XML to the composition theorem. Turn file on `theorem \"composition's rules\"`."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "The book inserts linear maps, permutations, and polynomial composition examples here.\nWe skip those — linear maps wait for vector spaces, permutations for chapter five.\nWhat comes next is the theorem on composition: associative, and injective, surjective, bijective preserved under composition.",
+            "durationSeconds": 28,
+            "visualNotes": "Defer list in sidebar. Jump in XML to the composition theorem. Turn file on `theorem \"composition's rules\"`.\nOptional informal {1,2,3} permutation picture only.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 11,
+      "title": "Composition theorem",
+      "durationSeconds": 17,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Outline panel: composition's rules → four leaves.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-11-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "In Turn-Lang this is one theorem folder: `\"composition's rules\"`.\nFour leaves — associative, injective, surjective, bijective — each with its own proof block.\nSame pattern as `\"basic set\"` in video 1.1.",
+            "durationSeconds": 17,
+            "visualNotes": "Outline panel: composition's rules → four leaves.\nturn-ide track: tracks/scene-11-ide.json",
+            "turn": {
+              "code": "theorem \"composition's rules\" {\n    forall A B C D: Set<Any>,\n    forall f: Function<A, B>,\n    forall g: Function<B, C>,\n    forall h: Function<C, D>,\n    |- {\n        associative: ... proof { intro x in A; ... };\n        injective: ... proof { ... };\n        surjective: ... proof { ... };\n        bijective: ... proof { ... };\n    }\n}"
+            },
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 12,
+      "title": "Identity and inverse",
+      "durationSeconds": 35,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Arrow from `exists InverseFunction` to the structure’s `def` block.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-12-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "The book defines the identity map id_S and then an inverse g with g ∘ f and f ∘ g both identity.\nTurn-Lang splits this cleanly.\n`IdentityFunction` — id_S sends s to itself.\nOn `Function`, the `invertible` property just says there exists an `InverseFunction`.\nThe actual composition laws live inside `InverseFunction` — that structure is the witness type the property asks for.",
+            "durationSeconds": 35,
+            "visualNotes": "Arrow from `exists InverseFunction` to the structure’s `def` block.\nturn-ide track: tracks/scene-12-ide.json",
+            "turn": {
+              "code": "@notation(\"id\"_{S})\nstructure IdentityFunction<S: Set<Any>>: Function<S, S> { ... }\n\n        invertible: Prop {\n            |- exists InverseFunction<self>\n        }\n\nstructure InverseFunction<A B: Set<Any>, f: Function<A, B>>: Function<B, A> {\n    laws {\n        def {\n            |- {\n                Composition<self, f> = IdentityFunction<B>;\n                Composition<f, self> = IdentityFunction<A>;\n            }\n        }\n    }\n}"
+            },
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 13,
+      "title": "Invertible iff bijective",
+      "durationSeconds": 24,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Scroll proof header only; share link for full walkthrough.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-13-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Next theorem in the book: a map is invertible if and only if it is one-to-one and onto.\nTurn-Lang: `\"invertible mapping must be injective\"` — invertible iff injective and surjective.\nThe proof is in the file; we will not read every tactic in this video.",
+            "durationSeconds": 24,
+            "visualNotes": "Scroll proof header only; share link for full walkthrough.\nturn-ide track: tracks/scene-13-ide.json",
+            "turn": {
+              "code": "theorem \"invertible mapping must be injective\" {\n    forall f: Function\n    |- (invertible)f <-> (injective, surjective)f\n} proof { ... }"
+            },
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 14,
+      "title": "Equivalence Relations and Partitions",
+      "durationSeconds": 22,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Clear transition — different subsection, not “the next chunk in the file.”",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "`sets.xml` subsection `sets-subsection-equivalence-relations`. Turn file on `EquivalenceRelation`."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Now we open the second subsection: *Equivalence Relations and Partitions*.\nSame turn file, new topic — relations on one set X, not maps between two sets.\nWe follow the book again and skip fraction, derivative, and matrix examples.",
+            "durationSeconds": 22,
+            "visualNotes": "`sets.xml` subsection `sets-subsection-equivalence-relations`. Turn file on `EquivalenceRelation`.\nClear transition — different subsection, not “the next chunk in the file.”",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 15,
+      "title": "Equivalence relation",
+      "durationSeconds": 24,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Match the book’s bullet list on screen.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-15-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "The book defines an equivalence relation on X: reflexive, symmetric, transitive.\nTurn-Lang: `EquivalenceRelation` refines `Relation<X, X>` — always one ambient set, pairs from X × X.\nThe `basic` law packages all three properties in one block.",
+            "durationSeconds": 24,
+            "visualNotes": "Match the book’s bullet list on screen.\nturn-ide track: tracks/scene-15-ide.json",
+            "turn": {
+              "code": "structure EquivalenceRelation<X: Set<Any>>: Relation<X, X> {\n    laws {\n        basic {\n            forall x y z in X\n            |- {\n                reflexive: [x x] in self;\n                symmetric: [x y] in self -> [y x] in self;\n                transitive: ([x y] in self and [y z] in self) -> [x z] in self;\n            }\n        },"
+            },
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 16,
+      "title": "Examples we defer",
+      "durationSeconds": 20,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Mention {[0],[1],[2]} mod 3 verbally.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Cross out calculus and matrix examples in XML. Point at `02_integers` in library tree."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Equivalent fractions, derivatives mod constants, circles in ℝ² — good motivation in the book.\nCongruence mod n needs integers — that is chapter 2 in a later video.\nFor this video we need the definitions and Theorem 1.25.",
+            "durationSeconds": 20,
+            "visualNotes": "Cross out calculus and matrix examples in XML. Point at `02_integers` in library tree.\nMention {[0],[1],[2]} mod 3 verbally.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 17,
+      "title": "Partition",
+      "durationSeconds": 29,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Expand disjoint and cover bodies briefly.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-17-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "In the book, partition comes next in the same paragraph as equivalence class.\nA partition of X is a family of nonempty subsets that are pairwise disjoint and cover X.\nTurn-Lang: structure `Partition` — first the container says each cell C is nonempty and a subset of X, then laws `disjoint` and `cover`.",
+            "durationSeconds": 29,
+            "visualNotes": "Expand disjoint and cover bodies briefly.\nturn-ide track: tracks/scene-17-ide.json",
+            "turn": {
+              "code": "structure[\n    C: Set<Any> where {\n        |- C != EmptySet;\n        |- Subset(C, X)\n    }\n] Partition<X: Set<Any>>: Set<Set<Any>> {\n    laws {\n        disjoint { ... }\n        cover { ... }\n    }\n}"
+            },
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 18,
+      "title": "Equivalence class",
+      "durationSeconds": 18,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Book’s [x] notation on screen.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-18-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Right after partition, the book defines the equivalence class of x: all y with y related to x.\nTurn-Lang: structure `EquivalenceClass` with laws `def`, `from_relation`, and `subset_of_X`.",
+            "durationSeconds": 18,
+            "visualNotes": "Book’s [x] notation on screen.\nturn-ide track: tracks/scene-18-ide.json",
+            "turn": {
+              "code": "structure EquivalenceClass<\n    X: Set<Any>,\n    E: EquivalenceRelation<X>,\n    x in X,\n>: Set<Any> {\n    laws {\n        def { forall y in self |- [x y] in E; }\n        from_relation { forall y in X |- [x y] in E -> y in self; }\n        subset_of_X { forall y: Any |- (y in self) -> (y in X); }\n    }\n}"
+            },
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 19,
+      "title": "Lemma before Theorem 1.25",
+      "durationSeconds": 13,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Do not prove live.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-19-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Small supporting lemma in our file: members of an equivalence class lie in X.\nTheorem 1.25’s proof calls this when discharging subset obligations.",
+            "durationSeconds": 13,
+            "visualNotes": "Do not prove live.\nturn-ide track: tracks/scene-19-ide.json",
+            "turn": {
+              "code": "theorem \"equivalence class members lie in the ambient set\" { ... }"
+            },
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 20,
+      "title": "Theorem 1.25",
+      "durationSeconds": 29,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Proof-slide branch map if available. Teaser: separate video on `witness confirm`.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-20-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "This is the capstone of section 1.2 — Theorem 1.25.\nStatement: from equivalence relation E, build the family of classes, then there exists a partition on X with those cells.\nBird’s-eye on our proof: `witness confirm` closes that existence and splits obligations C.1, C.2, cover, disjoint — named from the Partition definition.",
+            "durationSeconds": 29,
+            "visualNotes": "Proof-slide branch map if available. Teaser: separate video on `witness confirm`.\nturn-ide track: tracks/scene-20-ide.json",
+            "turn": {
+              "code": "theorem \"equivalence classes form a partition (Judson Theorem 1.25 forward)\" {\n    forall X: Set<Any>,\n    forall E: EquivalenceRelation<X>,\n    exists Classes: Set<Set<Any>> where { ... },\n    |- exists Partition<X>[..Classes]\n} proof {\n    witness confirm {\n        at goal {\n            C.1 { ... }\n            C.2 { ... }\n            cover { ... }\n            disjoint { ... }\n        }\n    }\n}"
+            },
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 21,
+      "title": "Close",
+      "durationSeconds": 24,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Relief beat. No recap of skipped topics.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "File tab `02_sets_and_equivalence_relations.turn` with outline checkmarks. End card: turn-lang.com / share URL."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "That is chapter 1 section 1.2 in one file — from Cartesian products through partition.\nIn video 1.3 we tackle the reading questions and see if the formalization holds up.\nLink to this `.turn` file is in the description — open it, click through the proofs, and tell me which theorem you want next.",
+            "durationSeconds": 24,
+            "visualNotes": "File tab `02_sets_and_equivalence_relations.turn` with outline checkmarks. End card: turn-lang.com / share URL.\nRelief beat. No recap of skipped topics.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    }
+  ]
+}

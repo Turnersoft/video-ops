@@ -1,0 +1,114 @@
+{
+  "version": 4,
+  "scriptId": "pitfalls-04-well-defined-one-input-two-outputs",
+  "title": "pitfalls_04_well_defined_one_input_two_outputs",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "The experience",
+      "durationSeconds": 39,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Use 1/2 = 2/4 only as the picture, not as a rational-number lecture. Industry viewers: same beat for tabulated material data.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Whiteboard: same input via two labels → two outputs (classic half vs two-fourths story, no jargon)."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Hi friends, welcome back.\nImagine I give you a rule and call it a function.\nYou test it on one example, and it gives a nice answer.\nBut then the same input shows up in a different disguise, and the rule gives a different answer.\nA calculator would not know which answer to trust.\nA proof checker should not know either.\nThis is why “well-defined” is not a teacher being picky — it is the gate before the word function is even legal.",
+            "durationSeconds": 39,
+            "visualNotes": "Whiteboard: same input via two labels → two outputs (classic half vs two-fourths story, no jargon).\nUse 1/2 = 2/4 only as the picture, not as a rational-number lecture. Industry viewers: same beat for tabulated material data.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "title": "The Turn wedge",
+      "durationSeconds": 24,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Side-by-side trap and property.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-2-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Turn-Lang does not bury that in a footnote.\nOn `Relation` there is a named property: for each input, there exists a unique output in the relation.\nOnly after that passes do we refine to `Function`.\nThe checker can reject the rule before you waste a proof.",
+            "durationSeconds": 24,
+            "visualNotes": "Outline: `Relation` → `well_defined` → `Function` refines relation.\nSide-by-side trap and property.\nturn-ide track: tracks/scene-2-ide.json",
+            "turn": {
+              "code": "well_defined: Prop {\n            forall a in A,\n            exists unique b in B\n            |- { [a b] in self; }\n        }",
+              "highlights": [
+                "well_defined: Prop",
+                "exists unique b in B"
+              ]
+            },
+            "focus": "turn",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "title": "Work beat and close",
+      "durationSeconds": 19,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "L5 one sentence; short subscribe CTA.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Return to `well_defined` block."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Same class of bug in simulation — two strain paths that should be the same state returning different stresses.\nFormal methods make you name the obligation up front.\nLink to the full formalization in the description.",
+            "durationSeconds": 19,
+            "visualNotes": "Return to `well_defined` block.\nL5 one sentence; short subscribe CTA.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    }
+  ]
+}

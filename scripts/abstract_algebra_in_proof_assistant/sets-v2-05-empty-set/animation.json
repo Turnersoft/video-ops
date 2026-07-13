@@ -1,0 +1,172 @@
+{
+  "version": 4,
+  "scriptId": "sets-v2-05-empty-set",
+  "title": "05_empty_set",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "cover": {
+      "layers": {
+        "episodeTitle": {
+          "leftPct": 11.42090512152949,
+          "topPct": 57.96138250627534,
+          "widthPct": 70,
+          "heightPct": 38
+        }
+      },
+      "episodeTitleStyle": {
+        "strokeWidth": 24
+      }
+    }
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "Textbook anchor",
+      "durationSeconds": 19,
+      "layout": "math-focus",
+      "burnCaptions": true,
+      "visualNotes": "math-focus",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "math-board",
+        "heading": "Judson §1.2 — Empty set",
+        "reveal": "sequential",
+        "beats": [
+          {
+            "atSeconds": 0,
+            "label": "Textbook",
+            "detail": "Judson §1.2 Sets"
+          },
+          {
+            "atSeconds": 4,
+            "label": "Definition",
+            "detail": "The empty set ∅ is the set with no elements."
+          }
+        ]
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Open the book. Judson Abstract Algebra, section one point two, Sets.",
+            "durationSeconds": 6,
+            "visualNotes": "math-focus; textbook beat only.\nmath-board: Judson §1.2 — Empty set\n- Textbook: Judson §1.2 Sets\n- Definition: The empty set ∅ is the set with no elements.",
+            "allowScriptChange": false
+          },
+          {
+            "say": "The empty set ∅ is the set with no elements.",
+            "durationSeconds": 5,
+            "allowScriptChange": false
+          },
+          {
+            "say": "This is the bold definition we are formalizing today, which is one clip, one idea.",
+            "durationSeconds": 8,
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "title": "Intuition",
+      "durationSeconds": 21,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Film presenter",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "chapter-beat",
+        "label": "Judson §1.2 — Empty set",
+        "detail": "EmptySet is more specific than Set — inheritance, not the reverse.",
+        "emphasis": [
+          "Empty set"
+        ]
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "EmptySet is more specific than Set, which means inheritance, not the reverse.",
+            "durationSeconds": 7,
+            "visualNotes": "Film presenter; beats on board.\nlayer: chapter-beat",
+            "allowScriptChange": false
+          },
+          {
+            "say": "No extra fields, only a law that says nothing is a member.",
+            "durationSeconds": 6,
+            "allowScriptChange": false
+          },
+          {
+            "say": "We use the structure name EmptySet directly, with no generic instantiation.",
+            "durationSeconds": 8,
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "title": "Lean vs Turn",
+      "durationSeconds": 18,
+      "layout": "dual-panel",
+      "burnCaptions": true,
+      "visualNotes": "Compare layer",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "legacyCompareLayer": {
+        "type": "compare",
+        "turnTrack": "tracks/scene-compare-turn.json",
+        "leanTrack": "tracks/scene-compare-lean4.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Textbook: ∅ has no elements.",
+            "durationSeconds": 4,
+            "visualNotes": "Compare layer; caption beats on both sides.\ncompare leanTrack: tracks/scene-compare-lean4.json\ncompare turnTrack: tracks/scene-compare-turn.json",
+            "allowScriptChange": false
+          },
+          {
+            "say": "Turn: EmptySet inherits Set; no_members law.",
+            "durationSeconds": 5,
+            "allowScriptChange": false
+          },
+          {
+            "say": "Lean: not_mem_empty for any x.",
+            "durationSeconds": 4,
+            "allowScriptChange": false
+          },
+          {
+            "say": "Turn makes the law block the pedagogical anchor.",
+            "durationSeconds": 5,
+            "allowScriptChange": false
+          }
+        ]
+      }
+    }
+  ]
+}

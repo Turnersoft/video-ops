@@ -1,0 +1,222 @@
+{
+  "mode": "gap-retake-only",
+  "maxPauseSeconds": 0.5,
+  "sourceVideo": "/Users/johndoe/Downloads/IMG_7405.mov",
+  "outputVideo": "/Users/johndoe/Downloads/IMG_7405-gap-retake-only.mp4",
+  "transcript": "/Users/johndoe/.cache/declip/transcripts/467dcdd64e111d2a.json",
+  "rawDurationSeconds": 559.508333,
+  "outputDurationSeconds": 432.315495,
+  "removedSeconds": 127.193,
+  "cutCount": 30,
+  "retakeCutCount": 2,
+  "cuts": [
+    {
+      "start": 21.27,
+      "end": 30.61,
+      "kind": "pause",
+      "gap": 9.84,
+      "reason": "compress >0.5s pause between 'it.' and 'So'"
+    },
+    {
+      "start": 48.93,
+      "end": 56.489999999999995,
+      "kind": "pause",
+      "gap": 8.059999999999995,
+      "reason": "compress >0.5s pause between 'here.' and 'So'"
+    },
+    {
+      "start": 70.85,
+      "end": 71.07,
+      "kind": "pause",
+      "gap": 0.7199999999999989,
+      "reason": "compress >0.5s pause between 'notation.' and 'But'"
+    },
+    {
+      "start": 86.33,
+      "end": 91.97,
+      "kind": "pause",
+      "gap": 6.140000000000001,
+      "reason": "compress >0.5s pause between 'sign.' and 'And'"
+    },
+    {
+      "start": 99.27,
+      "end": 99.53,
+      "kind": "pause",
+      "gap": 0.7600000000000051,
+      "reason": "compress >0.5s pause between 'sets,' and 'we'"
+    },
+    {
+      "start": 121.75,
+      "end": 122.47,
+      "kind": "pause",
+      "gap": 1.2199999999999989,
+      "reason": "compress >0.5s pause between 'operator.' and 'So'"
+    },
+    {
+      "start": 127.57,
+      "end": 135.13,
+      "kind": "pause",
+      "gap": 8.060000000000002,
+      "reason": "compress >0.5s pause between 'job?' and 'The'"
+    },
+    {
+      "start": 183.35,
+      "end": 183.45,
+      "kind": "pause",
+      "gap": 0.5999999999999943,
+      "reason": "compress >0.5s pause between 'LT.' and 'And'"
+    },
+    {
+      "start": 195.81,
+      "end": 212.05,
+      "kind": "pause",
+      "gap": 16.74000000000001,
+      "reason": "compress >0.5s pause between 'videos.' and 'And'"
+    },
+    {
+      "start": 217.09,
+      "end": 217.17000000000002,
+      "kind": "pause",
+      "gap": 0.5800000000000125,
+      "reason": "compress >0.5s pause between 'hierarchy,' and 'here'"
+    },
+    {
+      "start": 234.69,
+      "end": 252.05,
+      "kind": "pause",
+      "gap": 17.860000000000014,
+      "reason": "compress >0.5s pause between 'yet.' and 'So'"
+    },
+    {
+      "start": 271.79,
+      "end": 272.19,
+      "kind": "pause",
+      "gap": 0.8999999999999773,
+      "reason": "compress >0.5s pause between 'symbol.' and 'And'"
+    },
+    {
+      "start": 278.17,
+      "end": 278.23,
+      "kind": "pause",
+      "gap": 0.5600000000000023,
+      "reason": "compress >0.5s pause between 'video.' and 'But'"
+    },
+    {
+      "start": 282.93,
+      "end": 283.37,
+      "kind": "pause",
+      "gap": 0.9399999999999977,
+      "reason": "compress >0.5s pause between 'lastly,' and 'has'"
+    },
+    {
+      "start": 288.13,
+      "end": 288.35,
+      "kind": "pause",
+      "gap": 0.7200000000000273,
+      "reason": "compress >0.5s pause between 'than.' and 'But'"
+    },
+    {
+      "start": 302.33,
+      "end": 309.71,
+      "kind": "pause",
+      "gap": 7.8799999999999955,
+      "reason": "compress >0.5s pause between 'prettier.' and 'Because'"
+    },
+    {
+      "start": 315.3,
+      "end": 318.12,
+      "kind": "retake",
+      "reason": "declip retake detector: repeated attempt, 60% match"
+    },
+    {
+      "start": 318.42,
+      "end": 321.78,
+      "kind": "retake",
+      "reason": "declip retake detector: repeated attempt, 94% match"
+    },
+    {
+      "start": 329.17,
+      "end": 329.35,
+      "kind": "pause",
+      "gap": 0.6800000000000068,
+      "reason": "compress >0.5s pause between 'articulated.' and 'So'"
+    },
+    {
+      "start": 344.57,
+      "end": 350.61,
+      "kind": "pause",
+      "gap": 6.5400000000000205,
+      "reason": "compress >0.5s pause between 'implementation.' and 'So'"
+    },
+    {
+      "start": 373.23,
+      "end": 373.49,
+      "kind": "pause",
+      "gap": 0.7599999999999909,
+      "reason": "compress >0.5s pause between 'operation.' and 'So'"
+    },
+    {
+      "start": 377.99,
+      "end": 386.61,
+      "kind": "pause",
+      "gap": 9.120000000000005,
+      "reason": "compress >0.5s pause between 'emerges.' and 'So'"
+    },
+    {
+      "start": 423.89,
+      "end": 430.73,
+      "kind": "pause",
+      "gap": 7.340000000000032,
+      "reason": "compress >0.5s pause between 'else.' and 'So'"
+    },
+    {
+      "start": 438.43,
+      "end": 442.46999999999997,
+      "kind": "pause",
+      "gap": 4.539999999999964,
+      "reason": "compress >0.5s pause between 'that.' and 'So'"
+    },
+    {
+      "start": 458.67,
+      "end": 462.85,
+      "kind": "pause",
+      "gap": 4.680000000000007,
+      "reason": "compress >0.5s pause between 'contain.' and 'So'"
+    },
+    {
+      "start": 480.61,
+      "end": 481.43,
+      "kind": "pause",
+      "gap": 1.3199999999999932,
+      "reason": "compress >0.5s pause between 'systematically.' and 'So'"
+    },
+    {
+      "start": 513.11,
+      "end": 513.37,
+      "kind": "pause",
+      "gap": 0.7599999999999909,
+      "reason": "compress >0.5s pause between 'block.' and 'And'"
+    },
+    {
+      "start": 516.37,
+      "end": 516.83,
+      "kind": "pause",
+      "gap": 0.9600000000000364,
+      "reason": "compress >0.5s pause between 'there.' and 'But'"
+    },
+    {
+      "start": 534.19,
+      "end": 547.09,
+      "kind": "pause",
+      "gap": 13.399999999999977,
+      "reason": "compress >0.5s pause between 'assistant.' and 'So'"
+    },
+    {
+      "start": 550.09,
+      "end": 553.79,
+      "kind": "pause",
+      "gap": 4.199999999999932,
+      "reason": "compress >0.5s pause between 'time.' and 'The'"
+    }
+  ]
+}

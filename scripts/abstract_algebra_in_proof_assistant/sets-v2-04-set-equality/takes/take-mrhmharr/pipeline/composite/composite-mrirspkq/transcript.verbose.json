@@ -1,0 +1,4791 @@
+{
+  "segments": [
+    {
+      "start": 0.27,
+      "end": 3.57,
+      "text": "Hi friends, welcome back. The best way to formalize the math concept is to"
+    },
+    {
+      "start": 4.55,
+      "end": 9.67,
+      "text": "The best way to understand the math concept is to formalize it the day we formalize set equality and a textbook"
+    },
+    {
+      "start": 9.67,
+      "end": 13.99,
+      "text": "Definition looks really simple to set IE core when each one is a subset of the other"
+    },
+    {
+      "start": 14.45,
+      "end": 20.19,
+      "text": "But if we want to formalize this statement, we still need to understand what you cosine actually means in sine proof system"
+    },
+    {
+      "start": 20.19,
+      "end": 22.37,
+      "text": "And this is more complicated than I think"
+    },
+    {
+      "start": 27.4,
+      "end": 31.1,
+      "text": "So you call doesn't always mean being the same atomically"
+    },
+    {
+      "start": 31.1,
+      "end": 35.12,
+      "text": "So one plus one equals two is not the same"
+    },
+    {
+      "start": 35.12,
+      "end": 39.88,
+      "text": "Automically because they have different expression literally, but they are methodically the same"
+    },
+    {
+      "start": 39.88,
+      "end": 43.4,
+      "text": "And this is the kind of equality that we want to prove"
+    },
+    {
+      "start": 43.4,
+      "end": 49.54,
+      "text": "This is the only meaningful equality and there's another equality, which is one equal one things like"
+    },
+    {
+      "start": 49.54,
+      "end": 53.92,
+      "text": "Because the left hand side right hand side are the same and these are not worth proving"
+    },
+    {
+      "start": 53.92,
+      "end": 60.42,
+      "text": "But they're still very useful because they show up at the end of every proof for this meaningful equality"
+    },
+    {
+      "start": 61.1,
+      "end": 64.08,
+      "text": "It just just to close the proof"
+    },
+    {
+      "start": 64.08,
+      "end": 74.77,
+      "text": "So in lean we can write A equal to B and"
+    },
+    {
+      "start": 75.77,
+      "end": 83.37,
+      "text": "Notice that we do not implement the equal equality type class first because the quality signs built in notation for value"
+    },
+    {
+      "start": 83.37,
+      "end": 88.91,
+      "text": "Just like other problem in languages, but there are other, but there are two different kind of equality here"
+    },
+    {
+      "start": 88.91,
+      "end": 93.91,
+      "text": "Definition equalities and propositional equalities the former is just"
+    },
+    {
+      "start": 94.57,
+      "end": 99.43,
+      "text": "In a predefined equalities that the computers can still check automatically"
+    },
+    {
+      "start": 99.43,
+      "end": 101.43,
+      "text": "Even though two sides are different"
+    },
+    {
+      "start": 101.43,
+      "end": 106.19,
+      "text": "Proposition just means that something you need to prove, but after you prove there the"
+    },
+    {
+      "start": 107.79,
+      "end": 111.37,
+      "text": "Proof engine can still apply it as if it is a"
+    },
+    {
+      "start": 112.21,
+      "end": 113.33,
+      "text": "Computer rule"
+    },
+    {
+      "start": 113.33,
+      "end": 135.56,
+      "text": "So now the question is now the question is when can we even write the equal sign in lean so both sides must be exactly the same type"
+    },
+    {
+      "start": 136.64,
+      "end": 137.96,
+      "text": "So two natural numbers"
+    },
+    {
+      "start": 138.7,
+      "end": 143.9,
+      "text": "So two as a natural number and two as an integer cannot be compared directly"
+    },
+    {
+      "start": 143.9,
+      "end": 147.58,
+      "text": "They look like the same number to us, but lean to see two different types"
+    },
+    {
+      "start": 147.58,
+      "end": 152.5,
+      "text": "So we first cast the natural number into integer and then equality makes sense"
+    },
+    {
+      "start": 152.5,
+      "end": 157.96,
+      "text": "So now set A and set B have types set alpha so that they can compare directly and"
+    },
+    {
+      "start": 158.82,
+      "end": 162.1,
+      "text": "Lean defines it using this very simple expression of"
+    },
+    {
+      "start": 162.1,
+      "end": 170.6,
+      "text": "Of subset that we have before and it allows you to convert two mutual subset expressions into"
+    },
+    {
+      "start": 170.6,
+      "end": 175.18,
+      "text": "You can even it implies an equality of a equals B"
+    },
+    {
+      "start": 178.68,
+      "end": 180.58,
+      "text": "So if x belongs to a"
+    },
+    {
+      "start": 181.78,
+      "end": 189.82,
+      "text": "When x belongs to be for every x then the two set are equal in now and in our textbook. This is exactly what the mutual subset is"
+    },
+    {
+      "start": 191.04,
+      "end": 194.02,
+      "text": "So now turn lang it makes a different choice"
+    },
+    {
+      "start": 194.02,
+      "end": 200.32,
+      "text": "We do not want to use the equals sign everywhere and suddenly assume that every structure have the same meaning of equality"
+    },
+    {
+      "start": 200.96,
+      "end": 203.9,
+      "text": "Let's look at the end notations index here"
+    },
+    {
+      "start": 203.9,
+      "end": 209.3,
+      "text": "It binds the visible a equals to be to a name the relation called set equal"
+    },
+    {
+      "start": 209.3,
+      "end": 213.8,
+      "text": "That means the equal sign is only the notation in order to use this"
+    },
+    {
+      "start": 213.8,
+      "end": 219.84,
+      "text": "Set equal you have to call the set equal set equal a relation with the brackets containing a and b"
+    },
+    {
+      "start": 223.2,
+      "end": 228.66,
+      "text": "And the body of this relation is just what we have is just a mb"
+    },
+    {
+      "start": 229.3,
+      "end": 238.9,
+      "text": "Subset to each other and there's two statements psi are very clear and next if we compare a function equals"
+    },
+    {
+      "start": 238.9,
+      "end": 241.6,
+      "text": "It has the same kind of problems though, so"
+    },
+    {
+      "start": 242.54,
+      "end": 248.48,
+      "text": "The two functions equal they cannot be exactly the same and they make a different body"
+    },
+    {
+      "start": 249.66,
+      "end": 252.54,
+      "text": "And they came they may return actually different types"
+    },
+    {
+      "start": 252.54,
+      "end": 258.68,
+      "text": "They want me to return natural number when we return integer even though the the value are the same"
+    },
+    {
+      "start": 260.89,
+      "end": 264.17,
+      "text": "So on the lean side it uses funk dot e xt"
+    },
+    {
+      "start": 264.81,
+      "end": 266.71,
+      "text": "Which turns which which is another"
+    },
+    {
+      "start": 268.07,
+      "end": 272.73,
+      "text": "Theorem attached to funk that tells you that you can just rewrite"
+    },
+    {
+      "start": 274.75,
+      "end": 279.31,
+      "text": "Fx equal to gx to f equals g for our four x there"
+    },
+    {
+      "start": 279.31,
+      "end": 286.19,
+      "text": "So on the turnlens side we name the relation function equal and again the visible equal sign is attached by notation and"
+    },
+    {
+      "start": 286.93,
+      "end": 290.63,
+      "text": "So the notation tells us exactly what the observation must agree"
+    },
+    {
+      "start": 292.03,
+      "end": 293.93,
+      "text": "Which is on every output"
+    },
+    {
+      "start": 294.83,
+      "end": 303.24,
+      "text": "Every input so finally let's move one level higher in category theory"
+    },
+    {
+      "start": 303.24,
+      "end": 307.96,
+      "text": "We have to be very careful not to say to object are literally equal"
+    },
+    {
+      "start": 308.52,
+      "end": 316.56,
+      "text": "When you know what we really mean is isomorphic for example two groups can use the complete different underlying elements"
+    },
+    {
+      "start": 317.2,
+      "end": 319.48,
+      "text": "So as raw data's they are not equal"
+    },
+    {
+      "start": 319.48,
+      "end": 325.24,
+      "text": "But if there is an isomorphism that preserve multiplication identity in inverse"
+    },
+    {
+      "start": 325.84,
+      "end": 330.54,
+      "text": "Then from the group theory perspective they have the same structure and that connects back to everything"
+    },
+    {
+      "start": 330.54,
+      "end": 333.44,
+      "text": "We just did for set we compare numbers"
+    },
+    {
+      "start": 334.08,
+      "end": 335.6,
+      "text": "Function will compare outputs"
+    },
+    {
+      "start": 335.6,
+      "end": 342.34,
+      "text": "For structured objects we compare structure preserving maps and in higher category theory"
+    },
+    {
+      "start": 342.34,
+      "end": 349.84,
+      "text": "We even those maps can have higher comparisons. So in in one of the type theory equality proves behaves like"
+    },
+    {
+      "start": 349.84,
+      "end": 356.86,
+      "text": "Paps so the real question is is not only are those two things you call the real question is"
+    },
+    {
+      "start": 357.44,
+      "end": 361,
+      "text": "At which level of mathematics should we treat them as the same?"
+    },
+    {
+      "start": 361,
+      "end": 366.24,
+      "text": "So there is a real lessons of equality. So I hope you enjoyed this video. See you next time"
+    }
+  ],
+  "words": [
+    {
+      "word": "Hi",
+      "start": 0.27,
+      "end": 0.73
+    },
+    {
+      "word": "friends,",
+      "start": 0.73,
+      "end": 0.91
+    },
+    {
+      "word": "welcome",
+      "start": 1.03,
+      "end": 1.13
+    },
+    {
+      "word": "back.",
+      "start": 1.13,
+      "end": 1.43
+    },
+    {
+      "word": "The",
+      "start": 1.77,
+      "end": 1.79
+    },
+    {
+      "word": "best",
+      "start": 1.79,
+      "end": 1.99
+    },
+    {
+      "word": "way",
+      "start": 1.99,
+      "end": 2.09
+    },
+    {
+      "word": "to",
+      "start": 2.09,
+      "end": 2.19
+    },
+    {
+      "word": "formalize",
+      "start": 2.19,
+      "end": 2.59
+    },
+    {
+      "word": "the",
+      "start": 2.59,
+      "end": 2.71
+    },
+    {
+      "word": "math",
+      "start": 2.71,
+      "end": 2.83
+    },
+    {
+      "word": "concept",
+      "start": 2.83,
+      "end": 3.21
+    },
+    {
+      "word": "is",
+      "start": 3.21,
+      "end": 3.43
+    },
+    {
+      "word": "to",
+      "start": 3.43,
+      "end": 3.57
+    },
+    {
+      "word": "The",
+      "start": 4.55,
+      "end": 4.99
+    },
+    {
+      "word": "best",
+      "start": 4.99,
+      "end": 5.15
+    },
+    {
+      "word": "way",
+      "start": 5.15,
+      "end": 5.31
+    },
+    {
+      "word": "to",
+      "start": 5.31,
+      "end": 5.41
+    },
+    {
+      "word": "understand",
+      "start": 5.41,
+      "end": 5.75
+    },
+    {
+      "word": "the",
+      "start": 5.75,
+      "end": 5.87
+    },
+    {
+      "word": "math",
+      "start": 5.87,
+      "end": 5.99
+    },
+    {
+      "word": "concept",
+      "start": 5.99,
+      "end": 6.39
+    },
+    {
+      "word": "is",
+      "start": 6.39,
+      "end": 6.57
+    },
+    {
+      "word": "to",
+      "start": 6.57,
+      "end": 6.67
+    },
+    {
+      "word": "formalize",
+      "start": 6.67,
+      "end": 7.11
+    },
+    {
+      "word": "it",
+      "start": 7.11,
+      "end": 7.35
+    },
+    {
+      "word": "the",
+      "start": 7.35,
+      "end": 7.79
+    },
+    {
+      "word": "day",
+      "start": 7.79,
+      "end": 7.91
+    },
+    {
+      "word": "we",
+      "start": 7.91,
+      "end": 7.97
+    },
+    {
+      "word": "formalize",
+      "start": 7.97,
+      "end": 8.35
+    },
+    {
+      "word": "set",
+      "start": 8.35,
+      "end": 8.57
+    },
+    {
+      "word": "equality",
+      "start": 8.57,
+      "end": 8.91
+    },
+    {
+      "word": "and",
+      "start": 8.91,
+      "end": 9.39
+    },
+    {
+      "word": "a",
+      "start": 9.39,
+      "end": 9.45
+    },
+    {
+      "word": "textbook",
+      "start": 9.45,
+      "end": 9.67
+    },
+    {
+      "word": "Definition",
+      "start": 9.67,
+      "end": 10.03
+    },
+    {
+      "word": "looks",
+      "start": 10.03,
+      "end": 10.21
+    },
+    {
+      "word": "really",
+      "start": 10.21,
+      "end": 10.41
+    },
+    {
+      "word": "simple",
+      "start": 10.41,
+      "end": 10.85
+    },
+    {
+      "word": "to",
+      "start": 10.85,
+      "end": 11.43
+    },
+    {
+      "word": "set",
+      "start": 11.43,
+      "end": 11.65
+    },
+    {
+      "word": "IE",
+      "start": 11.65,
+      "end": 11.99
+    },
+    {
+      "word": "core",
+      "start": 11.99,
+      "end": 12.17
+    },
+    {
+      "word": "when",
+      "start": 12.17,
+      "end": 12.43
+    },
+    {
+      "word": "each",
+      "start": 12.43,
+      "end": 12.71
+    },
+    {
+      "word": "one",
+      "start": 12.71,
+      "end": 12.89
+    },
+    {
+      "word": "is",
+      "start": 12.89,
+      "end": 13.03
+    },
+    {
+      "word": "a",
+      "start": 13.03,
+      "end": 13.11
+    },
+    {
+      "word": "subset",
+      "start": 13.11,
+      "end": 13.35
+    },
+    {
+      "word": "of",
+      "start": 13.35,
+      "end": 13.59
+    },
+    {
+      "word": "the",
+      "start": 13.59,
+      "end": 13.71
+    },
+    {
+      "word": "other",
+      "start": 13.71,
+      "end": 13.99
+    },
+    {
+      "word": "But",
+      "start": 14.45,
+      "end": 14.89
+    },
+    {
+      "word": "if",
+      "start": 14.89,
+      "end": 15.07
+    },
+    {
+      "word": "we",
+      "start": 15.07,
+      "end": 15.17
+    },
+    {
+      "word": "want",
+      "start": 15.17,
+      "end": 15.35
+    },
+    {
+      "word": "to",
+      "start": 15.35,
+      "end": 15.45
+    },
+    {
+      "word": "formalize",
+      "start": 15.45,
+      "end": 15.97
+    },
+    {
+      "word": "this",
+      "start": 15.97,
+      "end": 16.17
+    },
+    {
+      "word": "statement,",
+      "start": 16.17,
+      "end": 16.55
+    },
+    {
+      "word": "we",
+      "start": 16.69,
+      "end": 16.77
+    },
+    {
+      "word": "still",
+      "start": 16.77,
+      "end": 16.97
+    },
+    {
+      "word": "need",
+      "start": 16.97,
+      "end": 17.17
+    },
+    {
+      "word": "to",
+      "start": 17.17,
+      "end": 17.31
+    },
+    {
+      "word": "understand",
+      "start": 17.31,
+      "end": 17.77
+    },
+    {
+      "word": "what",
+      "start": 17.77,
+      "end": 18.09
+    },
+    {
+      "word": "you",
+      "start": 18.09,
+      "end": 18.33
+    },
+    {
+      "word": "cosine",
+      "start": 18.33,
+      "end": 18.67
+    },
+    {
+      "word": "actually",
+      "start": 18.67,
+      "end": 19.09
+    },
+    {
+      "word": "means",
+      "start": 19.09,
+      "end": 19.37
+    },
+    {
+      "word": "in",
+      "start": 19.37,
+      "end": 19.53
+    },
+    {
+      "word": "sine",
+      "start": 19.53,
+      "end": 19.69
+    },
+    {
+      "word": "proof",
+      "start": 19.69,
+      "end": 19.89
+    },
+    {
+      "word": "system",
+      "start": 19.89,
+      "end": 20.19
+    },
+    {
+      "word": "And",
+      "start": 20.19,
+      "end": 20.77
+    },
+    {
+      "word": "this",
+      "start": 20.77,
+      "end": 20.89
+    },
+    {
+      "word": "is",
+      "start": 20.89,
+      "end": 20.97
+    },
+    {
+      "word": "more",
+      "start": 20.97,
+      "end": 21.17
+    },
+    {
+      "word": "complicated",
+      "start": 21.17,
+      "end": 21.59
+    },
+    {
+      "word": "than",
+      "start": 21.59,
+      "end": 21.83
+    },
+    {
+      "word": "I",
+      "start": 21.83,
+      "end": 22.05
+    },
+    {
+      "word": "think",
+      "start": 22.05,
+      "end": 22.37
+    },
+    {
+      "word": "So",
+      "start": 27.4,
+      "end": 27.84
+    },
+    {
+      "word": "you",
+      "start": 27.84,
+      "end": 28.28
+    },
+    {
+      "word": "call",
+      "start": 28.28,
+      "end": 28.52
+    },
+    {
+      "word": "doesn't",
+      "start": 28.52,
+      "end": 28.8
+    },
+    {
+      "word": "always",
+      "start": 28.8,
+      "end": 29.14
+    },
+    {
+      "word": "mean",
+      "start": 29.14,
+      "end": 29.52
+    },
+    {
+      "word": "being",
+      "start": 29.52,
+      "end": 29.96
+    },
+    {
+      "word": "the",
+      "start": 29.96,
+      "end": 30.12
+    },
+    {
+      "word": "same",
+      "start": 30.12,
+      "end": 30.4
+    },
+    {
+      "word": "atomically",
+      "start": 30.4,
+      "end": 31.1
+    },
+    {
+      "word": "So",
+      "start": 31.1,
+      "end": 31.8
+    },
+    {
+      "word": "one",
+      "start": 31.8,
+      "end": 32.16
+    },
+    {
+      "word": "plus",
+      "start": 32.16,
+      "end": 32.46
+    },
+    {
+      "word": "one",
+      "start": 32.46,
+      "end": 32.68
+    },
+    {
+      "word": "equals",
+      "start": 32.68,
+      "end": 32.96
+    },
+    {
+      "word": "two",
+      "start": 32.96,
+      "end": 33.34
+    },
+    {
+      "word": "is",
+      "start": 33.34,
+      "end": 34.36
+    },
+    {
+      "word": "not",
+      "start": 34.36,
+      "end": 34.64
+    },
+    {
+      "word": "the",
+      "start": 34.64,
+      "end": 34.82
+    },
+    {
+      "word": "same",
+      "start": 34.82,
+      "end": 35.12
+    },
+    {
+      "word": "Automically",
+      "start": 35.12,
+      "end": 35.72
+    },
+    {
+      "word": "because",
+      "start": 35.72,
+      "end": 36.04
+    },
+    {
+      "word": "they",
+      "start": 36.04,
+      "end": 36.24
+    },
+    {
+      "word": "have",
+      "start": 36.24,
+      "end": 36.38
+    },
+    {
+      "word": "different",
+      "start": 36.38,
+      "end": 36.76
+    },
+    {
+      "word": "expression",
+      "start": 36.76,
+      "end": 37.32
+    },
+    {
+      "word": "literally,",
+      "start": 37.32,
+      "end": 37.88
+    },
+    {
+      "word": "but",
+      "start": 37.88,
+      "end": 38.78
+    },
+    {
+      "word": "they",
+      "start": 38.78,
+      "end": 38.9
+    },
+    {
+      "word": "are",
+      "start": 38.9,
+      "end": 38.98
+    },
+    {
+      "word": "methodically",
+      "start": 38.98,
+      "end": 39.48
+    },
+    {
+      "word": "the",
+      "start": 39.48,
+      "end": 39.66
+    },
+    {
+      "word": "same",
+      "start": 39.66,
+      "end": 39.88
+    },
+    {
+      "word": "And",
+      "start": 39.88,
+      "end": 40.54
+    },
+    {
+      "word": "this",
+      "start": 40.54,
+      "end": 40.72
+    },
+    {
+      "word": "is",
+      "start": 40.72,
+      "end": 40.86
+    },
+    {
+      "word": "the",
+      "start": 40.86,
+      "end": 41
+    },
+    {
+      "word": "kind",
+      "start": 41,
+      "end": 41.24
+    },
+    {
+      "word": "of",
+      "start": 41.24,
+      "end": 41.4
+    },
+    {
+      "word": "equality",
+      "start": 41.4,
+      "end": 41.88
+    },
+    {
+      "word": "that",
+      "start": 41.88,
+      "end": 42.06
+    },
+    {
+      "word": "we",
+      "start": 42.06,
+      "end": 42.32
+    },
+    {
+      "word": "want",
+      "start": 42.32,
+      "end": 42.72
+    },
+    {
+      "word": "to",
+      "start": 42.72,
+      "end": 42.92
+    },
+    {
+      "word": "prove",
+      "start": 42.92,
+      "end": 43.4
+    },
+    {
+      "word": "This",
+      "start": 43.4,
+      "end": 43.94
+    },
+    {
+      "word": "is",
+      "start": 43.94,
+      "end": 44.12
+    },
+    {
+      "word": "the",
+      "start": 44.12,
+      "end": 44.26
+    },
+    {
+      "word": "only",
+      "start": 44.26,
+      "end": 44.44
+    },
+    {
+      "word": "meaningful",
+      "start": 44.44,
+      "end": 44.86
+    },
+    {
+      "word": "equality",
+      "start": 44.86,
+      "end": 45.74
+    },
+    {
+      "word": "and",
+      "start": 45.74,
+      "end": 46.7
+    },
+    {
+      "word": "there's",
+      "start": 46.7,
+      "end": 47
+    },
+    {
+      "word": "another",
+      "start": 47,
+      "end": 47.16
+    },
+    {
+      "word": "equality,",
+      "start": 47.16,
+      "end": 47.66
+    },
+    {
+      "word": "which",
+      "start": 47.74,
+      "end": 47.92
+    },
+    {
+      "word": "is",
+      "start": 47.92,
+      "end": 48.06
+    },
+    {
+      "word": "one",
+      "start": 48.06,
+      "end": 48.3
+    },
+    {
+      "word": "equal",
+      "start": 48.3,
+      "end": 48.6
+    },
+    {
+      "word": "one",
+      "start": 48.6,
+      "end": 48.94
+    },
+    {
+      "word": "things",
+      "start": 48.94,
+      "end": 49.3
+    },
+    {
+      "word": "like",
+      "start": 49.3,
+      "end": 49.54
+    },
+    {
+      "word": "Because",
+      "start": 49.54,
+      "end": 49.96
+    },
+    {
+      "word": "the",
+      "start": 49.96,
+      "end": 50.14
+    },
+    {
+      "word": "left",
+      "start": 50.14,
+      "end": 50.22
+    },
+    {
+      "word": "hand",
+      "start": 50.22,
+      "end": 50.38
+    },
+    {
+      "word": "side",
+      "start": 50.38,
+      "end": 50.5
+    },
+    {
+      "word": "right",
+      "start": 50.5,
+      "end": 50.68
+    },
+    {
+      "word": "hand",
+      "start": 50.68,
+      "end": 50.8
+    },
+    {
+      "word": "side",
+      "start": 50.8,
+      "end": 50.86
+    },
+    {
+      "word": "are",
+      "start": 50.86,
+      "end": 50.96
+    },
+    {
+      "word": "the",
+      "start": 50.96,
+      "end": 51.1
+    },
+    {
+      "word": "same",
+      "start": 51.1,
+      "end": 51.36
+    },
+    {
+      "word": "and",
+      "start": 51.36,
+      "end": 52
+    },
+    {
+      "word": "these",
+      "start": 52,
+      "end": 52.28
+    },
+    {
+      "word": "are",
+      "start": 52.28,
+      "end": 52.76
+    },
+    {
+      "word": "not",
+      "start": 52.76,
+      "end": 52.92
+    },
+    {
+      "word": "worth",
+      "start": 52.92,
+      "end": 53.46
+    },
+    {
+      "word": "proving",
+      "start": 53.46,
+      "end": 53.92
+    },
+    {
+      "word": "But",
+      "start": 53.92,
+      "end": 54.4
+    },
+    {
+      "word": "they're",
+      "start": 54.4,
+      "end": 54.6
+    },
+    {
+      "word": "still",
+      "start": 54.6,
+      "end": 54.84
+    },
+    {
+      "word": "very",
+      "start": 54.84,
+      "end": 55.12
+    },
+    {
+      "word": "useful",
+      "start": 55.12,
+      "end": 55.46
+    },
+    {
+      "word": "because",
+      "start": 55.46,
+      "end": 55.74
+    },
+    {
+      "word": "they",
+      "start": 55.74,
+      "end": 55.9
+    },
+    {
+      "word": "show",
+      "start": 55.9,
+      "end": 56.2
+    },
+    {
+      "word": "up",
+      "start": 56.2,
+      "end": 56.62
+    },
+    {
+      "word": "at",
+      "start": 56.62,
+      "end": 57.22
+    },
+    {
+      "word": "the",
+      "start": 57.22,
+      "end": 57.4
+    },
+    {
+      "word": "end",
+      "start": 57.4,
+      "end": 57.78
+    },
+    {
+      "word": "of",
+      "start": 57.78,
+      "end": 58
+    },
+    {
+      "word": "every",
+      "start": 58,
+      "end": 58.5
+    },
+    {
+      "word": "proof",
+      "start": 58.5,
+      "end": 58.92
+    },
+    {
+      "word": "for",
+      "start": 58.92,
+      "end": 59.32
+    },
+    {
+      "word": "this",
+      "start": 59.32,
+      "end": 59.5
+    },
+    {
+      "word": "meaningful",
+      "start": 59.5,
+      "end": 59.92
+    },
+    {
+      "word": "equality",
+      "start": 59.92,
+      "end": 60.42
+    },
+    {
+      "word": "It",
+      "start": 61.1,
+      "end": 61.6
+    },
+    {
+      "word": "just",
+      "start": 61.6,
+      "end": 62.16
+    },
+    {
+      "word": "just",
+      "start": 62.16,
+      "end": 62.46
+    },
+    {
+      "word": "to",
+      "start": 62.46,
+      "end": 62.58
+    },
+    {
+      "word": "close",
+      "start": 62.58,
+      "end": 62.88
+    },
+    {
+      "word": "the",
+      "start": 62.88,
+      "end": 63.86
+    },
+    {
+      "word": "proof",
+      "start": 63.86,
+      "end": 64.08
+    },
+    {
+      "word": "So",
+      "start": 64.08,
+      "end": 65.08
+    },
+    {
+      "word": "in",
+      "start": 72.31,
+      "end": 72.47
+    },
+    {
+      "word": "lean",
+      "start": 72.47,
+      "end": 72.63
+    },
+    {
+      "word": "we",
+      "start": 72.63,
+      "end": 72.87
+    },
+    {
+      "word": "can",
+      "start": 72.87,
+      "end": 72.99
+    },
+    {
+      "word": "write",
+      "start": 72.99,
+      "end": 73.21
+    },
+    {
+      "word": "A",
+      "start": 73.21,
+      "end": 73.71
+    },
+    {
+      "word": "equal",
+      "start": 73.71,
+      "end": 74.09
+    },
+    {
+      "word": "to",
+      "start": 74.09,
+      "end": 74.23
+    },
+    {
+      "word": "B",
+      "start": 74.23,
+      "end": 74.45
+    },
+    {
+      "word": "and",
+      "start": 74.45,
+      "end": 74.77
+    },
+    {
+      "word": "Notice",
+      "start": 75.77,
+      "end": 75.93
+    },
+    {
+      "word": "that",
+      "start": 75.93,
+      "end": 76.17
+    },
+    {
+      "word": "we",
+      "start": 76.17,
+      "end": 76.31
+    },
+    {
+      "word": "do",
+      "start": 76.31,
+      "end": 76.45
+    },
+    {
+      "word": "not",
+      "start": 76.45,
+      "end": 76.59
+    },
+    {
+      "word": "implement",
+      "start": 76.59,
+      "end": 77.05
+    },
+    {
+      "word": "the",
+      "start": 77.05,
+      "end": 77.87
+    },
+    {
+      "word": "equal",
+      "start": 77.87,
+      "end": 78.49
+    },
+    {
+      "word": "equality",
+      "start": 78.49,
+      "end": 79.41
+    },
+    {
+      "word": "type",
+      "start": 79.41,
+      "end": 80.09
+    },
+    {
+      "word": "class",
+      "start": 80.09,
+      "end": 80.29
+    },
+    {
+      "word": "first",
+      "start": 80.29,
+      "end": 80.83
+    },
+    {
+      "word": "because",
+      "start": 80.83,
+      "end": 81.33
+    },
+    {
+      "word": "the",
+      "start": 81.33,
+      "end": 81.45
+    },
+    {
+      "word": "quality",
+      "start": 81.45,
+      "end": 81.67
+    },
+    {
+      "word": "signs",
+      "start": 81.67,
+      "end": 82.09
+    },
+    {
+      "word": "built",
+      "start": 82.09,
+      "end": 82.31
+    },
+    {
+      "word": "in",
+      "start": 82.31,
+      "end": 82.51
+    },
+    {
+      "word": "notation",
+      "start": 82.51,
+      "end": 82.89
+    },
+    {
+      "word": "for",
+      "start": 82.89,
+      "end": 83.07
+    },
+    {
+      "word": "value",
+      "start": 83.07,
+      "end": 83.37
+    },
+    {
+      "word": "Just",
+      "start": 83.37,
+      "end": 83.65
+    },
+    {
+      "word": "like",
+      "start": 83.65,
+      "end": 83.83
+    },
+    {
+      "word": "other",
+      "start": 83.83,
+      "end": 84.17
+    },
+    {
+      "word": "problem",
+      "start": 84.17,
+      "end": 84.41
+    },
+    {
+      "word": "in",
+      "start": 84.41,
+      "end": 84.51
+    },
+    {
+      "word": "languages,",
+      "start": 84.51,
+      "end": 84.73
+    },
+    {
+      "word": "but",
+      "start": 84.73,
+      "end": 85.51
+    },
+    {
+      "word": "there",
+      "start": 85.51,
+      "end": 85.61
+    },
+    {
+      "word": "are",
+      "start": 85.61,
+      "end": 85.75
+    },
+    {
+      "word": "other,",
+      "start": 85.75,
+      "end": 85.99
+    },
+    {
+      "word": "but",
+      "start": 85.99,
+      "end": 86.65
+    },
+    {
+      "word": "there",
+      "start": 86.65,
+      "end": 86.75
+    },
+    {
+      "word": "are",
+      "start": 86.75,
+      "end": 86.83
+    },
+    {
+      "word": "two",
+      "start": 86.83,
+      "end": 87.05
+    },
+    {
+      "word": "different",
+      "start": 87.05,
+      "end": 87.61
+    },
+    {
+      "word": "kind",
+      "start": 87.61,
+      "end": 87.85
+    },
+    {
+      "word": "of",
+      "start": 87.85,
+      "end": 87.99
+    },
+    {
+      "word": "equality",
+      "start": 87.99,
+      "end": 88.59
+    },
+    {
+      "word": "here",
+      "start": 88.59,
+      "end": 88.91
+    },
+    {
+      "word": "Definition",
+      "start": 88.91,
+      "end": 89.25
+    },
+    {
+      "word": "equalities",
+      "start": 89.25,
+      "end": 89.81
+    },
+    {
+      "word": "and",
+      "start": 89.81,
+      "end": 90.59
+    },
+    {
+      "word": "propositional",
+      "start": 90.59,
+      "end": 91.39
+    },
+    {
+      "word": "equalities",
+      "start": 91.39,
+      "end": 92.03
+    },
+    {
+      "word": "the",
+      "start": 92.03,
+      "end": 92.55
+    },
+    {
+      "word": "former",
+      "start": 92.55,
+      "end": 92.97
+    },
+    {
+      "word": "is",
+      "start": 92.97,
+      "end": 93.29
+    },
+    {
+      "word": "just",
+      "start": 93.29,
+      "end": 93.91
+    },
+    {
+      "word": "In",
+      "start": 94.57,
+      "end": 94.85
+    },
+    {
+      "word": "a",
+      "start": 94.85,
+      "end": 95.41
+    },
+    {
+      "word": "predefined",
+      "start": 95.41,
+      "end": 96.03
+    },
+    {
+      "word": "equalities",
+      "start": 96.03,
+      "end": 96.61
+    },
+    {
+      "word": "that",
+      "start": 96.61,
+      "end": 96.75
+    },
+    {
+      "word": "the",
+      "start": 96.75,
+      "end": 96.87
+    },
+    {
+      "word": "computers",
+      "start": 96.87,
+      "end": 97.27
+    },
+    {
+      "word": "can",
+      "start": 97.27,
+      "end": 97.67
+    },
+    {
+      "word": "still",
+      "start": 97.67,
+      "end": 98.11
+    },
+    {
+      "word": "check",
+      "start": 98.11,
+      "end": 98.45
+    },
+    {
+      "word": "automatically",
+      "start": 98.45,
+      "end": 99.43
+    },
+    {
+      "word": "Even",
+      "start": 99.43,
+      "end": 100.27
+    },
+    {
+      "word": "though",
+      "start": 100.27,
+      "end": 100.41
+    },
+    {
+      "word": "two",
+      "start": 100.41,
+      "end": 100.63
+    },
+    {
+      "word": "sides",
+      "start": 100.63,
+      "end": 100.85
+    },
+    {
+      "word": "are",
+      "start": 100.85,
+      "end": 100.99
+    },
+    {
+      "word": "different",
+      "start": 100.99,
+      "end": 101.43
+    },
+    {
+      "word": "Proposition",
+      "start": 101.43,
+      "end": 102.05
+    },
+    {
+      "word": "just",
+      "start": 102.05,
+      "end": 102.37
+    },
+    {
+      "word": "means",
+      "start": 102.37,
+      "end": 102.55
+    },
+    {
+      "word": "that",
+      "start": 102.55,
+      "end": 102.75
+    },
+    {
+      "word": "something",
+      "start": 102.75,
+      "end": 103.07
+    },
+    {
+      "word": "you",
+      "start": 103.07,
+      "end": 103.27
+    },
+    {
+      "word": "need",
+      "start": 103.27,
+      "end": 103.39
+    },
+    {
+      "word": "to",
+      "start": 103.39,
+      "end": 103.51
+    },
+    {
+      "word": "prove,",
+      "start": 103.51,
+      "end": 103.89
+    },
+    {
+      "word": "but",
+      "start": 103.93,
+      "end": 104.33
+    },
+    {
+      "word": "after",
+      "start": 104.33,
+      "end": 104.63
+    },
+    {
+      "word": "you",
+      "start": 104.63,
+      "end": 104.79
+    },
+    {
+      "word": "prove",
+      "start": 104.79,
+      "end": 105.07
+    },
+    {
+      "word": "there",
+      "start": 105.07,
+      "end": 105.41
+    },
+    {
+      "word": "the",
+      "start": 105.41,
+      "end": 106.19
+    },
+    {
+      "word": "Proof",
+      "start": 107.79,
+      "end": 108.35
+    },
+    {
+      "word": "engine",
+      "start": 108.35,
+      "end": 108.55
+    },
+    {
+      "word": "can",
+      "start": 108.55,
+      "end": 108.75
+    },
+    {
+      "word": "still",
+      "start": 108.75,
+      "end": 108.99
+    },
+    {
+      "word": "apply",
+      "start": 108.99,
+      "end": 109.33
+    },
+    {
+      "word": "it",
+      "start": 109.33,
+      "end": 109.53
+    },
+    {
+      "word": "as",
+      "start": 109.53,
+      "end": 109.75
+    },
+    {
+      "word": "if",
+      "start": 109.75,
+      "end": 109.99
+    },
+    {
+      "word": "it",
+      "start": 109.99,
+      "end": 110.13
+    },
+    {
+      "word": "is",
+      "start": 110.13,
+      "end": 110.71
+    },
+    {
+      "word": "a",
+      "start": 110.71,
+      "end": 111.37
+    },
+    {
+      "word": "Computer",
+      "start": 112.21,
+      "end": 112.77
+    },
+    {
+      "word": "rule",
+      "start": 112.77,
+      "end": 113.33
+    },
+    {
+      "word": "So",
+      "start": 113.33,
+      "end": 114.29
+    },
+    {
+      "word": "now",
+      "start": 119.09,
+      "end": 119.21
+    },
+    {
+      "word": "the",
+      "start": 119.21,
+      "end": 119.33
+    },
+    {
+      "word": "question",
+      "start": 119.33,
+      "end": 119.59
+    },
+    {
+      "word": "is",
+      "start": 119.59,
+      "end": 119.91
+    },
+    {
+      "word": "now",
+      "start": 119.91,
+      "end": 120.43
+    },
+    {
+      "word": "the",
+      "start": 128.36,
+      "end": 129.2
+    },
+    {
+      "word": "question",
+      "start": 129.2,
+      "end": 129.48
+    },
+    {
+      "word": "is",
+      "start": 129.48,
+      "end": 129.8
+    },
+    {
+      "word": "when",
+      "start": 129.8,
+      "end": 130.16
+    },
+    {
+      "word": "can",
+      "start": 130.16,
+      "end": 130.42
+    },
+    {
+      "word": "we",
+      "start": 130.42,
+      "end": 130.56
+    },
+    {
+      "word": "even",
+      "start": 130.56,
+      "end": 130.82
+    },
+    {
+      "word": "write",
+      "start": 130.82,
+      "end": 131.06
+    },
+    {
+      "word": "the",
+      "start": 131.06,
+      "end": 131.26
+    },
+    {
+      "word": "equal",
+      "start": 131.26,
+      "end": 131.46
+    },
+    {
+      "word": "sign",
+      "start": 131.46,
+      "end": 131.68
+    },
+    {
+      "word": "in",
+      "start": 131.68,
+      "end": 131.88
+    },
+    {
+      "word": "lean",
+      "start": 131.88,
+      "end": 132.12
+    },
+    {
+      "word": "so",
+      "start": 132.12,
+      "end": 132.76
+    },
+    {
+      "word": "both",
+      "start": 132.76,
+      "end": 132.98
+    },
+    {
+      "word": "sides",
+      "start": 132.98,
+      "end": 133.48
+    },
+    {
+      "word": "must",
+      "start": 133.48,
+      "end": 133.7
+    },
+    {
+      "word": "be",
+      "start": 133.7,
+      "end": 133.92
+    },
+    {
+      "word": "exactly",
+      "start": 133.92,
+      "end": 134.28
+    },
+    {
+      "word": "the",
+      "start": 134.28,
+      "end": 134.46
+    },
+    {
+      "word": "same",
+      "start": 134.46,
+      "end": 134.78
+    },
+    {
+      "word": "type",
+      "start": 134.78,
+      "end": 135.56
+    },
+    {
+      "word": "So",
+      "start": 136.64,
+      "end": 136.8
+    },
+    {
+      "word": "two",
+      "start": 136.8,
+      "end": 137.12
+    },
+    {
+      "word": "natural",
+      "start": 137.12,
+      "end": 137.48
+    },
+    {
+      "word": "numbers",
+      "start": 137.48,
+      "end": 137.96
+    },
+    {
+      "word": "So",
+      "start": 138.7,
+      "end": 139.22
+    },
+    {
+      "word": "two",
+      "start": 139.22,
+      "end": 139.52
+    },
+    {
+      "word": "as",
+      "start": 139.52,
+      "end": 139.68
+    },
+    {
+      "word": "a",
+      "start": 139.68,
+      "end": 139.8
+    },
+    {
+      "word": "natural",
+      "start": 139.8,
+      "end": 140.06
+    },
+    {
+      "word": "number",
+      "start": 140.06,
+      "end": 140.54
+    },
+    {
+      "word": "and",
+      "start": 140.54,
+      "end": 141.52
+    },
+    {
+      "word": "two",
+      "start": 141.52,
+      "end": 141.78
+    },
+    {
+      "word": "as",
+      "start": 141.78,
+      "end": 141.94
+    },
+    {
+      "word": "an",
+      "start": 141.94,
+      "end": 142.08
+    },
+    {
+      "word": "integer",
+      "start": 142.08,
+      "end": 142.42
+    },
+    {
+      "word": "cannot",
+      "start": 142.42,
+      "end": 142.82
+    },
+    {
+      "word": "be",
+      "start": 142.82,
+      "end": 143.02
+    },
+    {
+      "word": "compared",
+      "start": 143.02,
+      "end": 143.4
+    },
+    {
+      "word": "directly",
+      "start": 143.4,
+      "end": 143.9
+    },
+    {
+      "word": "They",
+      "start": 143.9,
+      "end": 144.44
+    },
+    {
+      "word": "look",
+      "start": 144.44,
+      "end": 144.58
+    },
+    {
+      "word": "like",
+      "start": 144.58,
+      "end": 144.72
+    },
+    {
+      "word": "the",
+      "start": 144.72,
+      "end": 144.84
+    },
+    {
+      "word": "same",
+      "start": 144.84,
+      "end": 145.02
+    },
+    {
+      "word": "number",
+      "start": 145.02,
+      "end": 145.32
+    },
+    {
+      "word": "to",
+      "start": 145.32,
+      "end": 145.52
+    },
+    {
+      "word": "us,",
+      "start": 145.52,
+      "end": 145.68
+    },
+    {
+      "word": "but",
+      "start": 145.72,
+      "end": 145.84
+    },
+    {
+      "word": "lean",
+      "start": 145.84,
+      "end": 146.06
+    },
+    {
+      "word": "to",
+      "start": 146.06,
+      "end": 146.32
+    },
+    {
+      "word": "see",
+      "start": 146.32,
+      "end": 146.54
+    },
+    {
+      "word": "two",
+      "start": 146.54,
+      "end": 146.78
+    },
+    {
+      "word": "different",
+      "start": 146.78,
+      "end": 147.16
+    },
+    {
+      "word": "types",
+      "start": 147.16,
+      "end": 147.58
+    },
+    {
+      "word": "So",
+      "start": 147.58,
+      "end": 148.58
+    },
+    {
+      "word": "we",
+      "start": 148.58,
+      "end": 148.82
+    },
+    {
+      "word": "first",
+      "start": 148.82,
+      "end": 149.02
+    },
+    {
+      "word": "cast",
+      "start": 149.02,
+      "end": 149.38
+    },
+    {
+      "word": "the",
+      "start": 149.38,
+      "end": 149.58
+    },
+    {
+      "word": "natural",
+      "start": 149.58,
+      "end": 149.74
+    },
+    {
+      "word": "number",
+      "start": 149.74,
+      "end": 149.96
+    },
+    {
+      "word": "into",
+      "start": 149.96,
+      "end": 150.16
+    },
+    {
+      "word": "integer",
+      "start": 150.16,
+      "end": 150.58
+    },
+    {
+      "word": "and",
+      "start": 150.58,
+      "end": 151.08
+    },
+    {
+      "word": "then",
+      "start": 151.08,
+      "end": 151.24
+    },
+    {
+      "word": "equality",
+      "start": 151.24,
+      "end": 151.78
+    },
+    {
+      "word": "makes",
+      "start": 151.78,
+      "end": 152.06
+    },
+    {
+      "word": "sense",
+      "start": 152.06,
+      "end": 152.5
+    },
+    {
+      "word": "So",
+      "start": 152.5,
+      "end": 153.14
+    },
+    {
+      "word": "now",
+      "start": 153.14,
+      "end": 153.34
+    },
+    {
+      "word": "set",
+      "start": 153.34,
+      "end": 153.64
+    },
+    {
+      "word": "A",
+      "start": 153.64,
+      "end": 153.76
+    },
+    {
+      "word": "and",
+      "start": 153.76,
+      "end": 153.96
+    },
+    {
+      "word": "set",
+      "start": 153.96,
+      "end": 154.12
+    },
+    {
+      "word": "B",
+      "start": 154.12,
+      "end": 154.5
+    },
+    {
+      "word": "have",
+      "start": 154.5,
+      "end": 155.44
+    },
+    {
+      "word": "types",
+      "start": 155.44,
+      "end": 155.72
+    },
+    {
+      "word": "set",
+      "start": 155.72,
+      "end": 156.02
+    },
+    {
+      "word": "alpha",
+      "start": 156.02,
+      "end": 156.26
+    },
+    {
+      "word": "so",
+      "start": 156.26,
+      "end": 156.48
+    },
+    {
+      "word": "that",
+      "start": 156.48,
+      "end": 156.56
+    },
+    {
+      "word": "they",
+      "start": 156.56,
+      "end": 156.68
+    },
+    {
+      "word": "can",
+      "start": 156.68,
+      "end": 156.76
+    },
+    {
+      "word": "compare",
+      "start": 156.76,
+      "end": 157.06
+    },
+    {
+      "word": "directly",
+      "start": 157.06,
+      "end": 157.7
+    },
+    {
+      "word": "and",
+      "start": 157.7,
+      "end": 157.96
+    },
+    {
+      "word": "Lean",
+      "start": 158.82,
+      "end": 159.34
+    },
+    {
+      "word": "defines",
+      "start": 159.34,
+      "end": 159.74
+    },
+    {
+      "word": "it",
+      "start": 159.74,
+      "end": 159.94
+    },
+    {
+      "word": "using",
+      "start": 159.94,
+      "end": 160.56
+    },
+    {
+      "word": "this",
+      "start": 160.56,
+      "end": 160.76
+    },
+    {
+      "word": "very",
+      "start": 160.76,
+      "end": 160.98
+    },
+    {
+      "word": "simple",
+      "start": 160.98,
+      "end": 161.3
+    },
+    {
+      "word": "expression",
+      "start": 161.3,
+      "end": 161.84
+    },
+    {
+      "word": "of",
+      "start": 161.84,
+      "end": 162.1
+    },
+    {
+      "word": "Of",
+      "start": 162.1,
+      "end": 162.64
+    },
+    {
+      "word": "subset",
+      "start": 162.64,
+      "end": 163.24
+    },
+    {
+      "word": "that",
+      "start": 163.24,
+      "end": 163.48
+    },
+    {
+      "word": "we",
+      "start": 163.48,
+      "end": 163.58
+    },
+    {
+      "word": "have",
+      "start": 163.58,
+      "end": 163.72
+    },
+    {
+      "word": "before",
+      "start": 163.72,
+      "end": 164.5
+    },
+    {
+      "word": "and",
+      "start": 164.5,
+      "end": 165.32
+    },
+    {
+      "word": "it",
+      "start": 165.32,
+      "end": 165.62
+    },
+    {
+      "word": "allows",
+      "start": 165.62,
+      "end": 166.6
+    },
+    {
+      "word": "you",
+      "start": 166.6,
+      "end": 166.86
+    },
+    {
+      "word": "to",
+      "start": 166.86,
+      "end": 166.94
+    },
+    {
+      "word": "convert",
+      "start": 166.94,
+      "end": 167.4
+    },
+    {
+      "word": "two",
+      "start": 167.4,
+      "end": 168.22
+    },
+    {
+      "word": "mutual",
+      "start": 168.22,
+      "end": 168.58
+    },
+    {
+      "word": "subset",
+      "start": 168.58,
+      "end": 168.98
+    },
+    {
+      "word": "expressions",
+      "start": 168.98,
+      "end": 169.74
+    },
+    {
+      "word": "into",
+      "start": 169.74,
+      "end": 170.6
+    },
+    {
+      "word": "You",
+      "start": 170.6,
+      "end": 171.24
+    },
+    {
+      "word": "can",
+      "start": 171.24,
+      "end": 171.44
+    },
+    {
+      "word": "even",
+      "start": 171.44,
+      "end": 172.02
+    },
+    {
+      "word": "it",
+      "start": 172.02,
+      "end": 172.52
+    },
+    {
+      "word": "implies",
+      "start": 172.52,
+      "end": 173.22
+    },
+    {
+      "word": "an",
+      "start": 173.22,
+      "end": 173.72
+    },
+    {
+      "word": "equality",
+      "start": 173.72,
+      "end": 174.12
+    },
+    {
+      "word": "of",
+      "start": 174.12,
+      "end": 174.38
+    },
+    {
+      "word": "a",
+      "start": 174.38,
+      "end": 174.56
+    },
+    {
+      "word": "equals",
+      "start": 174.56,
+      "end": 174.92
+    },
+    {
+      "word": "B",
+      "start": 174.92,
+      "end": 175.18
+    },
+    {
+      "word": "So",
+      "start": 178.68,
+      "end": 179.16
+    },
+    {
+      "word": "if",
+      "start": 179.16,
+      "end": 179.3
+    },
+    {
+      "word": "x",
+      "start": 179.3,
+      "end": 179.64
+    },
+    {
+      "word": "belongs",
+      "start": 179.64,
+      "end": 180
+    },
+    {
+      "word": "to",
+      "start": 180,
+      "end": 180.3
+    },
+    {
+      "word": "a",
+      "start": 180.3,
+      "end": 180.58
+    },
+    {
+      "word": "When",
+      "start": 181.78,
+      "end": 182.38
+    },
+    {
+      "word": "x",
+      "start": 182.38,
+      "end": 182.86
+    },
+    {
+      "word": "belongs",
+      "start": 182.86,
+      "end": 183.1
+    },
+    {
+      "word": "to",
+      "start": 183.1,
+      "end": 183.3
+    },
+    {
+      "word": "be",
+      "start": 183.3,
+      "end": 183.56
+    },
+    {
+      "word": "for",
+      "start": 183.56,
+      "end": 184.3
+    },
+    {
+      "word": "every",
+      "start": 184.3,
+      "end": 184.52
+    },
+    {
+      "word": "x",
+      "start": 184.52,
+      "end": 184.82
+    },
+    {
+      "word": "then",
+      "start": 184.82,
+      "end": 185.06
+    },
+    {
+      "word": "the",
+      "start": 185.06,
+      "end": 185.16
+    },
+    {
+      "word": "two",
+      "start": 185.16,
+      "end": 185.32
+    },
+    {
+      "word": "set",
+      "start": 185.32,
+      "end": 185.52
+    },
+    {
+      "word": "are",
+      "start": 185.52,
+      "end": 185.74
+    },
+    {
+      "word": "equal",
+      "start": 185.74,
+      "end": 186.04
+    },
+    {
+      "word": "in",
+      "start": 186.04,
+      "end": 186.28
+    },
+    {
+      "word": "now",
+      "start": 186.28,
+      "end": 186.42
+    },
+    {
+      "word": "and",
+      "start": 186.42,
+      "end": 186.68
+    },
+    {
+      "word": "in",
+      "start": 186.68,
+      "end": 186.8
+    },
+    {
+      "word": "our",
+      "start": 186.8,
+      "end": 186.92
+    },
+    {
+      "word": "textbook.",
+      "start": 186.92,
+      "end": 187.24
+    },
+    {
+      "word": "This",
+      "start": 187.42,
+      "end": 187.44
+    },
+    {
+      "word": "is",
+      "start": 187.44,
+      "end": 187.56
+    },
+    {
+      "word": "exactly",
+      "start": 187.56,
+      "end": 187.92
+    },
+    {
+      "word": "what",
+      "start": 187.92,
+      "end": 188.76
+    },
+    {
+      "word": "the",
+      "start": 188.76,
+      "end": 188.88
+    },
+    {
+      "word": "mutual",
+      "start": 188.88,
+      "end": 189.1
+    },
+    {
+      "word": "subset",
+      "start": 189.1,
+      "end": 189.44
+    },
+    {
+      "word": "is",
+      "start": 189.44,
+      "end": 189.82
+    },
+    {
+      "word": "So",
+      "start": 191.04,
+      "end": 191.64
+    },
+    {
+      "word": "now",
+      "start": 191.64,
+      "end": 191.76
+    },
+    {
+      "word": "turn",
+      "start": 191.76,
+      "end": 192.02
+    },
+    {
+      "word": "lang",
+      "start": 192.02,
+      "end": 192.3
+    },
+    {
+      "word": "it",
+      "start": 192.3,
+      "end": 192.7
+    },
+    {
+      "word": "makes",
+      "start": 192.7,
+      "end": 192.84
+    },
+    {
+      "word": "a",
+      "start": 192.84,
+      "end": 192.98
+    },
+    {
+      "word": "different",
+      "start": 192.98,
+      "end": 193.3
+    },
+    {
+      "word": "choice",
+      "start": 193.3,
+      "end": 194.02
+    },
+    {
+      "word": "We",
+      "start": 194.02,
+      "end": 194.74
+    },
+    {
+      "word": "do",
+      "start": 194.74,
+      "end": 194.86
+    },
+    {
+      "word": "not",
+      "start": 194.86,
+      "end": 195
+    },
+    {
+      "word": "want",
+      "start": 195,
+      "end": 195.18
+    },
+    {
+      "word": "to",
+      "start": 195.18,
+      "end": 195.32
+    },
+    {
+      "word": "use",
+      "start": 195.32,
+      "end": 195.7
+    },
+    {
+      "word": "the",
+      "start": 195.7,
+      "end": 196
+    },
+    {
+      "word": "equals",
+      "start": 196,
+      "end": 196.18
+    },
+    {
+      "word": "sign",
+      "start": 196.18,
+      "end": 196.34
+    },
+    {
+      "word": "everywhere",
+      "start": 196.34,
+      "end": 196.88
+    },
+    {
+      "word": "and",
+      "start": 196.88,
+      "end": 197.46
+    },
+    {
+      "word": "suddenly",
+      "start": 197.46,
+      "end": 197.92
+    },
+    {
+      "word": "assume",
+      "start": 197.92,
+      "end": 198.4
+    },
+    {
+      "word": "that",
+      "start": 198.4,
+      "end": 198.56
+    },
+    {
+      "word": "every",
+      "start": 198.56,
+      "end": 198.76
+    },
+    {
+      "word": "structure",
+      "start": 198.76,
+      "end": 199.06
+    },
+    {
+      "word": "have",
+      "start": 199.06,
+      "end": 199.24
+    },
+    {
+      "word": "the",
+      "start": 199.24,
+      "end": 199.32
+    },
+    {
+      "word": "same",
+      "start": 199.32,
+      "end": 199.58
+    },
+    {
+      "word": "meaning",
+      "start": 199.58,
+      "end": 199.88
+    },
+    {
+      "word": "of",
+      "start": 199.88,
+      "end": 200.18
+    },
+    {
+      "word": "equality",
+      "start": 200.18,
+      "end": 200.32
+    },
+    {
+      "word": "Let's",
+      "start": 200.96,
+      "end": 201.54
+    },
+    {
+      "word": "look",
+      "start": 201.54,
+      "end": 201.62
+    },
+    {
+      "word": "at",
+      "start": 201.62,
+      "end": 201.82
+    },
+    {
+      "word": "the",
+      "start": 201.82,
+      "end": 202.2
+    },
+    {
+      "word": "end",
+      "start": 202.2,
+      "end": 202.82
+    },
+    {
+      "word": "notations",
+      "start": 202.82,
+      "end": 203.2
+    },
+    {
+      "word": "index",
+      "start": 203.2,
+      "end": 203.5
+    },
+    {
+      "word": "here",
+      "start": 203.5,
+      "end": 203.9
+    },
+    {
+      "word": "It",
+      "start": 203.9,
+      "end": 204.6
+    },
+    {
+      "word": "binds",
+      "start": 204.6,
+      "end": 204.94
+    },
+    {
+      "word": "the",
+      "start": 204.94,
+      "end": 205.26
+    },
+    {
+      "word": "visible",
+      "start": 205.26,
+      "end": 205.58
+    },
+    {
+      "word": "a",
+      "start": 205.58,
+      "end": 205.86
+    },
+    {
+      "word": "equals",
+      "start": 205.86,
+      "end": 206.3
+    },
+    {
+      "word": "to",
+      "start": 206.3,
+      "end": 206.46
+    },
+    {
+      "word": "be",
+      "start": 206.46,
+      "end": 206.64
+    },
+    {
+      "word": "to",
+      "start": 206.64,
+      "end": 206.98
+    },
+    {
+      "word": "a",
+      "start": 206.98,
+      "end": 207.06
+    },
+    {
+      "word": "name",
+      "start": 207.06,
+      "end": 207.42
+    },
+    {
+      "word": "the",
+      "start": 207.42,
+      "end": 207.6
+    },
+    {
+      "word": "relation",
+      "start": 207.6,
+      "end": 208.02
+    },
+    {
+      "word": "called",
+      "start": 208.02,
+      "end": 208.46
+    },
+    {
+      "word": "set",
+      "start": 208.46,
+      "end": 209.02
+    },
+    {
+      "word": "equal",
+      "start": 209.02,
+      "end": 209.3
+    },
+    {
+      "word": "That",
+      "start": 209.3,
+      "end": 210.2
+    },
+    {
+      "word": "means",
+      "start": 210.2,
+      "end": 210.42
+    },
+    {
+      "word": "the",
+      "start": 210.42,
+      "end": 210.7
+    },
+    {
+      "word": "equal",
+      "start": 210.7,
+      "end": 210.96
+    },
+    {
+      "word": "sign",
+      "start": 210.96,
+      "end": 211.3
+    },
+    {
+      "word": "is",
+      "start": 211.3,
+      "end": 211.5
+    },
+    {
+      "word": "only",
+      "start": 211.5,
+      "end": 211.74
+    },
+    {
+      "word": "the",
+      "start": 211.74,
+      "end": 211.86
+    },
+    {
+      "word": "notation",
+      "start": 211.86,
+      "end": 212.36
+    },
+    {
+      "word": "in",
+      "start": 212.36,
+      "end": 212.78
+    },
+    {
+      "word": "order",
+      "start": 212.78,
+      "end": 212.9
+    },
+    {
+      "word": "to",
+      "start": 212.9,
+      "end": 213.06
+    },
+    {
+      "word": "use",
+      "start": 213.06,
+      "end": 213.34
+    },
+    {
+      "word": "this",
+      "start": 213.34,
+      "end": 213.8
+    },
+    {
+      "word": "Set",
+      "start": 213.8,
+      "end": 214.42
+    },
+    {
+      "word": "equal",
+      "start": 214.42,
+      "end": 214.62
+    },
+    {
+      "word": "you",
+      "start": 214.62,
+      "end": 214.82
+    },
+    {
+      "word": "have",
+      "start": 214.82,
+      "end": 214.9
+    },
+    {
+      "word": "to",
+      "start": 214.9,
+      "end": 215
+    },
+    {
+      "word": "call",
+      "start": 215,
+      "end": 215.38
+    },
+    {
+      "word": "the",
+      "start": 215.38,
+      "end": 215.66
+    },
+    {
+      "word": "set",
+      "start": 215.66,
+      "end": 215.9
+    },
+    {
+      "word": "equal",
+      "start": 215.9,
+      "end": 216.2
+    },
+    {
+      "word": "set",
+      "start": 216.2,
+      "end": 216.6
+    },
+    {
+      "word": "equal",
+      "start": 216.6,
+      "end": 216.98
+    },
+    {
+      "word": "a",
+      "start": 216.98,
+      "end": 217.22
+    },
+    {
+      "word": "relation",
+      "start": 217.22,
+      "end": 217.68
+    },
+    {
+      "word": "with",
+      "start": 217.68,
+      "end": 218.3
+    },
+    {
+      "word": "the",
+      "start": 218.3,
+      "end": 218.46
+    },
+    {
+      "word": "brackets",
+      "start": 218.46,
+      "end": 218.78
+    },
+    {
+      "word": "containing",
+      "start": 218.78,
+      "end": 219.28
+    },
+    {
+      "word": "a",
+      "start": 219.28,
+      "end": 219.54
+    },
+    {
+      "word": "and",
+      "start": 219.54,
+      "end": 219.66
+    },
+    {
+      "word": "b",
+      "start": 219.66,
+      "end": 219.84
+    },
+    {
+      "word": "And",
+      "start": 223.2,
+      "end": 223.68
+    },
+    {
+      "word": "the",
+      "start": 223.68,
+      "end": 223.78
+    },
+    {
+      "word": "body",
+      "start": 223.78,
+      "end": 224
+    },
+    {
+      "word": "of",
+      "start": 224,
+      "end": 224.18
+    },
+    {
+      "word": "this",
+      "start": 224.18,
+      "end": 224.34
+    },
+    {
+      "word": "relation",
+      "start": 224.34,
+      "end": 224.8
+    },
+    {
+      "word": "is",
+      "start": 224.8,
+      "end": 225.04
+    },
+    {
+      "word": "just",
+      "start": 225.04,
+      "end": 225.26
+    },
+    {
+      "word": "what",
+      "start": 225.26,
+      "end": 226.4
+    },
+    {
+      "word": "we",
+      "start": 226.4,
+      "end": 226.64
+    },
+    {
+      "word": "have",
+      "start": 226.64,
+      "end": 227.06
+    },
+    {
+      "word": "is",
+      "start": 227.06,
+      "end": 227.64
+    },
+    {
+      "word": "just",
+      "start": 227.64,
+      "end": 227.92
+    },
+    {
+      "word": "a",
+      "start": 227.92,
+      "end": 228.38
+    },
+    {
+      "word": "mb",
+      "start": 228.38,
+      "end": 228.66
+    },
+    {
+      "word": "Subset",
+      "start": 229.3,
+      "end": 229.86
+    },
+    {
+      "word": "to",
+      "start": 229.86,
+      "end": 230.06
+    },
+    {
+      "word": "each",
+      "start": 230.06,
+      "end": 230.18
+    },
+    {
+      "word": "other",
+      "start": 230.18,
+      "end": 230.38
+    },
+    {
+      "word": "and",
+      "start": 230.38,
+      "end": 230.62
+    },
+    {
+      "word": "there's",
+      "start": 230.62,
+      "end": 230.78
+    },
+    {
+      "word": "two",
+      "start": 230.78,
+      "end": 230.9
+    },
+    {
+      "word": "statements",
+      "start": 230.9,
+      "end": 231.22
+    },
+    {
+      "word": "psi",
+      "start": 231.22,
+      "end": 231.74
+    },
+    {
+      "word": "are",
+      "start": 231.74,
+      "end": 232.44
+    },
+    {
+      "word": "very",
+      "start": 232.44,
+      "end": 232.64
+    },
+    {
+      "word": "clear",
+      "start": 232.64,
+      "end": 233.04
+    },
+    {
+      "word": "and",
+      "start": 233.04,
+      "end": 234.06
+    },
+    {
+      "word": "next",
+      "start": 236.24,
+      "end": 236.56
+    },
+    {
+      "word": "if",
+      "start": 236.56,
+      "end": 236.88
+    },
+    {
+      "word": "we",
+      "start": 236.88,
+      "end": 236.98
+    },
+    {
+      "word": "compare",
+      "start": 236.98,
+      "end": 237.6
+    },
+    {
+      "word": "a",
+      "start": 237.6,
+      "end": 238.04
+    },
+    {
+      "word": "function",
+      "start": 238.04,
+      "end": 238.5
+    },
+    {
+      "word": "equals",
+      "start": 238.5,
+      "end": 238.9
+    },
+    {
+      "word": "It",
+      "start": 238.9,
+      "end": 239.48
+    },
+    {
+      "word": "has",
+      "start": 239.48,
+      "end": 239.54
+    },
+    {
+      "word": "the",
+      "start": 239.54,
+      "end": 239.68
+    },
+    {
+      "word": "same",
+      "start": 239.68,
+      "end": 239.86
+    },
+    {
+      "word": "kind",
+      "start": 239.86,
+      "end": 240.1
+    },
+    {
+      "word": "of",
+      "start": 240.1,
+      "end": 240.2
+    },
+    {
+      "word": "problems",
+      "start": 240.2,
+      "end": 240.68
+    },
+    {
+      "word": "though,",
+      "start": 240.68,
+      "end": 240.94
+    },
+    {
+      "word": "so",
+      "start": 240.94,
+      "end": 241.6
+    },
+    {
+      "word": "The",
+      "start": 242.54,
+      "end": 243.1
+    },
+    {
+      "word": "two",
+      "start": 243.1,
+      "end": 243.3
+    },
+    {
+      "word": "functions",
+      "start": 243.3,
+      "end": 243.68
+    },
+    {
+      "word": "equal",
+      "start": 243.68,
+      "end": 244.14
+    },
+    {
+      "word": "they",
+      "start": 244.14,
+      "end": 244.32
+    },
+    {
+      "word": "cannot",
+      "start": 244.32,
+      "end": 244.7
+    },
+    {
+      "word": "be",
+      "start": 244.7,
+      "end": 244.86
+    },
+    {
+      "word": "exactly",
+      "start": 244.86,
+      "end": 245.2
+    },
+    {
+      "word": "the",
+      "start": 245.2,
+      "end": 245.36
+    },
+    {
+      "word": "same",
+      "start": 245.36,
+      "end": 245.68
+    },
+    {
+      "word": "and",
+      "start": 245.68,
+      "end": 246.72
+    },
+    {
+      "word": "they",
+      "start": 246.72,
+      "end": 247.3
+    },
+    {
+      "word": "make",
+      "start": 247.3,
+      "end": 247.46
+    },
+    {
+      "word": "a",
+      "start": 247.46,
+      "end": 247.56
+    },
+    {
+      "word": "different",
+      "start": 247.56,
+      "end": 247.68
+    },
+    {
+      "word": "body",
+      "start": 247.68,
+      "end": 248.48
+    },
+    {
+      "word": "And",
+      "start": 249.66,
+      "end": 250.22
+    },
+    {
+      "word": "they",
+      "start": 250.22,
+      "end": 250.78
+    },
+    {
+      "word": "came",
+      "start": 250.78,
+      "end": 250.94
+    },
+    {
+      "word": "they",
+      "start": 250.94,
+      "end": 251.18
+    },
+    {
+      "word": "may",
+      "start": 251.18,
+      "end": 251.3
+    },
+    {
+      "word": "return",
+      "start": 251.3,
+      "end": 251.62
+    },
+    {
+      "word": "actually",
+      "start": 251.62,
+      "end": 251.9
+    },
+    {
+      "word": "different",
+      "start": 251.9,
+      "end": 252.16
+    },
+    {
+      "word": "types",
+      "start": 252.16,
+      "end": 252.54
+    },
+    {
+      "word": "They",
+      "start": 252.54,
+      "end": 252.68
+    },
+    {
+      "word": "want",
+      "start": 252.68,
+      "end": 252.84
+    },
+    {
+      "word": "me",
+      "start": 252.84,
+      "end": 253.02
+    },
+    {
+      "word": "to",
+      "start": 253.02,
+      "end": 253.46
+    },
+    {
+      "word": "return",
+      "start": 253.46,
+      "end": 253.82
+    },
+    {
+      "word": "natural",
+      "start": 253.82,
+      "end": 254.52
+    },
+    {
+      "word": "number",
+      "start": 254.52,
+      "end": 254.82
+    },
+    {
+      "word": "when",
+      "start": 254.82,
+      "end": 255
+    },
+    {
+      "word": "we",
+      "start": 255,
+      "end": 255.18
+    },
+    {
+      "word": "return",
+      "start": 255.18,
+      "end": 255.6
+    },
+    {
+      "word": "integer",
+      "start": 255.6,
+      "end": 256.26
+    },
+    {
+      "word": "even",
+      "start": 256.26,
+      "end": 257.12
+    },
+    {
+      "word": "though",
+      "start": 257.12,
+      "end": 257.28
+    },
+    {
+      "word": "the",
+      "start": 257.28,
+      "end": 257.84
+    },
+    {
+      "word": "the",
+      "start": 257.84,
+      "end": 257.94
+    },
+    {
+      "word": "value",
+      "start": 257.94,
+      "end": 258.16
+    },
+    {
+      "word": "are",
+      "start": 258.16,
+      "end": 258.28
+    },
+    {
+      "word": "the",
+      "start": 258.28,
+      "end": 258.38
+    },
+    {
+      "word": "same",
+      "start": 258.38,
+      "end": 258.68
+    },
+    {
+      "word": "So",
+      "start": 260.89,
+      "end": 261.35
+    },
+    {
+      "word": "on",
+      "start": 261.35,
+      "end": 261.49
+    },
+    {
+      "word": "the",
+      "start": 261.49,
+      "end": 261.57
+    },
+    {
+      "word": "lean",
+      "start": 261.57,
+      "end": 261.75
+    },
+    {
+      "word": "side",
+      "start": 261.75,
+      "end": 262.03
+    },
+    {
+      "word": "it",
+      "start": 262.03,
+      "end": 262.49
+    },
+    {
+      "word": "uses",
+      "start": 262.49,
+      "end": 262.75
+    },
+    {
+      "word": "funk",
+      "start": 262.75,
+      "end": 263.07
+    },
+    {
+      "word": "dot",
+      "start": 263.07,
+      "end": 263.47
+    },
+    {
+      "word": "e",
+      "start": 263.47,
+      "end": 263.71
+    },
+    {
+      "word": "xt",
+      "start": 263.71,
+      "end": 264.17
+    },
+    {
+      "word": "Which",
+      "start": 264.81,
+      "end": 265.23
+    },
+    {
+      "word": "turns",
+      "start": 265.23,
+      "end": 265.59
+    },
+    {
+      "word": "which",
+      "start": 265.59,
+      "end": 266.05
+    },
+    {
+      "word": "which",
+      "start": 266.05,
+      "end": 266.35
+    },
+    {
+      "word": "is",
+      "start": 266.35,
+      "end": 266.45
+    },
+    {
+      "word": "another",
+      "start": 266.45,
+      "end": 266.71
+    },
+    {
+      "word": "Theorem",
+      "start": 268.07,
+      "end": 268.67
+    },
+    {
+      "word": "attached",
+      "start": 268.67,
+      "end": 268.99
+    },
+    {
+      "word": "to",
+      "start": 268.99,
+      "end": 269.27
+    },
+    {
+      "word": "funk",
+      "start": 269.27,
+      "end": 269.57
+    },
+    {
+      "word": "that",
+      "start": 269.57,
+      "end": 270.45
+    },
+    {
+      "word": "tells",
+      "start": 270.45,
+      "end": 270.93
+    },
+    {
+      "word": "you",
+      "start": 270.93,
+      "end": 271.11
+    },
+    {
+      "word": "that",
+      "start": 271.11,
+      "end": 271.31
+    },
+    {
+      "word": "you",
+      "start": 271.31,
+      "end": 271.49
+    },
+    {
+      "word": "can",
+      "start": 271.49,
+      "end": 271.63
+    },
+    {
+      "word": "just",
+      "start": 271.63,
+      "end": 272.29
+    },
+    {
+      "word": "rewrite",
+      "start": 272.29,
+      "end": 272.73
+    },
+    {
+      "word": "Fx",
+      "start": 274.75,
+      "end": 275.35
+    },
+    {
+      "word": "equal",
+      "start": 275.35,
+      "end": 275.75
+    },
+    {
+      "word": "to",
+      "start": 275.75,
+      "end": 275.93
+    },
+    {
+      "word": "gx",
+      "start": 275.93,
+      "end": 276.37
+    },
+    {
+      "word": "to",
+      "start": 276.37,
+      "end": 276.91
+    },
+    {
+      "word": "f",
+      "start": 276.91,
+      "end": 277.21
+    },
+    {
+      "word": "equals",
+      "start": 277.21,
+      "end": 277.55
+    },
+    {
+      "word": "g",
+      "start": 277.55,
+      "end": 277.77
+    },
+    {
+      "word": "for",
+      "start": 277.77,
+      "end": 277.99
+    },
+    {
+      "word": "our",
+      "start": 277.99,
+      "end": 278.33
+    },
+    {
+      "word": "four",
+      "start": 278.33,
+      "end": 278.65
+    },
+    {
+      "word": "x",
+      "start": 278.65,
+      "end": 278.97
+    },
+    {
+      "word": "there",
+      "start": 278.97,
+      "end": 279.31
+    },
+    {
+      "word": "So",
+      "start": 279.31,
+      "end": 280.21
+    },
+    {
+      "word": "on",
+      "start": 280.21,
+      "end": 280.35
+    },
+    {
+      "word": "the",
+      "start": 280.35,
+      "end": 280.43
+    },
+    {
+      "word": "turnlens",
+      "start": 280.43,
+      "end": 280.89
+    },
+    {
+      "word": "side",
+      "start": 280.89,
+      "end": 281.21
+    },
+    {
+      "word": "we",
+      "start": 281.21,
+      "end": 281.65
+    },
+    {
+      "word": "name",
+      "start": 281.65,
+      "end": 281.85
+    },
+    {
+      "word": "the",
+      "start": 281.85,
+      "end": 282.01
+    },
+    {
+      "word": "relation",
+      "start": 282.01,
+      "end": 282.43
+    },
+    {
+      "word": "function",
+      "start": 282.43,
+      "end": 282.89
+    },
+    {
+      "word": "equal",
+      "start": 282.89,
+      "end": 283.17
+    },
+    {
+      "word": "and",
+      "start": 283.17,
+      "end": 283.39
+    },
+    {
+      "word": "again",
+      "start": 283.39,
+      "end": 283.59
+    },
+    {
+      "word": "the",
+      "start": 283.59,
+      "end": 283.79
+    },
+    {
+      "word": "visible",
+      "start": 283.79,
+      "end": 284.09
+    },
+    {
+      "word": "equal",
+      "start": 284.09,
+      "end": 284.35
+    },
+    {
+      "word": "sign",
+      "start": 284.35,
+      "end": 284.69
+    },
+    {
+      "word": "is",
+      "start": 284.69,
+      "end": 284.87
+    },
+    {
+      "word": "attached",
+      "start": 284.87,
+      "end": 285.17
+    },
+    {
+      "word": "by",
+      "start": 285.17,
+      "end": 285.45
+    },
+    {
+      "word": "notation",
+      "start": 285.45,
+      "end": 285.85
+    },
+    {
+      "word": "and",
+      "start": 285.85,
+      "end": 286.19
+    },
+    {
+      "word": "So",
+      "start": 286.93,
+      "end": 287.27
+    },
+    {
+      "word": "the",
+      "start": 287.27,
+      "end": 287.41
+    },
+    {
+      "word": "notation",
+      "start": 287.41,
+      "end": 287.81
+    },
+    {
+      "word": "tells",
+      "start": 287.81,
+      "end": 288.19
+    },
+    {
+      "word": "us",
+      "start": 288.19,
+      "end": 288.35
+    },
+    {
+      "word": "exactly",
+      "start": 288.35,
+      "end": 288.77
+    },
+    {
+      "word": "what",
+      "start": 288.77,
+      "end": 289.07
+    },
+    {
+      "word": "the",
+      "start": 289.07,
+      "end": 289.17
+    },
+    {
+      "word": "observation",
+      "start": 289.17,
+      "end": 289.55
+    },
+    {
+      "word": "must",
+      "start": 289.55,
+      "end": 289.83
+    },
+    {
+      "word": "agree",
+      "start": 289.83,
+      "end": 290.63
+    },
+    {
+      "word": "Which",
+      "start": 292.03,
+      "end": 292.63
+    },
+    {
+      "word": "is",
+      "start": 292.63,
+      "end": 292.83
+    },
+    {
+      "word": "on",
+      "start": 292.83,
+      "end": 293.01
+    },
+    {
+      "word": "every",
+      "start": 293.01,
+      "end": 293.43
+    },
+    {
+      "word": "output",
+      "start": 293.43,
+      "end": 293.93
+    },
+    {
+      "word": "Every",
+      "start": 294.83,
+      "end": 295.43
+    },
+    {
+      "word": "input",
+      "start": 295.43,
+      "end": 295.93
+    },
+    {
+      "word": "so",
+      "start": 295.93,
+      "end": 296.87
+    },
+    {
+      "word": "finally",
+      "start": 299.72,
+      "end": 299.98
+    },
+    {
+      "word": "let's",
+      "start": 299.98,
+      "end": 300.34
+    },
+    {
+      "word": "move",
+      "start": 300.34,
+      "end": 300.52
+    },
+    {
+      "word": "one",
+      "start": 300.52,
+      "end": 300.8
+    },
+    {
+      "word": "level",
+      "start": 300.8,
+      "end": 301.02
+    },
+    {
+      "word": "higher",
+      "start": 301.02,
+      "end": 301.46
+    },
+    {
+      "word": "in",
+      "start": 301.46,
+      "end": 302.4
+    },
+    {
+      "word": "category",
+      "start": 302.4,
+      "end": 302.7
+    },
+    {
+      "word": "theory",
+      "start": 302.7,
+      "end": 303.24
+    },
+    {
+      "word": "We",
+      "start": 303.24,
+      "end": 303.72
+    },
+    {
+      "word": "have",
+      "start": 303.72,
+      "end": 303.9
+    },
+    {
+      "word": "to",
+      "start": 303.9,
+      "end": 304.1
+    },
+    {
+      "word": "be",
+      "start": 304.1,
+      "end": 304.24
+    },
+    {
+      "word": "very",
+      "start": 304.24,
+      "end": 304.52
+    },
+    {
+      "word": "careful",
+      "start": 304.52,
+      "end": 304.94
+    },
+    {
+      "word": "not",
+      "start": 304.94,
+      "end": 305.82
+    },
+    {
+      "word": "to",
+      "start": 305.82,
+      "end": 305.98
+    },
+    {
+      "word": "say",
+      "start": 305.98,
+      "end": 306.24
+    },
+    {
+      "word": "to",
+      "start": 306.24,
+      "end": 306.44
+    },
+    {
+      "word": "object",
+      "start": 306.44,
+      "end": 306.64
+    },
+    {
+      "word": "are",
+      "start": 306.64,
+      "end": 306.8
+    },
+    {
+      "word": "literally",
+      "start": 306.8,
+      "end": 307.14
+    },
+    {
+      "word": "equal",
+      "start": 307.14,
+      "end": 307.96
+    },
+    {
+      "word": "When",
+      "start": 308.52,
+      "end": 309
+    },
+    {
+      "word": "you",
+      "start": 309,
+      "end": 309.64
+    },
+    {
+      "word": "know",
+      "start": 309.64,
+      "end": 309.74
+    },
+    {
+      "word": "what",
+      "start": 309.74,
+      "end": 309.98
+    },
+    {
+      "word": "we",
+      "start": 309.98,
+      "end": 310.14
+    },
+    {
+      "word": "really",
+      "start": 310.14,
+      "end": 310.38
+    },
+    {
+      "word": "mean",
+      "start": 310.38,
+      "end": 310.64
+    },
+    {
+      "word": "is",
+      "start": 310.64,
+      "end": 310.96
+    },
+    {
+      "word": "isomorphic",
+      "start": 310.96,
+      "end": 311.58
+    },
+    {
+      "word": "for",
+      "start": 311.58,
+      "end": 311.96
+    },
+    {
+      "word": "example",
+      "start": 311.96,
+      "end": 312.22
+    },
+    {
+      "word": "two",
+      "start": 312.22,
+      "end": 312.56
+    },
+    {
+      "word": "groups",
+      "start": 312.56,
+      "end": 312.92
+    },
+    {
+      "word": "can",
+      "start": 312.92,
+      "end": 313.72
+    },
+    {
+      "word": "use",
+      "start": 313.72,
+      "end": 314.66
+    },
+    {
+      "word": "the",
+      "start": 314.66,
+      "end": 315.02
+    },
+    {
+      "word": "complete",
+      "start": 315.02,
+      "end": 315.3
+    },
+    {
+      "word": "different",
+      "start": 315.3,
+      "end": 315.7
+    },
+    {
+      "word": "underlying",
+      "start": 315.7,
+      "end": 316.06
+    },
+    {
+      "word": "elements",
+      "start": 316.06,
+      "end": 316.56
+    },
+    {
+      "word": "So",
+      "start": 317.2,
+      "end": 317.74
+    },
+    {
+      "word": "as",
+      "start": 317.74,
+      "end": 317.92
+    },
+    {
+      "word": "raw",
+      "start": 317.92,
+      "end": 318.12
+    },
+    {
+      "word": "data's",
+      "start": 318.12,
+      "end": 318.66
+    },
+    {
+      "word": "they",
+      "start": 318.66,
+      "end": 318.9
+    },
+    {
+      "word": "are",
+      "start": 318.9,
+      "end": 319
+    },
+    {
+      "word": "not",
+      "start": 319,
+      "end": 319.14
+    },
+    {
+      "word": "equal",
+      "start": 319.14,
+      "end": 319.48
+    },
+    {
+      "word": "But",
+      "start": 319.48,
+      "end": 320.24
+    },
+    {
+      "word": "if",
+      "start": 320.24,
+      "end": 320.66
+    },
+    {
+      "word": "there",
+      "start": 320.66,
+      "end": 321.1
+    },
+    {
+      "word": "is",
+      "start": 321.1,
+      "end": 321.52
+    },
+    {
+      "word": "an",
+      "start": 321.52,
+      "end": 322
+    },
+    {
+      "word": "isomorphism",
+      "start": 322,
+      "end": 322.74
+    },
+    {
+      "word": "that",
+      "start": 322.74,
+      "end": 322.98
+    },
+    {
+      "word": "preserve",
+      "start": 322.98,
+      "end": 323.4
+    },
+    {
+      "word": "multiplication",
+      "start": 323.4,
+      "end": 323.98
+    },
+    {
+      "word": "identity",
+      "start": 323.98,
+      "end": 324.5
+    },
+    {
+      "word": "in",
+      "start": 324.5,
+      "end": 324.8
+    },
+    {
+      "word": "inverse",
+      "start": 324.8,
+      "end": 325.24
+    },
+    {
+      "word": "Then",
+      "start": 325.84,
+      "end": 326.28
+    },
+    {
+      "word": "from",
+      "start": 326.28,
+      "end": 326.58
+    },
+    {
+      "word": "the",
+      "start": 326.58,
+      "end": 326.72
+    },
+    {
+      "word": "group",
+      "start": 326.72,
+      "end": 326.86
+    },
+    {
+      "word": "theory",
+      "start": 326.86,
+      "end": 327.08
+    },
+    {
+      "word": "perspective",
+      "start": 327.08,
+      "end": 327.46
+    },
+    {
+      "word": "they",
+      "start": 327.46,
+      "end": 327.72
+    },
+    {
+      "word": "have",
+      "start": 327.72,
+      "end": 327.86
+    },
+    {
+      "word": "the",
+      "start": 327.86,
+      "end": 327.96
+    },
+    {
+      "word": "same",
+      "start": 327.96,
+      "end": 328.12
+    },
+    {
+      "word": "structure",
+      "start": 328.12,
+      "end": 328.58
+    },
+    {
+      "word": "and",
+      "start": 328.58,
+      "end": 329.44
+    },
+    {
+      "word": "that",
+      "start": 329.44,
+      "end": 329.64
+    },
+    {
+      "word": "connects",
+      "start": 329.64,
+      "end": 329.9
+    },
+    {
+      "word": "back",
+      "start": 329.9,
+      "end": 330.14
+    },
+    {
+      "word": "to",
+      "start": 330.14,
+      "end": 330.28
+    },
+    {
+      "word": "everything",
+      "start": 330.28,
+      "end": 330.54
+    },
+    {
+      "word": "We",
+      "start": 330.54,
+      "end": 330.74
+    },
+    {
+      "word": "just",
+      "start": 330.74,
+      "end": 330.86
+    },
+    {
+      "word": "did",
+      "start": 330.86,
+      "end": 331.14
+    },
+    {
+      "word": "for",
+      "start": 331.14,
+      "end": 331.56
+    },
+    {
+      "word": "set",
+      "start": 331.56,
+      "end": 331.86
+    },
+    {
+      "word": "we",
+      "start": 331.86,
+      "end": 332.44
+    },
+    {
+      "word": "compare",
+      "start": 332.44,
+      "end": 332.78
+    },
+    {
+      "word": "numbers",
+      "start": 332.78,
+      "end": 333.44
+    },
+    {
+      "word": "Function",
+      "start": 334.08,
+      "end": 334.56
+    },
+    {
+      "word": "will",
+      "start": 334.56,
+      "end": 334.72
+    },
+    {
+      "word": "compare",
+      "start": 334.72,
+      "end": 335
+    },
+    {
+      "word": "outputs",
+      "start": 335,
+      "end": 335.6
+    },
+    {
+      "word": "For",
+      "start": 335.6,
+      "end": 336.66
+    },
+    {
+      "word": "structured",
+      "start": 336.66,
+      "end": 337.48
+    },
+    {
+      "word": "objects",
+      "start": 337.48,
+      "end": 338.12
+    },
+    {
+      "word": "we",
+      "start": 338.12,
+      "end": 338.54
+    },
+    {
+      "word": "compare",
+      "start": 338.54,
+      "end": 338.8
+    },
+    {
+      "word": "structure",
+      "start": 338.8,
+      "end": 339.1
+    },
+    {
+      "word": "preserving",
+      "start": 339.1,
+      "end": 339.62
+    },
+    {
+      "word": "maps",
+      "start": 339.62,
+      "end": 339.96
+    },
+    {
+      "word": "and",
+      "start": 339.96,
+      "end": 340.68
+    },
+    {
+      "word": "in",
+      "start": 340.68,
+      "end": 340.8
+    },
+    {
+      "word": "higher",
+      "start": 340.8,
+      "end": 340.98
+    },
+    {
+      "word": "category",
+      "start": 340.98,
+      "end": 341.86
+    },
+    {
+      "word": "theory",
+      "start": 341.86,
+      "end": 342.34
+    },
+    {
+      "word": "We",
+      "start": 342.34,
+      "end": 342.64
+    },
+    {
+      "word": "even",
+      "start": 342.64,
+      "end": 343.14
+    },
+    {
+      "word": "those",
+      "start": 343.14,
+      "end": 343.38
+    },
+    {
+      "word": "maps",
+      "start": 343.38,
+      "end": 343.74
+    },
+    {
+      "word": "can",
+      "start": 343.74,
+      "end": 344.3
+    },
+    {
+      "word": "have",
+      "start": 344.3,
+      "end": 344.5
+    },
+    {
+      "word": "higher",
+      "start": 344.5,
+      "end": 344.86
+    },
+    {
+      "word": "comparisons.",
+      "start": 344.86,
+      "end": 345.48
+    },
+    {
+      "word": "So",
+      "start": 345.56,
+      "end": 346.16
+    },
+    {
+      "word": "in",
+      "start": 346.16,
+      "end": 346.64
+    },
+    {
+      "word": "in",
+      "start": 346.64,
+      "end": 346.94
+    },
+    {
+      "word": "one",
+      "start": 346.94,
+      "end": 347.24
+    },
+    {
+      "word": "of",
+      "start": 347.24,
+      "end": 347.32
+    },
+    {
+      "word": "the",
+      "start": 347.32,
+      "end": 347.4
+    },
+    {
+      "word": "type",
+      "start": 347.4,
+      "end": 347.58
+    },
+    {
+      "word": "theory",
+      "start": 347.58,
+      "end": 347.88
+    },
+    {
+      "word": "equality",
+      "start": 347.88,
+      "end": 348.22
+    },
+    {
+      "word": "proves",
+      "start": 348.22,
+      "end": 348.64
+    },
+    {
+      "word": "behaves",
+      "start": 348.64,
+      "end": 349
+    },
+    {
+      "word": "like",
+      "start": 349,
+      "end": 349.84
+    },
+    {
+      "word": "Paps",
+      "start": 349.84,
+      "end": 350.68
+    },
+    {
+      "word": "so",
+      "start": 350.68,
+      "end": 351.6
+    },
+    {
+      "word": "the",
+      "start": 351.6,
+      "end": 351.72
+    },
+    {
+      "word": "real",
+      "start": 351.72,
+      "end": 351.88
+    },
+    {
+      "word": "question",
+      "start": 351.88,
+      "end": 352.16
+    },
+    {
+      "word": "is",
+      "start": 352.16,
+      "end": 352.36
+    },
+    {
+      "word": "is",
+      "start": 352.36,
+      "end": 353.1
+    },
+    {
+      "word": "not",
+      "start": 353.1,
+      "end": 353.34
+    },
+    {
+      "word": "only",
+      "start": 353.34,
+      "end": 353.9
+    },
+    {
+      "word": "are",
+      "start": 353.9,
+      "end": 354.38
+    },
+    {
+      "word": "those",
+      "start": 354.38,
+      "end": 354.96
+    },
+    {
+      "word": "two",
+      "start": 354.96,
+      "end": 355.16
+    },
+    {
+      "word": "things",
+      "start": 355.16,
+      "end": 355.38
+    },
+    {
+      "word": "you",
+      "start": 355.38,
+      "end": 355.58
+    },
+    {
+      "word": "call",
+      "start": 355.58,
+      "end": 355.78
+    },
+    {
+      "word": "the",
+      "start": 355.78,
+      "end": 356.08
+    },
+    {
+      "word": "real",
+      "start": 356.08,
+      "end": 356.28
+    },
+    {
+      "word": "question",
+      "start": 356.28,
+      "end": 356.56
+    },
+    {
+      "word": "is",
+      "start": 356.56,
+      "end": 356.86
+    },
+    {
+      "word": "At",
+      "start": 357.44,
+      "end": 357.78
+    },
+    {
+      "word": "which",
+      "start": 357.78,
+      "end": 357.94
+    },
+    {
+      "word": "level",
+      "start": 357.94,
+      "end": 358.38
+    },
+    {
+      "word": "of",
+      "start": 358.38,
+      "end": 358.94
+    },
+    {
+      "word": "mathematics",
+      "start": 358.94,
+      "end": 359.4
+    },
+    {
+      "word": "should",
+      "start": 359.4,
+      "end": 359.76
+    },
+    {
+      "word": "we",
+      "start": 359.76,
+      "end": 359.88
+    },
+    {
+      "word": "treat",
+      "start": 359.88,
+      "end": 360.18
+    },
+    {
+      "word": "them",
+      "start": 360.18,
+      "end": 360.38
+    },
+    {
+      "word": "as",
+      "start": 360.38,
+      "end": 360.58
+    },
+    {
+      "word": "the",
+      "start": 360.58,
+      "end": 360.72
+    },
+    {
+      "word": "same?",
+      "start": 360.72,
+      "end": 361
+    },
+    {
+      "word": "So",
+      "start": 361,
+      "end": 361.58
+    },
+    {
+      "word": "there",
+      "start": 361.58,
+      "end": 361.72
+    },
+    {
+      "word": "is",
+      "start": 361.72,
+      "end": 361.86
+    },
+    {
+      "word": "a",
+      "start": 361.86,
+      "end": 361.94
+    },
+    {
+      "word": "real",
+      "start": 361.94,
+      "end": 362.24
+    },
+    {
+      "word": "lessons",
+      "start": 362.24,
+      "end": 362.88
+    },
+    {
+      "word": "of",
+      "start": 362.88,
+      "end": 363.08
+    },
+    {
+      "word": "equality.",
+      "start": 363.08,
+      "end": 363.46
+    },
+    {
+      "word": "So",
+      "start": 364.02,
+      "end": 364.42
+    },
+    {
+      "word": "I",
+      "start": 364.42,
+      "end": 364.66
+    },
+    {
+      "word": "hope",
+      "start": 364.66,
+      "end": 364.84
+    },
+    {
+      "word": "you",
+      "start": 364.84,
+      "end": 364.96
+    },
+    {
+      "word": "enjoyed",
+      "start": 364.96,
+      "end": 365.16
+    },
+    {
+      "word": "this",
+      "start": 365.16,
+      "end": 365.3
+    },
+    {
+      "word": "video.",
+      "start": 365.3,
+      "end": 365.5
+    },
+    {
+      "word": "See",
+      "start": 365.64,
+      "end": 365.78
+    },
+    {
+      "word": "you",
+      "start": 365.78,
+      "end": 365.86
+    },
+    {
+      "word": "next",
+      "start": 365.86,
+      "end": 365.98
+    },
+    {
+      "word": "time",
+      "start": 365.98,
+      "end": 366.24
+    }
+  ]
+}

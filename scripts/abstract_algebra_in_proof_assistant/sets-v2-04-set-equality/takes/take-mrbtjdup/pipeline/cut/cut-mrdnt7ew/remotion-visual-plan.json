@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "sourceScriptId": "sets-v2-04-set-equality",
+  "title": "Set equality — what equals means in a proof assistant",
+  "editedDurationSeconds": 158.25799999999992,
+  "timeline": [
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 0,
+      "sourceEnd": 19.34,
+      "editedStart": 0,
+      "editedEnd": 19.34
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: explain scanner and receipt through the rfl gotcha",
+      "sourceStart": 20.4,
+      "sourceEnd": 48.2,
+      "editedStart": 19.34,
+      "editedEnd": 47.14
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: Lean Set",
+      "sourceStart": 50.190000000000005,
+      "sourceEnd": 51.31,
+      "editedStart": 47.14,
+      "editedEnd": 48.26
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: Lean Set",
+      "sourceStart": 51.769999999999996,
+      "sourceEnd": 70.51,
+      "editedStart": 48.26,
+      "editedEnd": 67
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: Lean Set",
+      "sourceStart": 71.21000000000001,
+      "sourceEnd": 78.05000000000001,
+      "editedStart": 67,
+      "editedEnd": 73.84
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: Turn payoff for SetEq",
+      "sourceStart": 78.84,
+      "sourceEnd": 99.67,
+      "editedStart": 73.84,
+      "editedEnd": 94.67
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 100.49000000000001,
+      "sourceEnd": 112.41,
+      "editedStart": 94.67,
+      "editedEnd": 106.58999999999999
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 113.13000000000001,
+      "sourceEnd": 120.77,
+      "editedStart": 106.58999999999999,
+      "editedEnd": 114.22999999999998
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 121.55000000000001,
+      "sourceEnd": 126.527,
+      "editedStart": 114.22999999999998,
+      "editedEnd": 119.20699999999997
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "Beat 6: Emily Riehl / HoTT idea, carefully labeled informal",
+      "sourceStart": 126.527,
+      "sourceEnd": 146.95000000000002,
+      "editedStart": 119.20699999999997,
+      "editedEnd": 139.63
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "Beat 6: Emily Riehl / HoTT idea, carefully labeled informal",
+      "sourceStart": 147.51,
+      "sourceEnd": 166.138,
+      "editedStart": 139.63,
+      "editedEnd": 158.258
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+version: "3"
+# DEPRECATED — outdoor uses Tailscale (100.66.185.67) instead of ngrok.
+# Kept for reference only; npm run outdoor:all no longer starts ngrok.
+
+tunnels:
+  agent:
+    addr: 8788
+    proto: http
+    domain: scanning-glisten-upturned.ngrok-free.dev
+  remotion:
+    addr: 3000
+    proto: http
+  expo:
+    addr: 8081
+    proto: http

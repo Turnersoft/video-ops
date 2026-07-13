@@ -1,0 +1,92 @@
+{
+  "version": 4,
+  "scriptId": "template-video-beat-present-clip",
+  "title": "Template — present other videos in beats",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "durationSeconds": 24,
+      "layout": "dual-panel",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.4,
+          "pauseAfterBeat": 0.35,
+          "minBeatSeconds": 6,
+          "paceFactor": 1.1
+        }
+      },
+      "compare": {
+        "display": {
+          "editorFontScale": 0.72
+        },
+        "overlays": {
+          "demo-clip": {
+            "type": "video",
+            "src": "assets/demo-clip.mp4",
+            "objectFit": "contain",
+            "label": "Reference clip"
+          }
+        },
+        "beats": [
+          {
+            "say": "Here is a compare beat — Lean and Turn side by side as usual.",
+            "durationSeconds": 8,
+            "lean": {
+              "code": "example : Nat := 1",
+              "highlights": ["Nat"]
+            },
+            "turn": {
+              "code": "example : Nat = 1",
+              "highlights": ["Nat"]
+            }
+          },
+          {
+            "say": "This beat presents another video inline — drop your MP4 under assets/.",
+            "durationSeconds": 8,
+            "video": {
+              "src": "assets/demo-clip.mp4",
+              "objectFit": "contain",
+              "label": "Inline video beat"
+            },
+            "comment": "Tighten the hook; keep jargon minimal.",
+            "allowScriptChange": true
+          },
+          {
+            "say": "You can also reference a named overlay video resource.",
+            "durationSeconds": 8,
+            "overlay": "demo-clip"
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "durationSeconds": 12,
+      "layout": "beat-focus",
+      "teleprompter": {
+        "position": "below-canvas"
+      },
+      "presentation": {
+        "type": "video-clip",
+        "src": "assets/demo-clip.mp4",
+        "objectFit": "contain",
+        "label": "Full-scene video"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Scene two uses a video-clip presentation — the whole slide is the clip.",
+            "durationSeconds": 12
+          }
+        ]
+      }
+    }
+  ]
+}

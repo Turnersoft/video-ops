@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "sourceFile": "shared/reference/02_sets_and_equivalence_relations.turn",
+  "sourceRange": { "startLine": 874, "endLine": 886 },
+  "typing": {
+    "charsPerSecond": 24,
+    "snippet": "theorem \"equivalence classes form a partition (Judson Theorem 1.25 forward)\" {\n    forall X: Set<Any>,\n    forall E: EquivalenceRelation<X>,\n    exists Classes: Set<Set<Any>> where { ... },\n    |- exists Partition<X>[..Classes]\n}"
+  },
+  "proofPanel": {
+    "exportPath": "tracks/scene-3-proof.json",
+    "steps": [
+      { "label": "open goal", "goal": "⊢ exists Partition<X>[..Classes]" },
+      { "label": "witness confirm", "goal": "partition obligations" },
+      { "label": "close branch", "goal": "no open goals" }
+    ]
+  },
+  "captionBeats": [
+    {
+      "atSeconds": 0,
+      "editor": ["theorem"],
+      "proofStepIndex": 0
+    },
+    {
+      "atSeconds": 3,
+      "editor": ["Partition", "[..Classes]"],
+      "proofStepIndex": 0
+    },
+    {
+      "atSeconds": 6,
+      "editor": ["Classes", "Partition"],
+      "proofStepIndex": 1
+    },
+    {
+      "atSeconds": 9,
+      "editor": ["[..Classes]"],
+      "proofStepIndex": 2
+    }
+  ]
+}

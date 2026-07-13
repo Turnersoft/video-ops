@@ -1,0 +1,79 @@
+{
+  "version": 4,
+  "scriptId": "algebra-01-spread-classes-into-partition",
+  "title": "algebra_01_spread_classes_into_partition",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "The Turn wedge",
+      "durationSeconds": 26,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-2-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Turn-Lang defines `Partition` once.\nEach cell is nonempty and sits inside the ambient set.\nThe structure carries `disjoint` and `cover` as laws — not as prose you paste into every theorem.\nWhen Judson 1.25 gives us a family `Classes`, we do not rewrite that checklist.\nWe reuse this definition.",
+            "durationSeconds": 26,
+            "visualNotes": "Left: Turn editor types the structure. Right: scoped knowledge panel — Definition 15 Partition with axioms (same render as `/app`). No hook card, no checklist montage.\nturn-ide track: tracks/scene-2-ide.json",
+            "turn": {
+              "code": "structure[\n    C: Set<Any> where {\n        |- C != EmptySet;\n        |- Subset(C, X)\n    }\n] Partition<X: Set<Any>>: Set<Set<Any>> {\n    laws {\n        disjoint { ... },\n        cover { ... }\n    }\n}"
+            },
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "title": "Math receipt",
+      "durationSeconds": 21,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-3-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Here is the receipt in the theorem statement.\n`exists Partition<X>[..Classes]` means: spread this class family into the partition type.\nThe data is `Classes`. The reusable shape is `Partition<X>`.\nThe spread syntax is the bridge between them.",
+            "durationSeconds": 21,
+            "visualNotes": "Highlight `[..Classes]` once the line types. Proof panel may show the open goal after `theorem` appears. No split-receipt close card.\nturn-ide track: tracks/scene-3-ide.json",
+            "turn": {
+              "code": "theorem \"equivalence classes form a partition (Judson Theorem 1.25 forward)\" {\n    forall X: Set<Any>,\n    forall E: EquivalenceRelation<X>,\n    exists Classes: Set<Set<Any>> where { ... },\n    |- exists Partition<X>[..Classes]\n}"
+            },
+            "allowScriptChange": false
+          }
+        ]
+      }
+    }
+  ]
+}

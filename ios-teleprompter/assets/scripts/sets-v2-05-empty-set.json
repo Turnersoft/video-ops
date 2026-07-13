@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "id": "sets-v2-05-empty-set",
+  "title": "05_empty_set",
+  "language": "en",
+  "mode": "manual",
+  "countdownSeconds": 3,
+  "defaultFontScale": 1,
+  "slides": [
+    {
+      "id": "scene-01-line-01",
+      "title": "Textbook anchor",
+      "durationSeconds": 7,
+      "body": "Open the book. Judson Abstract Algebra, section one point two, Sets.",
+      "notes": "math-focus; textbook beat only."
+    },
+    {
+      "id": "scene-01-line-02",
+      "title": "Textbook anchor",
+      "durationSeconds": 5,
+      "body": "The empty set ∅ is the set with no elements.",
+      "notes": "math-focus; textbook beat only."
+    },
+    {
+      "id": "scene-01-line-03",
+      "title": "Textbook anchor",
+      "durationSeconds": 10,
+      "body": "This is the bold definition we are formalizing today, which is one clip, one idea.",
+      "notes": "math-focus; textbook beat only."
+    },
+    {
+      "id": "scene-02-line-01",
+      "title": "Intuition",
+      "durationSeconds": 9,
+      "body": "EmptySet is more specific than Set, which means inheritance, not the reverse.",
+      "notes": "Film presenter; beats on board."
+    },
+    {
+      "id": "scene-02-line-02",
+      "title": "Intuition",
+      "durationSeconds": 7,
+      "body": "No extra fields, only a law that says nothing is a member.",
+      "notes": "Film presenter; beats on board."
+    },
+    {
+      "id": "scene-02-line-03",
+      "title": "Intuition",
+      "durationSeconds": 9,
+      "body": "We use the structure name EmptySet directly, with no generic instantiation.",
+      "notes": "Film presenter; beats on board."
+    },
+    {
+      "id": "scene-03-line-01",
+      "title": "Lean vs Turn",
+      "durationSeconds": 5,
+      "body": "Textbook: ∅ has no elements.",
+      "notes": "Compare layer; caption beats on both sides."
+    },
+    {
+      "id": "scene-03-line-02",
+      "title": "Lean vs Turn",
+      "durationSeconds": 5,
+      "body": "Turn: EmptySet inherits Set; no_members law.",
+      "notes": "Compare layer; caption beats on both sides."
+    },
+    {
+      "id": "scene-03-line-03",
+      "title": "Lean vs Turn",
+      "durationSeconds": 5,
+      "body": "Lean: not_mem_empty for any x.",
+      "notes": "Compare layer; caption beats on both sides."
+    },
+    {
+      "id": "scene-03-line-04",
+      "title": "Lean vs Turn",
+      "durationSeconds": 6,
+      "body": "Turn makes the law block the pedagogical anchor.",
+      "notes": "Compare layer; caption beats on both sides."
+    }
+  ]
+}

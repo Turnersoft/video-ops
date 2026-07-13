@@ -1,0 +1,11 @@
+# stage-run 2026-07-12T13:14:12.619Z
+jobId=job-take-mrhmharr
+scriptId=sets-v2-04-set-equality
+takeId=take-mrhmharr
+stage=social
+runId=social-mrhteozu
+
+[2026-07-12T13:14:12.620Z] Starting social
+[2026-07-12T13:14:12.620Z] Loading social copy pack
+[2026-07-12T13:14:12.622Z] Social pack ready for review
+[2026-07-12T13:14:12.622Z] social complete

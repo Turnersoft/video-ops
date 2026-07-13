@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "layouts": {
+    "0|turn-code|Subset(A, B)|The textbook sentence becomes two proof obligati": {
+      "xPct": 82,
+      "yPct": 38
+    },
+    "1|lean-code|Nat.zero_add|The terms do not reduce to the same syntax, so t": {
+      "xPct": 18,
+      "yPct": 38
+    },
+    "3|turn-code|Subset(B, A)|Here '=' is notation for the named SetEq relatio": {
+      "xPct": 82,
+      "yPct": 38
+    },
+    "4|turn-code|f(x) = g(x)|Function equality becomes pointwise equality.": {
+      "xPct": 77.892,
+      "yPct": 42.684
+    },
+    "5|lean-code|isomorphism|Two presentations can differ as data while prese": {
+      "xPct": 18,
+      "yPct": 38
+    },
+    "2|lean-code|le_antisymm|Antisymmetry of ⊆ is set equality — we named thi": {
+      "xPct": 21.227493808286635,
+      "yPct": 44.85808368963894
+    },
+    "3|lean-code|s = t ↔ s ⊆ t ∧ t ⊆ s|Mutual subset packaged as a named theorem — your": {
+      "xPct": 21.666594632039526,
+      "yPct": 46.83635282231461
+    },
+    "3|turn-code|unfold SetEq|SetEq is defined as mutual subset, so unfolding": {
+      "xPct": 69.74224300601544,
+      "yPct": 48.32149839343312
+    },
+    "4|lean-code|inductive Eq|a = b is notation for Eq a b — a proposition wit": {
+      "xPct": 17.942659075783677,
+      "yPct": 47.55941688240158
+    },
+    "6|lean-code|0 + n = n := rfl|Fails: 0 + n does not compute to n, because add": {
+      "xPct": 35.85695386008647,
+      "yPct": 45.04925397704173
+    },
+    "7|lean-code|funext|funext turns pointwise agreement into a proposit": {
+      "xPct": 26.648796059343596,
+      "yPct": 31.062319320625697
+    },
+    "1|lean-code|Double n = n + n := rfl|Double unfolds to n + n. That is the definition-": {
+      "xPct": 31.19313276030337,
+      "yPct": 32.44125341019512
+    },
+    "1|lean-code|no proof term|Judgemental equality lives in the checker, not a": {
+      "xPct": 18.825921065126504,
+      "yPct": 48.3987009769656
+    },
+    "2|lean-code|Nat.zero_add|True by theorem, not by conversion alone.": {
+      "xPct": 22.78340047409888,
+      "yPct": 49.08556134105169
+    },
+    "1|lean-code|Nat.zero_add|This theorem is the receipt.": {
+      "xPct": 21.374872139618557,
+      "yPct": 43.15161073543747
+    }
+  }
+}
