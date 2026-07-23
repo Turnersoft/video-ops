@@ -1,0 +1,114 @@
+{
+  "version": 4,
+  "scriptId": "10-round-brackets-bundle-properties",
+  "title": "syntax_10_round_brackets_bundle_properties",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "The experience",
+      "durationSeconds": 40,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "No symbols yet. Use labels/checkmarks as the picture before `bijective`.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Three duplicate definition cards (conceptual) → one bundled card."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Hi friends, welcome back.\nImagine you are labeling a student as both “registered” and “paid.”\nYou do not want to copy the whole definition of registered, then copy the whole definition of paid, every time you need “eligible.”\nYou want to say: eligible means both labels together.\nThat is the intuition behind bundling properties.\nIn math, bijective is not a mysterious third thing — it is two adjectives traveling together.",
+            "durationSeconds": 40,
+            "visualNotes": "Three duplicate definition cards (conceptual) → one bundled card.\nNo symbols yet. Use labels/checkmarks as the picture before `bijective`.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "title": "The Turn wedge",
+      "durationSeconds": 21,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Stay on Function block only.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-2-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "In this chapter, bijective is literally `(surjective, injective)` — one line.\nSame round-bracket idea when you attach several properties before a type.\nOne syntax for “these conditions together” — that is how libraries stay readable.",
+            "durationSeconds": 21,
+            "visualNotes": "Expand surjective and injective in outline above.\nStay on Function block only.\nturn-ide track: tracks/scene-2-ide.json",
+            "turn": {
+              "code": "@notation(adjective)\n        bijective: (surjective, injective)",
+              "highlights": [
+                "bijective",
+                "(surjective, injective)"
+              ]
+            },
+            "focus": "turn",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "title": "Math confirm and close",
+      "durationSeconds": 18,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Short close.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "`invertible: Prop { ... }` briefly — tease pitfalls-05."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "The underlying adjectives still have their own laws — you can prove them separately.\nThe bundle is composition of names, not a wall of duplicated text.\nFull 1.2 video in the description.",
+            "durationSeconds": 18,
+            "visualNotes": "`invertible: Prop { ... }` briefly — tease pitfalls-05.\nShort close.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    }
+  ]
+}

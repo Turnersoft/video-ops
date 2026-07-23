@@ -1,0 +1,22 @@
+@use '../../app' as *;
+
+.root {
+  @include flex-column-fill;
+  border-radius: scaled(20px);
+  overflow: hidden;
+  border: 1px solid $card-border-strong;
+  background: $bg;
+}
+
+.label {
+  padding: scaled(10px) scaled(18px);
+  font-size: scaled(14px);
+  font-weight: 600;
+  color: $label-text;
+  border-bottom: 1px solid $label-border;
+}
+
+.video {
+  flex: 1;
+  min-height: 0;
+}

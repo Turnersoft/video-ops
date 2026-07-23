@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "id": "ai-math",
+  "title": "AI math, reviewed",
+  "description": "Newsjack + editorial — Keep/Reject on AI formalization claims.",
+  "styleKit": "ai-review",
+  "growthJob": "authority",
+  "bgmProfile": "editorial-pad"
+}

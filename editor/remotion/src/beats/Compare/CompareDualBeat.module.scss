@@ -1,0 +1,259 @@
+@use '../../app' as *;
+
+.root {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+}
+
+.shell {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+}
+
+$compare-chrome: 3;
+$compare-body: 1.5;
+
+@function compareChrome($px) {
+  @return scaled($px * $compare-chrome);
+}
+
+@function compareBody($px) {
+  @return scaled($px * $compare-body);
+}
+
+@function compareTitle($px) {
+  @return compareChrome($px);
+}
+
+.landscapeFrame {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  gap: scaled(20px);
+  box-sizing: border-box;
+  position: relative;
+}
+
+.landscapeVsDivider {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 4;
+  width: compareChrome(52px);
+  height: compareChrome(52px);
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: compareChrome(16px);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  color: #5c574f;
+  background: linear-gradient(145deg, #faf8f3, #ede8df);
+  border: 2px solid rgba(60, 54, 45, 0.12);
+  box-shadow: 0 8px 28px rgba(60, 54, 45, 0.18);
+}
+
+.landscapeLanguageRow {
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: scaled(10px);
+}
+
+.landscapeTitleRow {
+  display: flex;
+  align-items: center;
+  gap: compareTitle(8px);
+  flex-shrink: 0;
+}
+
+.landscapeTitleRowFocused {
+  padding: scaled(4px) scaled(8px);
+  border-radius: scaled(12px);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.landscapeLogo {
+  height: compareTitle(34px);
+  width: auto;
+  max-width: compareTitle(120px);
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.landscapeAccentDot {
+  width: compareTitle(10px);
+  height: compareTitle(10px);
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.landscapeTitleLabel {
+  font-size: compareTitle(20px);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--syntax-plain);
+}
+
+.landscapeCard {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: scaled(8px);
+  border-radius: scaled(18px);
+  background: rgba(255, 255, 255, 0.88);
+  overflow: hidden;
+  border: 1px solid rgba(60, 54, 45, 0.12);
+  box-shadow: 0 scaled(12px) scaled(36px) rgba(60, 54, 45, 0.06);
+}
+
+.landscapeCodeSection {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgba(60, 54, 45, 0.08);
+}
+
+.landscapeCodeSectionDark {
+  background: #1e1e1e;
+}
+
+.landscapeCodeSectionLight {
+  background: #faf9f5;
+}
+
+.landscapeRenderSection {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #faf9f5;
+}
+
+.landscapePaneHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: scaled(8px);
+  padding: scaled(6px) scaled(12px);
+  flex-shrink: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.landscapePaneHeaderLabel {
+  font-size: compareBody(11px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.landscapePaneHeaderLabelDark {
+  color: #858585;
+}
+
+.landscapePaneHeaderLabelLight {
+  color: #6b6860;
+}
+
+.landscapePaneBody {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.landscapeRenderPaneBody {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.portraitCompareRoot {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: scaled(10px);
+}
+
+.portraitPane {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: scaled(16px);
+  overflow: hidden;
+  border: 1px solid $card-border-strong;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.portraitPaneHeader {
+  display: flex;
+  align-items: center;
+  gap: scaled(10px);
+  padding: scaled(10px) scaled(14px);
+  border-bottom: 1px solid rgba(60, 54, 45, 0.08);
+  flex-shrink: 0;
+}
+
+.portraitLogo {
+  width: auto;
+  max-width: scaled(280px);
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.portraitAccentDot {
+  width: scaled(8px);
+  height: scaled(8px);
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.portraitPaneTitle {
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+}
+
+.portraitPaneBody {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  > * {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+  }
+}

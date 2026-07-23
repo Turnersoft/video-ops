@@ -1,0 +1,94 @@
+@use '../../app' as *;
+
+.wrap {
+  display: flex;
+  gap: $space-sm;
+  padding: $space-sm;
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: rgba(148, 163, 184, 0.25);
+  background-color: rgba(15, 23, 42, 0.35);
+}
+.meta {
+  color: $muted;
+  font-size: $font-small;
+  line-height: 18px;
+}
+.shapeRow {
+  display: flex;
+  flex-direction: row;
+  gap: $space-xs;
+}
+.shapeChip {
+  padding-inline: $space-sm;
+  padding-block: $space-xs;
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: rgba(148, 163, 184, 0.35);
+}
+.shapeChipActive {
+  border-color: $orange;
+  background-color: rgba(249, 115, 22, 0.15);
+}
+.shapeChipText {
+  color: $text;
+  font-size: $font-small;
+  font-weight: 700;
+}
+.sliderRow {
+  display: flex;
+  gap: $space-xs;
+}
+.sliderLabel {
+  color: $muted;
+  font-size: $font-tiny;
+  font-weight: 700;
+}
+.sliderTrack {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.sliderStop {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background-color: rgba(148, 163, 184, 0.25);
+}
+.sliderStopActive {
+  background-color: $orange;
+}
+.sliderValue {
+  color: $text;
+  font-size: $font-tiny;
+  font-family: Menlo;
+}
+.toggleRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $space-xs;
+}
+.toggleChip {
+  padding-inline: $space-sm;
+  padding-block: $space-xs;
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: rgba(148, 163, 184, 0.35);
+}
+.toggleChipActive {
+  border-color: $orange;
+  background-color: rgba(249, 115, 22, 0.15);
+}
+.toggleChipText {
+  color: $text;
+  font-size: $font-tiny;
+  font-weight: 700;
+}
+.actions {
+  display: flex;
+  gap: $space-xs;
+}
+
+

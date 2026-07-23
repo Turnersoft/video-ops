@@ -1,0 +1,36 @@
+@use '../../app' as *;
+
+.wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $space-xs;
+  flex-shrink: 0;
+}
+.label {
+  color: $muted;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+.chip {
+  border-radius: $radius-pill;
+  padding-inline: 10px;
+  padding-block: 5px;
+  border-width: 1px;
+  border-color: $card-border;
+  background-color: rgba(15, 23, 42, 0.75);
+}
+.chipActive {
+  border-color: rgba(249, 115, 22, 0.75);
+  background-color: rgba(249, 115, 22, 0.18);
+}
+.chipText {
+  color: $muted;
+  font-size: $font-tiny;
+  font-weight: 700;
+}
+.chipTextActive {
+  color: #fdba74;
+}

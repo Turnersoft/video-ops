@@ -1,0 +1,49 @@
+{
+  "recentIngests": [
+    {
+      "takeId": "take-mrhmharr",
+      "inboxDir": "/Users/johndoe/Library/Mobile Documents/com~apple~CloudDocs/TurnOutdoor/inbox",
+      "videoPath": "/Users/johndoe/Library/Mobile Documents/com~apple~CloudDocs/TurnOutdoor/inbox/take-mrhmharr.mp4",
+      "videoFileName": "take-mrhmharr.mp4",
+      "manifestPath": "/Users/johndoe/Library/Mobile Documents/com~apple~CloudDocs/TurnOutdoor/inbox/take-mrhmharr.json",
+      "manifestFileName": "take-mrhmharr.json",
+      "scriptId": "sets-v2-04-set-equality",
+      "scriptTitle": "04_set_equality",
+      "status": "ingested",
+      "updatedAt": "2026-07-20T03:28:02.147Z",
+      "ingestedAt": "2026-07-20T03:28:02.147Z",
+      "jobId": "job-take-mrhmharr",
+      "takeDir": "/Users/johndoe/Documents/company/video_ops/scripts/compare/sets-v2-04-set-equality/takes/take-mrhmharr"
+    },
+    {
+      "takeId": "take-mrbtjdup",
+      "inboxDir": "/Users/johndoe/Library/Mobile Documents/com~apple~CloudDocs/TurnOutdoor/inbox",
+      "videoPath": "/Users/johndoe/Library/Mobile Documents/com~apple~CloudDocs/TurnOutdoor/inbox/take-mrbtjdup.mp4",
+      "videoFileName": "take-mrbtjdup.mp4",
+      "manifestPath": "/Users/johndoe/Library/Mobile Documents/com~apple~CloudDocs/TurnOutdoor/inbox/take-mrbtjdup.json",
+      "manifestFileName": "take-mrbtjdup.json",
+      "scriptId": "sets-v2-04-set-equality",
+      "scriptTitle": "Set equality — what equals means in a proof assistant",
+      "status": "ingested",
+      "updatedAt": "2026-07-20T03:28:02.137Z",
+      "ingestedAt": "2026-07-20T03:28:02.137Z",
+      "jobId": "job-take-mrbtjdup",
+      "takeDir": "/Users/johndoe/Documents/company/video_ops/scripts/compare/sets-v2-04-set-equality/takes/take-mrbtjdup"
+    },
+    {
+      "takeId": "take-mrhjew5h",
+      "inboxDir": "/Users/johndoe/Documents/company/video_ops/inbox",
+      "videoPath": "/Users/johndoe/Documents/company/video_ops/inbox/take-mrhjew5h.mp4",
+      "videoFileName": "take-mrhjew5h.mp4",
+      "manifestPath": "/Users/johndoe/Documents/company/video_ops/inbox/take-mrhjew5h.json",
+      "manifestFileName": "take-mrhjew5h.json",
+      "scriptId": "sets-v2-04-set-equality",
+      "scriptTitle": "04_set_equality",
+      "status": "ingested",
+      "updatedAt": "2026-07-20T03:28:02.123Z",
+      "ingestedAt": "2026-07-20T03:28:02.123Z",
+      "jobId": "job-take-mrhjew5h",
+      "takeDir": "/Users/johndoe/Documents/company/video_ops/scripts/compare/sets-v2-04-set-equality/takes/take-mrhjew5h"
+    }
+  ]
+}

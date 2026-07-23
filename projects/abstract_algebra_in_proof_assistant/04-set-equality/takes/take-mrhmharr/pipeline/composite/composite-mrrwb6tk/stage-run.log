@@ -1,0 +1,49 @@
+# stage-run 2026-07-19T14:33:09.706Z
+jobId=job-take-mrhmharr
+scriptId=04-set-equality
+takeId=take-mrhmharr
+stage=composite
+runId=composite-mrrwb6tk
+
+[2026-07-19T14:33:09.709Z] Starting composite
+[2026-07-19T14:33:09.710Z] Copying alignment artifacts
+[2026-07-19T14:33:09.712Z] Rendering portrait + landscape
+[2026-07-19T14:33:09.713Z] $ node /Users/johndoe/Documents/company/video_ops/remotion/scripts/render-outdoor.mjs 04-set-equality --edit-dir /Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mrrwb6tk --format both
+[stdout] /Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mrrwb6tk/outdoor-manifest.json
+[stdout] [render-outdoor] using animation-outdoor.json — 66 caption segments, scene 284.09s
+[stdout] [render-outdoor] beat durations: 18.69, 72.84, 53.38, 37.7, 36.98, 64.5s
+
+[stdout] > turn-video-ops-remotion@1.0.0 sync
+[stdout] > npx tsx scripts/sync-animations.ts
+
+[stderr] /Users/johndoe/Documents/company/basic_ui/src/pages/VideoOpsPage/videoOpsAnimationMarkdown.ts:81
+[stderr]     throw new VideoOpsAnimationMarkdownError(message, line);
+[stderr]           ^
+
+[stderr] VideoOpsAnimationMarkdownError: Line 64: Beat headings must be sequential. Expected Beat 1, found Beat 2.
+[stderr]     at fail (/Users/johndoe/Documents/company/basic_ui/src/pages/VideoOpsPage/videoOpsAnimationMarkdown.ts:81:11)
+[stderr]     at <anonymous> (/Users/johndoe/Documents/company/basic_ui/src/pages/VideoOpsPage/videoOpsAnimationMarkdown.ts:710:13)
+[stderr]     at Array.map (<anonymous>)
+[stderr]     at parseScene (/Users/johndoe/Documents/company/basic_ui/src/pages/VideoOpsPage/videoOpsAnimationMarkdown.ts:706:32)
+[stderr]     at <anonymous> (/Users/johndoe/Documents/company/basic_ui/src/pages/VideoOpsPage/videoOpsAnimationMarkdown.ts:754:16)
+[stderr]     at Array.map (<anonymous>)
+[stderr]     at parseAnimationMarkdown (/Users/johndoe/Documents/company/basic_ui/src/pages/VideoOpsPage/videoOpsAnimationMarkdown.ts:744:34)
+[stderr]     at compileVideoOpsAnimationMarkdown (/Users/johndoe/Documents/company/basic_ui/src/pages/VideoOpsPage/videoOpsAnimationMarkdown.ts:1318:20)
+[stderr]     at <anonymous> (/Users/johndoe/Documents/company/video_ops/remotion/scripts/sync-animations.ts:366:23)
+[stderr]     at ModuleJob.run (node:internal/modules/esm/module_job:343:25) {
+[stderr]   line: 64
+[stderr] }
+
+[stderr] Node.js v22.22.3
+[stderr] Error: npm run sync failed
+[stderr]     at run (file:///Users/johndoe/Documents/company/video_ops/remotion/scripts/render-outdoor.mjs:20:19)
+[stderr]     at file:///Users/johndoe/Documents/company/video_ops/remotion/scripts/render-outdoor.mjs:107:3
+[stderr]     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+[stderr]     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+[stderr]     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+[stderr]   status: 1
+[stderr] }
+[stdout] [render-outdoor] restored canonical animation.json
+[2026-07-19T14:33:12.528Z] exit 1
+[2026-07-19T14:33:12.529Z] FAILED: Remotion render failed — [2026-07-19T14:33:12.528Z] exit 1
+[2026-07-19T14:33:12.529Z] [2026-07-19T14:33:12.528Z] exit 1

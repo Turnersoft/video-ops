@@ -1,0 +1,301 @@
+{
+  "version": 4,
+  "scriptId": "04-set-equality",
+  "title": "Set equality — what equals means in a proof assistant",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "Set equality — what equals means in a proof assistant",
+      "durationSeconds": 158.26,
+      "layout": "dual-panel",
+      "burnCaptions": true,
+      "visualNotes": "6 beats in the user's spoken style: textbook SetEq hook, Lean scanner vs receipt, Set.ext, Turn SetEq, FunctionEq, Emily Riehl / HoTT path layer.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "compare": {
+        "display": {
+          "editorFontScale": 0.7,
+          "leanEditorFontScale": 0.8,
+          "renderFontScale": 0.85,
+          "textbookOverlay": {
+            "aataExcerpt": "sets-set-equality-definition",
+            "placement": "center"
+          }
+        },
+        "overlays": {
+          "textbook-set-equality": {
+            "type": "textbook",
+            "aataExcerpt": "sets-set-equality-definition",
+            "placement": "center"
+          }
+        },
+        "blocks": {},
+        "beats": [
+          {
+            "say": "Welcome back. Last clip ended with not SetEq. Today we finally open SetEq. The textbook rule is simple. Two sets are equal when A is a subset of B and B is a subset of A. But the real question is not the rule. The real question is what the equals sign means inside a proof assistant.",
+            "durationSeconds": 19.34,
+            "sayZh": "欢迎回来。上期结尾是 not SetEq。今天我们真正打开 SetEq。课本规则很简单：两个集合相等，就是 A 是 B 的子集，B 也是 A 的子集。但真正的问题不是这条规则，而是证明助手里的等号到底是什么意思。",
+            "lean": {
+              "code": "-- Textbook set equality\n-- A = B when they have the same members\n--\n-- In Lean, this still becomes ordinary Eq:\n--   A = B",
+              "highlights": [
+                "same members",
+                "ordinary Eq",
+                "A = B"
+              ]
+            },
+            "turn": {
+              "code": "@notation({A} ~ \" = \" ~ {B})\nrelation SetEq(T: Any, A B: Set<T>): Prop {\n    |- {\n        Subset(A, B);\n        Subset(B, A);\n    }\n}",
+              "highlights": [
+                "relation SetEq",
+                "Subset(A, B)",
+                "Subset(B, A)"
+              ],
+              "hints": [
+                {
+                  "target": "turn-code",
+                  "needle": "Subset(A, B)",
+                  "text": "The textbook sentence becomes two proof obligations."
+                }
+              ]
+            },
+            "overlay": "textbook-set-equality",
+            "visualNotes": "Beat 1: open in the user's style. Textbook rule first, then the real question.",
+            "fontScales": {
+              "editorFontScale": 0.7,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.85
+            }
+          },
+          {
+            "say": "Start with a tiny Lean example. n plus zero equals n closes by rfl. That means the checker can scan both sides, compute, and see the same thing. But zero plus n equals n is also true, and rfl does not close it. Now you need Nat dot zero add. So one equality was seen by the scanner, and the other needed a receipt.",
+            "durationSeconds": 27.8,
+            "sayZh": "先看一个很小的 Lean 例子。n 加 0 等于 n 可以用 rfl 关闭。这表示检查器扫描两边、计算之后，看见它们一样。但 0 加 n 等于 n 也是真的，rfl 却关不掉。现在需要 Nat.zero_add。所以一个相等被扫描器看见，另一个需要收据。",
+            "lean": {
+              "code": "-- scanner sees this by computation\nexample (n : Nat) : n + 0 = n := rfl\n\n-- true, but not closed by scanning\nexample (n : Nat) : 0 + n = n := by\n  simpa using Nat.zero_add n",
+              "highlights": [
+                "rfl",
+                "not closed by scanning",
+                "Nat.zero_add"
+              ],
+              "hints": [
+                {
+                  "target": "lean-code",
+                  "needle": "Nat.zero_add",
+                  "text": "This theorem is the receipt."
+                }
+              ]
+            },
+            "turn": {
+              "code": "-- scanner vs receipt\n--\n-- scanner:\n--   the checker computes and accepts\n--   no proof term to show\n--\n-- receipt:\n--   you give a proof object\n--   p : a = b",
+              "highlights": [
+                "scanner",
+                "receipt",
+                "p : a = b"
+              ]
+            },
+            "visualNotes": "Beat 2: explain scanner and receipt through the rfl gotcha.",
+            "fontScales": {
+              "editorFontScale": 0.7,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.85
+            }
+          },
+          {
+            "say": "Now sets. Set equality is not about the two expressions looking identical. It is about having the same members. Lean uses one general equality type, Eq, and Set extensionality builds the receipt. If every x is in A exactly when it is in B, then A equals B.",
+            "durationSeconds": 26.7,
+            "sayZh": "现在看集合。集合相等不是两个表达式长得一样，而是成员相同。Lean 使用一个通用的相等类型 Eq，Set 外延性构造收据。如果每个 x 在 A 中当且仅当在 B 中，那么 A 等于 B。",
+            "lean": {
+              "code": "-- Set equality receipt\n-- Set.ext :\n--   (∀ x, x ∈ A ↔ x ∈ B) → A = B\n--\n-- same members become ordinary equality",
+              "highlights": [
+                "Set.ext",
+                "x ∈ A ↔ x ∈ B",
+                "A = B"
+              ]
+            },
+            "turn": {
+              "code": "-- Turn keeps the receipt shape visible\n-- SetEq(A, B)\n--   goal 1: Subset(A, B)\n--   goal 2: Subset(B, A)",
+              "highlights": [
+                "SetEq(A, B)",
+                "Subset(A, B)",
+                "Subset(B, A)"
+              ]
+            },
+            "visualNotes": "Beat 3: Lean Set.ext, Turn visible receipt shape.",
+            "fontScales": {
+              "editorFontScale": 0.7,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.85
+            }
+          },
+          {
+            "say": "Turn writes that receipt shape directly beside the concept. SetEq is not hidden behind a search through tactics. Unfold SetEq, and it becomes exactly two goals: A subset B, and B subset A. That is the textbook sentence turned into obligations.",
+            "durationSeconds": 20.83,
+            "sayZh": "Turn 把这个收据形状直接写在概念旁边。SetEq 不藏在 tactic 搜索后面。展开 SetEq，它正好变成两个目标：A subset B，B subset A。这就是课本文字变成证明义务。",
+            "lean": {
+              "code": "-- Lean side\n-- use Set.ext, then prove both directions\n--\n-- goal shape:\n--   ∀ x, x ∈ A ↔ x ∈ B",
+              "highlights": [
+                "Set.ext",
+                "both directions",
+                "∀ x"
+              ]
+            },
+            "turn": {
+              "code": "@notation({A} ~ \" = \" ~ {B})\nrelation SetEq(T: Any, A B: Set<T>): Prop {\n    |- {\n        Subset(A, B);\n        Subset(B, A);\n    }\n}",
+              "highlights": [
+                "SetEq",
+                "Subset(A, B)",
+                "Subset(B, A)"
+              ],
+              "hints": [
+                {
+                  "target": "turn-code",
+                  "needle": "Subset(B, A)",
+                  "text": "Both directions are named obligations."
+                }
+              ]
+            },
+            "visualNotes": "Beat 4: Turn payoff for SetEq.",
+            "fontScales": {
+              "editorFontScale": 0.7,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.85
+            }
+          },
+          {
+            "say": "Functions have the same problem. Two functions may be written differently, but if they give the same output on every input, they are equal. Lean uses funext to turn pointwise agreement into function equality. Turn writes the pointwise receipt as FunctionEq: for every x, f of x equals g of x.",
+            "durationSeconds": 24.54,
+            "sayZh": "函数也有同样问题。两个函数写法可以不同，但如果每个输入的输出都一样，它们就是相等的。Lean 用 funext 把逐点一致变成函数相等。Turn 把逐点收据写成 FunctionEq：对每个 x，f of x 等于 g of x。",
+            "lean": {
+              "code": "-- Function equality receipt\n-- funext :\n--   (∀ x, f x = g x) → f = g\n--\n-- same output on every input",
+              "highlights": [
+                "funext",
+                "∀ x",
+                "f x = g x"
+              ]
+            },
+            "turn": {
+              "code": "@notation({f} ~ \" = \" ~ {g})\nrelation FunctionEq(X Y: Set<Any>, f g: Function<X, Y>): Prop {\n    forall x in X\n    |- f(x) = g(x)\n}",
+              "highlights": [
+                "relation FunctionEq",
+                "forall x in X",
+                "f(x) = g(x)"
+              ],
+              "hints": [
+                {
+                  "target": "turn-code",
+                  "needle": "f(x) = g(x)",
+                  "text": "Function equality becomes pointwise equality."
+                }
+              ]
+            },
+            "visualNotes": "Beat 5: function equality in the same spoken style.",
+            "fontScales": {
+              "editorFontScale": 0.7,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.85
+            }
+          },
+          {
+            "say": "This is where the Emily Riehl idea fits. In higher category theory, you often should not ask whether two things are literally the same object. You ask whether there is a structure-preserving equivalence between them. In HoTT, equality proofs behave like paths, and univalence says an equivalence of types can be used as equality. So the ladder is: scanner when computation is enough, receipt when proof is needed, and path when sameness is really equivalence. Next clip, the empty set.",
+            "durationSeconds": 39.05,
+            "sayZh": "这就是 Emily Riehl 的想法适合放进来的地方。在高阶范畴论里，很多时候不应该问两个东西是不是字面同一个对象，而要问它们之间有没有保持结构的等价。在 HoTT 里，相等证明像路径，单值性说类型之间的等价可以当成相等。所以这架梯子是：计算足够时用扫描器，需要证明时用收据，相同其实是等价时用路径。下期讲空集。",
+            "lean": {
+              "code": "-- Path layer, informally\n-- HoTT: equality proofs behave like paths\n-- Univalence:\n--   (A ≃ B) can be used as (A = B)\n--\n-- not native Turn semantics, just the next idea",
+              "highlights": [
+                "paths",
+                "Univalence",
+                "A ≃ B",
+                "A = B"
+              ],
+              "hints": [
+                {
+                  "target": "lean-code",
+                  "needle": "Univalence",
+                  "text": "Higher sameness: equivalence can act as equality of types."
+                }
+              ]
+            },
+            "turn": {
+              "code": "-- Equality ladder for the viewer\n--\n-- scanner: computation is enough\n-- receipt: proof is needed\n-- path: sameness is equivalence\n--\n-- Ref: Emily Riehl, higher category theory",
+              "highlights": [
+                "scanner",
+                "receipt",
+                "path",
+                "Emily Riehl"
+              ]
+            },
+            "visualNotes": "Beat 6: Emily Riehl / HoTT idea, carefully labeled informal.",
+            "fontScales": {
+              "editorFontScale": 0.7,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.85
+            }
+          }
+        ]
+      },
+      "outdoorEdit": {
+        "videoSrc": "takes/take-mrbtjdup/pipeline/cut/cut-mrdnt7ew/edited-good-intervals.mp4",
+        "burnCaptionsZh": true,
+        "beatDurationsSeconds": [
+          19.34,
+          27.8,
+          26.7,
+          20.83,
+          24.54,
+          39.05
+        ],
+        "captionSegments": [
+          {
+            "text": "Welcome back. Last clip ended with not SetEq. Today we finally open SetEq. The textbook rule is simple. Two sets are equal when A is a subset of B and B is a subset of A. But the real question is not the rule. The real question is what the equals sign means inside a proof assistant.",
+            "zh": "欢迎回来。上期结尾是 not SetEq。今天我们真正打开 SetEq。课本规则很简单：两个集合相等，就是 A 是 B 的子集，B 也是 A 的子集。但真正的问题不是这条规则，而是证明助手里的等号到底是什么意思。",
+            "atSeconds": 0,
+            "durationSeconds": 19.34
+          },
+          {
+            "text": "Start with a tiny Lean example. n plus zero equals n closes by rfl. That means the checker can scan both sides, compute, and see the same thing. But zero plus n equals n is also true, and rfl does not close it. Now you need Nat dot zero add. So one equality was seen by the scanner, and the other needed a receipt.",
+            "zh": "先看一个很小的 Lean 例子。n 加 0 等于 n 可以用 rfl 关闭。这表示检查器扫描两边、计算之后，看见它们一样。但 0 加 n 等于 n 也是真的，rfl 却关不掉。现在需要 Nat.zero_add。所以一个相等被扫描器看见，另一个需要收据。",
+            "atSeconds": 19.34,
+            "durationSeconds": 27.8
+          },
+          {
+            "text": "Now sets. Set equality is not about the two expressions looking identical. It is about having the same members. Lean uses one general equality type, Eq, and Set extensionality builds the receipt. If every x is in A exactly when it is in B, then A equals B.",
+            "zh": "现在看集合。集合相等不是两个表达式长得一样，而是成员相同。Lean 使用一个通用的相等类型 Eq，Set 外延性构造收据。如果每个 x 在 A 中当且仅当在 B 中，那么 A 等于 B。",
+            "atSeconds": 47.14,
+            "durationSeconds": 26.7
+          },
+          {
+            "text": "Turn writes that receipt shape directly beside the concept. SetEq is not hidden behind a search through tactics. Unfold SetEq, and it becomes exactly two goals: A subset B, and B subset A. That is the textbook sentence turned into obligations.",
+            "zh": "Turn 把这个收据形状直接写在概念旁边。SetEq 不藏在 tactic 搜索后面。展开 SetEq，它正好变成两个目标：A subset B，B subset A。这就是课本文字变成证明义务。",
+            "atSeconds": 73.84,
+            "durationSeconds": 20.83
+          },
+          {
+            "text": "Functions have the same problem. Two functions may be written differently, but if they give the same output on every input, they are equal. Lean uses funext to turn pointwise agreement into function equality. Turn writes the pointwise receipt as FunctionEq: for every x, f of x equals g of x.",
+            "zh": "函数也有同样问题。两个函数写法可以不同，但如果每个输入的输出都一样，它们就是相等的。Lean 用 funext 把逐点一致变成函数相等。Turn 把逐点收据写成 FunctionEq：对每个 x，f of x 等于 g of x。",
+            "atSeconds": 94.67,
+            "durationSeconds": 24.54
+          },
+          {
+            "text": "This is where the Emily Riehl idea fits. In higher category theory, you often should not ask whether two things are literally the same object. You ask whether there is a structure-preserving equivalence between them. In HoTT, equality proofs behave like paths, and univalence says an equivalence of types can be used as equality. So the ladder is: scanner when computation is enough, receipt when proof is needed, and path when sameness is really equivalence. Next clip, the empty set.",
+            "zh": "这就是 Emily Riehl 的想法适合放进来的地方。在高阶范畴论里，很多时候不应该问两个东西是不是字面同一个对象，而要问它们之间有没有保持结构的等价。在 HoTT 里，相等证明像路径，单值性说类型之间的等价可以当成相等。所以这架梯子是：计算足够时用扫描器，需要证明时用收据，相同其实是等价时用路径。下期讲空集。",
+            "atSeconds": 119.21,
+            "durationSeconds": 39.05
+          }
+        ]
+      }
+    }
+  ]
+}

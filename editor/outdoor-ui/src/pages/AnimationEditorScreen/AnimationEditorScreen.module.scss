@@ -1,0 +1,219 @@
+@use '../../app' as *;
+
+.screen {
+  flex: 1;
+  height: 100%;
+  min-height: 0;
+}
+.main {
+  flex: 1;
+  min-height: 0;
+  padding-top: 4;
+  padding-bottom: 0;
+}
+.mainBrowser {
+  max-width: 1440;
+  width: 100%;
+  align-self: center;
+  flex: 1;
+  min-height: 0;
+}
+.workspace {
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+}
+.editorStage {
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  gap: 2;
+  overflow: hidden;
+}
+.editorWrap {
+  flex: 1;
+  min-height: 0;
+  gap: $space-sm;
+  overflow: hidden;
+}
+.mobileScroll {
+  flex: 1;
+  min-height: 0;
+}
+.mobileScrollBody {
+  gap: $space-sm;
+  padding-bottom: $space-md;
+}
+.mobilePreviewBlock {
+  width: 100%;
+  align-items: center;
+}
+.topRow {
+  flex: 1;
+  min-height: 0;
+  gap: $space-sm;
+  overflow: hidden;
+}
+.topRowBrowser {
+  flex-direction: row;
+  align-items: stretch;
+}
+.previewColumn {
+  flex-shrink: 0;
+  align-self: flex-start;
+  max-height: 100%;
+}
+.editColumn {
+  flex: 1;
+  flex-basis: 420px;
+  min-width: 280px;
+  min-height: 0;
+  overflow: hidden;
+}
+.editRow {
+  flex: 1;
+  min-height: 0;
+  flex-direction: row;
+  align-items: stretch;
+  gap: $space-xs;
+  overflow: hidden;
+}
+.editPanel {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+.storyboardFull {
+  width: 100%;
+  flex-shrink: 0;
+}
+.bottomChrome {
+  flex-shrink: 0;
+  width: 100%;
+  z-index: 20;
+}
+.centered {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+.aiDock {
+  flex-direction: row;
+  align-items: center;
+  gap: $space-xs;
+  flex-shrink: 0;
+  padding-top: $space-xs;
+  padding-bottom: $space-xs;
+  border-top-width: 1px;
+  border-top-color: $card-border;
+  background-color: $header-bg;
+}
+.aiPrompt {
+  flex: 1;
+  height: 34;
+  border-width: 1;
+  border-color: $card-border;
+  border-radius: $radius-sm;
+  padding-inline: $space-sm;
+  padding-block: 4;
+  color: $text;
+  font-size: $font-small;
+  background-color: $card;
+}
+.aiActions {
+  flex-direction: row;
+  align-items: center;
+  gap: $space-xs;
+  flex-shrink: 0;
+}
+.sessionToggle {
+  border-radius: $radius-pill;
+  padding-inline: 10;
+  padding-block: 8;
+  background-color: rgba(51, 65, 85, 0.9);
+}
+.sessionToggleText {
+  color: $muted;
+  font-size: $font-tiny;
+  font-weight: 700;
+}
+.sessionScroll {
+  max-height: 88;
+  flex-shrink: 0;
+  border-width: 1;
+  border-color: $card-border;
+  border-radius: $radius-sm;
+  background-color: rgba(2, 6, 23, 0.45);
+}
+.sessionBody {
+  padding: $space-xs;
+  gap: 4;
+}
+.sessionEmpty {
+  color: $muted;
+  font-size: $font-tiny;
+  padding: $space-xs;
+}
+.sessionEntry {
+  border-radius: $radius-sm;
+  padding-inline: $space-sm;
+  padding-block: 4;
+  gap: 2;
+}
+.sessionUser {
+  background-color: rgba(30, 41, 59, 0.85);
+}
+.sessionStatus {
+  background-color: rgba(15, 23, 42, 0.85);
+}
+.sessionChange {
+  background-color: rgba(22, 101, 52, 0.2);
+  border-width: 1;
+  border-color: rgba(134, 239, 172, 0.25);
+}
+.sessionError {
+  background-color: rgba(127, 29, 29, 0.25);
+  border-width: 1;
+  border-color: rgba(252, 165, 165, 0.35);
+}
+.sessionKind {
+  color: $muted;
+  font-size: 10;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5;
+}
+.sessionMessage {
+  color: $text;
+  font-size: $font-tiny;
+  line-height: 15;
+}
+.sessionDiff {
+  color: #cbd5e1;
+  font-size: 10;
+  line-height: 14;
+}
+.status {
+  color: $online;
+  font-size: $font-tiny;
+  font-weight: 600;
+  flex-shrink: 0;
+  margin-bottom: 2;
+}
+.errorBlock {
+  gap: 4;
+  margin-bottom: $space-xs;
+}
+.errorHint {
+  color: $muted;
+  font-size: $font-tiny;
+  line-height: 16;
+}
+.error {
+  color: $offline;
+  font-size: $font-tiny;
+  font-weight: 600;
+  flex-shrink: 0;
+  margin-bottom: 2;
+}

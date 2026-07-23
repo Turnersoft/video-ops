@@ -1,0 +1,25 @@
+@use '../../app' as *;
+
+.sceneVisual {
+  box-sizing: border-box;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.beatStageHost {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.noMainLayer {
+  flex: 1;
+  padding: 24px;
+  opacity: 0.5;
+}

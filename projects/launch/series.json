@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "id": "launch",
+  "title": "Product launch",
+  "description": "AAA PV-style feature reveals for the Turn-Lang app.",
+  "styleKit": "launch-pv",
+  "growthJob": "product",
+  "bgmProfile": "trailer-swell"
+}

@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 2,
+  "source": "speech-alignment",
+  "sourceScriptId": "03-proper-subset",
+  "title": "Proper subset — the concept Lean never defines",
+  "editedDurationSeconds": 432.32,
+  "timeline": [
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Continues sets-v2-02-subset. Textbook overlay center. Hook: Lean has no proper-subset def — glow Turn ⊊ vs Lean “never defined directly”.",
+      "sourceStart": 0,
+      "sourceEnd": 21.11,
+      "editedStart": 0,
+      "editedEnd": 21.11
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Turn: as before (beat-0 block). Lean: order-theory reveal — no full Mathlib paste yet.",
+      "sourceStart": 21.11,
+      "sourceEnd": 39.75,
+      "editedStart": 21.11,
+      "editedEnd": 39.75
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Turn: as before. Lean: Defs.lean recap — glow instance LE / ⟨Set.Subset⟩.",
+      "sourceStart": 39.75,
+      "sourceEnd": 68.13,
+      "editedStart": 39.75,
+      "editedEnd": 68.13
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Turn: as before. Lean: Init.Prelude LT + Init.Core HasSSubset empty slots; glow ⊂ infix.",
+      "sourceStart": 68.13,
+      "sourceEnd": 104.17,
+      "editedStart": 68.13,
+      "editedEnd": 104.17
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Turn: as before. Lean: extends ladder — BooleanAlgebra is Set’s most specific role; Preorder owns <.",
+      "sourceStart": 104.17,
+      "sourceEnd": 164.77,
+      "editedStart": 104.17,
+      "editedEnd": 164.77
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "Turn: as before. Lean: Order/Defs Preorder.lt default — glow lt := a ≤ b ∧ ¬b ≤ a.",
+      "sourceStart": 164.77,
+      "sourceEnd": 186.77,
+      "editedStart": 164.77,
+      "editedEnd": 186.77
+    },
+    {
+      "slideId": "beat-07",
+      "slideTitle": "Turn: as before. Lean: BooleanAlgebra/Set — inferInstance from α→Prop; lt := ⊆∧¬⊇; HasSSubset wires ⊂.",
+      "sourceStart": 186.77,
+      "sourceEnd": 234.73,
+      "editedStart": 186.77,
+      "editedEnd": 234.73
+    },
+    {
+      "slideId": "beat-08",
+      "slideTitle": "Turn: as before. Lean: Basic.lean — ssubset_def rfl + ssubset_iff_subset_ne textbook bridge.",
+      "sourceStart": 234.73,
+      "sourceEnd": 265.43,
+      "editedStart": 234.73,
+      "editedEnd": 265.43
+    },
+    {
+      "slideId": "beat-09",
+      "slideTitle": "Turn: as before. Lean: three-file summary (Core + Defs + Set.lean).",
+      "sourceStart": 265.43,
+      "sourceEnd": 292.63,
+      "editedStart": 265.43,
+      "editedEnd": 292.63
+    },
+    {
+      "slideId": "beat-10",
+      "slideTitle": "Turn: as before. Lean: partial-order payoff — le_antisymm / lt_iff_le_and_ne; ⊂ IS strict order of ⊆.",
+      "sourceStart": 292.63,
+      "sourceEnd": 326.86,
+      "editedStart": 292.63,
+      "editedEnd": 326.86
+    },
+    {
+      "slideId": "beat-11",
+      "slideTitle": "Turn: as before. Lean: strict-order toolkit lemmas; NOT well-founded caveat in comment.",
+      "sourceStart": 326.86,
+      "sourceEnd": 337.68,
+      "editedStart": 326.86,
+      "editedEnd": 337.68
+    },
+    {
+      "slideId": "beat-12",
+      "slideTitle": "Turn: NEW — Subset default only (no proper yet). Lean: as before (3-file summary).",
+      "sourceStart": 337.68,
+      "sourceEnd": 352.8,
+      "editedStart": 337.68,
+      "editedEnd": 352.8
+    },
+    {
+      "slideId": "beat-13",
+      "slideTitle": "Turn: full proper + SetEq block. Lean: as before.",
+      "sourceStart": 352.8,
+      "sourceEnd": 421.74,
+      "editedStart": 352.8,
+      "editedEnd": 421.74
+    },
+    {
+      "slideId": "beat-14",
+      "slideTitle": "CTA next clip. Both panes: as before; optional glow Turn proper.",
+      "sourceStart": 421.74,
+      "sourceEnd": 432.32,
+      "editedStart": 421.74,
+      "editedEnd": 432.32
+    }
+  ]
+}

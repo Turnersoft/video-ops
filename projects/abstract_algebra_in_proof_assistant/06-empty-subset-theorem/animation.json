@@ -1,0 +1,159 @@
+{
+  "version": 4,
+  "scriptId": "06-empty-subset-theorem",
+  "title": "06_empty_subset_theorem",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "Textbook anchor",
+      "durationSeconds": 19,
+      "layout": "math-focus",
+      "burnCaptions": true,
+      "visualNotes": "math-focus",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "math-board",
+        "heading": "Judson §1.2 — ∅ ⊆ S",
+        "reveal": "sequential",
+        "beats": [
+          {
+            "atSeconds": 0,
+            "label": "Textbook",
+            "detail": "Judson §1.2 Sets"
+          },
+          {
+            "atSeconds": 4,
+            "label": "Definition",
+            "detail": "The empty set is a subset of every set."
+          }
+        ]
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Open the book. Judson Abstract Algebra, section one point two, Sets.",
+            "durationSeconds": 6,
+            "visualNotes": "math-focus; textbook beat only.\nmath-board: Judson §1.2 — ∅ ⊆ S\n- Textbook: Judson §1.2 Sets\n- Definition: The empty set is a subset of every set.",
+            "allowScriptChange": false
+          },
+          {
+            "say": "The empty set is a subset of every set.",
+            "durationSeconds": 5,
+            "allowScriptChange": false
+          },
+          {
+            "say": "This is the bold definition we are formalizing today, which is one clip, one idea.",
+            "durationSeconds": 8,
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "title": "Intuition",
+      "durationSeconds": 18,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Film presenter",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "chapter-beat",
+        "label": "Judson §1.2 — ∅ ⊆ S",
+        "detail": "Vacuous truth: to show ∅ ⊆ S, assume x ∈ ∅ — contradiction.",
+        "emphasis": [
+          "∅ ⊆ S"
+        ]
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Vacuous truth: to show empty subset S, assume x in empty, which leads to contradiction.",
+            "durationSeconds": 8,
+            "visualNotes": "Film presenter; beats on board.\nlayer: chapter-beat",
+            "allowScriptChange": false
+          },
+          {
+            "say": "Good first reductio proof in the chapter.",
+            "durationSeconds": 4,
+            "allowScriptChange": false
+          },
+          {
+            "say": "We model as theorem for practice, not only as axiom.",
+            "durationSeconds": 6,
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "title": "Lean vs Turn",
+      "durationSeconds": 21,
+      "layout": "dual-panel",
+      "burnCaptions": true,
+      "visualNotes": "Compare layer",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "legacyCompareLayer": {
+        "type": "compare",
+        "turnTrack": "tracks/scene-compare-turn.json",
+        "leanTrack": "tracks/scene-compare-lean4.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Goal: Subset(EmptySet, S).",
+            "durationSeconds": 4,
+            "visualNotes": "Compare layer; caption beats on both sides.\ncompare leanTrack: tracks/scene-compare-lean4.json\ncompare turnTrack: tracks/scene-compare-turn.json",
+            "allowScriptChange": false
+          },
+          {
+            "say": "Turn proof: unfold Subset, assume_not, use no_members.",
+            "durationSeconds": 5,
+            "allowScriptChange": false
+          },
+          {
+            "say": "Lean: often bundled in library lemmas about empty.",
+            "durationSeconds": 6,
+            "allowScriptChange": false
+          },
+          {
+            "say": "Clip focuses on statement shape, not full tactic replay.",
+            "durationSeconds": 6,
+            "allowScriptChange": false
+          }
+        ]
+      }
+    }
+  ]
+}

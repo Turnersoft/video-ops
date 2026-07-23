@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 2,
+  "id": "syntax",
+  "title": "Syntax completes math",
+  "description": "One construct per short — where-bundles, theorem folders, inline premises.",
+  "thumbnail": "shared/reference",
+  "styleKit": "syntax-spot",
+  "growthJob": "volume",
+  "bgmProfile": "syntax-sting"
+}

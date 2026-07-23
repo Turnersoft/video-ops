@@ -1,0 +1,139 @@
+@use '../../app' as *;
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $space-xs;
+  padding-inline: $space-sm;
+}
+
+.toggle {
+  border-radius: $radius-pill;
+  padding-inline: 8px;
+  padding-block: 3px;
+  border-width: 1px;
+  border-color: $card-border;
+  background-color: rgba(15, 23, 42, 0.75);
+}
+
+.toggleActive {
+  border-color: rgba(249, 115, 22, 0.65);
+  background-color: rgba(249, 115, 22, 0.16);
+}
+
+.toggleText {
+  color: $muted;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.toggleTextActive {
+  color: #fdba74;
+}
+
+.inputWrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 96px;
+  gap: 2px;
+  padding-inline: $space-sm;
+}
+
+.inputWrapCompact {
+  min-width: 64px;
+  flex: 1 1 72px;
+  padding-inline: 0;
+}
+
+.inputLabel {
+  margin-top: 0;
+  margin-bottom: 2px;
+  font-size: 10px;
+}
+
+.input {
+  color: $text;
+  font-size: $font-tiny;
+  line-height: 16px;
+}
+
+.editRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-inline: $space-sm;
+  padding-block: 4px;
+  border-radius: $radius-sm;
+  border-width: 1px;
+  border-color: rgba(51, 65, 85, 0.65);
+  background-color: rgba(2, 6, 23, 0.35);
+}
+
+.editRowHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-xs;
+}
+
+.editRowTitle {
+  color: $muted;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.deleteBtn {
+  display: flex;
+  width: 18px;
+  height: 18px;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-pill;
+  background-color: rgba(127, 29, 29, 0.35);
+}
+
+.deleteBtnText {
+  color: #fca5a5;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 15px;
+}
+
+.codeEditorSection {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-inline: $space-sm;
+}
+
+.codeEditor {
+  color: $text;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.codeEditorHint {
+  color: $muted;
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.codeEditorAction {
+  color: #fdba74;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+

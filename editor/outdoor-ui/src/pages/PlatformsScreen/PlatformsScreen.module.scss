@@ -1,0 +1,75 @@
+@use '../../app' as *;
+
+.screen {
+  flex: 1;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+.headerWrap {
+  flex-shrink: 0;
+  z-index: 20;
+}
+.pageScroll {
+  flex: 1;
+  min-height: 0;
+}
+.spinner {
+  margin-block: $space-lg;
+}
+.error {
+  color: $offline;
+  margin-bottom: $space-md;
+}
+.progressCard {
+  display: flex;
+  gap: $space-sm;
+}
+.llmStatus {
+  color: $online;
+  font-size: 13px;
+  font-weight: 600;
+}
+.llmInput {
+  border-width: 1px;
+  border-color: $card-border;
+  border-radius: $radius-md;
+  padding-inline: $space-md;
+  padding-block: 10px;
+  color: $text;
+  background-color: $card;
+  margin-bottom: $space-sm;
+}
+.exportBlock {
+  display: flex;
+  margin-top: 10px;
+  gap: $space-sm;
+}
+.exportHint {
+  margin-top: 10px;
+}
+.pre {
+  display: flex;
+  color: $code;
+  font-family: Platform.select({;
+  ios: Menlo;
+  android: monospace;
+  default: monospace;
+  font-size: 12px;
+  background-color: $video-bg;
+  padding: $space-sm;
+  border-radius: 8px;
+  gap: $space-xs;
+  margin-top: $space-sm;
+}
+.providerCard {
+}
+.steps {
+}
+.step {
+}
+.envList {
+}
+.statusCard {
+}
+}

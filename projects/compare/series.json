@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 2,
+  "id": "compare",
+  "title": "Formalize concepts",
+  "description": "Lean ↔ Turn-Lang side-by-side on real textbook concepts.",
+  "thumbnail": "shared/background.png",
+  "playlist": "abstract algebra: formalized from scratch with turn-lang",
+  "styleKit": "compare",
+  "growthJob": "conversion",
+  "bgmProfile": "compare-dual-bed"
+}

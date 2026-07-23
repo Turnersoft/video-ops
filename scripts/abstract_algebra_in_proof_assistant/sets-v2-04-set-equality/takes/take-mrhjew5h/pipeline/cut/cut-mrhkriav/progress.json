@@ -1,6 +1,0 @@
-{
-  "percent": 100,
-  "step": "failed",
-  "message": "deno run --allow-all /Users/johndoe/Documents/company/video_ops/outdoor_post/main.ts ai-edit --video /Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhjew5h/source.mp4 --script /Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/export/sets-v2-04-set-equality-outdoor-script.json --take /Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhjew5h/take.json --out-dir /Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhjew5h/pipeline/cut/cut-mrhkriav failed (exit 1)",
-  "updatedAt": "2026-07-12T09:12:25.634Z"
-}

@@ -1,0 +1,9 @@
+@use '../../app' as *;
+
+.root {
+  @include flex-column-fill;
+  background: $black;
+  align-items: center;
+  justify-content: center;
+  padding: scaled(32px) scaled(48px);
+}

@@ -1,0 +1,40 @@
+@use '../../app' as *;
+
+.wrap {
+  display: flex;
+  gap: $space-sm;
+  margin-top: $space-sm;
+}
+.loader {
+  margin-top: $space-sm;
+}
+.rebuildCard {
+  display: flex;
+  gap: $space-sm;
+  padding: $space-md;
+  border-radius: 10px;
+  background-color: rgba(249, 115, 22, 0.1);
+  border-width: 1px;
+  border-color: rgba(249, 115, 22, 0.35);
+}
+.finishCard {
+  display: flex;
+  gap: $space-sm;
+  padding: $space-md;
+  border-radius: 10px;
+  background-color: rgba(34, 197, 94, 0.08);
+  border-width: 1px;
+  border-color: rgba(34, 197, 94, 0.35);
+}
+.stageBlock {
+  display: flex;
+  gap: $space-sm;
+  margin-bottom: $space-sm;
+}
+.meta {
+  color: $muted;
+  font-size: $font-small;
+  line-height: 18px;
+}
+
+

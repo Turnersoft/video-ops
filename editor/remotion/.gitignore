@@ -1,0 +1,10 @@
+node_modules/
+out/
+dist/
+build/
+src/manim-tests/**/.render-dist/
+src/manim-tests/**/output/*.webm
+src/manim-tests/**/output/*.mp4
+src/manim-tests/**/output/*.gif
+# Stale webpack copy of @turn-user assets (broken font symlinks break `remotion compositions`)
+codetree/

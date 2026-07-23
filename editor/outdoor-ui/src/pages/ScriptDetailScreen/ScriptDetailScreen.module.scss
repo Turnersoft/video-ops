@@ -1,0 +1,84 @@
+@use '../../app' as *;
+
+.centered {
+  display: flex;
+  align-items: center;
+  padding-block: $space-xl;
+}
+.error {
+  color: $offline;
+  margin-bottom: $space-md;
+}
+.status {
+  color: $online;
+  font-size: $font-small;
+  font-weight: 600;
+  margin-bottom: $space-xs;
+}
+.metaLine {
+  margin-top: $space-sm;
+  margin-bottom: $space-xs;
+}
+.editCard {
+  display: flex;
+  gap: $space-sm;
+  margin-bottom: $space-md;
+}
+.previewSay {
+  color: $muted;
+  font-size: $font-small;
+  line-height: 20px;
+}
+.listCard {
+  display: flex;
+  gap: $space-xs;
+}
+.listHeader {
+  display: flex;
+  flex: 1;
+  gap: 2px;
+}
+.listWhere {
+  color: $muted;
+  font-size: $font-small;
+  font-weight: 600;
+}
+.listStatus {
+  color: $orange;
+  font-size: $font-small;
+  font-weight: 800;
+}
+.listError {
+  color: $offline;
+  font-size: $font-tiny;
+  line-height: 15px;
+}
+.tapHint {
+  color: $muted;
+  font-size: $font-tiny;
+  font-weight: 700;
+}
+.thumb {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  margin-right: $space-sm;
+  background-color: rgba(15, 23, 42, 0.8);
+}
+.thumbPlaceholder {
+  display: flex;
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  margin-right: $space-sm;
+  background-color: rgba(127, 29, 29, 0.45);
+  align-items: center;
+  justify-content: center;
+}
+.thumbPlaceholderText {
+  color: #fecaca;
+  font-weight: 900;
+  font-size: $font-tiny;
+}
+
+

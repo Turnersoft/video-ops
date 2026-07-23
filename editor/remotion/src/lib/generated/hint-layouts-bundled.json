@@ -1,0 +1,651 @@
+{
+  "01-cauchy-where-bundle": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "01-injective-vs-surjective": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "01-keep-reject-intro": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "01-premises-you-live-by": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "01-proof-vs-calculation": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "01-set": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "01-spread-classes-into-partition": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "01-surjective-quantifier-order": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "01-trial-is-not-continuation": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "01-workspace-first-open": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "02-burden-of-proof": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "02-definitions-are-apis": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "02-hallucinated-lemmas": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "02-image-and-range": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "02-invertible-bijective-proof": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "02-proof-tree-export": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "02-side-conditions-you-can-name": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "02-subset": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "02-theorem-is-a-folder": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "02-witness-is-unpack-not-provide": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "03-composition-associativity": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "03-export-proof-as-tree": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "03-functions-relations-equivalence": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "03-inline-premise": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "03-proofs-that-typecheck-wrong": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "03-proper-subset": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "03-reject-a-false-premise": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "03-vacuous-promises": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "03-what-a-goal-is": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "03-witness-you-cannot-compute": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "04-autoformalization-hype": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "04-close-and-split-at-once": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "04-equivalence-relation-axioms": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "04-equivocation-at-work": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "04-partition-cutting-the-cake": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "04-receipt-panel": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "04-tactics-vs-terms": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "04-well-defined-one-input-two-outputs": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "05-agent-diff-review": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "05-counterexample-courage": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "05-empty-set": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "05-equivalence-weaker-than-equality": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "05-exists-on-structure-is-a-claim": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "05-keep-or-reject-before-ai-edits": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "05-mobile-teleprompter": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "05-outline-to-proof-slide-breadcrumb": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "05-quotient-type-vs-setoid": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "05-side-conditions": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "06-compare-mode-reveal": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "06-definitions-before-debate": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "06-empty-subset-theorem": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "06-group-homomorphism": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "06-news-imo-gold": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "06-notation-is-not-meaning": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "06-partition-obligations-named-from-structure": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "06-relations-bag-of-pairs": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "06-tactic-status-during-replay": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "07-copilot-for-lean": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "07-function-refines-well-defined-relation": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "07-kernel-and-image": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "07-libraries-as-cities": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "07-necessary-vs-sufficient": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "07-social-export": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "07-theorem-125-what-formed-means": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "07-union": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "08-composition-pipeline-a-to-c": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "08-cover-generator": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "08-intersection": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "08-order-of-an-element": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "08-proof-and-apology": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "08-refusal-is-a-feature": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "08-synthetic-data-risk": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "09-agent-keep-reject": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "09-disjoint": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "09-function-properties-as-adjectives": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "09-human-in-the-loop": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "09-laws-vs-vibes": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "09-python-intuition-trap": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "09-subgroup-criterion": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "10-complement": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "10-cosets-left-right": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "10-growth-as-refinement": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "10-matlab-to-proof": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "10-round-brackets-bundle-properties": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "10-trailer-cutdown": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "10-turn-vs-llm-chat": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "11-difference": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "11-laws-vs-properties-inside-structures": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "12-composition-theorem-four-leaves": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "12-union-idempotent": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "template-ai-review-smoke": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "template-compare-smoke": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "template-launch-pv-smoke": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "template-life-essay-smoke": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "template-motion-essay-smoke": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "template-pitfall-smoke": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "template-syntax-spot-smoke": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {}
+    }
+  },
+  "04-set-equality": {
+    "tracks/scene-compare-hint-layouts.json": {
+      "version": 1,
+      "layouts": {
+        "0|turn-code|Subset(A, B)|The textbook sentence becomes two proof obligati": {
+          "xPct": 82,
+          "yPct": 38
+        },
+        "1|lean-code|Nat.zero_add|The terms do not reduce to the same syntax, so t": {
+          "xPct": 18,
+          "yPct": 38
+        },
+        "3|turn-code|Subset(B, A)|Here '=' is notation for the named SetEq relatio": {
+          "xPct": 82,
+          "yPct": 38
+        },
+        "4|turn-code|f(x) = g(x)|Function equality becomes pointwise equality.": {
+          "xPct": 77.892,
+          "yPct": 42.684
+        },
+        "5|lean-code|isomorphism|Two presentations can differ as data while prese": {
+          "xPct": 18,
+          "yPct": 38
+        },
+        "2|lean-code|le_antisymm|Antisymmetry of ⊆ is set equality — we named thi": {
+          "xPct": 21.227493808286635,
+          "yPct": 44.85808368963894
+        },
+        "3|lean-code|s = t ↔ s ⊆ t ∧ t ⊆ s|Mutual subset packaged as a named theorem — your": {
+          "xPct": 21.666594632039526,
+          "yPct": 46.83635282231461
+        },
+        "3|turn-code|unfold SetEq|SetEq is defined as mutual subset, so unfolding": {
+          "xPct": 69.74224300601544,
+          "yPct": 48.32149839343312
+        },
+        "4|lean-code|inductive Eq|a = b is notation for Eq a b — a proposition wit": {
+          "xPct": 17.942659075783677,
+          "yPct": 47.55941688240158
+        },
+        "6|lean-code|0 + n = n := rfl|Fails: 0 + n does not compute to n, because add": {
+          "xPct": 35.85695386008647,
+          "yPct": 45.04925397704173
+        },
+        "7|lean-code|funext|funext turns pointwise agreement into a proposit": {
+          "xPct": 26.648796059343596,
+          "yPct": 31.062319320625697
+        },
+        "1|lean-code|Double n = n + n := rfl|Double unfolds to n + n. That is the definition-": {
+          "xPct": 31.19313276030337,
+          "yPct": 32.44125341019512
+        },
+        "1|lean-code|no proof term|Judgemental equality lives in the checker, not a": {
+          "xPct": 18.825921065126504,
+          "yPct": 48.3987009769656
+        },
+        "2|lean-code|Nat.zero_add|True by theorem, not by conversion alone.": {
+          "xPct": 22.78340047409888,
+          "yPct": 49.08556134105169
+        },
+        "1|lean-code|Nat.zero_add|This theorem is the receipt.": {
+          "xPct": 21.374872139618557,
+          "yPct": 43.15161073543747
+        }
+      }
+    }
+  }
+}

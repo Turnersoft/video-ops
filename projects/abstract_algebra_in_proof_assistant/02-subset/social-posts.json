@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "scriptId": "02-subset",
+  "titleEnglish": "02_subset",
+  "titleChina": "02_subset",
+  "title": "02_subset",
+  "generatedAt": "2026-07-23T06:54:23.073Z",
+  "source": {},
+  "english": {
+    "youtube": {
+      "title": "02_subset",
+      "body": "02_subset\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "x": {
+      "title": "02_subset",
+      "body": "02_subset #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "linkedin": {
+      "title": "02_subset",
+      "body": "02_subset\n\n02_subset\n\nThis episode is part of the Abstract Algebra in a Proof Assistant series on Turn-Lang — textbook-shaped formal mathematics you can film outdoors and verify in Lean 4 / Turn-Lang.\n\nWhat you will see in the video:\n• A textbook beat you can say on camera\n• The Lean 4 modeling choice (and what it refuses to pretend)\n• The Turn-Lang compare so the obligation is visible\n\nWatch the short, then open the linked editor if you want to step through the proof assistant view yourself.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "instagram": {
+      "title": "02_subset",
+      "body": "02_subset\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "tiktok": {
+      "title": "02_subset",
+      "body": "02_subset\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "facebook": {
+      "title": "02_subset",
+      "body": "02_subset\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "bluesky": {
+      "title": "02_subset",
+      "body": "02_subset #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    }
+  },
+  "china": {
+    "bilibili": {
+      "title": "02_subset",
+      "body": "02_subset\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论\n（请翻译为中文后发布）"
+    },
+    "douyin": {
+      "title": "Subset — relation, not a new set",
+      "body": "Subset — relation, not a new set\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "xiaohongshu": {
+      "title": "Subset — relation,…",
+      "body": "Subset — relation, not a new set\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "weibo": {
+      "title": "Subset — relation, not a new set",
+      "body": "Subset — relation, not a new set\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "wechat_channels": {
+      "title": "Subset — relation, not a new set",
+      "body": "Subset — relation, not a new set\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "kuaishou": {
+      "title": "Subset — relation, not a new set",
+      "body": "Subset — relation, not a new set\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    }
+  }
+}

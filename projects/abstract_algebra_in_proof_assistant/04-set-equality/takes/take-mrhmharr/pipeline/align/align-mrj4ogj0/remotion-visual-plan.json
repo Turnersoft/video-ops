@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 2,
+  "source": "slide-events",
+  "sourceScriptId": "04-set-equality",
+  "title": "04_set_equality",
+  "editedDurationSeconds": 283.43,
+  "timeline": [
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: textbook mutual-subset rule first, then the real question about the equals sign.",
+      "sourceStart": 0,
+      "sourceEnd": 18.49,
+      "editedStart": 0,
+      "editedEnd": 18.49
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: 1+1=2 as meaningful equality vs 1=1 as proof-closing; then Lean built-in =; definitional vs propositional. No Mathematica detour.",
+      "sourceStart": 18.49,
+      "sourceEnd": 90.69,
+      "editedStart": 18.49,
+      "editedEnd": 90.69
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: Nat vs Int counterexample, then mutual subset / Set.ext as the textbook rule in Lean.",
+      "sourceStart": 90.69,
+      "sourceEnd": 143.59,
+      "editedStart": 90.69,
+      "editedEnd": 143.59
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: Turn notation vs named SetEq(A, B); equal sign is only syntax.",
+      "sourceStart": 143.59,
+      "sourceEnd": 181.05,
+      "editedStart": 143.59,
+      "editedEnd": 181.05
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: different bodies / possible Nat vs Int returns; funext and FunctionEq as pointwise agreement.",
+      "sourceStart": 181.05,
+      "sourceEnd": 219.09,
+      "editedStart": 181.05,
+      "editedEnd": 219.09
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "Beat 6: isomorphism / levels of sameness; close with enjoy / see you next time (no empty-set tease).",
+      "sourceStart": 219.09,
+      "sourceEnd": 283.43,
+      "editedStart": 219.09,
+      "editedEnd": 283.43
+    }
+  ]
+}

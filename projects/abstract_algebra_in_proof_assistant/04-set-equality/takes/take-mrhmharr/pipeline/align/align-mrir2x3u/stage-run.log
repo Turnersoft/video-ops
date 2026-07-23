@@ -1,0 +1,11 @@
+# stage-run 2026-07-13T04:56:50.203Z
+jobId=job-take-mrhmharr
+scriptId=04-set-equality
+takeId=take-mrhmharr
+stage=align
+runId=align-mrir2x3u
+
+[2026-07-13T04:56:50.203Z] Starting align
+[2026-07-13T04:56:50.205Z] Aligning from on-device slide markers
+[2026-07-13T04:56:50.208Z] Alignment artifacts written
+[2026-07-13T04:56:50.209Z] align complete

@@ -1,0 +1,27 @@
+@use '../../app' as *;
+
+.root {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: scaled(18px);
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: $bg;
+}
+
+.label {
+  padding: scaled(8px) scaled(14px);
+  font-size: scaled(13px);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $label-text;
+  border-bottom: 1px solid $label-border;
+}
+
+.video {
+  flex: 1;
+  min-height: 0;
+}

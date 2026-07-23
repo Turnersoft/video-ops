@@ -1,0 +1,56 @@
+@use '../../app' as *;
+
+.main {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  padding-bottom: $space-sm;
+  gap: $space-xs;
+}
+.centered {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+.status {
+  color: $online;
+  font-size: $font-small;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.error {
+  color: $offline;
+  font-size: $font-small;
+  flex-shrink: 0;
+}
+.pipelineScroll {
+  flex: 1;
+  min-height: 0;
+}
+.pipelineBody {
+  display: flex;
+  gap: $space-sm;
+  padding-bottom: $space-xl;
+}
+.pipelineWrap {
+  display: flex;
+  gap: $space-sm;
+}
+.takeIdLine {
+  color: $muted;
+  font-family: Menlo;
+  font-size: $font-tiny;
+}
+.pathLine {
+  color: $code;
+  font-family: Menlo;
+  font-size: $font-tiny;
+  line-height: 15px;
+}
+.pipelineWaiting {
+  display: flex;
+  gap: $space-xs;
+}
+
+

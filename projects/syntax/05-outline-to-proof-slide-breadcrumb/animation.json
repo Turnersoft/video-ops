@@ -1,0 +1,168 @@
+{
+  "version": 4,
+  "scriptId": "05-outline-to-proof-slide-breadcrumb",
+  "title": "syntax_05_outline_to_proof_slide_breadcrumb",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "Big theorem, small target",
+      "durationSeconds": 16,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "AppPage `/app` with outline panel open.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Outline tree with `basic set` expanded → `p1` → `second` visible."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Hi friends, welcome back.\nSame `\"basic set\"` theorem in this chapter.\nLast time we used the outline as a folder.\nToday we click a leaf and proof-slide already knows which subproof we mean.",
+            "durationSeconds": 16,
+            "visualNotes": "Outline tree with `basic set` expanded → `p1` → `second` visible.\nAppPage `/app` with outline panel open.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "title": "Outline click → proof slide",
+      "durationSeconds": 14,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Show slide toggle if needed; one smooth click path.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Click `second` → proof-slide shell opens → first tactic visible is from `second`'s proof (`unfold Intersect.def` or similar)."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "I click `second` under `p1`.\nProof-slide opens on that proof block — not the first identity, not the whole file.\nThe editor and the slide stay aligned on one claim.",
+            "durationSeconds": 14,
+            "visualNotes": "Click `second` → proof-slide shell opens → first tactic visible is from `second`'s proof (`unfold Intersect.def` or similar).\nShow slide toggle if needed; one smooth click path.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "title": "Breadcrumb from the language",
+      "durationSeconds": 18,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Point at `›` separator between segments.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Proof-slide top bar `fullTitle` / breadcrumb segments. Optional: devtools or viz JSON snippet showing `nav_breadcrumb` array."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Look at the top bar.\nIt does not just say \"basic set.\"\nIt shows `basic set › p1 › second` — the path Turn-Lang exported from the source.\nThat breadcrumb travels with the proof; the UI does not reconstruct it by guessing.",
+            "durationSeconds": 18,
+            "visualNotes": "Proof-slide top bar `fullTitle` / breadcrumb segments. Optional: devtools or viz JSON snippet showing `nav_breadcrumb` array.\nPoint at `›` separator between segments.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "title": "Step through with context",
+      "durationSeconds": 15,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Keep one theorem; do not tour the whole chapter.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Next/Previous tactic → breadcrumb stable except when switching to another outline leaf."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "As I step tactics forward, I always know which leaf I am lecturing on.\nIf I jump to `third`, the breadcrumb updates.\nStudents are not lost inside a fifty-line theorem.",
+            "durationSeconds": 15,
+            "visualNotes": "Next/Previous tactic → breadcrumb stable except when switching to another outline leaf.\nKeep one theorem; do not tour the whole chapter.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 5,
+      "title": "Close",
+      "durationSeconds": 11,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Short close.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Outline + proof-slide side by side."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "So the outline is not just navigation in the editor.\nIt is the remote control for proof-slide on named claims.",
+            "durationSeconds": 11,
+            "visualNotes": "Outline + proof-slide side by side.\nShort close.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    }
+  ]
+}

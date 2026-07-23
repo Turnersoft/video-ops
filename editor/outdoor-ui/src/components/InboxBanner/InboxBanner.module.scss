@@ -1,0 +1,76 @@
+@use '../../app' as *;
+
+.banner {
+  display: flex;
+  margin-inline: $space-md;
+  margin-top: $space-sm;
+  padding-inline: $space-xs;
+  padding-block: $space-xs;
+  border-radius: $radius-sm;
+  gap: 3px;
+}
+.embedded {
+  display: flex;
+  gap: 3px;
+  width: 100%;
+}
+.online {
+  background-color: $banner-online-bg;
+}
+.offline {
+  background-color: $banner-offline-bg;
+}
+.lineRow {
+  padding-inline: $space-sm;
+  padding-block: 3px;
+  border-radius: 6px;
+}
+.lineWatch {
+  background-color: rgba(15, 23, 42, 0.35);
+}
+.lineEvent {
+  background-color: rgba(22, 101, 52, 0.28);
+}
+.linePath {
+  background-color: rgba(30, 41, 59, 0.55);
+}
+.lineHint {
+  background-color: rgba(51, 65, 85, 0.45);
+}
+.linePending {
+  background-color: rgba(249, 115, 22, 0.18);
+}
+.lineOffline {
+  background-color: transparent;
+}
+.lineText {
+  font-size: $font-tiny;
+  font-weight: 600;
+}
+.textWatch {
+  color: $online;
+}
+.textEvent {
+  color: #bbf7d0;
+  font-weight: 700;
+}
+.textPath {
+  color: #94a3b8;
+  font-family: Menlo;
+  font-size: 10px;
+  font-weight: 500;
+}
+.textHint {
+  color: $muted;
+}
+.textPending {
+  color: #fdba74;
+  font-weight: 700;
+}
+.offlineText {
+  color: $offline;
+  font-size: $font-tiny;
+  font-weight: 600;
+}
+
+

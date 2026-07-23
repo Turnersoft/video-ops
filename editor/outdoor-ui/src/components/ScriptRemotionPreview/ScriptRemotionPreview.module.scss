@@ -1,0 +1,30 @@
+@use '../../app' as *;
+
+.wrap {
+  display: flex;
+  gap: $space-xs;
+  margin-bottom: $space-sm;
+  align-self: flex-start;
+}
+.wrapMobile {
+  display: flex;
+  align-self: stretch;
+  margin-bottom: 0;
+}
+.wrapSplit {
+  display: flex;
+  margin-bottom: 0;
+  height: 100%;
+  justify-content: center;
+}
+.frame {
+  display: flex;
+  align-self: flex-start;
+  border-radius: $radius-sm;
+  overflow: hidden;
+  background-color: $black;
+  border-width: 1px;
+  border-color: rgba(251, 191, 36, 0.35);
+}
+
+

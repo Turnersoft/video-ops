@@ -2,17 +2,21 @@
   "name": "video_ops",
   "private": true,
   "scripts": {
-    "outdoor-agent": "deno task --config outdoor_agent/deno.json start",
-    "outdoor-agent:lan": "deno task --config outdoor_agent/deno.json start:lan",
+    "outdoor-agent": "deno task --config editor/outdoor_agent/deno.json start",
+    "outdoor-agent:lan": "deno task --config editor/outdoor_agent/deno.json start:lan",
     "outdoor-mac": "deno run --allow-all bin/start-outdoor-mac.ts",
     "outdoor:all": "deno run --allow-all bin/start-outdoor-all.ts",
-    "outdoor-ui:build": "npm run build:web --prefix outdoor-ui",
-    "outdoor-ui:typecheck": "npm run typecheck --prefix outdoor-ui",
+    "outdoor-ui:build": "npm run build:web --prefix editor/outdoor-ui",
+    "outdoor-ui:dev": "npm run dev:web --prefix editor/outdoor-ui",
+    "outdoor-ui:typecheck": "npm run typecheck --prefix editor/outdoor-ui",
     "sync-outdoor-endpoints": "deno run --allow-all bin/sync-outdoor-endpoints.ts",
     "setup:icloud-inbox": "bash bin/setup-icloud-inbox.sh",
-    "export-outdoor-script": "deno run --allow-all outdoor_post/main.ts export-outdoor-script",
-    "teleprompter:tailscale": "npm run start:tailscale --prefix ios-teleprompter",
-    "remotion:sync": "npm run sync --prefix remotion",
-    "remotion:studio": "npm run studio --prefix remotion"
+    "export-outdoor-script": "deno run --allow-all editor/outdoor_post/main.ts export-outdoor-script",
+    "teleprompter:tailscale": "npm run start:tailscale --prefix editor/ios-teleprompter",
+    "remotion:sync": "npm run sync --prefix editor/remotion",
+    "remotion:studio": "npm run studio --prefix editor/remotion"
+  },
+  "dependencies": {
+    "manim-web": "^0.3.24"
   }
 }

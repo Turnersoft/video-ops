@@ -1,0 +1,115 @@
+@use '../../app' as *;
+
+.card {
+  display: flex;
+  gap: $space-sm;
+  margin-bottom: $space-xl;
+  overflow: hidden;
+}
+.meta {
+  color: $muted;
+  font-size: $font-small;
+  line-height: 18px;
+}
+.busyRow {
+  display: flex;
+  gap: $space-sm;
+  padding: $space-sm;
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: rgba(249, 115, 22, 0.35);
+  background-color: rgba(249, 115, 22, 0.08);
+}
+.alignStudio {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  overflow: hidden;
+}
+.beatScroll {
+  flex-grow: 0;
+  flex-shrink: 0;
+  max-height: BEAT_TOOLBAR_HEIGHT;
+}
+.compareRow {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.beatChipActive {
+  background-color: rgba(249, 115, 22, 0.35);
+}
+.beatIndex {
+  color: $orange;
+  font-weight: 800;
+  font-size: $font-tiny;
+}
+.beatLabel {
+  color: $text;
+  font-weight: 700;
+  font-size: $font-tiny;
+}
+.beatTime {
+  color: $muted;
+  font-size: 11px;
+}
+.remotionWrap {
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.remotionPortrait {
+  display: flex;
+  max-width: 420px;
+  align-self: center;
+  width: 100%;
+}
+.comparePane {
+  display: flex;
+  flex: 1;
+  background-color: rgba(2, 6, 23, 0.55);
+  border-radius: $radius-sm;
+  padding: 10px;
+  gap: 6px;
+  border-width: 1px;
+  border-color: rgba(148, 163, 184, 0.14);
+  min-height: 120px;
+  overflow: hidden;
+}
+.compareTitle {
+  color: $muted;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.compareBodyScroll {
+  padding-bottom: $space-sm;
+}
+.compareBody {
+  color: #e2e8f0;
+  font-size: $font-small;
+  line-height: 20px;
+}
+.saidLine {
+  color: #cbd5e1;
+  font-size: $font-small;
+  line-height: 18px;
+  margin-bottom: 6px;
+}
+.formatChip {
+  border-radius: $radius-pill;
+  padding-inline: 12px;
+  padding-block: 6px;
+  background-color: rgba(51, 65, 85, 0.9);
+}
+.formatChipActive {
+  background-color: rgba(249, 115, 22, 0.35);
+}
+.formatChipText {
+  color: #e2e8f0;
+  font-weight: 800;
+  font-size: $font-tiny;
+}
+
+

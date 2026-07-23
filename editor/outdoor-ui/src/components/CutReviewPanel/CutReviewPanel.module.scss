@@ -1,0 +1,153 @@
+@use '../../app' as *;
+
+.card {
+  display: flex;
+  gap: $space-sm;
+  margin-bottom: $space-md;
+}
+.actionsRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $space-sm;
+  align-items: center;
+}
+.studioStack {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.studioStackSizing {
+  height: undefined;
+  min-height: 0;
+}
+.videoPaneStack {
+  display: flex;
+  flex: 0;
+  width: 100%;
+  align-self: stretch;
+}
+.scriptPaneStack {
+  display: flex;
+  flex: 0;
+  width: 100%;
+  align-self: stretch;
+}
+.meta {
+  color: $muted;
+  font-size: $font-small;
+  line-height: 18px;
+}
+.timeLabel {
+  color: $muted2;
+  font-size: $font-tiny;
+}
+.transcriptContent {
+  padding-right: 4px;
+  padding-bottom: $space-md;
+}
+.slideBlock {
+  display: flex;
+  border-width: 1px;
+  border-color: rgba(148, 163, 184, 0.16);
+  border-radius: $radius-sm;
+  padding: 10px;
+  gap: 6px;
+  margin-bottom: $space-sm;
+  background-color: rgba(2, 6, 23, 0.45);
+}
+.slideTitle {
+  color: $text;
+  font-weight: 800;
+  font-size: 15px;
+}
+.slideMeta {
+  color: $muted2;
+  font-size: $font-tiny;
+  margin-bottom: 4px;
+}
+.line {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgba(30, 41, 59, 0.7);
+  border-width: 1px;
+  border-color: transparent;
+  margin-bottom: 6px;
+}
+.lineActive {
+  border-color: rgba(253, 230, 138, 0.85);
+  background-color: rgba(120, 53, 15, 0.35);
+}
+.lineTop {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.lineTime {
+  color: $section;
+  font-weight: 800;
+  font-size: $font-tiny;
+}
+.kindBadge {
+  color: $text;
+  background-color: rgba(51, 65, 85, 0.95);
+  overflow: hidden;
+  border-radius: $radius-pill;
+  padding-inline: 8px;
+  padding-block: 2px;
+  font-size: 11px;
+  font-weight: 800;
+}
+.kindKeep {
+  background-color: $badge-filmed;
+  color: $badge-filmed-text;
+}
+.lineReason {
+  color: $muted2;
+  font-size: $font-tiny;
+  flex-shrink: 1;
+}
+.toggle {
+  margin-left: auto;
+  background-color: rgba(249, 115, 22, 0.2);
+  border-radius: $radius-pill;
+  padding-inline: 10px;
+  padding-block: 4px;
+}
+.toggleText {
+  color: #fdba74;
+  font-weight: 800;
+  font-size: $font-tiny;
+}
+.lineText {
+  color: $text;
+  font-size: 14px;
+  line-height: 20px;
+}
+.lineRemoved {
+  text-decoration-line: line-through;
+  color: $muted;
+}
+.beatJump {
+  padding-block: $space-xs;
+}
+.rebuildBanner {
+  display: flex;
+  gap: $space-sm;
+  padding: $space-sm;
+  border-radius: 8px;
+  background-color: rgba(249, 115, 22, 0.12);
+  border-width: 1px;
+  border-color: rgba(249, 115, 22, 0.35);
+}
+.rebuildText {
+  flex: 1;
+  color: $text;
+  font-size: $font-small;
+  line-height: 18px;
+}
+
+

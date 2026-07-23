@@ -1,0 +1,361 @@
+@use "../../app" as *;
+
+.root {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
+
+.rootEmbedded {
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
+
+.rootBrowser {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  padding-left: 252px;
+}
+
+.empty {
+  padding-block: $space-xl;
+  align-items: center;
+}
+
+.sidebar {
+  flex-shrink: 0;
+  border-width: 1px;
+  border-color: $card-border;
+  border-radius: $radius-md;
+  background-color: rgba(2, 6, 23, 0.55);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebarMobile {
+  max-height: 200px;
+}
+
+.sidebarBrowser {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 240px;
+  min-width: 220px;
+  max-width: 280px;
+}
+
+.sidebarHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: $space-sm;
+  padding-block: 6px;
+  border-bottom-width: 1px;
+  border-bottom-color: $card-border;
+}
+
+.sidebarTitle {
+  color: $section;
+  font-size: $font-small;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sidebarCount {
+  color: $muted;
+  font-size: $font-tiny;
+  font-weight: 700;
+}
+
+.sidebarScroll {
+  flex: 1;
+  min-height: 120px;
+  @include thin-scrollbar(3px);
+}
+
+.sidebarBody {
+  padding: $space-sm;
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+}
+
+.beatThumb {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: $space-xs;
+  border-radius: $radius-sm;
+  border-width: 1px;
+  border-color: transparent;
+  padding-inline: $space-xs;
+  padding-block: 6px;
+  background-color: rgba(15, 23, 42, 0.75);
+}
+
+.beatThumbActive {
+  border-color: rgba(249, 115, 22, 0.65);
+  background-color: rgba(249, 115, 22, 0.18);
+}
+
+.beatThumbIndex {
+  color: $orange;
+  font-weight: 800;
+  font-size: $font-small;
+  min-width: 18px;
+}
+
+.beatThumbBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.beatThumbTitle {
+  color: $text;
+  font-weight: 700;
+  font-size: $font-tiny;
+}
+
+.beatThumbPreview {
+  color: $muted;
+  font-size: $font-tiny;
+  line-height: 14px;
+}
+
+.sidebarNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: $space-xs;
+  padding: $space-xs;
+  border-top-width: 1px;
+  border-top-color: $card-border;
+}
+
+.canvas {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border-width: 1px;
+  border-color: $card-border;
+  border-radius: $radius-md;
+  background-color: rgba(15, 23, 42, 0.35);
+  display: flex;
+  flex-direction: column;
+}
+
+.canvasEmbedded {
+  flex-grow: 0;
+  flex-shrink: 0;
+  min-width: 0;
+  border-width: 1px;
+  border-color: $card-border;
+  border-radius: $radius-md;
+  background-color: rgba(15, 23, 42, 0.35);
+  padding-inline: $space-sm;
+  padding-block: $space-sm;
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+}
+
+.canvasScroll {
+  flex: 1;
+  min-height: 0;
+  @include hidden-scrollbar;
+}
+
+.visualCanvas {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  @include thin-scrollbar(4px);
+}
+
+.visualCanvasBody {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+  padding-inline: $space-sm;
+  padding-bottom: $space-sm;
+}
+
+.canvasBody {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+  padding-inline: $space-sm;
+  padding-top: 4px;
+  padding-bottom: $space-md;
+}
+
+.beatForm {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+}
+
+.slideHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-sm;
+  margin-bottom: 0;
+}
+
+.compactHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $space-xs;
+  min-width: 0;
+  flex-shrink: 0;
+  padding-inline: $space-sm;
+  padding-block: 6px;
+  border-bottom-width: 1px;
+  border-bottom-color: $card-border;
+  background-color: rgba(2, 6, 23, 0.94);
+  z-index: 10;
+  position: sticky;
+  top: 0;
+}
+
+.compactBeatLabel {
+  color: $text;
+  font-size: $font-small;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.compactProgress {
+  color: $muted;
+  font-size: $font-tiny;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.compactTitleInput {
+  flex: 1;
+  min-width: 0;
+  color: $text;
+  font-size: $font-small;
+  font-weight: 700;
+  padding-block: 2px;
+}
+
+.slideHeaderText {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.inlineNav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $space-xs;
+  flex-shrink: 0;
+}
+
+.slideNumber {
+  color: $text;
+  font-size: $font-small;
+  font-weight: 800;
+}
+
+.slideHint {
+  color: $muted;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.slideBox {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-inline: $space-sm;
+  padding-top: 6px;
+  padding-bottom: $space-xs;
+  border-radius: $radius-sm;
+  border-width: 1px;
+  border-color: $card-border;
+  background-color: rgba(2, 6, 23, 0.55);
+}
+
+.boxLabel {
+  margin-top: 0;
+  margin-bottom: 4px;
+  font-size: 11px;
+  letter-spacing: 0.4px;
+}
+
+.codeRow {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
+
+.codeRowStacked {
+  flex-direction: column;
+}
+
+.codeBox {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.titleInput {
+  color: $text;
+  font-size: $font-small;
+  font-weight: 700;
+  padding-block: 2px;
+}
+
+.sayInput {
+  color: $text;
+  font-size: $font-small;
+  line-height: 18px;
+}
+
+.codeInput {
+  color: $code;
+  font-family: Menlo, monospace;
+  font-size: 11px;
+  line-height: 15px;
+}
+
+.notesInput {
+  color: $text;
+  font-size: $font-small;
+  line-height: 16px;
+}
+
+.metaText {
+  color: $muted;
+  font-size: $font-small;
+  line-height: 18px;
+}
+
+.saveRow {
+  align-items: flex-start;
+}

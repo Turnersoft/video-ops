@@ -1,0 +1,466 @@
+{
+  "version": 1,
+  "scriptId": "04-set-equality",
+  "source": "speech-alignment",
+  "generatedAt": "2026-07-19T14:33:09.787Z",
+  "videoSrc": "takes/take-mrhmharr/pipeline/cut/cut-mrj4gxs6/edited-good-intervals.mp4",
+  "editedDurationSeconds": 284.09,
+  "burnCaptions": true,
+  "burnCaptionsZh": true,
+  "beatDurationsSeconds": [
+    18.69,
+    72.84,
+    53.38,
+    37.7,
+    36.98,
+    64.5
+  ],
+  "captionSegments": [
+    {
+      "text": "Hi friends, welcome back.",
+      "atSeconds": 0.02,
+      "durationSeconds": 0.97,
+      "zh": "大家好，欢迎回来。"
+    },
+    {
+      "text": "The best way to understand the math concept is to formalize it the day we formalize set equality and a textbook",
+      "atSeconds": 0.99,
+      "durationSeconds": 5.06,
+      "zh": "真正理解一个数学概念的最好方式，就是把它形式化。"
+    },
+    {
+      "text": "Definition looks really simple to set IE core when each one is a subset of the other",
+      "atSeconds": 6.05,
+      "durationSeconds": 4.32,
+      "zh": "今天我们形式化集合相等。"
+    },
+    {
+      "text": "But if we want to formalize this statement, we still need to understand what you cosine actually means in sine proof system",
+      "atSeconds": 10.83,
+      "durationSeconds": 5.74,
+      "zh": "课本定义看起来很简单：两个集合相等，就是彼此都是对方的子集。"
+    },
+    {
+      "text": "And this is more complicated than I think",
+      "atSeconds": 16.57,
+      "durationSeconds": 2.12,
+      "zh": "但要形式化这句话，我们还需要理解证明系统里的等号到底是什么意思。"
+    },
+    {
+      "text": "So you call doesn't always mean being the same atomically",
+      "atSeconds": 18.69,
+      "durationSeconds": 3.64,
+      "zh": "所以，相等并不总是意味着原子层面完全一样。"
+    },
+    {
+      "text": "So one plus one equals two is not the same",
+      "atSeconds": 22.33,
+      "durationSeconds": 4.02,
+      "zh": "一加一等于二在原子层面并不一样，因为表达式字面上不同，但它们在数学上是一样的。"
+    },
+    {
+      "text": "Automically because they have different expression literally, but they are methodically the same",
+      "atSeconds": 26.35,
+      "durationSeconds": 4.76,
+      "zh": "这才是我们想证明的那种有意义的相等。"
+    },
+    {
+      "text": "And this is the kind of equality that we want to prove",
+      "atSeconds": 31.11,
+      "durationSeconds": 3.52,
+      "zh": "还有另一种相等，比如一等于一：左右两边一样，不值得证明，但仍然很有用，因为它们会出现在有意义证明的末尾，用来收束证明。"
+    },
+    {
+      "text": "This is the only meaningful equality and there's another equality, which is one equal one things like",
+      "atSeconds": 34.63,
+      "durationSeconds": 6.14,
+      "zh": "在 Lean 里我们可以写 A 等于 B，而且不需要先实现相等类型类，因为等号是值的内置记号，就像其他编程语言一样。"
+    },
+    {
+      "text": "Because the left hand side right hand side are the same and these are not worth proving",
+      "atSeconds": 40.77,
+      "durationSeconds": 4.38,
+      "zh": "但这里有两种相等：定义相等和命题相等。"
+    },
+    {
+      "text": "But they're still very useful because they show up at the end of every proof for this meaningful equality",
+      "atSeconds": 45.15,
+      "durationSeconds": 6.44,
+      "zh": "定义相等是计算机仍可自动检查的，即使两边看起来不同。"
+    },
+    {
+      "text": "It just just to close the proof",
+      "atSeconds": 51.59,
+      "durationSeconds": 0.5,
+      "zh": "命题相等是你需要证明的东西——但证明之后，证明引擎仍可以把它当作计算机规则来用。"
+    },
+    {
+      "text": "So in lean we can write A equal to B and",
+      "atSeconds": 53.31,
+      "durationSeconds": 0.94,
+      "zh": "所以，相等并不总是意味着原子层面完全一样。"
+    },
+    {
+      "text": "Notice that we do not implement the equal equality type class first because the quality signs built in notation for value",
+      "atSeconds": 56.59,
+      "durationSeconds": 7.54,
+      "zh": "所以，相等并不总是意味着原子层面完全一样。"
+    },
+    {
+      "text": "Just like other problem in languages, but there are other, but there are two different kind of equality here",
+      "atSeconds": 64.13,
+      "durationSeconds": 5.54,
+      "zh": "所以，相等并不总是意味着原子层面完全一样。"
+    },
+    {
+      "text": "Definition equalities and propositional equalities the former is just",
+      "atSeconds": 69.67,
+      "durationSeconds": 4.94,
+      "zh": "所以，相等并不总是意味着原子层面完全一样。"
+    },
+    {
+      "text": "In a predefined equalities that the computers can still check automatically",
+      "atSeconds": 74.61,
+      "durationSeconds": 4.8,
+      "zh": "所以，相等并不总是意味着原子层面完全一样。"
+    },
+    {
+      "text": "Even though two sides are different",
+      "atSeconds": 79.41,
+      "durationSeconds": 2,
+      "zh": "所以，相等并不总是意味着原子层面完全一样。"
+    },
+    {
+      "text": "Proposition just means that something you need to prove, but after you prove there the",
+      "atSeconds": 81.41,
+      "durationSeconds": 4.7,
+      "zh": "所以，相等并不总是意味着原子层面完全一样。"
+    },
+    {
+      "text": "Proof engine can still apply it as if it is a",
+      "atSeconds": 86.11,
+      "durationSeconds": 3.46,
+      "zh": "所以，相等并不总是意味着原子层面完全一样。"
+    },
+    {
+      "text": "Computer rule",
+      "atSeconds": 89.57,
+      "durationSeconds": 1.06,
+      "zh": "所以，相等并不总是意味着原子层面完全一样。"
+    },
+    {
+      "text": "So now the question is now the question is when can we even write the equal sign in lean so both sides must be exactly the same type",
+      "atSeconds": 90.63,
+      "durationSeconds": 0.9,
+      "zh": "所以，相等并不总是意味着原子层面完全一样。"
+    },
+    {
+      "text": "So two as a natural number and two as an integer cannot be compared directly",
+      "atSeconds": 99.83,
+      "durationSeconds": 5.14,
+      "zh": "现在的问题是，什么时候我们才能在 Lean 里写等号？"
+    },
+    {
+      "text": "They look like the same number to us, but lean to see two different types",
+      "atSeconds": 104.97,
+      "durationSeconds": 3.68,
+      "zh": "两边必须具有完全相同的类型。"
+    },
+    {
+      "text": "So we first cast the natural number into integer and then equality makes sense",
+      "atSeconds": 108.65,
+      "durationSeconds": 4.92,
+      "zh": "所以自然数里的 2 和整数里的 2 不能直接比较。"
+    },
+    {
+      "text": "So now set A and set B have types set alpha so that they can compare directly and",
+      "atSeconds": 113.57,
+      "durationSeconds": 5.4,
+      "zh": "对我们来说它们像同一个数字，但 Lean 看见的是两个类型。"
+    },
+    {
+      "text": "Lean defines it using this very simple expression of",
+      "atSeconds": 118.97,
+      "durationSeconds": 3.22,
+      "zh": "先把自然数转成整数，等式才有意义。"
+    },
+    {
+      "text": "Of subset that we have before and it allows you to convert two mutual subset expressions into",
+      "atSeconds": 122.19,
+      "durationSeconds": 8.5,
+      "zh": "集合 A 和 B 都具有 Set α 类型，所以可以直接比较。"
+    },
+    {
+      "text": "You can even it implies an equality of a equals B",
+      "atSeconds": 130.69,
+      "durationSeconds": 4.52,
+      "zh": "Lean 用我们已有的子集想法来定义集合相等——互相包含就推出 A 等于 B。"
+    },
+    {
+      "text": "So if x belongs to a",
+      "atSeconds": 135.21,
+      "durationSeconds": 1.78,
+      "zh": "所以如果对每个 x，它属于 A 当且仅当属于 B，那么两个集合相等。"
+    },
+    {
+      "text": "When x belongs to be for every x then the two set are equal in now and in our textbook.",
+      "atSeconds": 136.99,
+      "durationSeconds": 5.4,
+      "zh": "在我们的课本里，这正好就是互相包含。"
+    },
+    {
+      "text": "This is exactly what the mutual subset is",
+      "atSeconds": 142.39,
+      "durationSeconds": 2.52,
+      "zh": "现在的问题是，什么时候我们才能在 Lean 里写等号？"
+    },
+    {
+      "text": "So now turn lang it makes a different choice",
+      "atSeconds": 144.91,
+      "durationSeconds": 2.92,
+      "zh": "现在 Turn-Lang 做了另一种选择。"
+    },
+    {
+      "text": "We do not want to use the equals sign everywhere and suddenly assume that every structure have the same meaning of equality",
+      "atSeconds": 147.83,
+      "durationSeconds": 6.3,
+      "zh": "我们不希望到处使用等号，然后突然假设每种结构里的相等都有同一个含义。"
+    },
+    {
+      "text": "Let's look at the end notations index here",
+      "atSeconds": 154.77,
+      "durationSeconds": 2.94,
+      "zh": "看这里的 at-notation。"
+    },
+    {
+      "text": "It binds the visible a equals to be to a name the relation called set equal",
+      "atSeconds": 157.71,
+      "durationSeconds": 5.4,
+      "zh": "它把画面上的 A 等于 B 绑定到一个叫 SetEq 的具名关系。"
+    },
+    {
+      "text": "That means the equal sign is only the notation in order to use this",
+      "atSeconds": 163.11,
+      "durationSeconds": 4.5,
+      "zh": "所以等号只是记号。"
+    },
+    {
+      "text": "Set equal you have to call the set equal set equal a relation with the brackets containing a and b",
+      "atSeconds": 167.61,
+      "durationSeconds": 2.14,
+      "zh": "要使用 SetEq，你用括号写上 A 和 B 来调用它。"
+    },
+    {
+      "text": "And the body of this relation is just what we have is just a mb",
+      "atSeconds": 171.87,
+      "durationSeconds": 5.4,
+      "zh": "关系的本体就是我们已经有的内容：A 和 B 互相是子集——两条陈述，非常清楚。"
+    },
+    {
+      "text": "Subset to each other and there's two statements psi are very clear and next if we compare a function equals",
+      "atSeconds": 177.91,
+      "durationSeconds": 4.7,
+      "zh": "现在 Turn-Lang 做了另一种选择。"
+    },
+    {
+      "text": "It has the same kind of problems though, so",
+      "atSeconds": 185.21,
+      "durationSeconds": 2.64,
+      "zh": "接下来比较函数相等，也有同样的问题。"
+    },
+    {
+      "text": "The two functions equal they cannot be exactly the same and they make a different body",
+      "atSeconds": 187.85,
+      "durationSeconds": 5.82,
+      "zh": "两个函数作为原始代码不可能完全一样——它们可能有不同的函数体。"
+    },
+    {
+      "text": "And they came they may return actually different types",
+      "atSeconds": 193.67,
+      "durationSeconds": 2.82,
+      "zh": "它们甚至可能返回不同的类型：一个想返回自然数，一个返回整数，即使数值相同。"
+    },
+    {
+      "text": "They want me to return natural number when we return integer even though the the value are the same",
+      "atSeconds": 196.49,
+      "durationSeconds": 4.8,
+      "zh": "所以在 Lean 这边用 funext：这是挂在函数上的定理，告诉你可以把对所有 x 的 f(x) 等于 g(x) 改写成 f 等于 g。"
+    },
+    {
+      "text": "So on the lean side it uses funk dot e xt",
+      "atSeconds": 201.29,
+      "durationSeconds": 3.22,
+      "zh": "在 Turn-Lang 这边我们把这个关系命名为 FunctionEq，同样由记号挂上可见等号。"
+    },
+    {
+      "text": "Which turns which which is another",
+      "atSeconds": 205.15,
+      "durationSeconds": 0.84,
+      "zh": "记号明确告诉我们需要一致的观察：每个输入上的输出。"
+    },
+    {
+      "text": "Theorem attached to funk that tells you that you can just rewrite",
+      "atSeconds": 205.99,
+      "durationSeconds": 4.54,
+      "zh": "接下来比较函数相等，也有同样的问题。"
+    },
+    {
+      "text": "Fx equal to gx to f equals g for our four x there",
+      "atSeconds": 210.53,
+      "durationSeconds": 3.83,
+      "zh": "接下来比较函数相等，也有同样的问题。"
+    },
+    {
+      "text": "So the notation tells us exactly what the observation must agree",
+      "atSeconds": 214.36,
+      "durationSeconds": 3.31,
+      "zh": "接下来比较函数相等，也有同样的问题。"
+    },
+    {
+      "text": "Every input so finally let's move one level higher in category theory",
+      "atSeconds": 217.67,
+      "durationSeconds": 1.92,
+      "zh": "接下来比较函数相等，也有同样的问题。"
+    },
+    {
+      "text": "We have to be very careful not to say to object are literally equal",
+      "atSeconds": 223.05,
+      "durationSeconds": 4.72,
+      "zh": "最后，我们在范畴论里再往高一层。"
+    },
+    {
+      "text": "When you know what we really mean is isomorphic for example two groups can use the complete different underlying elements",
+      "atSeconds": 227.83,
+      "durationSeconds": 6.52,
+      "zh": "必须非常小心，不要在真正想说同构时，说两个对象字面相等。"
+    },
+    {
+      "text": "So as raw data's they are not equal",
+      "atSeconds": 234.99,
+      "durationSeconds": 2.28,
+      "zh": "例如两个群可以使用完全不同的底层元素。"
+    },
+    {
+      "text": "But if there is an isomorphism that preserve multiplication identity in inverse",
+      "atSeconds": 237.27,
+      "durationSeconds": 5.76,
+      "zh": "作为原始数据，它们并不相等。"
+    },
+    {
+      "text": "Then from the group theory perspective they have the same structure and that connects back to everything",
+      "atSeconds": 243.63,
+      "durationSeconds": 4.7,
+      "zh": "但如果存在保持乘法、单位元和逆元的同构，那么从群论角度看，它们具有相同结构。"
+    },
+    {
+      "text": "We just did for set we compare numbers",
+      "atSeconds": 248.33,
+      "durationSeconds": 2.9,
+      "zh": "这和刚才做的一切连起来：集合比较成员，函数比较输出，带结构的对象比较保持结构的映射。"
+    },
+    {
+      "text": "Function will compare outputs",
+      "atSeconds": 251.87,
+      "durationSeconds": 1.52,
+      "zh": "在高阶范畴论里，甚至这些映射之间还可以继续比较。"
+    },
+    {
+      "text": "For structured objects we compare structure preserving maps and in higher category theory",
+      "atSeconds": 253.39,
+      "durationSeconds": 6.74,
+      "zh": "在同伦类型论里，相等证明表现得像路径。"
+    },
+    {
+      "text": "We even those maps can have higher comparisons.",
+      "atSeconds": 260.13,
+      "durationSeconds": 3.29,
+      "zh": "所以真正的问题不只是“这两个东西相等吗”，而是“在数学的哪个层次上，我们应该把它们看作相同”。"
+    },
+    {
+      "text": "So in in one of the type theory equality proves behaves like",
+      "atSeconds": 263.42,
+      "durationSeconds": 4.21,
+      "zh": "这就是相等真正的重点。"
+    },
+    {
+      "text": "Paps so the real question is is not only are those two things you call the real question is",
+      "atSeconds": 267.63,
+      "durationSeconds": 7.02,
+      "zh": "希望你喜欢这期视频，下次见。"
+    },
+    {
+      "text": "At which level of mathematics should we treat them as the same?",
+      "atSeconds": 275.23,
+      "durationSeconds": 3.56,
+      "zh": "最后，我们在范畴论里再往高一层。"
+    },
+    {
+      "text": "So there is a real lessons of equality.",
+      "atSeconds": 278.79,
+      "durationSeconds": 2.3,
+      "zh": "最后，我们在范畴论里再往高一层。"
+    },
+    {
+      "text": "So I hope you enjoyed this video.",
+      "atSeconds": 281.09,
+      "durationSeconds": 1.94,
+      "zh": "最后，我们在范畴论里再往高一层。"
+    },
+    {
+      "text": "See you next time",
+      "atSeconds": 283.03,
+      "durationSeconds": 1,
+      "zh": "最后，我们在范畴论里再往高一层。"
+    }
+  ],
+  "mergedBeats": [
+    {
+      "slideId": "beat-01",
+      "beatIndex": 0,
+      "editedStart": 0,
+      "editedEnd": 18.69,
+      "durationSeconds": 18.69,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-02",
+      "beatIndex": 1,
+      "editedStart": 18.69,
+      "editedEnd": 91.53,
+      "durationSeconds": 72.84,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-03",
+      "beatIndex": 2,
+      "editedStart": 91.53,
+      "editedEnd": 144.91,
+      "durationSeconds": 53.38,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-04",
+      "beatIndex": 3,
+      "editedStart": 144.91,
+      "editedEnd": 182.61,
+      "durationSeconds": 37.7,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-05",
+      "beatIndex": 4,
+      "editedStart": 182.61,
+      "editedEnd": 219.59,
+      "durationSeconds": 36.98,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-06",
+      "beatIndex": 5,
+      "editedStart": 219.59,
+      "editedEnd": 284.09,
+      "durationSeconds": 64.5,
+      "lastSpokenWord": ""
+    }
+  ]
+}

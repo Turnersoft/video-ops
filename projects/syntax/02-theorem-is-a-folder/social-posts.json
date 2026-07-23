@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "scriptId": "02-theorem-is-a-folder",
+  "titleEnglish": "syntax_02_theorem_is_a_folder",
+  "titleChina": "syntax_02_theorem_is_a_folder",
+  "title": "syntax_02_theorem_is_a_folder",
+  "generatedAt": "2026-07-23T06:51:15.850Z",
+  "source": {},
+  "english": {
+    "youtube": {
+      "title": "syntax_02_theorem_is_a_folder",
+      "body": "syntax_02_theorem_is_a_folder\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "x": {
+      "title": "syntax_02_theorem_is_a_folder",
+      "body": "syntax_02_theorem_is_a_folder #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "linkedin": {
+      "title": "syntax_02_theorem_is_a_folder",
+      "body": "syntax_02_theorem_is_a_folder\n\nsyntax_02_theorem_is_a_folder\n\nThis episode is part of the Abstract Algebra in a Proof Assistant series on Turn-Lang — textbook-shaped formal mathematics you can film outdoors and verify in Lean 4 / Turn-Lang.\n\nWhat you will see in the video:\n• A textbook beat you can say on camera\n• The Lean 4 modeling choice (and what it refuses to pretend)\n• The Turn-Lang compare so the obligation is visible\n\nWatch the short, then open the linked editor if you want to step through the proof assistant view yourself.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "instagram": {
+      "title": "syntax_02_theorem_is_a_folder",
+      "body": "syntax_02_theorem_is_a_folder\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "tiktok": {
+      "title": "syntax_02_theorem_is_a_folder",
+      "body": "syntax_02_theorem_is_a_folder\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "facebook": {
+      "title": "syntax_02_theorem_is_a_folder",
+      "body": "syntax_02_theorem_is_a_folder\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "bluesky": {
+      "title": "syntax_02_theorem_is_a_folder",
+      "body": "syntax_02_theorem_is_a_folder #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    }
+  },
+  "china": {
+    "bilibili": {
+      "title": "syntax_02_theorem_is_a_folder",
+      "body": "syntax_02_theorem_is_a_folder\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论\n（请翻译为中文后发布）"
+    },
+    "douyin": {
+      "title": "Your Theorem Is a Folder of Named Claims",
+      "body": "The real `\"basic set\"` theorem in AATA is one statement with named leaves `p1`, `first`, `second` — navigate like a folder, not one wall of text.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "xiaohongshu": {
+      "title": "Your Theorem Is a F…",
+      "body": "The real `\"basic set\"` theorem in AATA is one statement with named leaves `p1`, `first`, `second` — navigate like a folder, not one wall of text.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "weibo": {
+      "title": "Your Theorem Is a Folder of Named Claims",
+      "body": "The real `\"basic set\"` theorem in AATA is one statement with named leaves `p1`, `first`, `second` — navigate like a folder, not one wall of text.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "wechat_channels": {
+      "title": "Your Theorem Is a Folder of Named Claims",
+      "body": "The real `\"basic set\"` theorem in AATA is one statement with named leaves `p1`, `first`, `second` — navigate like a folder, not one wall of text.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "kuaishou": {
+      "title": "Your Theorem Is a Folder of Named Claims",
+      "body": "The real `\"basic set\"` theorem in AATA is one statement with named leaves `p1`, `first`, `second` — navigate like a folder, not one wall of text.\n\n#TurnLang #形式化方法 #抽象代数"
+    }
+  }
+}

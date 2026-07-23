@@ -1,0 +1,185 @@
+@use '../../app' as *;
+
+.copy {
+  color: $muted;
+  font-size: $font-body;
+  padding: $space-lg;
+  line-height: 22;
+}
+.root {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 50;
+  background-color: #000;
+  overflow: hidden;
+}
+.centered {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $space-md;
+  padding: $space-lg;
+  background-color: $bg;
+}
+.meta {
+  color: $muted;
+  font-size: $font-small;
+}
+.error {
+  color: $offline;
+  font-size: $font-body;
+  text-align: center;
+  margin-bottom: $space-md;
+}
+.overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: $space-md;
+  gap: $space-sm;
+  background-image: linear-gradient(to top, rgba(2,6,23,0.78), transparent 50%);
+}
+.promptCard {
+  background-color: rgba(2, 6, 23, 0.62);
+  border-width: 1;
+  border-color: rgba(248, 250, 252, 0.18);
+  border-radius: 20;
+  padding: $space-sm;
+  max-height: 48vh;
+}
+.promptScroll {
+  max-height: 40vh;
+}
+.promptProgress {
+  color: $section;
+  font-size: $font-tiny;
+  font-weight: 800;
+  margin-bottom: $space-xs;
+}
+.promptWords {
+  color: $text;
+  font-size: 28;
+  font-weight: 800;
+  line-height: 34;
+}
+.promptCode {
+  margin-top: $space-sm;
+  padding: $space-sm;
+  border-radius: 12;
+  background-color: rgba(15, 23, 42, 0.55);
+}
+.promptCodeLabel {
+  color: $orange;
+  font-size: $font-tiny;
+  font-weight: 800;
+}
+.promptCodeBody {
+  margin-top: 6;
+  color: $code;
+  font-family: Menlo;
+  font-size: 13;
+  line-height: 18;
+}
+.controls {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $space-xs;
+  justify-content: center;
+  align-items: center;
+}
+.controlBtn {
+  background-color: rgba(30, 41, 59, 0.9);
+  border-radius: 999;
+  padding-block: 8;
+  padding-inline: 14;
+}
+.controlText {
+  color: $text;
+  font-weight: 700;
+  font-size: $font-small;
+}
+.recordBtn {
+  background-color: $danger;
+}
+.stopBtn {
+  background-color: $orange;
+}
+.recordText {
+  color: #fff7ed;
+  font-weight: 900;
+  font-size: $font-body;
+}
+.recBadge {
+  position: absolute;
+  top: 16;
+  right: 16;
+  background-color: rgba(127, 29, 29, 0.92);
+  border-radius: 999;
+  padding-block: 6;
+  padding-inline: 12;
+}
+.recBadgeText {
+  color: #fecaca;
+  font-weight: 900;
+  font-size: $font-small;
+}
+.countdownOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(2, 6, 23, 0.45);
+}
+.countdownText {
+  color: #fff7ed;
+  font-size: 120;
+  font-weight: 900;
+}
+.modalOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(2, 6, 23, 0.72);
+  padding: $space-lg;
+  z-index: 60;
+}
+.modalCard {
+  width: 100%;
+  max-width: 420;
+  background-color: rgba(15, 23, 42, 0.96);
+  border-radius: 20;
+  padding: $space-lg;
+  gap: $space-sm;
+  border-width: 1;
+  border-color: rgba(148, 163, 184, 0.25);
+}
+.modalTitle {
+  color: $text;
+  font-size: 28;
+  font-weight: 900;
+}
+.modalCopy {
+  color: $muted;
+  font-size: $font-body;
+  font-weight: 700;
+}
+.modalActions {
+  gap: $space-sm;
+  margin-top: $space-sm;
+}

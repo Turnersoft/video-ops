@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "id": "01-set",
+  "title": "01_set",
+  "language": "en",
+  "mode": "manual",
+  "countdownSeconds": 3,
+  "defaultFontScale": 1,
+  "slides": [
+    {
+      "id": "beat-01",
+      "title": "Beat 1",
+      "durationSeconds": 18,
+      "body": "Hi Friends, welcom back! So a set is just a well-defined collection of objects. Those objects are called elements, or members. What we and formal logic care about is the precise rule for deciding whether an element belongs to the set.",
+      "notes": "Turn:\nstructure[T] Set<T: Any> {\n}"
+    },
+    {
+      "id": "beat-02",
+      "title": "Beat 2",
+      "durationSeconds": 36,
+      "body": "So for Lean, it models a set as a membership test, not a bag of elements.\ndef Set is Mathlib's approach for that idea.\nParentheses hold alpha — the type of elements you are ranging over.\nType u means alpha is a type at universe level u.\nThin arrow alpha to Prop says: one element in, true or false out.\nThat is a function type — different from the fat arrow on the lambda line later.\nProp is Lean's type for statements that can be true or false.\nand Colon-equals means value assignment.",
+      "notes": "Lean:\n-- Textbook: a set is a well-defined collection; for each x we decide membership.\n\n-- Mathlib source: mathlib4/Mathlib/Data/Set/Defs.lean\ndef Set (α : Type u) := α → Prop\n\nTurn:\nstructure[T] Set<T: Any> {\n}"
+    },
+    {
+      "id": "beat-03",
+      "title": "Beat 3",
+      "durationSeconds": 17,
+      "body": "For example, oddIntegers colon Set Int fixes Int as the element type for this one concrete set. Colon here is a type label on the name. The colon equals on the same line says the definition continues on the next line.",
+      "notes": "Lean:\ndef Set (α : Type u) := α → Prop\n  -- …\ndef oddIntegers : Set Int :=\n\nTurn:\nstructure[T] Set<T: Any> {\n}"
+    },
+    {
+      "id": "beat-04",
+      "title": "Beat 4",
+      "durationSeconds": 18,
+      "body": "Then fun statement is Lean's anonymous function, like a JavaScript arrow function. And the function take a parameter n and return a statement about n. When that proposition is proven to be true, n will belong to the set.",
+      "notes": "Lean:\ndef oddIntegers : Set Int :=\n  fun n => n % 2 = 1\n\nTurn:\nstructure[T] Set<T: Any> {\n}"
+    },
+    {
+      "id": "beat-05",
+      "title": "Beat 5",
+      "durationSeconds": 20,
+      "body": "So if you apply oddIntegers to n directly, you will get a Prop, a membership question. Notice that Lean never forces you to treat that Prop as membership condition. Rename def Set and the story disappears. That semantic gap is a real pitfall in formal methods.",
+      "notes": "Lean:\ndef Set (α : Type u) := α → Prop\n  -- …\ndef oddIntegers : Set Int :=\n  fun n => n % 2 = 1\n\nTurn:\nstructure[T] Set<T: Any> {\n}"
+    },
+    {
+      "id": "beat-06",
+      "title": "Beat 6",
+      "durationSeconds": 13,
+      "body": "Next, mathlib defines a namespace block for Set. So Names inside get the Set dot prefix, which is why you read Set dot Mem instead of bare Mem. end Set at the bottom closes that block.",
+      "notes": "Lean:\nnamespace Set\n  def Mem (s : Set α) (a : α) : Prop :=\n     s a\nend Set \n\n /- Set.Mem s a\n\nTurn:\nstructure[T] Set<T: Any> {\n}"
+    },
+    {
+      "id": "beat-07",
+      "title": "Beat 7",
+      "durationSeconds": 30,
+      "body": "After that, Mathlib adds protected def Mem.\nprotected means you can only use the function with the namespace dot syntax.\nOn the parameters, s colon Set alpha labels the set and a colon alpha is one element.\nThe return type after the second colon is Prop again.\nThe body is s a which means s applied on a\nSo this is how we model membership, but where is the symbol a in s?",
+      "notes": "Lean:\nnamespace Set\n  protected def Mem (s : Set α) (a : α) : Prop :=\n     s a\nend Set \n\n -- but where is the symbol a ∈ s\n\nTurn:\nstructure[T] Set<T: Any> {\n}"
+    },
+    {
+      "id": "beat-08",
+      "title": "Beat 8",
+      "durationSeconds": 35,
+      "body": "this is actually more complicated than we think\nthe notation is a built-in syntax in lean's kernel,\nand then the notation is binded to a typeclass called Membership which is basically a encapsolation for methods in Lean\nNotice the outParam here on the element type here, it means it can be ignored in usage and lean will just infer it.\nSo that is the preparation\nBut in order for our Set to use this notation, we still need to do one more thing",
+      "notes": "Lean:\n-- Lean core source: lean4/src/Init/Prelude.lean\n\n--   class Membership (α : outParam (Type u)) (γ : Type v) where\n--     mem : γ → α → Prop\n\n-- Lean core source: lean4/src/Init/Notation.lean\n\n--   notation:50 a:50 \" ∈ \" b:50 => Membership.mem b a\n\n-- Mathlib source: mathlib4/Mathlib/Data/Set/Defs.lean\n-- Set α wires the Membership field to Set.Mem below.\n\n\nTurn:\nstructure[T] Set<T: Any> {\n}"
+    },
+    {
+      "id": "beat-09",
+      "title": "Beat 9",
+      "durationSeconds": 31,
+      "body": "that is to implement the typeclass on def of Set by using the instance block\nnotice here alpha is bounded by the Set alpha on the right. whatever allowed in Set is what's allowed for alpha\nby using the angle bracket, we provide the value for the only method in the typeclass which is convinence syntax.\nBut If we have multiple method in a typeclass, we have to implement the one by one as shown below",
+      "notes": "Lean:\n--   class Membership (α : outParam (Type u)) (γ : Type v) where\n--        mem : γ → α → Prop\n--\n\ninstance : Membership α (Set α) :=\n  ⟨Set.Mem⟩\n\n/- Multi-field typeclass (teaching): explicit field names -/\n\nclass Foo (α : Type u) where\n  bar : α → α\n  baz : α → Prop\n  qux : Nat\n\n-- 1. Named where block (clearest when teaching)\ninstance : Foo Nat where\n  bar := fun n => n + 1\n  baz := fun n => n > 0\n  qux := 42\n\n-- 2. Named structure syntax\ninstance : Foo Int := {\n  bar := fun n => n + 1\n  baz := fun n => n > 0\n  qux := 42\n}\n\nTurn:\nstructure[T] Set<T: Any> {\n}"
+    },
+    {
+      "id": "beat-10",
+      "title": "Beat 10",
+      "durationSeconds": 10,
+      "body": "So now we can use the notation like this because the typeclass implement\nNotice it construct a proposition with a in S",
+      "notes": "Lean:\n--   notation:50 a:50 \" ∈ \" b:50 => Membership.mem b a\n  -- …\n-- Set α wires the Membership field to Set.Mem below.\n  -- …\nexample (s : Set α) (a : α) : Prop := a ∈ s\n\nTurn:\nstructure[T] Set<T: Any> {\n}"
+    },
+    {
+      "id": "beat-11",
+      "title": "Beat 11",
+      "durationSeconds": 4,
+      "body": "Another example here using OddIntegers",
+      "notes": "Lean:\nexample (n : Int) : Prop := n ∈ oddIntegers\n\nTurn:\nstructure[T] Set<T: Any> {\n}"
+    },
+    {
+      "id": "beat-12",
+      "title": "Beat 12",
+      "durationSeconds": 13,
+      "body": "So that is the full picture of lean's modelling:\nfirst a function-type constructor\nthen a prop returning wrapper\nfinally the notation for the mathematical \"in\" operator",
+      "notes": "Lean:\n-- function type constructor \ndef Set (α : Type u) := α → Prop\n  -- …\nnamespace Set\n-- prop returning wrapper\n  protected def Mem (s : Set α) (a : α) : Prop :=\n    s a\nend Set\n\n-- notation implmenetation for ∈ (in) operator\ninstance : Membership α (Set α) :=\n  ⟨Set.Mem⟩\n\nTurn:\nstructure[T] Set<T: Any> {\n}"
+    },
+    {
+      "id": "beat-13",
+      "title": "Beat 13",
+      "durationSeconds": 23,
+      "body": "So now we look at turn-lang, Notice it immediately give you a container story.\nwe model Set using a structure directly.\nsquare bracket make it a container structure which allows it to use the \"in\" operator.\nThen we can use the in operator for every set to specify its content using laws.",
+      "notes": "Lean:\nas before\n\nTurn:\nstructure[T] Set<T: Any> {\n}\n\n// Turn-Lang: x in s is built-in (no Mem, no instance)"
+    },
+    {
+      "id": "beat-14",
+      "title": "Beat 14",
+      "durationSeconds": 22,
+      "body": "For example, we model EmptySet by inheriting from set.\nand we use a law to specify the membership function\nno_members says for every x, x not in self, so nothing belongs to the empty set.\nSo law is a requirement that every instance of the structure must satisfy.",
+      "notes": "Lean:\nas before\n\nTurn:\n@notation(\"∅\")\nstructure EmptySet: Set<Any> {\n    laws {\n        no_members {\n            forall x: Any |- not (x in self)\n        }\n    }\n}"
+    },
+    {
+      "id": "beat-15",
+      "title": "Beat 15",
+      "durationSeconds": 12,
+      "body": "Similarly, Union follows the same pattern.\nIts law says x in the union when x is in A or x is in B.\nso this is how we model set in both languages",
+      "notes": "Lean:\nas before\n\nTurn:\n@notation({A} ~ \" ∪ \" ~ {B})\nstructure Union<T: Any, A B: Set<T>>: Set<T> {\n    laws {\n        def {\n            forall x in self |- x in A or x in B\n        }\n    }\n}"
+    },
+    {
+      "id": "beat-16",
+      "title": "Beat 16",
+      "durationSeconds": 6,
+      "body": "So I hope you enjoyed this video.\nLeave a comment if you need help with these.",
+      "notes": "Lean:\nas before\n\nTurn:\n@notation({A} ~ \" ∪ \" ~ {B})\nstructure Union<T: Any, A B: Set<T>>: Set<T> {\n    laws {\n        def {\n            forall x in self |- x in A or x in B\n        }\n    }\n}"
+    },
+    {
+      "id": "beat-17",
+      "title": "Beat 17",
+      "durationSeconds": 6,
+      "body": "in the next video, we will talk about subset.\nSubscribe and see you in the next one.",
+      "notes": "Lean:\nas before\n\nTurn:\n@notation({A} ~ \" ∪ \" ~ {B})\nstructure Union<T: Any, A B: Set<T>>: Set<T> {\n    laws {\n        def {\n            forall x in self |- x in A or x in B\n        }\n    }\n}"
+    }
+  ]
+}

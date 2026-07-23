@@ -1,0 +1,37 @@
+@use "../../app" as *;
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: $space-sm;
+  margin-bottom: $space-sm;
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.title {
+  font-size: $font-section;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+.hint {
+  color: $muted;
+  font-size: $font-tiny;
+}
+.strip {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: $space-sm;
+  padding-block: $space-xs;
+  padding-right: $space-lg;
+}
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}

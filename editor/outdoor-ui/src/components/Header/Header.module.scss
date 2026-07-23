@@ -1,0 +1,36 @@
+@use '../../app' as *;
+
+.sidebarToggle {
+  display: flex;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(30, 41, 59, 0.85);
+  border-width: 1px;
+  border-color: $card-border;
+  flex-shrink: 0;
+}
+.sidebarTogglePressed {
+  opacity: 0.85;
+}
+.sidebarToggleIcon {
+  color: $text;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 20px;
+}
+.titleBlock {
+  flex: 1;
+  flex-shrink: 1;
+  min-width: 0;
+}
+.transport {
+  color: $muted;
+  font-size: $font-tiny;
+  margin-top: 2px;
+  line-height: 14px;
+}
+
+

@@ -35,7 +35,7 @@ const agent = spawn(
   [
     'task',
     '--config',
-    path.join(VIDEO_OPS_ROOT, 'outdoor_agent/deno.json'),
+    path.join(VIDEO_OPS_ROOT, 'editor/outdoor_agent/deno.json'),
     'start:lan',
     '--',
     '--port',

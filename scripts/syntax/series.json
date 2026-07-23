@@ -1,7 +1,0 @@
-{
-  "schemaVersion": 1,
-  "id": "syntax",
-  "title": "Turn-lang syntax",
-  "description": "How proofs are structured in Turn — theorems, tactics, composition, and properties.",
-  "thumbnail": "shared/reference"
-}

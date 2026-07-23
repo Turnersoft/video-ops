@@ -1,0 +1,163 @@
+@use "../../app" as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 220px;
+  border-width: 1px;
+  border-radius: $radius-md;
+  overflow: hidden;
+}
+
+.cardCompact {
+  width: 180px;
+}
+
+.cardActive {
+  border-width: 2px;
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  height: 128px;
+  padding: $space-sm;
+  gap: 6px;
+}
+
+.previewHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-sm;
+  flex-shrink: 0;
+}
+
+.kind {
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.dual {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  gap: 6px;
+  min-height: 0;
+}
+
+.pane {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.paneDivider {
+  width: 1px;
+  align-self: stretch;
+  background-color: rgba(148, 163, 184, 0.35);
+}
+
+.paneLabel {
+  color: $muted;
+  font-size: 10px;
+  margin-bottom: 2px;
+}
+
+.paneCode {
+  color: $code;
+  font-size: 10px;
+  font-family: Menlo, monospace;
+  line-height: 14px;
+}
+
+.memeText {
+  flex: 1;
+  color: $text;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 18px;
+}
+
+.heroBlock {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 6px;
+  min-height: 0;
+}
+
+.heroMark {
+  color: $orange;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.heroText {
+  flex: 1;
+  color: $text;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 17px;
+}
+
+.bodyPreview {
+  flex: 1;
+  color: $muted;
+  font-size: 12px;
+  line-height: 16px;
+  min-height: 0;
+}
+
+.meta {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: $space-sm;
+  padding: $space-sm;
+  background-color: $card;
+  border-top-width: 1px;
+  border-top-color: $card-border;
+}
+
+.index {
+  color: $muted2;
+  font-size: $font-tiny;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.metaText {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  color: $text;
+  font-size: $font-small;
+  font-weight: 600;
+}
+
+.sub {
+  color: $muted;
+  font-size: $font-tiny;
+  line-height: 14px;
+  min-height: 56px;
+}
+
+.candidateBadge {
+  color: #fdba74;
+  font-size: 10px;
+  font-weight: 800;
+  flex-shrink: 0;
+  padding-inline: 4px;
+}

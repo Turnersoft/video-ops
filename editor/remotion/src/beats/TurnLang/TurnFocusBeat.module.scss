@@ -1,0 +1,233 @@
+@use '../../app' as *;
+
+.shell {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.landscapeRoot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: scaled(18px);
+  box-sizing: border-box;
+  padding: scaled(28px) scaled(36px) scaled(32px);
+  color-scheme: dark;
+  background: #0f172a;
+  color: #e8edf4;
+  overflow: hidden;
+}
+
+.landscapeHeader {
+  display: flex;
+  align-items: center;
+  gap: scaled(18px);
+  flex-shrink: 0;
+}
+
+.landscapeLogo {
+  height: scaled(64px);
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.landscapeBrand {
+  margin: 0;
+  font-size: scaled(36px);
+  font-weight: 750;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #e8edf4;
+}
+
+.landscapePanels {
+  flex: 1;
+  min-height: 0;
+  gap: scaled(18px);
+}
+
+.landscapePanelsDual {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-auto-rows: minmax(0, 1fr);
+}
+
+.landscapePanelsSingle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > div {
+    height: 100%;
+    min-height: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.landscapePaneSingle {
+  width: 58%;
+  max-width: scaled(1080px);
+  height: min(78%, 100%);
+  max-height: 100%;
+}
+
+.landscapePane {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: scaled(14px);
+  border: 1px solid rgba(148, 163, 184, 0.26);
+  background: rgba(7, 13, 29, 0.78);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 scaled(18px) scaled(44px) rgba(0, 0, 0, 0.24);
+}
+
+.landscapePaneLabel {
+  flex-shrink: 0;
+  padding: scaled(12px) scaled(16px) scaled(10px);
+  font-size: scaled(14px);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #b6c4dc;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.landscapePaneBody {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: rgba(2, 8, 23, 0.82);
+}
+
+.landscapeEditorBody {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
+
+  > * {
+    flex: 1;
+    min-height: 0;
+    min-width: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.landscapeRenderBody {
+  padding: scaled(8px) scaled(10px) scaled(16px);
+  color: #e8edf4;
+  --math-text-color: #e8edf4;
+  --identifier-color: #dbeafe;
+  --number-color: #fde68a;
+  --operator-color: #e2e8f0;
+  --relation-color: #bfdbfe;
+  --function-color: #f0abfc;
+
+  :global(.knowledge-view),
+  :global(.theme-textbook),
+  :global(.pane),
+  :global(.renderedPane) {
+    background: transparent !important;
+    color: #e8edf4 !important;
+    color-scheme: dark;
+  }
+
+  :global(.richText),
+  :global(.secBody),
+  :global(.secTitle),
+  :global(.nodeText),
+  :global(.tPara),
+  :global(.tHeading),
+  :global(.knowledge-view *),
+  :global(.renderedPane *) {
+    color: #e8edf4 !important;
+  }
+
+  :global(.sec) {
+    max-width: none !important;
+    background: rgba(15, 23, 42, 0.35) !important;
+    border-color: rgba(148, 163, 184, 0.26) !important;
+    box-shadow: none !important;
+  }
+}
+
+.portraitCompareRoot {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: scaled(10px);
+}
+
+.portraitPane {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: scaled(16px);
+  overflow: hidden;
+  border: 1px solid $card-border-strong;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.portraitPaneHeader {
+  display: flex;
+  align-items: center;
+  gap: scaled(10px);
+  padding: scaled(10px) scaled(14px);
+  border-bottom: 1px solid rgba(60, 54, 45, 0.08);
+  flex-shrink: 0;
+}
+
+.portraitLogo {
+  width: auto;
+  max-width: scaled(280px);
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.portraitAccentDot {
+  width: scaled(8px);
+  height: scaled(8px);
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.portraitPaneTitle {
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+}
+
+.portraitPaneBody {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  > * {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+  }
+}

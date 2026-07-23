@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "scriptId": "07-social-export",
+  "titleEnglish": "Social export pack",
+  "titleChina": "Social export pack",
+  "title": "Social export pack",
+  "generatedAt": "2026-07-23T06:51:15.902Z",
+  "source": {},
+  "english": {
+    "youtube": {
+      "title": "Social export pack",
+      "body": "Titles, captions, and cuts ready for every platform.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "x": {
+      "title": "Social export pack",
+      "body": "Titles, captions, and cuts ready for every platform. #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "linkedin": {
+      "title": "Social export pack",
+      "body": "Social export pack\n\nTitles, captions, and cuts ready for every platform.\n\nThis episode is part of the Abstract Algebra in a Proof Assistant series on Turn-Lang — textbook-shaped formal mathematics you can film outdoors and verify in Lean 4 / Turn-Lang.\n\nWhat you will see in the video:\n• A textbook beat you can say on camera\n• The Lean 4 modeling choice (and what it refuses to pretend)\n• The Turn-Lang compare so the obligation is visible\n\nWatch the short, then open the linked editor if you want to step through the proof assistant view yourself.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "instagram": {
+      "title": "Social export pack",
+      "body": "Titles, captions, and cuts ready for every platform.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "tiktok": {
+      "title": "Social export pack",
+      "body": "Titles, captions, and cuts ready for every platform.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "facebook": {
+      "title": "Social export pack",
+      "body": "Titles, captions, and cuts ready for every platform.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "bluesky": {
+      "title": "Social export pack",
+      "body": "Titles, captions, and cuts ready for every platform. #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    }
+  },
+  "china": {
+    "bilibili": {
+      "title": "Social export pack",
+      "body": "Titles, captions, and cuts ready for every platform.\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论\n（请翻译为中文后发布）"
+    },
+    "douyin": {
+      "title": "Social export pack",
+      "body": "Social export pack\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "xiaohongshu": {
+      "title": "Social export pack",
+      "body": "Social export pack\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "weibo": {
+      "title": "Social export pack",
+      "body": "Social export pack\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "wechat_channels": {
+      "title": "Social export pack",
+      "body": "Social export pack\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "kuaishou": {
+      "title": "Social export pack",
+      "body": "Social export pack\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    }
+  }
+}

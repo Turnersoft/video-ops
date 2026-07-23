@@ -1,0 +1,123 @@
+@use '../../app' as *;
+
+.backdrop {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 45;
+}
+.backdropVisible {
+  background-color: rgba(2, 6, 23, 0.55);
+}
+.backdropHidden {
+  background-color: transparent;
+  pointer-events: none;
+}
+.panel {
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 50;
+  background-color: $header-bg;
+  border-right-width: 1px;
+  border-right-color: $card-border;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 4px 0 16px rgba(0, 0, 0, 0.35);
+}
+.panelBrowser {
+  width: 280px;
+  max-width: 85vw;
+}
+.panelMobile {
+  width: 88vw;
+  max-width: 320px;
+}
+.panelHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-sm;
+  padding-inline: $space-md;
+  padding-block: $space-sm;
+  border-bottom-width: 1px;
+  border-bottom-color: $card-border;
+}
+.panelTitle {
+  color: $section;
+  font-size: $font-section;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+.closeButton {
+  border-radius: $radius-pill;
+  padding-inline: 10px;
+  padding-block: 4px;
+  background-color: rgba(51, 65, 85, 0.9);
+}
+.closeButtonText {
+  color: $muted;
+  font-size: $font-tiny;
+  font-weight: 700;
+}
+.scroll {
+  flex: 1;
+  min-height: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollBody {
+  display: flex;
+  padding: $space-sm;
+  gap: $space-sm;
+  padding-bottom: $space-xl;
+}
+.centered {
+  display: flex;
+  align-items: center;
+  padding-block: $space-lg;
+}
+.error {
+  color: $offline;
+  font-size: $font-tiny;
+  padding-inline: $space-xs;
+}
+.empty {
+  color: $muted;
+  font-size: $font-tiny;
+  padding-inline: $space-xs;
+}
+.scriptRow {
+  display: flex;
+  border-radius: $radius-sm;
+  border-width: 1px;
+  border-color: transparent;
+  background-color: rgba(15, 23, 42, 0.75);
+  padding-inline: $space-sm;
+  padding-block: 6px;
+  gap: 2px;
+}
+.scriptRowActive {
+  border-color: rgba(249, 115, 22, 0.65);
+  background-color: rgba(249, 115, 22, 0.16);
+}
+.scriptTitle {
+  color: $text;
+  font-size: $font-tiny;
+  font-weight: 700;
+  line-height: 16px;
+}
+.scriptTitleActive {
+  color: #fdba74;
+}
+.scriptMeta {
+  color: $muted;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+

@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-12T10:30:18.765Z",
+  "sourceVideo": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrhmharr/source.mp4",
+  "sourceScript": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/04-set-equality/export/04-set-equality-outdoor-script.json",
+  "sourceTake": "/Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrhmharr/take.json",
+  "durationSeconds": 369.041,
+  "transcriptSegments": [],
+  "transcriptWordCount": 0,
+  "badIntervals": [],
+  "goodIntervals": [
+    {
+      "start": 0,
+      "end": 369.041
+    }
+  ],
+  "visualTimeline": [
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 0,
+      "sourceEnd": 23.872,
+      "editedStart": 0,
+      "editedEnd": 23.872
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 23.872,
+      "sourceEnd": 116.088,
+      "editedStart": 23.872,
+      "editedEnd": 116.088
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 116.088,
+      "sourceEnd": 190.375,
+      "editedStart": 116.088,
+      "editedEnd": 190.375
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 190.375,
+      "sourceEnd": 235.066,
+      "editedStart": 190.375,
+      "editedEnd": 235.066
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 235.066,
+      "sourceEnd": 298.102,
+      "editedStart": 235.066,
+      "editedEnd": 298.102
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "Beat 6: present the higher-category philosophy without naming a person",
+      "sourceStart": 298.102,
+      "sourceEnd": 369.041,
+      "editedStart": 298.102,
+      "editedEnd": 369.041
+    }
+  ]
+}

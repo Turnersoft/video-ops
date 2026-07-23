@@ -1,0 +1,125 @@
+@use '../../app' as *;
+
+.wrap {
+  display: flex;
+  gap: $space-sm;
+}
+.headerRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-sm;
+}
+.jobStatus {
+  color: $muted;
+  font-size: $font-tiny;
+  font-weight: 700;
+}
+.failureBanner {
+  display: flex;
+  gap: 4px;
+  padding: $space-sm;
+  border-radius: 8px;
+  background-color: rgba(127, 29, 29, 0.28);
+  border-width: 1px;
+  border-color: rgba(248, 113, 113, 0.4);
+}
+.failureTitle {
+  color: #fecaca;
+  font-size: $font-small;
+  font-weight: 900;
+}
+.failureMessage {
+  color: $text;
+  font-size: $font-small;
+  line-height: 18px;
+}
+.failureHint {
+  color: $muted;
+  font-size: $font-tiny;
+  line-height: 16px;
+}
+.stageRow {
+  display: flex;
+  gap: 2px;
+  padding-block: $space-xs;
+  border-top-width: 1px;
+  border-top-color: rgba(148, 163, 184, 0.25);
+}
+.stageTop {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-sm;
+}
+.stageActions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $space-xs;
+  flex-shrink: 0;
+}
+.rerunChip {
+  border-radius: 999px;
+  border-width: 1px;
+  border-color: rgba(249, 115, 22, 0.55);
+  padding-inline: $space-sm;
+  padding-block: 2px;
+}
+.rerunChipPressed {
+  opacity: 0.85;
+}
+.rerunChipDisabled {
+  opacity: 0.45;
+}
+.rerunChipText {
+  color: $orange;
+  font-size: $font-tiny;
+  font-weight: 800;
+}
+.stageName {
+  color: $text;
+  font-size: $font-small;
+  font-weight: 700;
+  flex: 1;
+}
+.stageStatus {
+  font-size: $font-tiny;
+  font-weight: 900;
+}
+.stageDetail {
+  color: $muted;
+  font-size: $font-tiny;
+  line-height: 15px;
+  font-family: Menlo;
+}
+.agentLogWrap {
+  display: flex;
+  gap: $space-xs;
+  padding-top: $space-xs;
+  border-top-width: 1px;
+  border-top-color: rgba(148, 163, 184, 0.25);
+}
+.agentLogLabel {
+  color: $orange;
+  font-size: $font-tiny;
+  font-weight: 900;
+  letter-spacing: 0.4px;
+}
+.logBox {
+  color: $code;
+  font-family: Menlo;
+  font-size: $font-tiny;
+  line-height: 15px;
+  background-color: rgba(15, 23, 42, 0.55);
+  border-radius: 8px;
+  padding: $space-sm;
+}
+.error {
+  color: $offline;
+  font-size: $font-small;
+}
+
+

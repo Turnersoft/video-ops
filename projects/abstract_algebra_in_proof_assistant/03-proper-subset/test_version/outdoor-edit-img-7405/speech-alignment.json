@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 1,
+  "scriptId": "03-proper-subset",
+  "generatedAt": "2026-07-08T12:56:14.614Z",
+  "sourceVideo": "/Users/johndoe/Documents/company/basic_ui/video_ops/script_v2/03-proper-subset/test_version/outdoor-edit-img-7405/edited-good-intervals.mp4",
+  "editedDurationSeconds": 432.32,
+  "beatDurationsSeconds": [
+    21.11,
+    18.64,
+    28.38,
+    36.04,
+    60.6,
+    22,
+    47.96,
+    30.7,
+    27.2,
+    34.23,
+    10.82,
+    15.12,
+    68.94,
+    10.58
+  ],
+  "boundaries": [
+    {
+      "beatIndex": 0,
+      "editedStart": 0,
+      "editedEnd": 21.11,
+      "durationSeconds": 21.11,
+      "lastSpokenWord": "do"
+    },
+    {
+      "beatIndex": 1,
+      "editedStart": 21.11,
+      "editedEnd": 39.75,
+      "durationSeconds": 18.64,
+      "lastSpokenWord": "here."
+    },
+    {
+      "beatIndex": 2,
+      "editedStart": 39.75,
+      "editedEnd": 68.13,
+      "durationSeconds": 28.38,
+      "lastSpokenWord": "equal"
+    },
+    {
+      "beatIndex": 3,
+      "editedStart": 68.13,
+      "editedEnd": 104.17,
+      "durationSeconds": 36.04,
+      "lastSpokenWord": "job?"
+    },
+    {
+      "beatIndex": 4,
+      "editedStart": 104.17,
+      "editedEnd": 164.77,
+      "durationSeconds": 60.6,
+      "lastSpokenWord": "videos."
+    },
+    {
+      "beatIndex": 5,
+      "editedStart": 164.77,
+      "editedEnd": 186.77,
+      "durationSeconds": 22,
+      "lastSpokenWord": "with"
+    },
+    {
+      "beatIndex": 6,
+      "editedStart": 186.77,
+      "editedEnd": 234.73,
+      "durationSeconds": 47.96,
+      "lastSpokenWord": "theorems"
+    },
+    {
+      "beatIndex": 7,
+      "editedStart": 234.73,
+      "editedEnd": 265.43,
+      "durationSeconds": 30.7,
+      "lastSpokenWord": "implementation."
+    },
+    {
+      "beatIndex": 8,
+      "editedStart": 265.43,
+      "editedEnd": 292.63,
+      "durationSeconds": 27.2,
+      "lastSpokenWord": "emerges."
+    },
+    {
+      "beatIndex": 9,
+      "editedStart": 292.63,
+      "editedEnd": 326.86,
+      "durationSeconds": 34.23,
+      "lastSpokenWord": "a"
+    },
+    {
+      "beatIndex": 10,
+      "editedStart": 326.86,
+      "editedEnd": 337.68,
+      "durationSeconds": 10.82,
+      "lastSpokenWord": "that."
+    },
+    {
+      "beatIndex": 11,
+      "editedStart": 337.68,
+      "editedEnd": 352.8,
+      "durationSeconds": 15.12,
+      "lastSpokenWord": "names"
+    },
+    {
+      "beatIndex": 12,
+      "editedStart": 352.8,
+      "editedEnd": 421.74,
+      "durationSeconds": 68.94,
+      "lastSpokenWord": "do"
+    },
+    {
+      "beatIndex": 13,
+      "editedStart": 421.74,
+      "editedEnd": 432.32,
+      "durationSeconds": 10.58,
+      "lastSpokenWord": "the"
+    }
+  ],
+  "matchCount": 910,
+  "scriptWordCount": 1014,
+  "spokenWordCount": 1262,
+  "matches": [
+    {
+      "scriptIndex": 0,
+      "spokenIndex": 0,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 1,
+      "spokenIndex": 1,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 2,
+      "spokenIndex": 2,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 3,
+      "spokenIndex": 3,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 4,
+      "spokenIndex": 5,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 5,
+      "spokenIndex": 6,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 7,
+      "spokenIndex": 10,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 8,
+      "spokenIndex": 11,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 11,
+      "spokenIndex": 15,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 12,
+      "spokenIndex": 16,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 13,
+      "spokenIndex": 17,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 14,
+      "spokenIndex": 19,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 15,
+      "spokenIndex": 20,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 16,
+      "spokenIndex": 21,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 17,
+      "spokenIndex": 23,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 19,
+      "spokenIndex": 25,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 20,
+      "spokenIndex": 26,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 21,
+      "spokenIndex": 27,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 22,
+      "spokenIndex": 28,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 23,
+      "spokenIndex": 29,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 24,
+      "spokenIndex": 30,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 25,
+      "spokenIndex": 31,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 26,
+      "spokenIndex": 32,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 27,
+      "spokenIndex": 33,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 28,
+      "spokenIndex": 34,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 29,
+      "spokenIndex": 35,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 31,
+      "spokenIndex": 38,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 32,
+      "spokenIndex": 39,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 33,
+      "spokenIndex": 40,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 34,
+      "spokenIndex": 41,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 36,
+      "spokenIndex": 48,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 37,
+      "spokenIndex": 49,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 38,
+      "spokenIndex": 50,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 39,
+      "spokenIndex": 51,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 40,
+      "spokenIndex": 52,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 41,
+      "spokenIndex": 53,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 42,
+      "spokenIndex": 54,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 43,
+      "spokenIndex": 55,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 44,
+      "spokenIndex": 56,
+      "beatIndex": 0
+    },
+    {
+      "scriptIndex": 45,
+      "spokenIndex": 57,
+      "beatIndex": 0
+    }
+  ]
+}

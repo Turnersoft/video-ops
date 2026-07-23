@@ -1,6 +1,0 @@
-node_modules/
-out/
-dist/
-build/
-# Stale webpack copy of @turn-user assets (broken font symlinks break `remotion compositions`)
-codetree/

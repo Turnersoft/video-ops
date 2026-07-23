@@ -1,0 +1,181 @@
+@use '../app' as *;
+
+.stage {
+  position: relative;
+  isolation: isolate;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: scaled(24px) scaled(28px) scaled(28px);
+  color: #f8fafc;
+}
+
+.stage::before,
+.stage::after {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+}
+
+.content > * {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+}
+
+.compare {
+  color: #253349;
+  background:
+    radial-gradient(circle at 13% 6%, rgba(95, 166, 255, 0.34), transparent 31%),
+    radial-gradient(circle at 91% 92%, rgba(255, 159, 90, 0.26), transparent 34%),
+    #f4f6f8;
+}
+
+.compare::before {
+  inset: scaled(9px);
+  border: 1px solid rgba(36, 54, 76, 0.12);
+  border-radius: scaled(22px);
+}
+
+.compare::after {
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(transparent, rgba(50, 85, 125, 0.2), transparent);
+}
+
+.stickers {
+  color: #20233f;
+  background:
+    radial-gradient(circle at 8% 12%, rgba(253, 209, 89, 0.72) 0 4%, transparent 4.5%),
+    radial-gradient(circle at 91% 11%, rgba(162, 212, 255, 0.75) 0 6%, transparent 6.5%),
+    radial-gradient(circle at 82% 86%, rgba(255, 176, 199, 0.72) 0 7%, transparent 7.5%),
+    #fff9ed;
+}
+
+.stickers::before {
+  inset: scaled(12px);
+  border: scaled(3px) solid #20233f;
+  border-radius: scaled(12px);
+  opacity: 0.85;
+}
+
+.stickers::after {
+  right: scaled(26px);
+  bottom: scaled(26px);
+  width: scaled(68px);
+  height: scaled(68px);
+  border: scaled(3px) solid #20233f;
+  border-radius: 999px;
+  box-shadow:
+    scaled(-12px) scaled(-10px) 0 rgba(150, 215, 199, 0.95),
+    scaled(-24px) scaled(-18px) 0 rgba(255, 196, 90, 0.88);
+  transform: rotate(16deg);
+}
+
+.coding {
+  color: #e5f6ff;
+  background:
+    radial-gradient(ellipse 72% 70% at 80% 9%, rgba(44, 195, 228, 0.26), transparent 60%),
+    linear-gradient(135deg, #07111f, #0f2842 58%, #08131f);
+}
+
+.coding::before {
+  inset: scaled(12px);
+  border: 1px solid rgba(111, 224, 255, 0.28);
+  border-radius: scaled(18px);
+  box-shadow: inset 0 0 scaled(42px) rgba(55, 197, 247, 0.08);
+}
+
+.coding::after {
+  right: scaled(28px);
+  bottom: scaled(26px);
+  width: scaled(102px);
+  height: scaled(6px);
+  border-radius: 999px;
+  background: linear-gradient(90deg, #67e8f9 0 36%, rgba(103, 232, 249, 0.2) 36%);
+  box-shadow: 0 0 scaled(22px) rgba(103, 232, 249, 0.45);
+}
+
+.motion {
+  color: #e9efff;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(89, 153, 255, 0.2), transparent 38%),
+    radial-gradient(circle at 22% 88%, rgba(255, 207, 92, 0.14), transparent 28%),
+    #070b14;
+}
+
+.motion::before {
+  inset: 0;
+  opacity: 0.22;
+  background-image:
+    linear-gradient(rgba(133, 161, 219, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(133, 161, 219, 0.2) 1px, transparent 1px);
+  background-size: scaled(44px) scaled(44px);
+  mask-image: radial-gradient(ellipse at center, black, transparent 78%);
+}
+
+.motion::after {
+  top: scaled(-68px);
+  right: scaled(-60px);
+  width: scaled(220px);
+  height: scaled(220px);
+  border: 1px solid rgba(88, 196, 221, 0.42);
+  border-radius: 999px;
+  box-shadow:
+    0 0 0 scaled(28px) rgba(88, 196, 221, 0.08),
+    0 0 0 scaled(56px) rgba(88, 196, 221, 0.04);
+}
+
+.motion .content {
+  border: 1px solid rgba(126, 173, 255, 0.24);
+  border-radius: scaled(22px);
+  overflow: hidden;
+  box-shadow: 0 scaled(20px) scaled(64px) rgba(0, 0, 0, 0.42);
+}
+
+.presenter {
+  color: #fff6e8;
+  background:
+    radial-gradient(ellipse 62% 72% at 82% 3%, rgba(255, 165, 90, 0.28), transparent 62%),
+    linear-gradient(145deg, #120c0a, #342019 55%, #120b0b);
+}
+
+.presenter::before {
+  inset: scaled(12px);
+  border: 1px solid rgba(255, 220, 174, 0.34);
+  border-radius: scaled(20px);
+}
+
+.presenter::after {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: scaled(7px);
+  background: linear-gradient(90deg, #f6b05a, #ffe4a7 50%, #c75e3b);
+}
+
+.presenter .content {
+  border-radius: scaled(18px);
+  overflow: hidden;
+  box-shadow: 0 scaled(20px) scaled(58px) rgba(0, 0, 0, 0.46);
+}
+
+.compact {
+  padding: scaled(12px) scaled(14px) scaled(14px);
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 2,
+  "id": "pitfalls",
+  "title": "Pitfalls of formal math",
+  "description": "Anti-patterns proof assistants keep — vacuous proofs, unreadable walls, surprise effort.",
+  "thumbnail": "shared/reference",
+  "styleKit": "pitfall",
+  "growthJob": "trust",
+  "bgmProfile": "pitfall-sparse"
+}

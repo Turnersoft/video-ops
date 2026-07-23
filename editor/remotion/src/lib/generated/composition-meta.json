@@ -1,0 +1,590 @@
+{
+  "01-cauchy-where-bundle": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 2310
+  },
+  "01-injective-vs-surjective": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 900
+  },
+  "01-keep-reject-intro": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 810
+  },
+  "01-premises-you-live-by": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "01-proof-vs-calculation": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 1200
+  },
+  "01-set": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 12060
+  },
+  "01-spread-classes-into-partition": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 1710
+  },
+  "01-surjective-quantifier-order": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 3150
+  },
+  "01-trial-is-not-continuation": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 2550
+  },
+  "01-workspace-first-open": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 810
+  },
+  "02-burden-of-proof": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "02-definitions-are-apis": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 810
+  },
+  "02-hallucinated-lemmas": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "02-image-and-range": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 870
+  },
+  "02-invertible-bijective-proof": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 3120
+  },
+  "02-proof-tree-export": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "02-side-conditions-you-can-name": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 2460
+  },
+  "02-subset": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 6390
+  },
+  "02-theorem-is-a-folder": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 1440
+  },
+  "02-witness-is-unpack-not-provide": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 2730
+  },
+  "03-composition-associativity": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 840
+  },
+  "03-export-proof-as-tree": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 1260
+  },
+  "03-functions-relations-equivalence": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 17220
+  },
+  "03-inline-premise": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 810
+  },
+  "03-proofs-that-typecheck-wrong": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 810
+  },
+  "03-proper-subset": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 17040
+  },
+  "03-reject-a-false-premise": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 3300
+  },
+  "03-vacuous-promises": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "03-what-a-goal-is": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "03-witness-you-cannot-compute": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 2490
+  },
+  "04-autoformalization-hype": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 810
+  },
+  "04-close-and-split-at-once": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 1380
+  },
+  "04-equivalence-relation-axioms": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 840
+  },
+  "04-equivocation-at-work": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "04-partition-cutting-the-cake": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 2520
+  },
+  "04-receipt-panel": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 810
+  },
+  "04-tactics-vs-terms": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "04-well-defined-one-input-two-outputs": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 2760
+  },
+  "05-agent-diff-review": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "05-counterexample-courage": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "05-empty-set": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 2040
+  },
+  "05-equivalence-weaker-than-equality": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 4320
+  },
+  "05-exists-on-structure-is-a-claim": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 2370
+  },
+  "05-keep-or-reject-before-ai-edits": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 2610
+  },
+  "05-mobile-teleprompter": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "05-outline-to-proof-slide-breadcrumb": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 2520
+  },
+  "05-quotient-type-vs-setoid": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 840
+  },
+  "05-side-conditions": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "06-compare-mode-reveal": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "06-definitions-before-debate": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "06-empty-subset-theorem": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 2040
+  },
+  "06-group-homomorphism": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 840
+  },
+  "06-news-imo-gold": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "06-notation-is-not-meaning": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "06-partition-obligations-named-from-structure": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 1770
+  },
+  "06-relations-bag-of-pairs": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 2940
+  },
+  "06-tactic-status-during-replay": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 1950
+  },
+  "07-copilot-for-lean": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "07-function-refines-well-defined-relation": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 2550
+  },
+  "07-kernel-and-image": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 840
+  },
+  "07-libraries-as-cities": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "07-necessary-vs-sufficient": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "07-social-export": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "07-theorem-125-what-formed-means": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 2790
+  },
+  "07-union": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 1890
+  },
+  "08-composition-pipeline-a-to-c": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 2580
+  },
+  "08-cover-generator": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "08-intersection": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 1710
+  },
+  "08-order-of-an-element": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 840
+  },
+  "08-proof-and-apology": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "08-refusal-is-a-feature": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "08-synthetic-data-risk": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "09-agent-keep-reject": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "09-disjoint": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 1650
+  },
+  "09-function-properties-as-adjectives": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 2400
+  },
+  "09-human-in-the-loop": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "09-laws-vs-vibes": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "09-python-intuition-trap": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "09-subgroup-criterion": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 840
+  },
+  "10-complement": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 1620
+  },
+  "10-cosets-left-right": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 840
+  },
+  "10-growth-as-refinement": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "10-matlab-to-proof": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "10-round-brackets-bundle-properties": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 2670
+  },
+  "10-trailer-cutdown": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "10-turn-vs-llm-chat": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 780
+  },
+  "11-difference": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 1740
+  },
+  "11-laws-vs-properties-inside-structures": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 2580
+  },
+  "12-composition-theorem-four-leaves": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 2550
+  },
+  "12-union-idempotent": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 1860
+  },
+  "template-ai-review-smoke": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 450
+  },
+  "template-compare-smoke": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 450
+  },
+  "template-launch-pv-smoke": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 450
+  },
+  "template-life-essay-smoke": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 450
+  },
+  "template-motion-essay-smoke": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 480
+  },
+  "template-pitfall-smoke": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 450
+  },
+  "template-syntax-spot-smoke": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 450
+  },
+  "04-set-equality": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 11940
+  }
+}

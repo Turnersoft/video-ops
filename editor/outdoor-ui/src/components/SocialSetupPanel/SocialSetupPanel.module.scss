@@ -1,0 +1,97 @@
+@use '../../app' as *;
+
+.wrap {
+  display: flex;
+  gap: $space-sm;
+  margin-bottom: $space-md;
+}
+.meta {
+  color: $muted;
+  font-size: $font-small;
+  line-height: 18px;
+}
+.error {
+  color: $offline;
+  font-size: $font-small;
+}
+.actionRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $space-sm;
+}
+.groupLabel {
+  color: $text;
+  font-size: $font-small;
+  font-weight: 800;
+  margin-top: 6px;
+}
+.platform {
+  color: $muted;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+.fieldLabel {
+  color: $muted2;
+  font-size: 11px;
+  font-weight: 700;
+}
+.input {
+  background-color: rgba(15, 23, 42, 0.95);
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: $card-border;
+  color: $text;
+  padding-inline: 10px;
+  padding-block: 8px;
+  font-size: 14px;
+  min-height: 40px;
+}
+.bodyInput {
+  min-height: 96px;
+}
+.charCount {
+  color: $muted2;
+  font-size: 11px;
+  text-align: right;
+}
+.coverSelectRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.coverOption {
+  border-radius: $radius-pill;
+  padding-inline: 10px;
+  padding-block: 6px;
+  background-color: $pill;
+}
+.coverOptionText {
+  color: $text;
+  font-size: 11px;
+  font-weight: 700;
+}
+.coverOptionTextActive {
+  color: $orange;
+  font-size: 11px;
+  font-weight: 800;
+}
+.publishRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $space-sm;
+  align-items: center;
+  margin-top: 4px;
+}
+.publishBadge {
+  color: $muted;
+  font-size: $font-tiny;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+

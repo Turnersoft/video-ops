@@ -1,0 +1,115 @@
+{
+  "version": 4,
+  "scriptId": "02-theorem-is-a-folder",
+  "title": "syntax_02_theorem_is_a_folder",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "Open basic set",
+      "durationSeconds": 16,
+      "layout": "code-focus",
+      "burnCaptions": true,
+      "visualNotes": "Use outline panel if available to show nested symbols.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "turn-ide",
+        "track": "tracks/scene-1-ide.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Hi friends, welcome back.\nSo here is `\"basic set\"` in the chapter we have been building.\nIt is one theorem, but look at the shape.\n`p1` holds several identities, each with its own proof block.",
+            "durationSeconds": 16,
+            "visualNotes": "Use outline panel if available to show nested symbols.\nturn-ide track: tracks/scene-1-ide.json",
+            "turn": {
+              "code": "theorem \"basic set\" {\n    forall A B C: Set<Any> |- {\n        p1: {\n            first: SetEq(Union(A, A), A) proof { ... };\n            second: SetEq(Intersect(A, A), A) proof { ... };\n            ...\n        };\n        ...\n    }\n}",
+              "highlights": [
+                "p1",
+                "first",
+                "second"
+              ]
+            },
+            "focus": "turn",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "title": "Navigate like a folder",
+      "durationSeconds": 14,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Show cursor landing inside `second` proof only.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Click `second` under `p1` in outline. Jump editor to that proof block (`unfold Intersect.def`)."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "I do not scroll through fifty lines to find the second identity.\nI click `second` in the outline.\nEach leaf is a small proof file inside the big theorem.",
+            "durationSeconds": 14,
+            "visualNotes": "Click `second` under `p1` in outline. Jump editor to that proof block (`unfold Intersect.def`).\nShow cursor landing inside `second` proof only.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "title": "Close",
+      "durationSeconds": 8,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Short close.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "screen-text",
+        "source": "Outline tree with `basic set` expanded."
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "So think of a big theorem as a folder.\nTurn-Lang already names the tabs for you.",
+            "durationSeconds": 8,
+            "visualNotes": "Outline tree with `basic set` expanded.\nShort close.",
+            "allowScriptChange": false
+          }
+        ]
+      }
+    }
+  ]
+}

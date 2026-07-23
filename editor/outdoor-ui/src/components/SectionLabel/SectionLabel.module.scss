@@ -1,0 +1,11 @@
+@use "../../app" as *;
+
+.label {
+  margin-top: 22;
+  margin-bottom: 10;
+  color: $section;
+  font-size: $font-section;
+  font-weight: 800;
+  letter-spacing: 0.5;
+  text-transform: uppercase;
+}

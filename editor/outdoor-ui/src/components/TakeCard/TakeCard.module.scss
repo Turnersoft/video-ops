@@ -1,0 +1,16 @@
+@use '../../app' as *;
+
+.headerText {
+  display: flex;
+  flex: 1;
+  gap: 4px;
+}
+.path {
+  color: $code;
+  font-size: $font-tiny;
+  font-family: Menlo;
+  line-height: 15px;
+  margin-top: 4px;
+}
+
+

@@ -1,0 +1,54 @@
+@use '../../app' as *;
+
+.compareRoot {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: scaled(10px);
+}
+
+.pane {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: scaled(16px);
+  overflow: hidden;
+  border: 1px solid $card-border-strong;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.paneHeader {
+  display: flex;
+  align-items: center;
+  gap: scaled(10px);
+  padding: scaled(10px) scaled(14px);
+  border-bottom: 1px solid rgba(60, 54, 45, 0.08);
+  flex-shrink: 0;
+}
+
+.logo {
+  width: auto;
+  max-width: scaled(280px);
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.accentDot {
+  width: scaled(8px);
+  height: scaled(8px);
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.paneTitle {
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+}
+
+.paneBody {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}

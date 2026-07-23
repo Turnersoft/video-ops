@@ -1,0 +1,79 @@
+// Shared design tokens — @use from App.module.scss and component/page modules.
+$bg: #020617;
+$text: #f8fafc;
+$muted: #94a3b8;
+$muted2: #64748b;
+$orange: #f97316;
+$orange-text: #111827;
+$card: rgba(15, 23, 42, 0.92);
+$card-border: rgba(148, 163, 184, 0.18);
+$pill: rgba(30, 41, 59, 0.9);
+$badge-pending: rgba(51, 65, 85, 0.9);
+$badge-filmed: rgba(22, 101, 52, 0.85);
+$badge-filmed-text: #bbf7d0;
+$section: #fde68a;
+$online: #86efac;
+$offline: #fca5a5;
+$danger: #ef4444;
+$code: #fde68a;
+$video-bg: #0b1220;
+$black: #000000;
+$white: #ffffff;
+$header-bg: rgba(2, 6, 23, 0.92);
+$run-chip-active-bg: rgba(249, 115, 22, 0.16);
+$run-chip-active-text: #fdba74;
+$banner-online-bg: rgba(22, 101, 52, 0.2);
+$banner-offline-bg: rgba(127, 29, 29, 0.25);
+
+$space-xs: 4px;
+$space-sm: 8px;
+$space-md: 12px;
+$space-lg: 16px;
+$space-xl: 22px;
+$space-xxl: 40px;
+
+$radius-sm: 12px;
+$radius-md: 16px;
+$radius-pill: 999px;
+
+$font-body: 15px;
+$font-body-line-height: 22px;
+$font-small: 13px;
+$font-tiny: 12px;
+$font-title: 28px;
+$font-card-title: 16px;
+$font-section: 12px;
+
+@mixin thin-scrollbar($size: 3px) {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 116, 139, 0.35) transparent;
+
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(100, 116, 139, 0.35);
+    border-radius: 999px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 116, 139, 0.55);
+  }
+}
+
+@mixin hidden-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+}

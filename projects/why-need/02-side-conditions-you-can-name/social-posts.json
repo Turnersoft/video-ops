@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "scriptId": "02-side-conditions-you-can-name",
+  "titleEnglish": "why_need_02_side_conditions_you_can_name",
+  "titleChina": "why_need_02_side_conditions_you_can_name",
+  "title": "why_need_02_side_conditions_you_can_name",
+  "generatedAt": "2026-07-23T06:51:15.846Z",
+  "source": {},
+  "english": {
+    "youtube": {
+      "title": "why_need_02_side_conditions_you_can_name",
+      "body": "why_need_02_side_conditions_you_can_name\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "x": {
+      "title": "why_need_02_side_conditions_you_can_name",
+      "body": "why_need_02_side_conditions_you_can_name #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "linkedin": {
+      "title": "why_need_02_side_conditions_you_can_name",
+      "body": "why_need_02_side_conditions_you_can_name\n\nwhy_need_02_side_conditions_you_can_name\n\nThis episode is part of the Abstract Algebra in a Proof Assistant series on Turn-Lang — textbook-shaped formal mathematics you can film outdoors and verify in Lean 4 / Turn-Lang.\n\nWhat you will see in the video:\n• A textbook beat you can say on camera\n• The Lean 4 modeling choice (and what it refuses to pretend)\n• The Turn-Lang compare so the obligation is visible\n\nWatch the short, then open the linked editor if you want to step through the proof assistant view yourself.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "instagram": {
+      "title": "why_need_02_side_conditions_you_can_name",
+      "body": "why_need_02_side_conditions_you_can_name\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "tiktok": {
+      "title": "why_need_02_side_conditions_you_can_name",
+      "body": "why_need_02_side_conditions_you_can_name\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "facebook": {
+      "title": "why_need_02_side_conditions_you_can_name",
+      "body": "why_need_02_side_conditions_you_can_name\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "bluesky": {
+      "title": "why_need_02_side_conditions_you_can_name",
+      "body": "why_need_02_side_conditions_you_can_name #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    }
+  },
+  "china": {
+    "bilibili": {
+      "title": "why_need_02_side_conditions_you_can_name",
+      "body": "why_need_02_side_conditions_you_can_name\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论\n（请翻译为中文后发布）"
+    },
+    "douyin": {
+      "title": "Side Conditions You Can Name in Turn-Lang",
+      "body": "Judson Theorem 1.25 ends with `witness confirm { C.1; C.2; cover; disjoint }` — each partition obligation stays named in the proof you can step through.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "xiaohongshu": {
+      "title": "Side Conditions You…",
+      "body": "Judson Theorem 1.25 ends with `witness confirm { C.1; C.2; cover; disjoint }` — each partition obligation stays named in the proof you can step through.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "weibo": {
+      "title": "Side Conditions You Can Name in Turn-Lang",
+      "body": "Judson Theorem 1.25 ends with `witness confirm { C.1; C.2; cover; disjoint }` — each partition obligation stays named in the proof you can step through.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "wechat_channels": {
+      "title": "Side Conditions You Can Name in Turn-Lang",
+      "body": "Judson Theorem 1.25 ends with `witness confirm { C.1; C.2; cover; disjoint }` — each partition obligation stays named in the proof you can step through.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "kuaishou": {
+      "title": "Side Conditions You Can Name in Turn-Lang",
+      "body": "Judson Theorem 1.25 ends with `witness confirm { C.1; C.2; cover; disjoint }` — each partition obligation stays named in the proof you can step through.\n\n#TurnLang #形式化方法 #抽象代数"
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "scriptId": "04-set-equality",
+  "source": "speech-alignment",
+  "generatedAt": "2026-07-13T05:16:53.568Z",
+  "videoSrc": "takes/take-mrhmharr/pipeline/cut/cut-mriq7mo6/edited-good-intervals.mp4",
+  "editedDurationSeconds": 311.56,
+  "burnCaptions": true,
+  "burnCaptionsZh": true,
+  "beatDurationsSeconds": [
+    19.37,
+    73.42,
+    67.19,
+    39.23,
+    42.77,
+    69.58
+  ],
+  "captionSegments": [
+    {
+      "text": "Hi friends, welcome back.\nThe best way to understand a math concept is to formalize it.\nTo day we formalize Set equality.\nAnd the textbook definition looks really simple.\nTwo sets are equal when each one is a subset of the other.\nBut if we want to formalize this statement,\nwe need to understand what equals sign actually means inside a proof assistant. This is more complicated than you think.",
+      "zh": "大家好，欢迎回来。真正理解一个数学概念的最好方式，就是把它形式化。上期结尾讲到集合相等。课本定义看起来很简单：两个集合相等，就是彼此都是对方的子集。但要形式化这句话，我们首先要理解证明助手里的等号到底是什么意思。",
+      "atSeconds": 0,
+      "durationSeconds": 19.37
+    },
+    {
+      "text": "So, equal doesn't always mean been the same atomically.\n1+1 = 2 is not the same atomically because they have different expressions.\nBut they are mathematically the same. And this is the kind of equality we want to proof.\nand equality 1 = 1 is not worth proving because both side are exactly the same, and computer can just check them without knowing any math because they are the same data structure.\nBut this is still super useful, because it will always show up at the end of a proof for meaningful equality\nOn the Lean side, we can write a equals b when both sides have the same type.\nAnd notice, we do not implement an equality typeclass first.\nBecause equality sign is a built-in notation for value, just like other programming languages.\nBut there are still two layers here.\nDefinitional equality means both sides reduce to the same term.\nPropositional equality is an actual statement, a equals b.\nWhen reduction is not enough, we have to provide a proof for that statement.\nSo think about definition versus theorem, not axiom versus theorem.\nAnd if you have used Mathematica, this idea is familiar.\nAssignment, symbolic equality, and exact sameness use different operators.",
+      "zh": "首先，我们要把等号这个符号和“相同”这个概念分开。在 Lean 里，只要两边类型相同，就可以写 a 等于 b，而且不需要先实现相等类型类。但这里有两个层次。定义相等表示两边归约后是同一个项，所以 rfl 能完成证明。命题相等则是一条真正的陈述，也就是 a 等于 b。当归约不够时，我们必须给这条陈述提供证明。所以更准确的类比是定义与定理，不是公理与定理。如果你用过 Mathematica，这会很熟悉：赋值、符号相等和严格相同使用不同的运算符。",
+      "atSeconds": 19.37,
+      "durationSeconds": 73.42
+    },
+    {
+      "text": "Now the question is, when can we even write the equals sign in Lean?\nBoth sides must have exactly the same type.\nSo two as a natural number and two as an integer cannot be compared directly.\nThey look like the same number to us, but Lean sees two different types.\nWe first cast the natural number into an integer, and then equality makes sense.\nNow sets A and B both have type Set alpha.\nSo A equals B is a valid statement, and again, no equality typeclass is needed.\nBut how do we prove it?\nSet dot ext says, do not compare the entire set all at once.\nPick any x.\nIf x belongs to A exactly when x belongs to B, for every x, then the two sets are equal.\nAnd in our textbook, this is exactly mutual subset.",
+      "zh": "现在的问题是，什么时候我们才能在 Lean 里写等号？两边必须具有完全相同的类型。所以 Nat 里的 2 和 Int 里的 2 不能直接比较。对我们来说它们像同一个数字，但 Lean 看见的是两个类型。先把 Nat 转成 Int，等式才有意义。集合 A 和 B 都具有 Set α 类型，所以 A 等于 B 是合法陈述，而且同样不需要相等类型类。但要怎么证明？Set.ext 的意思是，不要一次比较整个集合。任选一个 x。如果对每个 x，它属于 A 当且仅当属于 B，那么两个集合相等。在我们的课本里，这正好就是互相包含。",
+      "atSeconds": 92.79,
+      "durationSeconds": 67.19
+    },
+    {
+      "text": "Now Turn-Lang makes a different choice.\nWe do not want to use the equals sign everywhere, and silently assume every structure has the same meaning of equality.\nSo look at the at-notation here.\nIt binds the visible A equals B to a named relation called SetEq.\nThat means the equals sign is only the notation.\nSetEq is the actual mathematical meaning.\nAnd when we unfold SetEq, we get exactly two goals.\nA subset B.\nAnd B subset A.\nLater for functions, we can reuse the same equals sign, but bind it to FunctionEq instead.\nSo this is intentional overloading.\nWe choose the relation first, and then we choose the notation.",
+      "zh": "现在 Turn-Lang 做了另一种选择。我们不希望到处使用等号，然后默默假设每种结构里的相等都具有同一个含义。看这里的 at-notation。它把画面上的 A 等于 B 绑定到一个叫 SetEq 的具名关系。所以等号只是记号，SetEq 才是真正的数学含义。展开 SetEq 后正好得到两个目标：A 是 B 的子集，以及 B 是 A 的子集。以后到了函数，我们可以继续使用同一个等号，但把它绑定到 FunctionEq。这是有意的重载。我们先选择关系，然后再选择记号。",
+      "atSeconds": 159.98,
+      "durationSeconds": 39.23
+    },
+    {
+      "text": "Next, functions have the same kind of problem.\nTwo functions can be written using completely different code.\nBut if every input gives the same output, mathematically we want to treat them as the same function.\nOn the Lean side, funext turns this pointwise statement into function equality.\nSo for every x, prove f of x equals g of x, and then Lean gives us f equals g.\nOn the Turn side, we name this relation FunctionEq.\nAnd again, the visible equals sign is attached by notation.\nSo the relation tells us exactly which observation must agree, the output on every input.",
+      "zh": "接下来，函数也有同样的问题。两个函数可以用完全不同的代码写出来。但如果每个输入都得到相同输出，数学上我们希望把它们看成同一个函数。在 Lean 这边，funext 把逐点相同变成函数相等。所以对每个 x，证明 f(x) 等于 g(x)，Lean 就给出 f 等于 g。在 Turn 这边，我们把这个关系命名为 FunctionEq。同样，画面上的等号由记号绑定。这个关系明确告诉我们需要比较什么，也就是每个输入上的输出。",
+      "atSeconds": 199.21,
+      "durationSeconds": 42.77
+    },
+    {
+      "text": "Finally, let's move one level higher.\nIn category theory, we have to be very careful not to say two objects are literally equal, when what we really mean is isomorphic.\nFor example, two groups can use completely different underlying elements.\nSo as raw data, they are not equal.\nBut if there is an isomorphism that preserves multiplication, identity, and inverse, then from the group theory perspective, they have the same structure.\nAnd this connects back to everything we just did.\nFor sets, we compare members.\nFor functions, we compare outputs.\nFor structured objects, we compare structure-preserving maps.\nAnd in higher category theory, even those maps can have higher comparisons.\nIn homotopy type theory, equality proofs behave like paths.\nSo the real question is not only, are these two things equal?\nThe real question is, at which level of mathematics should we treat them as the same?\nSo that is the real lesson of equality.\nNext clip, we finally move to the empty set.",
+      "zh": "最后，我们再往高一层。在范畴论里必须非常小心，不要在真正想表达同构时，说两个对象字面相等。例如两个群可以使用完全不同的底层元素。所以作为原始数据，它们并不相等。但如果存在一个保持乘法、单位元和逆元的同构，那么从群论角度看，它们具有相同结构。这和前面的内容连接起来：集合比较成员，函数比较输出，带结构的对象比较保持结构的映射。在高阶范畴论里，甚至这些映射之间还可以继续比较。在同伦类型论里，相等证明表现得像路径。所以真正的问题不只是“这两个东西相等吗”，而是“在数学的哪个层次上，我们应该把它们看作相同”。这就是相等真正的重点。下一期，我们终于进入空集。",
+      "atSeconds": 241.98,
+      "durationSeconds": 69.58
+    }
+  ],
+  "mergedBeats": [
+    {
+      "slideId": "beat-01",
+      "beatIndex": 0,
+      "editedStart": 0,
+      "editedEnd": 19.37,
+      "durationSeconds": 19.37,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-02",
+      "beatIndex": 1,
+      "editedStart": 19.37,
+      "editedEnd": 92.79,
+      "durationSeconds": 73.42,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-03",
+      "beatIndex": 2,
+      "editedStart": 92.79,
+      "editedEnd": 159.98,
+      "durationSeconds": 67.19,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-04",
+      "beatIndex": 3,
+      "editedStart": 159.98,
+      "editedEnd": 199.21,
+      "durationSeconds": 39.23,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-05",
+      "beatIndex": 4,
+      "editedStart": 199.21,
+      "editedEnd": 241.98,
+      "durationSeconds": 42.77,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-06",
+      "beatIndex": 5,
+      "editedStart": 241.98,
+      "editedEnd": 311.56,
+      "durationSeconds": 69.58,
+      "lastSpokenWord": ""
+    }
+  ]
+}

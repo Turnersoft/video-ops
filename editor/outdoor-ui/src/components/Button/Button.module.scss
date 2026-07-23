@@ -1,0 +1,56 @@
+@use "../../app" as *;
+
+.base {
+  border-radius: $radius-pill;
+  align-items: center;
+  justify-content: center;
+}
+
+.default {
+  background-color: $pill;
+}
+
+.primary {
+  background-color: $orange;
+}
+
+.danger {
+  background-color: $danger;
+}
+
+.back {
+  background-color: transparent;
+  padding-inline: 0;
+}
+
+.defaultText {
+  color: $text;
+  font-weight: 700;
+  font-size: $font-body;
+}
+
+.primaryText {
+  color: $orange-text;
+  font-weight: 700;
+  font-size: $font-body;
+}
+
+.dangerText {
+  color: $white;
+  font-weight: 700;
+  font-size: $font-body;
+}
+
+.backText {
+  color: $orange;
+  font-weight: 700;
+  font-size: $font-body;
+}
+
+.disabled {
+  opacity: 0.5;
+}
+
+.pressed {
+  opacity: 0.88;
+}

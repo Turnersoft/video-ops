@@ -203,7 +203,7 @@ function spawnOutdoorAgent(
     [
       "task",
       "--config",
-      path.join(videoOpsRoot, "outdoor_agent/deno.json"),
+      path.join(videoOpsRoot, "editor/outdoor_agent/deno.json"),
       "start:lan",
       "--",
       "--port",

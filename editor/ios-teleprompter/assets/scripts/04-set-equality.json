@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "id": "04-set-equality",
+  "title": "04_set_equality",
+  "language": "en",
+  "mode": "manual",
+  "countdownSeconds": 3,
+  "defaultFontScale": 1,
+  "slides": [
+    {
+      "id": "beat-01",
+      "title": "Beat 1: open in the user's style",
+      "durationSeconds": 19.51,
+      "body": "Hi friends, welcome back.\nThe best way to understand a math concept is to formalize it.\nTo day we formalize Set equality.\nAnd the textbook definition looks really simple.\nTwo sets are equal when each one is a subset of the other.\nBut if we want to formalize this statement,\nwe need to understand what equals sign actually means inside a proof assistant. This is more complicated than you think.",
+      "notes": "Lean:\n-- Textbook set equality\n-- A = B when they have the same members\n--\n-- In Lean, this still becomes ordinary Eq:\n--   A = B\n\nTurn:\n@notation({A} ~ \" = \" ~ {B})\nrelation SetEq(T: Any, A B: Set<T>): Prop {\n    |- {\n        Subset(A, B);\n        Subset(B, A);\n    }\n}",
+      "leanCode": "-- Textbook set equality\n-- A = B when they have the same members\n--\n-- In Lean, this still becomes ordinary Eq:\n--   A = B",
+      "turnCode": "@notation({A} ~ \" = \" ~ {B})\nrelation SetEq(T: Any, A B: Set<T>): Prop {\n    |- {\n        Subset(A, B);\n        Subset(B, A);\n    }\n}",
+      "codeFocus": "turn"
+    },
+    {
+      "id": "beat-02",
+      "title": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equali",
+      "durationSeconds": 27.4,
+      "body": "So, equal doesn't always mean been the same atomically.\n1+1 = 2 is not the same atomically because they have different expressions.\nBut they are mathematically the same. And this is the kind of equality we want to proof.\nand equality 1 = 1 is not worth proving because both side are exactly the same, and computer can just check them without knowing any math because they are the same data structure.\nBut this is still super useful, because it will always show up at the end of a proof for meaningful equality\nOn the Lean side, we can write a equals b when both sides have the same type.\nAnd notice, we do not implement an equality typeclass first.\nBecause equality sign is a built-in notation for value, just like other programming languages.\nBut there are still two layers here.\nDefinitional equality means both sides reduce to the same term.\nPropositional equality is an actual statement, a equals b.\nWhen reduction is not enough, we have to provide a proof for that statement.\nSo think about definition versus theorem, not axiom versus theorem.\nAnd if you have used Mathematica, this idea is familiar.\nAssignment, symbolic equality, and exact sameness use different operators.",
+      "notes": "Lean:\n-- Lean's = compares terms of one type\n-- no equality typeclass is required\n\n-- definitional: both sides reduce to one term\nexample (n : Nat) : n + 0 = n := rfl\n\n-- propositional: equality needs a proof\nexample (n : Nat) : 0 + n = n := Nat.zero_add n\n\nTurn:\n-- The glyph is not the whole meaning\n--\n-- Set<T>:        \"=\" can denote SetEq\n-- Function<X,Y>: \"=\" can denote FunctionEq\n-- primitive terms can use primitive equality\n--\n-- choose the relation before spending the glyph",
+      "leanCode": "-- Lean's = compares terms of one type\n-- no equality typeclass is required\n\n-- definitional: both sides reduce to one term\nexample (n : Nat) : n + 0 = n := rfl\n\n-- propositional: equality needs a proof\nexample (n : Nat) : 0 + n = n := Nat.zero_add n",
+      "turnCode": "-- The glyph is not the whole meaning\n--\n-- Set<T>:        \"=\" can denote SetEq\n-- Function<X,Y>: \"=\" can denote FunctionEq\n-- primitive terms can use primitive equality\n--\n-- choose the relation before spending the glyph",
+      "codeFocus": "lean"
+    },
+    {
+      "id": "beat-03",
+      "title": "Beat 3: explain homogeneous equality and Set",
+      "durationSeconds": 31.31,
+      "body": "Now the question is, when can we even write the equals sign in Lean?\nBoth sides must have exactly the same type.\nSo two as a natural number and two as an integer cannot be compared directly.\nThey look like the same number to us, but Lean sees two different types.\nWe first cast the natural number into an integer, and then equality makes sense.\nNow sets A and B both have type Set alpha.\nSo A equals B is a valid statement, and again, no equality typeclass is needed.\nBut how do we prove it?\nSet dot ext says, do not compare the entire set all at once.\nPick any x.\nIf x belongs to A exactly when x belongs to B, for every x, then the two sets are equal.\nAnd in our textbook, this is exactly mutual subset.",
+      "notes": "Lean:\n-- Equality is homogeneous: both sides need one type\n-- invalid: (2 : Nat) = (2 : Int)\nexample : ((2 : Nat) : Int) = (2 : Int) := rfl\n\n-- Set.ext turns whole-set equality into membership\nexample {A B : Set α}\n    (h : ∀ x, x ∈ A ↔ x ∈ B) : A = B :=\n  Set.ext h\n\nTurn:\n-- Same set, explained without Lean vocabulary\n--\n-- ask every possible element x:\n--   x in A exactly when x in B\n--\n-- equivalently:\n--   Subset(A, B) and Subset(B, A)",
+      "leanCode": "-- Equality is homogeneous: both sides need one type\n-- invalid: (2 : Nat) = (2 : Int)\nexample : ((2 : Nat) : Int) = (2 : Int) := rfl\n\n-- Set.ext turns whole-set equality into membership\nexample {A B : Set α}\n    (h : ∀ x, x ∈ A ↔ x ∈ B) : A = B :=\n  Set.ext h",
+      "turnCode": "-- Same set, explained without Lean vocabulary\n--\n-- ask every possible element x:\n--   x in A exactly when x in B\n--\n-- equivalently:\n--   Subset(A, B) and Subset(B, A)",
+      "codeFocus": "lean"
+    },
+    {
+      "id": "beat-04",
+      "title": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-b",
+      "durationSeconds": 21.62,
+      "body": "Now Turn-Lang makes a different choice.\nWe do not want to use the equals sign everywhere, and silently assume every structure has the same meaning of equality.\nSo look at the at-notation here.\nIt binds the visible A equals B to a named relation called SetEq.\nThat means the equals sign is only the notation.\nSetEq is the actual mathematical meaning.\nAnd when we unfold SetEq, we get exactly two goals.\nA subset B.\nAnd B subset A.\nLater for functions, we can reuse the same equals sign, but bind it to FunctionEq instead.\nSo this is intentional overloading.\nWe choose the relation first, and then we choose the notation.",
+      "notes": "Lean:\n-- Lean has one homogeneous Eq\n-- Set extensionality supplies the bridge\n--\n-- A = B  ↔  A ⊆ B ∧ B ⊆ A\n--\n-- the theorem chooses how to prove Eq\n\nTurn:\n@notation({A} ~ \" = \" ~ {B})\nrelation SetEq(T: Any, A B: Set<T>): Prop {\n    |- {\n        Subset(A, B);\n        Subset(B, A);\n    }\n}",
+      "leanCode": "-- Lean has one homogeneous Eq\n-- Set extensionality supplies the bridge\n--\n-- A = B  ↔  A ⊆ B ∧ B ⊆ A\n--\n-- the theorem chooses how to prove Eq",
+      "turnCode": "@notation({A} ~ \" = \" ~ {B})\nrelation SetEq(T: Any, A B: Set<T>): Prop {\n    |- {\n        Subset(A, B);\n        Subset(B, A);\n    }\n}",
+      "codeFocus": "turn"
+    },
+    {
+      "id": "beat-05",
+      "title": "Beat 5: function equality in the same spoken style",
+      "durationSeconds": 27.3,
+      "body": "Next, functions have the same kind of problem.\nTwo functions can be written using completely different code.\nBut if every input gives the same output, mathematically we want to treat them as the same function.\nOn the Lean side, funext turns this pointwise statement into function equality.\nSo for every x, prove f of x equals g of x, and then Lean gives us f equals g.\nOn the Turn side, we name this relation FunctionEq.\nAnd again, the visible equals sign is attached by notation.\nSo the relation tells us exactly which observation must agree, the output on every input.",
+      "notes": "Lean:\n-- Function equality receipt\n-- funext :\n--   (∀ x, f x = g x) → f = g\n--\n-- same output on every input\n\nTurn:\n@notation({f} ~ \" = \" ~ {g})\nrelation FunctionEq(X Y: Set<Any>, f g: Function<X, Y>): Prop {\n    forall x in X\n    |- f(x) = g(x)\n}",
+      "leanCode": "-- Function equality receipt\n-- funext :\n--   (∀ x, f x = g x) → f = g\n--\n-- same output on every input",
+      "turnCode": "@notation({f} ~ \" = \" ~ {g})\nrelation FunctionEq(X Y: Set<Any>, f g: Function<X, Y>): Prop {\n    forall x in X\n    |- f(x) = g(x)\n}",
+      "codeFocus": "turn"
+    },
+    {
+      "id": "beat-06",
+      "title": "Beat 6: present the higher-category philosophy without naming a person",
+      "durationSeconds": 31.28,
+      "body": "Finally, let's move one level higher.\nIn category theory, we have to be very careful not to say two objects are literally equal, when what we really mean is isomorphic.\nFor example, two groups can use completely different underlying elements.\nSo as raw data, they are not equal.\nBut if there is an isomorphism that preserves multiplication, identity, and inverse, then from the group theory perspective, they have the same structure.\nAnd this connects back to everything we just did.\nFor sets, we compare members.\nFor functions, we compare outputs.\nFor structured objects, we compare structure-preserving maps.\nAnd in higher category theory, even those maps can have higher comparisons.\nIn homotopy type theory, equality proofs behave like paths.\nSo the real question is not only, are these two things equal?\nThe real question is, at which level of mathematics should we treat them as the same?\nSo that is the real lesson of equality.\nNext clip, we finally move to the empty set.",
+      "notes": "Lean:\n-- Choose the level of sameness\n--\n-- sets:      same members\n-- functions: same outputs\n-- groups:    structure-preserving isomorphism\n-- HoTT:      equality proofs behave like paths\n--\n-- equivalent structure need not be identical raw data\n\nTurn:\n-- Ask which observations must agree\n--\n-- membership  -> SetEq\n-- outputs     -> FunctionEq\n-- structure   -> Isomorphism\n-- higher maps -> higher equivalence\n--\n-- sameness depends on the mathematical perspective",
+      "leanCode": "-- Choose the level of sameness\n--\n-- sets:      same members\n-- functions: same outputs\n-- groups:    structure-preserving isomorphism\n-- HoTT:      equality proofs behave like paths\n--\n-- equivalent structure need not be identical raw data",
+      "turnCode": "-- Ask which observations must agree\n--\n-- membership  -> SetEq\n-- outputs     -> FunctionEq\n-- structure   -> Isomorphism\n-- higher maps -> higher equivalence\n--\n-- sameness depends on the mathematical perspective",
+      "codeFocus": "lean"
+    }
+  ]
+}

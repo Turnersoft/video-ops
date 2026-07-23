@@ -1,0 +1,18 @@
+@use '../../app' as *;
+
+.root {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: scaled(72px);
+  width: 100%;
+  max-width: scaled(1620px);
+}
+
+.formulaColumn {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  justify-content: flex-start;
+}

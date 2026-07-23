@@ -1,0 +1,154 @@
+{
+  "version": 4,
+  "scriptId": "10-complement",
+  "title": "10_complement",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "Textbook anchor",
+      "durationSeconds": 18,
+      "layout": "math-focus",
+      "burnCaptions": true,
+      "visualNotes": "math-focus",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "math-board",
+        "heading": "Judson §1.2 — Complement",
+        "reveal": "sequential",
+        "beats": [
+          {
+            "atSeconds": 0,
+            "label": "Textbook",
+            "detail": "Judson §1.2 Sets"
+          },
+          {
+            "atSeconds": 4,
+            "label": "Definition",
+            "detail": "A′ = { x ∈ U | x ∉ A }."
+          }
+        ]
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Open the book. Judson Abstract Algebra, section one point two, Sets.",
+            "durationSeconds": 6,
+            "visualNotes": "math-focus; textbook beat only.\nmath-board: Judson §1.2 — Complement\n- Textbook: Judson §1.2 Sets\n- Definition: A′ = { x ∈ U | x ∉ A }.",
+            "allowScriptChange": false
+          },
+          {
+            "say": "A′ = { x ∈ U | x ∉ A }.",
+            "durationSeconds": 4,
+            "allowScriptChange": false
+          },
+          {
+            "say": "This is the bold definition we are formalizing today, which is one clip, one idea.",
+            "durationSeconds": 8,
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "title": "Intuition",
+      "durationSeconds": 10,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Film presenter",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "chapter-beat",
+        "label": "Judson §1.2 — Complement",
+        "detail": "Complement needs a universe U — where clause Subset(A,U).",
+        "emphasis": [
+          "Complement"
+        ]
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Complement needs a universe U, with a where clause Subset(A,U).",
+            "durationSeconds": 6,
+            "visualNotes": "Film presenter; beats on board.\nlayer: chapter-beat",
+            "allowScriptChange": false
+          },
+          {
+            "say": "Still a set object, not a relation.",
+            "durationSeconds": 4,
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "title": "Lean vs Turn",
+      "durationSeconds": 16,
+      "layout": "dual-panel",
+      "burnCaptions": true,
+      "visualNotes": "Compare layer",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "legacyCompareLayer": {
+        "type": "compare",
+        "turnTrack": "tracks/scene-compare-turn.json",
+        "leanTrack": "tracks/scene-compare-lean4.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Textbook: elements in U but not in A.",
+            "durationSeconds": 4,
+            "visualNotes": "Compare layer; caption beats on both sides.\ncompare leanTrack: tracks/scene-compare-lean4.json\ncompare turnTrack: tracks/scene-compare-turn.json",
+            "allowScriptChange": false
+          },
+          {
+            "say": "Turn: Complement structure with U generic.",
+            "durationSeconds": 4,
+            "allowScriptChange": false
+          },
+          {
+            "say": "Lean: relative complement u \\ s.",
+            "durationSeconds": 4,
+            "allowScriptChange": false
+          },
+          {
+            "say": "Universe is explicit in Turn where-block.",
+            "durationSeconds": 4,
+            "allowScriptChange": false
+          }
+        ]
+      }
+    }
+  ]
+}

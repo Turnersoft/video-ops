@@ -1,0 +1,26 @@
+@use '../../app' as *;
+
+.badge {
+  display: flex;
+  align-self: flex-start;
+  padding-inline: 10px;
+  padding-block: 4px;
+  border-radius: $radius-pill;
+  background-color: $badge-pending;
+}
+
+.filmed {
+  background-color: $badge-filmed;
+}
+
+.text {
+  font-size: $font-tiny;
+  font-weight: 800;
+  color: #e2e8f0;
+}
+
+.filmedText {
+  color: $badge-filmed-text;
+}
+
+

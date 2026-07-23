@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "scriptId": "07-function-refines-well-defined-relation",
+  "titleEnglish": "syntax_07_function_refines_well_defined_relation",
+  "titleChina": "syntax_07_function_refines_well_defined_relation",
+  "title": "syntax_07_function_refines_well_defined_relation",
+  "generatedAt": "2026-07-23T06:51:15.900Z",
+  "source": {},
+  "english": {
+    "youtube": {
+      "title": "syntax_07_function_refines_well_defined_relation",
+      "body": "syntax_07_function_refines_well_defined_relation\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "x": {
+      "title": "syntax_07_function_refines_well_defined_relation",
+      "body": "syntax_07_function_refines_well_defined_relation #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "linkedin": {
+      "title": "syntax_07_function_refines_well_defined_relation",
+      "body": "syntax_07_function_refines_well_defined_relation\n\nsyntax_07_function_refines_well_defined_relation\n\nThis episode is part of the Abstract Algebra in a Proof Assistant series on Turn-Lang — textbook-shaped formal mathematics you can film outdoors and verify in Lean 4 / Turn-Lang.\n\nWhat you will see in the video:\n• A textbook beat you can say on camera\n• The Lean 4 modeling choice (and what it refuses to pretend)\n• The Turn-Lang compare so the obligation is visible\n\nWatch the short, then open the linked editor if you want to step through the proof assistant view yourself.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "instagram": {
+      "title": "syntax_07_function_refines_well_defined_relation",
+      "body": "syntax_07_function_refines_well_defined_relation\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "tiktok": {
+      "title": "syntax_07_function_refines_well_defined_relation",
+      "body": "syntax_07_function_refines_well_defined_relation\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "facebook": {
+      "title": "syntax_07_function_refines_well_defined_relation",
+      "body": "syntax_07_function_refines_well_defined_relation\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "bluesky": {
+      "title": "syntax_07_function_refines_well_defined_relation",
+      "body": "syntax_07_function_refines_well_defined_relation #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    }
+  },
+  "china": {
+    "bilibili": {
+      "title": "syntax_07_function_refines_well_defined_relation",
+      "body": "syntax_07_function_refines_well_defined_relation\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论\n（请翻译为中文后发布）"
+    },
+    "douyin": {
+      "title": "Extend What You Already Formalized — Don't Invent a Ne…",
+      "body": "Other systems bolt “function” on as a separate type. Turn puts single-valuedness on `Relation` first, then refines — inheritance you can read in one line.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "xiaohongshu": {
+      "title": "Extend What You Alr…",
+      "body": "Other systems bolt “function” on as a separate type. Turn puts single-valuedness on `Relation` first, then refines — inheritance you can read in one line.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "weibo": {
+      "title": "Extend What You Already Formalized — Don't Invent a New Species",
+      "body": "Other systems bolt “function” on as a separate type. Turn puts single-valuedness on `Relation` first, then refines — inheritance you can read in one line.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "wechat_channels": {
+      "title": "Extend What You Already Formalized — Don't Invent a New Spe…",
+      "body": "Other systems bolt “function” on as a separate type. Turn puts single-valuedness on `Relation` first, then refines — inheritance you can read in one line.\n\n#TurnLang #形式化方法 #抽象代数"
+    },
+    "kuaishou": {
+      "title": "Extend What You Already Formalized — Don't Invent a Ne…",
+      "body": "Other systems bolt “function” on as a separate type. Turn puts single-valuedness on `Relation` first, then refines — inheritance you can read in one line.\n\n#TurnLang #形式化方法 #抽象代数"
+    }
+  }
+}

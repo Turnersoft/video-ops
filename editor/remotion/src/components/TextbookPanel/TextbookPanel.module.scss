@@ -1,0 +1,87 @@
+@use '../../app' as *;
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 25;
+  pointer-events: none;
+}
+
+.panel {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  touch-action: none;
+  pointer-events: auto;
+}
+
+.panelDraggable {
+  cursor: grab;
+}
+
+.panelReadonly {
+  cursor: default;
+}
+
+.paper {
+  position: relative;
+  border-radius: scaled(10px);
+  overflow: hidden;
+  background: linear-gradient(180deg, #fffdf8 0%, #f6f0e6 100%);
+  border: 1px solid rgba(60, 54, 45, 0.18);
+  box-shadow:
+    0 18px 48px rgba(30, 24, 18, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.fallback {
+  padding: scaled(18px) scaled(22px);
+  color: #3c362d;
+}
+
+.kicker {
+  margin: 0 0 scaled(8px);
+  font-size: scaled(13px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(60, 54, 45, 0.62);
+}
+
+.title {
+  margin: 0 0 scaled(10px);
+  font-size: scaled(24px);
+  line-height: 1.25;
+  font-weight: 650;
+}
+
+.body {
+  margin: 0;
+  font-size: scaled(18px);
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.source {
+  margin: scaled(12px) 0 0;
+  font-size: scaled(14px);
+  color: rgba(60, 54, 45, 0.72);
+}
+
+.handle {
+  position: absolute;
+  top: scaled(8px);
+  right: scaled(10px);
+  padding: scaled(4px) scaled(8px);
+  border-radius: scaled(999px);
+  background: rgba(60, 54, 45, 0.08);
+  color: rgba(60, 54, 45, 0.55);
+  font-size: scaled(11px);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  pointer-events: none;
+}

@@ -226,7 +226,7 @@ Optional explicit link: `extensionality~lemma` (caption shows a space; TTS reads
 Re-running `gen_beats.py --reuse-sentences` re-synthesizes sentences when raw `say` text, `emoProfile`, or `prosodyProfile` changes.
 - `render:edited` injects `voiceEdit.{beatVoiceSrc,beatDurationsSeconds,captionSegments}` + audio-true beat durations, renders, restores the pace-based file, and renames the output to `export/<slug>-edited.mp4`.
 - Burned captions in the edited export show **one sentence at a time** (English + `sayZh`-aligned Chinese), timed to the synthesized audio; sync respects `beatDurationsSeconds` and never re-paces an injected scene.
-- Legacy Jianying flow (`tooling/prepareVideoOpsVoiceEdit.ts`) still exists for drafts with `textReading/*.wav`.
+- Legacy Jianying flow (`editor/remotion/tooling/prepareVideoOpsVoiceEdit.ts`) still exists for drafts with `textReading/*.wav`.
 
 ## Migration from v3
 

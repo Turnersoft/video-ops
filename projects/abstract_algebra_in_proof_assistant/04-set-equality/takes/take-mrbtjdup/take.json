@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "scriptId": "04-set-equality",
+  "scriptTitle": "Set equality — what equals means in a proof assistant",
+  "takeId": "take-mrbtjdup",
+  "recordedAt": "2026-07-08T08:31:14.561Z",
+  "videoUri": "file:///var/mobile/Containers/Data/Application/832BB377-8D4C-464C-BC28-DA6EA0932AE0/Documents/ExponentExperienceData/@anonymous/turn-outdoor-teleprompter-c3feffe5-293c-428c-93fc-9ad5b62413c6/turn-outdoor-teleprompter/videos/take-mrbtjdup.mp4",
+  "thumbnailUri": "file:///var/mobile/Containers/Data/Application/832BB377-8D4C-464C-BC28-DA6EA0932AE0/Documents/ExponentExperienceData/@anonymous/turn-outdoor-teleprompter-c3feffe5-293c-428c-93fc-9ad5b62413c6/turn-outdoor-teleprompter/thumbnails/take-mrbtjdup.jpg",
+  "durationMs": 166138,
+  "slideEvents": [
+    {
+      "slideId": "beat-01",
+      "index": 0,
+      "atMs": 0
+    },
+    {
+      "slideId": "beat-02",
+      "index": 1,
+      "atMs": 20019
+    },
+    {
+      "slideId": "beat-03",
+      "index": 2,
+      "atMs": 49635
+    },
+    {
+      "slideId": "beat-04",
+      "index": 3,
+      "atMs": 78439
+    },
+    {
+      "slideId": "beat-05",
+      "index": 4,
+      "atMs": 100290
+    },
+    {
+      "slideId": "beat-06",
+      "index": 5,
+      "atMs": 126527
+    }
+  ],
+  "markers": []
+}

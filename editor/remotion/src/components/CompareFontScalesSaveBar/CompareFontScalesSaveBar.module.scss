@@ -1,0 +1,50 @@
+@use '../../app' as *;
+
+$compare-chrome: 3;
+$compare-body: 1.5;
+
+@function compareBody($px) {
+  @return scaled($px * $compare-body);
+}
+
+.root {
+  position: absolute;
+  top: compareBody(10px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: compareBody(4px);
+  pointer-events: auto;
+}
+
+.button {
+  border: 1px solid rgba(60, 54, 45, 0.22);
+  border-radius: compareBody(8px);
+  background: rgba(255, 255, 255, 0.92);
+  color: #3d3932;
+  font-size: compareBody(11px);
+  font-weight: 700;
+  padding: compareBody(6px) compareBody(12px);
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+  white-space: nowrap;
+}
+
+.buttonSaving {
+  cursor: wait;
+}
+
+.feedback {
+  max-width: compareBody(360px);
+  text-align: center;
+  font-size: compareBody(10px);
+  font-weight: 600;
+  color: #f5f1e8;
+  background: rgba(16, 21, 19, 0.82);
+  padding: compareBody(4px) compareBody(8px);
+  border-radius: compareBody(6px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}

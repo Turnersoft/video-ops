@@ -1,0 +1,154 @@
+{
+  "version": 4,
+  "scriptId": "08-intersection",
+  "title": "08_intersection",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "Textbook anchor",
+      "durationSeconds": 18,
+      "layout": "math-focus",
+      "burnCaptions": true,
+      "visualNotes": "math-focus",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "math-board",
+        "heading": "Judson §1.2 — Intersection",
+        "reveal": "sequential",
+        "beats": [
+          {
+            "atSeconds": 0,
+            "label": "Textbook",
+            "detail": "Judson §1.2 Sets"
+          },
+          {
+            "atSeconds": 4,
+            "label": "Definition",
+            "detail": "A ∩ B = { x | x ∈ A and x ∈ B }."
+          }
+        ]
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Open the book. Judson Abstract Algebra, section one point two, Sets.",
+            "durationSeconds": 6,
+            "visualNotes": "math-focus; textbook beat only.\nmath-board: Judson §1.2 — Intersection\n- Textbook: Judson §1.2 Sets\n- Definition: A ∩ B = { x | x ∈ A and x ∈ B }.",
+            "allowScriptChange": false
+          },
+          {
+            "say": "A ∩ B = { x | x ∈ A and x ∈ B }.",
+            "durationSeconds": 4,
+            "allowScriptChange": false
+          },
+          {
+            "say": "This is the bold definition we are formalizing today, which is one clip, one idea.",
+            "durationSeconds": 8,
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "title": "Intuition",
+      "durationSeconds": 10,
+      "layout": "beat-focus",
+      "burnCaptions": true,
+      "visualNotes": "Film presenter",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "mainLayer": {
+        "type": "chapter-beat",
+        "label": "Judson §1.2 — Intersection",
+        "detail": "Same pattern as union — structure inheriting Set.",
+        "emphasis": [
+          "Intersection"
+        ]
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Same pattern as union, which is a structure inheriting Set.",
+            "durationSeconds": 6,
+            "visualNotes": "Film presenter; beats on board.\nlayer: chapter-beat",
+            "allowScriptChange": false
+          },
+          {
+            "say": "Conjunction in the law mirrors textbook and.",
+            "durationSeconds": 4,
+            "allowScriptChange": false
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "title": "Lean vs Turn",
+      "durationSeconds": 19,
+      "layout": "dual-panel",
+      "burnCaptions": true,
+      "visualNotes": "Compare layer",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "legacyCompareLayer": {
+        "type": "compare",
+        "turnTrack": "tracks/scene-compare-turn.json",
+        "leanTrack": "tracks/scene-compare-lean4.json"
+      },
+      "compare": {
+        "beats": [
+          {
+            "say": "Textbook: members in both.",
+            "durationSeconds": 4,
+            "visualNotes": "Compare layer; caption beats on both sides.\ncompare leanTrack: tracks/scene-compare-lean4.json\ncompare turnTrack: tracks/scene-compare-turn.json",
+            "allowScriptChange": false
+          },
+          {
+            "say": "Turn: Intersect with conjunction in def.",
+            "durationSeconds": 4,
+            "allowScriptChange": false
+          },
+          {
+            "say": "Lean: mem_inter_iff.",
+            "durationSeconds": 4,
+            "allowScriptChange": false
+          },
+          {
+            "say": "Union and Intersect both inherit Set, so the result is always a set.",
+            "durationSeconds": 7,
+            "allowScriptChange": false
+          }
+        ]
+      }
+    }
+  ]
+}

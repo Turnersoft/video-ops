@@ -1,0 +1,46 @@
+@use '../../app' as *;
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.arrowSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.hintPanel {
+  position: absolute;
+  transform-origin: center bottom;
+  max-width: scaled(420px);
+  touch-action: none;
+}
+
+.hintPanelDraggable {
+  pointer-events: auto;
+  cursor: grab;
+}
+
+.hintPanelReadonly {
+  pointer-events: none;
+  cursor: default;
+}
+
+.hintBubble {
+  position: relative;
+  padding: scaled(14px) scaled(18px);
+  border-radius: scaled(12px);
+  background: linear-gradient(165deg, #fffcf7 0%, #f5f0e8 100%);
+  border: 1px solid rgba(60, 54, 45, 0.16);
+  box-shadow: 0 12px 36px rgba(60, 54, 45, 0.2);
+  font-size: scaled(19.5px);
+  line-height: 1.45;
+  color: #3c362d;
+}

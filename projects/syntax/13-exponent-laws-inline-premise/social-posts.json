@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "scriptId": "13-exponent-laws-inline-premise",
+  "titleEnglish": "syntax_13_exponent_laws_inline_premise",
+  "titleChina": "syntax_13_exponent_laws_inline_premise",
+  "title": "syntax_13_exponent_laws_inline_premise",
+  "generatedAt": "2026-07-13T16:46:54.059Z",
+  "source": {
+    "playlist": "turn-lang syntax highlight",
+    "promotionalDescription": "Turn keeps related results in one theorem block while an extra assumption stays attached only to the statement that needs it. One `assume` brings that premise into the local proof context — cleaner source, faster review, and less maintenance."
+  },
+  "english": {
+    "youtube": {
+      "title": "syntax_13_exponent_laws_inline_premise",
+      "body": "Turn keeps related results in one theorem block while an extra assumption stays attached only to the statement that needs it. One `assume` brings that premise into the local proof context — cleaner source, faster review, and less maintenance.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "x": {
+      "title": "syntax_13_exponent_laws_inline_premise",
+      "body": "Turn keeps related results in one theorem block while an extra assumption stays attached only to the statement that needs it. One `assume` brings that premise into the local proof context — cleaner source, faster review, and less maintenance. #TurnLang #FormalMethods #FormalMath…"
+    },
+    "linkedin": {
+      "title": "syntax_13_exponent_laws_inline_premise",
+      "body": "syntax_13_exponent_laws_inline_premise\n\nTurn keeps related results in one theorem block while an extra assumption stays attached only to the statement that needs it. One `assume` brings that premise into the local proof context — cleaner source, faster review, and less maintenance.\n\nThis episode is part of the Abstract Algebra in a Proof Assistant series on Turn-Lang — textbook-shaped formal mathematics you can film outdoors and verify in Lean 4 / Turn-Lang.\n\nWhat you will see in the video:\n• A textbook beat you can say on camera\n• The Lean 4 modeling choice (and what it refuses to pretend)\n• The Turn-Lang compare so the obligation is visible\n\nWatch the short, then open the linked editor if you want to step through the proof assistant view yourself.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "instagram": {
+      "title": "syntax_13_exponent_laws_inline_premise",
+      "body": "Turn keeps related results in one theorem block while an extra assumption stays attached only to the statement that needs it. One `assume` brings that premise into the local proof context — cleaner source, faster review, and less maintenance.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "tiktok": {
+      "title": "syntax_13_exponent_laws_inline_premise",
+      "body": "Turn keeps related results in one theorem block while an extra assumption stays attached only to the statement that needs it. One `assume` brings that premise into the local proof context — cleaner source, faster review, and less maintenance.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "facebook": {
+      "title": "syntax_13_exponent_laws_inline_premise",
+      "body": "Turn keeps related results in one theorem block while an extra assumption stays attached only to the statement that needs it. One `assume` brings that premise into the local proof context — cleaner source, faster review, and less maintenance.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "bluesky": {
+      "title": "syntax_13_exponent_laws_inline_premise",
+      "body": "Turn keeps related results in one theorem block while an extra assumption stays attached only to the statement that needs it. One `assume` brings that premise into the local proof context — cleaner source, faster review, and less maintenance. #TurnLang #FormalMethods #FormalMathematics #ProofAssist…"
+    }
+  },
+  "china": {
+    "bilibili": {
+      "title": "syntax_13_exponent_laws_inline_premise",
+      "body": "Turn keeps related results in one theorem block while an extra assumption stays attached only to the statement that needs it. One `assume` brings that premise into the local proof context — cleaner source, faster review, and less maintenance.\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论\n（请翻译为中文后发布）"
+    },
+    "douyin": {
+      "title": "syntax_13_exponent_laws_inline_premise",
+      "body": "Judson Theorem 3.23 bundles four exponent laws in one block. Turn keeps laws 1–3 in a clean Group context — the abelian premise sits inline on law 4 and pops into context only when you prove it.\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "xiaohongshu": {
+      "title": "syntax_13_exponent_…",
+      "body": "Judson Theorem 3.23 bundles four exponent laws in one block. Turn keeps laws 1–3 in a clean Group context — the abelian premise sits inline on law 4 and pops into context only when you prove it.\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "weibo": {
+      "title": "syntax_13_exponent_laws_inline_premise",
+      "body": "Judson Theorem 3.23 bundles four exponent laws in one block. Turn keeps laws 1–3 in a clean Group context — the abelian premise sits inline on law 4 and pops into context only when you prove it.\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "wechat_channels": {
+      "title": "syntax_13_exponent_laws_inline_premise",
+      "body": "Judson Theorem 3.23 bundles four exponent laws in one block. Turn keeps laws 1–3 in a clean Group context — the abelian premise sits inline on law 4 and pops into context only when you prove it.\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "kuaishou": {
+      "title": "syntax_13_exponent_laws_inline_premise",
+      "body": "Judson Theorem 3.23 bundles four exponent laws in one block. Turn keeps laws 1–3 in a clean Group context — the abelian premise sits inline on law 4 and pops into context only when you prove it.\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    }
+  }
+}

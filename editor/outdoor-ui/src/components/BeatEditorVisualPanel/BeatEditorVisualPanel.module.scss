@@ -1,0 +1,195 @@
+@use "../../app" as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+}
+
+.rootFill {
+  flex: 1;
+  min-height: 0;
+}
+
+.kindBanner {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: $space-sm;
+  padding-inline: $space-sm;
+  padding-block: 6px;
+  border-radius: $radius-sm;
+  border-width: 1px;
+}
+
+.kindLabel {
+  font-size: 11px;
+  letter-spacing: 1.1px;
+  font-weight: 800;
+}
+
+.kindMeta {
+  color: $muted;
+  font-size: $font-tiny;
+  font-weight: 600;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+}
+
+.bodyFill {
+  flex: 1;
+  min-height: 0;
+}
+
+.dualRow {
+  display: flex;
+  flex-direction: row;
+  gap: $space-sm;
+}
+
+.dualRowFill {
+  flex: 1;
+  min-height: 0;
+}
+
+.dualDivider {
+  width: 1px;
+  background-color: $card-border;
+  align-self: stretch;
+}
+
+.codePane {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-inline: $space-sm;
+  padding-top: 6px;
+  padding-bottom: $space-xs;
+  border-radius: $radius-sm;
+  border-width: 1px;
+  border-color: $card-border;
+  background-color: rgba(2, 6, 23, 0.55);
+  overflow: hidden;
+}
+
+.codePaneFill {
+  min-height: 0;
+}
+
+.fieldBox {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-inline: $space-sm;
+  padding-top: 6px;
+  padding-bottom: $space-xs;
+  border-radius: $radius-sm;
+  border-width: 1px;
+  border-color: $card-border;
+  background-color: rgba(2, 6, 23, 0.55);
+}
+
+.fieldBoxCompact {
+  flex-shrink: 0;
+}
+
+.heroPane {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+  padding-inline: $space-sm;
+  padding-block: $space-sm;
+  border-radius: $radius-sm;
+  border-width: 1px;
+  border-color: $card-border;
+  background-color: rgba(2, 6, 23, 0.72);
+}
+
+.heroPaneFill {
+  flex: 1;
+  min-height: 0;
+}
+
+.heroMark {
+  color: $orange;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.heroInput {
+  color: $text;
+  font-size: $font-body;
+  line-height: 20px;
+  font-style: italic;
+}
+
+.boxLabel {
+  margin-top: 0;
+  margin-bottom: 4px;
+  font-size: 11px;
+  letter-spacing: 0.4px;
+}
+
+.sayInput {
+  color: $text;
+  font-size: $font-small;
+  line-height: 18px;
+}
+
+.codeInput {
+  color: $code;
+  font-family: Menlo, monospace;
+  font-size: 11px;
+  line-height: 15px;
+}
+
+.notesInput {
+  color: $text;
+  font-size: $font-small;
+  line-height: 16px;
+}
+
+.toggleRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $space-xs;
+  padding-inline: $space-sm;
+}
+
+.toggle {
+  border-radius: $radius-pill;
+  padding-inline: 8px;
+  padding-block: 3px;
+  border-width: 1px;
+  border-color: $card-border;
+  background-color: rgba(15, 23, 42, 0.75);
+}
+
+.toggleActive {
+  border-color: rgba(249, 115, 22, 0.65);
+  background-color: rgba(249, 115, 22, 0.16);
+}
+
+.toggleText {
+  color: $muted;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.toggleTextActive {
+  color: #fdba74;
+}
+
+.configHint {
+  color: $muted;
+  font-size: $font-tiny;
+  padding-inline: $space-sm;
+}

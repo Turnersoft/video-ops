@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "scriptId": "07-copilot-for-lean",
+  "titleEnglish": "Copilot for Lean",
+  "titleChina": "Copilot for Lean",
+  "title": "Copilot for Lean",
+  "generatedAt": "2026-07-23T06:51:15.899Z",
+  "source": {},
+  "english": {
+    "youtube": {
+      "title": "Copilot for Lean",
+      "body": "Where autocomplete helps — and where it invents tactics.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "x": {
+      "title": "Copilot for Lean",
+      "body": "Where autocomplete helps — and where it invents tactics. #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "linkedin": {
+      "title": "Copilot for Lean",
+      "body": "Copilot for Lean\n\nWhere autocomplete helps — and where it invents tactics.\n\nThis episode is part of the Abstract Algebra in a Proof Assistant series on Turn-Lang — textbook-shaped formal mathematics you can film outdoors and verify in Lean 4 / Turn-Lang.\n\nWhat you will see in the video:\n• A textbook beat you can say on camera\n• The Lean 4 modeling choice (and what it refuses to pretend)\n• The Turn-Lang compare so the obligation is visible\n\nWatch the short, then open the linked editor if you want to step through the proof assistant view yourself.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "instagram": {
+      "title": "Copilot for Lean",
+      "body": "Where autocomplete helps — and where it invents tactics.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "tiktok": {
+      "title": "Copilot for Lean",
+      "body": "Where autocomplete helps — and where it invents tactics.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "facebook": {
+      "title": "Copilot for Lean",
+      "body": "Where autocomplete helps — and where it invents tactics.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "bluesky": {
+      "title": "Copilot for Lean",
+      "body": "Where autocomplete helps — and where it invents tactics. #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    }
+  },
+  "china": {
+    "bilibili": {
+      "title": "Copilot for Lean",
+      "body": "Where autocomplete helps — and where it invents tactics.\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论\n（请翻译为中文后发布）"
+    },
+    "douyin": {
+      "title": "Copilot for Lean",
+      "body": "Copilot for Lean\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "xiaohongshu": {
+      "title": "Copilot for Lean",
+      "body": "Copilot for Lean\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "weibo": {
+      "title": "Copilot for Lean",
+      "body": "Copilot for Lean\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "wechat_channels": {
+      "title": "Copilot for Lean",
+      "body": "Copilot for Lean\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "kuaishou": {
+      "title": "Copilot for Lean",
+      "body": "Copilot for Lean\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "scriptId": "04-set-equality",
+  "source": "speech-alignment",
+  "generatedAt": "2026-07-09T15:34:03.063Z",
+  "videoSrc": "takes/take-mrbtjdup/pipeline/cut/cut-mrdnt7ew/edited-good-intervals.mp4",
+  "editedDurationSeconds": 158.26,
+  "burnCaptions": true,
+  "burnCaptionsZh": true,
+  "beatDurationsSeconds": [
+    19.34,
+    27.8,
+    26.7,
+    20.83,
+    24.54,
+    39.05
+  ],
+  "captionSegments": [
+    {
+      "text": "Welcome back. Last clip ended with not SetEq. Today we finally open SetEq. The textbook rule is simple. Two sets are equal when A is a subset of B and B is a subset of A. But the real question is not the rule. The real question is what the equals sign means inside a proof assistant.",
+      "zh": "欢迎回来。上期结尾是 not SetEq。今天我们真正打开 SetEq。课本规则很简单：两个集合相等，就是 A 是 B 的子集，B 也是 A 的子集。但真正的问题不是这条规则，而是证明助手里的等号到底是什么意思。",
+      "atSeconds": 0,
+      "durationSeconds": 19.34
+    },
+    {
+      "text": "Start with a tiny Lean example. n plus zero equals n closes by rfl. That means the checker can scan both sides, compute, and see the same thing. But zero plus n equals n is also true, and rfl does not close it. Now you need Nat dot zero add. So one equality was seen by the scanner, and the other needed a receipt.",
+      "zh": "先看一个很小的 Lean 例子。n 加 0 等于 n 可以用 rfl 关闭。这表示检查器扫描两边、计算之后，看见它们一样。但 0 加 n 等于 n 也是真的，rfl 却关不掉。现在需要 Nat.zero_add。所以一个相等被扫描器看见，另一个需要收据。",
+      "atSeconds": 19.34,
+      "durationSeconds": 27.8
+    },
+    {
+      "text": "Now sets. Set equality is not about the two expressions looking identical. It is about having the same members. Lean uses one general equality type, Eq, and Set extensionality builds the receipt. If every x is in A exactly when it is in B, then A equals B.",
+      "zh": "现在看集合。集合相等不是两个表达式长得一样，而是成员相同。Lean 使用一个通用的相等类型 Eq，Set 外延性构造收据。如果每个 x 在 A 中当且仅当在 B 中，那么 A 等于 B。",
+      "atSeconds": 47.14,
+      "durationSeconds": 26.7
+    },
+    {
+      "text": "Turn writes that receipt shape directly beside the concept. SetEq is not hidden behind a search through tactics. Unfold SetEq, and it becomes exactly two goals: A subset B, and B subset A. That is the textbook sentence turned into obligations.",
+      "zh": "Turn 把这个收据形状直接写在概念旁边。SetEq 不藏在 tactic 搜索后面。展开 SetEq，它正好变成两个目标：A subset B，B subset A。这就是课本文字变成证明义务。",
+      "atSeconds": 73.84,
+      "durationSeconds": 20.83
+    },
+    {
+      "text": "Functions have the same problem. Two functions may be written differently, but if they give the same output on every input, they are equal. Lean uses funext to turn pointwise agreement into function equality. Turn writes the pointwise receipt as FunctionEq: for every x, f of x equals g of x.",
+      "zh": "函数也有同样问题。两个函数写法可以不同，但如果每个输入的输出都一样，它们就是相等的。Lean 用 funext 把逐点一致变成函数相等。Turn 把逐点收据写成 FunctionEq：对每个 x，f of x 等于 g of x。",
+      "atSeconds": 94.67,
+      "durationSeconds": 24.54
+    },
+    {
+      "text": "This is where the Emily Riehl idea fits. In higher category theory, you often should not ask whether two things are literally the same object. You ask whether there is a structure-preserving equivalence between them. In HoTT, equality proofs behave like paths, and univalence says an equivalence of types can be used as equality. So the ladder is: scanner when computation is enough, receipt when proof is needed, and path when sameness is really equivalence. Next clip, the empty set.",
+      "zh": "这就是 Emily Riehl 的想法适合放进来的地方。在高阶范畴论里，很多时候不应该问两个东西是不是字面同一个对象，而要问它们之间有没有保持结构的等价。在 HoTT 里，相等证明像路径，单值性说类型之间的等价可以当成相等。所以这架梯子是：计算足够时用扫描器，需要证明时用收据，相同其实是等价时用路径。下期讲空集。",
+      "atSeconds": 119.21,
+      "durationSeconds": 39.05
+    }
+  ],
+  "mergedBeats": [
+    {
+      "slideId": "beat-01",
+      "beatIndex": 0,
+      "editedStart": 0,
+      "editedEnd": 19.34,
+      "durationSeconds": 19.34,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-02",
+      "beatIndex": 1,
+      "editedStart": 19.34,
+      "editedEnd": 47.14,
+      "durationSeconds": 27.8,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-03",
+      "beatIndex": 2,
+      "editedStart": 47.14,
+      "editedEnd": 73.84,
+      "durationSeconds": 26.7,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-04",
+      "beatIndex": 3,
+      "editedStart": 73.84,
+      "editedEnd": 94.67,
+      "durationSeconds": 20.83,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-05",
+      "beatIndex": 4,
+      "editedStart": 94.67,
+      "editedEnd": 119.21,
+      "durationSeconds": 24.54,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-06",
+      "beatIndex": 5,
+      "editedStart": 119.21,
+      "editedEnd": 158.26,
+      "durationSeconds": 39.05,
+      "lastSpokenWord": ""
+    }
+  ]
+}

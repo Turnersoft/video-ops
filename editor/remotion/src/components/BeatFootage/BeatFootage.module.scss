@@ -1,0 +1,9 @@
+@use '../../app' as *;
+
+.portraitPresenterBand {
+  flex-shrink: 0;
+  border-radius: scaled(16px);
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  margin-bottom: scaled(10px);
+}

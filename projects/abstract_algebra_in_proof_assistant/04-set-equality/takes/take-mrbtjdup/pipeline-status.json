@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 2,
+  "status": "failed",
+  "createdAt": "2026-07-20T03:28:02.131Z",
+  "updatedAt": "2026-07-20T03:43:14.463Z",
+  "selectedRuns": {},
+  "runs": {
+    "stabilize": [
+      {
+        "runId": "stabilize-mrsnzomq",
+        "status": "failed",
+        "createdAt": "2026-07-20T03:43:14.463Z",
+        "finishedAt": "2026-07-20T03:43:14.463Z",
+        "error": "[2026-07-20T03:43:14.463Z] Stabilized video was not created",
+        "errorCode": "unknown",
+        "errorTitle": "Stabilize handheld shake failed",
+        "errorHint": "Check the stage log on Mac for details."
+      }
+    ],
+    "cut": [],
+    "align": [],
+    "composite": [],
+    "social": []
+  },
+  "autoRun": true,
+  "jobId": "job-take-mrbtjdup",
+  "takeId": "take-mrbtjdup",
+  "scriptId": "04-set-equality",
+  "scriptTitle": "Set equality — what equals means in a proof assistant",
+  "sourceVideoPath": "/Users/johndoe/Documents/company/video_ops/scripts/compare/04-set-equality/takes/take-mrbtjdup/source.mp4",
+  "takeManifestPath": "/Users/johndoe/Documents/company/video_ops/scripts/compare/04-set-equality/takes/take-mrbtjdup/take.json"
+}

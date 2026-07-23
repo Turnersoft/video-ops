@@ -1,0 +1,295 @@
+@use './app' as *;
+
+:export {
+  bg: #{$bg};
+  text: #{$text};
+  muted: #{$muted};
+  muted2: #{$muted2};
+  orange: #{$orange};
+  orangeText: #{$orange-text};
+  card: #{$card};
+  cardBorder: #{$card-border};
+  pill: #{$pill};
+  badgePending: #{$badge-pending};
+  badgeFilmed: #{$badge-filmed};
+  badgeFilmedText: #{$badge-filmed-text};
+  section: #{$section};
+  online: #{$online};
+  offline: #{$offline};
+  danger: #{$danger};
+  code: #{$code};
+  videoBg: #{$video-bg};
+  black: #{$black};
+  white: #{$white};
+  headerBg: #{$header-bg};
+  runChipActiveBg: #{$run-chip-active-bg};
+  runChipActiveText: #{$run-chip-active-text};
+  bannerOnlineBg: #{$banner-online-bg};
+  bannerOfflineBg: #{$banner-offline-bg};
+  spaceXs: #{$space-xs};
+  spaceSm: #{$space-sm};
+  spaceMd: #{$space-md};
+  spaceLg: #{$space-lg};
+  spaceXl: #{$space-xl};
+  spaceXxl: #{$space-xxl};
+  radiusSm: #{$radius-sm};
+  radiusMd: #{$radius-md};
+  radiusPill: #{$radius-pill};
+  fontBody: #{$font-body};
+  fontBodyLineHeight: #{$font-body-line-height};
+  fontSmall: #{$font-small};
+  fontTiny: #{$font-tiny};
+  fontTitle: #{$font-title};
+  fontCardTitle: #{$font-card-title};
+  fontSection: #{$font-section};
+}
+
+.screen {
+  flex: 1;
+  background-color: $bg;
+}
+
+.main {
+  flex: 1;
+  padding: $space-sm $space-lg $space-xxl;
+  max-width: 920px;
+  align-self: center;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-md;
+  padding: $space-md $space-lg $space-sm;
+  background-color: $header-bg;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.headerTitle {
+  margin: 0;
+  font-size: $font-title;
+  font-weight: 800;
+  color: $text;
+}
+
+.headerActions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $space-sm;
+}
+
+.btn {
+  border-radius: $radius-pill;
+  padding: $space-sm 14px;
+  background-color: $pill;
+}
+
+.btnText {
+  font-weight: 700;
+  color: $text;
+  font-size: $font-body;
+}
+
+.btnPrimary {
+  background-color: $orange;
+}
+
+.btnPrimaryText {
+  color: $orange-text;
+}
+
+.btnDanger {
+  background-color: $danger;
+}
+
+.btnDangerText {
+  color: $white;
+}
+
+.btnBack {
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.btnBackText {
+  color: $orange;
+  font-weight: 700;
+}
+
+.banner {
+  margin: $space-md $space-lg 0;
+  padding: 10px $space-md;
+  border-radius: $radius-sm;
+}
+
+.bannerOnline {
+  background-color: $banner-online-bg;
+}
+
+.bannerOnlineText {
+  color: $online;
+  font-size: $font-small;
+  font-weight: 600;
+}
+
+.bannerOffline {
+  background-color: $banner-offline-bg;
+}
+
+.bannerOfflineText {
+  color: $offline;
+  font-size: $font-small;
+  font-weight: 600;
+}
+
+.card {
+  background-color: $card;
+  border: 1px solid $card-border;
+  border-radius: $radius-md;
+  padding: 14px $space-lg;
+  margin-bottom: $space-md;
+}
+
+.cardTop {
+  display: flex;
+  flex-direction: row;
+  gap: $space-md;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cardTitle {
+  font-size: $font-card-title;
+  font-weight: 800;
+  color: $text;
+}
+
+.cardMeta {
+  color: $muted;
+  font-size: $font-small;
+  margin-top: 6px;
+}
+
+.badge {
+  align-self: flex-start;
+  padding: $space-xs 10px;
+  border-radius: $radius-pill;
+  background-color: $badge-pending;
+}
+
+.badgeText {
+  font-size: $font-tiny;
+  font-weight: 800;
+  color: #e2e8f0;
+}
+
+.badgeFilmed {
+  background-color: $badge-filmed;
+}
+
+.badgeFilmedText {
+  color: $badge-filmed-text;
+}
+
+.sectionLabel {
+  margin: $space-xl 0 10px;
+  color: $section;
+  font-size: $font-section;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.slideCard {
+  background-color: $card;
+  border: 1px solid $card-border;
+  border-radius: $radius-md;
+  padding: 14px;
+  margin-bottom: 10px;
+}
+
+.slideIndex {
+  color: $orange;
+  font-weight: 800;
+  margin-bottom: $space-xs;
+}
+
+.slideBody {
+  color: $muted;
+  margin-top: 6px;
+}
+
+.takeActions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $space-sm;
+  margin-top: 10px;
+}
+
+.runChips {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $space-sm;
+  margin: $space-sm 0;
+}
+
+.runChip {
+  border: 1px solid $card-border;
+  background-color: $card;
+  border-radius: $radius-pill;
+  padding: 6px $space-md;
+}
+
+.runChipActive {
+  border-color: $orange;
+  background-color: $run-chip-active-bg;
+}
+
+.runChipText {
+  font-size: $font-tiny;
+  font-weight: 700;
+  color: $text;
+}
+
+.runChipActiveText {
+  color: $run-chip-active-text;
+}
+
+.videoCard {
+  background-color: $video-bg;
+  border: 1px solid $card-border;
+  border-radius: $radius-sm;
+  overflow: hidden;
+}
+
+.socialCard {
+  background-color: $video-bg;
+  border: 1px solid $card-border;
+  border-radius: $radius-sm;
+  padding: 10px;
+}
+
+.socialPlatform {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: $muted;
+}
+
+.mutedText {
+  color: $muted;
+  font-size: $font-small;
+}
+
+.codeText {
+  color: $code;
+  font-family: Menlo, monospace;
+  font-size: $font-tiny;
+}

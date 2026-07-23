@@ -1,0 +1,31 @@
+@use "../../app" as *;
+
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: $space-xs;
+  padding: $space-sm;
+  border-radius: 8px;
+  background-color: rgba(127, 29, 29, 0.22);
+  border-width: 1px;
+  border-color: rgba(248, 113, 113, 0.35);
+}
+
+.title {
+  color: #fecaca;
+  font-size: $font-small;
+  font-weight: 900;
+}
+
+.message {
+  color: $text;
+  font-size: $font-small;
+  line-height: 18px;
+}
+
+.hint {
+  color: $muted;
+  font-size: $font-tiny;
+  line-height: 16px;
+}

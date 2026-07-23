@@ -1,0 +1,330 @@
+@use '../../app' as *;
+
+.screen {
+  flex: 1;
+  height: 100%;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+}
+.headerWrap {
+  flex-shrink: 0;
+}
+.body {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.bodyBrowser {
+  display: flex;
+  flex-direction: row;
+  padding-inline: $space-md;
+  padding-top: $space-xs;
+  gap: $space-sm;
+  flex: 1;
+  min-height: 0;
+}
+.bodyMobile {
+  display: flex;
+  flex-direction: column;
+  padding-inline: $space-sm;
+  padding-top: $space-xs;
+  gap: $space-xs;
+}
+.sidebar {
+  display: flex;
+  border-width: 1px;
+  border-color: $card-border;
+  border-radius: $radius-sm;
+  background-color: rgba(2, 6, 23, 0.55);
+  overflow: hidden;
+  flex-direction: column;
+}
+.sidebarBrowser {
+  display: flex;
+  width: 220px;
+  min-width: 200px;
+  max-width: 240px;
+  flex-shrink: 0;
+  min-height: 0;
+  align-self: stretch;
+}
+.sidebarMobile {
+  flex-shrink: 0;
+}
+.sidebarTitle {
+  color: $section;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding-inline: $space-sm;
+  padding-top: $space-sm;
+  padding-bottom: 4px;
+}
+.sidebarScroll {
+  flex: 1;
+  min-height: 0;
+}
+.scrollPane {
+  flex: 1;
+  min-height: 0;
+}
+.sidebarBody {
+  display: flex;
+  padding: $space-xs;
+  gap: 4px;
+  padding-bottom: $space-sm;
+}
+.sidebarBodyMobile {
+  display: flex;
+  padding-inline: $space-xs;
+  padding-bottom: $space-xs;
+  gap: 4px;
+  flex-direction: row;
+  align-items: stretch;
+}
+.seriesChip {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: $space-xs;
+  border-radius: $radius-sm;
+  border-width: 1px;
+  border-color: transparent;
+  padding-inline: $space-xs;
+  padding-block: 6px;
+  background-color: rgba(15, 23, 42, 0.75);
+  min-width: 120px;
+}
+.seriesChipActive {
+  border-color: rgba(249, 115, 22, 0.65);
+  background-color: rgba(249, 115, 22, 0.18);
+}
+.seriesChipIndex {
+  color: $orange;
+  font-weight: 800;
+  font-size: $font-small;
+  min-width: 22px;
+}
+.seriesChipBody {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  gap: 1px;
+}
+.seriesChipTitle {
+  color: $text;
+  font-weight: 700;
+  font-size: $font-tiny;
+}
+.seriesChipMeta {
+  color: $muted;
+  font-size: 10px;
+  font-weight: 600;
+}
+.seriesChipProgress {
+  color: $muted2;
+  font-size: 9px;
+  font-weight: 600;
+  margin-top: 1px;
+}
+.seriesChipProgressActive {
+  color: #fdba74;
+}
+.seriesChipTextActive {
+  color: #fdba74;
+}
+.listScroll {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+}
+.listBody {
+  display: flex;
+  gap: $space-sm;
+}
+.seriesBlock {
+  display: flex;
+  gap: 4px;
+}
+.seriesHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $space-xs;
+  margin-top: $space-xs;
+  margin-bottom: 2px;
+}
+.seriesNumber {
+  color: $orange;
+  font-size: $font-small;
+  font-weight: 800;
+  min-width: 18px;
+}
+.seriesHeaderText {
+  flex: 1;
+  min-width: 0;
+}
+.seriesTitle {
+  font-size: $font-small;
+  font-weight: 800;
+  color: $text;
+}
+.seriesSub {
+  color: $muted;
+  font-size: 11px;
+  margin-top: 1px;
+}
+.episodeCard {
+  display: flex;
+  background-color: $card;
+  border-width: 1px;
+  border-color: $card-border;
+  border-radius: $radius-sm;
+  padding-inline: $space-sm;
+  padding-block: 8px;
+  gap: 2px;
+}
+.episodeTop {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-sm;
+}
+.episodeTitle {
+  flex: 1;
+  min-width: 0;
+  font-size: $font-small;
+  font-weight: 700;
+  color: $text;
+}
+.episodeMeta {
+  color: $muted;
+  font-size: 11px;
+}
+.floatDock {
+  display: flex;
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: DOCK_BOTTOM_GAP;
+  z-index: 40;
+  gap: 4px;
+  padding-inline: 8px;
+  padding-block: 8px;
+  border-radius: $radius-md;
+  border-width: 1px;
+  border-color: rgba(148, 163, 184, 0.28);
+  background-color: rgba(2, 6, 23, 0.94);
+  shadow-color: #000;
+  shadow-opacity: 0.4;
+  shadow-radius: 16;
+  shadow-offset: { width: 0, height: 6 };
+  elevation: 12;
+}
+.shadowOffset {
+  width: 0, height: 6;
+}
+.floatDockBrowser {
+  display: flex;
+  max-width: 920px;
+  align-self: center;
+  width: 100%;
+}
+.statusRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding-top: 2px;
+}
+.statusChip {
+  border-radius: 6px;
+  padding-inline: 8px;
+  padding-block: 3px;
+}
+.statusChipOk {
+  background-color: rgba(22, 101, 52, 0.28);
+}
+.statusChipWarn {
+  background-color: rgba(249, 115, 22, 0.18);
+}
+.statusChipPath {
+  background-color: rgba(30, 41, 59, 0.7);
+}
+.statusChipMuted {
+  background-color: rgba(51, 65, 85, 0.55);
+}
+.statusChipText {
+  font-size: 11px;
+  font-weight: 600;
+}
+.statusTextOk {
+  color: $online;
+}
+.statusTextWarn {
+  color: #fdba74;
+}
+.statusTextPath {
+  color: #94a3b8;
+  font-family: Menlo;
+  font-size: 10px;
+}
+.statusTextMuted {
+  color: $muted;
+}
+.centered {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  padding-block: $space-xl;
+}
+.error {
+  color: $offline;
+  margin-bottom: $space-sm;
+  font-size: $font-small;
+}
+.cardPressed {
+  border-color: rgba(249, 115, 22, 0.45);
+}
+.cardBadges {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.freshnessTag {
+  border-radius: $radius-pill;
+  padding-inline: 6px;
+  padding-block: 2px;
+}
+.freshnessFresh {
+  background-color: rgba(22, 101, 52, 0.35);
+  border-width: 1px;
+  border-color: rgba(134, 239, 172, 0.35);
+}
+.freshnessRecent {
+  background-color: rgba(249, 115, 22, 0.2);
+  border-width: 1px;
+  border-color: rgba(251, 191, 36, 0.35);
+}
+.freshnessStale {
+  background-color: rgba(51, 65, 85, 0.75);
+  border-width: 1px;
+  border-color: $card-border;
+}
+.freshnessUnknown {
+  background-color: rgba(51, 65, 85, 0.55);
+  border-width: 1px;
+  border-color: $card-border;
+}
+.freshnessText {
+  color: #e2e8f0;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+

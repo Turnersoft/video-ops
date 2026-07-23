@@ -1,0 +1,199 @@
+@use '../../app' as *;
+
+.root {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.videoNet {
+  position: absolute;
+  border: 2px dashed rgba(56, 189, 248, 0.95);
+  border-radius: scaled(8px);
+  box-sizing: border-box;
+  z-index: 7;
+  overflow: visible;
+  pointer-events: auto;
+}
+
+.videoNetDrag {
+  position: absolute;
+  inset: 0;
+  cursor: grab;
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.netLabel {
+  position: absolute;
+  left: 0;
+  font-size: scaled(11px);
+  font-weight: 800;
+  color: #7dd3fc;
+  background: rgba(15, 23, 42, 0.85);
+  padding: scaled(2px) scaled(6px);
+  border-radius: scaled(4px);
+  white-space: nowrap;
+}
+
+.videoNetLabel {
+  top: scaled(-22px);
+}
+
+.maskNet {
+  position: absolute;
+  overflow: hidden;
+  z-index: 8;
+  background: #020617;
+  pointer-events: none;
+}
+
+.maskNetEditing {
+  box-shadow: 0 0 0 9999px rgba(2, 6, 23, 0.45);
+  border: 2px solid rgba(253, 230, 138, 0.98);
+}
+
+.maskNetLocked {
+  box-shadow: 0 10px 32px rgba(15, 23, 42, 0.28);
+  border: 2px solid rgba(255, 255, 255, 0.88);
+}
+
+.maskNetRect {
+  border-radius: scaled(14px);
+}
+
+.maskNetCircle {
+  border-radius: 50%;
+}
+
+.videoClip {
+  position: absolute;
+}
+
+.clipDragOverlay {
+  position: absolute;
+  z-index: 9;
+  cursor: grab;
+  pointer-events: auto;
+}
+
+.maskEditor {
+  position: absolute;
+  overflow: visible;
+  z-index: 9;
+  pointer-events: auto;
+}
+
+.maskDrag {
+  position: absolute;
+  cursor: grab;
+}
+
+.handle {
+  position: absolute;
+  width: max(14px, scaled(14px));
+  height: max(14px, scaled(14px));
+  border-radius: 999px;
+  border: 2px solid rgba(15, 23, 42, 0.9);
+  z-index: 10;
+  touch-action: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.handleNw {
+  cursor: nwse-resize;
+}
+
+.handleNe {
+  cursor: nesw-resize;
+}
+
+.handleSw {
+  cursor: nesw-resize;
+}
+
+.handleSe {
+  cursor: nwse-resize;
+}
+
+.maskControls {
+  position: absolute;
+  left: 0;
+  bottom: scaled(-28px);
+  display: flex;
+  gap: scaled(6px);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.maskLabel {
+  font-size: scaled(11px);
+  font-weight: 800;
+  color: #fde68a;
+  background: rgba(15, 23, 42, 0.85);
+  padding: scaled(2px) scaled(6px);
+  border-radius: scaled(4px);
+}
+
+.shapeButton {
+  font-size: scaled(10px);
+  padding: scaled(3px) scaled(8px);
+  border-radius: scaled(6px);
+  border: none;
+  color: #f8fafc;
+  cursor: pointer;
+}
+
+.shapeButtonInactive {
+  background: rgba(15, 23, 42, 0.85);
+}
+
+.shapeButtonActive {
+  background: rgba(249, 115, 22, 0.9);
+}
+
+.toolbarButton {
+  font-size: scaled(11px);
+  font-weight: 700;
+  padding: scaled(5px) scaled(10px);
+  border-radius: scaled(6px);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  white-space: nowrap;
+}
+
+.doneButton {
+  background: rgba(34, 197, 94, 0.95);
+  color: #052e16;
+}
+
+.editFramingButton {
+  background: rgba(15, 23, 42, 0.9);
+  color: #f8fafc;
+}
+
+.syncButton {
+  background: rgba(79, 70, 229, 0.92);
+  color: #eef2ff;
+}
+
+.postEditToolbar {
+  position: absolute;
+  z-index: 30;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: scaled(6px);
+  align-items: center;
+}
+
+.dragHint {
+  font-size: scaled(10px);
+  font-weight: 600;
+  color: #e2e8f0;
+  background: rgba(15, 23, 42, 0.75);
+  padding: scaled(2px) scaled(6px);
+  border-radius: scaled(4px);
+}

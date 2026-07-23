@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "id": "formal-math",
+  "title": "What formal math is",
+  "description": "Motion essays — proof assistants vs CAS, Python, MATLAB.",
+  "styleKit": "motion-essay",
+  "growthJob": "discovery",
+  "bgmProfile": "motion-etude"
+}

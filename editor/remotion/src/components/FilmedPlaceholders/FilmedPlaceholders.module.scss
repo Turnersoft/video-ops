@@ -1,0 +1,94 @@
+@use '../../app' as *;
+
+.overlay {
+  pointer-events: none;
+  z-index: 12;
+  overflow: visible;
+}
+
+.avatarEditor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 13;
+  overflow: visible;
+}
+
+.greenFill {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(160deg, #22c55e 0%, #15803d 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 12px;
+}
+
+.greenFillLabel {
+  color: rgba(255, 255, 255, 0.95);
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.placeholderBox {
+  position: absolute;
+  border-radius: scaled(14px);
+  overflow: hidden;
+  border: 2px solid;
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.28);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  z-index: 12;
+  pointer-events: none;
+  box-sizing: border-box;
+  padding: scaled(12px);
+}
+
+.placeholderBoxMask {
+  border-width: 3px;
+  box-shadow:
+    0 0 0 2px rgba(253, 230, 138, 0.55),
+    0 12px 36px rgba(15, 23, 42, 0.35);
+}
+
+.maskBadge {
+  position: absolute;
+  top: scaled(8px);
+  left: scaled(8px);
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.72);
+  color: #fde68a;
+  font-size: max(11px, scaled(12px));
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.placeholderLabel {
+  color: rgba(255, 255, 255, 0.96);
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 800;
+  font-size: max(14px, scaled(18px));
+  letter-spacing: 0.8px;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.placeholderSublabel {
+  color: rgba(255, 255, 255, 0.85);
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: max(11px, scaled(13px));
+  text-align: center;
+}

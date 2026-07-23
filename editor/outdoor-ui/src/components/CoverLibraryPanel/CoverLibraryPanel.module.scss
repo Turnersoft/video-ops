@@ -1,0 +1,65 @@
+@use '../../app' as *;
+
+.section {
+  display: flex;
+  gap: $space-sm;
+  margin-top: $space-sm;
+}
+.groupLabel {
+  color: $text;
+  font-size: $font-small;
+  font-weight: 800;
+  margin-top: 6px;
+}
+.meta {
+  color: $muted;
+  font-size: $font-small;
+  line-height: 18px;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $space-sm;
+}
+.tileActive {
+  border-color: $orange;
+}
+.image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: $black;
+}
+.imagePlaceholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: $black;
+}
+.labelInput {
+  margin-inline: $space-sm;
+  margin-top: 6px;
+  background-color: rgba(15, 23, 42, 0.95);
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: $card-border;
+  color: $text;
+  padding-inline: 8px;
+  padding-block: 6px;
+  font-size: $font-small;
+}
+.usedBy {
+  color: $muted;
+  font-size: 11px;
+  padding-inline: $space-sm;
+  margin-top: 4px;
+}
+.tileActions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-inline: $space-sm;
+  margin-top: 6px;
+}
+
+

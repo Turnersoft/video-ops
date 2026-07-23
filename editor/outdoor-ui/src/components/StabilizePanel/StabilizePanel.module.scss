@@ -1,0 +1,80 @@
+@use '../../app' as *;
+
+.wrap {
+  display: flex;
+  gap: $space-sm;
+  margin-bottom: $space-sm;
+}
+.meta {
+  color: $muted;
+  font-size: $font-small;
+  line-height: 18px;
+}
+.progressCard {
+  display: flex;
+  gap: $space-xs;
+  padding: $space-sm;
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: rgba(249, 115, 22, 0.35);
+  background-color: rgba(249, 115, 22, 0.08);
+}
+.progressTop {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $space-sm;
+}
+.progressLabel {
+  color: $text;
+  font-size: $font-small;
+  flex: 1;
+}
+.progressTrack {
+  height: 6px;
+  border-radius: 999px;
+  background-color: rgba(148, 163, 184, 0.25);
+  overflow: hidden;
+}
+.progressFill {
+  height: 100%;
+  border-radius: 999px;
+  background-color: $orange;
+}
+.runningBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-sm;
+  min-height: 180px;
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: rgba(249, 115, 22, 0.35);
+  background-color: rgba(249, 115, 22, 0.08);
+}
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: rgba(148, 163, 184, 0.25);
+  background-color: rgba(15, 23, 42, 0.35);
+  padding: $space-md;
+}
+.logBox {
+  color: $code;
+  font-family: Menlo;
+  font-size: $font-tiny;
+  line-height: 15px;
+  background-color: rgba(15, 23, 42, 0.55);
+  border-radius: 8px;
+  padding: $space-sm;
+}
+.error {
+  color: $offline;
+  font-size: $font-small;
+}
+
+

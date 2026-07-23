@@ -1,0 +1,184 @@
+@use '../../app' as *;
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+  flex-shrink: 0;
+}
+
+.wrapVertical {
+  width: 92px;
+  min-width: 88px;
+  height: 100%;
+  min-height: 0;
+  border-width: 1px;
+  border-color: $card-border;
+  border-radius: $radius-md;
+  background-color: rgba(2, 6, 23, 0.55);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-sm;
+  padding-inline: $space-sm;
+}
+
+.headerVertical {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  padding: $space-xs;
+  border-bottom-width: 1px;
+  border-bottom-color: $card-border;
+}
+
+.title {
+  color: $section;
+  font-size: $font-section;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.titleVertical {
+  font-size: 9px;
+  letter-spacing: 0.4px;
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  gap: $space-xs;
+}
+
+.actionsVertical {
+  flex-direction: column;
+}
+
+.chip {
+  border-radius: $radius-pill;
+  padding-inline: 10px;
+  padding-block: 4px;
+}
+
+.chipAi {
+  background-color: rgba(249, 115, 22, 0.2);
+  border-width: 1px;
+  border-color: rgba(251, 191, 36, 0.45);
+}
+
+.chipAdd {
+  background-color: rgba(51, 65, 85, 0.85);
+  border-width: 1px;
+  border-color: $card-border;
+}
+
+.chipDisabled {
+  opacity: 0.6;
+}
+
+.chipAiText {
+  color: #fdba74;
+  font-size: $font-tiny;
+  font-weight: 700;
+}
+
+.chipAddText {
+  color: $muted;
+  font-size: $font-tiny;
+  font-weight: 700;
+}
+
+.railScrollVertical {
+  flex: 1;
+  min-height: 0;
+}
+
+.rail {
+  display: flex;
+  flex-direction: row;
+  gap: $space-xs;
+  padding-inline: $space-sm;
+  padding-bottom: $space-xs;
+}
+
+.railVertical {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+  padding: $space-xs;
+}
+
+.card {
+  display: flex;
+  width: 72px;
+  border-radius: $radius-sm;
+  border-width: 1px;
+  border-color: $card-border;
+  background-color: rgba(15, 23, 42, 0.85);
+  padding-inline: $space-xs;
+  padding-block: 6px;
+  gap: 2px;
+}
+
+.cardVertical {
+  width: auto;
+}
+
+.cardActive {
+  border-color: rgba(249, 115, 22, 0.75);
+  background-color: rgba(249, 115, 22, 0.16);
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2px;
+}
+
+.cardDelete {
+  display: flex;
+  width: 16px;
+  height: 16px;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-pill;
+  background-color: rgba(127, 29, 29, 0.35);
+}
+
+.cardDeleteText {
+  color: #fca5a5;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 14px;
+}
+
+.cardLabel {
+  color: $text;
+  font-size: $font-small;
+  font-weight: 800;
+}
+
+.cardLabelActive {
+  color: #fdba74;
+}
+
+.cardTemplate {
+  color: $muted;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.cardSource {
+  color: $muted2;
+  font-size: 9px;
+  font-weight: 600;
+}

@@ -1,0 +1,401 @@
+{
+  "version": 4,
+  "scriptId": "01-set",
+  "title": "01_set",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "title": "Set — Lean vs Turn",
+      "durationSeconds": 392,
+      "layout": "dual-panel",
+      "burnCaptions": true,
+      "visualNotes": "18 beats: real source paths on screen: lean4/src/Init/Prelude.lean (45s), lean4/src/Init/Notation.lean (51s), mathlib4/Mathlib/Data/Set/Defs.lean (57s). Teaching lines L14–24 above instance.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "compare": {
+        "display": {
+          "editorFontScale": 0.7000000000000001,
+          "leanEditorFontScale": 0.8,
+          "renderFontScale": 0.8500000000000001,
+          "textbookOverlay": {
+            "aataExcerpt": "sets-set-theory-p1",
+            "placement": "center"
+          }
+        },
+        "overlays": {
+          "textbook-p1": {
+            "type": "textbook",
+            "aataExcerpt": "sets-set-theory-p1",
+            "placement": "center"
+          }
+        },
+        "blocks": {},
+        "beats": [
+          {
+            "say": "Hi Friends, welcom back! So a set is just a well-defined collection of objects. Those objects are called elements, or members. What we and formal logic care about is the precise rule for deciding whether an element belongs to the set.",
+            "durationSeconds": 22,
+            "turn": {
+              "code": "structure[T] Set<T: Any> {\n}",
+              "highlights": [
+                "structure",
+                "Set"
+              ]
+            },
+            "overlay": "textbook-p1",
+            "fontScales": {
+              "editorFontScale": 0.7000000000000001,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.8500000000000001
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "So for Lean, it models a set as a membership test, not a bag of elements.\ndef Set is Mathlib's approach for that idea.\nParentheses hold alpha — the type of elements you are ranging over.\nType u means alpha is a type at universe level u.\nThin arrow alpha to Prop says: one element in, true or false out.\nThat is a function type — different from the fat arrow on the lambda line later.\nProp is Lean's type for statements that can be true or false.\nand Colon-equals means value assignment.",
+            "durationSeconds": 45,
+            "lean": {
+              "code": "-- Textbook: a set is a well-defined collection; for each x we decide membership.\n\n-- Mathlib source: mathlib4/Mathlib/Data/Set/Defs.lean\ndef Set (α : Type u) := α → Prop",
+              "highlights": [
+                "mathlib4/Mathlib/Data/Set/Defs.lean",
+                "def Set",
+                "Type u",
+                "α → Prop",
+                "Prop",
+                ":="
+              ]
+            },
+            "turn": {
+              "code": "structure[T] Set<T: Any> {\n}"
+            },
+            "fontScales": {
+              "editorFontScale": 0.7000000000000001,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.8500000000000001
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "For example, oddIntegers colon Set Int fixes Int as the element type for this one concrete set. Colon here is a type label on the name. The colon equals on the same line says the definition continues on the next line.",
+            "durationSeconds": 21,
+            "lean": {
+              "code": "def Set (α : Type u) := α → Prop\n  -- …\ndef oddIntegers : Set Int :=",
+              "highlights": [
+                "oddIntegers",
+                "Set Int",
+                ":="
+              ]
+            },
+            "turn": {
+              "code": "structure[T] Set<T: Any> {\n}"
+            },
+            "fontScales": {
+              "editorFontScale": 0.7000000000000001,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.8500000000000001
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "Then fun statement is Lean's anonymous function, like a JavaScript arrow function. And the function take a parameter n and return a statement about n. When that proposition is proven to be true, n will belong to the set.",
+            "durationSeconds": 22,
+            "lean": {
+              "code": "def oddIntegers : Set Int :=\n  fun n => n % 2 = 1",
+              "highlights": [
+                "fun n =>",
+                "n % 2"
+              ]
+            },
+            "turn": {
+              "code": "structure[T] Set<T: Any> {\n}"
+            },
+            "fontScales": {
+              "editorFontScale": 0.7000000000000001,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.8500000000000001
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "So if you apply oddIntegers to n directly, you will get a Prop, a membership question. Notice that Lean never forces you to treat that Prop as membership condition. Rename def Set and the story disappears. That semantic gap is a real pitfall in formal methods.",
+            "durationSeconds": 25,
+            "lean": {
+              "code": "def Set (α : Type u) := α → Prop\n  -- …\ndef oddIntegers : Set Int :=\n  fun n => n % 2 = 1",
+              "highlights": [
+                "oddIntegers",
+                "Prop"
+              ]
+            },
+            "turn": {
+              "code": "structure[T] Set<T: Any> {\n}"
+            },
+            "fontScales": {
+              "editorFontScale": 0.7000000000000001,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.8500000000000001
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "Next, mathlib defines a namespace block for Set. So Names inside get the Set dot prefix, which is why you read Set dot Mem instead of bare Mem. end Set at the bottom closes that block.",
+            "durationSeconds": 17,
+            "lean": {
+              "code": "namespace Set\n  def Mem (s : Set α) (a : α) : Prop :=\n     s a\nend Set\n\n /- Set.Mem s a",
+              "highlights": [
+                "namespace Set",
+                "end Set"
+              ]
+            },
+            "turn": {
+              "code": "structure[T] Set<T: Any> {\n}"
+            },
+            "fontScales": {
+              "editorFontScale": 0.7000000000000001,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.8500000000000001
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "After that, Mathlib adds protected def Mem.\nprotected means you can only use the function with the namespace dot syntax.\nOn the parameters, s colon Set alpha labels the set and a colon alpha is one element.\nThe return type after the second colon is Prop again.\nThe body is s a which means s applied on a\nSo this is how we model membership, but where is the symbol a in s?",
+            "durationSeconds": 37,
+            "lean": {
+              "code": "namespace Set\n  protected def Mem (s : Set α) (a : α) : Prop :=\n     s a\nend Set\n\n -- but where is the symbol a ∈ s",
+              "highlights": [
+                "protected def Mem",
+                "s : Set α",
+                "a : α",
+                "s a"
+              ]
+            },
+            "turn": {
+              "code": "structure[T] Set<T: Any> {\n}"
+            },
+            "fontScales": {
+              "editorFontScale": 0.7000000000000001,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.8500000000000001
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "this is actually more complicated than we think\nthe notation is a built-in syntax in lean's kernel,\nand then the notation is binded to a typeclass called Membership which is basically a encapsolation for methods in Lean\nNotice the outParam here on the element type here, it means it can be ignored in usage and lean will just infer it.\nSo that is the preparation\nBut in order for our Set to use this notation, we still need to do one more thing",
+            "durationSeconds": 44,
+            "lean": {
+              "code": "-- Lean core source: lean4/src/Init/Prelude.lean\n\n--   class Membership (α : outParam (Type u)) (γ : Type v) where\n--     mem : γ → α → Prop\n\n-- Lean core source: lean4/src/Init/Notation.lean\n\n--   notation:50 a:50 \" ∈ \" b:50 => Membership.mem b a\n\n-- Mathlib source: mathlib4/Mathlib/Data/Set/Defs.lean\n-- Set α wires the Membership field to Set.Mem below.",
+              "highlights": [
+                "lean4/src/Init/Prelude.lean",
+                "class Membership",
+                "outParam",
+                "mem : γ → α → Prop",
+                "a:50 \" ∈ \" b:50"
+              ]
+            },
+            "turn": {
+              "code": "structure[T] Set<T: Any> {\n}"
+            },
+            "fontScales": {
+              "editorFontScale": 0.7000000000000001,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.8500000000000001
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "that is to implement the typeclass on def of Set by using the instance block\nnotice here alpha is bounded by the Set alpha on the right. whatever allowed in Set is what's allowed for alpha\nby using the angle bracket, we provide the value for the only method in the typeclass which is convinence syntax.\nBut If we have multiple method in a typeclass, we have to implement the one by one as shown below",
+            "durationSeconds": 39,
+            "lean": {
+              "code": "--   class Membership (α : outParam (Type u)) (γ : Type v) where\n--        mem : γ → α → Prop\n--\n\ninstance : Membership α (Set α) :=\n  ⟨Set.Mem⟩\n\n/- Multi-field typeclass (teaching): explicit field names -/\n\nclass Foo (α : Type u) where\n  bar : α → α\n  baz : α → Prop\n  qux : Nat\n\n-- 1. Named where block (clearest when teaching)\ninstance : Foo Nat where\n  bar := fun n => n + 1\n  baz := fun n => n > 0\n  qux := 42\n\n-- 2. Named structure syntax\ninstance : Foo Int := {\n  bar := fun n => n + 1\n  baz := fun n => n > 0\n  qux := 42\n}",
+              "highlights": [
+                "instance",
+                "Membership",
+                "⟨Set.Mem⟩"
+              ]
+            },
+            "turn": {
+              "code": "structure[T] Set<T: Any> {\n}"
+            },
+            "fontScales": {
+              "editorFontScale": 0.7000000000000001,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.8500000000000001
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "So now we can use the notation like this because the typeclass implement\nNotice it construct a proposition with a in S",
+            "durationSeconds": 12,
+            "lean": {
+              "code": "--   notation:50 a:50 \" ∈ \" b:50 => Membership.mem b a\n  -- …\n-- Set α wires the Membership field to Set.Mem below.\n  -- …\nexample (s : Set α) (a : α) : Prop := a ∈ s",
+              "highlights": [
+                "a ∈ s",
+                "Membership.mem",
+                "Set.Mem"
+              ]
+            },
+            "turn": {
+              "code": "structure[T] Set<T: Any> {\n}"
+            },
+            "fontScales": {
+              "editorFontScale": 0.7000000000000001,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.8500000000000001
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "Another example here using OddIntegers",
+            "durationSeconds": 5,
+            "lean": {
+              "code": "example (n : Int) : Prop := n ∈ oddIntegers",
+              "highlights": [
+                "n ∈ oddIntegers"
+              ]
+            },
+            "turn": {
+              "code": "structure[T] Set<T: Any> {\n}"
+            },
+            "fontScales": {
+              "editorFontScale": 0.7000000000000001,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.8500000000000001
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "So that is the full picture of lean's modelling:\nfirst a function-type constructor\nthen a prop returning wrapper\nfinally the notation for the mathematical \"in\" operator",
+            "durationSeconds": 17,
+            "lean": {
+              "code": "-- function type constructor\ndef Set (α : Type u) := α → Prop\n  -- …\nnamespace Set\n-- prop returning wrapper\n  protected def Mem (s : Set α) (a : α) : Prop :=\n    s a\nend Set\n\n-- notation implmenetation for ∈ (in) operator\ninstance : Membership α (Set α) :=\n  ⟨Set.Mem⟩",
+              "highlights": [
+                "protected def Mem",
+                "instance",
+                "⟨Set.Mem⟩"
+              ]
+            },
+            "turn": {
+              "code": "structure[T] Set<T: Any> {\n}"
+            },
+            "fontScales": {
+              "editorFontScale": 0.7000000000000001,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.8500000000000001
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "So now we look at turn-lang, Notice it immediately give you a container story.\nwe model Set using a structure directly.\nsquare bracket make it a container structure which allows it to use the \"in\" operator.\nThen we can use the in operator for every set to specify its content using laws.",
+            "durationSeconds": 29,
+            "lean": {
+              "code": "as before"
+            },
+            "turn": {
+              "code": "structure[T] Set<T: Any> {\n}\n\n// Turn-Lang: x in s is built-in (no Mem, no instance)",
+              "highlights": [
+                "structure[T]",
+                "Set",
+                "in"
+              ]
+            },
+            "fontScales": {
+              "editorFontScale": 0.7000000000000001,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.8500000000000001
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "For example, we model EmptySet by inheriting from set.\nand we use a law to specify the membership function\nno_members says for every x, x not in self, so nothing belongs to the empty set.\nSo law is a requirement that every instance of the structure must satisfy.",
+            "durationSeconds": 27,
+            "lean": {
+              "code": "as before"
+            },
+            "turn": {
+              "code": "@notation(\"∅\")\nstructure EmptySet: Set<Any> {\n    laws {\n        no_members {\n            forall x: Any |- not (x in self)\n        }\n    }\n}",
+              "highlights": [
+                "Set<Any>",
+                "no_members",
+                "in self"
+              ]
+            },
+            "fontScales": {
+              "editorFontScale": 0.7000000000000001,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.8500000000000001
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "Similarly, Union follows the same pattern.\nIts law says x in the union when x is in A or x is in B.\nso this is how we model set in both languages",
+            "durationSeconds": 15,
+            "lean": {
+              "code": "as before"
+            },
+            "turn": {
+              "code": "@notation({A} ~ \" ∪ \" ~ {B})\nstructure Union<T: Any, A B: Set<T>>: Set<T> {\n    laws {\n        def {\n            forall x in self |- x in A or x in B\n        }\n    }\n}",
+              "highlights": [
+                "Union",
+                "def",
+                "in self",
+                "in A",
+                "in B"
+              ]
+            },
+            "fontScales": {
+              "editorFontScale": 0.7000000000000001,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.8500000000000001
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "So I hope you enjoyed this video.\nLeave a comment if you need help with these.",
+            "durationSeconds": 7,
+            "lean": {
+              "code": "as before"
+            },
+            "turn": {
+              "code": "@notation({A} ~ \" ∪ \" ~ {B})\nstructure Union<T: Any, A B: Set<T>>: Set<T> {\n    laws {\n        def {\n            forall x in self |- x in A or x in B\n        }\n    }\n}"
+            },
+            "fontScales": {
+              "editorFontScale": 0.7000000000000001,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.8500000000000001
+            },
+            "allowScriptChange": false
+          },
+          {
+            "say": "in the next video, we will talk about subset.\nSubscribe and see you in the next one.",
+            "durationSeconds": 8,
+            "lean": {
+              "code": "as before"
+            },
+            "turn": {
+              "code": "@notation({A} ~ \" ∪ \" ~ {B})\nstructure Union<T: Any, A B: Set<T>>: Set<T> {\n    laws {\n        def {\n            forall x in self |- x in A or x in B\n        }\n    }\n}",
+              "highlights": [
+                "Union"
+              ]
+            },
+            "fontScales": {
+              "editorFontScale": 0.7000000000000001,
+              "leanEditorFontScale": 0.8,
+              "renderFontScale": 0.8500000000000001
+            },
+            "allowScriptChange": false
+          }
+        ]
+      }
+    }
+  ]
+}

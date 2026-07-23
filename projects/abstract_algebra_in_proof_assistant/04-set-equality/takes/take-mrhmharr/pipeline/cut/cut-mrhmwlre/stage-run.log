@@ -1,0 +1,23 @@
+# stage-run 2026-07-12T10:12:10.922Z
+jobId=job-take-mrhmharr
+scriptId=04-set-equality
+takeId=take-mrhmharr
+stage=cut
+runId=cut-mrhmwlre
+
+[2026-07-12T10:12:10.923Z] Starting cut
+[2026-07-12T10:12:10.923Z] Preparing cut inputs
+[2026-07-12T10:12:10.924Z] Transcribing and detecting bad takes
+[2026-07-12T10:12:10.924Z] $ tsx --import /Users/johndoe/Documents/company/video_ops/outdoor_agent/src/install-deno-shim.ts /Users/johndoe/Documents/company/video_ops/outdoor_post/run.ts ai-edit --video /Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrhmharr/source.mp4 --script /Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/04-set-equality/export/04-set-equality-outdoor-script.json --take /Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrhmharr/take.json --out-dir /Users/johndoe/Documents/company/video_ops/scripts/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrhmharr/pipeline/cut/cut-mrhmwlre
+[stderr] TypeError: command.outputSync is not a function
+[stderr]     at runFfmpeg (/Users/johndoe/Documents/company/video_ops/outdoor_post/src/subprocess.ts:11:28)
+[stderr]     at extractAudio (/Users/johndoe/Documents/company/video_ops/outdoor_post/src/subprocess.ts:51:3)
+[stderr]     at runAiEdit (/Users/johndoe/Documents/company/video_ops/outdoor_post/src/ai-edit.ts:599:3)
+[stderr]     at main (/Users/johndoe/Documents/company/video_ops/outdoor_post/main.ts:33:13)
+[stderr]     at <anonymous> (/Users/johndoe/Documents/company/video_ops/outdoor_post/run.ts:4:1)
+[stderr]     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+[stderr]     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+[stderr]     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+[2026-07-12T10:12:11.114Z] exit 1
+[2026-07-12T10:12:11.114Z] FAILED: Speech transcription failed — [2026-07-12T10:12:11.114Z] exit 1
+[2026-07-12T10:12:11.114Z] [2026-07-12T10:12:11.114Z] exit 1

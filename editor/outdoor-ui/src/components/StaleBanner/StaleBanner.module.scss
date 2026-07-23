@@ -1,0 +1,23 @@
+@use '../../app' as *;
+
+.wrap {
+  display: flex;
+  gap: $space-sm;
+  padding: $space-sm;
+  border-radius: 10px;
+  background-color: rgba(249, 115, 22, 0.12);
+  border-width: 1px;
+  border-color: rgba(249, 115, 22, 0.45);
+}
+.title {
+  color: $orange;
+  font-size: $font-small;
+  font-weight: 900;
+}
+.message {
+  color: $text;
+  font-size: $font-small;
+  line-height: 18px;
+}
+
+

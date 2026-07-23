@@ -1,0 +1,50 @@
+.root {
+  pointer-events: none;
+}
+
+.item {
+  position: absolute;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.draggable {
+  cursor: grab;
+}
+
+.draggable:active {
+  cursor: grabbing;
+  outline: 1px dashed rgba(255, 255, 255, 0.45);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.emoji {
+  font-size: clamp(28px, 4vw, 64px);
+  line-height: 1;
+}
+
+.text {
+  font-size: clamp(14px, 1.6vw, 22px);
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+  padding: 0.35em 0.6em;
+  border-radius: 0.5em;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.maskCircle {
+  border-radius: 999px;
+}
+
+.maskRect {
+  border-radius: 12px;
+}

@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "scriptId": "04-set-equality",
+  "titleEnglish": "4. Set equality: what the equal sign means in a proof assistant",
+  "titleChina": "4. 集合相等：证明助手里的等号是什么意思",
+  "title": "4. Set equality: what the equal sign means in a proof assistant",
+  "generatedAt": "2026-07-23T14:22:12.937Z",
+  "source": {
+    "promotionalDescription": "Hook: an equals glyph is not yet a complete meaning of sameness. We move from Lean's definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang's notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstract Algebra in a Proof Assistant.",
+    "socialTitleEnglish": "4. Set equality: what the equal sign means in a proof assistant",
+    "socialTitleChina": "4. 集合相等：证明助手里的等号是什么意思"
+  },
+  "english": {
+    "youtube": {
+      "title": "4. Set equality: what the equal sign means in a proof assistant",
+      "body": "Hook: an equals glyph is not yet a complete meaning of sameness. We move from Lean's definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang's notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstract Algebra in a Proof Assistant.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "x": {
+      "title": "4. Set equality: what the equal sign means in a proof assistant",
+      "body": "Hook: an equals glyph is not yet a complete meaning of sameness. We move from Lean's definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang's notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstra…"
+    },
+    "linkedin": {
+      "title": "4. Set equality: what the equal sign means in a proof assistant",
+      "body": "4. Set equality: what the equal sign means in a proof assistant\n\nHook: an equals glyph is not yet a complete meaning of sameness. We move from Lean's definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang's notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstract Algebra in a Proof Assistant.\n\nThis episode is part of the Abstract Algebra in a Proof Assistant series on Turn-Lang — textbook-shaped formal mathematics you can film outdoors and verify in Lean 4 / Turn-Lang.\n\nWhat you will see in the video:\n• A textbook beat you can say on camera\n• The Lean 4 modeling choice (and what it refuses to pretend)\n• The Turn-Lang compare so the obligation is visible\n\nWatch the short, then open the linked editor if you want to step through the proof assistant view yourself.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "instagram": {
+      "title": "4. Set equality: what the equal sign means in a proof assistant",
+      "body": "Hook: an equals glyph is not yet a complete meaning of sameness. We move from Lean's definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang's notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstract Algebra in a Proof Assistant.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "tiktok": {
+      "title": "4. Set equality: what the equal sign means in a proof assistant",
+      "body": "Hook: an equals glyph is not yet a complete meaning of sameness. We move from Lean's definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang's notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstract Algebra in a Proof Assistant.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "facebook": {
+      "title": "4. Set equality: what the equal sign means in a proof assistant",
+      "body": "Hook: an equals glyph is not yet a complete meaning of sameness. We move from Lean's definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang's notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstract Algebra in a Proof Assistant.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+    },
+    "bluesky": {
+      "title": "4. Set equality: what the equal sign means in a proof assistant",
+      "body": "Hook: an equals glyph is not yet a complete meaning of sameness. We move from Lean's definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang's notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstract Algebra in a Proo…"
+    }
+  },
+  "china": {
+    "bilibili": {
+      "title": "4. 集合相等：证明助手里的等号是什么意思",
+      "body": "Hook: an equals glyph is not yet a complete meaning of sameness. We move from Lean's definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang's notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstract Algebra in a Proof Assistant.\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论\n（请翻译为中文后发布）"
+    },
+    "douyin": {
+      "title": "4. 集合相等：证明助手里的等号是什么意思",
+      "body": "Hook: an equals glyph is not yet a complete meaning of sameness. We move from Lean’s definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang’s notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstract Algebra in a Proof Assistant · #TurnLang #Lean4 #Mathlib #SetEquality #FormalMethods #ProofAssistant\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "xiaohongshu": {
+      "title": "4. 集合相等：证明助手里的等号是什么…",
+      "body": "Hook: an equals glyph is not yet a complete meaning of sameness. We move from Lean’s definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang’s notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstract Algebra in a Proof Assistant · #TurnLang #Lean4 #Mathlib #SetEquality #FormalMethods #ProofAssistant\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "weibo": {
+      "title": "4. 集合相等：证明助手里的等号是什么意思",
+      "body": "Hook: an equals glyph is not yet a complete meaning of sameness. We move from Lean’s definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang’s notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstract Algebra in a Proof Assistant · #TurnLang #Lean4 #Mathlib #SetEquality #FormalMethods #ProofAssistant\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "wechat_channels": {
+      "title": "4. 集合相等：证明助手里的等号是什么意思",
+      "body": "Hook: an equals glyph is not yet a complete meaning of sameness. We move from Lean’s definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang’s notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstract Algebra in a Proof Assistant · #TurnLang #Lean4 #Mathlib #SetEquality #FormalMethods #ProofAssistant\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    },
+    "kuaishou": {
+      "title": "4. 集合相等：证明助手里的等号是什么意思",
+      "body": "Hook: an equals glyph is not yet a complete meaning of sameness. We move from Lean’s definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang’s notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstract Algebra in a Proof Assistant · #TurnLang #Lean4 #Mathlib #SetEquality #FormalMethods #ProofAssistant\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+    }
+  }
+}

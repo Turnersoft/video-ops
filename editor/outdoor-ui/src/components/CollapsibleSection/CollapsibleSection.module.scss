@@ -1,0 +1,44 @@
+@use '../../app' as *;
+
+.wrap {
+  display: flex;
+  gap: $space-xs;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: $space-xs;
+  padding-block: 2px;
+}
+.headerPressed {
+  opacity: 0.85;
+}
+.chevron {
+  color: $orange;
+  font-size: $font-small;
+  font-weight: 900;
+  width: 14px;
+  margin-top: 1px;
+}
+.headerText {
+  display: flex;
+  flex: 1;
+  gap: 2px;
+}
+.title {
+  color: $text;
+  font-size: $font-small;
+  font-weight: 800;
+}
+.summary {
+  color: $muted;
+  font-size: $font-tiny;
+  line-height: 15px;
+}
+.body {
+  display: flex;
+  gap: $space-xs;
+}
+
+
