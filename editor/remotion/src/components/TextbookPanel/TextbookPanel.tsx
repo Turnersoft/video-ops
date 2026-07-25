@@ -1,25 +1,29 @@
 import {
     getRemotionEnvironment,
-    Img,
     interpolate,
     spring,
-    staticFile,
     useCurrentFrame,
     useVideoConfig,
 } from 'remotion';
 import {
     useCallback,
     useEffect,
-    useMemo,
     useRef,
     useState,
     type PointerEvent as ReactPointerEvent,
 } from 'react';
 
+import { loadMathJax3, type IMathJax3 } from '@yozora/react-mathjax';
+
 import { scaleCss } from '../../lib/layout/scaleCss';
 import { useCompositionScale } from '../../lib/layout/useCompositionScale';
 import {
-    aataExcerptStaticPaths,
+    VIDEO_MATHJAX_CONFIG,
+    VIDEO_MATHJAX_SRC,
+} from '../../lib/panels/videoMathJaxConfig';
+import {
+    AATA_BOOK_AUTHOR,
+    AATA_BOOK_TITLE,
     humanizeAataExcerptId,
 } from './aataExcerptAsset';
 import {
@@ -45,6 +49,61 @@ function clampPct(value: number, min: number, max: number): number {
     return Math.min(max, Math.max(min, value));
 }
 
+function TextbookMathParagraph({ text, className }: { text: string; className?: string }) {
+    const nodeRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const node = nodeRef.current;
+        if (!node) {
+            return;
+        }
+        let cancelled = false;
+        let MathJax3: IMathJax3 | null = null;
+        void loadMathJax3(VIDEO_MATHJAX_SRC, VIDEO_MATHJAX_CONFIG)
+            .then((loaded) => {
+                MathJax3 = loaded;
+                if (cancelled || !loaded) {
+                    return;
+                }
+                return loaded.startup.promise.then(() => {
+                    if (cancelled) {
+                        return;
+                    }
+                    loaded.typesetClear([node]);
+                    return loaded.typesetPromise([node]);
+                });
+            })
+            .catch((err: unknown) => {
+                console.error('Textbook MathJax typeset failed:', err);
+            });
+        return () => {
+            cancelled = true;
+            MathJax3?.typesetClear([node]);
+        };
+    }, [text]);
+
+    return (
+        <div ref={nodeRef} className={className}>
+            {text}
+        </div>
+    );
+}
+
+function TextbookLatexBody({ latex }: { latex: string }) {
+    const paragraphs = latex.split(/\n\s*\n/).map((part) => part.trim()).filter(Boolean);
+    return (
+        <div className={classes.latexBody}>
+            {paragraphs.map((paragraph) => (
+                <TextbookMathParagraph
+                    key={paragraph}
+                    text={paragraph}
+                    className={classes.latexParagraph}
+                />
+            ))}
+        </div>
+    );
+}
+
 function TextbookPanelCard({
     overlay,
     layout,
@@ -66,22 +125,14 @@ function TextbookPanelCard({
     const [dragLayout, setDragLayout] = useState<TextbookPanelLayout | null>(null);
     const shownLayout = dragLayout ?? layout;
 
-    const excerptPaths = useMemo(
-        () => (overlay.aataExcerpt ? aataExcerptStaticPaths(overlay.aataExcerpt) : []),
-        [overlay.aataExcerpt],
-    );
-    const [imageIndex, setImageIndex] = useState(0);
-    const imageSrc = excerptPaths[imageIndex];
-    const showImage = Boolean(imageSrc && imageIndex < excerptPaths.length);
-
+    const bookTitle = overlay.bookTitle ?? (overlay.aataExcerpt ? AATA_BOOK_TITLE : undefined);
+    const bookAuthor = overlay.bookAuthor ?? (overlay.aataExcerpt ? AATA_BOOK_AUTHOR : undefined);
+    const sectionKicker = overlay.source ?? overlay.section;
+    const showDefinitionTitle = Boolean(overlay.definitionLabel) && !overlay.latex;
     const title =
         overlay.definitionLabel ??
         (overlay.aataExcerpt ? humanizeAataExcerptId(overlay.aataExcerpt) : 'Textbook excerpt');
-    const body =
-        overlay.body ??
-        (overlay.aataExcerpt && !showImage
-            ? `Add scan at projects/algebra/shared/reference/aata/${overlay.aataExcerpt}.png`
-            : '');
+    const body = overlay.body ?? (!overlay.latex ? 'Add LaTeX under the overlay in animation.md.' : '');
 
     const onPointerDown = useCallback(
         (event: ReactPointerEvent<HTMLDivElement>) => {
@@ -157,22 +208,21 @@ function TextbookPanelCard({
         >
             <div className={classes.paper}>
                 {canDrag ? <div className={classes.handle}>drag</div> : null}
-                {showImage ? (
-                    <Img
-                        src={staticFile(imageSrc!)}
-                        className={classes.image}
-                        onError={() => {
-                            setImageIndex((index) => index + 1);
-                        }}
-                    />
-                ) : (
-                    <div className={classes.fallback}>
-                        {overlay.section ? <p className={classes.kicker}>{overlay.section}</p> : null}
-                        <h3 className={classes.title}>{title}</h3>
-                        {body ? <p className={classes.body}>{body}</p> : null}
-                        {overlay.source ? <p className={classes.source}>{overlay.source}</p> : null}
+                <div className={classes.content}>
+                    {sectionKicker ? <p className={classes.sectionKicker}>{sectionKicker}</p> : null}
+                    {showDefinitionTitle ? <h3 className={classes.title}>{title}</h3> : null}
+                    {overlay.latex ? (
+                        <TextbookLatexBody latex={overlay.latex} />
+                    ) : body ? (
+                        <p className={classes.body}>{body}</p>
+                    ) : null}
+                </div>
+                {bookTitle || bookAuthor ? (
+                    <div className={classes.footer}>
+                        {bookTitle ? <p className={classes.footerBook}>{bookTitle}</p> : null}
+                        {bookAuthor ? <p className={classes.footerAuthor}>{bookAuthor}</p> : null}
                     </div>
-                )}
+                ) : null}
             </div>
         </div>
     );

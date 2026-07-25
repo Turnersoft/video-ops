@@ -1,0 +1,11 @@
+# stage-run 2026-07-23T14:43:24.644Z
+jobId=job-take-mrhjew5h
+scriptId=sets-v2-04-set-equality
+takeId=take-mrhjew5h
+stage=cut
+runId=cut-mrxmfrz4
+
+[2026-07-23T14:43:24.667Z] Starting cut
+[2026-07-23T14:43:24.690Z] Preparing cut inputs
+[2026-07-23T14:43:24.694Z] FAILED: Script missing on Mac — No outdoor script for sets-v2-04-set-equality.
+[2026-07-23T14:43:24.716Z] No outdoor script for sets-v2-04-set-equality.

@@ -1,28 +1,33 @@
-import type { ReactNode } from 'react';
-import { useMemo } from 'react';
-import { useCurrentFrame, useVideoConfig } from 'remotion';
+import type { ReactNode } from "react";
+import { useMemo } from "react";
+import { useCurrentFrame, useVideoConfig } from "remotion";
 
-import { BeatPlacementsLayer } from '../../components/BeatPlacementsLayer/BeatPlacementsLayer';
-import { legacyStickersToPlacements } from '../../lib/placements/beatPlacements';
-import { CompareBeatVideoPanel } from '../../components/CompareBeatVideoPanel/CompareBeatVideoPanel';
-import { OutdoorFilmedClipMask } from '../../components/OutdoorFilmedClipMask/OutdoorFilmedClipMask';
-import { OutdoorPresenterVideo } from '../../components/OutdoorPresenterVideo/OutdoorPresenterVideo';
+import { BeatPlacementsLayer } from "../../components/BeatPlacementsLayer/BeatPlacementsLayer";
+import { legacyStickersToPlacements } from "../../lib/placements/beatPlacements";
+import { CompareBeatVideoPanel } from "../../components/CompareBeatVideoPanel/CompareBeatVideoPanel";
+import { OutdoorFilmedClipMask } from "../../components/OutdoorFilmedClipMask/OutdoorFilmedClipMask";
 import {
-    BeatTemplateStage,
-    CompareDualPortraitLayout,
-    beatTemplateStageMeta,
-    isCompareShellTemplateKind,
-} from '../../beats';
-import type { BeatStudioTemplateKind } from '../../beats/beatStudioCompile';
-import { useCompositionScale } from '../layout/useCompositionScale';
-import type { OutdoorBeatLayout } from '../outdoor/resolveOutdoorBeatLayout';
-import type { CompareLayer } from '../layers/types';
-import type { RenderScene } from '../types/renderProps';
+  BeatTemplateStage,
+  CompareDualPortraitLayout,
+  beatTemplateStageMeta,
+  isCompareShellTemplateKind,
+} from "../../beats";
+import type { BeatStudioTemplateKind } from "../../beats/beatStudioCompile";
+import { useCompositionScale } from "../layout/useCompositionScale";
+import type { OutdoorBeatLayout } from "../outdoor/resolveOutdoorBeatLayout";
+import {
+  PORTRAIT_PRESENTER_BAND_RATIO,
+  resolvePortraitBandPipMask,
+  resolvePortraitFramePipMask,
+} from "../outdoor/portraitLayout";
+import type { CompareLayer } from "../layers/types";
+import type { RenderScene } from "../types/renderProps";
+import { sceneArrayIndex } from "../types/renderProps";
 
 type OutdoorPortraitSceneViewProps = {
   scriptId: string;
   scene: RenderScene;
-  outdoorEdit?: RenderScene['outdoorEdit'];
+  outdoorEdit?: RenderScene["outdoorEdit"];
   outdoorBeatIndex: number;
   outdoorBeatLayout: OutdoorBeatLayout;
   compareLayer: CompareLayer | undefined;
@@ -31,7 +36,7 @@ type OutdoorPortraitSceneViewProps = {
   useCompareShell?: boolean;
   activeBeatTemplateKind?: BeatStudioTemplateKind | null;
   contentRevision?: number;
-  sceneDirector: RenderScene['director'];
+  sceneDirector: RenderScene["director"];
   sceneDurationSeconds: number;
 };
 
@@ -68,8 +73,6 @@ export function OutdoorPortraitSceneView({
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const scriptFullscreen = outdoorBeatLayout.scriptFullscreen;
-  const presenterMode = outdoorBeatLayout.presenterMode;
-  const isFullClipPresenter = !scriptFullscreen && presenterMode === 'full-clip';
   const isAvatarPlaceholder = !outdoorEdit?.videoSrc.trim();
   const activeBeatVideo = compareLayer?.beatVideos?.[outdoorBeatIndex];
   const activePlacements = useMemo(() => {
@@ -77,15 +80,22 @@ export function OutdoorPortraitSceneView({
     if (fromLayer?.length) {
       return fromLayer;
     }
-    return legacyStickersToPlacements(compareLayer?.beatStickers?.[outdoorBeatIndex]);
-  }, [compareLayer?.beatPlacements, compareLayer?.beatStickers, outdoorBeatIndex]);
+    return legacyStickersToPlacements(
+      compareLayer?.beatStickers?.[outdoorBeatIndex],
+    );
+  }, [
+    compareLayer?.beatPlacements,
+    compareLayer?.beatStickers,
+    outdoorBeatIndex,
+  ]);
   const beatDurationSeconds = useMemo(() => {
     if (
       sceneDirector?.sayTimings &&
       sceneDirector.sayTimings[outdoorBeatIndex + 1] !== undefined
     ) {
       return (
-        (sceneDirector.sayTimings[outdoorBeatIndex + 1] ?? sceneDurationSeconds) -
+        (sceneDirector.sayTimings[outdoorBeatIndex + 1] ??
+          sceneDurationSeconds) -
         (sceneDirector.sayTimings[outdoorBeatIndex] ?? 0)
       );
     }
@@ -100,6 +110,24 @@ export function OutdoorPortraitSceneView({
         (sceneDurationSeconds / Math.max(sceneDirector?.say.length ?? 1, 1));
     return sceneSeconds - beatStart;
   }, [frame, fps, outdoorBeatIndex, sceneDirector, sceneDurationSeconds]);
+
+  const portraitShellStyle = {
+    position: "absolute" as const,
+    inset: outdoorEdit ? 0 : s.px(16),
+    display: "flex",
+    flexDirection: "column" as const,
+    boxSizing: "border-box" as const,
+    gap: outdoorEdit ? 0 : s.px(10),
+  };
+
+  const scriptPipMask = outdoorBeatLayout.pipMask;
+  const beatCount =
+    outdoorEdit?.beatDurationsSeconds?.length ??
+    sceneDirector?.say?.length ??
+    0;
+  /** Script-fullscreen only: absolute overlay remapped to portrait top strip. */
+  const fullscreenOverlayMask = resolvePortraitFramePipMask(scriptPipMask);
+  const bandPipMask = resolvePortraitBandPipMask(scriptPipMask);
 
   const comparePanel =
     useCompareShell && compareLayer ? (
@@ -117,6 +145,7 @@ export function OutdoorPortraitSceneView({
         compiledTracks={compareLayer.compiledTracks}
         focusBeats={compareLayer.focusBeats}
         portraitBottomTargets={compareLayer.portraitBottomTargets}
+        activeBeatIndex={outdoorBeatIndex}
       />
     ) : (
       mainContent
@@ -132,12 +161,20 @@ export function OutdoorPortraitSceneView({
   );
 
   const beatPanel = (
-    <div style={{ position: 'relative', flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column' }}>
+    <div
+      style={{
+        position: "relative",
+        flex: 1,
+        minHeight: 0,
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       {beatContent}
       {activePlacements.length > 0 ? (
         <BeatPlacementsLayer
           scriptId={scriptId}
-          sceneIndex={scene.index}
+          sceneIndex={sceneArrayIndex(scene)}
           beatIndex={outdoorBeatIndex}
           placements={activePlacements}
           beatRelativeSeconds={beatRelativeSeconds}
@@ -149,89 +186,76 @@ export function OutdoorPortraitSceneView({
 
   if (scriptFullscreen && outdoorEdit) {
     return (
-      <div
-        style={{
-          position: 'absolute',
-          inset: s.px(16),
-          display: 'flex',
-          flexDirection: 'column',
-          boxSizing: 'border-box',
-        }}
-      >
-        <div style={{ position: 'relative', flex: 1, minHeight: 0 }}>
-          {beatPanel}
+      <div style={portraitShellStyle}>
+        <div style={{ position: "relative", flex: 1, minHeight: 0 }}>
           <OutdoorFilmedClipMask
             scriptId={scriptId}
             src={outdoorEdit.videoSrc}
-            pipMask={
-              isAvatarPlaceholder
-                ? outdoorEdit.pipMask ?? outdoorBeatLayout.pipMask
-                : outdoorBeatLayout.pipMask
-            }
+            pipMask={fullscreenOverlayMask}
             beatIndex={outdoorBeatIndex}
+            sceneIndex={sceneArrayIndex(scene)}
+            beatCount={beatCount}
             persistAcrossBeats={isAvatarPlaceholder}
+            enableMaskEditing={false}
+            layoutFormat="portrait"
           />
+          <div
+            style={{
+              position: "relative",
+              zIndex: 1,
+              flex: 1,
+              minHeight: 0,
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            {beatPanel}
+          </div>
         </div>
       </div>
     );
   }
 
   if (!outdoorEdit) {
-    return (
+    // Studio portrait: CompareDualPortraitLayout owns the top presenter band slot.
+    return <div style={portraitShellStyle}>{beatPanel}</div>;
+  }
+
+  return (
+    <div style={portraitShellStyle}>
       <div
         style={{
-          position: 'absolute',
-          inset: s.px(16),
-          display: 'flex',
-          flexDirection: 'column',
-          boxSizing: 'border-box',
+          position: "relative",
+          flexShrink: 0,
+          height: `${PORTRAIT_PRESENTER_BAND_RATIO * 100}%`,
+          minHeight: 0,
+          overflow: "hidden",
+        }}
+      >
+        <OutdoorFilmedClipMask
+          scriptId={scriptId}
+          src={outdoorEdit.videoSrc}
+          pipMask={bandPipMask}
+          beatIndex={outdoorBeatIndex}
+          sceneIndex={sceneArrayIndex(scene)}
+          beatCount={beatCount}
+          persistAcrossBeats={isAvatarPlaceholder}
+          enableMaskEditing={false}
+          layoutFormat="portrait"
+          boundsMode="parent"
+        />
+      </div>
+      <div
+        style={{
+          position: "relative",
+          flex: 1,
+          minHeight: 0,
+          display: "flex",
+          flexDirection: "column",
         }}
       >
         {beatPanel}
       </div>
-    );
-  }
-
-  return (
-    <div
-      style={{
-        position: 'absolute',
-        inset: s.px(16),
-        display: 'flex',
-        flexDirection: 'column',
-        gap: s.px(10),
-        boxSizing: 'border-box',
-      }}
-    >
-      <div
-        style={
-          isFullClipPresenter
-            ? {
-                width: '100%',
-                aspectRatio: '16 / 9',
-                borderRadius: s.px(18),
-                overflow: 'hidden',
-                border: '1px solid rgba(148, 163, 184, 0.22)',
-                flexShrink: 0,
-                background: '#020617',
-              }
-            : {
-                height: '33.33%',
-                borderRadius: s.px(18),
-                overflow: 'hidden',
-                border: '1px solid rgba(148, 163, 184, 0.22)',
-                flexShrink: 0,
-              }
-        }
-      >
-        <OutdoorPresenterVideo
-          scriptId={scriptId}
-          src={outdoorEdit.videoSrc}
-          muted
-          objectFit={isFullClipPresenter ? 'contain' : 'cover'}
-        />
-      </div>
-      {beatPanel}
     </div>
   );
 }

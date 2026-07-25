@@ -31,7 +31,6 @@ Hi friends, welcome back.
 Proof-slide lets you walk a proof like slides.
 But you still need to know: did this tactic actually work?
 Turn shows that on the step itself.
-
 ### Visual notes
 
 Proof-slide on symmetric-halves theorem — forward one tactic.
@@ -59,7 +58,6 @@ allow-script-change: false
 At each step there is a status line — closed goal, branch fork, error detail.
 I am not inferring from the goal panel alone.
 The slide tells me what the checker thought.
-
 ### Visual notes
 
 `ProofSlideTacticStatusBanner` visible after stepping `split_conjunction` or `assume`.
@@ -87,7 +85,6 @@ allow-script-change: false
 When I reach a `#!` trial arm that does not close, the badge shows it failed.
 That is the point — I keep the dead branch in the file and I see it in replay.
 Compare with the surviving branch on the main line.
-
 ### Visual notes
 
 Step into a trial arm → failure status → step back to main arm → success status. Branch map optional in corner.
@@ -114,9 +111,7 @@ allow-script-change: false
 
 So proof-slide is a study tool.
 Status on every step — like a TA who tells you if the move actually worked.
-
 ### Visual notes
 
 Tactic chips with badges + banner on final QED step.
 CTA: try proof-slide on your library theorem.
-

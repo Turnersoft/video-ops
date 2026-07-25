@@ -88,6 +88,12 @@ export type VideoOpsCompareOverlayDef =
           type: 'textbook';
           aataExcerpt?: string;
           placement?: 'top' | 'center';
+          latex?: string;
+          definitionLabel?: string;
+          source?: string;
+          section?: string;
+          bookTitle?: string;
+          bookAuthor?: string;
       }
     | VideoOpsCompareOverlayVideoDef;
 
@@ -128,6 +134,12 @@ export type VideoOpsCompareSceneBeatV4 = {
     overlay?: string;
     /** Which proof-assistant logo glows while this beat is on screen. */
     focus?: CompareFocusSide;
+    /**
+     * Outdoor portrait compare — bottom pane content for this beat.
+     * `lean-code` shows Lean 4 Editor; `turn-render` shows Turn-Lang Render.
+     * Overrides `focus` and hint inference when set.
+     */
+    portraitBottom?: ComparePortraitBottomTarget;
     /** Per-beat zoom for Turn editor, Lean editor, and render panels. `"as before"` reuses the previous beat. */
     fontScales?: VideoOpsCompareBeatFontScales | typeof COMPARE_PANE_CODE_AS_BEFORE;
     /**
@@ -156,6 +168,8 @@ export type VideoOpsCompareSceneBeatV4 = {
     screenRecording?: string;
     /** Editor-only comment for AI improvement on this beat. */
     comment?: string;
+    /** manim-web scene body for `beat-template: manim-motion` (from ### Manim). */
+    manimWebCode?: string;
     /** @deprecated Use `comment`; retained while older animation files migrate. */
     aiComment?: string;
     /** When false, AI editors must not change `say` for this beat. Defaults to true when omitted. */
@@ -170,9 +184,14 @@ export function isCompareBeatFontScalesAsBefore(
 }
 
 export function comparePortraitBottomTargetsFromBeats(
-    beats: Array<Pick<VideoOpsCompareSceneBeatV4, 'focus' | 'lean' | 'turn'>>,
+    beats: Array<
+        Pick<VideoOpsCompareSceneBeatV4, 'focus' | 'lean' | 'turn' | 'portraitBottom'>
+    >,
 ): ComparePortraitBottomTarget[] {
     return beats.map((beat) => {
+        if (beat.portraitBottom) {
+            return beat.portraitBottom;
+        }
         if (beat.focus === 'turn') {
             return 'turn-render';
         }
@@ -182,11 +201,18 @@ export function comparePortraitBottomTargetsFromBeats(
 
         const leanHasHint = beat.lean?.hints?.some((hint) =>
             hint.target.startsWith('lean-'),
-        );
+        ) ?? false;
         const turnHasHint = beat.turn?.hints?.some((hint) =>
             hint.target.startsWith('turn-'),
+        ) ?? false;
+        // Highlights / Lean code count as Lean content — a lone Turn callout must not
+        // swap the portrait bottom pane to Turn-Lang render while the beat is Lean talk.
+        const leanHasContent = Boolean(
+            beat.lean?.code?.trim() ||
+                (beat.lean?.highlights?.length ?? 0) > 0 ||
+                leanHasHint,
         );
-        return turnHasHint && !leanHasHint ? 'turn-render' : 'lean-code';
+        return turnHasHint && !leanHasContent ? 'turn-render' : 'lean-code';
     });
 }
 
@@ -1376,6 +1402,12 @@ function textbookOverlayFromBeatsV4(
     return {
         aataExcerpt: def.aataExcerpt,
         placement: def.placement,
+        latex: def.latex,
+        definitionLabel: def.definitionLabel,
+        source: def.source,
+        section: def.section,
+        bookTitle: def.bookTitle,
+        bookAuthor: def.bookAuthor,
         revealAtSeconds: firstWithOverlay.atSeconds,
         hideAtSeconds: firstHidden?.atSeconds,
     };
@@ -1486,6 +1518,29 @@ function isPreservableV2MainLayer(layer: VideoOpsRenderLayer): boolean {
     );
 }
 
+/** Beat templates that render through CompareBeatContent still need a compare layer for tracks. */
+const COMPARE_SHELL_BEAT_TEMPLATE_KINDS = new Set([
+    'compare-dual',
+    'stickers',
+    'screen-recording',
+]);
+
+function beatTemplateKindUsesCompareShell(kind: string | undefined): boolean {
+    if (!kind) {
+        return true;
+    }
+    return COMPARE_SHELL_BEAT_TEMPLATE_KINDS.has(kind);
+}
+
+function mainLayerDefersToCompareTracks(
+    mainLayer: VideoOpsAnimationSceneV4['mainLayer'],
+): boolean {
+    return (
+        mainLayer?.type === 'beat-template' &&
+        beatTemplateKindUsesCompareShell(mainLayer.kind)
+    );
+}
+
 function hasAuthoredCompareVisuals(compare: VideoOpsCompareSceneConfigV4): boolean {
     return (
         compare.beats.some((beat) => Boolean(beat.lean || beat.turn || beat.overlay)) ||
@@ -1499,7 +1554,7 @@ export function usesGeneratedCompareLayerV4(scene: VideoOpsAnimationSceneV4): bo
     if (scene.presentation) {
         return false;
     }
-    if (scene.mainLayer) {
+    if (scene.mainLayer && !mainLayerDefersToCompareTracks(scene.mainLayer)) {
         return false;
     }
     if (scene.legacyCompareLayer && !hasAuthoredCompareVisuals(scene.compare)) {
@@ -1559,7 +1614,9 @@ export function convertAnimationV2ToV4Base(animation: VideoOpsAnimation): VideoO
 }
 
 /** Expand v4 compare scene to v2 director + compare layer. */
-export function expandCompareSceneV4ToV2(scene: VideoOpsAnimationSceneV4): VideoOpsAnimationScene {
+export function expandCompareSceneV4ToV2(
+    scene: VideoOpsAnimationSceneV4,
+): VideoOpsAnimationScene {
     const { compare } = scene;
     const resolvedBeats = resolveCompareBeatTimingsV4(compare.beats, scene.durationSeconds);
     const beatVisualNotes = beatVisualNotesFromBeats(resolvedBeats);
@@ -1618,7 +1675,7 @@ export function expandCompareSceneV4ToV2(scene: VideoOpsAnimationSceneV4): Video
                       trimOut: scene.presentation.trimOut,
                   },
               ]
-            : scene.mainLayer
+            : scene.mainLayer && !mainLayerDefersToCompareTracks(scene.mainLayer)
               ? [scene.mainLayer]
               : scene.legacyCompareLayer && !hasAuthoredCompareVisuals(scene.compare)
                 ? [scene.legacyCompareLayer]
@@ -1679,7 +1736,7 @@ export function expandAnimationV4ToV2(animation: VideoOpsAnimationV4): VideoOpsA
         scriptId: animation.scriptId,
         title: animation.title,
         composition: animation.composition,
-        scenes: animation.scenes.map(expandCompareSceneV4ToV2),
+        scenes: animation.scenes.map((scene) => expandCompareSceneV4ToV2(scene)),
     };
 }
 

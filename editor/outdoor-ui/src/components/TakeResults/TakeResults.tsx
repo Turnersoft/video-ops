@@ -444,6 +444,8 @@ export function TakeResults({
         <AlignReviewPanel
           key={`align-${jobId}`}
           jobId={jobId}
+          scriptId={scriptId}
+          takeId={take.takeId}
           compositeLandscapeUrl={compositePreviewUrl}
           onPipelineChange={() => void load('full')}
         />,

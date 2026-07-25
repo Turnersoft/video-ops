@@ -1,0 +1,16 @@
+@use '../../app' as *;
+
+.badge {
+  position: absolute;
+  z-index: 40;
+  pointer-events: none;
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
+  line-height: 1.1;
+  white-space: nowrap;
+}

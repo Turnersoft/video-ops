@@ -33,7 +33,6 @@ On paper that line costs nothing.
 But “there is an inverse” is a real claim — with laws attached.
 If f is not invertible, you cannot smuggle g in for free.
 Formal work makes you earn that sentence or reject it.
-
 ### Visual notes
 
 Generic: “assume inverse exists” on whiteboard → red question mark. No tool names.
@@ -64,7 +63,6 @@ One place defines what an inverse *would* satisfy — the composition laws.
 Another place on the map only says: there exists such an inverse for *this* map.
 Exists means you are claiming you can instantiate that structure and the laws check.
 That is a proposition — not a silent axiom in the header.
-
 ### Turn
 
 ```turn
@@ -72,11 +70,9 @@ That is a proposition — not a silent axiom in the header.
             |- exists InverseFunction<self>
         }
 ```
-
-Highlights:
+### Turn highlights
 
 - `exists InverseFunction<self>`
-
 ### Visual notes
 
 Outline: `InverseFunction` structure (laws) separate from `Function.invertible` property (`exists`).
@@ -107,9 +103,7 @@ allow-script-change: false
 In this chapter, invertible is a property; the inverse is a structure with composition laws.
 Exists means you still owe a witness that checks.
 Full walkthrough in the description.
-
 ### Visual notes
 
 `theorem "invertible mapping must be injective"` header only — do not prove live.
 Tease algebra-02 / pitfalls-02.
-

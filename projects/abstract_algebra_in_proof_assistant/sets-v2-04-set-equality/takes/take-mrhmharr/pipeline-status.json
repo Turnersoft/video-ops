@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 2,
+  "status": "running",
+  "createdAt": "2026-07-23T14:43:19.369Z",
+  "updatedAt": "2026-07-23T14:43:19.560Z",
+  "selectedRuns": {},
+  "runs": {
+    "stabilize": [
+      {
+        "runId": "stabilize-mrxmfo20",
+        "status": "running",
+        "createdAt": "2026-07-23T14:43:19.560Z"
+      }
+    ],
+    "cut": [],
+    "align": [],
+    "composite": [],
+    "social": []
+  },
+  "autoRun": true,
+  "jobId": "job-take-mrhmharr",
+  "takeId": "take-mrhmharr",
+  "scriptId": "sets-v2-04-set-equality",
+  "scriptTitle": "04_set_equality",
+  "sourceVideoPath": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/source.mp4",
+  "takeManifestPath": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhmharr/take.json"
+}

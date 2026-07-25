@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 2,
+  "status": "failed",
+  "createdAt": "2026-07-23T14:43:19.188Z",
+  "updatedAt": "2026-07-23T14:43:24.717Z",
+  "selectedRuns": {
+    "stabilize": "stabilize-mrxmfny2"
+  },
+  "runs": {
+    "stabilize": [
+      {
+        "runId": "stabilize-mrxmfny2",
+        "status": "succeeded",
+        "createdAt": "2026-07-23T14:43:24.618Z",
+        "finishedAt": "2026-07-23T14:43:24.618Z",
+        "artifacts": {
+          "stabilizedVideo": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhjew5h/pipeline/stabilize/stabilize-mrxmfny2/stabilized.mp4",
+          "transforms": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhjew5h/pipeline/stabilize/stabilize-mrxmfny2/transforms.trf",
+          "previewUrl": "/api/scripts/sets-v2-04-set-equality/takes/take-mrhjew5h/artifacts/stabilize/stabilize-mrxmfny2/stabilized.mp4"
+        },
+        "builtFrom": {}
+      }
+    ],
+    "cut": [
+      {
+        "runId": "cut-mrxmfrz4",
+        "status": "failed",
+        "createdAt": "2026-07-23T14:43:24.717Z",
+        "finishedAt": "2026-07-23T14:43:24.717Z",
+        "error": "No outdoor script for sets-v2-04-set-equality.",
+        "errorCode": "missing_script",
+        "errorTitle": "Script missing on Mac",
+        "errorHint": "Bundle a teleprompter JSON or add animation.md on the Mac."
+      }
+    ],
+    "align": [],
+    "composite": [],
+    "social": []
+  },
+  "autoRun": true,
+  "jobId": "job-take-mrhjew5h",
+  "takeId": "take-mrhjew5h",
+  "scriptId": "sets-v2-04-set-equality",
+  "scriptTitle": "04_set_equality",
+  "sourceVideoPath": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhjew5h/source.mp4",
+  "takeManifestPath": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrhjew5h/take.json"
+}

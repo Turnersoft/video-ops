@@ -18,6 +18,6 @@ layout: beat-focus
 ## Beat 1: Hook
 
 Motion essay smoke beat — math-board and terminal layers render via kit stubs.
-
 ### Visual notes
+
 Terminal panel placeholder for motion-essay kit.

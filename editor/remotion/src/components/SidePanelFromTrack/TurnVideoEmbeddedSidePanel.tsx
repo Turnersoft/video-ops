@@ -1,5 +1,5 @@
 // /Users/johndoe/Documents/company/basic_ui/src/shared/turn-video/panels/TurnVideoEmbeddedSidePanel.tsx
-import { MathJaxProvider } from '@yozora/react-mathjax';
+import { SafeMathJaxProvider } from '../../lib/panels/SafeMathJaxProvider';
 import { useMemo } from 'react';
 import type React from 'react';
 
@@ -100,14 +100,14 @@ export function TurnVideoEmbeddedSidePanel({
         return (
             <div style={shellStyle}>
                 <div style={tabStackChildStyle}>
-                    <MathJaxProvider>
+                    <SafeMathJaxProvider>
                         <EmbeddedKnowledgePanel
                             host={host}
                             data={knowledgeData}
                             cursor={knowledgeCursor}
                             chromeTheme={KNOWLEDGE_PANEL_CHROME}
                         />
-                    </MathJaxProvider>
+                    </SafeMathJaxProvider>
                 </div>
             </div>
         );
@@ -117,13 +117,13 @@ export function TurnVideoEmbeddedSidePanel({
         return (
             <div style={shellStyle}>
                 <div style={tabStackChildStyle}>
-                    <MathJaxProvider>
+                    <SafeMathJaxProvider>
                         <EmbeddedProofPanel
                             host={host}
                             data={visualizationData}
                             chromeTheme={PROOF_PANEL_CHROME}
                         />
-                    </MathJaxProvider>
+                    </SafeMathJaxProvider>
                 </div>
             </div>
         );

@@ -175,12 +175,10 @@ export async function persistHintLayoutsToFile(
     const body = JSON.stringify({ scriptId, path: relativePath, layouts });
     const endpoints: string[] = [];
     if (typeof window !== 'undefined') {
+        // Remotion Studio (webpack dev server) and Video Editor (Vite) — same origin.
         endpoints.push('/video_ops/api/hint-layouts');
     }
     endpoints.push(videoOpsDevApiUrl('/video_ops/api/hint-layouts'));
-    if (typeof window === 'undefined' || window.location.port !== '5173') {
-        endpoints.push('http://localhost:5173/video_ops/api/hint-layouts');
-    }
     for (const endpoint of endpoints) {
         try {
             const response = await fetch(endpoint, {
@@ -196,7 +194,7 @@ export async function persistHintLayoutsToFile(
             };
             return payload.layouts ?? null;
         } catch {
-            // Try next endpoint (e.g. Remotion Studio on :3000 → VideoOps dev server on :5173).
+            // Try next endpoint (e.g. Remotion Studio → VideoOps dev API on :3021).
         }
     }
     return null;

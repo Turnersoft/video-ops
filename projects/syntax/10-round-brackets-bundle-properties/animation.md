@@ -33,7 +33,6 @@ You do not want to copy the whole definition of registered, then copy the whole 
 You want to say: eligible means both labels together.
 That is the intuition behind bundling properties.
 In math, bijective is not a mysterious third thing — it is two adjectives traveling together.
-
 ### Visual notes
 
 Three duplicate definition cards (conceptual) → one bundled card.
@@ -62,19 +61,16 @@ allow-script-change: false
 In this chapter, bijective is literally `(surjective, injective)` — one line.
 Same round-bracket idea when you attach several properties before a type.
 One syntax for “these conditions together” — that is how libraries stay readable.
-
 ### Turn
 
 ```turn
         @notation(adjective)
         bijective: (surjective, injective)
 ```
-
-Highlights:
+### Turn highlights
 
 - `bijective`
 - `(surjective, injective)`
-
 ### Visual notes
 
 Expand surjective and injective in outline above.
@@ -104,9 +100,7 @@ allow-script-change: false
 The underlying adjectives still have their own laws — you can prove them separately.
 The bundle is composition of names, not a wall of duplicated text.
 Full 1.2 video in the description.
-
 ### Visual notes
 
 `invertible: Prop { ... }` briefly — tease pitfalls-05.
 Short close.
-

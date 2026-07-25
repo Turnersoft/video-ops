@@ -9,6 +9,7 @@ import type { OutdoorJob } from '../schema.ts';
 import { alignFromSlideEvents, slideEventsAreSufficient } from './align-from-slides.ts';
 import type { TranscriptVerbose } from '../../../outdoor_post/src/sentence-captions.ts';
 import { syncOutdoorEditToAnimation } from '../sync-outdoor-animation.ts';
+import { finalizeOutdoorTakeAnimation } from '../finalize-outdoor-take-animation.ts';
 import { artifactUrl, runStageWorker } from './util.ts';
 
 type VisualPlan = {
@@ -116,6 +117,7 @@ export async function runAlignStage(
 
     report({ percent: 95, message: 'Alignment artifacts written' });
     const outdoorAnimationPath = path.join(outDir, 'animation-outdoor.json');
+    await finalizeOutdoorTakeAnimation(job.scriptId, outdoorAnimationPath);
     syncOutdoorEditToAnimation(job.scriptId, outdoorAnimationPath);
     writeJson(path.join(outDir, 'align-mode.json'), {
       mode: useSlides ? 'slides' : 'asr',

@@ -9,6 +9,8 @@ export type AutoGrowTextInputProps = TextInputProps & {
   maxLines?: number;
   /** Keep long lines on one row; scroll horizontally (web) instead of wrapping. */
   nowrap?: boolean;
+  /** Fill the parent flex container height and scroll inside (web beat editor). */
+  fillHeight?: boolean;
   inputStyle?: StyleProp<TextStyle>;
   /** Web SCSS module class for the input element. */
   inputClassName?: string;

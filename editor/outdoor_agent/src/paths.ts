@@ -2,13 +2,15 @@ import path from 'node:path';
 import { homedir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 
-import { fileExists } from './fs_util.ts';
+import { fileExists, readJson } from './fs_util.ts';
+import type { OutdoorJob, PipelineStage } from './schema.ts';
 import {
   CANONICAL_SERIES_DIRS,
   defaultSeriesForScriptId,
   isReservedSeriesEntry,
   SCRIPTS_ROOT,
   SCRIPT_SERIES_DIRS,
+  SERIES_PREFIX_RULES,
   seriesSharedRelative,
   stripSeriesPrefixFromScriptId,
   type ScriptSeriesDir,
@@ -299,6 +301,100 @@ export function takeStageRunDir(
   runId: string,
 ): string {
   return path.join(pipelineDir(scriptId, takeId), stage, runId);
+}
+
+const STAGE_ARTIFACT_FILE_KEYS: Partial<
+  Record<PipelineStage, Partial<Record<string, string>>>
+> = {
+  stabilize: { 'stabilized.mp4': 'stabilizedVideo' },
+  cut: { 'edited-good-intervals.mp4': 'editedVideo' },
+  align: { 'edited-good-intervals.mp4': 'editedVideo' },
+};
+
+function legacyScriptIdCandidates(scriptId: string): string[] {
+  const canonical = canonicalizeScriptId(scriptId);
+  const out: string[] = [];
+  if (canonical !== scriptId) {
+    out.push(canonical);
+  }
+  for (const rule of SERIES_PREFIX_RULES) {
+    const prefixed = `${rule.prefix}${canonical}`;
+    if (prefixed !== scriptId && !out.includes(prefixed)) {
+      out.push(prefixed);
+    }
+  }
+  return out;
+}
+
+function artifactFromRunRecord(
+  stage: string,
+  fileName: string,
+  artifacts: Record<string, string> | undefined,
+): string | null {
+  const key = STAGE_ARTIFACT_FILE_KEYS[stage as PipelineStage]?.[fileName];
+  if (!key) {
+    return null;
+  }
+  const recorded = artifacts?.[key];
+  return recorded && fileExists(recorded) ? recorded : null;
+}
+
+/** Prefer canonical take dir; fall back to run-record paths and legacy alias folders. */
+export function resolveStageArtifactPath(
+  scriptId: string,
+  takeId: string,
+  stage: string,
+  runId: string,
+  fileName: string,
+): string | null {
+  const primary = path.join(takeStageRunDir(scriptId, takeId, stage, runId), fileName);
+  if (fileExists(primary)) {
+    return primary;
+  }
+
+  const statusPath = pipelineStatusPath(scriptId, takeId);
+  if (fileExists(statusPath)) {
+    try {
+      const status = readJson<OutdoorJob>(statusPath);
+      const run = status.runs[stage as PipelineStage]?.find((entry) => entry.runId === runId);
+      const fromRecord = artifactFromRunRecord(stage, fileName, run?.artifacts);
+      if (fromRecord) {
+        return fromRecord;
+      }
+    } catch {
+      // ignore corrupt status
+    }
+  }
+
+  for (const altScriptId of legacyScriptIdCandidates(scriptId)) {
+    const alt = path.join(takeStageRunDir(altScriptId, takeId, stage, runId), fileName);
+    if (fileExists(alt)) {
+      return alt;
+    }
+    const altStatusPath = pipelineStatusPath(altScriptId, takeId);
+    if (fileExists(altStatusPath)) {
+      try {
+        const status = readJson<OutdoorJob>(altStatusPath);
+        const run = status.runs[stage as PipelineStage]?.find((entry) => entry.runId === runId);
+        const fromRecord = artifactFromRunRecord(stage, fileName, run?.artifacts);
+        if (fromRecord) {
+          return fromRecord;
+        }
+      } catch {
+        // ignore corrupt status
+      }
+    }
+  }
+
+  return null;
+}
+
+/** Prefer short episode folders over legacy prefixed aliases (`sets-v2-…`). */
+export function takeScriptPriority(scriptId: string): number {
+  if (stripSeriesPrefixFromScriptId(scriptId)) {
+    return 2;
+  }
+  return scriptId === canonicalizeScriptId(scriptId) ? 0 : 1;
 }
 
 export function publishStatePathForTake(scriptId: string, takeId: string): string {

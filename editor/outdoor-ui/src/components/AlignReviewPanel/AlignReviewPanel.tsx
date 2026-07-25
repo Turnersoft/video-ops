@@ -34,6 +34,8 @@ const COMPARE_ROW_HEIGHT = 200;
 
 export function AlignReviewPanel({
   jobId,
+  scriptId,
+  takeId,
   onPipelineChange,
 }: AlignReviewPanelProps) {
   const {  api, layout, invalidateAll, refreshKey, transport  } = useOutdoorUi();
@@ -78,30 +80,48 @@ export function AlignReviewPanel({
   }, [load, refreshKey]);
 
   const landscapeUrl = useMemo(() => {
+    const embedOptions = { scriptId, takeId };
     if (transport?.remotionOrigin) {
-      return remotionEmbedFromOrigin(transport.remotionOrigin, 'video-outdoor-landscape');
+      return remotionEmbedFromOrigin(transport.remotionOrigin, 'video-outdoor-landscape', embedOptions);
     }
     if (!review) {
       return null;
     }
-    return remotionStudioEmbedUrl(
+    const base = remotionStudioEmbedUrl(
       review.remotionCompositionUrl ?? review.remotionStudioUrl,
       'video-outdoor-landscape',
     );
-  }, [review, transport?.remotionOrigin]);
+    try {
+      const url = new URL(base);
+      url.searchParams.set('scriptId', scriptId);
+      url.searchParams.set('takeId', takeId);
+      return url.toString();
+    } catch {
+      return base;
+    }
+  }, [review, scriptId, takeId, transport?.remotionOrigin]);
 
   const portraitUrl = useMemo(() => {
+    const embedOptions = { scriptId, takeId };
     if (transport?.remotionOrigin) {
-      return remotionEmbedFromOrigin(transport.remotionOrigin, 'video-outdoor-portrait');
+      return remotionEmbedFromOrigin(transport.remotionOrigin, 'video-outdoor-portrait', embedOptions);
     }
     if (!review) {
       return null;
     }
-    return remotionStudioEmbedUrl(
+    const base = remotionStudioEmbedUrl(
       review.remotionPortraitUrl ?? review.remotionStudioUrl,
       'video-outdoor-portrait',
     );
-  }, [review, transport?.remotionOrigin]);
+    try {
+      const url = new URL(base);
+      url.searchParams.set('scriptId', scriptId);
+      url.searchParams.set('takeId', takeId);
+      return url.toString();
+    } catch {
+      return base;
+    }
+  }, [review, scriptId, takeId, transport?.remotionOrigin]);
 
   const embedUrl = format === 'portrait' ? portraitUrl : landscapeUrl;
   const compositionId =
@@ -294,6 +314,7 @@ export function AlignReviewPanel({
             style={[webModuleStyle(classes.remotionWrap, format === 'portrait' ? classes.remotionPortrait : null), { height: remotionHeight, minHeight: remotionHeight }]}
           >
             <RemotionEmbed
+              key={`${scriptId}-${takeId}-${format}-${embedUrl}`}
               ref={embedRef}
               url={embedUrl}
               studioOrigin={remotionStudioOrigin(

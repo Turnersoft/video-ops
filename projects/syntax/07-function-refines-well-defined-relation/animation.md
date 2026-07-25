@@ -33,7 +33,6 @@ Now imagine the table is supposed to behave like a machine.
 You put in one input, and the machine is not allowed to return two different outputs.
 That single-valued rule is the whole jump from relation to function.
 So the design question is: should Turn invent a brand-new object, or reuse the relation we already understand?
-
 ### Visual notes
 
 Pipeline sketch: one input → one output (no code yet).
@@ -61,7 +60,6 @@ allow-script-change: false
 
 Turn-Lang puts single-valuedness on `Relation` as a named property — for each input, a unique output in the relation.
 Then `Function` refines that relation and adds `apply` — one inheritance line you can read on screen.
-
 ### Turn
 
 ```turn
@@ -69,12 +67,10 @@ structure Function<domain range: Set<Any>>: (well_defined)Relation<domain, range
     @notation( {self} ~ "(" ~ {a} ~ ")" )
     apply(a: domain): range,
 ```
-
-Highlights:
+### Turn highlights
 
 - `(well_defined)Relation`
 - `apply(a: domain)`
-
 ### Visual notes
 
 `well_defined` on `Relation`, then:
@@ -105,9 +101,7 @@ allow-script-change: false
 Same idea in simulation — one input should not return two unrelated outputs.
 Pitfalls clip on when rules fail that test — link in description.
 Full 1.2 walkthrough below.
-
 ### Visual notes
 
 `apply(a: domain)` highlighted.
 L5 one sentence; CTA pitfalls-04.
-

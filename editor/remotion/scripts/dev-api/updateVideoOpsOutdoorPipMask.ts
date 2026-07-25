@@ -16,15 +16,16 @@ import type {
     OutdoorPipMaskPersist,
     OutdoorPipMaskSyncMode,
 } from '../../src/lib/studio/persistOutdoorPipMask';
-import { videoOpsScriptDiskFolder } from '../../src/lib/videoOpsPaths';
+import { videoOpsScriptDiskFolder, canonicalVideoOpsScriptId } from '../../src/lib/videoOpsPaths';
+import { resolveVideoOpsScriptDiskDir } from '../../src/lib/videoOpsScriptDiskDir';
 import { suppressAnimationMarkdownWatch } from './videoOpsAnimationMarkdownWatchState';
 
 function renderPropsPath(videoOpsDir: string, scriptId: string): string {
-    return path.join(videoOpsDir, videoOpsScriptDiskFolder(scriptId), '.cache', 'render-props.json');
+    return path.join(resolveVideoOpsScriptDiskDir(videoOpsDir, scriptId), '.cache', 'render-props.json');
 }
 
 function animationV4CachePath(videoOpsDir: string, scriptId: string): string {
-    return path.join(videoOpsDir, videoOpsScriptDiskFolder(scriptId), '.cache', 'animation-v4.json');
+    return path.join(resolveVideoOpsScriptDiskDir(videoOpsDir, scriptId), '.cache', 'animation-v4.json');
 }
 
 function patchAnimationV4BeatPipMask(
@@ -119,7 +120,7 @@ function writeOutdoorEditPipMask(
     beatIndex?: number,
     sceneIndex = 0,
 ): boolean {
-    const animPath = path.join(videoOpsDir, videoOpsScriptDiskFolder(scriptId), 'animation.json');
+    const animPath = path.join(resolveVideoOpsScriptDiskDir(videoOpsDir, scriptId), 'animation.json');
     if (!fs.existsSync(animPath)) {
         return false;
     }
@@ -194,7 +195,8 @@ export function syncOutdoorPipMaskToAllBeatsInAnimation(
         return;
     }
     const sourceBeatMask = outdoorPipMaskPersistToBeatMask(pipMask);
-    const scriptDir = path.join(videoOpsDir, videoOpsScriptDiskFolder(scriptId));
+    const compileScriptId = canonicalVideoOpsScriptId(scriptId);
+    const scriptDir = resolveVideoOpsScriptDiskDir(videoOpsDir, scriptId);
     const animationMarkdownPath = path.join(scriptDir, VIDEO_OPS_ANIMATION_MARKDOWN_FILENAME);
 
     if (!fs.existsSync(animationMarkdownPath)) {
@@ -219,8 +221,8 @@ export function syncOutdoorPipMaskToAllBeatsInAnimation(
         );
         patchAnimationV4BeatPipMask(scriptDir, sceneIndex, beatIndex, beatMask);
         const renderMask = beatPipMaskToRenderMask(beatMask);
-        patchRenderPropsBeatPipMask(videoOpsDir, scriptId, sceneIndex, beatIndex, renderMask);
-        writeOutdoorEditPipMask(videoOpsDir, scriptId, renderMask, beatIndex, sceneIndex);
+        patchRenderPropsBeatPipMask(videoOpsDir, compileScriptId, sceneIndex, beatIndex, renderMask);
+        writeOutdoorEditPipMask(videoOpsDir, compileScriptId, renderMask, beatIndex, sceneIndex);
     }
 
     suppressAnimationMarkdownWatch(animationMarkdownPath, markdown);
@@ -236,7 +238,8 @@ export function updateOutdoorPipMaskInAnimation(
     sceneIndex = 0,
 ): OutdoorPipMaskPersist {
     const beatMask = outdoorPipMaskPersistToBeatMask(pipMask);
-    const scriptDir = path.join(videoOpsDir, videoOpsScriptDiskFolder(scriptId));
+    const compileScriptId = canonicalVideoOpsScriptId(scriptId);
+    const scriptDir = resolveVideoOpsScriptDiskDir(videoOpsDir, scriptId);
     const animationMarkdownPath = path.join(scriptDir, VIDEO_OPS_ANIMATION_MARKDOWN_FILENAME);
 
     if (typeof beatIndex !== 'number' || beatIndex < 0) {
@@ -251,20 +254,19 @@ export function updateOutdoorPipMaskInAnimation(
             beatIndex,
             beatMask,
         );
-        if (updatedMarkdown !== existingMarkdown) {
-            suppressAnimationMarkdownWatch(animationMarkdownPath, updatedMarkdown);
-            fs.writeFileSync(animationMarkdownPath, updatedMarkdown, 'utf8');
-        }
+        // Always write so mtime/live-compile cache advances even when floats round identically.
+        suppressAnimationMarkdownWatch(animationMarkdownPath, updatedMarkdown);
+        fs.writeFileSync(animationMarkdownPath, updatedMarkdown, 'utf8');
         patchAnimationV4BeatPipMask(scriptDir, sceneIndex, beatIndex, beatMask);
-        patchRenderPropsBeatPipMask(videoOpsDir, scriptId, sceneIndex, beatIndex, pipMask);
-        writeOutdoorEditPipMask(videoOpsDir, scriptId, pipMask, beatIndex, sceneIndex);
+        patchRenderPropsBeatPipMask(videoOpsDir, compileScriptId, sceneIndex, beatIndex, pipMask);
+        writeOutdoorEditPipMask(videoOpsDir, compileScriptId, pipMask, beatIndex, sceneIndex);
         return pipMask;
     }
 
-    if (writeOutdoorEditPipMask(videoOpsDir, scriptId, pipMask, beatIndex, sceneIndex)) {
-        patchRenderPropsBeatPipMask(videoOpsDir, scriptId, sceneIndex, beatIndex, pipMask);
+    if (writeOutdoorEditPipMask(videoOpsDir, compileScriptId, pipMask, beatIndex, sceneIndex)) {
+        patchRenderPropsBeatPipMask(videoOpsDir, compileScriptId, sceneIndex, beatIndex, pipMask);
         return pipMask;
     }
 
-    throw new Error(`Missing ${VIDEO_OPS_ANIMATION_MARKDOWN_FILENAME} for ${scriptId}.`);
+    throw new Error(`Missing ${VIDEO_OPS_ANIMATION_MARKDOWN_FILENAME} for ${compileScriptId}.`);
 }

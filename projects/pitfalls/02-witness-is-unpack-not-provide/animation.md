@@ -34,7 +34,6 @@ I am unpacking the existence statement I already had.
 But when you are writing proof scripts, it is very tempting to type a fresh name and move on.
 The proof looks like it progressed.
 In reality, you named a ghost unless some earlier hypothesis actually promised that witness.
-
 ### Visual notes
 
 Generic proof scratch: `witness w` with no prior `exists` — optional error/diagnostic if available.
@@ -64,7 +63,6 @@ In Turn-Lang, witness is unpack, not provide.
 You specialize a theorem you already have into a hypothesis.
 Then `witness hRep.witness for x in hRep` says: take the witness the hypothesis already promised and bind the variable it was about.
 No hypothesis, no witness line.
-
 ### Turn
 
 ```turn
@@ -77,12 +75,10 @@ disjoint {
     ...
 }
 ```
-
-Highlights:
+### Turn highlights
 
 - `witness hRepA.witness for x in hRepA`
 - `witness hRepB.witness for x in hRepB`
-
 ### Visual notes
 
 Zoom witness pair lines after specialize.
@@ -111,9 +107,7 @@ allow-script-change: false
 The partition proof in this chapter does the same thing twice.
 Witness means unpack the receipt, not invent the object.
 Subscribe for more traps formal work catches early.
-
 ### Visual notes
 
 Both witness lines highlighted.
 End in file.
-

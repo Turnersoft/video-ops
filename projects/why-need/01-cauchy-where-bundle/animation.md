@@ -33,7 +33,6 @@ font.render: 1
 Hi friends, welcome back. This is Turner.
 So we are formalizing Tao's Analysis, chapter five, Cauchy sequences.
 Open the real file with me. This is not a toy example. This is the actual chapter source.
-
 ### Visual notes
 
 Open `5.1_Cauchy_Sequences__h1ta6tfvqbykppzu84hh.turn` in the Turn-Lang workspace.
@@ -61,7 +60,6 @@ allow-script-change: false
 Look at the law for `IsCauchy`.
 Epsilon must be positive. N must be at least one. j and k must both be at least N.
 In a textbook these are listed as separate bullets. Here they sit in one `where` block.
-
 ### Turn
 
 ```turn
@@ -76,13 +74,11 @@ structure IsCauchy<a: Sequence>: Prop {
     }
 }
 ```
-
-Highlights:
+### Turn highlights
 
 - `where { |- RatLT(Zero, epsilon) }`
 - `where { |- NatGE<N, NatOne> }`
 - `where { |- NatGE<j, N>; |- NatGE<k, N>; }`
-
 ### Visual notes
 
 Highlight each `where` clause one at a time: epsilon, N, j and k.
@@ -111,7 +107,6 @@ allow-script-change: false
 You could mash all of this into one giant conjunction.
 But then you lose the shape of the definition.
 The bundle says: these are the side conditions checked together when you instantiate the structure.
-
 ### Visual notes
 
 Keep the same `IsCauchy` block on screen. Cursor on the semicolon-separated `where` lines.
@@ -139,9 +134,7 @@ allow-script-change: false
 So when you read Turn-Lang, look for the `where` blocks.
 That is often where the textbook's fine print lives.
 Subscribe, and we will keep formalizing Tao together.
-
 ### Visual notes
 
 End on the rendered math for `IsCauchy` if available, otherwise the source block.
 Calm close in the workspace.
-

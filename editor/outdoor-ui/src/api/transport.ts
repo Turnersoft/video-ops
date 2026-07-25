@@ -301,8 +301,16 @@ export async function resolveOutdoorTransport(
 export function remotionEmbedFromOrigin(
   remotionOrigin: string,
   compositionPath: string,
+  options: { scriptId?: string; takeId?: string } = {},
 ): string {
   const origin = normalizeUrl(remotionOrigin);
   const id = compositionPath.replace(/^\/+|\/+$/g, '');
-  return `${origin}/${encodeURIComponent(id)}?outdoorEmbed=1`;
+  const params = new URLSearchParams({ outdoorEmbed: '1' });
+  if (options.scriptId?.trim()) {
+    params.set('scriptId', options.scriptId.trim());
+  }
+  if (options.takeId?.trim()) {
+    params.set('takeId', options.takeId.trim());
+  }
+  return `${origin}/${encodeURIComponent(id)}?${params.toString()}`;
 }

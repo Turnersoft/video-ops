@@ -1,0 +1,408 @@
+{
+  "schemaVersion": 1,
+  "sourceScriptId": "04-set-equality",
+  "title": "04_set_equality",
+  "editedDurationSeconds": 729.760000000002,
+  "timeline": [
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 0.65,
+      "sourceEnd": 21.810000000000002,
+      "editedStart": 0,
+      "editedEnd": 21.160000000000004
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 22.29,
+      "sourceEnd": 45.95,
+      "editedStart": 21.160000000000004,
+      "editedEnd": 44.82000000000001
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 46.43,
+      "sourceEnd": 55.97,
+      "editedStart": 44.82000000000001,
+      "editedEnd": 54.36000000000001
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 59.69,
+      "sourceEnd": 75.53,
+      "editedStart": 54.36000000000001,
+      "editedEnd": 70.20000000000002
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 79.87,
+      "sourceEnd": 88.21,
+      "editedStart": 70.20000000000002,
+      "editedEnd": 78.54
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 88.73,
+      "sourceEnd": 101.86999999999999,
+      "editedStart": 78.54,
+      "editedEnd": 91.67999999999999
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 102.37,
+      "sourceEnd": 117.00999999999999,
+      "editedStart": 91.67999999999999,
+      "editedEnd": 106.31999999999998
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 120.33000000000001,
+      "sourceEnd": 143.51,
+      "editedStart": 106.31999999999998,
+      "editedEnd": 129.49999999999994
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 144.93,
+      "sourceEnd": 153.32999999999998,
+      "editedStart": 129.49999999999994,
+      "editedEnd": 137.89999999999992
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 155.39000000000001,
+      "sourceEnd": 179.39,
+      "editedStart": 137.89999999999992,
+      "editedEnd": 161.8999999999999
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 179.85,
+      "sourceEnd": 184.45,
+      "editedStart": 161.8999999999999,
+      "editedEnd": 166.4999999999999
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 192.70000000000002,
+      "sourceEnd": 244.29999999999998,
+      "editedStart": 166.4999999999999,
+      "editedEnd": 218.09999999999985
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 244.76000000000002,
+      "sourceEnd": 246.23999999999998,
+      "editedStart": 218.09999999999985,
+      "editedEnd": 219.5799999999998
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 262.26,
+      "sourceEnd": 265.86,
+      "editedStart": 219.5799999999998,
+      "editedEnd": 223.17999999999984
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 284.5,
+      "sourceEnd": 293.42,
+      "editedStart": 223.17999999999984,
+      "editedEnd": 232.09999999999985
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 294.52,
+      "sourceEnd": 300.66,
+      "editedStart": 232.09999999999985,
+      "editedEnd": 238.2399999999999
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 301.15999999999997,
+      "sourceEnd": 305.16,
+      "editedStart": 238.2399999999999,
+      "editedEnd": 242.23999999999995
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 318.95,
+      "sourceEnd": 326.09000000000003,
+      "editedStart": 242.23999999999995,
+      "editedEnd": 249.38
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 326.57,
+      "sourceEnd": 347.41,
+      "editedStart": 249.38,
+      "editedEnd": 270.22
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 348.25,
+      "sourceEnd": 371.07000000000005,
+      "editedStart": 270.22,
+      "editedEnd": 293.0400000000001
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 372.83,
+      "sourceEnd": 387.65000000000003,
+      "editedStart": 293.0400000000001,
+      "editedEnd": 307.8600000000001
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 391.03,
+      "sourceEnd": 421.27,
+      "editedStart": 307.8600000000001,
+      "editedEnd": 338.10000000000014
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 426.59,
+      "sourceEnd": 429.39000000000004,
+      "editedStart": 338.10000000000014,
+      "editedEnd": 340.9000000000002
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 433.34999999999997,
+      "sourceEnd": 445.45000000000005,
+      "editedStart": 340.9000000000002,
+      "editedEnd": 353.0000000000003
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 460,
+      "sourceEnd": 476.607,
+      "editedStart": 353.0000000000003,
+      "editedEnd": 369.6070000000003
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 476.607,
+      "sourceEnd": 476.86,
+      "editedStart": 369.6070000000003,
+      "editedEnd": 369.8600000000003
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 483.71999999999997,
+      "sourceEnd": 494.32000000000005,
+      "editedStart": 369.8600000000003,
+      "editedEnd": 380.4600000000004
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 495.67999999999995,
+      "sourceEnd": 515.52,
+      "editedStart": 380.4600000000004,
+      "editedEnd": 400.3000000000004
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 521.17,
+      "sourceEnd": 521.41,
+      "editedStart": 400.3000000000004,
+      "editedEnd": 400.5400000000004
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "Beat 6: present the higher-category philosophy without naming a person",
+      "sourceStart": 544.88,
+      "sourceEnd": 579.12,
+      "editedStart": 400.5400000000004,
+      "editedEnd": 434.7800000000004
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 615.6999999999999,
+      "sourceEnd": 628.7,
+      "editedStart": 434.7800000000004,
+      "editedEnd": 447.78000000000054
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 629.16,
+      "sourceEnd": 642.88,
+      "editedStart": 447.78000000000054,
+      "editedEnd": 461.50000000000057
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 643.4,
+      "sourceEnd": 658.5,
+      "editedStart": 461.50000000000057,
+      "editedEnd": 476.6000000000006
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 659.04,
+      "sourceEnd": 663.98,
+      "editedStart": 476.6000000000006,
+      "editedEnd": 481.54000000000065
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 665.06,
+      "sourceEnd": 733.02,
+      "editedStart": 481.54000000000065,
+      "editedEnd": 549.5000000000007
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 744.92,
+      "sourceEnd": 748.86,
+      "editedStart": 549.5000000000007,
+      "editedEnd": 553.4400000000007
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 766.9399999999999,
+      "sourceEnd": 789.62,
+      "editedStart": 553.4400000000007,
+      "editedEnd": 576.1200000000008
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 790.3,
+      "sourceEnd": 798.38,
+      "editedStart": 576.1200000000008,
+      "editedEnd": 584.2000000000008
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 799.1999999999999,
+      "sourceEnd": 808.39,
+      "editedStart": 584.2000000000008,
+      "editedEnd": 593.3900000000009
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 808.97,
+      "sourceEnd": 812.1700000000001,
+      "editedStart": 593.3900000000009,
+      "editedEnd": 596.5900000000009
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 812.7099999999999,
+      "sourceEnd": 817.53,
+      "editedStart": 596.5900000000009,
+      "editedEnd": 601.410000000001
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 820.48,
+      "sourceEnd": 824.14,
+      "editedStart": 601.410000000001,
+      "editedEnd": 605.070000000001
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 824.6999999999999,
+      "sourceEnd": 827.5,
+      "editedStart": 605.070000000001,
+      "editedEnd": 607.870000000001
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 827.98,
+      "sourceEnd": 852.6800000000001,
+      "editedStart": 607.870000000001,
+      "editedEnd": 632.5700000000011
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 853.9599999999999,
+      "sourceEnd": 860.1,
+      "editedStart": 632.5700000000011,
+      "editedEnd": 638.7100000000012
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 863.13,
+      "sourceEnd": 893.1800000000001,
+      "editedStart": 638.7100000000012,
+      "editedEnd": 668.7600000000012
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 893.8199999999999,
+      "sourceEnd": 903.9,
+      "editedStart": 668.7600000000012,
+      "editedEnd": 678.8400000000013
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 912.12,
+      "sourceEnd": 915.5600000000001,
+      "editedStart": 678.8400000000013,
+      "editedEnd": 682.2800000000013
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 916.3199999999999,
+      "sourceEnd": 923.98,
+      "editedStart": 682.2800000000013,
+      "editedEnd": 689.9400000000014
+    },
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 934.5799999999999,
+      "sourceEnd": 974.4,
+      "editedStart": 689.9400000000014,
+      "editedEnd": 729.7600000000015
+    }
+  ]
+}

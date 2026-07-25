@@ -163,6 +163,7 @@ export function AnimationEditorScreen({
     navigateToPlatforms,
     navigateToFilm,
     navigateToScript,
+    navigateToPostProcess,
   } = useOutdoorRoute();
 
   const [live, setLive] = useState<LiveScript | null>(null);
@@ -707,7 +708,9 @@ export function AnimationEditorScreen({
         setDrafts((prev) =>
           syncedDrafts.map((serverDraft, beatIndex) => {
             if (beatIndex === index) {
-              return serverDraft;
+              // Keep editor fields for the beat we just saved; server visualNotes
+              // still carry beat-studio metadata not shown in the title field.
+              return draft;
             }
             const priorBeat = previousLive?.beats[beatIndex];
             const priorDraft = prev[beatIndex];
@@ -886,6 +889,11 @@ export function AnimationEditorScreen({
               }
               onOpenFilm(scriptId);
             },
+          },
+          {
+            label: "Post-process",
+            onPress: () => navigateToPostProcess(scriptId),
+            variant: "primary",
           },
           { label: "AI URL", onPress: navigateToPlatforms },
         ]}

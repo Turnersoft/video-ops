@@ -35,7 +35,6 @@ Mathematical structures have the same split.
 Some facts are adjectives we may or may not require.
 Other facts are laws every instance must obey.
 If a formal file mixes those together, the reader gets lost.
-
 ### Visual notes
 
 Split columns: “optional tag” vs “always enforced rule” (generic).
@@ -64,7 +63,6 @@ Turn-Lang puts both inside `Function`, but in separate blocks.
 `properties` — adjectives you attach when you care.
 `laws` — what every function instance must satisfy, including how `apply` behaves.
 You read both in the chapter file — side by side.
-
 ### Visual notes
 
 Split view: `properties {` and `laws {` headers — scroll slowly.
@@ -93,7 +91,6 @@ allow-script-change: false
 `domain_def` is a law: plug in from the domain, land in the range.
 Surjective is a property: you ask whether this particular map is onto.
 Same file, two blocks — link to full chapter below.
-
 ### Turn
 
 ```turn
@@ -103,16 +100,13 @@ Same file, two blocks — link to full chapter below.
         }
     }
 ```
-
-Highlights:
+### Turn highlights
 
 - `domain_def`
 - `apply(a) in range`
-
 ### Visual notes
 
 Contrast with `surjective: Prop` above.
 Whole `Function` in outline at close.
 
 turn-ide track: tracks/scene-3-ide.json
-

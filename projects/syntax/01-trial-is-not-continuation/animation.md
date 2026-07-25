@@ -30,7 +30,6 @@ allow-script-change: false
 Hi friends, welcome back.
 So this is a real proof in our AATA library, symmetric halves of an asymmetric difference.
 You will see `#!` markers in the script. Those mark trial branches.
-
 ### Visual notes
 
 Open the theorem starting at line 153. Show the `split_conjunction` proof with multiple `#!` lines.
@@ -61,7 +60,6 @@ At this fork I already have a default proof line.
 When I add `#!`, I am plugging in another proof in parallel.
 Same goal, different strategy — maybe `assume` and `split`, maybe `contradiction`.
 I keep both in the file so I can compare them, fold the failed one, and move on.
-
 ### Turn
 
 ```turn
@@ -84,12 +82,10 @@ split_conjunction {
     ...
 }
 ```
-
-Highlights:
+### Turn highlights
 
 - `split_conjunction`
 - `#!`
-
 ### Visual notes
 
 Show branch map with default arm and trial arms side by side (`1`, `1#1`, `1#2`). Point out trials are parallel slots, not indented children of the last tactic.
@@ -119,7 +115,6 @@ One mistake people make: they think the trial continues the tactic right above i
 It does not.
 The trial is its own parallel proof from the same fork point.
 That is why proof-slide lays trials beside the main rail, not underneath the previous step.
-
 ### Visual notes
 
 Branch map focused on one fork: main column down, trial columns to the right on the same row.
@@ -147,9 +142,7 @@ allow-script-change: false
 So `#!` is for keeping experiments.
 Plug in multiple proofs, compare them, keep the winner.
 That is how we explore without throwing away the work.
-
 ### Visual notes
 
 Fold failed trials command or collapsed trial block in the editor, main proof still visible.
 End on branch map or folded trials, not a title card.
-

@@ -27,6 +27,8 @@ import classes from './ScriptDetailScreen.module.scss';
 
 export type ScriptDetailScreenProps = {
   scriptId: string;
+  /** Takes hub opened from beat editor nav (#/script/:id/post). */
+  mode?: 'overview' | 'post';
 };
 
 function TakeListCard({
@@ -78,7 +80,10 @@ function TakeListCard({
   );
 }
 
-export function ScriptDetailScreen({ scriptId }: ScriptDetailScreenProps) {
+export function ScriptDetailScreen({
+  scriptId,
+  mode = 'overview',
+}: ScriptDetailScreenProps) {
   const { layout, 
     api,
     mobile,
@@ -206,12 +211,18 @@ export function ScriptDetailScreen({ scriptId }: ScriptDetailScreenProps) {
     [localTakes, meta?.takes],
   );
 
+  const isPostHub = mode === 'post';
+
   return (
     <View style={sharedStyles.screen}>
       <Header
-        title={live?.title ?? 'Script'}
+        title={isPostHub ? 'Post-process' : live?.title ?? 'Script'}
         actions={[
-          { label: 'Scripts', onPress: navigateToLibrary, variant: 'back' },
+          {
+            label: isPostHub ? 'Edit script' : 'Scripts',
+            onPress: isPostHub ? () => navigateToAnimation(scriptId) : navigateToLibrary,
+            variant: 'back',
+          },
           {
             label: refreshing ? '…' : 'Refresh',
             onPress: () => {
@@ -219,11 +230,15 @@ export function ScriptDetailScreen({ scriptId }: ScriptDetailScreenProps) {
             },
             disabled: refreshing,
           },
-          {
-            label: 'Edit script',
-            onPress: () => navigateToAnimation(scriptId),
-            variant: 'primary',
-          },
+          ...(isPostHub
+            ? []
+            : [
+                {
+                  label: 'Edit script',
+                  onPress: () => navigateToAnimation(scriptId),
+                  variant: 'primary' as const,
+                },
+              ]),
           { label: 'Platforms', onPress: navigateToPlatforms },
           { label: 'Film', onPress: handleOpenFilm, variant: 'primary' },
         ]}
@@ -246,7 +261,7 @@ export function ScriptDetailScreen({ scriptId }: ScriptDetailScreenProps) {
             </Text>
 
             <View style={styles.editCard}>
-              <SectionLabel>Script</SectionLabel>
+              <SectionLabel>{isPostHub ? 'Script summary' : 'Script'}</SectionLabel>
               <Text style={sharedStyles.mutedText}>
                 {live.beats.length} beats from animation.md — edit one beat at a time with AI assist.
               </Text>
@@ -256,8 +271,8 @@ export function ScriptDetailScreen({ scriptId }: ScriptDetailScreenProps) {
                 </Text>
               ) : null}
               <Button
-                label="Open beat editor"
-                variant="primary"
+                label={isPostHub ? 'Back to beat editor' : 'Open beat editor'}
+                variant={isPostHub ? 'default' : 'primary'}
                 onPress={() => navigateToAnimation(scriptId)}
               />
             </View>

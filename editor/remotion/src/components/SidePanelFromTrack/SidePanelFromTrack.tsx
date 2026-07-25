@@ -44,8 +44,20 @@ async function fetchJsonAsset<T>(
     });
 }
 
-async function fetchPublicJson<T>(relativePath: string): Promise<T | null> {
-    return fetchVideoOpsStaticJson<T>(relativePath, staticFile);
+/** First 1-based line with a Turn declaration keyword, skipping comment-only lines. */
+function firstDeclarationFocusLine(source: string): number {
+    const lines = source.split('\n');
+    for (let index = 0; index < lines.length; index += 1) {
+        const line = lines[index] ?? '';
+        const trimmed = line.trim();
+        if (!trimmed || trimmed.startsWith('//') || trimmed.startsWith('#')) {
+            continue;
+        }
+        if (/\b(relation|structure|theorem)\b/.test(line)) {
+            return index + 1;
+        }
+    }
+    return 1;
 }
 
 export function SidePanelFromTrack({
@@ -178,8 +190,9 @@ export function SidePanelFromTrack({
 
         let cancelled = false;
         setKnowledgeLoading(true);
+        setKnowledgeData(null);
         void knowledgeDataForTurnSource(track.sourceFile, analysisSource, {
-            fetchJson: fetchPublicJson,
+            scriptId,
         })
             .then((generatedKnowledgeData) => {
                 if (!cancelled) {
@@ -195,7 +208,7 @@ export function SidePanelFromTrack({
         return () => {
             cancelled = true;
         };
-    }, [track, beatCode?.code, fullSource, renderSource]);
+    }, [track, beatCode?.code, fullSource, renderSource, scriptId, trackLoad?.contentRevision]);
 
     const focusedTrack = useMemo((): IdeTrack | null => {
         if (!track) {
@@ -206,7 +219,7 @@ export function SidePanelFromTrack({
                 ...track,
                 knowledgePanel: {
                     ...track.knowledgePanel,
-                    focusLine: 1,
+                    focusLine: firstDeclarationFocusLine(beatCode.code),
                     scopedToSource: true,
                 },
             };

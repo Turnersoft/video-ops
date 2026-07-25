@@ -162,11 +162,14 @@ export type VideoOpsCompareLayer = {
         section?: string;
         definitionLabel?: string;
         body?: string;
+        latex?: string;
         source?: string;
         revealAtSeconds?: number;
         hideAtSeconds?: number;
         placement?: 'top' | 'center';
         fontScale?: number;
+        bookTitle?: string;
+        bookAuthor?: string;
     };
 };
 

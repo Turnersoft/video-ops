@@ -9,7 +9,8 @@ import { scriptDirFor } from './scriptSeries.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const remotionDir = path.resolve(__dirname, '..');
-const videoOpsDir = path.join(remotionDir, '..');
+/** `video_ops` repo root (remotion lives at editor/remotion). */
+const videoOpsDir = path.resolve(remotionDir, '../..');
 const scriptId = process.argv[2];
 
 if (!scriptId) {

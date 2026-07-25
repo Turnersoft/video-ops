@@ -23,18 +23,17 @@ pace.pace-factor: 1.1
 ## Beat 1: Hook
 
 What current systems actually deliver vs press releases.
-
 ### Visual notes
+
 Opening still / title for Autoformalization hype.
 
 ## Beat 2: Develop
 
 Expand the claim with one concrete scene the viewer can picture.
-
 ### Visual notes
+
 Mid-episode board or still.
 
 ## Beat 3: Close
 
 Leave one sharp takeaway — and a reason to watch the next episode.
-

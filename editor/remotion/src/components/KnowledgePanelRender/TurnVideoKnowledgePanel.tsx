@@ -1,7 +1,7 @@
 // /Users/johndoe/Documents/company/basic_ui/src/shared/turn-video/panels/TurnVideoKnowledgePanel.tsx
 import { useMemo, useRef } from 'react';
 import type React from 'react';
-import { MathJaxProvider } from '@yozora/react-mathjax';
+import { SafeMathJaxProvider } from '../../lib/panels/SafeMathJaxProvider';
 
 import type { KnowledgeUiPhrases } from '@turn-user/language_server/vscode_extension/src/visualization/knowledge/types';
 
@@ -125,7 +125,7 @@ export function TurnVideoKnowledgePanel({
 
     const readerContent =
         sections.length > 0 ? (
-            <MathJaxProvider>
+            <SafeMathJaxProvider>
                 <div className="documentReaderShell documentReaderShellNoNavigator">
                     <div className="documentReaderMain documentReaderMain--continuous">
                         <div
@@ -149,7 +149,7 @@ export function TurnVideoKnowledgePanel({
                         </div>
                     </div>
                 </div>
-            </MathJaxProvider>
+            </SafeMathJaxProvider>
         ) : null;
 
     return (

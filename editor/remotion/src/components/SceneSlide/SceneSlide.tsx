@@ -11,6 +11,8 @@ type SceneSlideProps = {
     showDirector?: boolean;
     contentRevision?: number;
     outdoorFormat?: OutdoorRenderFormat;
+    /** Script-editing preview: ignore linked take footage even if render props include outdoorEdit. */
+    forceStudioFootagePlaceholder?: boolean;
 };
 
 /** Thin wrapper — scene rendering lives in SceneComposer + lib/sceneViews + lib/layers. */
@@ -22,6 +24,7 @@ export function SceneSlide({
     showDirector,
     contentRevision,
     outdoorFormat,
+    forceStudioFootagePlaceholder,
 }: SceneSlideProps) {
     return (
         <ScriptStripUiProvider>
@@ -33,6 +36,7 @@ export function SceneSlide({
                 showDirector={showDirector}
                 contentRevision={contentRevision}
                 outdoorFormat={outdoorFormat}
+                forceStudioFootagePlaceholder={forceStudioFootagePlaceholder}
             />
         </ScriptStripUiProvider>
     );

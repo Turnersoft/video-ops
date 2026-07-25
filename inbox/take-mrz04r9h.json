@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "scriptId": "04-set-equality",
+  "scriptTitle": "04_set_equality",
+  "takeId": "take-mrz04r9h",
+  "recordedAt": "2026-07-24T14:10:51.410Z",
+  "videoUri": "take-mrz04r9h.webm",
+  "durationMs": 978363,
+  "slideEvents": [
+    {
+      "slideId": "beat-01",
+      "index": 0,
+      "atMs": 0
+    },
+    {
+      "slideId": "beat-02",
+      "index": 1,
+      "atMs": 58085
+    },
+    {
+      "slideId": "beat-03",
+      "index": 2,
+      "atMs": 118418
+    },
+    {
+      "slideId": "beat-04",
+      "index": 3,
+      "atMs": 293742
+    },
+    {
+      "slideId": "beat-05",
+      "index": 4,
+      "atMs": 476607
+    },
+    {
+      "slideId": "beat-06",
+      "index": 5,
+      "atMs": 538389
+    },
+    {
+      "slideId": "beat-07",
+      "index": 6,
+      "atMs": 605528
+    },
+    {
+      "slideId": "beat-08",
+      "index": 7,
+      "atMs": 762509
+    },
+    {
+      "slideId": "beat-09",
+      "index": 8,
+      "atMs": 819506
+    },
+    {
+      "slideId": "beat-10",
+      "index": 9,
+      "atMs": 852946
+    },
+    {
+      "slideId": "beat-11",
+      "index": 10,
+      "atMs": 925723
+    }
+  ],
+  "markers": []
+}

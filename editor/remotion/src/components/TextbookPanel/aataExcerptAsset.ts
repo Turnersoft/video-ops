@@ -1,14 +1,5 @@
-import { videoOpsSharedReferencePath } from '../../lib/videoOpsPaths';
-
-const AATA_EXCERPT_EXTENSIONS = ['png', 'jpg', 'webp'] as const;
-
-/** Static path under `projects/…/shared/reference/aata/`. */
-export function aataExcerptStaticPaths(excerptId: string): string[] {
-    const clean = excerptId.replace(/^\/+/, '').replace(/\.(png|jpe?g|webp)$/i, '');
-    return AATA_EXCERPT_EXTENSIONS.map((ext) =>
-        videoOpsSharedReferencePath(`aata/${clean}.${ext}`),
-    );
-}
+export const AATA_BOOK_TITLE = 'Abstract Algebra: Theory and Applications';
+export const AATA_BOOK_AUTHOR = 'Thomas W. Judson';
 
 export function humanizeAataExcerptId(excerptId: string): string {
     return excerptId

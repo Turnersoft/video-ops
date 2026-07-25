@@ -161,6 +161,10 @@ export function TurnVideoSidePanel({
     // without rendering the whole chapter document in a cramped half-column).
     const preferScopedExportInCompact =
         panelDensity === 'compact' && scopedKnowledgeExport?.sections?.length;
+    const preferEmbeddedInCompact =
+        panelDensity === 'compact' &&
+        !scopedKnowledgeExport?.sections?.length &&
+        hasEmbeddedKnowledge;
 
     if (mode === 'knowledge' || knowledgeOnlyTrack) {
         if (preferScopedExportInCompact) {
@@ -174,6 +178,17 @@ export function TurnVideoSidePanel({
                     activeKnowledgeHighlights={knowledgeHighlights}
                     knowledgeHighlightOverlays={resolvedKnowledgeOverlays}
                     density={panelDensity}
+                    scale={scale}
+                />
+            );
+        }
+
+        if (preferEmbeddedInCompact) {
+            return (
+                <TurnVideoEmbeddedSidePanel
+                    mode="knowledge"
+                    knowledgeData={knowledgeData}
+                    cursorLine={focusLine}
                     scale={scale}
                 />
             );

@@ -34,7 +34,6 @@ But what if f is not invertible?
 On paper you might still write g and hope the grader looks away.
 You are not stuck because you are bad at proofs.
 You are stuck because the exercise smuggled in a false premise.
-
 ### Visual notes
 
 Homework line: “Let g be the inverse of f.” Under it, a map that fails invertibility (e.g. f(x)=x² on ℝ→ℝ) — one picture, no lecture.
@@ -63,7 +62,6 @@ The honest move is not to force a proof.
 It is to name what the question assumed.
 Invertible is not a vibe — it means an inverse actually exists with the right laws.
 If f does not have one, every line after “let g” is built on air.
-
 ### Visual notes
 
 Short checklist: premise stated? → premise true? → only then prove.
@@ -92,7 +90,6 @@ In Turn-Lang, invertible is a real property on the function — not a comment yo
 It says there exists an inverse structure, and that structure has laws to check.
 Try to use invertible on a map that does not qualify, and the checker will not let you treat the assumption as free.
 That is the point: catch the bad premise before you “prove” nonsense.
-
 ### Visual notes
 
 `Function.invertible` property and `exists InverseFunction<self>` in the chapter file.
@@ -122,11 +119,9 @@ allow-script-change: false
 Formal method is not only proving theorems.
 Sometimes it is saying: this question assumed too much.
 Comment a homework problem that felt ill-posed. Link to the chapter in the description.
-
 ### Visual notes
 
 Return to `invertible` line in outline.
 Warm CTA. No dev tooling on screen.
 
 pip: shared/reference/turn-workspace.mp4 (bottom-right, widthFraction=0.44, startFrom=12)
-

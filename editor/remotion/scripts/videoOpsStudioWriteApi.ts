@@ -17,6 +17,7 @@ import { handleVideoOpsStaticFileGet } from './dev-api/videoOpsStaticFileApi';
 import {
   handleVideoOpsAnimationV4Get,
   handleVideoOpsRenderPropsGet,
+  invalidateLiveCompileCache,
 } from './dev-api/videoOpsLiveCompileApi';
 
 type ConnectMiddleware = (
@@ -115,6 +116,7 @@ export function createVideoOpsStudioWriteMiddleware(
             payload.beatCount,
             payload.mode,
           );
+          invalidateLiveCompileCache(payload.scriptId);
 
           sendJson(res, 200, { ok: true });
         } catch (caught) {
@@ -150,6 +152,7 @@ export function createVideoOpsStudioWriteMiddleware(
             payload.beatIndex,
             payload.sceneIndex ?? 0,
           );
+          invalidateLiveCompileCache(payload.scriptId);
 
           sendJson(res, 200, { ok: true, pipMask: saved });
         } catch (caught) {

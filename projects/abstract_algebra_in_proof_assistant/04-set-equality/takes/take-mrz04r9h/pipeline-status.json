@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 2,
+  "status": "running",
+  "createdAt": "2026-07-24T14:10:52.679Z",
+  "updatedAt": "2026-07-25T03:16:54.398Z",
+  "selectedRuns": {
+    "cut": "cut-mrz0qqfs",
+    "align": "align-mrz3ygjy"
+  },
+  "runs": {
+    "stabilize": [
+      {
+        "runId": "stabilize-mrz0pskm",
+        "status": "cancelled",
+        "createdAt": "2026-07-24T14:11:28.114Z",
+        "finishedAt": "2026-07-24T14:11:28.114Z",
+        "error": "Stopped from iPhone before this stage finished.",
+        "errorCode": "cancelled",
+        "errorTitle": "Pipeline aborted"
+      }
+    ],
+    "cut": [
+      {
+        "runId": "cut-mrz0qqfs",
+        "status": "pending",
+        "createdAt": "2026-07-24T15:41:35.310Z",
+        "finishedAt": "2026-07-24T14:22:16.090Z",
+        "artifacts": {
+          "editedVideo": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/cut/cut-mrz0qqfs/edited-good-intervals.mp4",
+          "analysis": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/cut/cut-mrz0qqfs/analysis.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/cut/cut-mrz0qqfs/remotion-visual-plan.json",
+          "transcript": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/cut/cut-mrz0qqfs/transcript.verbose.json",
+          "inputVideo": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/source.webm",
+          "stabilizeRunId": "",
+          "previewUrl": "/api/scripts/04-set-equality/takes/take-mrz04r9h/artifacts/cut/cut-mrz0qqfs/edited-good-intervals.mp4",
+          "lastAppliedInputVideo": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/source.webm",
+          "lastAppliedAt": "2026-07-24T15:41:35.310Z"
+        },
+        "builtFrom": {}
+      }
+    ],
+    "align": [
+      {
+        "runId": "align-mrz3ygjy",
+        "status": "succeeded",
+        "createdAt": "2026-07-24T15:41:36.084Z",
+        "finishedAt": "2026-07-24T15:41:36.084Z",
+        "artifacts": {
+          "alignment": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/align/align-mrz3ygjy/speech-alignment.json",
+          "outdoorAnimation": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/align/align-mrz3ygjy/animation-outdoor.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/align/align-mrz3ygjy/remotion-visual-plan.json",
+          "previewUrl": "/api/scripts/04-set-equality/takes/take-mrz04r9h/artifacts/align/align-mrz3ygjy/animation-outdoor.json"
+        },
+        "builtFrom": {
+          "cut": "cut-mrz0qqfs"
+        }
+      },
+      {
+        "runId": "align-mrz1igmf",
+        "status": "succeeded",
+        "createdAt": "2026-07-24T14:33:10.455Z",
+        "finishedAt": "2026-07-24T14:33:10.455Z",
+        "artifacts": {
+          "alignment": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/align/align-mrz1igmf/speech-alignment.json",
+          "outdoorAnimation": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/align/align-mrz1igmf/animation-outdoor.json",
+          "visualPlan": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/align/align-mrz1igmf/remotion-visual-plan.json",
+          "previewUrl": "/api/scripts/04-set-equality/takes/take-mrz04r9h/artifacts/align/align-mrz1igmf/animation-outdoor.json"
+        },
+        "builtFrom": {
+          "cut": "cut-mrz0qqfs"
+        }
+      }
+    ],
+    "composite": [
+      {
+        "runId": "composite-mrzssmpq",
+        "status": "running",
+        "createdAt": "2026-07-25T03:16:54.398Z"
+      },
+      {
+        "runId": "composite-mrzru32k",
+        "status": "failed",
+        "createdAt": "2026-07-25T03:08:09.425Z",
+        "finishedAt": "2026-07-25T03:08:09.425Z",
+        "error": "[2026-07-25T03:08:09.422Z] [2026-07-25T03:08:09.389Z] exit 1",
+        "errorCode": "render",
+        "errorTitle": "Remotion render failed",
+        "errorHint": "Open Remotion Studio on Mac, fix composition errors, then retry Composite."
+      },
+      {
+        "runId": "composite-mrzrkrjs",
+        "status": "failed",
+        "createdAt": "2026-07-25T02:42:48.964Z",
+        "finishedAt": "2026-07-25T02:42:48.964Z",
+        "error": "[2026-07-25T02:42:48.964Z] [2026-07-25T02:42:48.927Z] exit 1",
+        "errorCode": "render",
+        "errorTitle": "Remotion render failed",
+        "errorHint": "Open Remotion Studio on Mac, fix composition errors, then retry Composite."
+      },
+      {
+        "runId": "composite-mrzqaqas",
+        "status": "failed",
+        "createdAt": "2026-07-25T02:07:00.325Z",
+        "finishedAt": "2026-07-25T02:07:00.324Z",
+        "error": "[2026-07-25T02:07:00.324Z] [2026-07-25T02:07:00.293Z] exit 1",
+        "errorCode": "render",
+        "errorTitle": "Remotion render failed",
+        "errorHint": "Open Remotion Studio on Mac, fix composition errors, then retry Composite."
+      }
+    ],
+    "social": []
+  },
+  "autoRun": true,
+  "jobId": "job-take-mrz04r9h",
+  "takeId": "take-mrz04r9h",
+  "scriptId": "04-set-equality",
+  "scriptTitle": "04_set_equality",
+  "sourceVideoPath": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/source.webm",
+  "takeManifestPath": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/take.json"
+}

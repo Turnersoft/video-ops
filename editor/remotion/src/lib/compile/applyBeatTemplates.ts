@@ -154,7 +154,21 @@ export function applyBeatTemplatesToSceneV4(scene: VideoOpsAnimationSceneV4): Vi
       previousTurn = turnCode;
     }
 
-    const layer = meta ? buildBeatMainLayerFromTemplate(meta, turnCode) : null;
+    let layer = meta ? buildBeatMainLayerFromTemplate(meta, turnCode) : null;
+    if (
+      layer &&
+      meta?.template === 'manim-motion' &&
+      typeof patched.manimWebCode === 'string' &&
+      patched.manimWebCode.trim()
+    ) {
+      layer = {
+        ...layer,
+        config: {
+          ...(layer.config as Record<string, unknown>),
+          manimWebCode: patched.manimWebCode,
+        },
+      };
+    }
     beatMainLayers.push(layer);
 
     if (meta?.template === 'compare-dual') {

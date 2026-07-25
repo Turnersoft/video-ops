@@ -30,28 +30,28 @@ label: Reference clip
 ## Beat 1: Normal compare beat
 
 Here is a compare beat — Lean and Turn side by side as usual.
-
 ### Lean
+
 ```lean
 example : Nat := 1
 ```
+### Lean highlights
 
-Highlights:
 - `Nat`
-
 ### Turn
+
 ```turn
 example : Nat = 1
 ```
+### Turn highlights
 
-Highlights:
 - `Nat`
 
 ## Beat 2: Inline video
 
 This beat presents another video inline — drop your MP4 under assets/.
-
 ### Video
+
 assets/demo-clip.mp4
 <!-- object-fit: contain; label: Inline video beat -->
 

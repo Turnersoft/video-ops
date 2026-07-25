@@ -1,0 +1,719 @@
+{
+  "version": 4,
+  "scriptId": "04-set-equality",
+  "title": "04_set_equality",
+  "composition": {
+    "format": "landscape",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "durationSeconds": 296.42,
+      "layout": "dual-panel",
+      "burnCaptions": true,
+      "compare": {
+        "overlays": {
+          "textbook-set-equality": {
+            "type": "textbook",
+            "aataExcerpt": "sets-set-equality-definition",
+            "placement": "center"
+          }
+        },
+        "display": {
+          "editorFontScale": 0.7,
+          "leanEditorFontScale": 0.8,
+          "renderFontScale": 0.85,
+          "charsPerSecond": 24
+        },
+        "beats": [
+          {
+            "say": "",
+            "durationSeconds": 21.36,
+            "sayZh": "大家好，欢迎回来。真正理解一个数学概念的最好方式，就是把它形式化。今天我们形式化集合相等。课本定义看起来很简单：两个集合相等，就是彼此都是对方的子集。但要形式化这句话，我们还需要理解证明系统里的等号到底是什么意思。这比你想的更复杂。",
+            "visualNotes": "<!-- beat-studio: {\"template\":\"manim-motion\",\"templateConfig\":{\"kind\":\"manim-motion\",\"config\":{\"subTemplate\":\"set-diagram\",\"durationSeconds\":6,\"caption\":\"\"}}} -->\nbeat-template: manim-motion\nlayer: math-board\nmanim-sub: set-diagram\nBeat 1: textbook mutual-subset rule first, then the real question about the equals sign.",
+            "lean": {
+              "code": "-- Textbook set equality\n-- A = B  when each is a subset of the other\n--\n-- In Lean this still becomes ordinary Eq:\n--   A = B"
+            },
+            "turn": {
+              "code": "@notation({A} ~ \" = \" ~ {B})\nrelation SetEq(T: Any, A B: Set<T>): Prop {\n    |- {\n        Subset(A, B);\n        Subset(B, A);\n    }\n}",
+              "hints": [
+                {
+                  "target": "turn-code",
+                  "text": "The textbook sentence becomes two proof obligations. ```beat-variants {\"selected\":\"A\",\"candidates\":[{\"label\":\"A\",\"template\":\"compare-dual\",\"templateConfig\":{\"kind\":\"compare-dual\",\"config\":{\"leanEnabled\":true,\"turnEnabled\":true}},\"content\":{\"title\":\"Start with the textbook rule\",\"say\":\"Hi friends, welcome back.\\nThe best way to understand a math concept is to formalize it.\\nToday we formalize set equality.\\nAnd the textbook definition looks really simple.\\nTwo sets are equal when each one is a subset of the other.\\nBut if we want to formalize this statement,\\nwe still need to understand what the equals sign actually means inside a proof system.\\nAnd this is more complicated than you think.\",\"leanCode\":\"-- Textbook set equality\\n-- A = B  when each is a subset of the other\\n--\\n-- In Lean this still becomes ordinary Eq:\\n--   A = B\",\"turnCode\":\"@notation({A} ~ \\\" = \\\" ~ {B})\\nrelation SetEq(T: Any, A B: Set<T>): Prop {\\n    |- {\\n        Subset(A, B);\\n        Subset(B, A);\\n    }\\n}\",\"visualNotes\":\"beat-template: manim-motion\\nlayer: math-board\\nmanim-sub: set-diagram\\n\\nBeat 1: textbook mutual-subset rule first, then the real question about the equals sign.\"}}]} ``` Hi friends, welcome back. The best way to understand a math concept is to formalize it. Today we formalize set equality. And the textbook definition looks really simple. Two sets are equal when each one is a subset of the other. But if we want to formalize this statement, we still need to understand what the equals sign actually means inside a proof system. And this is more complicated than you think.",
+                  "needle": "Subset(A, B)",
+                  "layout": {
+                    "xPct": 82,
+                    "yPct": 38
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "say": "So, equal doesn't always mean being the same atomically.\nOne plus one equals two is not the same atomically,\nbecause they have different expressions literally,\nbut they are mathematically the same.\nAnd this is the kind of equality that we want to prove —\nthis is the meaningful equality.\nThere's another equality, things like one equals one,\nbecause the left-hand side and right-hand side are the same,\nand these are not worth proving.\nBut they're still very useful,\nbecause they show up at the end of every proof for this meaningful equality —\njust to close the proof.\nSo in Lean we can write A equal to B.\nAnd notice that we do not implement an equality typeclass first,\nbecause the equals sign is built-in notation for values,\njust like other programming languages.\nBut there are two different kinds of equality here:\ndefinitional equality and propositional equality.\nDefinitional equality is something the computer can still check automatically,\neven when the two sides look different.\nPropositional equality is something you need to prove —\nbut after you prove it, the proof engine can still apply it as if it is a computer rule.",
+            "durationSeconds": 74.6,
+            "sayZh": "所以，相等并不总是意味着原子层面完全一样。一加一等于二在原子层面并不一样，因为表达式字面上不同，但它们在数学上是一样的。这才是我们想证明的那种有意义的相等。还有另一种相等，比如一等于一：左右两边一样，不值得证明，但仍然很有用，因为它们会出现在有意义证明的末尾，用来收束证明。在 Lean 里我们可以写 A 等于 B，而且不需要先实现相等类型类，因为等号是值的内置记号，就像其他编程语言一样。但这里有两种相等：定义相等和命题相等。定义相等是计算机仍可自动检查的，即使两边看起来不同。命题相等是你需要证明的东西——但证明之后，证明引擎仍可以把它当作计算机规则来用。",
+            "visualNotes": "Beat 2: 1+1=2 as meaningful equality vs 1=1 as proof-closing; then Lean built-in =; definitional vs propositional. No Mathematica detour.",
+            "lean": {
+              "code": "-- Lean's = compares terms of one type\n-- no equality typeclass is required\n\n-- definitional: computer checks (closes the proof)\nexample (n : Nat) : n + 0 = n := rfl\n\n-- propositional: you prove it; then it becomes a rule\nexample (n : Nat) : 0 + n = n := Nat.zero_add n",
+              "highlights": [
+                "no equality typeclass",
+                "definitional",
+                "rfl",
+                "propositional",
+                "Nat.zero_add"
+              ],
+              "hints": [
+                {
+                  "target": "lean-code",
+                  "text": "The terms do not reduce to the same syntax, so this equality needs a theorem.",
+                  "needle": "Nat.zero_add",
+                  "layout": {
+                    "xPct": 18,
+                    "yPct": 38
+                  }
+                }
+              ]
+            },
+            "turn": {
+              "code": "-- Two kinds of equality\n--\n-- definitional: computer can check automatically\n--   even when the two sides look different\n--\n-- propositional: you must prove it\n--   then the proof engine can use it as a rule\n--\n-- meaningful: 1 + 1 = 2  (different expressions, same math)\n-- closing:     1 = 1      (same data; closes a proof)",
+              "highlights": [
+                "definitional",
+                "propositional",
+                "1 + 1 = 2",
+                "1 = 1"
+              ]
+            },
+            "fontScales": "as before",
+            "allowScriptChange": true
+          },
+          {
+            "say": "So now the question is, when can we even write the equals sign in Lean?\nAnd the answer is that when Both sides have exactly the same type.\nSo two as a natural number and two as an integer cannot be compared directly.\nThey look like the same number to us, but Lean sees two different types.\nSo we first cast the natural number into an integer, and then equality makes sense.\nNow set A and set B have type Set alpha, so they can compare directly.\nAnd Lean defines set equality using the subset idea we already have —\nmutual subset implies A equals B.\nSo if x belongs to A exactly when x belongs to B, for every x,\nthen the two sets are equal.\nAnd in our textbook, this is exactly what mutual subset is.",
+            "durationSeconds": 56.26,
+            "sayZh": "现在的问题是，什么时候我们才能在 Lean 里写等号？两边必须具有完全相同的类型。所以自然数里的 2 和整数里的 2 不能直接比较。对我们来说它们像同一个数字，但 Lean 看见的是两个类型。先把自然数转成整数，等式才有意义。集合 A 和 B 都具有 Set α 类型，所以可以直接比较。Lean 用我们已有的子集想法来定义集合相等——互相包含就推出 A 等于 B。所以如果对每个 x，它属于 A 当且仅当属于 B，那么两个集合相等。在我们的课本里，这正好就是互相包含。",
+            "visualNotes": "<!-- beat-studio: {\"template\":\"compare-dual\",\"templateConfig\":{\"kind\":\"compare-dual\",\"config\":{\"leanEnabled\":true,\"turnEnabled\":true,\"leanRender\":true,\"turnRender\":true,\"leanEditorStyle\":\"default\",\"turnEditorStyle\":\"ide\",\"typing\":{\"enabled\":true,\"cps\":24,\"pauseAfterSeconds\":0.3},\"codeBlockEdits\":[]}}} -->\nbeat-template: compare-dual\nlayer: compare\nlean-render: true\nturn-render: true\ntyping: true\nBeat 3: Nat vs Int counterexample, then mutual subset / Set.ext as the textbook rule in Lean.",
+            "lean": {
+              "code": "-- Equality is homogeneous: both sides need one type\n-- invalid: (2 : Nat) = (2 : Int)\nexample : ((2 : Nat) : Int) = (2 : Int) := rfl\n\n-- Mutual subset → set equality\nexample {A B : Set α}\n    (h₁ : A ⊆ B) (h₂ : B ⊆ A) : A = B :=\n  Subset.antisymm h₁ h₂\n\n-- Same idea via membership for every x\nexample {A B : Set α}\n    (h : ∀ x, x ∈ A ↔ x ∈ B) : A = B :=\n  Set.ext h"
+            },
+            "turn": {
+              "code": "-- Same set, explained without Lean vocabulary\n--\n-- ask every possible element x:\n--   x in A exactly when x in B\n--\n-- equivalently (textbook):\n--   Subset(A, B) and Subset(B, A)\n--\n-- that mutual subset is what SetEq means"
+            },
+            "fontScales": "as before",
+            "allowScriptChange": true
+          },
+          {
+            "say": "So now Turn-Lang makes a different choice.\nWe do not want to use the equals sign everywhere\nand suddenly assume that every structure has the same meaning of equality.\nLet's look at the at-notation here.\nIt binds the visible A equals B to a named relation called SetEq.\nThat means the equals sign is only the notation.\nIn order to use SetEq, you call SetEq with brackets containing A and B.\nAnd the body of this relation is just what we already have:\nA and B are subsets of each other —\ntwo statements, very clear.",
+            "durationSeconds": 38.7,
+            "sayZh": "现在 Turn-Lang 做了另一种选择。我们不希望到处使用等号，然后突然假设每种结构里的相等都有同一个含义。看这里的 at-notation。它把画面上的 A 等于 B 绑定到一个叫 SetEq 的具名关系。所以等号只是记号。要使用 SetEq，你用括号写上 A 和 B 来调用它。关系的本体就是我们已经有的内容：A 和 B 互相是子集——两条陈述，非常清楚。",
+            "visualNotes": "Beat 4: Turn notation vs named SetEq(A, B); equal sign is only syntax.",
+            "lean": {
+              "code": "-- Lean: one homogeneous Eq\n-- set equality is proved via subsets / Set.ext\n--\n-- A = B  ↔  A ⊆ B ∧ B ⊆ A\n--\n-- the theorem chooses how to prove Eq",
+              "highlights": [
+                "one homogeneous Eq",
+                "A ⊆ B ∧ B ⊆ A",
+                "how to prove Eq"
+              ]
+            },
+            "turn": {
+              "code": "@notation({A} ~ \" = \" ~ {B})\nrelation SetEq(T: Any, A B: Set<T>): Prop {\n    |- {\n        Subset(A, B);\n        Subset(B, A);\n    }\n}\n\n-- use it by name:\n--   SetEq(A, B)\n-- unfolds to the two Subset goals above",
+              "highlights": [
+                "SetEq",
+                "Subset(A, B)",
+                "Subset(B, A)",
+                "SetEq(A, B)"
+              ],
+              "hints": [
+                {
+                  "target": "turn-code",
+                  "text": "Here '=' is notation for the named SetEq relation; call SetEq(A, B) for the two subset goals.",
+                  "needle": "Subset(B, A)",
+                  "layout": {
+                    "xPct": 82,
+                    "yPct": 38
+                  }
+                }
+              ]
+            },
+            "fontScales": "as before",
+            "allowScriptChange": true
+          },
+          {
+            "say": "Next, if we compare function equality, it has the same kind of problem.\nTwo functions cannot be exactly the same as raw code —\nthey may have a different body.\nThey may even return different types —\none wants to return a natural number, one returns an integer —\neven though the values are the same.\nSo on the Lean side it uses funext,\nwhich is a theorem attached to functions that tells you\nyou can rewrite f x equals g x into f equals g, for all x.\nSo on the Turn-Lang side we name the relation FunctionEq,\nand again the visible equals sign is attached by notation.\nSo the notation tells us exactly which observation must agree:\nthe output on every input.",
+            "durationSeconds": 40.68,
+            "sayZh": "接下来比较函数相等，也有同样的问题。两个函数作为原始代码不可能完全一样——它们可能有不同的函数体。它们甚至可能返回不同的类型：一个想返回自然数，一个返回整数，即使数值相同。所以在 Lean 这边用 funext：这是挂在函数上的定理，告诉你可以把对所有 x 的 f(x) 等于 g(x) 改写成 f 等于 g。在 Turn-Lang 这边我们把这个关系命名为 FunctionEq，同样由记号挂上可见等号。记号明确告诉我们需要一致的观察：每个输入上的输出。",
+            "visualNotes": "Beat 5: different bodies / possible Nat vs Int returns; funext and FunctionEq as pointwise agreement.",
+            "lean": {
+              "code": "-- funext:\n--   (∀ x, f x = g x) → f = g\n--\n-- rewrite pointwise equality into function equality\nexample {α β : Type*} {f g : α → β}\n    (h : ∀ x, f x = g x) : f = g :=\n  funext h",
+              "highlights": [
+                "funext",
+                "∀ x",
+                "f x = g x",
+                "f = g"
+              ]
+            },
+            "turn": {
+              "code": "@notation({f} ~ \" = \" ~ {g})\nrelation FunctionEq(X Y: Set<Any>, f g: Function<X, Y>): Prop {\n    forall x in X\n    |- f(x) = g(x)\n}\n\n-- same idea as Lean funext:\n-- agree on every input → treat as the same function",
+              "highlights": [
+                "relation FunctionEq",
+                "forall x in X",
+                "f(x) = g(x)"
+              ],
+              "hints": [
+                {
+                  "target": "turn-code",
+                  "text": "Function equality becomes pointwise equality.",
+                  "needle": "f(x) = g(x)",
+                  "layout": {
+                    "xPct": 77.892,
+                    "yPct": 42.684
+                  }
+                }
+              ]
+            },
+            "fontScales": "as before"
+          },
+          {
+            "say": "Finally, let's move one level higher in category theory.\nWe have to be very careful not to say two objects are literally equal\nwhen what we really mean is isomorphic.\nFor example, two groups can use completely different underlying elements.\nSo as raw data, they are not equal.\nBut if there is an isomorphism that preserves multiplication, identity, and inverse,\nthen from the group theory perspective they have the same structure.\nAnd that connects back to everything we just did.\nFor sets, we compare members.\nFor functions, we compare outputs.\nFor structured objects, we compare structure-preserving maps.\nAnd in higher category theory, even those maps can have higher comparisons.\nIn homotopy type theory, equality proofs behave like paths.\nSo the real question is not only, are these two things equal?\nThe real question is, at which level of mathematics should we treat them as the same?\nSo that is the real lesson of equality.\nI hope you enjoyed this video. See you next time.",
+            "durationSeconds": 64.82,
+            "sayZh": "最后，我们在范畴论里再往高一层。必须非常小心，不要在真正想说同构时，说两个对象字面相等。例如两个群可以使用完全不同的底层元素。作为原始数据，它们并不相等。但如果存在保持乘法、单位元和逆元的同构，那么从群论角度看，它们具有相同结构。这和刚才做的一切连起来：集合比较成员，函数比较输出，带结构的对象比较保持结构的映射。在高阶范畴论里，甚至这些映射之间还可以继续比较。在同伦类型论里，相等证明表现得像路径。所以真正的问题不只是“这两个东西相等吗”，而是“在数学的哪个层次上，我们应该把它们看作相同”。这就是相等真正的重点。希望你喜欢这期视频，下次见。",
+            "visualNotes": "Beat 6: isomorphism / levels of sameness; close with enjoy / see you next time (no empty-set tease).",
+            "lean": {
+              "code": "-- Choose the level of sameness\n--\n-- sets:      same members\n-- functions: same outputs\n-- groups:    structure-preserving isomorphism\n-- HoTT:      equality proofs behave like paths\n--\n-- equivalent structure need not be identical raw data",
+              "highlights": [
+                "level of sameness",
+                "same members",
+                "same outputs",
+                "isomorphism",
+                "paths"
+              ],
+              "hints": [
+                {
+                  "target": "lean-code",
+                  "text": "Two presentations can differ as data while preserving all group structure.",
+                  "needle": "isomorphism",
+                  "layout": {
+                    "xPct": 18,
+                    "yPct": 38
+                  }
+                }
+              ]
+            },
+            "turn": {
+              "code": "-- Ask which observations must agree\n--\n-- membership  -> SetEq\n-- outputs     -> FunctionEq\n-- structure   -> Isomorphism\n-- higher maps -> higher equivalence\n--\n-- sameness depends on the mathematical perspective",
+              "highlights": [
+                "which observations",
+                "SetEq",
+                "FunctionEq",
+                "Isomorphism",
+                "mathematical perspective"
+              ]
+            },
+            "fontScales": "as before",
+            "allowScriptChange": true
+          }
+        ]
+      },
+      "title": "Set equality — what equals means in a proof assistant",
+      "visualNotes": "6 beats from take-mrhmharr: textbook SetEq hook, atomic vs meaningful equality + definitional/propositional, homogeneous Lean Eq and mutual-subset/Set.ext, notation-backed Turn SetEq, FunctionEq / funext, then isomorphism and level of sameness.",
+      "teleprompter": {
+        "position": "below-canvas",
+        "pace": {
+          "syllablesPerSecond": 3.6,
+          "pauseAfterBeat": 0.4,
+          "minBeatSeconds": 4,
+          "paceFactor": 1.25
+        }
+      },
+      "beatMainLayers": [
+        {
+          "type": "beat-template",
+          "kind": "manim-motion",
+          "config": {
+            "subTemplate": "set-diagram",
+            "durationSeconds": 6,
+            "caption": ""
+          },
+          "turnSource": "@notation({A} ~ \" = \" ~ {B})\nrelation SetEq(T: Any, A B: Set<T>): Prop {\n    |- {\n        Subset(A, B);\n        Subset(B, A);\n    }\n}"
+        },
+        null,
+        {
+          "type": "beat-template",
+          "kind": "compare-dual",
+          "config": {
+            "leanEnabled": true,
+            "turnEnabled": true,
+            "leanRender": true,
+            "turnRender": true,
+            "leanEditorStyle": "default",
+            "turnEditorStyle": "ide",
+            "typing": {
+              "enabled": true,
+              "cps": 24
+            }
+          },
+          "turnSource": "-- Same set, explained without Lean vocabulary\n--\n-- ask every possible element x:\n--   x in A exactly when x in B\n--\n-- equivalently (textbook):\n--   Subset(A, B) and Subset(B, A)\n--\n-- that mutual subset is what SetEq means"
+        },
+        null,
+        null,
+        null
+      ],
+      "outdoorEdit": {
+        "videoSrc": "takes/take-mrhmharr/pipeline/cut/cut-mrxmiptn/edited-good-intervals.mp4",
+        "audioSrc": "takes/take-mrhmharr/pipeline/cut/cut-mrxmiptn/edited-good-intervals-audio.m4a",
+        "sourceVideoSrc": "takes/take-mrhmharr/source.mp4",
+        "burnCaptionsZh": true,
+        "beatDurationsSeconds": [
+          21.36,
+          74.6,
+          56.26,
+          38.7,
+          40.68,
+          64.82
+        ],
+        "captionSegments": [
+          {
+            "text": "Hi friends, welcome back.",
+            "atSeconds": 0.06,
+            "durationSeconds": 1.16,
+            "zh": "大家好，欢迎回来。"
+          },
+          {
+            "text": "The best way to formalize the math concept is to",
+            "atSeconds": 1.56,
+            "durationSeconds": 1.8,
+            "zh": "真正理解一个数学概念的最好方式，就是把它形式化。"
+          },
+          {
+            "text": "The best way to understand the math concept is to formalize it.",
+            "atSeconds": 3.48,
+            "durationSeconds": 2.8,
+            "zh": "今天我们形式化集合相等。"
+          },
+          {
+            "text": "Today we formalize set equality and a textbook",
+            "atSeconds": 6.28,
+            "durationSeconds": 2.32,
+            "zh": "课本定义看起来很简单：两个集合相等，就是彼此都是对方的子集。"
+          },
+          {
+            "text": "Definition looks really simple to set IE core when each one is a subset of the other",
+            "atSeconds": 8.6,
+            "durationSeconds": 4.32,
+            "zh": "但要形式化这句话，我们还需要理解证明系统里的等号到底是什么意思。"
+          },
+          {
+            "text": "But if we want to formalize this statement, we still need to understand what you cosine actually means in sine proof system",
+            "atSeconds": 13.38,
+            "durationSeconds": 5.74,
+            "zh": "这比你想的更复杂。"
+          },
+          {
+            "text": "And this is more complicated than I think",
+            "atSeconds": 19.12,
+            "durationSeconds": 2.18,
+            "zh": "大家好，欢迎回来。"
+          },
+          {
+            "text": "So you call doesn't always mean being the same atomically",
+            "atSeconds": 21.42,
+            "durationSeconds": 3.7,
+            "zh": "所以，相等并不总是意味着原子层面完全一样。"
+          },
+          {
+            "text": "So one plus one equals two is not the same Automically because they have different expression literally, but they are methodically the same",
+            "atSeconds": 25.12,
+            "durationSeconds": 8.78,
+            "zh": "一加一等于二在原子层面并不一样，因为表达式字面上不同，但它们在数学上是一样的。"
+          },
+          {
+            "text": "And this is the kind of equality that we want to prove",
+            "atSeconds": 33.9,
+            "durationSeconds": 3.52,
+            "zh": "这才是我们想证明的那种有意义的相等。"
+          },
+          {
+            "text": "This is the only meaningful equality and there's another equality, which is one equal one things like",
+            "atSeconds": 37.42,
+            "durationSeconds": 6.14,
+            "zh": "还有另一种相等，比如一等于一：左右两边一样，不值得证明，但仍然很有用，因为它们会出现在有意义证明的末尾，用来收束证明。"
+          },
+          {
+            "text": "Because the left hand side right hand side are the same and these are not worth proving",
+            "atSeconds": 43.56,
+            "durationSeconds": 4.38,
+            "zh": "在 Lean 里我们可以写 A 等于 B，而且不需要先实现相等类型类，因为等号是值的内置记号，就像其他编程语言一样。"
+          },
+          {
+            "text": "But they're still very useful because they show up at the end of every proof for this meaningful equality",
+            "atSeconds": 47.94,
+            "durationSeconds": 6.5,
+            "zh": "但这里有两种相等：定义相等和命题相等。"
+          },
+          {
+            "text": "It just just to close the proof",
+            "atSeconds": 54.56,
+            "durationSeconds": 0.6,
+            "zh": "定义相等是计算机仍可自动检查的，即使两边看起来不同。"
+          },
+          {
+            "text": "So in lean we can write A equal to B and",
+            "atSeconds": 56.42,
+            "durationSeconds": 1.06,
+            "zh": "命题相等是你需要证明的东西——但证明之后，证明引擎仍可以把它当作计算机规则来用。"
+          },
+          {
+            "text": "Notice that we do not implement the equal equality type class first because the quality signs built in notation for value",
+            "atSeconds": 60.12,
+            "durationSeconds": 7.6,
+            "zh": "所以，相等并不总是意味着原子层面完全一样。"
+          },
+          {
+            "text": "Just like other problem in languages, but there are other,.",
+            "atSeconds": 67.72,
+            "durationSeconds": 2.62,
+            "zh": "所以，相等并不总是意味着原子层面完全一样。"
+          },
+          {
+            "text": "but there are two different kind of equality here",
+            "atSeconds": 70.34,
+            "durationSeconds": 2.92,
+            "zh": "所以，相等并不总是意味着原子层面完全一样。"
+          },
+          {
+            "text": "Definition equalities and propositional equalities the former is just",
+            "atSeconds": 73.26,
+            "durationSeconds": 5,
+            "zh": "所以，相等并不总是意味着原子层面完全一样。"
+          },
+          {
+            "text": "In a predefined equalities that the computers can still check automatically",
+            "atSeconds": 78.38,
+            "durationSeconds": 4.86,
+            "zh": "所以，相等并不总是意味着原子层面完全一样。"
+          },
+          {
+            "text": "Even though two sides are different",
+            "atSeconds": 83.24,
+            "durationSeconds": 2,
+            "zh": "所以，相等并不总是意味着原子层面完全一样。"
+          },
+          {
+            "text": "Proposition just means that something you need to prove, but after you prove there the",
+            "atSeconds": 85.24,
+            "durationSeconds": 4.76,
+            "zh": "所以，相等并不总是意味着原子层面完全一样。"
+          },
+          {
+            "text": "Proof engine can still apply it as if it is a",
+            "atSeconds": 90.12,
+            "durationSeconds": 3.58,
+            "zh": "所以，相等并不总是意味着原子层面完全一样。"
+          },
+          {
+            "text": "Computer rule",
+            "atSeconds": 93.82,
+            "durationSeconds": 1.12,
+            "zh": "所以，相等并不总是意味着原子层面完全一样。"
+          },
+          {
+            "text": "So now the question is now.",
+            "atSeconds": 94.94,
+            "durationSeconds": 1.02,
+            "zh": "所以，相等并不总是意味着原子层面完全一样。"
+          },
+          {
+            "text": "the question is when can we even write the equal sign in lean.",
+            "atSeconds": 97.48,
+            "durationSeconds": 3.76,
+            "zh": "现在的问题是，什么时候我们才能在 Lean 里写等号？"
+          },
+          {
+            "text": "so both sides must be exactly the same type",
+            "atSeconds": 101.24,
+            "durationSeconds": 3.44,
+            "zh": "两边必须具有完全相同的类型。"
+          },
+          {
+            "text": "So two natural numbers",
+            "atSeconds": 104.8,
+            "durationSeconds": 1.32,
+            "zh": "所以自然数里的 2 和整数里的 2 不能直接比较。"
+          },
+          {
+            "text": "So two as a natural number and two as an integer cannot be compared directly",
+            "atSeconds": 106.24,
+            "durationSeconds": 5.2,
+            "zh": "对我们来说它们像同一个数字，但 Lean 看见的是两个类型。"
+          },
+          {
+            "text": "They look like the same number to us, but lean to see two different types",
+            "atSeconds": 111.44,
+            "durationSeconds": 3.68,
+            "zh": "先把自然数转成整数，等式才有意义。"
+          },
+          {
+            "text": "So we first cast the natural number into integer and then equality makes sense",
+            "atSeconds": 115.12,
+            "durationSeconds": 4.92,
+            "zh": "集合 A 和 B 都具有 Set α 类型，所以可以直接比较。"
+          },
+          {
+            "text": "So now set A and set B have types set alpha so that they can compare directly and",
+            "atSeconds": 120.04,
+            "durationSeconds": 5.46,
+            "zh": "Lean 用我们已有的子集想法来定义集合相等——互相包含就推出 A 等于 B。"
+          },
+          {
+            "text": "Lean defines it using this very simple expression of",
+            "atSeconds": 125.62,
+            "durationSeconds": 3.28,
+            "zh": "所以如果对每个 x，它属于 A 当且仅当属于 B，那么两个集合相等。"
+          },
+          {
+            "text": "Of subset that we have before and it allows you to convert two mutual subset expressions into",
+            "atSeconds": 128.9,
+            "durationSeconds": 8.5,
+            "zh": "在我们的课本里，这正好就是互相包含。"
+          },
+          {
+            "text": "You can even it implies an equality of a equals B",
+            "atSeconds": 137.4,
+            "durationSeconds": 4.58,
+            "zh": "现在的问题是，什么时候我们才能在 Lean 里写等号？"
+          },
+          {
+            "text": "So if x belongs to a",
+            "atSeconds": 142.1,
+            "durationSeconds": 1.9,
+            "zh": "现在的问题是，什么时候我们才能在 Lean 里写等号？"
+          },
+          {
+            "text": "When x belongs to be for every x then the two set are equal in now and in our textbook.",
+            "atSeconds": 144.12,
+            "durationSeconds": 5.46,
+            "zh": "现在的问题是，什么时候我们才能在 Lean 里写等号？"
+          },
+          {
+            "text": "This is exactly what the mutual subset is",
+            "atSeconds": 149.76,
+            "durationSeconds": 2.4,
+            "zh": "现在的问题是，什么时候我们才能在 Lean 里写等号？"
+          },
+          {
+            "text": "So now turn lang it makes a different choice",
+            "atSeconds": 152.28,
+            "durationSeconds": 2.98,
+            "zh": "现在 Turn-Lang 做了另一种选择。"
+          },
+          {
+            "text": "We do not want to use the equals sign everywhere and suddenly assume that every structure have the same meaning of equality",
+            "atSeconds": 155.26,
+            "durationSeconds": 6.3,
+            "zh": "我们不希望到处使用等号，然后突然假设每种结构里的相等都有同一个含义。"
+          },
+          {
+            "text": "Let's look at the end notations index here",
+            "atSeconds": 162.2,
+            "durationSeconds": 2.94,
+            "zh": "看这里的 at-notation。"
+          },
+          {
+            "text": "It binds the visible a equals to be to a name the relation called set equal",
+            "atSeconds": 165.14,
+            "durationSeconds": 5.4,
+            "zh": "它把画面上的 A 等于 B 绑定到一个叫 SetEq 的具名关系。"
+          },
+          {
+            "text": "That means the equal sign is only the notation in order to use this",
+            "atSeconds": 170.54,
+            "durationSeconds": 4.5,
+            "zh": "所以等号只是记号。"
+          },
+          {
+            "text": "Set equal you have to call the set equal set equal a relation with the brackets containing a and b",
+            "atSeconds": 175.04,
+            "durationSeconds": 2.2,
+            "zh": "要使用 SetEq，你用括号写上 A 和 B 来调用它。"
+          },
+          {
+            "text": "And the body of this relation is just what we have is just a mb",
+            "atSeconds": 180,
+            "durationSeconds": 5.46,
+            "zh": "关系的本体就是我们已经有的内容：A 和 B 互相是子集——两条陈述，非常清楚。"
+          },
+          {
+            "text": "Subset to each other and there's two statements psi are very clear and.",
+            "atSeconds": 186.1,
+            "durationSeconds": 4.76,
+            "zh": "现在 Turn-Lang 做了另一种选择。"
+          },
+          {
+            "text": "next if we compare a function equals",
+            "atSeconds": 190.98,
+            "durationSeconds": 2.66,
+            "zh": "接下来比较函数相等，也有同样的问题。"
+          },
+          {
+            "text": "It has the same kind of problems though, so",
+            "atSeconds": 193.64,
+            "durationSeconds": 2.7,
+            "zh": "两个函数作为原始代码不可能完全一样——它们可能有不同的函数体。"
+          },
+          {
+            "text": "The two functions equal they cannot be exactly the same and they make a different body",
+            "atSeconds": 196.46,
+            "durationSeconds": 5.94,
+            "zh": "它们甚至可能返回不同的类型：一个想返回自然数，一个返回整数，即使数值相同。"
+          },
+          {
+            "text": "And they came they may return actually different types",
+            "atSeconds": 202.52,
+            "durationSeconds": 2.88,
+            "zh": "所以在 Lean 这边用 funext：这是挂在函数上的定理，告诉你可以把对所有 x 的 f(x) 等于 g(x) 改写成 f 等于 g。"
+          },
+          {
+            "text": "They want me to return natural number when we return integer even though the the value are the same",
+            "atSeconds": 205.4,
+            "durationSeconds": 4.84,
+            "zh": "在 Turn-Lang 这边我们把这个关系命名为 FunctionEq，同样由记号挂上可见等号。"
+          },
+          {
+            "text": "So on the lean side it uses funk dot e xt",
+            "atSeconds": 210.3,
+            "durationSeconds": 3.28,
+            "zh": "记号明确告诉我们需要一致的观察：每个输入上的输出。"
+          },
+          {
+            "text": "Which turns which which is another",
+            "atSeconds": 214.22,
+            "durationSeconds": 0.88,
+            "zh": "接下来比较函数相等，也有同样的问题。"
+          },
+          {
+            "text": "Theorem attached to funk that tells you that you can just rewrite",
+            "atSeconds": 215.16,
+            "durationSeconds": 4.66,
+            "zh": "接下来比较函数相等，也有同样的问题。"
+          },
+          {
+            "text": "Fx equal to gx to f equals g for our four x there",
+            "atSeconds": 219.94,
+            "durationSeconds": 4,
+            "zh": "接下来比较函数相等，也有同样的问题。"
+          },
+          {
+            "text": "So the notation tells us exactly what the observation must agree",
+            "atSeconds": 223.94,
+            "durationSeconds": 3.42,
+            "zh": "接下来比较函数相等，也有同样的问题。"
+          },
+          {
+            "text": "Which is on every output",
+            "atSeconds": 227.48,
+            "durationSeconds": 1.9,
+            "zh": "接下来比较函数相等，也有同样的问题。"
+          },
+          {
+            "text": "Every input so finally let's move one level higher in category theory",
+            "atSeconds": 229.5,
+            "durationSeconds": 2.1,
+            "zh": "接下来比较函数相等，也有同样的问题。"
+          },
+          {
+            "text": "We have to be very careful not to say to object are literally equal",
+            "atSeconds": 235.18,
+            "durationSeconds": 4.72,
+            "zh": "最后，我们在范畴论里再往高一层。"
+          },
+          {
+            "text": "When you know what we really mean is isomorphic for example two groups can use the complete different underlying elements",
+            "atSeconds": 240,
+            "durationSeconds": 6.64,
+            "zh": "必须非常小心，不要在真正想说同构时，说两个对象字面相等。"
+          },
+          {
+            "text": "So as raw data's they are not equal",
+            "atSeconds": 247.28,
+            "durationSeconds": 2.28,
+            "zh": "例如两个群可以使用完全不同的底层元素。"
+          },
+          {
+            "text": "But if there is an isomorphism that preserve multiplication identity in inverse",
+            "atSeconds": 249.56,
+            "durationSeconds": 5.76,
+            "zh": "作为原始数据，它们并不相等。"
+          },
+          {
+            "text": "Then from the group theory perspective they have the same structure and that connects back to everything",
+            "atSeconds": 255.92,
+            "durationSeconds": 4.7,
+            "zh": "但如果存在保持乘法、单位元和逆元的同构，那么从群论角度看，它们具有相同结构。"
+          },
+          {
+            "text": "We just did for set we compare numbers",
+            "atSeconds": 260.62,
+            "durationSeconds": 2.9,
+            "zh": "这和刚才做的一切连起来：集合比较成员，函数比较输出，带结构的对象比较保持结构的映射。"
+          },
+          {
+            "text": "Function will compare outputs",
+            "atSeconds": 264.16,
+            "durationSeconds": 1.52,
+            "zh": "在高阶范畴论里，甚至这些映射之间还可以继续比较。"
+          },
+          {
+            "text": "For structured objects we compare structure preserving maps and in higher category theory",
+            "atSeconds": 265.68,
+            "durationSeconds": 6.74,
+            "zh": "在同伦类型论里，相等证明表现得像路径。"
+          },
+          {
+            "text": "We even those maps can have higher comparisons.",
+            "atSeconds": 272.42,
+            "durationSeconds": 3.14,
+            "zh": "所以真正的问题不只是“这两个东西相等吗”，而是“在数学的哪个层次上，我们应该把它们看作相同”。"
+          },
+          {
+            "text": "So in in one of the type theory equality proves behaves like",
+            "atSeconds": 275.64,
+            "durationSeconds": 4.28,
+            "zh": "这就是相等真正的重点。"
+          },
+          {
+            "text": "Paps so the real question is is not only are those two things you call the real question is",
+            "atSeconds": 279.92,
+            "durationSeconds": 7.02,
+            "zh": "希望你喜欢这期视频，下次见。"
+          },
+          {
+            "text": "At which level of mathematics should we treat them as the same?",
+            "atSeconds": 287.52,
+            "durationSeconds": 3.56,
+            "zh": "最后，我们在范畴论里再往高一层。"
+          },
+          {
+            "text": "So there is a real lessons of equality.",
+            "atSeconds": 291.08,
+            "durationSeconds": 2.46,
+            "zh": "最后，我们在范畴论里再往高一层。"
+          },
+          {
+            "text": "So I hope you enjoyed this video.",
+            "atSeconds": 294.1,
+            "durationSeconds": 1.48,
+            "zh": "最后，我们在范畴论里再往高一层。"
+          },
+          {
+            "text": "See you next time",
+            "atSeconds": 295.72,
+            "durationSeconds": 0.6,
+            "zh": "最后，我们在范畴论里再往高一层。"
+          }
+        ]
+      }
+    }
+  ]
+}

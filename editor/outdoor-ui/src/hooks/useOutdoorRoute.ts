@@ -18,6 +18,7 @@ export type OutdoorRouteApi = {
   navigateToLibrary: () => void;
   navigateToPlatforms: () => void;
   navigateToScript: (scriptId: string) => void;
+  navigateToPostProcess: (scriptId: string) => void;
   navigateToTake: (scriptId: string, takeId: string) => void;
   navigateToAnimation: (scriptId: string) => void;
   navigateToFilm: (scriptId: string) => void;
@@ -56,6 +57,9 @@ export function parseRoute(rawHash?: string): OutdoorRoute {
     if (parts[2] === 'take' && parts[3]) {
       return { name: 'take', scriptId, takeId: decodeURIComponent(parts[3]) };
     }
+    if (parts[2] === 'post') {
+      return { name: 'post', scriptId };
+    }
     return { name: 'script', scriptId };
   }
   if (parts[0] === 'animation' && parts[1]) {
@@ -77,6 +81,8 @@ export function routeToHash(route: OutdoorRoute): string {
       return '#/';
     case 'script':
       return `#/script/${encodeURIComponent(route.scriptId)}`;
+    case 'post':
+      return `#/script/${encodeURIComponent(route.scriptId)}/post`;
     case 'take':
       return `#/take/${encodeURIComponent(route.scriptId)}/${encodeURIComponent(route.takeId)}`;
     case 'animation':
@@ -131,6 +137,10 @@ function useOutdoorHashRoute(): OutdoorRouteApi {
     (scriptId: string) => navigate({ name: 'script', scriptId }),
     [navigate],
   );
+  const navigateToPostProcess = useCallback(
+    (scriptId: string) => navigate({ name: 'post', scriptId }),
+    [navigate],
+  );
   const navigateToTake = useCallback(
     (scriptId: string, takeId: string) => navigate({ name: 'take', scriptId, takeId }),
     [navigate],
@@ -151,6 +161,7 @@ function useOutdoorHashRoute(): OutdoorRouteApi {
       navigateToLibrary,
       navigateToPlatforms,
       navigateToScript,
+      navigateToPostProcess,
       navigateToTake,
       navigateToAnimation,
       navigateToFilm,
@@ -161,6 +172,7 @@ function useOutdoorHashRoute(): OutdoorRouteApi {
       navigateToLibrary,
       navigateToPlatforms,
       navigateToScript,
+      navigateToPostProcess,
       navigateToTake,
       navigateToAnimation,
       navigateToFilm,
@@ -181,6 +193,10 @@ function useOutdoorStateRoute(initialRoute: OutdoorRoute): OutdoorRouteApi {
     (scriptId: string) => navigate({ name: 'script', scriptId }),
     [navigate],
   );
+  const navigateToPostProcess = useCallback(
+    (scriptId: string) => navigate({ name: 'post', scriptId }),
+    [navigate],
+  );
   const navigateToTake = useCallback(
     (scriptId: string, takeId: string) => navigate({ name: 'take', scriptId, takeId }),
     [navigate],
@@ -201,6 +217,7 @@ function useOutdoorStateRoute(initialRoute: OutdoorRoute): OutdoorRouteApi {
       navigateToLibrary,
       navigateToPlatforms,
       navigateToScript,
+      navigateToPostProcess,
       navigateToTake,
       navigateToAnimation,
       navigateToFilm,
@@ -211,6 +228,7 @@ function useOutdoorStateRoute(initialRoute: OutdoorRoute): OutdoorRouteApi {
       navigateToLibrary,
       navigateToPlatforms,
       navigateToScript,
+      navigateToPostProcess,
       navigateToTake,
       navigateToAnimation,
       navigateToFilm,

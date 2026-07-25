@@ -6,6 +6,7 @@ import {
   OUTDOOR_LANDSCAPE_MP4,
   OUTDOOR_PORTRAIT_MP4,
   outdoorCompositeMp4Path,
+  resolveStageArtifactPath,
   takeStageRunDir,
 } from './paths.ts';
 import type { OutdoorJob, PipelineStage, RunStatus } from './schema.ts';
@@ -65,8 +66,8 @@ function videoIfExists(
   fileName: string,
   label: string,
 ): { label: string; url: string } | null {
-  const filePath = path.join(takeStageRunDir(job.scriptId, job.takeId, stage, runId), fileName);
-  if (!fileExists(filePath)) {
+  const filePath = resolveStageArtifactPath(job.scriptId, job.takeId, stage, runId, fileName);
+  if (!filePath) {
     return null;
   }
   return {

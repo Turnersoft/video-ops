@@ -28,7 +28,6 @@ allow-script-change: false
 -->
 
 Open the book. Judson Abstract Algebra, section one point two, Sets.
-
 ### Visual notes
 
 math-focus; textbook beat only.
@@ -72,7 +71,6 @@ allow-script-change: false
 -->
 
 Vacuous truth: to show empty subset S, assume x in empty, which leads to contradiction.
-
 ### Visual notes
 
 Film presenter; beats on board.
@@ -114,7 +112,6 @@ allow-script-change: false
 -->
 
 Goal: Subset(EmptySet, S).
-
 ### Visual notes
 
 Compare layer; caption beats on both sides.

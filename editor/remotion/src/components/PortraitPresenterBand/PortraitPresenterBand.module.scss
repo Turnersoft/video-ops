@@ -1,0 +1,12 @@
+@use '../../app' as *;
+
+.band {
+  position: relative;
+  flex-shrink: 0;
+  min-height: 0;
+  width: 100%;
+  overflow: hidden;
+  border-radius: scaled(16px);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: #0f172a;
+}

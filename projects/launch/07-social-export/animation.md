@@ -23,18 +23,17 @@ pace.pace-factor: 1.1
 ## Beat 1: Hook
 
 Titles, captions, and cuts ready for every platform.
-
 ### Visual notes
+
 Opening still / title for Social export pack.
 
 ## Beat 2: Develop
 
 Expand the claim with one concrete scene the viewer can picture.
-
 ### Visual notes
+
 Mid-episode board or still.
 
 ## Beat 3: Close
 
 Leave one sharp takeaway — and a reason to watch the next episode.
-

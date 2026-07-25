@@ -656,6 +656,31 @@ export function mapSourceSecondsToEdited(
   return mapped?.start ?? null;
 }
 
+/**
+ * Map a source-timeline instant onto the edited cut timeline.
+ * When the instant falls in a removed gap, snap to the edited position at the
+ * end of the last kept interval before it (teleprompter Next taps still apply).
+ */
+export function mapSourceTimeToEditedTimeline(
+  sourceSeconds: number,
+  goodIntervals: GoodInterval[],
+): number {
+  if (!goodIntervals.length) {
+    return sourceSeconds;
+  }
+  let editedCursor = 0;
+  for (const good of goodIntervals) {
+    if (sourceSeconds < good.start) {
+      return editedCursor;
+    }
+    if (sourceSeconds <= good.end) {
+      return editedCursor + (sourceSeconds - good.start);
+    }
+    editedCursor += Math.max(0, good.end - good.start);
+  }
+  return editedCursor;
+}
+
 /** Split Whisper words into spoken sentences using punctuation and long pauses. */
 export function sentencesFromWords(
   words: Array<{ word: string; start: number; end: number }>,

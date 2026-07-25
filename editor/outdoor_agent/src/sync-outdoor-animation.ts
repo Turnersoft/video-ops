@@ -4,6 +4,8 @@ import { fileExists, readJson, writeJson } from './fs_util.ts';
 import { animationV4CachePath } from './animation-load.ts';
 import { ensureDir, scriptDirFor } from './paths.ts';
 
+const RENDER_PROPS_CACHE_REL = '.cache/render-props.json';
+
 type OutdoorScene = {
   durationSeconds?: number;
   burnCaptions?: boolean;
@@ -15,23 +17,13 @@ type AnimationDoc = {
   scenes: OutdoorScene[];
 };
 
-/** Copy outdoorEdit timing from animation-outdoor.json into compiled animation cache. */
-export function syncOutdoorEditToAnimation(scriptId: string, outdoorAnimationPath: string): void {
-  if (!fileExists(outdoorAnimationPath)) {
-    return;
-  }
-  const cachePath = animationV4CachePath(scriptId);
-  if (!fileExists(cachePath)) {
-    return;
-  }
-  const sourcePath = cachePath;
-
-  const outdoor = readJson<AnimationDoc>(outdoorAnimationPath);
-  const animation = readJson<AnimationDoc>(sourcePath);
-  const outdoorScene = outdoor.scenes?.[0];
+function patchOutdoorSceneTiming(
+  animation: AnimationDoc,
+  outdoorScene: OutdoorScene,
+): boolean {
   const scene = animation.scenes?.[0];
   if (!outdoorScene?.outdoorEdit || !scene) {
-    return;
+    return false;
   }
 
   scene.outdoorEdit = outdoorScene.outdoorEdit;
@@ -49,9 +41,48 @@ export function syncOutdoorEditToAnimation(scriptId: string, outdoorAnimationPat
       beat.durationSeconds = durationSeconds;
     }
   });
+  return true;
+}
+
+/** Copy outdoorEdit timing from animation-outdoor.json into compiled animation cache. */
+export function syncOutdoorEditToAnimation(scriptId: string, outdoorAnimationPath: string): boolean {
+  if (!fileExists(outdoorAnimationPath)) {
+    return false;
+  }
+  const cachePath = animationV4CachePath(scriptId);
+  if (!fileExists(cachePath)) {
+    return false;
+  }
+
+  const outdoor = readJson<AnimationDoc>(outdoorAnimationPath);
+  const animation = readJson<AnimationDoc>(cachePath);
+  const outdoorScene = outdoor.scenes?.[0];
+  if (!patchOutdoorSceneTiming(animation, outdoorScene ?? {})) {
+    return false;
+  }
 
   ensureDir(path.dirname(cachePath));
   writeJson(cachePath, animation);
+
+  const renderPropsPath = path.join(scriptDirFor(scriptId), RENDER_PROPS_CACHE_REL);
+  if (fileExists(renderPropsPath)) {
+    try {
+      const renderProps = readJson<{ scenes?: Array<{ outdoorEdit?: unknown }> }>(renderPropsPath);
+      const renderScene = renderProps.scenes?.[0];
+      if (renderScene && outdoorScene?.outdoorEdit) {
+        renderScene.outdoorEdit = outdoorScene.outdoorEdit;
+        if (typeof outdoorScene.durationSeconds === 'number') {
+          (renderScene as { durationSeconds?: number }).durationSeconds =
+            outdoorScene.durationSeconds;
+        }
+        writeJson(renderPropsPath, renderProps);
+      }
+    } catch {
+      // animation-v4 cache is enough for live compile; render-props patch is best-effort.
+    }
+  }
+
+  return true;
 }
 
 type OutdoorEditFields = {

@@ -17,6 +17,23 @@ export type HintLayoutRecord = {
     highlightAnchorY?: number;
 };
 
+function readAnimationV4ForScript(scriptDir: string): VideoOpsAnimationV4 | null {
+    const candidates = [
+        path.join(scriptDir, 'animation.json'),
+        path.join(scriptDir, '.cache', 'animation-v4.json'),
+    ];
+    for (const animationPath of candidates) {
+        if (!fs.existsSync(animationPath)) {
+            continue;
+        }
+        const animation = JSON.parse(fs.readFileSync(animationPath, 'utf8'));
+        if (isAnimationV4(animation)) {
+            return animation as VideoOpsAnimationV4;
+        }
+    }
+    return null;
+}
+
 /** Merge hint layouts into animation.md (preferred) or legacy track JSON, and refresh Remotion bundle. */
 export function updateHintLayoutsFile(
     videoOpsDir: string,
@@ -48,12 +65,13 @@ export function updateHintLayoutsFile(
     let updatedAnimationMarkdown: string | null = null;
     let existingAnimationMarkdown: string | null = null;
     if (fs.existsSync(animationMarkdownPath)) {
-        const animationPath = path.join(scriptDir, 'animation.json');
-        const animation = JSON.parse(fs.readFileSync(animationPath, 'utf8'));
-        if (!isAnimationV4(animation)) {
-            throw new Error('animation.md hint positions require animation.json version 4.');
+        const animation = readAnimationV4ForScript(scriptDir);
+        if (!animation) {
+            throw new Error(
+                'animation.md hint positions require animation v4 (animation.json or .cache/animation-v4.json).',
+            );
         }
-        const sceneIndex = (animation as VideoOpsAnimationV4).scenes.findIndex(
+        const sceneIndex = animation.scenes.findIndex(
             (scene) =>
                 (scene.compare.hintLayoutsPath ?? 'tracks/scene-compare-hint-layouts.json') ===
                 clean,

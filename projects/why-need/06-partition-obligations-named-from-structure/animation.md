@@ -32,7 +32,6 @@ Homework says: clearly these sets form a partition.
 You nod — but what was checked?
 Nonempty pieces. Pieces inside X. Cover everything. No overlap.
 That is the whole proof, hidden in one adverb.
-
 ### Visual notes
 
 “Clearly a partition.” → four short labels appear.
@@ -60,7 +59,6 @@ allow-script-change: false
 Turn-Lang names those checks where the partition is defined.
 C.1, C.2, cover, disjoint — not invented in the proof.
 When you prove Theorem 1.25, you discharge the same names at the goal.
-
 ### Turn
 
 ```turn
@@ -75,14 +73,12 @@ When you prove Theorem 1.25, you discharge the same names at the goal.
     }
 }
 ```
-
-Highlights:
+### Turn highlights
 
 - `C.1`
 - `C.2`
 - `cover`
 - `disjoint`
-
 ### Visual notes
 
 `Partition` structure with container + laws; overlay C.1 / C.2.
@@ -112,9 +108,7 @@ allow-script-change: false
 Longer, yes — but you see every obligation.
 That is the trade formal work offers.
 Open the chapter file in the description and click through the proof yourself.
-
 ### Visual notes
 
 Return to `Partition` in outline.
 CTA subscribe / code along.
-

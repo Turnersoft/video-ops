@@ -35,7 +35,6 @@ If you reverse the order, the report step receives the wrong kind of thing.
 Function composition is just this pipeline, but the notation can make people hesitate.
 Which one runs first — the left map or the right map?
 Turn answers by putting the pipeline law directly beside the notation.
-
 ### Visual notes
 
 Simple A→B→C diagram — f then g, no code yet.
@@ -64,7 +63,6 @@ allow-script-change: false
 Turn-Lang writes composition as a `Function` with inherited `apply`.
 The notation shows g after f — f closer to the input.
 The law in the file says apply at x equals g of f of x — same order, on screen, not buried in tactics.
-
 ### Turn
 
 ```turn
@@ -79,12 +77,10 @@ structure Composition<A B C: Set<Any>, f: Function<A, B>, g: Function<B, C>>: Fu
     }
 }
 ```
-
-Highlights:
+### Turn highlights
 
 - `@notation({g} ~ " ∘ " ~ {f})`
 - `g.apply(f.apply(x))`
-
 ### Visual notes
 
 Highlight nested `apply` calls beside notation line.
@@ -112,9 +108,7 @@ allow-script-change: false
 
 Same picture in a multistep solver — output of step one feeds step two, nothing leaks outside declared ranges.
 Next clip: big theorems as folders. Full 1.2 in description.
-
 ### Visual notes
 
 `Composition.def` law only.
 L5 pipeline sentence; CTA syntax-12.
-

@@ -1,0 +1,18 @@
+[2026-07-24T14:10:52.709Z] uploaded from iPhone → job job-take-mrz04r9h
+[2026-07-24T14:10:52.775Z] stage stabilize run stabilize-mrz0pskm started
+[2026-07-24T14:11:25.540Z] pipeline cancel requested for job-take-mrz04r9h
+[2026-07-24T14:11:28.115Z] stage stabilize run stabilize-mrz0pskm cancelled: Pipeline aborted — Stopped from iPhone before this stage finished.
+[2026-07-24T14:11:28.115Z] pipeline failed: ffmpeg -y -hide_banner -loglevel warning -i /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/source.webm -vf vidstabdetect=shakiness=5:accuracy=15:result=/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/stabilize/stabilize-mrz0pskm/transforms.trf -f null - failed: exit 255
+[2026-07-24T14:11:36.665Z] stage cut run cut-mrz0qqfs started
+[2026-07-24T14:22:16.091Z] stage cut run cut-mrz0qqfs succeeded
+[2026-07-24T14:33:10.312Z] stage align run align-mrz1igmf started
+[2026-07-24T14:33:10.456Z] stage align run align-mrz1igmf succeeded
+[2026-07-24T15:41:35.951Z] stage align run align-mrz3ygjy started
+[2026-07-24T15:41:36.085Z] stage align run align-mrz3ygjy succeeded
+[2026-07-25T02:07:00.005Z] stage composite run composite-mrzqaqas started
+[2026-07-25T02:07:00.326Z] stage composite run composite-mrzqaqas failed: Remotion render failed — [2026-07-25T02:07:00.324Z] [2026-07-25T02:07:00.293Z] exit 1
+[2026-07-25T02:42:47.802Z] stage composite run composite-mrzrkrjs started
+[2026-07-25T02:42:48.966Z] stage composite run composite-mrzrkrjs failed: Remotion render failed — [2026-07-25T02:42:48.964Z] [2026-07-25T02:42:48.927Z] exit 1
+[2026-07-25T02:50:02.637Z] stage composite run composite-mrzru32k started
+[2026-07-25T03:08:09.426Z] stage composite run composite-mrzru32k failed: Remotion render failed — [2026-07-25T03:08:09.422Z] [2026-07-25T03:08:09.389Z] exit 1
+[2026-07-25T03:16:54.399Z] stage composite run composite-mrzssmpq started

@@ -30,7 +30,6 @@ allow-script-change: false
 Hi friends, welcome back.
 Same symmetric-halves proof in this chapter.
 This time we care about the tree shape, not just the QED.
-
 ### Visual notes
 
 Proof-slide branch map for `"Symmetric halves of asymmetric difference disjoint"`.
@@ -58,7 +57,6 @@ allow-script-change: false
 From here I can export the branch forest.
 Text for notes, SVG for a slide.
 Students see which trials I tried and which branch survived.
-
 ### Visual notes
 
 Export menu → save branch map as `.txt` or `.svg`. Show a snippet of the exported tree listing `#!` nodes.
@@ -85,9 +83,7 @@ allow-script-change: false
 
 So the proof is not trapped in the editor.
 The real library proof exports like documentation.
-
 ### Visual notes
 
 Exported svg thumbnail beside the source file tab.
 Calm close.
-

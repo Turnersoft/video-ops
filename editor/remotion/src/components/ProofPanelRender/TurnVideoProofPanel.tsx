@@ -1,5 +1,5 @@
 // /Users/johndoe/Documents/company/basic_ui/src/shared/turn-video/panels/TurnVideoProofPanel.tsx
-import { MathJaxProvider } from '@yozora/react-mathjax';
+import { SafeMathJaxProvider } from '../../lib/panels/SafeMathJaxProvider';
 import { useMemo } from 'react';
 
 import type { ProofPanelGoal } from '../../lib/panels/turnKnowledgeBridge';
@@ -100,7 +100,7 @@ export function TurnVideoProofPanel({
                 }}
             >
                 {visibleStep ? (
-                    <MathJaxProvider>
+                    <SafeMathJaxProvider>
                         <VideoProofGoalCard
                             title={visibleStep.label}
                             presentation={visibleStep.goal}
@@ -110,7 +110,7 @@ export function TurnVideoProofPanel({
                             scale={scale}
                             chromeTheme={PROOF_PANEL_CHROME}
                         />
-                    </MathJaxProvider>
+                    </SafeMathJaxProvider>
                 ) : null}
             </div>
         </div>

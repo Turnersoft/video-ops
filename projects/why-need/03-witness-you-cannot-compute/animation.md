@@ -31,18 +31,15 @@ Hi friends, welcome back.
 So in the partition proof, we are inside obligation `C.1`.
 We specialized `Classes.1` and got a representation hypothesis `hRep`.
 That hypothesis does not give us a concrete element. It gives us an existential.
-
 ### Turn
 
 ```turn
 specialize Classes.1 for C as D into hRep
 witness hRep.witness for x in hRep
 ```
-
-Highlights:
+### Turn highlights
 
 - `witness hRep.witness for x in hRep`
-
 ### Visual notes
 
 Inside `C.1` in the Judson 1.25 proof:
@@ -72,7 +69,6 @@ allow-script-change: false
 `witness hRep.witness for x in hRep` is not inventing a number.
 It says: take the witness promised by this existential, and name it.
 The name `hRep.witness` is the scoped realization unpacked from binder `x`.
-
 ### Visual notes
 
 Keep the witness line highlighted. Show proof state if available: `w in X` or domain evidence after witness.
@@ -100,7 +96,6 @@ allow-script-change: false
 Students often think a witness must be something you can compute.
 But generic sets do not work that way.
 Turn-Lang makes the unpack visible in the script, so the proof step is honest.
-
 ### Visual notes
 
 Scroll slightly to `C.2` showing the same witness pattern repeated.
@@ -127,9 +122,7 @@ allow-script-change: false
 
 So existential elimination is a real move, and the syntax should show it.
 Subscribe if you want more of these proof-state details from the real library.
-
 ### Visual notes
 
 End on `witness hRep.witness for x in hRep`.
 Short close.
-

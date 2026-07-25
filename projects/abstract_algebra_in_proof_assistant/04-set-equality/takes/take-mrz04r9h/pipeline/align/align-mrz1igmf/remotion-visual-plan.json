@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 2,
+  "source": "slide-events",
+  "sourceScriptId": "04-set-equality",
+  "title": "04_set_equality",
+  "editedDurationSeconds": 801.48,
+  "timeline": [
+    {
+      "slideId": "beat-01",
+      "slideTitle": "beat-template: compare-dual\nlayer: compare\nlean-render: true\nturn-render: true\ntyping: true\noverlay: textbook-set-equality\nKeep the textbook-set-equality overlay visible for the whole beat. Show the mutual-subset rule on the textbook panel, then reveal the `inductive Eq` block from Prelude on the Lean pane — not a typeclass, no hidden type. Contrast with the subset clip's `instance : LE` registration; Turn-Lang shows `@notation` on `SetEq`.",
+      "sourceStart": 0,
+      "sourceEnd": 54.36,
+      "editedStart": 0,
+      "editedEnd": 54.36
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "<!-- beat-studio: {\"template\":\"compare-dual\",\"templateConfig\":{\"kind\":\"compare-dual\",\"config\":{\"leanEnabled\":true,\"turnEnabled\":true}}} -->\nbeat-template: compare-dual\nlayer: compare\nlean-render: true\nturn-render: true\ntyping: true\nReveal `example`, the colon, `1 = 1`, `:=`, and `rfl` one at a time. Add plain-language labels beside each token; do not introduce variables or addition yet.",
+      "sourceStart": 54.36,
+      "sourceEnd": 106.32,
+      "editedStart": 54.36,
+      "editedEnd": 106.32
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "<!-- beat-studio: {\"template\":\"compare-dual\",\"templateConfig\":{\"kind\":\"compare-dual\",\"config\":{\"leanEnabled\":true,\"turnEnabled\":true}}} -->\nbeat-template: compare-dual\nlayer: compare\nlean-render: true\nturn-render: true\ntyping: true\nLabel three steps: (1) `Nat.add` cases, (2) `instance : Add Nat` wiring `+` → `Nat.add`, (3) `n + 0` unfolds to `n`, then `rfl`. Do not say “definitional equality.”",
+      "sourceStart": 106.32,
+      "sourceEnd": 249.98,
+      "editedStart": 106.32,
+      "editedEnd": 249.98
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "beat-template: compare-dual\nlayer: compare\nlean-render: true\nturn-render: true\ntyping: true\nShow the theorem body first (two cases), then the `example` that applies `Nat.zero_add n`. Label it “proved by induction,” not “magic.”",
+      "sourceStart": 249.98,
+      "sourceEnd": 402.29,
+      "editedStart": 249.98,
+      "editedEnd": 402.29
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "beat-template: compare-dual\nlayer: compare\nlean-render: true\nturn-render: true\ntyping: true\nUse two labeled number cards: “Nat: 0, 1, 2, …” and “Int: …, -1, 0, 1, 2, …”. Show a conversion arrow before any equality sign; do not show nested type-annotation syntax yet.",
+      "sourceStart": 402.29,
+      "sourceEnd": 452.48,
+      "editedStart": 402.29,
+      "editedEnd": 452.48
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "beat-template: compare-dual\nlayer: compare\nlean-render: true\nturn-render: true\ntyping: true\nLabel two set cards both `Set α`, then light up `A = B` / `Eq A B` and Turn-Lang's `\" = \"` notation. Do not re-teach subset.",
+      "sourceStart": 452.48,
+      "sourceEnd": 498.6,
+      "editedStart": 452.48,
+      "editedEnd": 498.6
+    },
+    {
+      "slideId": "beat-07",
+      "slideTitle": "beat-template: compare-dual\nlayer: compare\nlean-render: true\nturn-render: true\ntyping: true\nAnimate `x ∈ a ↔ x ∈ b` collapsing into `a = b` on Lean; on Turn-Lang, keep `\" = \"` lit while the two body lines are the embedded meaning — not a subset lesson.",
+      "sourceStart": 498.6,
+      "sourceEnd": 625.16,
+      "editedStart": 498.6,
+      "editedEnd": 625.16
+    },
+    {
+      "slideId": "beat-08",
+      "slideTitle": "beat-template: compare-dual\nlayer: compare\nlean-render: true\nturn-render: true\ntyping: true\nAnimate two visibly different recipe cards feeding one input/output table. Show several matching answers, then introduce `funext` as the helper name; do not show function-type notation yet.",
+      "sourceStart": 625.16,
+      "sourceEnd": 673.13,
+      "editedStart": 625.16,
+      "editedEnd": 673.13
+    },
+    {
+      "slideId": "beat-09",
+      "slideTitle": "beat-template: compare-dual\nlayer: compare\nlean-render: true\nturn-render: true\ntyping: true\nShow three large checklist cards: inputs, answers, and every input's answer. Introduce `FuncEq` only after the three cards are visible; hide raw Turn-Lang grammar for this beginner version.",
+      "sourceStart": 673.13,
+      "sourceEnd": 704.29,
+      "editedStart": 673.13,
+      "editedEnd": 704.29
+    },
+    {
+      "slideId": "beat-10",
+      "slideTitle": "beat-template: compare-dual\nlayer: compare\nlean-render: true\nturn-render: true\ntyping: true\nBuild a ladder: members → answers → structure. Use ordinary-language cards “same data” and “same group structure” before showing any symbolic notation.",
+      "sourceStart": 704.29,
+      "sourceEnd": 761.66,
+      "editedStart": 704.29,
+      "editedEnd": 761.66
+    },
+    {
+      "slideId": "beat-11",
+      "slideTitle": "beat-template: manim-motion\nlayer: math-board\nmanim-sub: custom\nmanim-code: true\nduration-seconds: 12\ncaption: What must agree?\nPlay the ### Manim ladder: value → members → answers → structure, then next-episode empty-set card.",
+      "sourceStart": 761.66,
+      "sourceEnd": 801.48,
+      "editedStart": 761.66,
+      "editedEnd": 801.48
+    }
+  ]
+}

@@ -1,0 +1,535 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-23T14:53:57.778Z",
+  "sourceVideo": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrbtjdup/source.mp4",
+  "sourceScript": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/export/outdoor-script.json",
+  "sourceTake": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrbtjdup/take.json",
+  "durationSeconds": 166.138,
+  "sourceDurationSeconds": 166.138,
+  "transcriptSegments": [
+    {
+      "start": 0.62,
+      "end": 7.84,
+      "text": "So welcome back. So last clip is ended with not set equal sign. So today we finally open set equal"
+    },
+    {
+      "start": 7.84,
+      "end": 13.66,
+      "text": "So the textbook rule is simple. So two sets are equal when A is subset of B and B subset of A"
+    },
+    {
+      "start": 13.66,
+      "end": 19.16,
+      "text": "But the real question is not at the rule. The real question is what the equal sign means inside proof assistant"
+    },
+    {
+      "start": 20.56,
+      "end": 27.14,
+      "text": "So start with a tiny lean example. So n plus zero close equals n is closed by"
+    },
+    {
+      "start": 27.14,
+      "end": 33.94,
+      "text": "F L. So this means that the checker can scan both sides compute and see the same thing"
+    },
+    {
+      "start": 33.94,
+      "end": 40,
+      "text": "But zero plus n equals n is also true and reflux does not close it. So why is that?"
+    },
+    {
+      "start": 40.42,
+      "end": 43.18,
+      "text": "So now you need net dot zero add"
+    },
+    {
+      "start": 43.18,
+      "end": 48.02,
+      "text": "So one equality was seen by the scanner and the water is seen by a recipient"
+    },
+    {
+      "start": 50.35,
+      "end": 55.53,
+      "text": "So now set set equal set equality is not about two expressions looking identical"
+    },
+    {
+      "start": 55.53,
+      "end": 58.01,
+      "text": "It is about having the same members"
+    },
+    {
+      "start": 58.01,
+      "end": 61.73,
+      "text": "So lean uses one general equality type"
+    },
+    {
+      "start": 62.32,
+      "end": 64.63,
+      "text": "EQ and set extensionality"
+    },
+    {
+      "start": 64.63,
+      "end": 70.33,
+      "text": "Build builds the recipe. So if is the receipt so"
+    },
+    {
+      "start": 71.37,
+      "end": 77.87,
+      "text": "Everything so every X is in a exactly when it is in B then a equals B"
+    },
+    {
+      "start": 79,
+      "end": 83.47,
+      "text": "Turn right to that recipe received shaped directly beside the concept"
+    },
+    {
+      "start": 83.47,
+      "end": 89.19,
+      "text": "So say who's not hidden B style behind a search through tactics and false set"
+    },
+    {
+      "start": 89.19,
+      "end": 93.55,
+      "text": "Like and it becomes exactly two goals a subset B and subset"
+    },
+    {
+      "start": 94.19,
+      "end": 99.49,
+      "text": "A subset B and B subset A. So that is the textbook sentence turn into obligations"
+    },
+    {
+      "start": 100.65,
+      "end": 104.73,
+      "text": "So function have the same problem. So two functions may be written differently"
+    },
+    {
+      "start": 104.73,
+      "end": 108.89,
+      "text": "But if they give the same output on every input they are equal"
+    },
+    {
+      "start": 108.89,
+      "end": 115.27,
+      "text": "So lean uses fung X to turn point wise point wise agreement on into function equality and"
+    },
+    {
+      "start": 115.79,
+      "end": 120.15,
+      "text": "Turn lang writes the point wise received as function for every"
+    },
+    {
+      "start": 120.81,
+      "end": 122.17,
+      "text": "you know X"
+    },
+    {
+      "start": 122.85,
+      "end": 126.79,
+      "text": "Every X f of X equal G of X"
+    },
+    {
+      "start": 126.79,
+      "end": 130.61,
+      "text": "This is where the Emily read ideas fits. So in higher"
+    },
+    {
+      "start": 130.61,
+      "end": 135.53,
+      "text": "Category theory you often should not ask whether two things are literally the same object"
+    },
+    {
+      "start": 135.53,
+      "end": 140.79,
+      "text": "You ask whether there is a structure preserving equivalence between them"
+    },
+    {
+      "start": 140.79,
+      "end": 146.77,
+      "text": "So in hot equality proves behaves like paths and universe you may learn says a"
+    },
+    {
+      "start": 147.67,
+      "end": 156.89,
+      "text": "Equivalence of types can be used as equality. So the latter is that scanner when computer is enough and received when proof is needed and"
+    },
+    {
+      "start": 157.29,
+      "end": 157.97,
+      "text": "the path"
+    },
+    {
+      "start": 158.57,
+      "end": 164.11,
+      "text": "When sameness is really equivalent. So next clip we're going to talk about the empty set"
+    }
+  ],
+  "transcriptWordCount": 415,
+  "badIntervals": [
+    {
+      "start": 19.22,
+      "end": 20.5,
+      "reason": "word pause 1.40s; transcript pause 1.40s"
+    },
+    {
+      "start": 48.080000000000005,
+      "end": 50.29,
+      "reason": "word pause 2.33s; transcript pause 2.33s"
+    },
+    {
+      "start": 51.230000000000004,
+      "end": 51.93,
+      "reason": "repeated word: set"
+    },
+    {
+      "start": 70.39,
+      "end": 71.31,
+      "reason": "word pause 1.04s; transcript pause 1.04s"
+    },
+    {
+      "start": 77.93,
+      "end": 78.94,
+      "reason": "word pause 1.13s; transcript pause 1.13s"
+    },
+    {
+      "start": 99.55,
+      "end": 100.59,
+      "reason": "word pause 1.16s; transcript pause 1.16s"
+    },
+    {
+      "start": 112.31,
+      "end": 113.31,
+      "reason": "repeated phrase: point wise"
+    },
+    {
+      "start": 120.21000000000001,
+      "end": 121.69000000000001,
+      "reason": "word pause 0.66s; filler aside: you know"
+    },
+    {
+      "start": 122.23,
+      "end": 122.78999999999999,
+      "reason": "word pause 0.68s"
+    },
+    {
+      "start": 146.83,
+      "end": 147.60999999999999,
+      "reason": "word pause 0.90s; transcript pause 0.90s"
+    }
+  ],
+  "goodIntervals": [
+    {
+      "start": 0.56,
+      "end": 19.22
+    },
+    {
+      "start": 20.5,
+      "end": 48.080000000000005
+    },
+    {
+      "start": 50.29,
+      "end": 51.11
+    },
+    {
+      "start": 51.949999999999996,
+      "end": 70.39
+    },
+    {
+      "start": 71.31,
+      "end": 77.93
+    },
+    {
+      "start": 78.94,
+      "end": 99.55
+    },
+    {
+      "start": 100.59,
+      "end": 112.25
+    },
+    {
+      "start": 113.49,
+      "end": 120.21000000000001
+    },
+    {
+      "start": 122.78999999999999,
+      "end": 146.83
+    },
+    {
+      "start": 147.60999999999999,
+      "end": 164.21
+    }
+  ],
+  "baselineBadIntervals": [
+    {
+      "start": 19.22,
+      "end": 20.5,
+      "reason": "word pause 1.40s; transcript pause 1.40s"
+    },
+    {
+      "start": 48.080000000000005,
+      "end": 50.29,
+      "reason": "word pause 2.33s; transcript pause 2.33s"
+    },
+    {
+      "start": 51.230000000000004,
+      "end": 51.93,
+      "reason": "repeated word: set"
+    },
+    {
+      "start": 70.39,
+      "end": 71.31,
+      "reason": "word pause 1.04s; transcript pause 1.04s"
+    },
+    {
+      "start": 77.93,
+      "end": 78.94,
+      "reason": "word pause 1.13s; transcript pause 1.13s"
+    },
+    {
+      "start": 99.55,
+      "end": 100.59,
+      "reason": "word pause 1.16s; transcript pause 1.16s"
+    },
+    {
+      "start": 112.31,
+      "end": 113.31,
+      "reason": "repeated phrase: point wise"
+    },
+    {
+      "start": 120.21000000000001,
+      "end": 121.69000000000001,
+      "reason": "word pause 0.66s; filler aside: you know"
+    },
+    {
+      "start": 122.23,
+      "end": 122.78999999999999,
+      "reason": "word pause 0.68s"
+    },
+    {
+      "start": 146.83,
+      "end": 147.60999999999999,
+      "reason": "word pause 0.90s; transcript pause 0.90s"
+    }
+  ],
+  "baselineGoodIntervals": [
+    {
+      "start": 0.56,
+      "end": 19.22
+    },
+    {
+      "start": 20.5,
+      "end": 48.080000000000005
+    },
+    {
+      "start": 50.29,
+      "end": 51.11
+    },
+    {
+      "start": 51.949999999999996,
+      "end": 70.39
+    },
+    {
+      "start": 71.31,
+      "end": 77.93
+    },
+    {
+      "start": 78.94,
+      "end": 99.55
+    },
+    {
+      "start": 100.59,
+      "end": 112.25
+    },
+    {
+      "start": 113.49,
+      "end": 120.21000000000001
+    },
+    {
+      "start": 122.78999999999999,
+      "end": 146.83
+    },
+    {
+      "start": 147.60999999999999,
+      "end": 164.21
+    }
+  ],
+  "visualTimeline": [
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 0.56,
+      "sourceEnd": 19.22,
+      "editedStart": 0,
+      "editedEnd": 18.66
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 20.5,
+      "sourceEnd": 48.080000000000005,
+      "editedStart": 18.66,
+      "editedEnd": 46.24000000000001
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 50.29,
+      "sourceEnd": 51.11,
+      "editedStart": 46.24000000000001,
+      "editedEnd": 47.06000000000001
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 51.949999999999996,
+      "sourceEnd": 70.39,
+      "editedStart": 47.06000000000001,
+      "editedEnd": 65.50000000000001
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 71.31,
+      "sourceEnd": 77.93,
+      "editedStart": 65.50000000000001,
+      "editedEnd": 72.12000000000002
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 78.94,
+      "sourceEnd": 99.55,
+      "editedStart": 72.12000000000002,
+      "editedEnd": 92.73000000000002
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 100.59,
+      "sourceEnd": 112.25,
+      "editedStart": 92.73000000000002,
+      "editedEnd": 104.39000000000001
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 113.49,
+      "sourceEnd": 120.21000000000001,
+      "editedStart": 104.39000000000001,
+      "editedEnd": 111.11000000000003
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 122.78999999999999,
+      "sourceEnd": 126.527,
+      "editedStart": 111.11000000000003,
+      "editedEnd": 114.84700000000004
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "Beat 6: present the higher-category philosophy without naming a person",
+      "sourceStart": 126.527,
+      "sourceEnd": 146.83,
+      "editedStart": 114.84700000000004,
+      "editedEnd": 135.15000000000003
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "Beat 6: present the higher-category philosophy without naming a person",
+      "sourceStart": 147.60999999999999,
+      "sourceEnd": 164.21,
+      "editedStart": 135.15000000000003,
+      "editedEnd": 151.75000000000006
+    }
+  ],
+  "baselineVisualTimeline": [
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 0.56,
+      "sourceEnd": 19.22,
+      "editedStart": 0,
+      "editedEnd": 18.66
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 20.5,
+      "sourceEnd": 48.080000000000005,
+      "editedStart": 18.66,
+      "editedEnd": 46.24000000000001
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 50.29,
+      "sourceEnd": 51.11,
+      "editedStart": 46.24000000000001,
+      "editedEnd": 47.06000000000001
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 51.949999999999996,
+      "sourceEnd": 70.39,
+      "editedStart": 47.06000000000001,
+      "editedEnd": 65.50000000000001
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 71.31,
+      "sourceEnd": 77.93,
+      "editedStart": 65.50000000000001,
+      "editedEnd": 72.12000000000002
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 78.94,
+      "sourceEnd": 99.55,
+      "editedStart": 72.12000000000002,
+      "editedEnd": 92.73000000000002
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 100.59,
+      "sourceEnd": 112.25,
+      "editedStart": 92.73000000000002,
+      "editedEnd": 104.39000000000001
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 113.49,
+      "sourceEnd": 120.21000000000001,
+      "editedStart": 104.39000000000001,
+      "editedEnd": 111.11000000000003
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 122.78999999999999,
+      "sourceEnd": 126.527,
+      "editedStart": 111.11000000000003,
+      "editedEnd": 114.84700000000004
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "Beat 6: present the higher-category philosophy without naming a person",
+      "sourceStart": 126.527,
+      "sourceEnd": 146.83,
+      "editedStart": 114.84700000000004,
+      "editedEnd": 135.15000000000003
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "Beat 6: present the higher-category philosophy without naming a person",
+      "sourceStart": 147.60999999999999,
+      "sourceEnd": 164.21,
+      "editedStart": 135.15000000000003,
+      "editedEnd": 151.75000000000006
+    }
+  ]
+}

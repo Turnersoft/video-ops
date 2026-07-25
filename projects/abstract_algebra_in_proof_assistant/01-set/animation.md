@@ -44,15 +44,13 @@ allow-script-change: false
 -->
 
 Hi Friends, welcom back! So a set is just a well-defined collection of objects. Those objects are called elements, or members. What we and formal logic care about is the precise rule for deciding whether an element belongs to the set.
-
 ### Turn
 
 ```turn
 structure[T] Set<T: Any> {
 }
 ```
-
-Highlights:
+### Turn highlights
 
 - `structure`
 - `Set`
@@ -75,7 +73,6 @@ Thin arrow alpha to Prop says: one element in, true or false out.
 That is a function type — different from the fat arrow on the lambda line later.
 Prop is Lean's type for statements that can be true or false.
 and Colon-equals means value assignment.
-
 ### Lean
 
 ```lean
@@ -84,8 +81,7 @@ and Colon-equals means value assignment.
 -- Mathlib source: mathlib4/Mathlib/Data/Set/Defs.lean
 def Set (α : Type u) := α → Prop
 ```
-
-Highlights:
+### Lean highlights
 
 - `mathlib4/Mathlib/Data/Set/Defs.lean`
 - `def Set`
@@ -111,7 +107,6 @@ allow-script-change: false
 -->
 
 For example, oddIntegers colon Set Int fixes Int as the element type for this one concrete set. Colon here is a type label on the name. The colon equals on the same line says the definition continues on the next line.
-
 ### Lean
 
 ```lean
@@ -119,8 +114,7 @@ def Set (α : Type u) := α → Prop
   -- …
 def oddIntegers : Set Int :=
 ```
-
-Highlights:
+### Lean highlights
 
 - `oddIntegers`
 - `Set Int`
@@ -143,15 +137,13 @@ allow-script-change: false
 -->
 
 Then fun statement is Lean's anonymous function, like a JavaScript arrow function. And the function take a parameter n and return a statement about n. When that proposition is proven to be true, n will belong to the set.
-
 ### Lean
 
 ```lean
 def oddIntegers : Set Int :=
   fun n => n % 2 = 1
 ```
-
-Highlights:
+### Lean highlights
 
 - `fun n =>`
 - `n % 2`
@@ -173,7 +165,6 @@ allow-script-change: false
 -->
 
 So if you apply oddIntegers to n directly, you will get a Prop, a membership question. Notice that Lean never forces you to treat that Prop as membership condition. Rename def Set and the story disappears. That semantic gap is a real pitfall in formal methods.
-
 ### Lean
 
 ```lean
@@ -182,8 +173,7 @@ def Set (α : Type u) := α → Prop
 def oddIntegers : Set Int :=
   fun n => n % 2 = 1
 ```
-
-Highlights:
+### Lean highlights
 
 - `oddIntegers`
 - `Prop`
@@ -205,7 +195,6 @@ allow-script-change: false
 -->
 
 Next, mathlib defines a namespace block for Set. So Names inside get the Set dot prefix, which is why you read Set dot Mem instead of bare Mem. end Set at the bottom closes that block.
-
 ### Lean
 
 ```lean
@@ -216,8 +205,7 @@ end Set
 
  /- Set.Mem s a
 ```
-
-Highlights:
+### Lean highlights
 
 - `namespace Set`
 - `end Set`
@@ -244,7 +232,6 @@ On the parameters, s colon Set alpha labels the set and a colon alpha is one ele
 The return type after the second colon is Prop again.
 The body is s a which means s applied on a
 So this is how we model membership, but where is the symbol a in s?
-
 ### Lean
 
 ```lean
@@ -255,8 +242,7 @@ end Set
 
  -- but where is the symbol a ∈ s
 ```
-
-Highlights:
+### Lean highlights
 
 - `protected def Mem`
 - `s : Set α`
@@ -285,7 +271,6 @@ and then the notation is binded to a typeclass called Membership which is basica
 Notice the outParam here on the element type here, it means it can be ignored in usage and lean will just infer it.
 So that is the preparation
 But in order for our Set to use this notation, we still need to do one more thing
-
 ### Lean
 
 ```lean
@@ -301,8 +286,7 @@ But in order for our Set to use this notation, we still need to do one more thin
 -- Mathlib source: mathlib4/Mathlib/Data/Set/Defs.lean
 -- Set α wires the Membership field to Set.Mem below.
 ```
-
-Highlights:
+### Lean highlights
 
 - `lean4/src/Init/Prelude.lean`
 - `class Membership`
@@ -330,7 +314,6 @@ that is to implement the typeclass on def of Set by using the instance block
 notice here alpha is bounded by the Set alpha on the right. whatever allowed in Set is what's allowed for alpha
 by using the angle bracket, we provide the value for the only method in the typeclass which is convinence syntax.
 But If we have multiple method in a typeclass, we have to implement the one by one as shown below
-
 ### Lean
 
 ```lean
@@ -361,8 +344,7 @@ instance : Foo Int := {
   qux := 42
 }
 ```
-
-Highlights:
+### Lean highlights
 
 - `instance`
 - `Membership`
@@ -386,7 +368,6 @@ allow-script-change: false
 
 So now we can use the notation like this because the typeclass implement
 Notice it construct a proposition with a in S
-
 ### Lean
 
 ```lean
@@ -396,8 +377,7 @@ Notice it construct a proposition with a in S
   -- …
 example (s : Set α) (a : α) : Prop := a ∈ s
 ```
-
-Highlights:
+### Lean highlights
 
 - `a ∈ s`
 - `Membership.mem`
@@ -420,14 +400,12 @@ allow-script-change: false
 -->
 
 Another example here using OddIntegers
-
 ### Lean
 
 ```lean
 example (n : Int) : Prop := n ∈ oddIntegers
 ```
-
-Highlights:
+### Lean highlights
 
 - `n ∈ oddIntegers`
 ### Turn
@@ -451,7 +429,6 @@ So that is the full picture of lean's modelling:
 first a function-type constructor
 then a prop returning wrapper
 finally the notation for the mathematical "in" operator
-
 ### Lean
 
 ```lean
@@ -468,8 +445,7 @@ end Set
 instance : Membership α (Set α) :=
   ⟨Set.Mem⟩
 ```
-
-Highlights:
+### Lean highlights
 
 - `protected def Mem`
 - `instance`
@@ -495,13 +471,11 @@ So now we look at turn-lang, Notice it immediately give you a container story.
 we model Set using a structure directly.
 square bracket make it a container structure which allows it to use the "in" operator.
 Then we can use the in operator for every set to specify its content using laws.
-
 ### Lean
 
 ```lean
 as before
 ```
-
 ### Turn
 
 ```turn
@@ -510,8 +484,7 @@ structure[T] Set<T: Any> {
 
 // Turn-Lang: x in s is built-in (no Mem, no instance)
 ```
-
-Highlights:
+### Turn highlights
 
 - `structure[T]`
 - `Set`
@@ -531,13 +504,11 @@ For example, we model EmptySet by inheriting from set.
 and we use a law to specify the membership function
 no_members says for every x, x not in self, so nothing belongs to the empty set.
 So law is a requirement that every instance of the structure must satisfy.
-
 ### Lean
 
 ```lean
 as before
 ```
-
 ### Turn
 
 ```turn
@@ -550,8 +521,7 @@ structure EmptySet: Set<Any> {
     }
 }
 ```
-
-Highlights:
+### Turn highlights
 
 - `Set<Any>`
 - `no_members`
@@ -570,13 +540,11 @@ allow-script-change: false
 Similarly, Union follows the same pattern.
 Its law says x in the union when x is in A or x is in B.
 so this is how we model set in both languages
-
 ### Lean
 
 ```lean
 as before
 ```
-
 ### Turn
 
 ```turn
@@ -589,8 +557,7 @@ structure Union<T: Any, A B: Set<T>>: Set<T> {
     }
 }
 ```
-
-Highlights:
+### Turn highlights
 
 - `Union`
 - `def`
@@ -610,13 +577,11 @@ allow-script-change: false
 
 So I hope you enjoyed this video.
 Leave a comment if you need help with these.
-
 ### Lean
 
 ```lean
 as before
 ```
-
 ### Turn
 
 ```turn
@@ -642,13 +607,11 @@ allow-script-change: false
 
 in the next video, we will talk about subset.
 Subscribe and see you in the next one.
-
 ### Lean
 
 ```lean
 as before
 ```
-
 ### Turn
 
 ```turn
@@ -661,7 +624,6 @@ structure Union<T: Any, A B: Set<T>>: Set<T> {
     }
 }
 ```
-
-Highlights:
+### Turn highlights
 
 - `Union`

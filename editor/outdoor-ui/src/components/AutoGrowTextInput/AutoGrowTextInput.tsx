@@ -27,6 +27,7 @@ export function AutoGrowTextInput({
   minLines = 2,
   maxLines,
   nowrap = false,
+  fillHeight = false,
   inputStyle,
   inputClassName,
   style,
@@ -41,26 +42,34 @@ export function AutoGrowTextInput({
   );
 
   useEffect(() => {
+    if (fillHeight) {
+      return;
+    }
     setContentHeight((current) =>
       Math.max(current, minHeight, estimateHeight(value, lineHeight, minHeight, nowrap)),
     );
-  }, [lineHeight, minHeight, nowrap, value]);
+  }, [fillHeight, lineHeight, minHeight, nowrap, value]);
 
   const boxHeight = useMemo(() => {
+    if (fillHeight) {
+      return undefined;
+    }
     const grown = Math.max(minHeight, contentHeight);
     return maxHeight != null ? Math.min(grown, maxHeight) : grown;
-  }, [contentHeight, maxHeight, minHeight]);
+  }, [contentHeight, fillHeight, maxHeight, minHeight]);
 
-  const scrollEnabled = maxHeight != null && contentHeight > maxHeight;
+  const scrollEnabled = fillHeight || (maxHeight != null && contentHeight > maxHeight);
 
   const handleContentSizeChange = useCallback<
     NonNullable<TextInputProps["onContentSizeChange"]>
   >(
     (event) => {
-      setContentHeight(Math.max(minHeight, event.nativeEvent.contentSize.height));
+      if (!fillHeight) {
+        setContentHeight(Math.max(minHeight, event.nativeEvent.contentSize.height));
+      }
       onContentSizeChange?.(event);
     },
-    [minHeight, onContentSizeChange],
+    [fillHeight, minHeight, onContentSizeChange],
   );
 
   return (
@@ -78,15 +87,18 @@ export function AutoGrowTextInput({
           classes.input,
           nowrap ? classes.nowrap : undefined,
           scrollEnabled ? classes.scrollCap : undefined,
+          fillHeight ? classes.fillHeight : undefined,
           inputClassName,
         ),
         inputStyle,
         style,
-        {
-          height: boxHeight,
-          minHeight,
-          ...(maxHeight != null ? { maxHeight } : null),
-        },
+        fillHeight
+          ? { flex: 1, minHeight, alignSelf: "stretch" }
+          : {
+              height: boxHeight,
+              minHeight,
+              ...(maxHeight != null ? { maxHeight } : null),
+            },
       ]}
     />
   );

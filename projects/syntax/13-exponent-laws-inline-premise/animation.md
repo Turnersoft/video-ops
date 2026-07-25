@@ -31,14 +31,11 @@ Good formalization should make scope obvious before anyone reads the proof.
 Here, several related statement belong in one theorem block, but only the final result needs an additional assumption.
 Turn keeps that dependency local.
 No duplicated declarations, no stronger context than necessary, and no time wasted tracing where an assumption came from.
-
-
 ### Lean
 
 ```lean
 
 ```
-
 ### Turn
 
 ```turn
@@ -74,7 +71,6 @@ The shared context is written once, and each result is a named leaf.
 Only `abelian_distrib` carries `(abelian)G ->`.
 A reviewer sees the dependency immediately — without opening another theorem, comparing headers, or scanning a long proof.
 The syntax communicates scope before implementation begins.
-
 ### Turn
 
 ```turn
@@ -90,14 +86,11 @@ theorem "3.23 exponentiation on group" {
     }
 }
 ```
-
-Highlights:
+### Turn highlights
 
 - `forall G: Group`
 - `(abelian)G ->`
 - `abelian_distrib`
-
-
 ### Lean
 
 ```lean
@@ -133,7 +126,6 @@ allow-script-change: false
 Open any of the first three leaves and the context stays general: `G` is a `Group`, nothing more.
 That keeps proof search focused and the context panel quiet.
 It also means a future change to the special case cannot accidentally tighten the assumptions of the general results.
-
 ### Visual notes
 
 Proof-slide on one general leaf.
@@ -164,7 +156,6 @@ When we reach the final leaf, the implication is handled with one line: `assume 
 That cleanly brings the extra premise into this proof’s local context — and nowhere else.
 No duplicated setup. No manual cleanup.
 The assumption appears at exactly the point where it becomes useful.
-
 ### Turn
 
 ```turn
@@ -175,12 +166,10 @@ abelian_distrib:
         ...
     };
 ```
-
-Highlights:
+### Turn highlights
 
 - `(abelian)G ->`
 - `assume hAbelian`
-
 ### Visual notes
 
 Contrast the context before and after `assume hAbelian`.
@@ -210,7 +199,6 @@ Related results stay together.
 Exceptional assumptions stay local.
 Each proof receives only the extra assumptions declared on its leaf.
 Less setup for the author, faster comprehension for the reviewer, and cleaner evolution for the library.
-
 ### Visual notes
 
 One block → one local premise → the extra context appears exactly where it applies.

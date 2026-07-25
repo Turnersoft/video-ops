@@ -34,7 +34,6 @@ The order of “for every” and “there exists” changes the picture.
 This is the same trap in proof courses.
 We remember a definition in English — “onto,” “covers everything” — but formal work asks for the exact quantifier direction.
 If that direction is wrong, you are not a little wrong. You are proving a different statement.
-
 ### Visual notes
 
 Hotel rooms / guests sketch, then a generic checker mismatch.
@@ -62,7 +61,6 @@ allow-script-change: false
 In Turn-Lang the definition is in the file next to the function — not buried in tactic output.
 Open surjective and read the quantifiers before you prove.
 That block is the contract.
-
 ### Visual notes
 
 Scroll to `structure Function` → `@notation(adjective)` → `surjective: Prop` block (do not open with this).
@@ -92,7 +90,6 @@ Here is how surjective is written in this chapter.
 For every output in the range, there exists an input hitting it — b first, then a.
 Swap that order and you are proving a different theorem.
 Later proofs unfold this exact block at the goal.
-
 ### Turn
 
 ```turn
@@ -102,13 +99,11 @@ surjective: Prop {
     |- apply(a) = b
 }
 ```
-
-Highlights:
+### Turn highlights
 
 - `forall b in range`
 - `exists a in domain`
 - `apply(a) = b`
-
 ### Visual notes
 
 Brief flash: `unfold Function.surjective at goal` in `"composition's rules"`.
@@ -137,9 +132,7 @@ allow-script-change: false
 
 So before tactics: read the named property in the file.
 Full chapter in the description. Subscribe for more pitfalls where formal work catches traps early.
-
 ### Visual notes
 
 Return to `surjective: Prop`.
 Short close.
-

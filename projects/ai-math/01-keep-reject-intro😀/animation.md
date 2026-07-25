@@ -23,18 +23,17 @@ pace.pace-factor: 1.1
 ## Beat 1: Hook
 
 How we score AI formalization claims before they go viral.
-
 ### Visual notes
+
 Opening still / title for Keep / Reject intro.
 
 ## Beat 2: Develop
 
 Expand the claim with one concrete scene the viewer can picture.
-
 ### Visual notes
+
 Mid-episode board or still.
 
 ## Beat 3: Close
 
 Leave one sharp takeaway — and a reason to watch the next episode.
-

@@ -24,6 +24,8 @@
 
 .paper {
   position: relative;
+  display: flex;
+  flex-direction: column;
   border-radius: scaled(10px);
   overflow: hidden;
   background: linear-gradient(180deg, #fffdf8 0%, #f6f0e6 100%);
@@ -31,45 +33,87 @@
   box-shadow:
     0 18px 48px rgba(30, 24, 18, 0.28),
     inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', serif;
 }
 
-.image {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.fallback {
-  padding: scaled(18px) scaled(22px);
+.content {
+  padding: scaled(28px) scaled(32px) scaled(24px);
   color: #3c362d;
 }
 
-.kicker {
-  margin: 0 0 scaled(8px);
-  font-size: scaled(13px);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(60, 54, 45, 0.62);
+.fallback {
+  padding: scaled(22px) scaled(26px) scaled(20px);
+  color: #3c362d;
+}
+
+.sectionKicker {
+  margin: 0 0 scaled(18px);
+  padding-bottom: scaled(14px);
+  border-bottom: 1px solid rgba(60, 54, 45, 0.22);
+  font-size: scaled(28px);
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  font-style: italic;
+  color: rgba(60, 54, 45, 0.72);
 }
 
 .title {
-  margin: 0 0 scaled(10px);
-  font-size: scaled(24px);
+  margin: 0 0 scaled(18px);
+  font-size: scaled(44px);
   line-height: 1.25;
-  font-weight: 650;
+  font-weight: 600;
+  font-style: italic;
 }
 
 .body {
   margin: 0;
   font-size: scaled(18px);
-  line-height: 1.5;
+  line-height: 1.55;
   white-space: pre-wrap;
 }
 
-.source {
-  margin: scaled(12px) 0 0;
-  font-size: scaled(14px);
-  color: rgba(60, 54, 45, 0.72);
+.latexBody {
+  display: flex;
+  flex-direction: column;
+  gap: scaled(18px);
+}
+
+.latexParagraph {
+  margin: 0;
+  font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', serif;
+  font-size: scaled(38px);
+  line-height: 1.65;
+  letter-spacing: 0.015em;
+  word-spacing: 0.06em;
+  text-align: center;
+
+  :global(mjx-container[jax='CHTML']) {
+    font-size: 100%;
+    margin: 0 scaled(3px);
+  }
+}
+
+.footer {
+  margin-top: auto;
+  padding: scaled(22px) scaled(32px) scaled(28px);
+  border-top: 1px solid rgba(60, 54, 45, 0.22);
+  text-align: center;
+}
+
+.footerBook {
+  margin: 0;
+  font-size: scaled(32px);
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  color: rgba(60, 54, 45, 0.8);
+}
+
+.footerAuthor {
+  margin: scaled(6px) 0 0;
+  font-size: scaled(30px);
+  line-height: 1.45;
+  font-style: italic;
+  color: rgba(60, 54, 45, 0.68);
 }
 
 .handle {
@@ -80,6 +124,7 @@
   border-radius: scaled(999px);
   background: rgba(60, 54, 45, 0.08);
   color: rgba(60, 54, 45, 0.55);
+  font-family: system-ui, sans-serif;
   font-size: scaled(11px);
   letter-spacing: 0.04em;
   text-transform: uppercase;

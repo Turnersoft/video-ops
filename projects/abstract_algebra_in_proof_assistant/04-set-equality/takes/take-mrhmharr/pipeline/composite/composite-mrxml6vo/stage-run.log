@@ -1,0 +1,32 @@
+# stage-run 2026-07-23T14:47:37.239Z
+jobId=job-take-mrhmharr
+scriptId=sets-v2-04-set-equality
+takeId=take-mrhmharr
+stage=composite
+runId=composite-mrxml6vo
+
+[2026-07-23T14:47:37.261Z] Starting composite
+[2026-07-23T14:47:37.282Z] Copying alignment artifacts
+[2026-07-23T14:47:37.304Z] Rendering portrait + landscape
+[2026-07-23T14:47:37.304Z] $ node /Users/johndoe/Documents/company/video_ops/editor/remotion/scripts/render-outdoor.mjs sets-v2-04-set-equality --edit-dir /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mrxml6vo --format both
+[stdout] /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrhmharr/pipeline/composite/composite-mrxml6vo/outdoor-manifest.json
+[stderr] node:fs:440
+[stderr]     return binding.readFileUtf8(path, stringToFlags(options.flag));
+[stderr]                    ^
+
+[stderr] Error: ENOENT: no such file or directory, open '/Users/johndoe/Documents/company/video_ops/editor/projects/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/.cache/animation-v4.json'
+[stderr]     at Object.readFileSync (node:fs:440:20)
+[stderr]     at file:///Users/johndoe/Documents/company/video_ops/editor/remotion/scripts/render-outdoor.mjs:93:22
+[stderr]     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+[stderr]     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+[stderr]     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+[stderr]   errno: -2,
+[stderr]   code: 'ENOENT',
+[stderr]   syscall: 'open',
+[stderr]   path: '/Users/johndoe/Documents/company/video_ops/editor/projects/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/.cache/animation-v4.json'
+[stderr] }
+
+[stderr] Node.js v22.22.3
+[2026-07-23T14:47:37.361Z] exit 1
+[2026-07-23T14:47:37.361Z] FAILED: Remotion render failed — [2026-07-23T14:47:37.361Z] exit 1
+[2026-07-23T14:47:37.382Z] [2026-07-23T14:47:37.361Z] exit 1

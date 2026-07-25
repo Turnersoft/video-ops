@@ -1,10 +1,11 @@
 /**
  * compare-dual beat — types and compile helpers tied to animation.md visual notes.
  *
- * Visual notes carry `<!-- beat-studio: {"template":"compare-dual",…} -->` plus hint lines:
+ * Visual notes use plain hint lines (no JSON):
  * - beat-template: compare-dual
  * - layer: compare
  * - lean-render / turn-render / typing
+ * - portrait-bottom: lean-code | turn-render (outdoor portrait bottom pane)
  * - screen-recording: Label for the studio screen-recording placeholder
  */
 

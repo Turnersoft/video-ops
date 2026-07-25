@@ -1,0 +1,328 @@
+{
+  "version": 1,
+  "scriptId": "sets-v2-04-set-equality",
+  "source": "speech-alignment",
+  "generatedAt": "2026-07-23T14:54:50.972Z",
+  "videoSrc": "takes/take-mrbtjdup/pipeline/cut/cut-mrxmt4ju/edited-good-intervals.mp4",
+  "editedDurationSeconds": 151.75,
+  "burnCaptions": true,
+  "burnCaptionsZh": true,
+  "beatDurationsSeconds": [
+    18.66,
+    27.58,
+    25.88,
+    20.61,
+    22.12,
+    36.9
+  ],
+  "captionSegments": [
+    {
+      "text": "So welcome back.",
+      "atSeconds": 0.06,
+      "durationSeconds": 1.16,
+      "zh": "大家好，欢迎回来。"
+    },
+    {
+      "text": "So last clip is ended with not set equal sign.",
+      "atSeconds": 1.48,
+      "durationSeconds": 3.26,
+      "zh": "真正理解一个数学概念的最好方式，就是把它形式化。"
+    },
+    {
+      "text": "So today we finally open set equal",
+      "atSeconds": 4.9,
+      "durationSeconds": 2.38,
+      "zh": "今天我们形式化集合相等。"
+    },
+    {
+      "text": "So the textbook rule is simple.",
+      "atSeconds": 7.28,
+      "durationSeconds": 2.18,
+      "zh": "课本定义看起来很简单：两个集合相等，就是彼此都是对方的子集。"
+    },
+    {
+      "text": "So two sets are equal when A is subset of B and B subset of A",
+      "atSeconds": 9.68,
+      "durationSeconds": 3.42,
+      "zh": "但要形式化这句话，我们还需要理解证明系统里的等号到底是什么意思。"
+    },
+    {
+      "text": "But the real question is not at the rule.",
+      "atSeconds": 13.02,
+      "durationSeconds": 2.16,
+      "zh": "这比你想的更复杂。"
+    },
+    {
+      "text": "The real question is what the equal sign means inside proof assistant",
+      "atSeconds": 15.44,
+      "durationSeconds": 3.16,
+      "zh": "大家好，欢迎回来。"
+    },
+    {
+      "text": "So start with a tiny lean example.",
+      "atSeconds": 18.72,
+      "durationSeconds": 2.06,
+      "zh": "所以，相等并不总是意味着原子层面完全一样。"
+    },
+    {
+      "text": "So n plus zero close equals n is closed by",
+      "atSeconds": 21.14,
+      "durationSeconds": 4.16,
+      "zh": "一加一等于二在原子层面并不一样，因为表达式字面上不同，但它们在数学上是一样的。"
+    },
+    {
+      "text": "F L.",
+      "atSeconds": 25.3,
+      "durationSeconds": 1.42,
+      "zh": "这才是我们想证明的那种有意义的相等。"
+    },
+    {
+      "text": "So this means that the checker can scan both sides compute and see the same thing",
+      "atSeconds": 27.26,
+      "durationSeconds": 4.84,
+      "zh": "还有另一种相等，比如一等于一：左右两边一样，不值得证明，但仍然很有用，因为它们会出现在有意义证明的末尾，用来收束证明。"
+    },
+    {
+      "text": "But zero plus n equals n is also true and reflux does not close it.",
+      "atSeconds": 32.1,
+      "durationSeconds": 4.84,
+      "zh": "在 Lean 里我们可以写 A 等于 B，而且不需要先实现相等类型类，因为等号是值的内置记号，就像其他编程语言一样。"
+    },
+    {
+      "text": "So why is that?",
+      "atSeconds": 37.18,
+      "durationSeconds": 0.98,
+      "zh": "但这里有两种相等：定义相等和命题相等。"
+    },
+    {
+      "text": "So now you need net dot zero add",
+      "atSeconds": 38.58,
+      "durationSeconds": 2.76,
+      "zh": "定义相等是计算机仍可自动检查的，即使两边看起来不同。"
+    },
+    {
+      "text": "So one equality was seen by the scanner and the water is seen by a recipient",
+      "atSeconds": 41.34,
+      "durationSeconds": 4.84,
+      "zh": "命题相等是你需要证明的东西——但证明之后，证明引擎仍可以把它当作计算机规则来用。"
+    },
+    {
+      "text": "So now set set equal set equality is not about two expressions looking identical",
+      "atSeconds": 46.3,
+      "durationSeconds": 0.76,
+      "zh": "现在的问题是，什么时候我们才能在 Lean 里写等号？"
+    },
+    {
+      "text": "It is about having the same members",
+      "atSeconds": 50.64,
+      "durationSeconds": 2.48,
+      "zh": "两边必须具有完全相同的类型。"
+    },
+    {
+      "text": "So lean uses one general equality type",
+      "atSeconds": 53.12,
+      "durationSeconds": 3.72,
+      "zh": "所以自然数里的 2 和整数里的 2 不能直接比较。"
+    },
+    {
+      "text": "EQ and set extensionality",
+      "atSeconds": 57.43,
+      "durationSeconds": 2.31,
+      "zh": "对我们来说它们像同一个数字，但 Lean 看见的是两个类型。"
+    },
+    {
+      "text": "Build builds the recipe.",
+      "atSeconds": 59.74,
+      "durationSeconds": 2.74,
+      "zh": "先把自然数转成整数，等式才有意义。"
+    },
+    {
+      "text": "So if is the receipt so",
+      "atSeconds": 62.88,
+      "durationSeconds": 2.56,
+      "zh": "集合 A 和 B 都具有 Set α 类型，所以可以直接比较。"
+    },
+    {
+      "text": "Everything so every X is in a exactly when it is in B then a equals B",
+      "atSeconds": 65.56,
+      "durationSeconds": 6.5,
+      "zh": "Lean 用我们已有的子集想法来定义集合相等——互相包含就推出 A 等于 B。"
+    },
+    {
+      "text": "Turn right to that recipe received shaped directly beside the concept",
+      "atSeconds": 72.18,
+      "durationSeconds": 4.47,
+      "zh": "现在 Turn-Lang 做了另一种选择。"
+    },
+    {
+      "text": "So say who's not hidden B style behind a search through tactics and false set",
+      "atSeconds": 76.65,
+      "durationSeconds": 5.72,
+      "zh": "我们不希望到处使用等号，然后突然假设每种结构里的相等都有同一个含义。"
+    },
+    {
+      "text": "Like and it becomes exactly two goals a subset B and subset",
+      "atSeconds": 82.37,
+      "durationSeconds": 4.36,
+      "zh": "看这里的 at-notation。"
+    },
+    {
+      "text": "A subset B and B subset A.",
+      "atSeconds": 87.37,
+      "durationSeconds": 1.94,
+      "zh": "它把画面上的 A 等于 B 绑定到一个叫 SetEq 的具名关系。"
+    },
+    {
+      "text": "So that is the textbook sentence turn into obligations",
+      "atSeconds": 89.45,
+      "durationSeconds": 3.22,
+      "zh": "所以等号只是记号。"
+    },
+    {
+      "text": "So function have the same problem.",
+      "atSeconds": 92.79,
+      "durationSeconds": 1.88,
+      "zh": "接下来比较函数相等，也有同样的问题。"
+    },
+    {
+      "text": "So two functions may be written differently",
+      "atSeconds": 94.83,
+      "durationSeconds": 2.04,
+      "zh": "两个函数作为原始代码不可能完全一样——它们可能有不同的函数体。"
+    },
+    {
+      "text": "But if they give the same output on every input they are equal",
+      "atSeconds": 96.87,
+      "durationSeconds": 4.16,
+      "zh": "它们甚至可能返回不同的类型：一个想返回自然数，一个返回整数，即使数值相同。"
+    },
+    {
+      "text": "So lean uses fung X to turn point wise point wise agreement on into function equality and",
+      "atSeconds": 101.03,
+      "durationSeconds": 3.36,
+      "zh": "所以在 Lean 这边用 funext：这是挂在函数上的定理，告诉你可以把对所有 x 的 f(x) 等于 g(x) 改写成 f 等于 g。"
+    },
+    {
+      "text": "Turn lang writes the point wise received as function for every",
+      "atSeconds": 106.69,
+      "durationSeconds": 4.36,
+      "zh": "在 Turn-Lang 这边我们把这个关系命名为 FunctionEq，同样由记号挂上可见等号。"
+    },
+    {
+      "text": "Every X f of X equal G of X",
+      "atSeconds": 111.17,
+      "durationSeconds": 3.94,
+      "zh": "记号明确告诉我们需要一致的观察：每个输入上的输出。"
+    },
+    {
+      "text": "This is where the Emily read ideas fits.",
+      "atSeconds": 115.11,
+      "durationSeconds": 2.74,
+      "zh": "最后，我们在范畴论里再往高一层。"
+    },
+    {
+      "text": "So in higher",
+      "atSeconds": 117.85,
+      "durationSeconds": 1.08,
+      "zh": "必须非常小心，不要在真正想说同构时，说两个对象字面相等。"
+    },
+    {
+      "text": "Category theory you often should not ask whether two things are literally the same object",
+      "atSeconds": 118.93,
+      "durationSeconds": 4.92,
+      "zh": "例如两个群可以使用完全不同的底层元素。"
+    },
+    {
+      "text": "You ask whether there is a structure preserving equivalence between them",
+      "atSeconds": 123.85,
+      "durationSeconds": 5.26,
+      "zh": "作为原始数据，它们并不相等。"
+    },
+    {
+      "text": "So in hot equality proves behaves like paths and universe you may learn says a",
+      "atSeconds": 129.11,
+      "durationSeconds": 5.98,
+      "zh": "但如果存在保持乘法、单位元和逆元的同构，那么从群论角度看，它们具有相同结构。"
+    },
+    {
+      "text": "Equivalence of types can be used as equality.",
+      "atSeconds": 135.21,
+      "durationSeconds": 2.84,
+      "zh": "这和刚才做的一切连起来：集合比较成员，函数比较输出，带结构的对象比较保持结构的映射。"
+    },
+    {
+      "text": "So the latter is that scanner when computer is enough and received when proof is needed and",
+      "atSeconds": 138.43,
+      "durationSeconds": 6,
+      "zh": "在高阶范畴论里，甚至这些映射之间还可以继续比较。"
+    },
+    {
+      "text": "the path",
+      "atSeconds": 144.83,
+      "durationSeconds": 0.68,
+      "zh": "在同伦类型论里，相等证明表现得像路径。"
+    },
+    {
+      "text": "When sameness is really equivalent.",
+      "atSeconds": 146.11,
+      "durationSeconds": 2.52,
+      "zh": "所以真正的问题不只是“这两个东西相等吗”，而是“在数学的哪个层次上，我们应该把它们看作相同”。"
+    },
+    {
+      "text": "So next clip we're going to talk about the empty set",
+      "atSeconds": 148.89,
+      "durationSeconds": 2.76,
+      "zh": "这就是相等真正的重点。"
+    }
+  ],
+  "mergedBeats": [
+    {
+      "slideId": "beat-01",
+      "beatIndex": 0,
+      "editedStart": 0,
+      "editedEnd": 18.66,
+      "durationSeconds": 18.66,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-02",
+      "beatIndex": 1,
+      "editedStart": 18.66,
+      "editedEnd": 46.24,
+      "durationSeconds": 27.58,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-03",
+      "beatIndex": 2,
+      "editedStart": 46.24,
+      "editedEnd": 72.12,
+      "durationSeconds": 25.88,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-04",
+      "beatIndex": 3,
+      "editedStart": 72.12,
+      "editedEnd": 92.73,
+      "durationSeconds": 20.61,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-05",
+      "beatIndex": 4,
+      "editedStart": 92.73,
+      "editedEnd": 114.85,
+      "durationSeconds": 22.12,
+      "lastSpokenWord": ""
+    },
+    {
+      "slideId": "beat-06",
+      "beatIndex": 5,
+      "editedStart": 114.85,
+      "editedEnd": 151.75,
+      "durationSeconds": 36.9,
+      "lastSpokenWord": ""
+    }
+  ]
+}

@@ -222,71 +222,87 @@ export function TakePipelineScreen({ scriptId, takeId }: TakePipelineScreenProps
         ]}
       />
 
-      <View style={[layoutStyles.main, styles.main]}>
+      <View style={styles.shell}>
         {loading ? (
           <View style={styles.centered}>
             <ActivityIndicator color={colors.orange} />
           </View>
         ) : (
-          <>
-            {error ? (
-              <Text style={styles.error} numberOfLines={2}>
-                {error}
-              </Text>
-            ) : status ? (
-              <Text style={styles.status} numberOfLines={1}>
-                {status}
-              </Text>
-            ) : null}
+          <ScrollView
+            style={styles.pipelineScroll}
+            contentContainerStyle={styles.pipelineScrollContent}
+            nestedScrollEnabled
+          >
+            <View
+              style={[
+                {
+                  maxWidth: layoutStyles.main.maxWidth,
+                  width: '100%',
+                  alignSelf: 'center',
+                  paddingHorizontal: layoutStyles.main.paddingHorizontal,
+                  paddingTop: layoutStyles.main.paddingTop,
+                  paddingBottom: layoutStyles.main.paddingBottom,
+                },
+                styles.mainColumn,
+              ]}
+            >
+              {error ? (
+                <Text style={styles.error} numberOfLines={2}>
+                  {error}
+                </Text>
+              ) : status ? (
+                <Text style={styles.status} numberOfLines={1}>
+                  {status}
+                </Text>
+              ) : null}
 
-            {!entry ? (
-              <Text style={sharedStyles.mutedText}>Take not found on this phone or Mac yet.</Text>
-            ) : (
-              <ScrollView
-                style={styles.pipelineScroll}
-                contentContainerStyle={styles.pipelineBody}
-                nestedScrollEnabled
-              >
-                <Text style={styles.takeIdLine}>{entry.takeId}</Text>
+              {!entry ? (
+                <Text style={sharedStyles.mutedText}>
+                  Take not found on this phone or Mac yet.
+                </Text>
+              ) : (
+                <>
+                  <Text style={styles.takeIdLine}>{entry.takeId}</Text>
 
-                {entry.local ? (
-                  <LocalTakeCard
-                    take={entry.local}
-                    exporting={exportingTakeId === takeId}
-                    onExportToIcloud={
-                      retryIcloudExport ? () => void handleRetryIcloud() : undefined
-                    }
-                  />
-                ) : null}
-
-                {entry.mac ? (
-                  <View style={styles.pipelineWrap}>
-                    <SectionLabel>Results</SectionLabel>
-                    <TakeResults
-                      scriptId={scriptId}
-                      take={entry.mac}
-                      refreshTick={resultsTick}
+                  {entry.local ? (
+                    <LocalTakeCard
+                      take={entry.local}
+                      exporting={exportingTakeId === takeId}
+                      onExportToIcloud={
+                        retryIcloudExport ? () => void handleRetryIcloud() : undefined
+                      }
                     />
-                    <PipelineStagesPanel
-                      jobId={jobId}
-                      onSnapshot={handleSnapshot}
-                    />
-                    {ingest?.takeDir ? (
-                      <Text style={styles.pathLine}>Mac folder: {ingest.takeDir}</Text>
-                    ) : null}
-                  </View>
-                ) : (
-                  <View style={styles.pipelineWaiting}>
-                    <SectionLabel>Pipeline</SectionLabel>
-                    <Text style={sharedStyles.mutedText}>
-                      Pipeline unlocks after this take reaches your Mac (iCloud export or
-                      auto-upload when online).
-                    </Text>
-                  </View>
-                )}
-              </ScrollView>
-            )}
-          </>
+                  ) : null}
+
+                  {entry.mac ? (
+                    <View style={styles.pipelineWrap}>
+                      <SectionLabel>Results</SectionLabel>
+                      <TakeResults
+                        scriptId={scriptId}
+                        take={entry.mac}
+                        refreshTick={resultsTick}
+                      />
+                      <PipelineStagesPanel
+                        jobId={jobId}
+                        onSnapshot={handleSnapshot}
+                      />
+                      {ingest?.takeDir ? (
+                        <Text style={styles.pathLine}>Mac folder: {ingest.takeDir}</Text>
+                      ) : null}
+                    </View>
+                  ) : (
+                    <View style={styles.pipelineWaiting}>
+                      <SectionLabel>Pipeline</SectionLabel>
+                      <Text style={sharedStyles.mutedText}>
+                        Pipeline unlocks after this take reaches your Mac (iCloud export or
+                        auto-upload when online).
+                      </Text>
+                    </View>
+                  )}
+                </>
+              )}
+            </View>
+          </ScrollView>
         )}
       </View>
     </View>
@@ -294,11 +310,14 @@ export function TakePipelineScreen({ scriptId, takeId }: TakePipelineScreenProps
 }
 
 const styles = StyleSheet.create({
-  main: {
+  shell: {
     flex: 1,
     minHeight: 0,
-    paddingBottom: spacing.sm,
-    gap: spacing.xs,
+    width: '100%',
+    alignSelf: 'stretch',
+  },
+  mainColumn: {
+    gap: spacing.sm,
   },
   centered: {
     flex: 1,
@@ -319,10 +338,11 @@ const styles = StyleSheet.create({
   pipelineScroll: {
     flex: 1,
     minHeight: 0,
+    width: '100%',
   },
-  pipelineBody: {
-    gap: spacing.sm,
-    paddingBottom: spacing.xl,
+  pipelineScrollContent: {
+    flexGrow: 1,
+    width: '100%',
   },
   pipelineWrap: {
     gap: spacing.sm,

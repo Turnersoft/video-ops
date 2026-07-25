@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="video_ops animation-md-to-html" />
+    <title>04_set_equality</title>
+  </head>
+  <body>
+    <article
+      class="vo-episode"
+      data-video-ops="1"
+      data-script-id="04-set-equality"
+      data-title="04_set_equality"
+      data-format="landscape"
+      data-fps="30"
+      data-width="1920"
+      data-height="1080"
+      data-social-title-english="4. Set equality: what the equal sign means in a proof assistant"
+      data-social-title-china="4. 集合相等：证明助手里的等号是什么意思"
+      data-promotional-description="Hook: the glyph '=' does not settle what sameness means. We resolve the SetEq promised in episode 3, distinguish Lean kernel conversion from the Eq proposition, prove set equality by extensionality, compare Turn-Lang's named SetEq and FuncEq relations, and separate literal equality from isomorphism."
+    >
+      <h1 id="scene-1">
+        Scene 1: Set equality — what equals means in a proof assistant
+      </h1>
+      <vo-directives>
+        <vo-directive name="layout">dual-panel</vo-directive>
+        <vo-directive name="burn-captions">true</vo-directive>
+        <vo-directive name="visual-notes"
+          >Continues 03-proper-subset. Six beats: resolve the earlier `not
+          SetEq(A, B)` promise; distinguish Lean kernel conversion from
+          propositional Eq; explain homogeneous equality and Set.ext; unfold
+          Turn-Lang's named SetEq relation; compare Lean funext with Turn-Lang FuncEq;
+          then separate literal equality from isomorphism before episode 5 on
+          the empty set.</vo-directive
+        >
+        <vo-directive name="teleprompter.position">below-canvas</vo-directive>
+        <vo-directive name="pace.syllables-per-second">3.6</vo-directive>
+        <vo-directive name="pace.pause-after-beat">0.4</vo-directive>
+        <vo-directive name="pace.min-beat-seconds">4</vo-directive>
+        <vo-directive name="pace.pace-factor">1.25</vo-directive>
+        <vo-directive name="display.editor-font-scale">0.7</vo-directive>
+        <vo-directive name="display.lean-editor-font-scale">0.8</vo-directive>
+        <vo-directive name="display.render-font-scale">0.85</vo-directive>
+      </vo-directives>
+      <h2 id="overlay-textbook-set-equality">Overlay: textbook-set-equality</h2>
+      <section class="vo-overlay" data-id="textbook-set-equality">
+        <vo-directives>
+          <vo-directive name="type">textbook</vo-directive>
+          <vo-directive name="aata-excerpt"
+            >sets-set-equality-definition</vo-directive
+          >
+          <vo-directive name="placement">center</vo-directive>
+        </vo-directives>
+      </section>
+      <section class="vo-beat" data-index="1">
+        <h2 id="beat-1" class="vo-beat-title">
+          Beat 1: Start with the textbook rule
+        </h2>
+        <vo-directives>
+          <vo-directive name="overlay">textbook-set-equality</vo-directive>
+          <vo-directive name="font.editor">0.7</vo-directive>
+          <vo-directive name="font.lean">0.8</vo-directive>
+          <vo-directive name="font.render">0.85</vo-directive>
+        </vo-directives>
+        <h3 id="beat-1-variants">Beat 1 · Variants</h3>
+        <script type="application/json" class="vo-variants">
+          <![CDATA[
+          {
+            "selected": "A",
+            "candidates": [
+              {
+                "label": "A",
+                "template": "compare-dual",
+                "templateConfig": {
+                  "kind": "compare-dual",
+                  "config": {
+                    "leanEnabled": true,
+                    "turnEnabled": true
+                  }
+                },
+                "content": {
+                  "title": "Start with the textbook rule",
+                  "say": "Hi friends, welcome back.\nThe best way to enjoy mathematics is to formalize it.\nToday we formalize set equality.\nAnd the textbook definition looks really simple.\nTwo sets are equal when each one is a subset of the other.\nBut if we want to formalize this statement,\nwe still need to understand what the equals sign actually means inside a proof system.\nAnd this is more complicated than you think.",
+                  "leanCode": "-- Textbook set equality\n-- A = B  when each is a subset of the other\n--\n-- In Lean this still becomes ordinary Eq:\n--   A = B",
+                  "turnCode": "@notation({A} ~ \" = \" ~ {B})\nrelation SetEq(T: Any, A B: Set<T>): Prop {\n    |- {\n        Subset(A, B);\n        Subset(B, A);\n    }\n}",
+                  "visualNotes": "beat-template: compare-dual\nlayer: compare\nlean-render: true\nturn-render: true\ntyping: true\n\nBeat 1: textbook mutual-subset rule first, then the real question about the equals sign."
+                }
+              }
+            ]
+          }
+          ]]>
+        </script>
+        <h3 id="beat-1-spoken">Beat 1 · Spoken</h3>
+        <vo-say
+          ><![CDATA[ Hi friends, welcome back. The best way to enjoy mathematics
+          is to formalize it. Today we formalize set equality. And the textbook
+          definition looks really simple. Two sets are equal when each one is a
+          subset of the other. But if we want to formalize this statement, we
+          still need to understand what the equals sign actually means inside a
+          proof system. And this is more complicated than you think. ]]></vo-say
+        >
+        <h3 id="beat-1-lean">Beat 1 · Lean</h3>
+        <vo-lean>
+          <pre><code><![CDATA[
+-- Textbook set equality
+-- A = B  when each is a subset of the other
+--
+-- In Lean this still becomes ordinary Eq:
+--   A = B
+]]></code></pre>
+        </vo-lean>
+        <h3 id="beat-1-turn">Beat 1 · Turn-Lang</h3>
+        <vo-turn>
+          <pre><code><![CDATA[
+@notation({A} ~ " = " ~ {B})
+relation SetEq(T: Any, A B: Set<T>): Prop {
+    |- {
+        Subset(A, B);
+        Subset(B, A);
+    }
+}
+]]></code></pre>
+        </vo-turn>
+        <h3 id="beat-1-chinese">Beat 1 · Chinese</h3>
+        <vo-chinese
+          ><![CDATA[ 大家好，欢迎回来。上一期我们定义真子集时，多加了一个条件：A
+          是 B 的子集，并且不是 `SetEq(A,
+          B)`。当时我们先用了这个名字，还没有解释它。今天就把这个承诺完成。
+          课本规则很短：A 是 B 的子集，并且 B 是 A
+          的子集，那么两个集合相等。这不是说两个集合的名字看起来一样，也不是说它们的定义写法一样；它说的是，没有任何元素能够把这两个集合区分开。证明助手正好可以把这句话拆开：先证明从
+          A 到 B 的方向，再证明从 B 到 A
+          的方向。两个方向都成立，集合相等就成立。 ]]></vo-chinese
+        >
+        <h3 id="beat-1-visual-notes">Beat 1 · Visual notes</h3>
+        <vo-visual-notes>
+          <vo-beat-studio
+            ><![CDATA[{"template":"compare-dual","templateConfig":{"kind":"compare-dual","config":{"leanEnabled":true,"turnEnabled":true}}}]]></vo-beat-studio
+          >
+          <pre>
+<![CDATA[beat-template: compare-dual
+layer: compare
+lean-render: true
+turn-render: true
+typing: true
+
+Beat 1: textbook mutual-subset rule first, then the real question about the equals sign.
+]]></pre
+          >
+        </vo-visual-notes>
+      </section>
+      <section class="vo-beat" data-index="2">
+        <h2 id="beat-2" class="vo-beat-title">
+          Beat 2: Do not confuse kernel conversion with an equality proof
+        </h2>
+        <vo-directives>
+          <vo-directive name="font-scales">as before</vo-directive>
+        </vo-directives>
+        <h3 id="beat-2-variants">Beat 2 · Variants</h3>
+        <script type="application/json" class="vo-variants">
+          <![CDATA[
+          {
+            "selected": "A",
+            "candidates": [
+              {
+                "label": "A",
+                "template": "compare-dual",
+                "templateConfig": {
+                  "kind": "compare-dual",
+                  "config": {
+                    "leanEnabled": true,
+                    "turnEnabled": true
+                  }
+                },
+                "content": {
+                  "title": "Do not confuse kernel conversion with an equality proof",
+                  "say": "Before we return to sets, there is one Lean distinction that is easy to say badly.\nLean has one equality proposition, written with the ordinary equals sign.\nIt is called `Eq`.\nBut the type checker also uses something called definitional equality.\n\nDefinitional equality is not a second proposition that we prove.\nIt is the kernel's internal conversion check.\nLean reduces definitions and computations while it checks types.\nIf both sides reduce to the same term, the constructor `rfl` is accepted.\n\nFor a natural number n, `n + 0` reduces to n using Lean's definition of addition.\nSo `rfl` closes that goal.\nBut `0 + n` does not reduce in that direction.\nThe statement is still a perfectly good equality proposition,\nbut now we need an explicit proof: `Nat.zero_add n`.\n\nSo the important distinction is not two different equals signs.\nIt is this:\nkernel conversion can close a goal by computation;\na theorem is a proof value that we can later use for rewriting.",
+                  "leanCode": "-- Kernel conversion sees `n + 0` reduce to `n`.\nexample (n : Nat) : n + 0 = n := rfl\n\n-- This is an Eq proposition too, but it needs a theorem.\nexample (n : Nat) : 0 + n = n := Nat.zero_add n",
+                  "turnCode": "-- Keep the two jobs separate:\n--\n-- kernel conversion: checks reduced terms\n-- a proof:           establishes a stated proposition\n--\n-- The printed '=' does not tell us which job is happening.",
+                  "visualNotes": "beat-template: compare-dual\nlayer: compare\nlean-render: true\nturn-render: true\ntyping: true\n\nUse a small two-lane diagram: “kernel conversion” on top and “proof term” below. Animate `n + 0` reducing to `n`; leave `0 + n` unchanged until `Nat.zero_add n` arrives. Do not use `1 + 1 = 2` as the non-computational example: it also reduces."
+                }
+              }
+            ]
+          }
+          ]]>
+        </script>
+        <h3 id="beat-2-spoken">Beat 2 · Spoken</h3>
+        <vo-say
+          ><![CDATA[ Before we return to sets, there is one Lean distinction
+          that is easy to say badly. Lean has one equality proposition, written
+          with the ordinary equals sign. It is called `Eq`. But the type checker
+          also uses something called definitional equality. Definitional
+          equality is not a second proposition that we prove. It is the kernel's
+          internal conversion check. Lean reduces definitions and computations
+          while it checks types. If both sides reduce to the same term, the
+          constructor `rfl` is accepted. For a natural number n, `n + 0` reduces
+          to n using Lean's definition of addition. So `rfl` closes that goal.
+          But `0 + n` does not reduce in that direction. The statement is still
+          a perfectly good equality proposition, but now we need an explicit
+          proof: `Nat.zero_add n`. So the important distinction is not two
+          different equals signs. It is this: kernel conversion can close a goal
+          by computation; a theorem is a proof value that we can later use for
+          rewriting. ]]></vo-say
+        >
+        <h3 id="beat-2-lean">Beat 2 · Lean</h3>
+        <vo-lean>
+          <pre><code><![CDATA[
+-- Kernel conversion sees `n + 0` reduce to `n`.
+example (n : Nat) : n + 0 = n := rfl
+
+-- This is an Eq proposition too, but it needs a theorem.
+example (n : Nat) : 0 + n = n := Nat.zero_add n
+]]></code></pre>
+          <vo-highlights>
+            <vo-highlight>n + 0</vo-highlight>
+            <vo-highlight>rfl</vo-highlight>
+            <vo-highlight>Nat.zero_add</vo-highlight>
+          </vo-highlights>
+        </vo-lean>
+        <h3 id="beat-2-turn">Beat 2 · Turn-Lang</h3>
+        <vo-turn>
+          <pre><code><![CDATA[
+-- Keep the two jobs separate:
+--
+-- kernel conversion: checks reduced terms
+-- a proof:           establishes a stated proposition
+--
+-- The printed '=' does not tell us which job is happening.
+]]></code></pre>
+          <vo-highlights>
+            <vo-highlight>kernel conversion</vo-highlight>
+            <vo-highlight>a proof</vo-highlight>
+          </vo-highlights>
+        </vo-turn>
+        <h3 id="beat-2-hint">Beat 2 · Hint</h3>
+        <vo-hint
+          target="lean-code; needle: Nat.zero_add; position: 51.075,82.936"
+          >`rfl` works when both sides are already the same term after unfolding
+          definitions. Addition is defined on the right, so `n + 0` unfolds
+          immediately; `0 + n` with variable `n` does not.</vo-hint
+        >
+        <h3 id="beat-2-chinese">Beat 2 · Chinese</h3>
+        <vo-chinese
+          ><![CDATA[ 回到集合之前，先澄清一个很容易说错的 Lean 区分。Lean
+          只有一个用普通等号写出的相等命题，叫作
+          `Eq`。但类型检查器还会使用“定义相等”。定义相等不是第二个等待证明的命题；它是内核在检查类型时做的内部归约检查。
+          如果两边归约后是同一个项，`rfl`
+          这个构造子就可以被接受。容易混淆的是：`Nat`
+          的加法按**右边**那个数递归定义——`m + 0` 直接就是 `m`，所以对任意 n，`n
+          + 0` 按定义就是 n，`rfl` 能关掉目标。但 `0 + n` 在 n
+          还是未知变量时，定义会沿着右边的 succ
+          一层层展开，内核不会自动把它归约成 n；这条规律写进定理
+          `Nat.zero_add`，所以要显式引用它。
+          所以重点不是有两个不同的等号，而是两个不同的工作：内核归约可以靠计算关掉目标；定理则是一个证明值，之后可以用来改写。
+          ]]></vo-chinese
+        >
+        <h3 id="beat-2-visual-notes">Beat 2 · Visual notes</h3>
+        <vo-visual-notes>
+          <vo-beat-studio
+            ><![CDATA[{"template":"compare-dual","templateConfig":{"kind":"compare-dual","config":{"leanEnabled":true,"turnEnabled":true}}}]]></vo-beat-studio
+          >
+          <pre>
+<![CDATA[beat-template: compare-dual
+layer: compare
+lean-render: true
+turn-render: true
+typing: true
+
+Use a small two-lane diagram: “kernel conversion” on top and “proof term” below. Animate `n + 0` reducing to `n`; leave `0 + n` unchanged until `Nat.zero_add n` arrives. Do not use `1 + 1 = 2` as the non-computational example: it also reduces.
+]]></pre
+          >
+        </vo-visual-notes>
+      </section>
+      <section class="vo-beat" data-index="3">
+        <h2 id="beat-3" class="vo-beat-title">
+          Beat 3: Lean's Eq is homogeneous; Set.ext supplies extensionality
+        </h2>
+        <vo-directives>
+          <vo-directive name="font-scales">as before</vo-directive>
+        </vo-directives>
+        <h3 id="beat-3-variants">Beat 3 · Variants</h3>
+        <script type="application/json" class="vo-variants">
+          <![CDATA[
+          {
+            "selected": "A",
+            "candidates": [
+              {
+                "label": "A",
+                "template": "compare-dual",
+                "templateConfig": {
+                  "kind": "compare-dual",
+                  "config": {
+                    "leanEnabled": true,
+                    "turnEnabled": true
+                  }
+                },
+                "content": {
+                  "title": "Lean's Eq is homogeneous; Set.ext supplies extensionality",
+                  "say": "Now ask a different question:\nwhen is a Lean expression with an equals sign even well formed?\n\nLean's `Eq` is homogeneous which means:\nBoth sides must have exactly the same type.\nSo natural-number two and integer two look familiar to us,\nbut Lean will not even form the raw statement\n`(2 : Nat) = (2 : Int)`.\nThat is not a false claim; it is an ill-typed expression.\nFirst cast the natural number into an integer, and then equality makes sense.\n\nFor sets, the types do line up.\nBoth A and B have type `Set α`.\nAnd `Set α` is a predicate type: `α → Prop`.\nSo Lean's ordinary `Eq` is comparing two predicates.\n\nThe mathematical bridge is `Set.ext`.\nTo prove A equals B, we do not compare their whole definitions at once.\nWe take an arbitrary x and prove\n`x ∈ A ↔ x ∈ B`.\nUnder the hood, Mathlib builds this extensionality theorem from function extensionality and propositional extensionality.\nIn an ordinary proof, we simply apply `Set.ext`.",
+                  "leanCode": "-- The raw statement `(2 : Nat) = (2 : Int)` is ill-typed.\nexample : ((2 : Nat) : Int) = (2 : Int) := rfl\n\n-- A set is a predicate: Set α := α → Prop.\nexample {A B : Set α}\n    (h : ∀ x, x ∈ A ↔ x ∈ B) : A = B :=\n  Set.ext h",
+                  "turnCode": "-- Before asking whether two things are equal,\n-- align their carrier and their notion of observation.\n--\n-- For sets, the observation is membership:\n--   x in A  exactly when  x in B",
+                  "visualNotes": "beat-template: compare-dual\nlayer: compare\nlean-render: true\nturn-render: true\ntyping: true\n\nShow the “ill-typed” Nat/Int equation with a type mismatch badge, then the casted version. Transition to `Set α := α → Prop`, followed by a single arbitrary `x` branching into the two membership propositions. Highlight `Set.ext`, not a fictional set-specific equality operator."
+                }
+              }
+            ]
+          }
+          ]]>
+        </script>
+        <h3 id="beat-3-spoken">Beat 3 · Spoken</h3>
+        <vo-say
+          ><![CDATA[ Now ask a different question: when is a Lean expression
+          with an equals sign even well formed? Lean's `Eq` is homogeneous which
+          means: Both sides must have exactly the same type. So natural-number
+          two and integer two look familiar to us, but Lean will not even form
+          the raw statement `(2 : Nat) = (2 : Int)`. That is not a false claim;
+          it is an ill-typed expression. First cast the natural number into an
+          integer, and then equality makes sense. For sets, the types do line
+          up. Both A and B have type `Set α`. And `Set α` is a predicate type:
+          `α → Prop`. So Lean's ordinary `Eq` is comparing two predicates. The
+          mathematical bridge is `Set.ext`. To prove A equals B, we do not
+          compare their whole definitions at once. We take an arbitrary x and
+          prove `x ∈ A ↔ x ∈ B`. Under the hood, Mathlib builds this
+          extensionality theorem from function extensionality and propositional
+          extensionality. In an ordinary proof, we simply apply `Set.ext`.
+          ]]></vo-say
+        >
+        <h3 id="beat-3-lean">Beat 3 · Lean</h3>
+        <vo-lean>
+          <pre><code><![CDATA[
+-- The raw statement `(2 : Nat) = (2 : Int)` is ill-typed.
+example : ((2 : Nat) : Int) = (2 : Int) := rfl
+
+-- A set is a predicate: Set α := α → Prop.
+example {A B : Set α}
+    (h : ∀ x, x ∈ A ↔ x ∈ B) : A = B :=
+  Set.ext h
+]]></code></pre>
+          <vo-highlights>
+            <vo-highlight>(2 : Nat)</vo-highlight>
+            <vo-highlight>Set α := α → Prop</vo-highlight>
+            <vo-highlight>Set.ext</vo-highlight>
+          </vo-highlights>
+        </vo-lean>
+        <h3 id="beat-3-turn">Beat 3 · Turn-Lang</h3>
+        <vo-turn>
+          <pre><code><![CDATA[
+-- Before asking whether two things are equal,
+-- align their carrier and their notion of observation.
+--
+-- For sets, the observation is membership:
+--   x in A  exactly when  x in B
+]]></code></pre>
+          <vo-highlights>
+            <vo-highlight>x in A</vo-highlight>
+            <vo-highlight>x in B</vo-highlight>
+          </vo-highlights>
+        </vo-turn>
+        <h3 id="beat-3-hint">Beat 3 · Hint</h3>
+        <vo-hint target="lean-code; needle: Set.ext; position: 28.418,51.373"
+          >`Set.ext` turns pointwise membership equivalence into Lean's built-in
+          equality.</vo-hint
+        >
+        <h3 id="beat-3-chinese">Beat 3 · Chinese</h3>
+        <vo-chinese
+          ><![CDATA[ 现在问另一个问题：什么时候带等号的 Lean
+          表达式本身才写得出来？Lean 的 `Eq`
+          是齐次的，左右两边必须有完全相同的类型。自然数里的 2 和整数里的 2
+          对我们很像，但 Lean 连原始表达式 `(2 : Nat) = (2 : Int)`
+          都不会形成。它不是一个假的命题，而是一个类型不正确的表达式。先把自然数转换成整数，等式才有意义。
+          集合则满足类型条件：A 和 B 都有 `Set α` 类型。而 `Set α`
+          本身是谓词类型 `α → Prop`，所以 Lean 的普通 `Eq`
+          实际上在比较两个谓词。数学上的桥梁是
+          `Set.ext`：不直接比较整个定义，而是任取 x，证明 `x ∈ A ↔ x ∈
+          B`。Mathlib
+          在底层用函数外延性和命题外延性建立这个定理；日常证明里我们只需要应用
+          `Set.ext`。 ]]></vo-chinese
+        >
+        <h3 id="beat-3-visual-notes">Beat 3 · Visual notes</h3>
+        <vo-visual-notes>
+          <vo-beat-studio
+            ><![CDATA[{"template":"compare-dual","templateConfig":{"kind":"compare-dual","config":{"leanEnabled":true,"turnEnabled":true,"leanRender":true,"turnRender":true,"leanEditorStyle":"default","turnEditorStyle":"ide","typing":{"enabled":true,"cps":24,"pauseAfterSeconds":0.3},"codeBlockEdits":[]}}}]]></vo-beat-studio
+          >
+          <pre>
+<![CDATA[beat-template: compare-dual
+layer: compare
+lean-render: true
+turn-render: true
+typing: true
+
+Show the “ill-typed” Nat/Int equation with a type mismatch badge, then the casted version. Transition to `Set α := α → Prop`, followed by a single arbitrary `x` branching into the two membership propositions. Highlight `Set.ext`, not a fictional set-specific equality operator.
+]]></pre
+          >
+        </vo-visual-notes>
+      </section>
+      <section class="vo-beat" data-index="4">
+        <h2 id="beat-4" class="vo-beat-title">
+          Beat 4: In Turn-Lang, SetEq is the name and '=' is the display
+        </h2>
+        <vo-directives>
+          <vo-directive name="font-scales">as before</vo-directive>
+        </vo-directives>
+        <h3 id="beat-4-spoken">Beat 4 · Spoken</h3>
+        <vo-say
+          ><![CDATA[ Now return to the name we left hanging in the last episode:
+          `SetEq`. Turn-Lang makes a deliberate modeling choice here. The relation
+          has a real name, `SetEq`. The `@notation` line gives that relation a
+          familiar display: A equals B. But the notation is only the surface
+          spelling. `SetEq(A, B)` is the relation whose proof we actually hold
+          and unfold. Read the block from top to bottom. It receives a carrier
+          type T and two sets of that carrier. Its body contains exactly the
+          textbook obligations: `Subset(A, B)` and `Subset(B, A)`. When a proof
+          says `unfold SetEq`, those are the two goals it exposes. Lean and Turn-Lang
+          agree on the mathematics. The difference is where the semantic name
+          lives. Lean starts from built-in `Eq` and proves it with `Set.ext` or
+          mutual inclusion. Turn-Lang names the extensional relation first, then
+          attaches the equals glyph to it. ]]></vo-say
+        >
+        <h3 id="beat-4-lean">Beat 4 · Lean</h3>
+        <vo-lean>
+          <pre><code><![CDATA[
+-- Lean's `A = B` is built-in Eq.
+-- These theorems explain how to prove it for sets:
+--
+--   Set.ext
+--   Set.Subset.antisymm
+]]></code></pre>
+          <vo-highlights>
+            <vo-highlight>Set.ext</vo-highlight>
+            <vo-highlight>Set.Subset.antisymm</vo-highlight>
+          </vo-highlights>
+        </vo-lean>
+        <h3 id="beat-4-turn">Beat 4 · Turn-Lang</h3>
+        <vo-turn>
+          <pre><code><![CDATA[
+@notation({A} ~ " = " ~ {B})
+relation SetEq(T: Any, A B: Set<T>): Prop {
+    |- {
+        Subset(A, B);
+        Subset(B, A);
+    }
+}
+]]></code></pre>
+          <vo-highlights>
+            <vo-highlight>@notation</vo-highlight>
+            <vo-highlight>SetEq</vo-highlight>
+            <vo-highlight>Subset(A, B)</vo-highlight>
+            <vo-highlight>Subset(B, A)</vo-highlight>
+          </vo-highlights>
+        </vo-turn>
+        <h3 id="beat-4-hint">Beat 4 · Hint</h3>
+        <vo-hint target="turn-code; needle: Subset(B, A); position: 82,38"
+          >Here `=` displays the named `SetEq` relation; unfolding it reveals
+          the two subset obligations.</vo-hint
+        >
+        <h3 id="beat-4-chinese">Beat 4 · Chinese</h3>
+        <vo-chinese
+          ><![CDATA[ 现在回到上期留下的名字：`SetEq`。Turn-Lang
+          在这里做了一个刻意的建模选择。这个关系有真实的名字
+          `SetEq`；`@notation` 这一行只是给它一个熟悉的显示方式：A 等于
+          B。记号只是表面写法，真正被证明和展开的是 `SetEq(A, B)`。
+          按顺序读这个块：它接收一个载体类型
+          T，以及这个载体上的两个集合。关系体正好包含课本上的两个义务：`Subset(A,
+          B)` 和 `Subset(B, A)`。证明里写 `unfold SetEq`
+          时，暴露出来的就是这两个目标。 Lean 和 Turn-Lang
+          的数学内容一致，差别在语义名字放在哪里。Lean 从内置的 `Eq` 开始，用
+          `Set.ext` 或互相包含来证明它；Turn-Lang
+          先给外延关系命名，再把等号图形绑定到这个关系。 ]]></vo-chinese
+        >
+        <h3 id="beat-4-visual-notes">Beat 4 · Visual notes</h3>
+        <vo-visual-notes>
+          <pre>
+<![CDATA[Show the previous episode's `not SetEq(A, B)` flowing into this exact relation declaration. Make the notation line visually lighter than the relation body. On `unfold SetEq`, split the body into two proof cards.
+]]></pre
+          >
+        </vo-visual-notes>
+      </section>
+      <section class="vo-beat" data-index="5">
+        <h2 id="beat-5" class="vo-beat-title">
+          Beat 5: Function equality repeats the pattern, with stricter type
+          alignment
+        </h2>
+        <vo-directives>
+          <vo-directive name="font-scales">as before</vo-directive>
+        </vo-directives>
+        <h3 id="beat-5-spoken">Beat 5 · Spoken</h3>
+        <vo-say
+          ><![CDATA[ Functions repeat the same idea at a different observation
+          level. Two functions can have completely different code bodies, but if
+          every input produces the same output, we want to treat them as the
+          same function. In Lean, `funext` is the theorem for that move. It
+          applies to two functions of the same function type, `α → β`. If we
+          prove `f x = g x` for every x, then `funext` gives `f = g`. It is
+          called function extensionality. It does not inspect whether the source
+          code was written the same way. And it has the same type guardrail as
+          before. A function `Nat → Nat` and a function `Nat → Int` do not have
+          one common function type, so ordinary Lean `Eq` cannot compare them
+          directly. We must first say how their domains and codomains are
+          aligned. The Turn-Lang source calls its named relation `FuncEq`. It makes
+          the alignment explicit: the two domains must satisfy `SetEq`, the two
+          ranges must satisfy `SetEq`, and then the functions agree on every
+          input. The relation tells us exactly which observations have to match.
+          ]]></vo-say
+        >
+        <h3 id="beat-5-lean">Beat 5 · Lean</h3>
+        <vo-lean>
+          <pre><code><![CDATA[
+-- Function extensionality for functions with one shared type α → β.
+example {α β : Type*} {f g : α → β}
+    (h : ∀ x, f x = g x) : f = g :=
+  funext h
+]]></code></pre>
+          <vo-highlights>
+            <vo-highlight>∀ x, f x = g x</vo-highlight>
+            <vo-highlight>funext</vo-highlight>
+          </vo-highlights>
+        </vo-lean>
+        <h3 id="beat-5-turn">Beat 5 · Turn-Lang</h3>
+        <vo-turn>
+          <pre><code><![CDATA[
+@notation({f} ~ " = " ~ {g})
+relation FuncEq(X Y X' Y': Set<Any>, f: Function<X, Y>, g: Function<X', Y'>): Prop {
+    forall x in X |- {
+        SetEq(X, X');
+        SetEq(Y, Y');
+        f.apply(x) = g.apply(x);
+    }
+}
+]]></code></pre>
+          <vo-highlights>
+            <vo-highlight>FuncEq</vo-highlight>
+            <vo-highlight>SetEq(X, X')</vo-highlight>
+            <vo-highlight>f.apply(x) = g.apply(x)</vo-highlight>
+          </vo-highlights>
+        </vo-turn>
+        <h3 id="beat-5-hint">Beat 5 · Hint</h3>
+        <vo-hint target="lean-code; needle: funext; position: 22,38"
+          >Pointwise agreement proves function equality only after Lean has one
+          shared function type.</vo-hint
+        >
+        <h3 id="beat-5-chinese">Beat 5 · Chinese</h3>
+        <vo-chinese
+          ><![CDATA[
+          函数把同一个想法放到另一种观察层次上。两个函数的代码体可以完全不同；但如果每一个输入都产生同一个输出，我们想把它们看成同一个函数。
+          在 Lean 里，完成这一步的定理是 `funext`。它适用于同一个函数类型 `α →
+          β` 的两个函数。如果对每个 x 都证明 `f x = g x`，`funext` 就给出 `f =
+          g`。这叫函数外延性；它不检查源码写法是否一样。
+          这里也有同样的类型护栏：`Nat → Nat` 和 `Nat → Int`
+          没有共同的函数类型，所以普通 Lean `Eq`
+          不能直接比较它们。必须先说明定义域和陪域如何对齐。 Turn-Lang
+          的源码把这个关系叫作 `FuncEq`。它把对齐条件写出来：两个定义域要满足
+          `SetEq`，两个陪域也要满足
+          `SetEq`，然后函数在每个输入上的输出相同。关系本身明确告诉我们，哪些观察必须一致。
+          ]]></vo-chinese
+        >
+        <h3 id="beat-5-visual-notes">Beat 5 · Visual notes</h3>
+        <vo-visual-notes>
+          <pre>
+<![CDATA[Animate two visibly different lambda bodies feeding the same input/output table. On Lean, show `∀ x` compressing into `funext`. On Turn-Lang, bracket the two carrier-alignment lines before highlighting `f.apply(x) = g.apply(x)`. Use the canonical name `FuncEq`, not `FunctionEq`.
+]]></pre
+          >
+        </vo-visual-notes>
+      </section>
+      <section class="vo-beat" data-index="6">
+        <h2 id="beat-6" class="vo-beat-title">
+          Beat 6: Choose the right level of sameness
+        </h2>
+        <vo-directives>
+          <vo-directive name="font-scales">as before</vo-directive>
+        </vo-directives>
+        <h3 id="beat-6-spoken">Beat 6 · Spoken</h3>
+        <vo-say
+          ><![CDATA[ Here is the Conclusion. Do not use literal equality just
+          because two things play the same mathematical role. For sets equaltiy,
+          the actual logic is membership, so Lean use set extensionality. For
+          functions, the actual logic is aligned output on every aligned input,
+          Lean uses function extensionality. For groups, the relevant logic is
+          usually an isomorphism: a bijective map that preserves multiplication,
+          identity, and inverse. Two groups can have different underlying
+          elements and still be isomorphic. So an isomorphism is not normally a
+          proof that the raw data are literally equal. In ordinary Lean and
+          Mathlib, an equivalence or isomorphism is its own mathematical object;
+          it does not automatically turn into `Eq`. Homotopy type theory studies
+          a different foundation where equality proofs behave like paths, and
+          univalence connects equivalences of types with equality of types.
+          These are powerful concepts that we will formalize later. So please
+          put one question in your mind for the rest of this series: So "what
+          observations must agree before I am allowed to call 2 things the same?
+          Choose that relation, name it, and then prove it. So I hope you
+          enjoyed this vidoe. See you in the next one, where we will look at the
+          first special set in the textbook: the empty set. ]]></vo-say
+        >
+        <h3 id="beat-6-lean">Beat 6 · Lean</h3>
+        <vo-lean>
+          <pre><code><![CDATA[
+-- Literal equality:        G = H
+-- Structural sameness:     an isomorphism G ≃* H
+--
+-- In ordinary Lean/Mathlib, an isomorphism is not
+-- automatically a proof of literal equality.
+]]></code></pre>
+          <vo-highlights>
+            <vo-highlight>G = H</vo-highlight>
+            <vo-highlight>G ≃* H</vo-highlight>
+            <vo-highlight>literal equality</vo-highlight>
+          </vo-highlights>
+        </vo-lean>
+        <h3 id="beat-6-turn">Beat 6 · Turn-Lang</h3>
+        <vo-turn>
+          <pre><code><![CDATA[
+-- Choose the relation that matches the observation:
+--
+-- members    -> SetEq
+-- outputs    -> FuncEq
+-- operations -> Isomorphism
+--
+-- The glyph is not the whole mathematical meaning.
+]]></code></pre>
+          <vo-highlights>
+            <vo-highlight>SetEq</vo-highlight>
+            <vo-highlight>FuncEq</vo-highlight>
+            <vo-highlight>Isomorphism</vo-highlight>
+          </vo-highlights>
+        </vo-turn>
+        <h3 id="beat-6-hint">Beat 6 · Hint</h3>
+        <vo-hint target="lean-code; needle: isomorphism; position: 28.99,53.213"
+          >An isomorphism preserves structure; it is not normally a proof that
+          two structures are identical data.</vo-hint
+        >
+        <h3 id="beat-6-chinese">Beat 6 · Chinese</h3>
+        <vo-chinese
+          ><![CDATA[
+          最后给一个护栏：不要因为两个对象在数学里扮演相同角色，就直接使用字面相等。
+          对于集合，我们观察成员资格，所以使用集合外延性。对于函数，我们观察每个已经对齐的输入上的输出，所以使用函数外延性。对于群，通常真正需要的是同构：一个保持乘法、单位元和逆元的双射。
+          两个群可以有完全不同的底层元素，却仍然同构。因此同构通常不是“原始数据字面相等”的证明。在普通
+          Lean 和 Mathlib 中，等价或同构本身是一个独立的数学对象，不会自动变成
+          `Eq`。
+          同伦类型论研究另一种基础：相等证明像路径，而单价性把类型的等价和类型的相等联系起来。这是后面很强大的故事，但不是
+          Lean 内核自动使用的规则。
+          所以把这个问题带到后面的整个系列：在把两个东西叫作“相同”之前，究竟哪些观察必须一致？先选对关系，给它名字，再去证明它。下一期我们回到课本里的第一个特殊集合：空集。
+          ]]></vo-chinese
+        >
+        <h3 id="beat-6-visual-notes">Beat 6 · Visual notes</h3>
+        <vo-visual-notes>
+          <pre>
+<![CDATA[Build a final ladder: members → outputs → structure-preserving map → higher paths. Keep `G = H` and `G ≃* H` as visibly distinct cards. End on a clean empty-set silhouette and the next-episode title; do not imply that univalence is built into ordinary Lean.
+]]></pre
+          >
+        </vo-visual-notes>
+      </section>
+    </article>
+  </body>
+</html>

@@ -4,10 +4,12 @@
 
 import path from 'node:path';
 
+import type { TakeManifest } from '../../ios-teleprompter/src/scriptSchema.ts';
 import {
   sentencesFromTranscript,
   type SentenceSpan,
 } from '../../outdoor_post/src/sentence-captions.ts';
+import { loadAnimationV4 } from './animation-load.ts';
 import { fileExists, readJson, writeJson } from './fs_util.ts';
 import {
   cutAppliesWithStabilizedVideo,
@@ -422,6 +424,54 @@ export function saveCutSelection(job: OutdoorJob, runId: string, selection: CutS
   return next;
 }
 
+function slideTitleForId(scriptId: string, slideId: string, beatIndex: number): string {
+  const scriptFile = outdoorScriptPath(scriptId);
+  if (fileExists(scriptFile)) {
+    try {
+      const script = readJson<{ slides?: Array<{ id?: string; title?: string }> }>(scriptFile);
+      const slide = (script.slides ?? []).find((entry) => entry.id === slideId);
+      if (slide?.title?.trim()) {
+        return slide.title.trim();
+      }
+    } catch {
+      // fall through
+    }
+  }
+  const animation = loadAnimationV4(scriptId);
+  const beat = animation?.scenes?.[0]?.compare?.beats?.[beatIndex];
+  const visualNotes = beat?.visualNotes?.split('\n').find((line) => line.trim())?.trim();
+  if (visualNotes && !visualNotes.startsWith('<!--')) {
+    return visualNotes.slice(0, 120);
+  }
+  return slideId;
+}
+
+/** Teleprompter Next taps — contiguous source windows (unlike cut timeline slide labels). */
+function slideRangesFromSlideEvents(
+  take: TakeManifest,
+  scriptId: string,
+  durationSeconds: number,
+): Array<{ slideId: string; slideTitle: string; sourceStart: number; sourceEnd: number }> | null {
+  const events = take.slideEvents ?? [];
+  if (events.length < 2) {
+    return null;
+  }
+  const totalSourceSeconds = Math.max(durationSeconds, take.durationMs / 1000);
+  return events.map((event, index) => {
+    const next = events[index + 1];
+    const slideId = event.slideId?.trim() || `beat-${String(index + 1).padStart(2, '0')}`;
+    return {
+      slideId,
+      slideTitle: slideTitleForId(scriptId, slideId, index),
+      sourceStart: Math.max(0, event.atMs / 1000),
+      sourceEnd: Math.max(
+        event.atMs / 1000 + 0.5,
+        (next?.atMs ?? totalSourceSeconds * 1000) / 1000,
+      ),
+    };
+  });
+}
+
 function slideRangesFromTimeline(
   timeline: NonNullable<AnalysisFile['visualTimeline']>,
   durationSeconds: number,
@@ -458,8 +508,13 @@ function findSlideForTime(
   slides: Array<{ slideId: string; slideTitle: string; sourceStart: number; sourceEnd: number }>,
   time: number,
 ): { slideId: string; slideTitle: string; sourceStart: number; sourceEnd: number } {
-  for (const slide of slides) {
-    if (time >= slide.sourceStart && time <= slide.sourceEnd + 0.05) {
+  for (let index = 0; index < slides.length; index += 1) {
+    const slide = slides[index];
+    const isLast = index === slides.length - 1;
+    const inWindow =
+      time >= slide.sourceStart &&
+      (isLast ? time <= slide.sourceEnd + 0.05 : time < slide.sourceEnd);
+    if (inWindow) {
       return slide;
     }
   }
@@ -560,7 +615,13 @@ export function buildCutReview(job: OutdoorJob, runId: string): CutReviewPayload
   const badIntervals = baseline.badIntervals;
   const goodIntervals = baseline.goodIntervals;
   const durationSeconds = baseline.durationSeconds;
-  const slideWindows = slideRangesFromTimeline(baseline.visualTimeline, durationSeconds);
+  const take = fileExists(job.takeManifestPath)
+    ? readJson<TakeManifest>(job.takeManifestPath)
+    : null;
+  const fromSlideEvents =
+    take ? slideRangesFromSlideEvents(take, job.scriptId, durationSeconds) : null;
+  const slideWindows =
+    fromSlideEvents ?? slideRangesFromTimeline(baseline.visualTimeline, durationSeconds);
 
   const transcriptPath = path.join(
     takeStageRunDir(job.scriptId, job.takeId, 'cut', runId),

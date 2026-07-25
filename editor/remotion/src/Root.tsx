@@ -2,7 +2,11 @@
 import { Composition } from 'remotion';
 
 import { VideoFromScript } from './lib/compositions/VideoFromScript';
-import { VideoOutdoor, outdoorDurationInFrames } from './lib/compositions/VideoOutdoor';
+import {
+    VideoOutdoor,
+    outdoorDurationInFrames,
+    calculateOutdoorMetadata,
+} from './lib/compositions/VideoOutdoor';
 import {
     BeatPreview,
     type BeatPreviewInputProps,
@@ -120,6 +124,7 @@ export const RemotionRoot: React.FC = () => {
                 width={1080}
                 height={1920}
                 defaultProps={{ scriptId: '04-set-equality', format: 'portrait' }}
+                calculateMetadata={calculateOutdoorMetadata}
             />
             <Composition
                 id="video-outdoor-landscape"
@@ -129,6 +134,7 @@ export const RemotionRoot: React.FC = () => {
                 width={1920}
                 height={1080}
                 defaultProps={{ scriptId: '04-set-equality', format: 'landscape' }}
+                calculateMetadata={calculateOutdoorMetadata}
             />
         </>
     );

@@ -11,12 +11,6 @@
     "height": 1080,
     "totalFrames": 900
   },
-  "01-keep-reject-intro": {
-    "fps": 30,
-    "width": 1920,
-    "height": 1080,
-    "totalFrames": 810
-  },
   "01-premises-you-live-by": {
     "fps": 30,
     "width": 1920,
@@ -34,12 +28,6 @@
     "width": 1920,
     "height": 1080,
     "totalFrames": 12060
-  },
-  "01-spread-classes-into-partition": {
-    "fps": 30,
-    "width": 1920,
-    "height": 1080,
-    "totalFrames": 1710
   },
   "01-surjective-quantifier-order": {
     "fps": 30,
@@ -83,12 +71,6 @@
     "height": 1080,
     "totalFrames": 870
   },
-  "02-invertible-bijective-proof": {
-    "fps": 30,
-    "width": 1920,
-    "height": 1080,
-    "totalFrames": 3120
-  },
   "02-proof-tree-export": {
     "fps": 30,
     "width": 1920,
@@ -130,12 +112,6 @@
     "width": 1920,
     "height": 1080,
     "totalFrames": 1260
-  },
-  "03-functions-relations-equivalence": {
-    "fps": 30,
-    "width": 1920,
-    "height": 1080,
-    "totalFrames": 17220
   },
   "03-inline-premise": {
     "fps": 30,
@@ -203,17 +179,17 @@
     "height": 1080,
     "totalFrames": 780
   },
-  "04-partition-cutting-the-cake": {
-    "fps": 30,
-    "width": 1920,
-    "height": 1080,
-    "totalFrames": 2520
-  },
   "04-receipt-panel": {
     "fps": 30,
     "width": 1920,
     "height": 1080,
     "totalFrames": 810
+  },
+  "04-set-equality": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 22193
   },
   "04-tactics-vs-terms": {
     "fps": 30,
@@ -244,12 +220,6 @@
     "width": 1920,
     "height": 1080,
     "totalFrames": 2040
-  },
-  "05-equivalence-weaker-than-equality": {
-    "fps": 30,
-    "width": 1920,
-    "height": 1080,
-    "totalFrames": 4320
   },
   "05-exists-on-structure-is-a-claim": {
     "fps": 30,
@@ -329,12 +299,6 @@
     "height": 1080,
     "totalFrames": 1770
   },
-  "06-relations-bag-of-pairs": {
-    "fps": 30,
-    "width": 1920,
-    "height": 1080,
-    "totalFrames": 2940
-  },
   "06-tactic-status-during-replay": {
     "fps": 30,
     "width": 1920,
@@ -376,12 +340,6 @@
     "width": 1920,
     "height": 1080,
     "totalFrames": 780
-  },
-  "07-theorem-125-what-formed-means": {
-    "fps": 30,
-    "width": 1920,
-    "height": 1080,
-    "totalFrames": 2790
   },
   "07-union": {
     "fps": 30,
@@ -580,11 +538,5 @@
     "width": 1920,
     "height": 1080,
     "totalFrames": 450
-  },
-  "04-set-equality": {
-    "fps": 30,
-    "width": 1920,
-    "height": 1080,
-    "totalFrames": 11940
   }
 }

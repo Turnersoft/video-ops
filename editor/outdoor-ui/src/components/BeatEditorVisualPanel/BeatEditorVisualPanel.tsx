@@ -1,7 +1,7 @@
 export type { BeatEditorVisualPanelProps } from "./BeatEditorVisualPanel.types";
 
 import classes from "./BeatEditorVisualPanel.module.scss";
-import { webModuleStyle, webClassName } from '../../utils/webClassName';
+import { webModuleStyle, webClassName } from "../../utils/webClassName";
 import type { BeatEditorVisualPanelProps } from "./BeatEditorVisualPanel.types";
 import { Text, View } from "react-native";
 
@@ -19,6 +19,8 @@ import { SectionLabel } from "../SectionLabel/SectionLabel";
 import { TemplateConfigPanel } from "../TemplateConfigPanel/TemplateConfigPanel";
 
 const CODE_MAX_LINES = 12;
+const SPOKEN_LINE_HEIGHT = 18;
+const SPOKEN_MIN_LINES = 3;
 
 export function BeatEditorVisualPanel({
   beat,
@@ -44,7 +46,10 @@ export function BeatEditorVisualPanel({
       style={webModuleStyle(classes.root, fillHeight ? classes.rootFill : null)}
     >
       <View
-        style={[webModuleStyle(classes.kindBanner), { borderColor: accent, backgroundColor: chrome.accentSoft }]}
+        style={[
+          webModuleStyle(classes.kindBanner),
+          { borderColor: accent, backgroundColor: chrome.accentSoft },
+        ]}
       >
         <Text style={[webModuleStyle(classes.kindLabel), { color: accent }]}>
           {templateDef.shortLabel.toUpperCase()}
@@ -53,11 +58,7 @@ export function BeatEditorVisualPanel({
           {templateDef.label} · beat {beatIndex + 1}
         </Text>
       </View>
-      <SpokenField
-        draft={draft}
-        onDraftChange={onDraftChange}
-        compact={fillHeight}
-      />
+      <SpokenField draft={draft} onDraftChange={onDraftChange} />
       {onTemplateChange ? (
         <BeatTemplateSwitcher
           value={templateKind}
@@ -176,7 +177,11 @@ function renderTemplateBody(
     case "screen-recording":
       return (
         <>
-          <NotesField draft={draft} onDraftChange={onDraftChange} compact={fillHeight} />
+          <NotesField
+            draft={draft}
+            onDraftChange={onDraftChange}
+            compact={fillHeight}
+          />
         </>
       );
     case "stickers":
@@ -199,8 +204,10 @@ function renderKindBody(
       return (
         <>
           <View
-            style={webModuleStyle(classes.dualRow,
-              fillHeight ? classes.dualRowFill : null,)}
+            style={webModuleStyle(
+              classes.dualRow,
+              fillHeight ? classes.dualRowFill : null,
+            )}
           >
             <CodePane
               label="Lean"
@@ -269,8 +276,10 @@ function renderKindBody(
     case "hero":
       return (
         <View
-          style={webModuleStyle(classes.heroPane,
-            fillHeight ? classes.heroPaneFill : null,)}
+          style={webModuleStyle(
+            classes.heroPane,
+            fillHeight ? classes.heroPaneFill : null,
+          )}
         >
           <Text style={webModuleStyle(classes.heroMark)}>▶</Text>
           <SectionLabel className={classes.boxLabel}>Hero moment</SectionLabel>
@@ -288,8 +297,10 @@ function renderKindBody(
       return (
         <>
           <View
-            style={webModuleStyle(classes.heroPane,
-              fillHeight ? classes.heroPaneFill : null,)}
+            style={webModuleStyle(
+              classes.heroPane,
+              fillHeight ? classes.heroPaneFill : null,
+            )}
           >
             <SectionLabel className={classes.boxLabel}>
               {kind === "news" ? "Headline / claim" : "Verdict beat"}
@@ -331,8 +342,10 @@ function renderKindBody(
       return (
         <>
           <View
-            style={webModuleStyle(classes.dualRow,
-              fillHeight ? classes.dualRowFill : null,)}
+            style={webModuleStyle(
+              classes.dualRow,
+              fillHeight ? classes.dualRowFill : null,
+            )}
           >
             <CodePane
               label="Lean"
@@ -366,19 +379,15 @@ type FieldProps = {
   minLines?: number;
 };
 
-function SpokenField({ draft, onDraftChange, compact }: FieldProps) {
+function SpokenField({ draft, onDraftChange }: FieldProps) {
   return (
-    <View
-      style={webModuleStyle(classes.fieldBox,
-        compact ? classes.fieldBoxCompact : null,)}
-    >
+    <View style={webModuleStyle(classes.fieldBox, classes.fieldBoxCompact)}>
       <SectionLabel className={classes.boxLabel}>Spoken</SectionLabel>
       <AutoGrowTextInput
         value={draft.say}
         onChangeText={(say) => onDraftChange({ say })}
-        lineHeight={18}
-        minLines={compact ? 2 : 3}
-        maxLines={compact ? 6 : 8}
+        lineHeight={SPOKEN_LINE_HEIGHT}
+        minLines={SPOKEN_MIN_LINES}
         inputClassName={classes.sayInput}
         placeholder="What you say on camera for this beat"
         placeholderTextColor={colors.muted}
@@ -396,8 +405,10 @@ function NotesField({
 }: FieldProps) {
   return (
     <View
-      style={webModuleStyle(classes.fieldBox,
-        compact ? classes.fieldBoxCompact : null,)}
+      style={webModuleStyle(
+        classes.fieldBox,
+        compact ? classes.fieldBoxCompact : null,
+      )}
     >
       <SectionLabel className={classes.boxLabel}>{label}</SectionLabel>
       <AutoGrowTextInput
@@ -431,7 +442,10 @@ function CodePane({
 }: CodePaneProps) {
   return (
     <View
-      style={webModuleStyle(classes.codePane, fill ? classes.codePaneFill : null)}
+      style={webModuleStyle(
+        classes.codePane,
+        fill ? classes.codePaneFill : null,
+      )}
     >
       <SectionLabel className={classes.boxLabel}>{label}</SectionLabel>
       <AutoGrowTextInput

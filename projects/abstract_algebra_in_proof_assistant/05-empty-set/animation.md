@@ -28,7 +28,6 @@ allow-script-change: false
 -->
 
 Open the book. Judson Abstract Algebra, section one point two, Sets.
-
 ### Visual notes
 
 math-focus; textbook beat only.
@@ -72,7 +71,6 @@ allow-script-change: false
 -->
 
 EmptySet is more specific than Set, which means inheritance, not the reverse.
-
 ### Visual notes
 
 Film presenter; beats on board.
@@ -118,7 +116,6 @@ pip-crop: 0.5, 0.5
 -->
 
 Textbook: ∅ has no elements.
-
 ### Visual notes
 
 Compare layer; caption beats on both sides.

@@ -115,7 +115,7 @@ export async function reviseBeatCandidate(options: {
 const ANIMATION_SYSTEM = `You edit VideoOps animation.md files.
 Rules:
 - Keep YAML frontmatter (videoOps, scriptId, title, format, fps, width, height).
-- Preserve structure: # Scene, ## Beat / ## Overlay, ### Lean, ### Turn, ### Hint, ### Chinese, ### Visual notes.
+- Preserve structure: # Scene, ## Beat / ## Overlay, ### Lean, ### Turn-Lang, ### Hint, ### Chinese, ### Visual notes.
 - Keep HTML comments that carry layout/pace/font/hint metadata.
 - Spoken English is plain lines under each beat (one teleprompter row per line).
 - Return ONLY the full revised animation.md markdown — no preamble.`;

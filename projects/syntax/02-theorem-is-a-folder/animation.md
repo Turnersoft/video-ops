@@ -32,7 +32,6 @@ Hi friends, welcome back.
 So here is `"basic set"` in the chapter we have been building.
 It is one theorem, but look at the shape.
 `p1` holds several identities, each with its own proof block.
-
 ### Turn
 
 ```turn
@@ -47,13 +46,11 @@ theorem "basic set" {
     }
 }
 ```
-
-Highlights:
+### Turn highlights
 
 - `p1`
 - `first`
 - `second`
-
 ### Visual notes
 
 Use outline panel if available to show nested symbols.
@@ -82,7 +79,6 @@ allow-script-change: false
 I do not scroll through fifty lines to find the second identity.
 I click `second` in the outline.
 Each leaf is a small proof file inside the big theorem.
-
 ### Visual notes
 
 Click `second` under `p1` in outline. Jump editor to that proof block (`unfold Intersect.def`).
@@ -109,9 +105,7 @@ allow-script-change: false
 
 So think of a big theorem as a folder.
 Turn-Lang already names the tabs for you.
-
 ### Visual notes
 
 Outline tree with `basic set` expanded.
 Short close.
-

@@ -1,14 +1,19 @@
 /**
- * Embed / extract beat-studio metadata in ### Visual notes (animation.md round-trip).
+ * Embed / extract beat template metadata in ### Visual notes (animation.md).
+ * Prefer plain `key: value` hint lines — do not write JSON into the markdown.
  */
 
-import type { BeatCandidate } from "../types/beatStudio";
-import { canonicalBeatTemplateKind, normalizeTemplateConfig } from "./beatTemplateRegistry";
+import type { BeatCandidate, BeatTemplateConfig, BeatTemplateKind } from "../types/beatStudio";
+import {
+  canonicalBeatTemplateKind,
+  defaultTemplateConfig,
+  normalizeTemplateConfig,
+} from "./beatTemplateRegistry";
 
 const STUDIO_BLOCK_RE = /<!--\s*beat-studio:\s*([\s\S]*?)\s*-->\s*/i;
 
 const AUTO_HINT_LINE_RE =
-  /^(beat-template|layer|lean-render|turn-render|turn-render-id|typing|manim-sub|manim-code|diagram|overlay-depth|overlay-anchor|walkthrough|screen-recording|audio-only|stickers)\s*:/i;
+  /^(beat-template|layer|lean-render|turn-render|turn-render-id|typing|manim-sub|manim-code|diagram|duration-seconds|caption|overlay-depth|overlay-anchor|walkthrough|screen-recording|audio-only|stickers|footage|placements)\s*:/i;
 
 export type ParsedBeatStudioMeta = {
   template: BeatCandidate["template"];
@@ -30,26 +35,133 @@ export function stripAutoVisualNoteHints(visualNotes: string): string {
     .trim();
 }
 
-export function encodeVisualNotesForSave(
-  userNotes: string,
-  candidate: Pick<BeatCandidate, "template" | "templateConfig">,
-): string {
-  const clean = stripAutoVisualNoteHints(stripBeatStudioBlock(userNotes));
-  const payload = JSON.stringify({
-    template: candidate.template,
-    templateConfig: candidate.templateConfig,
-  });
-  const block = `<!-- beat-studio: ${payload} -->`;
-  const hints = visualNotesHintsFromCandidate(candidate);
-  const hintBlock = hints.length ? `${hints.join("\n")}\n\n` : "";
-  return clean
-    ? `${block}\n\n${hintBlock}${clean}`
-    : `${block}\n\n${hintBlock}`.trim();
+function readHint(visualNotes: string, key: string): string | undefined {
+  const match = visualNotes.match(new RegExp(`^\\s*${key}:\\s*(.+)\\s*$`, "im"));
+  const value = match?.[1]?.trim();
+  return value || undefined;
 }
 
-export function parseBeatStudioFromVisualNotes(
+function hintIsTrue(visualNotes: string, key: string): boolean {
+  const value = readHint(visualNotes, key);
+  return value === "true" || value === "yes" || value === "1";
+}
+
+function hintPresent(visualNotes: string, key: string): boolean {
+  return readHint(visualNotes, key) !== undefined;
+}
+
+function configFromHintLines(
+  template: BeatTemplateKind,
   visualNotes: string,
-): ParsedBeatStudioMeta | null {
+): BeatTemplateConfig {
+  const base = defaultTemplateConfig(template);
+  switch (template) {
+    case "compare-dual": {
+      const typingEnabled = hintPresent(visualNotes, "typing")
+        ? hintIsTrue(visualNotes, "typing")
+        : base.config.typing.enabled;
+      return {
+        kind: "compare-dual",
+        config: {
+          ...base.config,
+          leanRender: hintPresent(visualNotes, "lean-render")
+            ? hintIsTrue(visualNotes, "lean-render")
+            : base.config.leanRender,
+          turnRender: hintPresent(visualNotes, "turn-render")
+            ? hintIsTrue(visualNotes, "turn-render")
+            : base.config.turnRender,
+          typing: {
+            ...base.config.typing,
+            enabled: typingEnabled,
+          },
+        },
+      };
+    }
+    case "turn-focus":
+      return {
+        kind: "turn-focus",
+        config: {
+          ...base.config,
+          renderEnabled: hintPresent(visualNotes, "turn-render")
+            ? hintIsTrue(visualNotes, "turn-render")
+            : base.config.renderEnabled,
+          renderComponentId:
+            readHint(visualNotes, "turn-render-id") ?? base.config.renderComponentId,
+        },
+      };
+    case "manim-motion": {
+      const durationRaw = readHint(visualNotes, "duration-seconds");
+      const durationSeconds = durationRaw ? Number(durationRaw) : base.config.durationSeconds;
+      return {
+        kind: "manim-motion",
+        config: {
+          ...base.config,
+          subTemplate:
+            (readHint(visualNotes, "manim-sub") as typeof base.config.subTemplate) ??
+            base.config.subTemplate,
+          diagramId: readHint(visualNotes, "diagram") ?? base.config.diagramId,
+          durationSeconds: Number.isFinite(durationSeconds)
+            ? durationSeconds
+            : base.config.durationSeconds,
+          caption: readHint(visualNotes, "caption") ?? base.config.caption,
+        },
+      };
+    }
+    case "composited":
+      return {
+        kind: "composited",
+        config: {
+          ...base.config,
+          baseFootageSrc: readHint(visualNotes, "footage") ?? base.config.baseFootageSrc,
+        },
+      };
+    case "presenter-overlay":
+      return {
+        kind: "presenter-overlay",
+        config: {
+          ...base.config,
+          depth:
+            (readHint(visualNotes, "overlay-depth") as typeof base.config.depth) ??
+            base.config.depth,
+          anchor:
+            (readHint(visualNotes, "overlay-anchor") as typeof base.config.anchor) ??
+            base.config.anchor,
+        },
+      };
+    case "screen-recording":
+      return {
+        kind: "screen-recording",
+        config: {
+          ...base.config,
+          audioOnly: hintIsTrue(visualNotes, "audio-only"),
+        },
+      };
+    case "stickers":
+      return base;
+    default: {
+      const _exhaustive: never = template;
+      return _exhaustive;
+    }
+  }
+}
+
+function metaFromHintLines(visualNotes: string): ParsedBeatStudioMeta | null {
+  const templateName = readHint(visualNotes, "beat-template");
+  const template = templateName ? canonicalBeatTemplateKind(templateName) : null;
+  if (!template) {
+    return null;
+  }
+  return {
+    template,
+    templateConfig: normalizeTemplateConfig(
+      template,
+      configFromHintLines(template, visualNotes),
+    ),
+    userNotes: stripAutoVisualNoteHints(stripBeatStudioBlock(visualNotes)),
+  };
+}
+
+function metaFromLegacyJson(visualNotes: string): ParsedBeatStudioMeta | null {
   const match = visualNotes.match(STUDIO_BLOCK_RE);
   if (!match) {
     return null;
@@ -79,6 +191,23 @@ export function parseBeatStudioFromVisualNotes(
   }
 }
 
+/** Encode template choice as plain hint lines only (no JSON in animation.md). */
+export function encodeVisualNotesForSave(
+  userNotes: string,
+  candidate: Pick<BeatCandidate, "template" | "templateConfig">,
+): string {
+  const clean = stripAutoVisualNoteHints(stripBeatStudioBlock(userNotes));
+  const hints = visualNotesHintsFromCandidate(candidate);
+  const hintBlock = hints.length ? `${hints.join("\n")}\n\n` : "";
+  return clean ? `${hintBlock}${clean}` : hintBlock.trim();
+}
+
+export function parseBeatStudioFromVisualNotes(
+  visualNotes: string,
+): ParsedBeatStudioMeta | null {
+  return metaFromHintLines(visualNotes) ?? metaFromLegacyJson(visualNotes);
+}
+
 export function visualNotesHintsFromCandidate(
   candidate: Pick<BeatCandidate, "template" | "templateConfig">,
 ): string[] {
@@ -102,6 +231,12 @@ export function visualNotesHintsFromCandidate(
       hints.push("layer: math-board");
       hints.push(`manim-sub: ${cfg.config.subTemplate}`);
       if (cfg.config.diagramId) hints.push(`diagram: ${cfg.config.diagramId}`);
+      if (cfg.config.durationSeconds != null) {
+        hints.push(`duration-seconds: ${cfg.config.durationSeconds}`);
+      }
+      if (cfg.config.caption?.trim()) {
+        hints.push(`caption: ${cfg.config.caption.trim()}`);
+      }
       if (cfg.config.manimWebCode?.trim()) hints.push("manim-code: true");
       break;
     case "composited":

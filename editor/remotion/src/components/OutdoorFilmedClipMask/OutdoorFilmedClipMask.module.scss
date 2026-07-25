@@ -58,6 +58,17 @@
   border: 2px solid rgba(255, 255, 255, 0.88);
 }
 
+/** Portrait outdoor — edge-to-edge footage, no PiP chrome. */
+.maskNetPortraitFlush {
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.rootPortraitBack {
+  z-index: 0;
+}
+
 .maskNetRect {
   border-radius: scaled(14px);
 }

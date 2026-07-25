@@ -194,5 +194,17 @@ export function scopedKnowledgePanelExport(
         };
     }
 
+    const inlineSnippetTrack =
+        track?.sourceFile?.startsWith('inline:') === true ||
+        (track?.beatCodeSegments?.length ?? 0) > 0;
+    if (inlineSnippetTrack) {
+        return {
+            version: 1,
+            sections: body,
+            sources: sources ?? undefined,
+            ui_phrases: knowledgeData.ui_phrases ?? null,
+        };
+    }
+
     return null;
 }

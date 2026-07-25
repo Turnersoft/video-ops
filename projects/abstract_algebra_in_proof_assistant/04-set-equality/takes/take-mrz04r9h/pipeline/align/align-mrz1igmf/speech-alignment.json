@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "scriptId": "04-set-equality",
+  "generatedAt": "2026-07-24T14:58:05.666Z",
+  "sourceVideo": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/cut/cut-mrz0qqfs/edited-good-intervals.mp4",
+  "source": "slide-events",
+  "editedDurationSeconds": 801.48,
+  "beatDurationsSeconds": [
+    54.36,
+    51.96,
+    143.66,
+    152.31,
+    50.19,
+    46.12,
+    126.56,
+    47.97,
+    31.16,
+    57.37,
+    39.82
+  ],
+  "boundaries": [
+    {
+      "beatIndex": 0,
+      "editedStart": 0,
+      "editedEnd": 54.36,
+      "durationSeconds": 54.36,
+      "lastSpokenWord": "",
+      "source": "slide-events"
+    },
+    {
+      "beatIndex": 1,
+      "editedStart": 54.36,
+      "editedEnd": 106.32,
+      "durationSeconds": 51.96,
+      "lastSpokenWord": "",
+      "source": "slide-events"
+    },
+    {
+      "beatIndex": 2,
+      "editedStart": 106.32,
+      "editedEnd": 249.98,
+      "durationSeconds": 143.66,
+      "lastSpokenWord": "",
+      "source": "slide-events"
+    },
+    {
+      "beatIndex": 3,
+      "editedStart": 249.98,
+      "editedEnd": 402.29,
+      "durationSeconds": 152.31,
+      "lastSpokenWord": "",
+      "source": "slide-events"
+    },
+    {
+      "beatIndex": 4,
+      "editedStart": 402.29,
+      "editedEnd": 452.48,
+      "durationSeconds": 50.19,
+      "lastSpokenWord": "",
+      "source": "slide-events"
+    },
+    {
+      "beatIndex": 5,
+      "editedStart": 452.48,
+      "editedEnd": 498.6,
+      "durationSeconds": 46.12,
+      "lastSpokenWord": "",
+      "source": "slide-events"
+    },
+    {
+      "beatIndex": 6,
+      "editedStart": 498.6,
+      "editedEnd": 625.16,
+      "durationSeconds": 126.56,
+      "lastSpokenWord": "",
+      "source": "slide-events"
+    },
+    {
+      "beatIndex": 7,
+      "editedStart": 625.16,
+      "editedEnd": 673.13,
+      "durationSeconds": 47.97,
+      "lastSpokenWord": "",
+      "source": "slide-events"
+    },
+    {
+      "beatIndex": 8,
+      "editedStart": 673.13,
+      "editedEnd": 704.29,
+      "durationSeconds": 31.16,
+      "lastSpokenWord": "",
+      "source": "slide-events"
+    },
+    {
+      "beatIndex": 9,
+      "editedStart": 704.29,
+      "editedEnd": 761.66,
+      "durationSeconds": 57.37,
+      "lastSpokenWord": "",
+      "source": "slide-events"
+    },
+    {
+      "beatIndex": 10,
+      "editedStart": 761.66,
+      "editedEnd": 801.48,
+      "durationSeconds": 39.82,
+      "lastSpokenWord": "",
+      "source": "slide-events"
+    }
+  ],
+  "slideEventCount": 11
+}

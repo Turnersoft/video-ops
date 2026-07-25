@@ -17,7 +17,7 @@ export function defaultTextbookPanelLayout(
     if (placement === 'top') {
         return { xPct: 50, yPct: 14, wPct: 40 };
     }
-    return { xPct: 50, yPct: 46, wPct: 44 };
+    return { xPct: 50, yPct: 46, wPct: 62 };
 }
 
 export function readTextbookPanelLayoutFromStorage(key: string): TextbookPanelLayout | null {

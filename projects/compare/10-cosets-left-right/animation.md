@@ -24,14 +24,14 @@ display.editor-font-scale: 0.72
 ## Beat 1: Hook
 
 Partition language: Lean lemmas vs Turn receipts.
-
 ### Lean
+
 ```lean
 -- outline: replace with the Lean excerpt for this episode
 example : True := trivial
 ```
-
 ### Turn
+
 ```turn
 -- outline: replace with the Turn excerpt for this episode
 example : True
@@ -40,13 +40,13 @@ example : True
 ## Beat 2: Compare the shape
 
 Watch the same idea take two shapes — Lean lemmas vs Turn structure.
-
 ### Lean
+
 ```lean
 example : True := trivial
 ```
-
 ### Turn
+
 ```turn
 example : True
 ```
@@ -54,4 +54,3 @@ example : True
 ## Beat 3: Takeaway
 
 One concept, two proof assistants — keep the one that teaches the idea clearer.
-

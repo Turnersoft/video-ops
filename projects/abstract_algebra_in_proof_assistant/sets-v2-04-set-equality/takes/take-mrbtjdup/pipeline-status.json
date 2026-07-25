@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 2,
+  "status": "running",
+  "createdAt": "2026-07-23T14:43:19.280Z",
+  "updatedAt": "2026-07-23T14:43:19.488Z",
+  "selectedRuns": {},
+  "runs": {
+    "stabilize": [
+      {
+        "runId": "stabilize-mrxmfo00",
+        "status": "running",
+        "createdAt": "2026-07-23T14:43:19.488Z"
+      }
+    ],
+    "cut": [],
+    "align": [],
+    "composite": [],
+    "social": []
+  },
+  "autoRun": true,
+  "jobId": "job-take-mrbtjdup",
+  "takeId": "take-mrbtjdup",
+  "scriptId": "sets-v2-04-set-equality",
+  "scriptTitle": "Set equality — what equals means in a proof assistant",
+  "sourceVideoPath": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrbtjdup/source.mp4",
+  "takeManifestPath": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrbtjdup/take.json"
+}

@@ -8,7 +8,9 @@ import {
   parseRenderPropsRaw,
 } from './loadAnimationDocument';
 import { fetchLiveRenderPropsJson } from './fetchLiveRenderProps';
+import { stripOutdoorEditFromRenderProps } from './scriptEditingRenderProps';
 import { fetchVideoOpsStaticText } from '../studio/fetchVideoOpsStatic';
+import { canonicalVideoOpsScriptId } from '../videoOpsPaths';
 import type { VideoFromScriptRenderProps } from '../types/renderProps';
 
 const POLL_MS = 1500;
@@ -23,6 +25,7 @@ export function useAnimationHotReload(
   scriptId: string,
   showDirector: boolean,
   projectInput: VideoFromScriptRenderProps | null | undefined,
+  options: { stripOutdoorEdit?: boolean; includeOutdoorEdit?: boolean; takeId?: string } = {},
 ): {
   project: VideoFromScriptRenderProps | null;
   error: string;
@@ -33,6 +36,9 @@ export function useAnimationHotReload(
   const [loading, setLoading] = useState(!projectInput);
   const fingerprintRef = useRef('');
   const revisionRef = useRef(0);
+  const stripOutdoorEdit = options.stripOutdoorEdit ?? false;
+  const includeOutdoorEdit = options.includeOutdoorEdit ?? false;
+  const takeId = options.takeId?.trim() || undefined;
 
   useEffect(() => {
     if (projectInput) {
@@ -44,21 +50,23 @@ export function useAnimationHotReload(
 
     let cancelled = false;
     const env = getRemotionEnvironment();
-    const useLiveCompile = !env.isRendering && (env.isStudio || env.isPlayer);
+    const useLiveCompile =
+      !env.isRendering &&
+      (env.isStudio || env.isPlayer || stripOutdoorEdit);
     const shouldPoll = useLiveCompile;
 
     const applyProject = (next: VideoFromScriptRenderProps) => {
       if (cancelled) {
         return;
       }
-      setProject(next);
+      setProject(stripOutdoorEdit ? stripOutdoorEditFromRenderProps(next) : next);
       setError('');
       setLoading(false);
     };
 
     const loadRenderPropsRaw = async (cacheBust: number): Promise<string | null> => {
       if (useLiveCompile) {
-        return fetchLiveRenderPropsJson(scriptId, cacheBust);
+        return fetchLiveRenderPropsJson(scriptId, cacheBust, { includeOutdoorEdit, takeId });
       }
       return fetchVideoOpsStaticText(
         renderPropsCacheRelativePath(scriptId),
@@ -103,7 +111,10 @@ export function useAnimationHotReload(
 
     const onAnimationChanged = (event: Event) => {
       const detail = (event as CustomEvent<{ scriptId?: string }>).detail;
-      if (detail?.scriptId && detail.scriptId !== scriptId) {
+      if (
+        detail?.scriptId &&
+        canonicalVideoOpsScriptId(detail.scriptId) !== scriptId
+      ) {
         return;
       }
       revisionRef.current += 1;
@@ -141,7 +152,7 @@ export function useAnimationHotReload(
       window.removeEventListener('video-ops-animation-changed', onAnimationChanged);
       window.clearInterval(interval);
     };
-  }, [projectInput, scriptId, showDirector]);
+  }, [projectInput, scriptId, showDirector, stripOutdoorEdit, includeOutdoorEdit, takeId]);
 
   return { project, error, loading };
 }

@@ -28,7 +28,6 @@ allow-script-change: false
 -->
 
 Open the book. Judson Abstract Algebra, section one point two, Sets.
-
 ### Visual notes
 
 math-focus; textbook beat only.
@@ -72,7 +71,6 @@ allow-script-change: false
 -->
 
 First leaf of the big proposition tree in the parent video.
-
 ### Visual notes
 
 Film presenter; beats on board.
@@ -114,7 +112,6 @@ allow-script-change: false
 -->
 
 Statement: union with itself equals A.
-
 ### Visual notes
 
 Compare layer; caption beats on both sides.

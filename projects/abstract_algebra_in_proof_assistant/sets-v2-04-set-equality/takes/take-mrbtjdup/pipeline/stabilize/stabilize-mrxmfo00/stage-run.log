@@ -1,0 +1,14 @@
+# stage-run 2026-07-23T14:43:19.496Z
+jobId=job-take-mrbtjdup
+scriptId=sets-v2-04-set-equality
+takeId=take-mrbtjdup
+stage=stabilize
+runId=stabilize-mrxmfo00
+
+[2026-07-23T14:43:19.518Z] Starting stabilize
+[2026-07-23T14:43:19.540Z] Analyzing shake (vidstab pass 1)
+[2026-07-23T14:43:19.540Z] $ ffmpeg -y -hide_banner -loglevel warning -i /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrbtjdup/source.mp4 -vf vidstabdetect=shakiness=5:accuracy=15:result=/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/sets-v2-04-set-equality/takes/take-mrbtjdup/pipeline/stabilize/stabilize-mrxmfo00/transforms.trf -f null -
+[2026-07-23T14:52:34.519Z] exit 0
+[2026-07-23T14:52:34.540Z] Applying stabilization (vidstab pass 2)
+[2026-07-23T14:53:47.425Z] Stabilization complete
+[2026-07-23T14:53:47.445Z] stabilize complete

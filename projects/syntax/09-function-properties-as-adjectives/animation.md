@@ -34,7 +34,6 @@ Is it one-to-one?
 Is it invertible?
 In ordinary math these words behave like adjectives: an onto map, a one-to-one map.
 Turn keeps that shape — instead of bolting predicates on somewhere else in the syntax.
-
 ### Visual notes
 
 Informal: “let f be an onto map” vs cluttered formal UI (generic, no tool dunk).
@@ -63,7 +62,6 @@ allow-script-change: false
 Turn-Lang keeps adjectives on the `Function` structure in a `properties` block.
 `@notation(adjective)` means they render like words before the map — the way mathematicians write.
 The laws still live here; you are not hiding them in tactic memory.
-
 ### Turn
 
 ```turn
@@ -71,11 +69,9 @@ The laws still live here; you are not hiding them in tactic memory.
         @notation(adjective)
         surjective: Prop {
 ```
-
-Highlights:
+### Turn highlights
 
 - `@notation(adjective)`
-
 ### Visual notes
 
 Highlight `@notation(adjective)` before expanding quantifiers.
@@ -106,7 +102,6 @@ allow-script-change: false
 Open one adjective — the quantifiers are the contract, and they stay in the file.
 Pitfalls clip on when lecture shorthand and the checker disagree — link below.
 Subscribe for more syntax that stays readable at scale.
-
 ### Turn
 
 ```turn
@@ -116,17 +111,14 @@ Subscribe for more syntax that stays readable at scale.
             |- apply(a) = b
         }
 ```
-
-Highlights:
+### Turn highlights
 
 - `forall b in range`
 - `exists a in domain`
 - `apply(a) = b`
-
 ### Visual notes
 
 Properties block in outline.
 CTA pitfalls-01.
 
 turn-ide track: tracks/scene-3-ide.json
-

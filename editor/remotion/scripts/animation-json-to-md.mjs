@@ -142,6 +142,15 @@ function overlayBlocks(overlays) {
     if (def.placement) {
       lines.push(`placement: ${def.placement}`);
     }
+    if (def.definitionLabel) {
+      lines.push(`definition-label: ${def.definitionLabel}`);
+    }
+    if (def.source) {
+      lines.push(`source: ${def.source}`);
+    }
+    if (def.section) {
+      lines.push(`section: ${def.section}`);
+    }
     if (def.src) {
       lines.push(`src: ${def.src}`);
     }
@@ -152,6 +161,9 @@ function overlayBlocks(overlays) {
       lines.push(`label: ${def.label}`);
     }
     out += `\n## Overlay: ${name}\n\n<!--\n${lines.join('\n')}\n-->\n`;
+    if (def.latex) {
+      out += `\n### LaTeX\n\n\`\`\`latex\n${def.latex}\n\`\`\`\n`;
+    }
   }
   return out;
 }

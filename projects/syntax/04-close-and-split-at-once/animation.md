@@ -32,17 +32,14 @@ Hi friends, welcome back.
 End of Judson 1.25 forward proof.
 The goal is `exists Partition<X>[..Classes]`.
 We already built the class family `Classes` in the statement.
-
 ### Turn
 
 ```turn
 |- exists Partition<X>[..Classes]
 ```
-
-Highlights:
+### Turn highlights
 
 - `[..Classes]`
-
 ### Visual notes
 
 Theorem conclusion:
@@ -73,7 +70,6 @@ allow-script-change: false
 `witness confirm` closes the existential and immediately opens the checklist.
 Cell nonempty, cell subset, cover, disjoint.
 All in one block, all named.
-
 ### Turn
 
 ```turn
@@ -86,15 +82,13 @@ witness confirm {
     }
 }
 ```
-
-Highlights:
+### Turn highlights
 
 - `witness confirm`
 - `C.1`
 - `C.2`
 - `cover`
 - `disjoint`
-
 ### Visual notes
 
 Expand `cover` and `disjoint` briefly — point at law names matching the `Partition` structure.
@@ -122,9 +116,7 @@ allow-script-change: false
 
 That is close-and-split in one move.
 The real file is the reference implementation.
-
 ### Visual notes
 
 Cursor on `at goal {`.
 End in workspace.
-

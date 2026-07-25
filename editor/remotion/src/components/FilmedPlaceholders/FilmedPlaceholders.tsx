@@ -147,6 +147,7 @@ export function StudioFilmedPlaceholders({
             beatIndex={activeBeatIndex}
             sceneIndex={sceneIndex}
             beatCount={beatCount}
+            enableMaskEditing
           />
         </div>
       ) : null}

@@ -1,0 +1,6 @@
+[2026-07-23T14:43:19.218Z] ingested from /Users/johndoe/Library/Mobile Documents/com~apple~CloudDocs/TurnOutdoor/inbox → job job-take-mrhjew5h (autoRun=true)
+[2026-07-23T14:43:19.420Z] stage stabilize run stabilize-mrxmfny2 started
+[2026-07-23T14:43:24.621Z] stage stabilize run stabilize-mrxmfny2 succeeded
+[2026-07-23T14:43:24.642Z] stage cut run cut-mrxmfrz4 started
+[2026-07-23T14:43:24.720Z] stage cut run cut-mrxmfrz4 failed: Script missing on Mac — No outdoor script for sets-v2-04-set-equality.
+[2026-07-23T14:43:24.721Z] pipeline failed: No outdoor script for sets-v2-04-set-equality.

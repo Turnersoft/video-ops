@@ -1,5 +1,6 @@
 /**
- * Parse beat-studio metadata from animation.md visual notes (shared compile + UI).
+ * Parse beat template metadata from animation.md visual notes.
+ * Prefer plain `key: value` hint lines — no JSON required in the markdown.
  */
 
 const STUDIO_BLOCK_RE = /<!--\s*beat-studio:\s*([\s\S]*?)\s*-->\s*/i;
@@ -48,35 +49,115 @@ const TEMPLATE_KINDS = new Set<string>([
   'stickers',
 ]);
 
+const HINT_LINE_RE =
+  /^(beat-template|layer|lean-render|turn-render|turn-render-id|typing|manim-sub|manim-code|diagram|duration-seconds|caption|overlay-depth|overlay-anchor|walkthrough|screen-recording|audio-only|stickers|footage|placements)\s*:/i;
+
 export function stripBeatStudioBlock(visualNotes: string): string {
   return visualNotes.replace(STUDIO_BLOCK_RE, '').trim();
 }
 
-function metaFromHintLines(visualNotes: string): ParsedBeatStudioMeta | null {
-  const match = visualNotes.match(/^\s*beat-template:\s*([a-z0-9-]+)\s*$/im);
-  const template = match ? canonicalBeatStudioTemplateKind(match[1]) : null;
+function readHint(visualNotes: string, key: string): string | undefined {
+  const match = visualNotes.match(new RegExp(`^\\s*${key}:\\s*(.+)\\s*$`, 'im'));
+  const value = match?.[1]?.trim();
+  return value || undefined;
+}
+
+function hintIsTrue(visualNotes: string, key: string): boolean {
+  const value = readHint(visualNotes, key);
+  return value === 'true' || value === 'yes' || value === '1';
+}
+
+function stripHintLines(visualNotes: string): string {
+  return visualNotes
+    .split('\n')
+    .filter((line) => !HINT_LINE_RE.test(line.trim()))
+    .join('\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
+function configFromHintLines(
+  template: BeatStudioTemplateKind,
+  visualNotes: string,
+): Record<string, unknown> {
+  switch (template) {
+    case 'compare-dual':
+      return {
+        leanEnabled: true,
+        turnEnabled: true,
+        leanRender: hintIsTrue(visualNotes, 'lean-render') || !readHint(visualNotes, 'lean-render'),
+        turnRender: hintIsTrue(visualNotes, 'turn-render') || !readHint(visualNotes, 'turn-render'),
+        leanEditorStyle: 'default',
+        turnEditorStyle: 'ide',
+        typing: {
+          enabled: hintIsTrue(visualNotes, 'typing') || !readHint(visualNotes, 'typing'),
+          cps: 24,
+        },
+        screenRecording: readHint(visualNotes, 'screen-recording'),
+      };
+    case 'turn-focus':
+      return {
+        renderEnabled: hintIsTrue(visualNotes, 'turn-render') || !readHint(visualNotes, 'turn-render'),
+        renderComponentId: readHint(visualNotes, 'turn-render-id'),
+        editorFontScale: 1,
+        typing: { enabled: true, cps: 28 },
+      };
+    case 'manim-motion': {
+      const durationRaw = readHint(visualNotes, 'duration-seconds');
+      const durationSeconds = durationRaw ? Number(durationRaw) : 6;
+      return {
+        subTemplate: readHint(visualNotes, 'manim-sub') ?? 'set-diagram',
+        diagramId: readHint(visualNotes, 'diagram'),
+        durationSeconds: Number.isFinite(durationSeconds) ? durationSeconds : 6,
+        caption: readHint(visualNotes, 'caption') ?? '',
+        manimWebCode: hintIsTrue(visualNotes, 'manim-code') ? '' : undefined,
+      };
+    }
+    case 'composited':
+      return {
+        baseFootageSrc: readHint(visualNotes, 'footage'),
+        placements: [],
+      };
+    case 'presenter-overlay':
+      return {
+        depth: readHint(visualNotes, 'overlay-depth') ?? 'foreground',
+        anchor: readHint(visualNotes, 'overlay-anchor') ?? 'center',
+      };
+    case 'screen-recording':
+      return {
+        audioOnly: hintIsTrue(visualNotes, 'audio-only'),
+        syncCuts: [{ atSeconds: 0, label: 'Sync' }],
+      };
+    case 'stickers':
+      return { stickers: [] };
+    default: {
+      const _exhaustive: never = template;
+      return _exhaustive;
+    }
+  }
+}
+
+/** Build studio meta from plain visual-note hint lines (`beat-template: …`). */
+export function metaFromHintLines(visualNotes: string): ParsedBeatStudioMeta | null {
+  const templateName = readHint(visualNotes, 'beat-template');
+  const template = templateName ? canonicalBeatStudioTemplateKind(templateName) : null;
   if (!template) {
     return null;
   }
   return {
     template,
-    templateConfig: { kind: template, config: {} },
-    userNotes: visualNotes
-      .split('\n')
-      .filter((line) => !/^\s*beat-template:/i.test(line))
-      .join('\n')
-      .trim(),
+    templateConfig: {
+      kind: template,
+      config: configFromHintLines(template, visualNotes),
+    },
+    userNotes: stripHintLines(stripBeatStudioBlock(visualNotes)),
   };
 }
 
-export function parseBeatStudioFromVisualNotes(visualNotes: string | undefined): ParsedBeatStudioMeta | null {
-  if (!visualNotes?.trim()) {
-    return null;
-  }
+function metaFromLegacyJson(visualNotes: string): ParsedBeatStudioMeta | null {
   const match = visualNotes.match(STUDIO_BLOCK_RE);
   if (!match) {
-    // Fallback when markdown compile previously stripped the HTML comment.
-    return metaFromHintLines(visualNotes);
+    return null;
   }
   try {
     const parsed = JSON.parse(match[1]) as {
@@ -101,23 +182,19 @@ export function parseBeatStudioFromVisualNotes(visualNotes: string | undefined):
         kind: template,
         config: parsed.templateConfig?.config ?? {},
       },
-      userNotes: stripBeatStudioBlock(visualNotes),
+      userNotes: stripHintLines(stripBeatStudioBlock(visualNotes)),
     };
   } catch {
-    return metaFromHintLines(visualNotes);
+    return null;
   }
 }
 
-function cfgBool(config: Record<string, unknown>, key: string, fallback = false): boolean {
-  return typeof config[key] === 'boolean' ? (config[key] as boolean) : fallback;
-}
-
-function cfgNumber(config: Record<string, unknown>, key: string, fallback: number): number {
-  return typeof config[key] === 'number' && !Number.isNaN(config[key]) ? (config[key] as number) : fallback;
-}
-
-function cfgString(config: Record<string, unknown>, key: string): string | undefined {
-  return typeof config[key] === 'string' ? (config[key] as string) : undefined;
+export function parseBeatStudioFromVisualNotes(visualNotes: string | undefined): ParsedBeatStudioMeta | null {
+  if (!visualNotes?.trim()) {
+    return null;
+  }
+  // Plain hint lines are the source of truth; legacy JSON is a fallback only.
+  return metaFromHintLines(visualNotes) ?? metaFromLegacyJson(visualNotes);
 }
 
 export type BeatMainLayerPayload = {

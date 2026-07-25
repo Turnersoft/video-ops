@@ -23,18 +23,17 @@ pace.pace-factor: 1.1
 ## Beat 1: Hook
 
 Changing a definition breaks callers — formal math makes that visible.
-
 ### Visual notes
+
 Opening still / title for Definitions are APIs.
 
 ## Beat 2: Develop
 
 Expand the claim with one concrete scene the viewer can picture.
-
 ### Visual notes
+
 Mid-episode board or still.
 
 ## Beat 3: Close
 
 Leave one sharp takeaway — and a reason to watch the next episode.
-

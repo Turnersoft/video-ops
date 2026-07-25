@@ -20,3 +20,12 @@
 .scrollCap {
   overflow-y: auto;
 }
+
+.fillHeight {
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  max-height: none;
+  overflow-y: auto;
+  padding-bottom: 28px;
+}

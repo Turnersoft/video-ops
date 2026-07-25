@@ -25,6 +25,7 @@ import {
   resolveFocusedSlideCode,
   videoExtensionForMime,
 } from '../../utils/filmScript';
+import { openWebCameraStream, readWebCameraResolution } from '../../utils/webCamera';
 import { Button } from '../../components/Button/Button';
 import classes from './FilmScreen.module.scss';
 
@@ -100,6 +101,7 @@ export function FilmScreen({ scriptId }: FilmScreenProps) {
     mimeType: string;
   } | null>(null);
   const [uploading, setUploading] = useState(false);
+  const [cameraResolution, setCameraResolution] = useState<string | null>(null);
 
   const startedAtRef = useRef(0);
   const slideEventsRef = useRef<SlideEvent[]>([]);
@@ -147,20 +149,12 @@ export function FilmScreen({ scriptId }: FilmScreenProps) {
 
   const openCamera = useCallback(
     async (front: boolean) => {
-      if (!navigator.mediaDevices?.getUserMedia) {
-        throw new Error('Camera API is not available in this browser.');
-      }
       stopStream(streamRef.current);
-      const nextStream = await navigator.mediaDevices.getUserMedia({
-        audio: true,
-        video: {
-          facingMode: front ? 'user' : 'environment',
-          width: { ideal: 1920 },
-          height: { ideal: 1080 },
-        },
-      });
+      const nextStream = await openWebCameraStream(front);
       streamRef.current = nextStream;
       setStream(nextStream);
+      const size = readWebCameraResolution(nextStream);
+      setCameraResolution(size ? `${size.width}×${size.height}` : null);
       return nextStream;
     },
     [stopStream],
@@ -475,10 +469,17 @@ export function FilmScreen({ scriptId }: FilmScreenProps) {
     >
       <FilmVideoPreview stream={stream} mirrored={useFront} />
 
+      {cameraResolution && !isRecording ? (
+        <View style={styles.resBadge}>
+          <Text style={styles.resBadgeText}>{cameraResolution}</Text>
+        </View>
+      ) : null}
+
       {isRecording ? (
         <View style={styles.recBadge}>
           <Text style={styles.recBadgeText}>
             REC · {fmtDuration(recordingClockMs)} · {slideEventsRef.current.length} marks
+            {cameraResolution ? ` · ${cameraResolution}` : ''}
           </Text>
         </View>
       ) : null}
@@ -703,6 +704,20 @@ const styles = StyleSheet.create({
     color: '#fff7ed',
     fontWeight: '900',
     fontSize: typography.body,
+  },
+  resBadge: {
+    position: 'absolute',
+    top: 16,
+    left: 16,
+    backgroundColor: 'rgba(15, 23, 42, 0.82)',
+    borderRadius: 999,
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+  },
+  resBadgeText: {
+    color: colors.section,
+    fontWeight: '800',
+    fontSize: typography.tiny,
   },
   recBadge: {
     position: 'absolute',

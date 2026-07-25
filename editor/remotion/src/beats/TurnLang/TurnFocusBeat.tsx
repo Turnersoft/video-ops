@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { useMemo, type ReactNode } from 'react';
 import { Easing, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig } from 'remotion';
 
 import {
@@ -6,6 +6,7 @@ import {
     compareBodyFontSize,
     compareBodyFontSizeMin,
 } from '../../lib/tracks/compareTypography';
+import type { IdeTrack } from '../../lib/tracks/ideTrackTypes';
 import { SidePanelFromTrack } from '../../components/SidePanelFromTrack/SidePanelFromTrack';
 import { TurnTypingCode } from '../../components/TurnTypingCode/TurnTypingCode';
 import { TURN_LANG_LOGO_SRC } from '../../lib/layout/brandAssets';
@@ -20,8 +21,6 @@ import { cfgString } from '../configHelpers';
 import type { BeatTemplateComponentProps } from '../types';
 import {
     BeatFootageOverlays,
-    BeatPortraitPresenterBand,
-    showStudioFootagePlaceholders,
 } from '../../components/BeatFootage/BeatFootage';
 import { parseConfig, renderEnabled, typingCps } from './api';
 import classes from './TurnFocusBeat.module.scss';
@@ -31,6 +30,22 @@ const PORTRAIT_TITLE_FONT_RATIO = 0.42;
 const TURN_EDITOR_LOGO_HEIGHT = 169;
 const TURN_RENDER_LOGO_HEIGHT = 169;
 const TURN_ACCENT = '#c4a882';
+
+/** First 1-based line with a Turn declaration keyword, skipping comment-only lines. */
+function firstDeclarationFocusLine(source: string): number {
+    const lines = source.split('\n');
+    for (let index = 0; index < lines.length; index += 1) {
+        const line = lines[index] ?? '';
+        const trimmed = line.trim();
+        if (!trimmed || trimmed.startsWith('//') || trimmed.startsWith('#')) {
+            continue;
+        }
+        if (/\b(relation|structure|theorem)\b/.test(line)) {
+            return index + 1;
+        }
+    }
+    return 1;
+}
 
 type TurnFocusLayoutProps = {
     main: ReactNode;
@@ -154,17 +169,14 @@ function TurnFocusLandscape({ main, side, showRender = true }: TurnFocusLayoutPr
 }
 
 function TurnFocusPortrait({
-    scene,
     main,
     side,
     showRender = true,
-}: TurnFocusLayoutProps & { scene: RenderScene }) {
-    const showPresenterBand = showStudioFootagePlaceholders(scene);
+}: TurnFocusLayoutProps) {
     const editorFlex = showRender ? 1.15 : 1;
 
     return (
         <div className={classes.portraitCompareRoot}>
-            {showPresenterBand ? <BeatPortraitPresenterBand /> : null}
             <TurnFocusPortraitPane
                 label="Turn-Lang Editor"
                 accent={TURN_ACCENT}
@@ -238,12 +250,27 @@ export function TurnFocusBeat({
         ? COMPARE_PANEL_FONT_SCALE * editorFontScale * portraitFontBoost
         : editorFontScale;
 
+    const inlineTrack = useMemo((): IdeTrack => {
+        return {
+            version: 1,
+            beatCodeSegments: [{ atSeconds: 0, code: turnSource }],
+            typing: { charsPerSecond: charsPerSecond },
+            knowledgePanel: {
+                heading: 'Knowledge',
+                generateFromSource: true,
+                scopedToSource: true,
+                focusLine: firstDeclarationFocusLine(turnSource),
+            },
+        };
+    }, [turnSource, charsPerSecond]);
+
     const render = (
         <SidePanelFromTrack
             scriptId={scriptId}
             trackPath={`tracks/scene-${scene.index}-ide.json`}
             fontScale={renderFontScale}
             compact={isPortrait}
+            trackLoad={{ inlineTrack }}
         />
     );
 
@@ -257,7 +284,7 @@ export function TurnFocusBeat({
         <div className={classes.shell}>
             {isPortrait ? (
                 <BeatTemplateStage tone="compare" compact>
-                    <TurnFocusPortrait scene={scene} {...layoutProps} />
+                    <TurnFocusPortrait {...layoutProps} />
                 </BeatTemplateStage>
             ) : (
                 <TurnFocusLandscape {...layoutProps} />

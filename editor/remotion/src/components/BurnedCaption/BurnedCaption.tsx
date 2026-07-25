@@ -115,6 +115,9 @@ export function BurnedCaption({
   const starts = useSegments
     ? segments!.map((segment) => segment.atSeconds)
     : captionTimings(lines, timings, durationSeconds);
+  const segmentEnds = useSegments
+    ? segments!.map((segment) => segment.atSeconds + segment.durationSeconds)
+    : undefined;
   const events = starts.map((atSeconds, index) => ({ atSeconds, index }));
   const active = activeEventIndex(events, seconds);
   const line = lines[active] ?? lines[lines.length - 1];
@@ -123,7 +126,9 @@ export function BurnedCaption({
   const fullScript = lines.join("\n\n");
 
   const lineStart = starts[active] ?? 0;
-  const lineEnd = starts[active + 1] ?? durationSeconds;
+  const lineEnd = useSegments
+    ? (starts[active + 1] ?? segmentEnds?.[active] ?? durationSeconds)
+    : (starts[active + 1] ?? durationSeconds);
   const lineDuration = Math.max(0.001, lineEnd - lineStart);
   const localSeconds = seconds - lineStart;
   const beatProgress = Math.max(0, Math.min(1, localSeconds / lineDuration));

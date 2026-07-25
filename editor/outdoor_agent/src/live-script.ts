@@ -20,7 +20,13 @@ import {
   seriesForScriptId,
 } from './paths.ts';
 import { compileAnimationSource } from './scripts-watcher.ts';
-import { patchBeatSectionVariants, sanitizeSay, type BeatVariantPatch } from '../../../src/beatVariants.ts';
+import {
+  extractBeatContentFromSection,
+  patchBeatSectionVariants,
+  sanitizeSay,
+  splitAnimationBeatSections,
+  type BeatVariantPatch,
+} from '../../../src/beatVariants.ts';
 
 export type LiveBeat = {
   id: string;
@@ -127,12 +133,40 @@ export async function ensureAnimationCompiled(scriptId: string): Promise<void> {
   }
 }
 
+const BEAT_STUDIO_TITLE_RE = /<!--\s*beat-studio:[\s\S]*?-->\s*/gi;
+const AUTO_VISUAL_HINT_TITLE_RE =
+  /^(beat-template|layer|lean-render|turn-render|turn-render-id|typing|manim-sub|manim-code|diagram|overlay-depth|overlay-anchor|walkthrough|screen-recording|audio-only|stickers)\s*:/i;
+
+/** Fallback when animation.md is unavailable (cached compile only). */
 function titleFromVisualNotes(notes: string | undefined, index: number): string {
-  const first = notes?.split(/[.\n]/)[0]?.trim();
-  if (first) {
-    return first;
+  const stripped = notes?.replace(BEAT_STUDIO_TITLE_RE, '').trim() ?? '';
+  for (const line of stripped.split('\n')) {
+    const trimmed = line.trim();
+    if (!trimmed || AUTO_VISUAL_HINT_TITLE_RE.test(trimmed)) {
+      continue;
+    }
+    const beatLine = trimmed.match(/^Beat\s+\d+:\s*(.+)$/i);
+    if (beatLine?.[1]?.trim()) {
+      return beatLine[1].trim();
+    }
+    const first = trimmed.split(/[.\n]/)[0]?.trim();
+    if (first) {
+      return first;
+    }
   }
   return `Beat ${index + 1}`;
+}
+
+function applyMarkdownTitlesToBeats(beats: LiveBeat[], markdown: string): LiveBeat[] {
+  const { sections } = splitAnimationBeatSections(markdown);
+  return beats.map((beat, index) => {
+    const section = sections[index];
+    if (!section) {
+      return beat;
+    }
+    const title = extractBeatContentFromSection(section, index).title.trim();
+    return title ? { ...beat, title } : beat;
+  });
 }
 
 function liveBeatFromCompare(beat: AnimationBeat, index: number): LiveBeat {
@@ -249,10 +283,11 @@ export async function buildLiveScript(rawScriptId: string): Promise<LiveScript |
   if (!animation) {
     return null;
   }
-  const beats = liveBeatsFromAnimation(animation);
-  if (!beats) {
+  const beatsRaw = liveBeatsFromAnimation(animation);
+  if (!beatsRaw) {
     return null;
   }
+  const beats = md.exists ? applyMarkdownTitlesToBeats(beatsRaw, md.markdown) : beatsRaw;
 
   const title = teleprompterTitleFromScriptId(scriptId) ||
     animation.title ||
@@ -292,7 +327,7 @@ function splitAnimationBeats(markdown: string): { prefix: string; beats: string[
 }
 
 function replaceFencedCode(section: string, lang: 'lean' | 'turn', code: string): string {
-  const heading = lang === 'lean' ? '### Lean' : '### Turn';
+  const heading = lang === 'lean' ? '### Lean' : '### Turn-Lang';
   const fence = '```' + lang;
   const pattern = new RegExp(
     `(${heading}\\s*\\n(?:<!--[\\s\\S]*?-->\\s*\\n)?)${fence}\\n[\\s\\S]*?\\n\`\`\``,

@@ -4,14 +4,11 @@ import { AbsoluteFill } from 'remotion';
 import {
     DEFAULT_FILMED_AVATAR_MASK,
     DEFAULT_SCREEN_RECORDING_BOX,
-    GreenAvatarFill,
     hasFootageSrc,
     StudioFilmedPlaceholders,
 } from '../FilmedPlaceholders/FilmedPlaceholders';
+import { PortraitPresenterBand } from '../PortraitPresenterBand/PortraitPresenterBand';
 import type { OutdoorRenderFormat, RenderScene } from '../../lib/types/renderProps';
-import { scaleCss } from '../../lib/layout/scaleCss';
-import { useCompositionScale } from '../../lib/layout/useCompositionScale';
-import classes from './BeatFootage.module.scss';
 
 export type BeatFootageOverlaysProps = {
     scriptId: string;
@@ -21,22 +18,9 @@ export type BeatFootageOverlaysProps = {
     screenRecordingLabel?: string | null;
 };
 
-const PORTRAIT_PRESENTER_BAND_RATIO = 0.33;
-
-/** Portrait studio band — replaces outdoor presenter strip when no take is linked. */
+/** @deprecated Prefer PortraitPresenterBand — kept for existing imports. */
 export function BeatPortraitPresenterBand(): ReactNode {
-    const s = useCompositionScale();
-    return (
-        <div
-            className={classes.portraitPresenterBand}
-            style={{
-                ...scaleCss(s.scale),
-                height: `${PORTRAIT_PRESENTER_BAND_RATIO * 100}%`,
-            }}
-        >
-            <GreenAvatarFill label="Filmed take · portrait" />
-        </div>
-    );
+    return <PortraitPresenterBand />;
 }
 
 export function showStudioFootagePlaceholders(scene: RenderScene): boolean {
@@ -44,8 +28,9 @@ export function showStudioFootagePlaceholders(scene: RenderScene): boolean {
 }
 
 /**
- * Absolute-fill studio overlays — landscape avatar PIP + optional screen-recording box.
- * Portrait uses BeatPortraitPresenterBand for the talking-head placeholder instead.
+ * Absolute-fill studio overlays.
+ * Landscape: editable circle/rect PiP (original script framing).
+ * Portrait: talking-head lives in PortraitPresenterBand — only screen-recording box here.
  */
 export function BeatFootageOverlays({
     scriptId,
@@ -58,11 +43,31 @@ export function BeatFootageOverlays({
         return null;
     }
 
-    const hasTalkingHeadFootage = hasFootageSrc(scene.outdoorEdit?.videoSrc);
     const label =
         screenRecordingLabel?.trim() ||
         scene.beatScreenRecordings?.[activeBeatIndex]?.trim() ||
         null;
+
+    // Portrait presenter is the top band in CompareDualPortraitLayout — never bottom PiP.
+    if (format === 'portrait') {
+        if (!label?.trim()) {
+            return null;
+        }
+        return (
+            <AbsoluteFill style={{ pointerEvents: 'none' }}>
+                <StudioFilmedPlaceholders
+                    scriptId={scriptId}
+                    hasTalkingHeadFootage
+                    screenRecordingLabel={label}
+                    activeBeatIndex={activeBeatIndex}
+                    sceneIndex={Math.max(0, scene.index - 1)}
+                    beatCount={scene.director?.say?.length ?? 0}
+                />
+            </AbsoluteFill>
+        );
+    }
+
+    const hasTalkingHeadFootage = hasFootageSrc(scene.outdoorEdit?.videoSrc);
     const presenterMask =
         scene.beatStudioPresenterMasks?.[activeBeatIndex] ??
         scene.studioPresenterMask ??
@@ -73,7 +78,7 @@ export function BeatFootageOverlays({
         <AbsoluteFill style={{ pointerEvents: 'none' }}>
             <StudioFilmedPlaceholders
                 scriptId={scriptId}
-                hasTalkingHeadFootage={format === 'portrait' ? true : hasTalkingHeadFootage}
+                hasTalkingHeadFootage={hasTalkingHeadFootage}
                 screenRecordingLabel={label}
                 presenterMask={presenterMask}
                 activeBeatIndex={activeBeatIndex}

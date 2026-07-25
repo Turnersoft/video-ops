@@ -1,6 +1,31 @@
-import type { RenderScene } from '../types/renderProps';
+import {
+    beatPipMaskToRenderMask,
+    DEFAULT_BEAT_PIP_MASK,
+} from './pipMaskTransform';
+import type { OutdoorPipMask, RenderScene } from '../types/renderProps';
 
 type OutdoorEdit = NonNullable<RenderScene['outdoorEdit']>;
+
+type ScenePipMaskSource = Pick<
+    RenderScene,
+    'outdoorEdit' | 'beatStudioPresenterMasks' | 'studioPresenterMask'
+>;
+
+/** Script / studio mask chain for outdoor filmed footage (take beat layout → scene outdoor → animation.md). */
+export function resolveOutdoorPipMask(
+    scene: ScenePipMaskSource,
+    beatIndex: number,
+): OutdoorPipMask | undefined {
+    const outdoorEdit = scene.outdoorEdit;
+    const beatLayout = outdoorEdit?.beatLayouts?.[beatIndex];
+    return (
+        scene.beatStudioPresenterMasks?.[beatIndex] ??
+        scene.studioPresenterMask ??
+        beatLayout?.pipMask ??
+        outdoorEdit?.pipMask ??
+        beatPipMaskToRenderMask(DEFAULT_BEAT_PIP_MASK)
+    );
+}
 
 export type OutdoorBeatLayout = {
     pipMask: OutdoorEdit['pipMask'];
@@ -29,10 +54,13 @@ export function outdoorBeatIndexAtTime(
 export function resolveOutdoorBeatLayout(
     outdoorEdit: OutdoorEdit | undefined,
     beatIndex: number,
+    scene?: ScenePipMaskSource,
 ): OutdoorBeatLayout {
     const beat = outdoorEdit?.beatLayouts?.[beatIndex];
     return {
-        pipMask: beat?.pipMask ?? outdoorEdit?.pipMask,
+        pipMask: scene
+            ? resolveOutdoorPipMask(scene, beatIndex)
+            : (beat?.pipMask ?? outdoorEdit?.pipMask),
         hintPanel: beat?.hintPanel ?? outdoorEdit?.hintPanel,
         presenterMode:
             beat?.presenterMode ?? outdoorEdit?.presenterMode ?? 'split-crop',

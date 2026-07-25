@@ -3,6 +3,7 @@ import classes from './SceneComposer.module.scss';
 
 import { SceneNarrationAudio } from '../SceneNarrationAudio/SceneNarrationAudio';
 import { BurnedCaption } from '../BurnedCaption/BurnedCaption';
+import { BeatNumberBadge } from '../BeatNumberBadge/BeatNumberBadge';
 import { TURN_VIDEO_THEME } from '../../lib/layout/turnVideoTheme';
 import { narrationStripForScene } from '../../lib/outdoor/narrationStrip';
 import { OutdoorLayoutProvider } from '../../lib/outdoor/outdoorLayoutContext';
@@ -12,6 +13,7 @@ import {
 } from '../../lib/outdoor/resolveOutdoorBeatLayout';
 import { activeSayLineIndex } from '../../lib/outdoor/sayTiming';
 import type { OutdoorRenderFormat, RenderLayer, RenderScene } from '../../lib/types/renderProps';
+import { sceneArrayIndex } from '../../lib/types/renderProps';
 import { staticPathForScriptAsset } from '../../lib/assets/scriptAssetPath';
 import { OutdoorLandscapeSceneView } from '../../lib/sceneViews/OutdoorLandscapeSceneView';
 import { OutdoorPortraitSceneView } from '../../lib/sceneViews/OutdoorPortraitSceneView';
@@ -28,6 +30,7 @@ type SceneComposerProps = {
     showDirector?: boolean;
     contentRevision?: number;
     outdoorFormat?: OutdoorRenderFormat;
+    forceStudioFootagePlaceholder?: boolean;
 };
 
 /** Beat templates that ship their own full-frame chrome (BeatTemplateStage). */
@@ -62,13 +65,18 @@ export function SceneComposer({
     scene,
     outdoorFormat = 'landscape',
     contentRevision,
+    forceStudioFootagePlaceholder = false,
 }: SceneComposerProps) {
     const t = TURN_VIDEO_THEME;
     const frame = useCurrentFrame();
     const { durationInFrames, fps } = useVideoConfig();
     const layout = inferLayoutPreset(scene);
     const frameSeconds = frame / fps;
-    const outdoorEdit = scene.outdoorEdit;
+    const outdoorEdit = forceStudioFootagePlaceholder ? undefined : scene.outdoorEdit;
+    const sceneForRender =
+        forceStudioFootagePlaceholder && scene.outdoorEdit
+            ? { ...scene, outdoorEdit: undefined }
+            : scene;
     const activeBeatIndex = outdoorEdit?.beatDurationsSeconds?.length
         ? outdoorBeatIndexAtTime(frameSeconds, outdoorEdit.beatDurationsSeconds)
         : activeSayLineIndex(scene.director, scene.durationSeconds, frame, fps);
@@ -81,6 +89,9 @@ export function SceneComposer({
             : null;
     const useCompareShell = beatTemplateUsesCompareShell(activeBeatTemplateKind);
     const selfContainedBeatStage = !outdoorEdit && studioBeatFillsFrame(effectiveMainLayer);
+    /** Outdoor take preview — full composition like studio beatStageHost (no sceneVisual inset/scale). */
+    const outdoorFillsFrame = Boolean(outdoorEdit) && Boolean(outdoorFormat);
+    const fillsFrame = selfContainedBeatStage || outdoorFillsFrame;
     const narrationStrip = narrationStripForScene(scene);
     const compareLayer = findCompareLayer(scene.layers);
 
@@ -106,12 +117,19 @@ export function SceneComposer({
         frameSeconds,
         outdoorEdit?.beatDurationsSeconds,
     );
-    const outdoorBeatLayout = resolveOutdoorBeatLayout(outdoorEdit, outdoorBeatIndex);
+    const outdoorBeatLayout = resolveOutdoorBeatLayout(outdoorEdit, outdoorBeatIndex, scene);
+    const outdoorBeatCount =
+        outdoorEdit?.beatDurationsSeconds?.length ??
+        scene.director?.say?.length ??
+        0;
+    const beatNumberBadge = (
+        <BeatNumberBadge beatIndex={activeBeatIndex} beatCount={outdoorBeatCount || undefined} />
+    );
 
     const mainContent = effectiveMainLayer ? (
         <MainLayerRenderer
             scriptId={scriptId}
-            scene={scene}
+            scene={sceneForRender}
             layer={effectiveMainLayer}
             layout={layout}
             contentRevision={contentRevision}
@@ -147,9 +165,37 @@ export function SceneComposer({
         </>
     );
 
-    const sceneVisual = selfContainedBeatStage ? (
+    const sceneVisual = fillsFrame ? (
         <AbsoluteFill className={classes.beatStageHost}>
-            {mainContent}
+            {outdoorFillsFrame && outdoorFormat === 'portrait' ? (
+                <OutdoorPortraitSceneView
+                    scriptId={scriptId}
+                    scene={sceneForRender}
+                    outdoorEdit={outdoorEdit}
+                    outdoorBeatIndex={outdoorBeatIndex}
+                    outdoorBeatLayout={outdoorBeatLayout}
+                    compareLayer={compareLayer ?? undefined}
+                    mainContent={mainContent}
+                    useCompareShell={useCompareShell}
+                    activeBeatTemplateKind={activeBeatTemplateKind}
+                    contentRevision={contentRevision}
+                    sceneDirector={scene.director}
+                    sceneDurationSeconds={scene.durationSeconds}
+                />
+            ) : outdoorFillsFrame && outdoorFormat === 'landscape' ? (
+                <OutdoorLandscapeSceneView
+                    scriptId={scriptId}
+                    outdoorEdit={outdoorEdit!}
+                    outdoorBeatIndex={outdoorBeatIndex}
+                    outdoorBeatLayout={outdoorBeatLayout}
+                    sceneIndex={sceneArrayIndex(scene)}
+                    beatCount={outdoorBeatCount}
+                    mainContent={mainContent}
+                />
+            ) : (
+                mainContent
+            )}
+            {beatNumberBadge}
             {narrationAndCaptions}
         </AbsoluteFill>
     ) : (
@@ -170,10 +216,10 @@ export function SceneComposer({
                 }}
             />
 
-            {isOutdoorPortrait ? (
+            {isOutdoorPortrait && !outdoorFillsFrame ? (
                 <OutdoorPortraitSceneView
                     scriptId={scriptId}
-                    scene={scene}
+                    scene={sceneForRender}
                     outdoorEdit={outdoorEdit}
                     outdoorBeatIndex={outdoorBeatIndex}
                     outdoorBeatLayout={outdoorBeatLayout}
@@ -185,18 +231,21 @@ export function SceneComposer({
                     sceneDirector={scene.director}
                     sceneDurationSeconds={scene.durationSeconds}
                 />
-            ) : isOutdoorLandscape ? (
+            ) : isOutdoorLandscape && !outdoorFillsFrame ? (
                 <OutdoorLandscapeSceneView
                     scriptId={scriptId}
                     outdoorEdit={outdoorEdit!}
                     outdoorBeatIndex={outdoorBeatIndex}
                     outdoorBeatLayout={outdoorBeatLayout}
+                    sceneIndex={sceneArrayIndex(scene)}
+                    beatCount={outdoorBeatCount}
                     mainContent={mainContent}
                 />
-            ) : (
+            ) : !isOutdoorPortrait && !isOutdoorLandscape ? (
                 <StudioSceneView mainContent={mainContent} />
-            )}
+            ) : null}
 
+            {beatNumberBadge}
             {narrationAndCaptions}
         </AbsoluteFill>
     );

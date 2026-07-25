@@ -141,7 +141,8 @@ export async function loadIdeTrackAssets(
 
     let fullSource = typingSnippet;
     let renderSource = typingSnippet;
-    if (track.sourceFile) {
+    // `inline:…` is a synthetic marker for ad-hoc beat snippets — not a disk path.
+    if (track.sourceFile && !track.sourceFile.startsWith('inline:')) {
         const fileText = await loadText(
             resolveIdeTrackSourceStaticPath(scriptId, track.sourceFile),
         );
@@ -167,7 +168,7 @@ export async function loadIdeTrackAssetsFromInline(
 
     let fullSource = typingSnippet;
     let renderSource = typingSnippet;
-    if (track.sourceFile) {
+    if (track.sourceFile && !track.sourceFile.startsWith('inline:')) {
         const fileText = await loadText(
             resolveIdeTrackSourceStaticPath(scriptId, track.sourceFile),
         );
@@ -364,7 +365,7 @@ function partialKeywordMode(visibleCode: string): TurnSidePanelMode | null {
         return null;
     }
     if ('theorem'.startsWith(head) || head.startsWith('theorem')) {
-        return 'proof';
+        return 'knowledge';
     }
     if ('structure'.startsWith(head) || head.startsWith('structure')) {
         return 'knowledge';
@@ -375,10 +376,10 @@ function partialKeywordMode(visibleCode: string): TurnSidePanelMode | null {
     return null;
 }
 
-/** Proof panel for `theorem` blocks; knowledge panel for `structure` / `relation`. */
+/** Knowledge panel for `theorem` / `structure` / `relation` (Remotion video compare). */
 export function detectTurnSidePanelMode(visibleCode: string): TurnSidePanelMode {
     const hits: KeywordHit[] = [];
-    const theorem = lastKeywordHit(visibleCode, 'theorem', 'proof');
+    const theorem = lastKeywordHit(visibleCode, 'theorem', 'knowledge');
     const structure = lastKeywordHit(visibleCode, 'structure', 'knowledge');
     const relation = lastKeywordHit(visibleCode, 'relation', 'knowledge');
 

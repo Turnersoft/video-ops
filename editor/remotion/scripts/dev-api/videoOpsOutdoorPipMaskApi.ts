@@ -8,6 +8,7 @@ import {
     syncOutdoorPipMaskToAllBeatsInAnimation,
     updateOutdoorPipMaskInAnimation,
 } from './updateVideoOpsOutdoorPipMask';
+import { invalidateLiveCompileCache } from './videoOpsLiveCompileApi';
 
 function readRequestBody(req: IncomingMessage): Promise<string> {
     return new Promise((resolve, reject) => {
@@ -49,6 +50,7 @@ export function createOutdoorPipMaskHandler(videoOpsDir: string) {
                 payload.beatIndex,
                 payload.sceneIndex ?? 0,
             );
+            invalidateLiveCompileCache(payload.scriptId);
 
             res.setHeader('Content-Type', 'application/json; charset=utf-8');
             res.end(JSON.stringify({ ok: true, pipMask: saved }));
@@ -109,6 +111,7 @@ export function createOutdoorPipMaskSyncAllHandler(videoOpsDir: string) {
                 payload.beatCount,
                 payload.mode,
             );
+            invalidateLiveCompileCache(payload.scriptId);
 
             res.setHeader('Content-Type', 'application/json; charset=utf-8');
             res.end(JSON.stringify({ ok: true }));

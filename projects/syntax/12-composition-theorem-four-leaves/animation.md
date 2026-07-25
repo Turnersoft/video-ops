@@ -35,7 +35,6 @@ Another says injective functions stay injective.
 Another says surjective functions stay surjective.
 These belong together, but they are not the same proof.
 So the right mental model is not a wall of text — it is a folder with named pages.
-
 ### Visual notes
 
 Generic “wall of text” proof vs folder icon with four tabs (conceptual).
@@ -64,7 +63,6 @@ allow-script-change: false
 In this chapter, four composition facts live in one theorem — `"composition's rules"`.
 Associative, injective, surjective, bijective — each a named leaf with its own proof block.
 The outline is the navigation. You click the fact you need.
-
 ### Turn
 
 ```turn
@@ -81,14 +79,12 @@ theorem "composition's rules" {
     }
 }
 ```
-
-Highlights:
+### Turn highlights
 
 - `associative`
 - `injective`
 - `surjective`
 - `bijective`
-
 ### Visual notes
 
 Outline expanded to four leaves.
@@ -118,9 +114,7 @@ allow-script-change: false
 Merging unrelated proofs helps nobody.
 Adding a fifth leaf does not rewrite the other four.
 That is how a proof library stays teachable — link to full file below.
-
 ### Visual notes
 
 Outline tree collapsed then expanded.
 Inspiring: navigable library.
-

@@ -18,6 +18,6 @@ layout: beat-focus
 ## Beat 1: Opening still
 
 Life essay smoke — quote and still board layers ship as kit stubs in Remotion.
-
 ### Visual notes
+
 Still board placeholder beat.

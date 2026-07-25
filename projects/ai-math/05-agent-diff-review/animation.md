@@ -27,41 +27,38 @@ pace.pace-factor: 1.1
 ```
 
 Reading an AI patch like a journal referee.
-
 ### Lean
 
 ```lean
 
 ```
-
 ### Turn
 
 ```turn
 
 ```
-
 ### Visual notes
+
 beat-template: turn-focus
 layer: turn-code
 
 Opening still / title for Agent diff review.
+
 ## Beat 2: Mid-episode board or still
 
 Expand the claim with one concrete scene the viewer can picture.
-
 ### Lean
 
 ```lean
 
 ```
-
 ### Turn
 
 ```turn
 
 ```
-
 ### Visual notes
+
 <!-- beat-studio: {"template":"turn-focus","templateConfig":{"kind":"turn-focus","config":{"renderEnabled":false,"editorFontScale":1,"typing":{"enabled":true,"cps":28}}}} -->
 
 beat-template: turn-focus

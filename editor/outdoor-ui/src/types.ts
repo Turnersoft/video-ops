@@ -43,6 +43,7 @@ export type JobStatus =
 export type OutdoorRoute =
   | { name: 'library' }
   | { name: 'script'; scriptId: string }
+  | { name: 'post'; scriptId: string }
   | { name: 'take'; scriptId: string; takeId: string }
   | { name: 'film'; scriptId: string }
   | { name: 'animation'; scriptId: string }

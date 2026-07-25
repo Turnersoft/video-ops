@@ -19,13 +19,13 @@ teleprompter.position: below-canvas
 ## Beat 1: Hook
 
 One-line compare smoke beat.
-
 ### Lean
+
 ```lean
 example : Nat := 1
 ```
-
 ### Turn
+
 ```turn
 example : Nat = 1
 ```

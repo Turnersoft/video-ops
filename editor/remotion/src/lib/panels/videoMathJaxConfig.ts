@@ -3,18 +3,8 @@
 export const VIDEO_MATHJAX_SRC =
     'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js';
 
+/** Config for the combined CDN build (`tex-mml-chtml.js`) — avoid re-loading bundled `[tex]` packages. */
 export const VIDEO_MATHJAX_CONFIG = {
-    loader: {
-        load: [
-            '[tex]/ams',
-            '[tex]/color',
-            '[tex]/colortbl',
-            '[tex]/tagformat',
-            '[tex]/unicode',
-            'input/tex',
-            'output/chtml',
-        ],
-    },
     tex: {
         tags: 'ams',
         packages: {

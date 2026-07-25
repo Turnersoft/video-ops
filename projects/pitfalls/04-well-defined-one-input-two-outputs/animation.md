@@ -34,7 +34,6 @@ But then the same input shows up in a different disguise, and the rule gives a d
 A calculator would not know which answer to trust.
 A proof checker should not know either.
 This is why “well-defined” is not a teacher being picky — it is the gate before the word function is even legal.
-
 ### Visual notes
 
 Whiteboard: same input via two labels → two outputs (classic half vs two-fourths story, no jargon).
@@ -64,7 +63,6 @@ Turn-Lang does not bury that in a footnote.
 On `Relation` there is a named property: for each input, there exists a unique output in the relation.
 Only after that passes do we refine to `Function`.
 The checker can reject the rule before you waste a proof.
-
 ### Turn
 
 ```turn
@@ -74,12 +72,10 @@ The checker can reject the rule before you waste a proof.
             |- { [a b] in self; }
         }
 ```
-
-Highlights:
+### Turn highlights
 
 - `well_defined: Prop`
 - `exists unique b in B`
-
 ### Visual notes
 
 Outline: `Relation` → `well_defined` → `Function` refines relation.
@@ -109,9 +105,7 @@ allow-script-change: false
 Same class of bug in simulation — two strain paths that should be the same state returning different stresses.
 Formal methods make you name the obligation up front.
 Link to the full formalization in the description.
-
 ### Visual notes
 
 Return to `well_defined` block.
 L5 one sentence; short subscribe CTA.
-

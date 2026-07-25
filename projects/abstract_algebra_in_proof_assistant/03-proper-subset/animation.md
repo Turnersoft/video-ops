@@ -50,7 +50,6 @@ The textbook definition looks very simple,
 But please be warned, that Lean is about to get 5x more difficult on this concept.
 Because we don't have a direct concept of proper subset at all.
 Let me show you how they actually do it.
-
 ### Lean
 
 ```lean
@@ -59,8 +58,7 @@ Let me show you how they actually do it.
 -- Now search Mathlib for `def SSubset` on sets…
 -- …there is none. Proper subset is never defined directly. 😳
 ```
-
-Highlights:
+### Lean highlights
 
 - `there is none`
 - `never defined directly`
@@ -81,15 +79,13 @@ relation Subset(T: Any, A B: Set<T>): PropModified {
     }
 }
 ```
-
-Highlights:
+### Turn highlights
 
 - `proper`
 - `⊊`
 ### Chinese
 
 大家好，欢迎回来。上期是普通子集。今天讲真子集。课本定义很简单，但 Lean 没有直接定义这一概念，难度会高很多。来看它实际怎么做的。
-
 ### Visual notes
 
 Continues sets-v2-02-subset. Textbook overlay center. Hook: Lean has no proper-subset def — glow Turn ⊊ vs Lean “never defined directly”.
@@ -108,7 +104,6 @@ it look like subset to start with.
 But nowhere in the library is proper subset spelled out.
 Instead Lean call out an exotic theory called order theory, where the the strict subset symbol will be binded there instead, (not in the set theory folder).
 Let me pull up the real source code here.
-
 ### Lean
 
 ```lean
@@ -116,8 +111,7 @@ Let me pull up the real source code here.
 -- Surprise: there isn't one written for sets.
 -- ⊂ is inherited from generic order theory. Let's trace it.
 ```
-
-Highlights:
+### Lean highlights
 
 - `⊂`
 - `there isn't one`
@@ -126,11 +120,9 @@ Highlights:
 ```turn
 as before
 ```
-
 ### Chinese
 
 看起来仍像子集，但库里从未写清真子集。Lean 借用序理论，严格子集符号在那里绑定，不在集合论文件夹。我来拉出真正的源码。
-
 ### Visual notes
 
 Turn: as before (beat-0 block). Lean: order-theory reveal — no full Mathlib paste yet.
@@ -149,7 +141,6 @@ Quick recap from last clip.
 We implemented the LE instance so we could write less-than-or-equal sign on two sets to mean a subset relation, and back then it just looked like a notation convention.
 But that one instance is what makes subset an order operation on sets, and today we will tell the full story.
 So keep this in mind, subset is modelled by less-than-or-equal-to.
-
 ### Lean
 
 ```lean
@@ -160,8 +151,7 @@ So keep this in mind, subset is modelled by less-than-or-equal-to.
   instance : LE (Set α) :=
     ⟨Set.Subset⟩          -- last clip: looked like notation; really declares ≤ = ⊆
 ```
-
-Highlights:
+### Lean highlights
 
 - `instance : LE (Set α)`
 - `⟨Set.Subset⟩`
@@ -170,11 +160,9 @@ Highlights:
 ```turn
 as before
 ```
-
 ### Chinese
 
 快速回顾上期：LE 实例让两集合的 ≤ 表示子集，当时像记号约定，实则把子集建成集合上的序。记住：≤ 就是 ⊆。
-
 ### Visual notes
 
 Turn: as before. Lean: Defs.lean recap — glow instance LE / ⟨Set.Subset⟩.
@@ -196,7 +184,6 @@ But Look closely, they are both  just empty template for notation.
 We still don't have the logical statement about proper subset.
 and the instinct here is to model proper subset using less-than operator
 so should we just go ahead and  implement LT on set to finish the job?
-
 ### Lean
 
 ```lean
@@ -212,8 +199,7 @@ so should we just go ahead and  implement LT on set to finish the job?
 
 --   infix:50 " ⊂ " => SSubset
 ```
-
-Highlights:
+### Lean highlights
 
 - `lean4/src/Init/Prelude.lean`
 - `class LT`
@@ -226,11 +212,9 @@ Highlights:
 ```turn
 as before
 ```
-
 ### Chinese
 
 真子集方面，LT 承载 <，HasSSubset 承载 ⊂，但都只是空槽，还没有真子集的逻辑表述。直觉是在 Set 上实现 LT 来完成吗？
-
 ### Visual notes
 
 Turn: as before. Lean: Init.Prelude LT + Init.Core HasSSubset empty slots; glow ⊂ infix.
@@ -252,7 +236,6 @@ SO LT is too far upstream to implement directly.
 And in this LT hierachy, The most specific typeclass is Boolean algebra, and Boolean algebra extends distributive lattice, which extends lattice, then semilattice, then partial order, and finally preorder, and preorder extends LT.
 That's why we implement Boolean algebra on Set, instead of LT, and the less-than method comes down from LT from the hierarchy.
 this is how turn-lang model hierarchy, but it is quite different and we will talk about it in later videos
-
 ### Lean
 
 ```lean
@@ -267,8 +250,7 @@ this is how turn-lang model hierarchy, but it is quite different and we will tal
 
 -- Set α's most specific role is BooleanAlgebra — so < comes for free.
 ```
-
-Highlights:
+### Lean highlights
 
 - `BooleanAlgebra α  extends  DistribLattice α`
 - `PartialOrder α    extends  Preorder α`
@@ -279,11 +261,9 @@ Highlights:
 ```turn
 as before
 ```
-
 ### Chinese
 
 不要！集合在 Mathlib 有多重角色和类型类层级。应只实现最具体的 BooleanAlgebra，< 从 Preorder 层级传下来，而不是直接实现 LT。
-
 ### Visual notes
 
 Turn: as before. Lean: extends ladder — BooleanAlgebra is Set’s most specific role; Preorder owns <.
@@ -303,7 +283,6 @@ Here it define what less-than mean,
 And remember, to truly implement a typeclass, we need to have actualy implementation for every methods inside a typeclass.
 But here, less-than has a default definition.
 So [here] this one line is the source statement of proper subset, but it has nothing to do with set yet.
-
 ### Lean
 
 ```lean
@@ -315,8 +294,7 @@ class Preorder (α : Type u) extends LE α, LT α where
   lt := fun a b => a ≤ b ∧ ¬b ≤ a
   lt_iff_le_not_le : ∀ a b : α, a < b ↔ a ≤ b ∧ ¬b ≤ a := by intros; rfl
 ```
-
-Highlights:
+### Lean highlights
 
 - `mathlib4/Mathlib/Order/Defs.lean`
 - `Preorder`
@@ -326,11 +304,9 @@ Highlights:
 ```turn
 as before
 ```
-
 ### Chinese
 
 看 Preorder：这里用默认式定义 < 的含义。a≤b 且非 b≤a——这是真子集的源头，此时与集合无关。
-
 ### Visual notes
 
 Turn: as before. Lean: Order/Defs Preorder.lt default — glow lt := a ≤ b ∧ ¬b ≤ a.
@@ -353,7 +329,6 @@ So now less-than finally have the proper subset meaning.
 but it is not an implication yet. it is a function.
 Lastly, HasSSubset binds the strict subset symbol to less-than.
 but we are not done, yet, in order for lean to use the proper subset symbol without calling .lt from a set, mathlib creates 2 theorems
-
 ### Lean
 
 ```lean
@@ -372,8 +347,7 @@ instance instBooleanAlgebra : BooleanAlgebra (Set α) :=
 instance : HasSSubset (Set α) :=
   ⟨(· < ·)⟩                            -- ⊂ is <
 ```
-
-Highlights:
+### Lean highlights
 
 - `inferInstance : BooleanAlgebra (α → Prop)`
 - `instBooleanAlgebra`
@@ -385,11 +359,9 @@ Highlights:
 ```turn
 as before
 ```
-
 ### Chinese
 
 在 Set 上继承 Boolean algebra 并覆写 lt：s⊆t 且非 t⊆s；HasSSubset 把 ⊂ 绑到 <。还需两个定理把课本表述和定义连在一起。
-
 ### Visual notes
 
 Turn: as before. Lean: BooleanAlgebra/Set — inferInstance from α→Prop; lt := ⊆∧¬⊇; HasSSubset wires ⊂.
@@ -410,7 +382,6 @@ the first theorem is copied from the lt method.
 the second theorem is what textbook articulated.
 That rfl means try to proof by reflexivity, which try to find theorem that matches the goal or the reduced form of the goal.
 In this case this theorem is just Lt from our boolean algebra implementation
-
 ### Lean
 
 ```lean
@@ -424,8 +395,7 @@ theorem ssubset_def : (s ⊂ t) = (s ⊆ t ∧ ¬t ⊆ s) :=
 protected theorem ssubset_iff_subset_ne :
   s ⊂ t ↔ s ⊆ t ∧ s ≠ t
 ```
-
-Highlights:
+### Lean highlights
 
 - `ssubset_def`
 - `rfl`
@@ -437,11 +407,9 @@ Highlights:
 ```turn
 as before
 ```
-
 ### Chinese
 
 两个定理把真子集与子集放在同一陈述里；ssubset_def 用 rfl 证明，因为两边按定义相等。
-
 ### Visual notes
 
 Turn: as before. Lean: Basic.lean — ssubset_def rfl + ssubset_iff_subset_ne textbook bridge.
@@ -461,7 +429,6 @@ The strict subset symbol lives in Lean's kernel, and the meaning of strict less-
 for Set, Mathlib does not redefine anything. It inherits the whole Boolean algebra into set,
 And finally make the proper subset symbol unwrap to the less than operation
 So across many theories, proper subset finally emerges
-
 ### Lean
 
 ```lean
@@ -480,8 +447,7 @@ instance instBooleanAlgebra : BooleanAlgebra (Set α) :=
 
 instance : HasSSubset (Set α) := ⟨(· < ·)⟩
 ```
-
-Highlights:
+### Lean highlights
 
 - `class HasSSubset`
 - `lt := fun a b => a ≤ b ∧ ¬b ≤ a`
@@ -493,11 +459,9 @@ Highlights:
 ```turn
 as before
 ```
-
 ### Chinese
 
 完整图景：⊂ 符号在 Lean 内核，< 含义在 Preorder，Set 继承 Boolean algebra 后真子集自然出现。
-
 ### Visual notes
 
 Turn: as before. Lean: three-file summary (Core + Defs + Set.lean).
@@ -519,7 +483,6 @@ subset has the property of being reflexive, transitive, and it is antisymmetric,
 Proper subset is precisely a strict order becasue it is irreflexive
 and all there properties are already proven for the order theory operation like the less-than operation.
 so this is very time-saving
-
 ### Lean
 
 ```lean
@@ -533,8 +496,7 @@ theorem lt_iff_le_and_ne : a < b ↔ a ≤ b ∧ a ≠ b
 -- On sets that reads:  s ⊂ t ↔ s ⊆ t ∧ s ≠ t
 -- So ⊂ is not borrowed from < — it IS the strict order of ⊆.
 ```
-
-Highlights:
+### Lean highlights
 
 - `le_antisymm : s ⊆ t → t ⊆ s → s = t`
 - `set extensionality`
@@ -545,11 +507,9 @@ Highlights:
 ```turn
 as before
 ```
-
 ### Chinese
 
 为什么值得？⊆ 是偏序，真子集是其严格序，序理论引理（不可自反、传递、⊆/⊂ 链式等）自动可用；注意任意集合在 ⊂ 下并非 well-founded。
-
 ### Visual notes
 
 Turn: as before. Lean: partial-order payoff — le_antisymm / lt_iff_le_and_ne; ⊂ IS strict order of ⊆.
@@ -566,7 +526,6 @@ allow-script-change: false
 
 so just to show them on the screen, if you were to define they manully for proper subset.
 and it looks like we don't want to do that.
-
 ### Lean
 
 ```lean
@@ -582,8 +541,7 @@ theorem lt_asymm        : s ⊂ t → ¬ t ⊂ s
 -- caveat: Set α is NOT well-founded under ⊂ (∞ descending chains),
 --         so ⊂-strong-induction is a Finset / finite-set tool.
 ```
-
-Highlights:
+### Lean highlights
 
 - `lt_irrefl`
 - `lt_of_le_of_lt`
@@ -595,11 +553,9 @@ Highlights:
 ```turn
 as before
 ```
-
 ### Chinese
 
 若手写在 Set 上重复定义真子集及其引理，工作量很大——我们不想那样做。
-
 ### Visual notes
 
 Turn: as before. Lean: strict-order toolkit lemmas; NOT well-founded caveat in comment.
@@ -617,7 +573,6 @@ allow-script-change: false
 So now let's compare with Turn-Lang.
 Last clip we introduced relation Subset with a default variant for just the ordinary subset.
 Now the PropModified lets you put several variants that shares a single relation name.
-
 ### Lean
 
 ```lean
@@ -636,7 +591,6 @@ instance instBooleanAlgebra : BooleanAlgebra (Set α) :=
 
 instance : HasSSubset (Set α) := ⟨(· < ·)⟩
 ```
-
 ### Turn
 
 ```turn
@@ -647,8 +601,7 @@ relation Subset(T: Any, A B: Set<T>): PropModified {
     }
 }
 ```
-
-Highlights:
+### Turn highlights
 
 - `relation Subset`
 - `default`
@@ -656,7 +609,6 @@ Highlights:
 ### Chinese
 
 对比 Turn-Lang：上期有 relation Subset 的 default 变体；PropModified 让多个变体共享同一关系名。
-
 ### Visual notes
 
 Turn: NEW — Subset default only (no proper yet). Lean: as before (3-file summary).
@@ -680,13 +632,11 @@ So as we came across more perspectives on what a set essentially is in other you
 And you will see them when we get there
 But for now we want to keep our mind focused because that is the most helpful way to appreciate the concept itself without worry about the modelling underneath.
 And that's what only turn-lang allows us to do
-
 ### Lean
 
 ```lean
 as before
 ```
-
 ### Turn
 
 ```turn
@@ -711,8 +661,7 @@ relation SetEq(T: Any, A B: Set<T>): Prop {
     }
 }
 ```
-
-Highlights:
+### Turn highlights
 
 - `proper`
 - `default(A, B)`
@@ -721,7 +670,6 @@ Highlights:
 ### Chinese
 
 真子集用 proper 变体：复用 default 并加 not SetEq。Turn 写得很直白；底层多视角建模以后再加。
-
 ### Visual notes
 
 Turn: full proper + SetEq block. Lean: as before.
@@ -738,14 +686,12 @@ allow-script-change: false
 
 Next clip is set equality.
 Please leave a Comment if you are stuck at any step, see you in the next one.
-
 ### Lean
 
 ```lean
 as before
 ```
-
-Highlights:
+### Lean highlights
 
 - `class HasSSubset`
 - `lt := fun a b => a ≤ b ∧ ¬b ≤ a`
@@ -754,15 +700,13 @@ Highlights:
 ```turn
 as before
 ```
-
-Highlights:
+### Turn highlights
 
 - `proper`
 - `default`
 ### Chinese
 
 下期讲集合相等。卡住请留言，下期见。
-
 ### Visual notes
 
 CTA next clip. Both panes: as before; optional glow Turn proper.

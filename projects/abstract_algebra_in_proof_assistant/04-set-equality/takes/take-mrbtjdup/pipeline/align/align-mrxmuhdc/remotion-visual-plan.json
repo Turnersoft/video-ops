@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 2,
+  "source": "slide-events",
+  "sourceScriptId": "sets-v2-04-set-equality",
+  "title": "04_set_equality",
+  "editedDurationSeconds": 151.75,
+  "timeline": [
+    {
+      "slideId": "beat-01",
+      "slideTitle": "<!-- beat-studio: {\"template\":\"manim-motion\",\"templateConfig\":{\"kind\":\"manim-motion\",\"config\":{\"subTemplate\":\"set-diagram\",\"durationSeconds\":6,\"caption\":\"\"}}} -->\nbeat-template: manim-motion\nlayer: math-board\nmanim-sub: set-diagram\nBeat 1: textbook mutual-subset rule first, then the real question about the equals sign.",
+      "sourceStart": 0,
+      "sourceEnd": 18.66,
+      "editedStart": 0,
+      "editedEnd": 18.66
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: 1+1=2 as meaningful equality vs 1=1 as proof-closing; then Lean built-in =; definitional vs propositional. No Mathematica detour.",
+      "sourceStart": 18.66,
+      "sourceEnd": 46.24,
+      "editedStart": 18.66,
+      "editedEnd": 46.24
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "<!-- beat-studio: {\"template\":\"compare-dual\",\"templateConfig\":{\"kind\":\"compare-dual\",\"config\":{\"leanEnabled\":true,\"turnEnabled\":true,\"leanRender\":true,\"turnRender\":true,\"leanEditorStyle\":\"default\",\"turnEditorStyle\":\"ide\",\"typing\":{\"enabled\":true,\"cps\":24,\"pauseAfterSeconds\":0.3},\"codeBlockEdits\":[]}}} -->\nbeat-template: compare-dual\nlayer: compare\nlean-render: true\nturn-render: true\ntyping: true\nBeat 3: Nat vs Int counterexample, then mutual subset / Set.ext as the textbook rule in Lean.",
+      "sourceStart": 46.24,
+      "sourceEnd": 72.12,
+      "editedStart": 46.24,
+      "editedEnd": 72.12
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: Turn notation vs named SetEq(A, B); equal sign is only syntax.",
+      "sourceStart": 72.12,
+      "sourceEnd": 92.73,
+      "editedStart": 72.12,
+      "editedEnd": 92.73
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: different bodies / possible Nat vs Int returns; funext and FunctionEq as pointwise agreement.",
+      "sourceStart": 92.73,
+      "sourceEnd": 114.85,
+      "editedStart": 92.73,
+      "editedEnd": 114.85
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "Beat 6: isomorphism / levels of sameness; close with enjoy / see you next time (no empty-set tease).",
+      "sourceStart": 114.85,
+      "sourceEnd": 151.75,
+      "editedStart": 114.85,
+      "editedEnd": 151.75
+    }
+  ]
+}

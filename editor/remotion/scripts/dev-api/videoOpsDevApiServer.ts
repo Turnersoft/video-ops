@@ -11,6 +11,7 @@ import { createCoverLayoutHandler } from './videoOpsCoverLayoutApi';
 import { createHintLayoutsHandler } from './videoOpsHintLayoutsApi';
 import { createCompareBeatFontScalesHandler } from './videoOpsBeatFontScalesApi';
 import { createCompareBeatEditorNotesHandler } from './videoOpsBeatEditorNotesApi';
+import { createTurnKnowledgeHandler } from './videoOpsTurnKnowledgeApi';
 import { createOutdoorPipMaskHandler, createOutdoorPipMaskSyncAllHandler } from './videoOpsOutdoorPipMaskApi';
 import { handleVideoOpsStaticFileGet } from './videoOpsStaticFileApi';
 import {
@@ -123,6 +124,7 @@ export function ensureVideoOpsDevApiServer(videoOpsDir: string): Promise<number>
     const hintLayoutsHandler = createHintLayoutsHandler(videoOpsDir, remotionDir);
     const beatFontScalesHandler = createCompareBeatFontScalesHandler(videoOpsDir);
     const beatEditorNotesHandler = createCompareBeatEditorNotesHandler(videoOpsDir);
+    const turnKnowledgeHandler = createTurnKnowledgeHandler(videoOpsDir);
     const outdoorPipMaskHandler = createOutdoorPipMaskHandler(videoOpsDir);
     const outdoorPipMaskSyncAllHandler = createOutdoorPipMaskSyncAllHandler(videoOpsDir);
 
@@ -216,6 +218,12 @@ export function ensureVideoOpsDevApiServer(videoOpsDir: string): Promise<number>
             if (url === '/video_ops/api/compare-beat-editor-notes' && req.method === 'POST') {
                 applyCors(res);
                 void beatEditorNotesHandler(req, res);
+                return;
+            }
+
+            if (url === '/video_ops/api/turn-knowledge' && req.method === 'POST') {
+                applyCors(res);
+                void turnKnowledgeHandler(req, res);
                 return;
             }
 

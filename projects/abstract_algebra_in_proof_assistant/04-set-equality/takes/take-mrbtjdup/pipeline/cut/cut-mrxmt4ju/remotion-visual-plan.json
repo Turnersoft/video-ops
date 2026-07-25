@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "sourceScriptId": "04-set-equality",
+  "title": "04_set_equality",
+  "editedDurationSeconds": 151.75000000000009,
+  "timeline": [
+    {
+      "slideId": "beat-01",
+      "slideTitle": "Beat 1: open in the user's style",
+      "sourceStart": 0.56,
+      "sourceEnd": 19.22,
+      "editedStart": 0,
+      "editedEnd": 18.66
+    },
+    {
+      "slideId": "beat-02",
+      "slideTitle": "Beat 2: distinguish the equals glyph, Lean's homogeneous Eq, definitional equality, and proved propositional equality",
+      "sourceStart": 20.5,
+      "sourceEnd": 48.080000000000005,
+      "editedStart": 18.66,
+      "editedEnd": 46.24000000000001
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 50.29,
+      "sourceEnd": 51.11,
+      "editedStart": 46.24000000000001,
+      "editedEnd": 47.06000000000001
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 51.949999999999996,
+      "sourceEnd": 70.39,
+      "editedStart": 47.06000000000001,
+      "editedEnd": 65.50000000000001
+    },
+    {
+      "slideId": "beat-03",
+      "slideTitle": "Beat 3: explain homogeneous equality and Set",
+      "sourceStart": 71.31,
+      "sourceEnd": 77.93,
+      "editedStart": 65.50000000000001,
+      "editedEnd": 72.12000000000002
+    },
+    {
+      "slideId": "beat-04",
+      "slideTitle": "Beat 4: contrast Lean's universal homogeneous Eq with Turn's explicit notation-backed SetEq relation",
+      "sourceStart": 78.94,
+      "sourceEnd": 99.55,
+      "editedStart": 72.12000000000002,
+      "editedEnd": 92.73000000000002
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 100.59,
+      "sourceEnd": 112.25,
+      "editedStart": 92.73000000000002,
+      "editedEnd": 104.39000000000001
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 113.49,
+      "sourceEnd": 120.21000000000001,
+      "editedStart": 104.39000000000001,
+      "editedEnd": 111.11000000000003
+    },
+    {
+      "slideId": "beat-05",
+      "slideTitle": "Beat 5: function equality in the same spoken style",
+      "sourceStart": 122.78999999999999,
+      "sourceEnd": 126.527,
+      "editedStart": 111.11000000000003,
+      "editedEnd": 114.84700000000004
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "Beat 6: present the higher-category philosophy without naming a person",
+      "sourceStart": 126.527,
+      "sourceEnd": 146.83,
+      "editedStart": 114.84700000000004,
+      "editedEnd": 135.15000000000003
+    },
+    {
+      "slideId": "beat-06",
+      "slideTitle": "Beat 6: present the higher-category philosophy without naming a person",
+      "sourceStart": 147.60999999999999,
+      "sourceEnd": 164.21,
+      "editedStart": 135.15000000000003,
+      "editedEnd": 151.75000000000006
+    }
+  ]
+}

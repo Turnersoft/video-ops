@@ -1,6 +1,9 @@
-import type { DraftBeat } from '../ScriptBeatEditorPanel/ScriptBeatEditorPanel.types';
-import type { LiveBeat, StyleKit } from '../../types';
-import type { BeatTemplateConfig, BeatTemplateKind } from '../../types/beatStudio';
+import type { DraftBeat } from "../ScriptBeatEditorPanel/ScriptBeatEditorPanel.types";
+import type { LiveBeat, StyleKit } from "../../types";
+import type {
+  BeatTemplateConfig,
+  BeatTemplateKind,
+} from "../../types/beatStudio";
 
 export type BeatEditorVisualPanelProps = {
   beat: LiveBeat;

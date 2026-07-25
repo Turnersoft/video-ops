@@ -1,13 +1,13 @@
 # animation.md — VideoOps Markdown language
 
-`animation.md` is the human-authored source for a Remotion video. `npm run sync` compiles it into v4 `animation.json`, then the existing v4 compiler produces Lean, Turn, goal, and hint-layout tracks.
+`animation.md` is the human-authored source for a Remotion video. `npm run sync` compiles it into v4 `animation.json`, then the existing v4 compiler produces Lean, Turn-Lang, goal, and hint-layout tracks.
 
 The language is intentionally small:
 
 - `# Scene` starts a scene.
 - `## Beat` starts a timed script beat.
 - Plain lines are the exact spoken script, one teleprompter row per line.
-- `### Lean` and `### Turn` contain exact fenced source code.
+- `### Lean` and `### Turn-Lang` (alias `### Turn`) contain exact fenced source code.
 - `### Hint` creates a hint panel. Its trailing HTML comment identifies the target, code needle, and position.
 - `### Chinese`, `### Visual notes`, and `### Video` map directly to v4 beat fields.
 - `<!-- comment: ... -->` carries editor notes anywhere in a beat.
@@ -53,7 +53,7 @@ Highlights:
 Both sides reduce to the same term.
 <!-- target: lean-code; needle: rfl; position: 18,38 -->
 
-### Turn
+### Turn-Lang
 ```turn
 relation SetEq(T: Any, A B: Set<T>): Prop {
     |- {
@@ -148,7 +148,7 @@ Highlights:
 - `Int`
 ````
 
-Code is copied exactly. The compiler does not reindent, format, or reinterpret Lean or Turn syntax.
+Code is copied exactly. The compiler does not reindent, format, or reinterpret Lean or Turn-Lang syntax.
 
 Use `as before` when a pane keeps the previous beat's code:
 
@@ -212,7 +212,7 @@ Supported targets:
 <!-- target: lean-code; needle: rfl; position: 18,38,20,40 -->
 ```
 
-If `target` is omitted, a hint immediately following `### Lean` defaults to `lean-code`, and one immediately following `### Turn` defaults to `turn-code`.
+If `target` is omitted, a hint immediately following `### Lean` defaults to `lean-code`, and one immediately following `### Turn-Lang` defaults to `turn-code`.
 
 The compiler rejects a hint needle that does not occur in its target.
 
@@ -243,7 +243,7 @@ Supported directives:
 - `focus`: `lean`, `turn`, or `both`
 - `overlay`: key from the scene's existing `compare.overlays`
 - `presenter`: `split-crop` or `full-clip` — filmed take as small pip vs letterboxed full width
-- `script-fullscreen`: `true` or `false` — when `true`, Lean/Turn compare fills the frame and the filmed take stays in the adjustable pip mask
+- `script-fullscreen`: `true` or `false` — when `true`, Lean/Turn-Lang compare fills the frame and the filmed take stays in the adjustable pip mask
 - `pip-shape`: `circle` or `rectangle`
 - `pip-size`: `width,height` — normalized mask box size (e.g. `0.28,0.38`)
 - `pip-position`: `x,y` — normalized top-left of the mask box

@@ -159,3 +159,8 @@ export type VideoFromScriptInputProps = {
     compareFontScales?: CompareFontScales | null;
     onCompareFontScalesChange?: (scales: CompareFontScales) => void;
 };
+
+/** Render props use 1-based `scene.index`; animation.md APIs use 0-based array index. */
+export function sceneArrayIndex(scene: { index: number }): number {
+    return Math.max(0, scene.index - 1);
+}

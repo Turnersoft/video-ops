@@ -3,7 +3,10 @@ export type TextbookOverlayConfig = {
     section?: string;
     definitionLabel?: string;
     body?: string;
+    latex?: string;
     source?: string;
+    bookTitle?: string;
+    bookAuthor?: string;
     revealAtSeconds?: number;
     hideAtSeconds?: number;
     placement?: 'top' | 'center';
@@ -24,6 +27,7 @@ export function textbookOverlayVisibleAt(
     return Boolean(
         overlay.aataExcerpt ||
             overlay.body ||
+            overlay.latex ||
             overlay.definitionLabel ||
             overlay.section,
     );

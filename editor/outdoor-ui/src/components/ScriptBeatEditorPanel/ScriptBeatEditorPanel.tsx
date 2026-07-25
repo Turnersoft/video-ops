@@ -4,8 +4,8 @@ export type {
 } from "./ScriptBeatEditorPanel.types";
 
 import classes from "./ScriptBeatEditorPanel.module.scss";
-import { layoutStylesFor } from '../../layout';
-import { webModuleStyle, webClassName } from '../../utils/webClassName';
+import { layoutStylesFor } from "../../layout";
+import { webModuleStyle, webClassName } from "../../utils/webClassName";
 import type {
   DraftBeat,
   ScriptBeatEditorPanelProps,
@@ -54,7 +54,7 @@ export function ScriptBeatEditorPanel({
   onTemplateConfigChange,
   scriptId,
 }: ScriptBeatEditorPanelProps) {
-  const {  layout } = useOutdoorUi();
+  const { layout } = useOutdoorUi();
   const layoutStyles = layoutStylesFor(layout);
   const isBrowser = layout === "browser";
   const showBeatList = !hideBeatList;
@@ -95,8 +95,12 @@ export function ScriptBeatEditorPanel({
 
   const compactHeader = hideBeatList ? (
     <View style={webModuleStyle(classes.compactHeader)}>
-      <Text style={webModuleStyle(classes.compactBeatLabel)}>Beat {clampedIndex + 1}</Text>
-      <Text style={webModuleStyle(classes.compactProgress)}>{progressLabel}</Text>
+      <Text style={webModuleStyle(classes.compactBeatLabel)}>
+        Beat {clampedIndex + 1}
+      </Text>
+      <Text style={webModuleStyle(classes.compactProgress)}>
+        {progressLabel}
+      </Text>
       <TextInput
         key={`title-${clampedIndex}`}
         style={webModuleStyle(classes.compactTitleInput)}
@@ -151,7 +155,9 @@ export function ScriptBeatEditorPanel({
       {visualBeatEditor}
       {readOnlyMeta && (activeBeat.hint || activeBeat.chinese) ? (
         <View style={webModuleStyle(classes.slideBox)}>
-          <SectionLabel style={webModuleStyle(classes.boxLabel)}>Imported notes</SectionLabel>
+          <SectionLabel style={webModuleStyle(classes.boxLabel)}>
+            Imported notes
+          </SectionLabel>
           <Text style={webModuleStyle(classes.metaText)}>
             {[activeBeat.hint, activeBeat.chinese].filter(Boolean).join("\n\n")}
           </Text>
@@ -179,7 +185,9 @@ export function ScriptBeatEditorPanel({
         <>
           <View style={webModuleStyle(classes.slideHeader)}>
             <View style={webModuleStyle(classes.slideHeaderText)}>
-              <Text style={webModuleStyle(classes.slideNumber)}>Beat {clampedIndex + 1}</Text>
+              <Text style={webModuleStyle(classes.slideNumber)}>
+                Beat {clampedIndex + 1}
+              </Text>
               <Text style={webModuleStyle(classes.slideHint)} numberOfLines={1}>
                 Saved to animation.md on Save beat.
               </Text>
@@ -187,7 +195,9 @@ export function ScriptBeatEditorPanel({
           </View>
 
           <View style={webModuleStyle(classes.slideBox)}>
-            <SectionLabel style={webModuleStyle(classes.boxLabel)}>Beat title</SectionLabel>
+            <SectionLabel style={webModuleStyle(classes.boxLabel)}>
+              Beat title
+            </SectionLabel>
             <TextInput
               key={`title-${clampedIndex}`}
               style={webModuleStyle(classes.titleInput)}
@@ -201,7 +211,9 @@ export function ScriptBeatEditorPanel({
       ) : null}
 
       <View style={webModuleStyle(classes.slideBox)}>
-        <SectionLabel style={webModuleStyle(classes.boxLabel)}>Spoken</SectionLabel>
+        <SectionLabel style={webModuleStyle(classes.boxLabel)}>
+          Spoken
+        </SectionLabel>
         <AutoGrowTextInput
           key={`say-${clampedIndex}`}
           value={activeDraft.say}
@@ -215,11 +227,18 @@ export function ScriptBeatEditorPanel({
       </View>
 
       <View
-        style={[webModuleStyle(classes.codeRow,
-          !isBrowser ? classes.codeRowStacked : null,), isBrowser ? layoutStyles.compareRow : undefined]}
+        style={[
+          webModuleStyle(
+            classes.codeRow,
+            !isBrowser ? classes.codeRowStacked : null,
+          ),
+          isBrowser ? layoutStyles.compareRow : undefined,
+        ]}
       >
         <View style={webModuleStyle(classes.slideBox, classes.codeBox)}>
-          <SectionLabel style={webModuleStyle(classes.boxLabel)}>Lean</SectionLabel>
+          <SectionLabel style={webModuleStyle(classes.boxLabel)}>
+            Lean
+          </SectionLabel>
           <AutoGrowTextInput
             key={`lean-${clampedIndex}`}
             value={activeDraft.leanCode}
@@ -238,7 +257,9 @@ export function ScriptBeatEditorPanel({
           />
         </View>
         <View style={webModuleStyle(classes.slideBox, classes.codeBox)}>
-          <SectionLabel style={webModuleStyle(classes.boxLabel)}>Turn</SectionLabel>
+          <SectionLabel style={webModuleStyle(classes.boxLabel)}>
+            Turn
+          </SectionLabel>
           <AutoGrowTextInput
             key={`turn-${clampedIndex}`}
             value={activeDraft.turnCode}
@@ -259,7 +280,9 @@ export function ScriptBeatEditorPanel({
       </View>
 
       <View style={webModuleStyle(classes.slideBox)}>
-        <SectionLabel style={webModuleStyle(classes.boxLabel)}>Visual notes</SectionLabel>
+        <SectionLabel style={webModuleStyle(classes.boxLabel)}>
+          Visual notes
+        </SectionLabel>
         <AutoGrowTextInput
           key={`notes-${clampedIndex}`}
           value={activeDraft.visualNotes}
@@ -276,7 +299,9 @@ export function ScriptBeatEditorPanel({
 
       {readOnlyMeta && (activeBeat.hint || activeBeat.chinese) ? (
         <View style={webModuleStyle(classes.slideBox)}>
-          <SectionLabel style={webModuleStyle(classes.boxLabel)}>Imported notes</SectionLabel>
+          <SectionLabel style={webModuleStyle(classes.boxLabel)}>
+            Imported notes
+          </SectionLabel>
           <Text style={webModuleStyle(classes.metaText)}>
             {[activeBeat.hint, activeBeat.chinese].filter(Boolean).join("\n\n")}
           </Text>
@@ -303,7 +328,10 @@ export function ScriptBeatEditorPanel({
   );
 
   const beatForm = (
-    <View key={`beat-form-${clampedIndex}`} style={webModuleStyle(classes.beatForm)}>
+    <View
+      key={`beat-form-${clampedIndex}`}
+      style={webModuleStyle(classes.beatForm)}
+    >
       {compactHeader}
       {beatFields}
     </View>
@@ -311,17 +339,23 @@ export function ScriptBeatEditorPanel({
 
   return (
     <View
-      style={webModuleStyle(embedInParentScroll ? classes.rootEmbedded : classes.root,
-        isBrowser && showBeatList ? classes.rootBrowser : null,)}
+      style={webModuleStyle(
+        embedInParentScroll ? classes.rootEmbedded : classes.root,
+        isBrowser && showBeatList ? classes.rootBrowser : null,
+      )}
     >
       {showBeatList ? (
         <View
-          style={webModuleStyle(classes.sidebar,
-            isBrowser ? classes.sidebarBrowser : classes.sidebarMobile,)}
+          style={webModuleStyle(
+            classes.sidebar,
+            isBrowser ? classes.sidebarBrowser : classes.sidebarMobile,
+          )}
         >
           <View style={webModuleStyle(classes.sidebarHeader)}>
             <Text style={webModuleStyle(classes.sidebarTitle)}>Beats</Text>
-            <Text style={webModuleStyle(classes.sidebarCount)}>{progressLabel}</Text>
+            <Text style={webModuleStyle(classes.sidebarCount)}>
+              {progressLabel}
+            </Text>
           </View>
           <ScrollView
             style={webModuleStyle(classes.sidebarScroll)}
@@ -329,32 +363,42 @@ export function ScriptBeatEditorPanel({
             nestedScrollEnabled
           >
             <View style={webModuleStyle(classes.sidebarBody)}>
-            {beats.map((beat, index) => {
-              const active = index === clampedIndex;
-              const draft = drafts[index];
-              const dirty = draft ? draftDiffersFromBeat(draft, beat) : false;
-              return (
-                <Pressable
-                  key={beat.id}
-                  style={webModuleStyle(classes.beatThumb,
-                    active ? classes.beatThumbActive : null,)}
-                  onPress={() => selectBeat(index)}
-                >
-                  <Text style={webModuleStyle(classes.beatThumbIndex)}>{index + 1}</Text>
-                  <View style={webModuleStyle(classes.beatThumbBody)}>
-                    <Text style={webModuleStyle(classes.beatThumbTitle)} numberOfLines={1}>
-                      {draft?.title?.trim() ||
-                        beat.title ||
-                        `Beat ${index + 1}`}
-                      {dirty ? " ·" : ""}
+              {beats.map((beat, index) => {
+                const active = index === clampedIndex;
+                const draft = drafts[index];
+                const dirty = draft ? draftDiffersFromBeat(draft, beat) : false;
+                return (
+                  <Pressable
+                    key={beat.id}
+                    style={webModuleStyle(
+                      classes.beatThumb,
+                      active ? classes.beatThumbActive : null,
+                    )}
+                    onPress={() => selectBeat(index)}
+                  >
+                    <Text style={webModuleStyle(classes.beatThumbIndex)}>
+                      {index + 1}
                     </Text>
-                    <Text style={webModuleStyle(classes.beatThumbPreview)} numberOfLines={2}>
-                      {beatPreviewLine(draft, beat, index)}
-                    </Text>
-                  </View>
-                </Pressable>
-              );
-            })}
+                    <View style={webModuleStyle(classes.beatThumbBody)}>
+                      <Text
+                        style={webModuleStyle(classes.beatThumbTitle)}
+                        numberOfLines={1}
+                      >
+                        {draft?.title?.trim() ||
+                          beat.title ||
+                          `Beat ${index + 1}`}
+                        {dirty ? " ·" : ""}
+                      </Text>
+                      <Text
+                        style={webModuleStyle(classes.beatThumbPreview)}
+                        numberOfLines={2}
+                      >
+                        {beatPreviewLine(draft, beat, index)}
+                      </Text>
+                    </View>
+                  </Pressable>
+                );
+              })}
             </View>
           </ScrollView>
           <View style={webModuleStyle(classes.sidebarNav)}>
@@ -372,7 +416,11 @@ export function ScriptBeatEditorPanel({
         </View>
       ) : null}
 
-      <View style={webModuleStyle(embedInParentScroll ? classes.canvasEmbedded : classes.canvas)}>
+      <View
+        style={webModuleStyle(
+          embedInParentScroll ? classes.canvasEmbedded : classes.canvas,
+        )}
+      >
         {embedInParentScroll ? (
           beatForm
         ) : hideBeatList && useVisualPanel ? (
@@ -400,7 +448,10 @@ export function ScriptBeatEditorPanel({
               showsHorizontalScrollIndicator={false}
             >
               <View style={webModuleStyle(classes.canvasBody)}>
-                <View key={`beat-form-${clampedIndex}`} style={webModuleStyle(classes.beatForm)}>
+                <View
+                  key={`beat-form-${clampedIndex}`}
+                  style={webModuleStyle(classes.beatForm)}
+                >
                   {beatFields}
                 </View>
               </View>

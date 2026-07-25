@@ -18,8 +18,8 @@ layout: dual-panel
 ## Beat 1: Feature hook
 
 Short syntax spotlight smoke.
-
 ### Turn
+
 ```turn
 export proof tree
 ```

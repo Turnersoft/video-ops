@@ -42,6 +42,7 @@ import { scaleCss } from '../../lib/layout/scaleCss';
 import { TURN_VIDEO_THEME } from '../../lib/layout/turnVideoTheme';
 import { useCompositionScale } from '../../lib/layout/useCompositionScale';
 import { useOutdoorLayout } from '../../lib/outdoor/outdoorLayoutContext';
+import { PORTRAIT_PRESENTER_BAND_RATIO } from '../../lib/outdoor/portraitLayout';
 import { activeSayLineIndex } from '../../lib/outdoor/sayTiming';
 import type { CompareCompiledTracks } from '../../lib/tracks/compareTrackLoad';
 import { trackLoadOptions, turnTrackLoadOptions } from '../../lib/tracks/compareTrackLoad';
@@ -51,7 +52,8 @@ import { beatTemplateStageMeta } from '../beatTemplateStageMeta';
 import { cfgString } from '../configHelpers';
 import { compareLayerFromScene } from '../compareLayerFromScene';
 import type { BeatTemplateSceneProps } from '../types';
-import { BeatFootageOverlays, BeatPortraitPresenterBand, showStudioFootagePlaceholders } from '../../components/BeatFootage/BeatFootage';
+import { BeatFootageOverlays } from '../../components/BeatFootage/BeatFootage';
+import { PortraitPresenterBand } from '../../components/PortraitPresenterBand/PortraitPresenterBand';
 import { TextbookPanel } from '../../components/TextbookPanel/TextbookPanel';
 import type { TextbookOverlayConfig } from '../../components/TextbookPanel/textbookOverlayTypes';
 import { LEAN_LOGO_SRC, TURN_LANG_LOGO_SRC } from '../../lib/layout/brandAssets';
@@ -150,7 +152,6 @@ function CompareLanguageRow({
         >
             <div
                 className={`${classes.landscapeTitleRow} ${focused ? classes.landscapeTitleRowFocused : ''}`}
-                style={focused ? { boxShadow: `0 0 ${s.px(54)}px ${accent}66` } : undefined}
             >
                 {logoSrc ? (
                     <Img src={staticFile(logoSrc)} className={classes.landscapeLogo} />
@@ -281,23 +282,16 @@ export type PortraitProps = {
     compiledTracks?: CompareCompiledTracks;
     focusBeats?: CompareFocusBeat[];
     portraitBottomTargets?: ComparePortraitBottomTarget[];
+    /** When set, selects portrait bottom pane from `portraitBottomTargets` (outdoor beat timing). */
+    activeBeatIndex?: number;
 };
 
 function portraitBottomMode(
     beatIndex: number,
-    focusSide: ReturnType<typeof activeFocusSide>,
     portraitBottomTargets: ComparePortraitBottomTarget[] | undefined,
 ): 'lean-code' | 'turn-render' {
-    const authoredTarget = portraitBottomTargets?.[beatIndex];
-    if (authoredTarget) {
-        return authoredTarget;
-    }
-    if (focusSide === 'turn') {
-        return 'turn-render';
-    }
-    if (focusSide === 'lean' || focusSide === 'both') {
-        return 'lean-code';
-    }
+    // Per-beat target only (from focus / Lean content). Do not use the sticky
+    // landscape focus timeline — `focus: turn` on one beat must not leak forward.
     return portraitBottomTargets?.[beatIndex] ?? 'lean-code';
 }
 
@@ -361,8 +355,8 @@ function ComparePortrait({
     durationSeconds = 0,
     contentRevision,
     compiledTracks,
-    focusBeats,
     portraitBottomTargets,
+    activeBeatIndex: activeBeatIndexProp,
 }: PortraitProps) {
     const s = useCompositionScale();
     const frame = useCurrentFrame();
@@ -377,22 +371,18 @@ function ComparePortrait({
     const paneHeight = Math.round(s.height * 0.26);
     const leanLoad = trackLoadOptions({ contentRevision, compiledTracks });
     const turnLoad = turnTrackLoadOptions({ contentRevision, compiledTracks });
-    const showPresenterBand = showStudioFootagePlaceholders(scene);
 
     const activeBeatIndex = useMemo(() => {
+        if (activeBeatIndexProp !== undefined) {
+            return activeBeatIndexProp;
+        }
         if (!director) {
             return 0;
         }
         return activeSayLineIndex(director, durationSeconds, frame, fps);
-    }, [director, durationSeconds, frame, fps]);
+    }, [activeBeatIndexProp, director, durationSeconds, frame, fps]);
 
-    const sceneSeconds = frame / fps;
-    const focusSide = activeFocusSide(focusBeats, sceneSeconds);
-    const bottomMode = portraitBottomMode(
-        activeBeatIndex,
-        focusSide,
-        portraitBottomTargets,
-    );
+    const bottomMode = portraitBottomMode(activeBeatIndex, portraitBottomTargets);
     const emphasizeTopPane = bottomMode === 'turn-render';
     const topPaneFlex = emphasizeTopPane
         ? PORTRAIT_EMPHASIZED_PANE_FLEX
@@ -400,10 +390,14 @@ function ComparePortrait({
     const bottomPaneFlex = emphasizeTopPane
         ? PORTRAIT_COMPACT_PANE_FLEX
         : PORTRAIT_EMPHASIZED_PANE_FLEX;
+    const reserveTopPresenterBand =
+        useOutdoorLayout() === 'portrait' && !scene.outdoorEdit;
 
     return (
         <div className={classes.portraitCompareRoot} style={scaleCss(s.scale)}>
-            {showPresenterBand ? <BeatPortraitPresenterBand /> : null}
+            {reserveTopPresenterBand ? (
+                <PortraitPresenterBand heightRatio={PORTRAIT_PRESENTER_BAND_RATIO} />
+            ) : null}
             <PortraitPane
                 label="Turn-Lang Editor"
                 accent="#c4a882"
@@ -597,6 +591,7 @@ function CompareBeatBody({
                 compiledTracks={compiledTracks}
                 focusBeats={focusBeats}
                 portraitBottomTargets={portraitBottomTargets}
+                activeBeatIndex={activeBeatIndex}
             />
         ) : (
             <CompareLandscape

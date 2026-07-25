@@ -28,7 +28,6 @@ allow-script-change: false
 -->
 
 Open the book. Judson Abstract Algebra, section one point two, Sets.
-
 ### Visual notes
 
 math-focus; textbook beat only.
@@ -72,7 +71,6 @@ allow-script-change: false
 -->
 
 Complement needs a universe U, with a where clause Subset(A,U).
-
 ### Visual notes
 
 Film presenter; beats on board.
@@ -106,7 +104,6 @@ allow-script-change: false
 -->
 
 Textbook: elements in U but not in A.
-
 ### Visual notes
 
 Compare layer; caption beats on both sides.

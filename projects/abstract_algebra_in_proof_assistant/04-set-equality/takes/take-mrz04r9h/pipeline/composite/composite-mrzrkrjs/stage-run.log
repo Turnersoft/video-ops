@@ -1,0 +1,246 @@
+# stage-run 2026-07-25T02:42:47.803Z
+jobId=job-take-mrz04r9h
+scriptId=04-set-equality
+takeId=take-mrz04r9h
+stage=composite
+runId=composite-mrzrkrjs
+
+[2026-07-25T02:42:47.832Z] Starting composite
+[2026-07-25T02:42:47.860Z] Copying alignment artifacts
+[2026-07-25T02:42:47.892Z] Rendering portrait + landscape
+[2026-07-25T02:42:47.892Z] $ node /Users/johndoe/Documents/company/video_ops/editor/remotion/scripts/render-outdoor.mjs 04-set-equality --edit-dir /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/composite/composite-mrzrkrjs --format both
+[stdout] /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/composite/composite-mrzrkrjs/outdoor-manifest.json
+[stdout] [render-outdoor] using animation-outdoor.json — 169 caption segments, scene 729.76s
+[stdout] [render-outdoor] beat durations: 54.36, 51.96, 125.78, 137.51, 30.93, 34.24, 118.66, 47.97, 31.16, 57.37, 39.82s
+
+[stdout] > turn-video-ops-remotion@1.0.0 sync
+[stdout] > npx tsx scripts/sync-animations.ts
+
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] Skipping 01-keep-reject-intro: missing /Users/johndoe/Documents/company/video_ops/projects/algebra/01-keep-reject-intro/animation.md
+[stderr] [kit:life-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] Skipping 01-spread-classes-into-partition: missing /Users/johndoe/Documents/company/video_ops/projects/algebra/01-spread-classes-into-partition/animation.md
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:launch-pv] layer type(s) not in allow-list: compare
+[stderr] [kit:life-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:ai-review] layer type(s) not in allow-list: compare
+[stderr] Skipping 02-invertible-bijective-proof: missing /Users/johndoe/Documents/company/video_ops/projects/algebra/02-invertible-bijective-proof/animation.md
+[stderr] [kit:launch-pv] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] Skipping 03-functions-relations-equivalence: missing /Users/johndoe/Documents/company/video_ops/projects/algebra/03-functions-relations-equivalence/animation.md
+[stderr] [kit:launch-pv] layer type(s) not in allow-list: compare
+[stderr] [kit:ai-review] layer type(s) not in allow-list: compare
+[stderr] [kit:life-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:ai-review] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:life-essay] layer type(s) not in allow-list: compare
+[stderr] Skipping 04-partition-cutting-the-cake: missing /Users/johndoe/Documents/company/video_ops/projects/algebra/04-partition-cutting-the-cake/animation.md
+[stderr] [kit:launch-pv] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:ai-review] layer type(s) not in allow-list: compare
+[stderr] [kit:life-essay] layer type(s) not in allow-list: compare
+[stderr] Skipping 05-equivalence-weaker-than-equality: missing /Users/johndoe/Documents/company/video_ops/projects/algebra/05-equivalence-weaker-than-equality/animation.md
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:launch-pv] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:launch-pv] layer type(s) not in allow-list: compare
+[stderr] [kit:life-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:ai-review] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] Skipping 06-relations-bag-of-pairs: missing /Users/johndoe/Documents/company/video_ops/projects/algebra/06-relations-bag-of-pairs/animation.md
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:ai-review] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stdout] Synced 01-cauchy-where-bundle from animation.md → .cache/
+[stdout] Synced 01-injective-vs-surjective from animation.md → .cache/
+[stdout] Synced 01-premises-you-live-by from animation.md → .cache/
+[stdout] Synced 01-proof-vs-calculation from animation.md → .cache/
+[stdout] Synced 01-set from animation.md → .cache/
+[stdout] Synced 01-surjective-quantifier-order from animation.md → .cache/
+[stdout] Synced 01-trial-is-not-continuation from animation.md → .cache/
+[stdout] Synced 01-workspace-first-open from animation.md → .cache/
+[stdout] Synced 02-burden-of-proof from animation.md → .cache/
+[stdout] Synced 02-definitions-are-apis from animation.md → .cache/
+[stdout] Synced 02-hallucinated-lemmas from animation.md → .cache/
+[stdout] Synced 02-image-and-range from animation.md → .cache/
+[stdout] Synced 02-proof-tree-export from animation.md → .cache/
+[stdout] Synced 02-side-conditions-you-can-name from animation.md → .cache/
+[stdout] Synced 02-subset from animation.md → .cache/
+[stdout] Synced 02-theorem-is-a-folder from animation.md → .cache/
+[stdout] Synced 02-witness-is-unpack-not-provide from animation.md → .cache/
+[stdout] Synced 03-composition-associativity from animation.md → .cache/
+[stdout] Synced 03-export-proof-as-tree from animation.md → .cache/
+[stdout] Synced 03-inline-premise from animation.md → .cache/
+[stdout] Synced 03-proofs-that-typecheck-wrong from animation.md → .cache/
+[stdout] Synced 03-proper-subset from animation.md → .cache/
+[stdout] Synced 03-reject-a-false-premise from animation.md → .cache/
+[stdout] Synced 03-vacuous-promises from animation.md → .cache/
+[stdout] Synced 03-what-a-goal-is from animation.md → .cache/
+[stdout] Synced 03-witness-you-cannot-compute from animation.md → .cache/
+[stdout] Synced 04-autoformalization-hype from animation.md → .cache/
+[stdout] Synced 04-close-and-split-at-once from animation.md → .cache/
+[stdout] Synced 04-equivalence-relation-axioms from animation.md → .cache/
+[stdout] Synced 04-equivocation-at-work from animation.md → .cache/
+[stdout] Synced 04-receipt-panel from animation.md → .cache/
+[stdout] Synced 04-set-equality from animation.md → .cache/
+[stdout] Synced 04-tactics-vs-terms from animation.md → .cache/
+[stdout] Synced 04-well-defined-one-input-two-outputs from animation.md → .cache/
+[stdout] Synced 05-agent-diff-review from animation.md → .cache/
+[stdout] Synced 05-counterexample-courage from animation.md → .cache/
+[stdout] Synced 05-empty-set from animation.md → .cache/
+[stdout] Synced 05-exists-on-structure-is-a-claim from animation.md → .cache/
+[stdout] Synced 05-keep-or-reject-before-ai-edits from animation.md → .cache/
+[stdout] Synced 05-mobile-teleprompter from animation.md → .cache/
+[stdout] Synced 05-outline-to-proof-slide-breadcrumb from animation.md → .cache/
+[stdout] Synced 05-quotient-type-vs-setoid from animation.md → .cache/
+[stdout] Synced 05-side-conditions from animation.md → .cache/
+[stdout] Synced 06-compare-mode-reveal from animation.md → .cache/
+[stdout] Synced 06-definitions-before-debate from animation.md → .cache/
+[stdout] Synced 06-empty-subset-theorem from animation.md → .cache/
+[stdout] Synced 06-group-homomorphism from animation.md → .cache/
+[stdout] Synced 06-news-imo-gold from animation.md → .cache/
+[stdout] Synced 06-notation-is-not-meaning from animation.md → .cache/
+[stdout] Synced 06-partition-obligations-named-from-structure from animation.md → .cache/
+[stdout] Synced 06-tactic-status-during-replay from animation.md → .cache/
+[stdout] Synced 07-copilot-for-lean from animation.md → .cache/
+[stdout] Synced 07-function-refines-well-defined-relation from animation.md → .cache/
+[stdout] Synced 07-kernel-and-image from animation.md → .cache/
+[stdout] Synced 07-libraries-as-cities from animation.md → .cache/
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:life-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:launch-pv] layer type(s) not in allow-list: compare
+[stderr] Skipping 07-theorem-125-what-formed-means: missing /Users/johndoe/Documents/company/video_ops/projects/algebra/07-theorem-125-what-formed-means/animation.md
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:launch-pv] layer type(s) not in allow-list: compare
+[stderr] [kit:life-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:ai-review] layer type(s) not in allow-list: compare
+[stderr] [kit:launch-pv] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:ai-review] layer type(s) not in allow-list: compare
+[stderr] [kit:life-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:life-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:launch-pv] layer type(s) not in allow-list: compare
+[stderr] [kit:ai-review] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] Failed to sync 13-exponent-laws-inline-premise: VideoOpsAnimationMarkdownError: Line 61: Beat headings must be sequential. Expected Beat 1, found Beat 2.
+[stderr]     at fail (/Users/johndoe/Documents/company/video_ops/editor/remotion/src/lib/compile/video-ops/videoOpsAnimationMarkdown.ts:88:9)
+[stderr]     at <anonymous> (/Users/johndoe/Documents/company/video_ops/editor/remotion/src/lib/compile/video-ops/videoOpsAnimationMarkdown.ts:1062:7)
+[stderr]     at Array.map (<anonymous>)
+[stderr]     at parseScene (/Users/johndoe/Documents/company/video_ops/editor/remotion/src/lib/compile/video-ops/videoOpsAnimationMarkdown.ts:1058:30)
+[stderr]     at <anonymous> (/Users/johndoe/Documents/company/video_ops/editor/remotion/src/lib/compile/video-ops/videoOpsAnimationMarkdown.ts:1109:12)
+[stderr]     at Array.map (<anonymous>)
+[stderr]     at parseAnimationMarkdown (/Users/johndoe/Documents/company/video_ops/editor/remotion/src/lib/compile/video-ops/videoOpsAnimationMarkdown.ts:1099:32)
+[stderr]     at compileVideoOpsAnimationMarkdown (/Users/johndoe/Documents/company/video_ops/editor/remotion/src/lib/compile/video-ops/videoOpsAnimationMarkdown.ts:1752:18)
+[stderr]     at compileEpisodeFromDir (/Users/johndoe/Documents/company/video_ops/editor/remotion/src/lib/compile/compileEpisode.ts:215:42)
+[stderr]     at <anonymous> (/Users/johndoe/Documents/company/video_ops/editor/remotion/scripts/sync-animations.ts:117:22) {
+[stderr]   line: 61
+[stderr] }
+[stderr] [kit:ai-review] layer type(s) not in allow-list: compare
+[stderr] [kit:launch-pv] layer type(s) not in allow-list: compare
+[stderr] [kit:life-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:motion-essay] layer type(s) not in allow-list: compare
+[stderr] [kit:syntax-spot] layer type(s) not in allow-list: compare
+[stderr] Synced 90/99 episode(s); failed: 13-exponent-laws-inline-premise
+[stderr] Error: npm run sync failed
+[stderr]     at run (file:///Users/johndoe/Documents/company/video_ops/editor/remotion/scripts/render-outdoor.mjs:21:19)
+[stderr]     at file:///Users/johndoe/Documents/company/video_ops/editor/remotion/scripts/render-outdoor.mjs:109:3
+[stderr]     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+[stderr]     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+[stderr]     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+[stderr]   status: 1
+[stderr] }
+[stdout] Synced 07-necessary-vs-sufficient from animation.md → .cache/
+[stdout] Synced 07-social-export from animation.md → .cache/
+[stdout] Synced 07-union from animation.md → .cache/
+[stdout] Synced 08-composition-pipeline-a-to-c from animation.md → .cache/
+[stdout] Synced 08-cover-generator from animation.md → .cache/
+[stdout] Synced 08-intersection from animation.md → .cache/
+[stdout] Synced 08-order-of-an-element from animation.md → .cache/
+[stdout] Synced 08-proof-and-apology from animation.md → .cache/
+[stdout] Synced 08-refusal-is-a-feature from animation.md → .cache/
+[stdout] Synced 08-synthetic-data-risk from animation.md → .cache/
+[stdout] Synced 09-agent-keep-reject from animation.md → .cache/
+[stdout] Synced 09-disjoint from animation.md → .cache/
+[stdout] Synced 09-function-properties-as-adjectives from animation.md → .cache/
+[stdout] Synced 09-human-in-the-loop from animation.md → .cache/
+[stdout] Synced 09-laws-vs-vibes from animation.md → .cache/
+[stdout] Synced 09-python-intuition-trap from animation.md → .cache/
+[stdout] Synced 09-subgroup-criterion from animation.md → .cache/
+[stdout] Synced 10-complement from animation.md → .cache/
+[stdout] Synced 10-cosets-left-right from animation.md → .cache/
+[stdout] Synced 10-growth-as-refinement from animation.md → .cache/
+[stdout] Synced 10-matlab-to-proof from animation.md → .cache/
+[stdout] Synced 10-round-brackets-bundle-properties from animation.md → .cache/
+[stdout] Synced 10-trailer-cutdown from animation.md → .cache/
+[stdout] Synced 10-turn-vs-llm-chat from animation.md → .cache/
+[stdout] Synced 11-difference from animation.md → .cache/
+[stdout] Synced 11-laws-vs-properties-inside-structures from animation.md → .cache/
+[stdout] Synced 12-composition-theorem-four-leaves from animation.md → .cache/
+[stdout] Synced 12-union-idempotent from animation.md → .cache/
+[stdout] Synced template-ai-review-smoke from animation.md → .cache/
+[stdout] Synced template-compare-smoke from animation.md → .cache/
+[stdout] Synced template-launch-pv-smoke from animation.md → .cache/
+[stdout] Synced template-life-essay-smoke from animation.md → .cache/
+[stdout] Synced template-motion-essay-smoke from animation.md → .cache/
+[stdout] Synced template-pitfall-smoke from animation.md → .cache/
+[stdout] Synced template-syntax-spot-smoke from animation.md → .cache/
+[stdout] [render-outdoor] restored .cache/animation-v4.json
+[2026-07-25T02:42:48.927Z] exit 1
+[2026-07-25T02:42:48.927Z] FAILED: Remotion render failed — [2026-07-25T02:42:48.927Z] exit 1
+[2026-07-25T02:42:48.964Z] [2026-07-25T02:42:48.927Z] exit 1

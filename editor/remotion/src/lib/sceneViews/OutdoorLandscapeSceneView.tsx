@@ -1,8 +1,6 @@
 import type { ReactNode } from 'react';
 
 import { OutdoorFilmedClipMask } from '../../components/OutdoorFilmedClipMask/OutdoorFilmedClipMask';
-import { OutdoorPresenterVideo } from '../../components/OutdoorPresenterVideo/OutdoorPresenterVideo';
-import { useCompositionScale } from '../layout/useCompositionScale';
 import type { OutdoorBeatLayout } from '../outdoor/resolveOutdoorBeatLayout';
 
 type OutdoorLandscapeSceneViewProps = {
@@ -10,6 +8,8 @@ type OutdoorLandscapeSceneViewProps = {
   outdoorEdit: NonNullable<import('../types/renderProps').RenderScene['outdoorEdit']>;
   outdoorBeatIndex: number;
   outdoorBeatLayout: OutdoorBeatLayout;
+  sceneIndex?: number;
+  beatCount?: number;
   mainContent: ReactNode;
 };
 
@@ -18,22 +18,25 @@ export function OutdoorLandscapeSceneView({
   outdoorEdit,
   outdoorBeatIndex,
   outdoorBeatLayout,
+  sceneIndex = 0,
+  beatCount = 0,
   mainContent,
 }: OutdoorLandscapeSceneViewProps) {
-  const s = useCompositionScale();
   const scriptFullscreen = outdoorBeatLayout.scriptFullscreen;
   const presenterMode = outdoorBeatLayout.presenterMode;
   const isFullClipPresenter = !scriptFullscreen && presenterMode === 'full-clip';
   const isAvatarPlaceholder = !outdoorEdit.videoSrc.trim();
+  const resolvedBeatCount =
+    beatCount ||
+    outdoorEdit.beatDurationsSeconds?.length ||
+    0;
+  const scriptPipMask = outdoorBeatLayout.pipMask;
 
   return (
     <div
       style={{
         position: 'absolute',
-        top: s.px(40),
-        left: s.px(40),
-        right: s.px(40),
-        bottom: s.px(48),
+        inset: 0,
         display: 'flex',
         flexDirection: 'column',
         boxSizing: 'border-box',
@@ -50,41 +53,17 @@ export function OutdoorLandscapeSceneView({
         }}
       >
         {scriptFullscreen || !isFullClipPresenter ? mainContent : null}
-        {isFullClipPresenter ? (
-          <div
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              aspectRatio: '16 / 9',
-              borderRadius: s.px(16),
-              overflow: 'hidden',
-              border: '1px solid rgba(148, 163, 184, 0.22)',
-              background: '#020617',
-              zIndex: 2,
-            }}
-          >
-            <OutdoorPresenterVideo
-              scriptId={scriptId}
-              src={outdoorEdit.videoSrc}
-              muted
-              objectFit="contain"
-            />
-          </div>
-        ) : (
-          <OutdoorFilmedClipMask
-            scriptId={scriptId}
-            src={outdoorEdit.videoSrc}
-            pipMask={
-              isAvatarPlaceholder
-                ? outdoorEdit.pipMask ?? outdoorBeatLayout.pipMask
-                : outdoorBeatLayout.pipMask
-            }
-            beatIndex={outdoorBeatIndex}
-            persistAcrossBeats={isAvatarPlaceholder}
-          />
-        )}
+        <OutdoorFilmedClipMask
+          scriptId={scriptId}
+          src={outdoorEdit.videoSrc}
+          pipMask={scriptPipMask}
+          beatIndex={outdoorBeatIndex}
+          sceneIndex={sceneIndex}
+          beatCount={resolvedBeatCount}
+          persistAcrossBeats={isAvatarPlaceholder}
+          enableMaskEditing
+          layoutFormat="landscape"
+        />
       </div>
     </div>
   );

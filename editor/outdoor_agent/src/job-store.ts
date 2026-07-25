@@ -4,6 +4,7 @@ import { scanVideoOpsCatalog } from './catalog.ts';
 import { copyFile, fileExists, readJson, writeJson } from './fs_util.ts';
 import {
   ensureDir,
+  canonicalizeScriptId,
   jobJsonPath,
   JOBS_DIR,
   listScriptSeriesDirs,
@@ -12,6 +13,7 @@ import {
   publishStatePathForTake,
   takeDir,
   takeManifestPath,
+  takeScriptPriority,
   takeSourceVideoDest,
   takeSourceVideoPath,
   takeStageRunDir,
@@ -40,13 +42,14 @@ function loadLegacyJob(jobId: string): OutdoorJob | null {
 }
 
 function pipelineStatusToJob(status: OutdoorJob, ref: { scriptId: string; takeId: string }): OutdoorJob {
+  const scriptId = canonicalizeScriptId(ref.scriptId);
   return {
     ...status,
     jobId: newJobId(ref.takeId),
     takeId: ref.takeId,
-    scriptId: ref.scriptId,
-    sourceVideoPath: takeSourceVideoPath(ref.scriptId, ref.takeId),
-    takeManifestPath: takeManifestPath(ref.scriptId, ref.takeId),
+    scriptId,
+    sourceVideoPath: takeSourceVideoPath(scriptId, ref.takeId),
+    takeManifestPath: takeManifestPath(scriptId, ref.takeId),
   };
 }
 
@@ -97,6 +100,7 @@ export function listJobs(): OutdoorJob[] {
 
 export function loadJob(jobId: string): OutdoorJob | null {
   const takeId = jobId.startsWith('job-') ? jobId.slice(4) : jobId;
+  const matches: OutdoorJob[] = [];
   for (const seriesDir of listScriptSeriesDirs()) {
     for (const entry of Deno.readDirSync(seriesDir)) {
       if (!entry.isDirectory || isReservedSeriesEntry(entry.name)) {
@@ -112,12 +116,18 @@ export function loadJob(jobId: string): OutdoorJob | null {
           pipelineStatusToJob(readJson<OutdoorJob>(statusPath), { scriptId, takeId }),
         );
         if (job.jobId === jobId || job.takeId === takeId) {
-          return job;
+          matches.push(job);
         }
       } catch {
         // skip corrupt status
       }
     }
+  }
+  if (matches.length > 0) {
+    matches.sort(
+      (left, right) => takeScriptPriority(left.scriptId) - takeScriptPriority(right.scriptId),
+    );
+    return matches[0];
   }
   const legacy = loadLegacyJob(jobId);
   if (legacy && (legacy.jobId === jobId || legacy.takeId === takeId)) {

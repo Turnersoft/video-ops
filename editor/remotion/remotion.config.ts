@@ -43,6 +43,8 @@ const visualizationRoot = path.join(
 );
 
 Config.setPublicDir(publicDir);
+// manim-web / Three.js need ANGLE for headless Chromium WebGL (default SwiftShader fails).
+Config.setChromiumOpenGlRenderer("angle");
 
 const remotionSrc = path.join(remotionDir, "src");
 const scssRule = {

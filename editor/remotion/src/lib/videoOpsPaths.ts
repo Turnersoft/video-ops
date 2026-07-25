@@ -2,6 +2,7 @@ import scriptSeriesMap from './generated/scriptSeriesMap.json';
 
 import {
   SERIES_PREFIX_RULES,
+  stripSeriesPrefixFromScriptId,
   type ScriptSeriesDir,
 } from '../seriesRegistry.ts';
 
@@ -47,6 +48,12 @@ export function videoOpsScriptFolder(scriptId: string): string {
 /** Episode folder relative to video_ops root (includes `projects/`). Used for disk I/O. */
 export function videoOpsScriptDiskFolder(scriptId: string): string {
   return `${VIDEO_OPS_PROJECTS_DIR}/${videoOpsScriptFolder(scriptId)}`;
+}
+
+/** `sets-v2-04-set-equality` → `04-set-equality` for animation.md / compile identity. */
+export function canonicalVideoOpsScriptId(scriptId: string): string {
+  const trimmed = scriptId.trim();
+  return stripSeriesPrefixFromScriptId(trimmed) ?? trimmed;
 }
 
 export function videoOpsSeriesSharedFolder(series: VideoOpsScriptSeries): string {

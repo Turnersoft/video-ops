@@ -1,0 +1,13 @@
+# stage-run 2026-07-24T14:10:52.776Z
+jobId=job-take-mrz04r9h
+scriptId=04-set-equality
+takeId=take-mrz04r9h
+stage=stabilize
+runId=stabilize-mrz0pskm
+
+[2026-07-24T14:10:52.804Z] Starting stabilize
+[2026-07-24T14:10:52.830Z] Analyzing shake (vidstab pass 1)
+[2026-07-24T14:10:52.831Z] $ ffmpeg -y -hide_banner -loglevel warning -i /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/source.webm -vf vidstabdetect=shakiness=5:accuracy=15:result=/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/stabilize/stabilize-mrz0pskm/transforms.trf -f null -
+[2026-07-24T14:11:28.084Z] exit 255
+[2026-07-24T14:11:28.084Z] FAILED: Stabilize handheld shake failed — [2026-07-24T14:11:28.084Z] exit 255
+[2026-07-24T14:11:28.113Z] [2026-07-24T14:11:28.084Z] exit 255

@@ -17,7 +17,9 @@ export function VideoFromScript({
     onCompareFontScalesChange,
 }: VideoFromScriptInputProps) {
     const [handle] = useState(() => delayRender(`animation:${scriptId}`));
-    const { project, error, loading } = useAnimationHotReload(scriptId, showDirector, projectInput);
+    const { project, error, loading } = useAnimationHotReload(scriptId, showDirector, projectInput, {
+        stripOutdoorEdit: true,
+    });
 
     useEffect(() => {
         if (!loading) {
@@ -80,6 +82,7 @@ export function VideoFromScript({
                             showDirector={directorEnabled}
                             contentRevision={sceneRevision}
                             outdoorFormat={outdoorFormat}
+                            forceStudioFootagePlaceholder
                         />
                     </Sequence>
                 );

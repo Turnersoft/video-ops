@@ -69,6 +69,18 @@ export function narrationStripForScene(scene: RenderScene): NarrationStripConfig
         return null;
     }
 
+    // Outdoor take: ad-lib tail (e.g. subscribe CTA) lives in captionSegments, not beat `say`.
+    const outdoorSegments = scene.outdoorEdit?.captionSegments;
+    if (isOutdoor && includeInExport && outdoorSegments?.length) {
+        return {
+            lines,
+            linesZh: linesZh.length > 0 ? scene.director.sayZh : undefined,
+            timings: scene.director.sayTimings,
+            segments: outdoorSegments,
+            mode: 'export',
+        };
+    }
+
     return {
         lines,
         linesZh: linesZh.length > 0 ? scene.director.sayZh : undefined,

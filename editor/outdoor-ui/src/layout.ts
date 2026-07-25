@@ -1,9 +1,9 @@
-import { StyleSheet, type TextStyle, type ViewStyle } from 'react-native';
+import { StyleSheet, type TextStyle, type ViewStyle } from "react-native";
 
-import { colors, radii, spacing, typography } from './theme';
+import { colors, radii, spacing, typography } from "./theme";
 
 /** Layout profile — never use Platform.OS for spacing/columns. */
-export type OutdoorLayout = 'browser' | 'mobile';
+export type OutdoorLayout = "browser" | "mobile";
 
 export type OutdoorLayoutStyles = {
   main: ViewStyle;
@@ -39,34 +39,34 @@ const browser: OutdoorLayoutStyles = {
     paddingTop: 8,
     paddingBottom: 40,
     maxWidth: 1180,
-    alignSelf: 'center',
-    width: '100%',
+    alignSelf: "center",
+    width: "100%",
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     gap: spacing.md,
     paddingHorizontal: 16,
     paddingTop: 8,
     paddingBottom: 6,
     backgroundColor: colors.headerBg,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'rgba(148, 163, 184, 0.12)',
+    borderBottomColor: "rgba(148, 163, 184, 0.12)",
   },
   headerTitle: {
     margin: 0,
     fontSize: 18,
-    fontWeight: '800',
+    fontWeight: "800",
     color: colors.text,
     flexShrink: 1,
     lineHeight: 22,
   },
   headerActions: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexDirection: "row",
+    flexWrap: "wrap",
     gap: 10,
-    justifyContent: 'flex-end',
+    justifyContent: "flex-end",
     flexShrink: 1,
   },
   card: {
@@ -79,79 +79,79 @@ const browser: OutdoorLayoutStyles = {
     marginBottom: 18,
   },
   grid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexDirection: "row",
+    flexWrap: "wrap",
     gap: 16,
   },
   gridItemHalf: {
-    width: '48%',
-    flexBasis: '48%',
+    width: "48%",
+    flexBasis: "48%",
     flexGrow: 0,
     flexShrink: 0,
-    maxWidth: '48%',
+    maxWidth: "48%",
   },
   gridItemThird: {
-    width: '31%',
-    flexBasis: '31%',
+    width: "31%",
+    flexBasis: "31%",
     flexGrow: 0,
     flexShrink: 0,
-    maxWidth: '31%',
+    maxWidth: "31%",
   },
   videos: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexDirection: "row",
+    flexWrap: "wrap",
     gap: 16,
-    alignItems: 'flex-start',
+    alignItems: "flex-start",
   },
   studioRow: {
-    flexDirection: 'row',
-    alignItems: 'stretch',
+    flexDirection: "row",
+    alignItems: "stretch",
     gap: 14,
-    width: '100%',
+    width: "100%",
   },
   studioVideoPane: {
     flex: 1.15,
     minWidth: 0,
-    alignSelf: 'stretch',
+    alignSelf: "stretch",
   },
   studioScriptPane: {
     flex: 1,
     minWidth: 0,
-    alignSelf: 'stretch',
+    alignSelf: "stretch",
   },
   compareRow: {
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: 16,
-    alignItems: 'stretch',
+    alignItems: "stretch",
   },
   beatRow: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexDirection: "row",
+    flexWrap: "wrap",
     gap: 10,
   },
   beatChip: {
     borderRadius: radii.sm,
     paddingHorizontal: 12,
     paddingVertical: 10,
-    backgroundColor: 'rgba(51, 65, 85, 0.9)',
+    backgroundColor: "rgba(51, 65, 85, 0.9)",
     maxWidth: 220,
     gap: 2,
   },
   remotionFrame: {
     flex: 1,
-    width: '100%',
+    width: "100%",
     minHeight: 620,
-    height: '100%',
+    height: "100%",
   },
   socialGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexDirection: "row",
+    flexWrap: "wrap",
     gap: 16,
-    alignItems: 'flex-start',
-    alignContent: 'flex-start',
+    alignItems: "flex-start",
+    alignContent: "flex-start",
   },
   socialCard: {
-    width: '100%',
+    width: "100%",
     backgroundColor: colors.videoBg,
     borderWidth: 1,
     borderColor: colors.cardBorder,
@@ -160,16 +160,16 @@ const browser: OutdoorLayoutStyles = {
     gap: 8,
   },
   coverTile: {
-    width: '31%',
-    flexBasis: '31%',
+    width: "31%",
+    flexBasis: "31%",
     flexGrow: 0,
     flexShrink: 0,
-    maxWidth: '31%',
+    maxWidth: "31%",
     backgroundColor: colors.videoBg,
     borderRadius: radii.sm,
     borderWidth: 1,
     borderColor: colors.cardBorder,
-    overflow: 'hidden',
+    overflow: "hidden",
     paddingBottom: spacing.sm,
   },
   touchTarget: {
@@ -178,9 +178,9 @@ const browser: OutdoorLayoutStyles = {
     paddingVertical: 8,
   },
   pipelineToolbar: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignItems: 'center',
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "center",
     gap: 10,
   },
 };
@@ -192,35 +192,35 @@ const mobile: OutdoorLayoutStyles = {
     paddingTop: 8,
     paddingBottom: 48,
     maxWidth: undefined,
-    alignSelf: 'stretch',
-    width: '100%',
+    alignSelf: "stretch",
+    width: "100%",
   },
   header: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignItems: 'flex-start',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "flex-start",
+    justifyContent: "space-between",
     gap: spacing.sm,
     paddingHorizontal: 12,
     paddingTop: 10,
     paddingBottom: 10,
     backgroundColor: colors.headerBg,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'rgba(148, 163, 184, 0.12)',
+    borderBottomColor: "rgba(148, 163, 184, 0.12)",
   },
   headerTitle: {
     margin: 0,
     fontSize: 22,
-    fontWeight: '800',
+    fontWeight: "800",
     color: colors.text,
-    width: '100%',
+    width: "100%",
   },
   headerActions: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexDirection: "row",
+    flexWrap: "wrap",
     gap: 8,
-    width: '100%',
-    justifyContent: 'flex-start',
+    width: "100%",
+    justifyContent: "flex-start",
   },
   card: {
     backgroundColor: colors.card,
@@ -232,69 +232,69 @@ const mobile: OutdoorLayoutStyles = {
     marginBottom: 14,
   },
   grid: {
-    flexDirection: 'column',
+    flexDirection: "column",
     gap: 12,
   },
   gridItemHalf: {
-    width: '100%',
+    width: "100%",
   },
   gridItemThird: {
-    width: '100%',
+    width: "100%",
   },
   videos: {
-    flexDirection: 'column',
+    flexDirection: "column",
     gap: 10,
   },
   studioRow: {
-    flexDirection: 'column',
-    alignItems: 'stretch',
+    flexDirection: "column",
+    alignItems: "stretch",
     gap: 10,
-    width: '100%',
+    width: "100%",
   },
   studioVideoPane: {
     flexGrow: 0,
     flexShrink: 0,
-    width: '100%',
-    alignSelf: 'stretch',
+    width: "100%",
+    alignSelf: "stretch",
   },
   studioScriptPane: {
     flexGrow: 1,
     flexShrink: 1,
-    width: '100%',
+    width: "100%",
     minHeight: 200,
-    alignSelf: 'stretch',
+    alignSelf: "stretch",
   },
   compareRow: {
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: 8,
-    alignItems: 'stretch',
+    alignItems: "stretch",
   },
   beatRow: {
-    flexDirection: 'row',
-    flexWrap: 'nowrap',
+    flexDirection: "row",
+    flexWrap: "nowrap",
     gap: spacing.sm,
   },
   beatChip: {
     borderRadius: radii.sm,
     paddingHorizontal: 10,
     paddingVertical: 8,
-    backgroundColor: 'rgba(51, 65, 85, 0.9)',
+    backgroundColor: "rgba(51, 65, 85, 0.9)",
     minWidth: 120,
     flexShrink: 0,
     gap: 2,
   },
   remotionFrame: {
     flex: 1,
-    width: '100%',
+    width: "100%",
     minHeight: 420,
-    height: '100%',
+    height: "100%",
   },
   socialGrid: {
-    flexDirection: 'column',
+    flexDirection: "column",
     gap: 12,
   },
   socialCard: {
-    width: '100%',
+    width: "100%",
     backgroundColor: colors.videoBg,
     borderWidth: 1,
     borderColor: colors.cardBorder,
@@ -303,12 +303,12 @@ const mobile: OutdoorLayoutStyles = {
     gap: 6,
   },
   coverTile: {
-    width: '100%',
+    width: "100%",
     backgroundColor: colors.videoBg,
     borderRadius: radii.sm,
     borderWidth: 1,
     borderColor: colors.cardBorder,
-    overflow: 'hidden',
+    overflow: "hidden",
     paddingBottom: spacing.sm,
   },
   touchTarget: {
@@ -317,9 +317,9 @@ const mobile: OutdoorLayoutStyles = {
     paddingVertical: 10,
   },
   pipelineToolbar: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignItems: 'center',
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "center",
     gap: 8,
   },
 };
@@ -334,13 +334,16 @@ export function layoutStylesFor(layout: OutdoorLayout): OutdoorLayoutStyles {
 }
 
 export function isMobileLayout(layout: OutdoorLayout): boolean {
-  return layout === 'mobile';
+  return layout === "mobile";
 }
 
 /** Full-height side-by-side studio row (cut / align) — browser and iPhone. */
-export function pipelineStudioHeight(windowHeight: number, layout: OutdoorLayout): number {
-  const ratio = layout === 'browser' ? 0.88 : 0.78;
-  const cap = layout === 'browser' ? 980 : 760;
+export function pipelineStudioHeight(
+  windowHeight: number,
+  layout: OutdoorLayout,
+): number {
+  const ratio = layout === "browser" ? 0.88 : 0.78;
+  const cap = layout === "browser" ? 980 : 760;
   return Math.max(440, Math.min(Math.round(windowHeight * ratio), cap));
 }
 

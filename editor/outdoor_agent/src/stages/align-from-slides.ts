@@ -7,6 +7,7 @@ import { outdoorScriptPath, scriptDirFor } from "../paths.ts";
 import type { OutdoorJob } from "../schema.ts";
 import { stabilizedVideoForJob } from "./stabilize.ts";
 import {
+  mapSourceTimeToEditedTimeline,
   sentenceCaptionSegmentsFromTranscript,
   type GoodInterval,
   type TranscriptVerbose,
@@ -43,6 +44,113 @@ type OutdoorScript = {
 
 function roundSeconds(value: number): number {
   return Math.round(value * 100) / 100;
+}
+
+function editedDurationFromGoodIntervals(goodIntervals: GoodInterval[]): number {
+  return goodIntervals.reduce(
+    (sum, interval) => sum + Math.max(0, interval.end - interval.start),
+    0,
+  );
+}
+
+function editedDurationFromTimeline(timeline: VisualPlan["timeline"]): number {
+  let maxEnd = 0;
+  for (const segment of timeline ?? []) {
+    maxEnd = Math.max(maxEnd, segment?.editedEnd ?? 0);
+  }
+  return maxEnd;
+}
+
+function beatIndexFromSlideId(slideId: string, beatCount: number): number {
+  const match = slideId.match(/beat-(\d+)/i);
+  if (match) {
+    const oneBased = Number.parseInt(match[1], 10);
+    if (Number.isFinite(oneBased) && oneBased >= 1) {
+      return Math.min(oneBased - 1, beatCount - 1);
+    }
+  }
+  return 0;
+}
+
+/**
+ * Beat boundaries from teleprompter Next taps, mapped source → edited via cut keeps.
+ * Avoids summing cut chunks by slide label (NG retakes often stay on beat-01).
+ */
+function beatDurationsFromSlideEvents(
+  take: TakeManifest,
+  beatCount: number,
+  goodIntervals: GoodInterval[],
+  totalEditedDuration: number,
+): number[] | null {
+  const events = take.slideEvents ?? [];
+  if (events.length < 2) {
+    return null;
+  }
+
+  const mappedStarts: number[] = [];
+  for (let beatIndex = 0; beatIndex < beatCount; beatIndex += 1) {
+    const event = events[beatIndex];
+    const sourceSeconds =
+      (event?.atMs ?? (beatIndex === 0 ? 0 : events[events.length - 1]?.atMs ?? 0)) /
+      1000;
+    mappedStarts.push(
+      roundSeconds(mapSourceTimeToEditedTimeline(sourceSeconds, goodIntervals)),
+    );
+  }
+
+  for (let index = 1; index < mappedStarts.length; index += 1) {
+    mappedStarts[index] = Math.max(
+      mappedStarts[index],
+      mappedStarts[index - 1] + 0.5,
+    );
+  }
+
+  const durations: number[] = [];
+  for (let beatIndex = 0; beatIndex < beatCount; beatIndex += 1) {
+    const start = mappedStarts[beatIndex];
+    const end =
+      beatIndex === beatCount - 1
+        ? totalEditedDuration
+        : mappedStarts[beatIndex + 1] ?? totalEditedDuration;
+    durations.push(roundSeconds(Math.max(0.5, end - start)));
+  }
+  return durations;
+}
+
+function beatDurationsFromCutTimeline(
+  timeline: NonNullable<VisualPlan["timeline"]>,
+  beatCount: number,
+  script: OutdoorScript,
+): number[] {
+  const durationsByBeat = Array.from({ length: beatCount }, () => 0);
+  for (const segment of timeline) {
+    const slideIndex = script.slides.findIndex(
+      (slide) => slide.id === segment.slideId,
+    );
+    const beatIndex =
+      slideIndex >= 0
+        ? Math.min(slideIndex, beatCount - 1)
+        : beatIndexFromSlideId(segment.slideId, beatCount);
+    const duration = (segment.editedEnd ?? 0) - (segment.editedStart ?? 0);
+    durationsByBeat[beatIndex] += duration;
+  }
+  return durationsByBeat;
+}
+
+function beatDurationsFromRawSlideEvents(
+  take: TakeManifest,
+  beatCount: number,
+): number[] {
+  const events = take.slideEvents ?? [];
+  const durationsByBeat = Array.from({ length: beatCount }, () => 0);
+  for (let beatIndex = 0; beatIndex < beatCount; beatIndex += 1) {
+    const event = events[beatIndex];
+    const nextEvent = events[beatIndex + 1];
+    const startMs = event?.atMs ?? 0;
+    const endMs = nextEvent?.atMs ?? take.durationMs;
+    durationsByBeat[beatIndex] = Math.max(0.5, (endMs - startMs) / 1000);
+  }
+  return durationsByBeat;
 }
 
 export function slideEventsAreSufficient(
@@ -106,45 +214,32 @@ export function alignFromSlideEvents({
     : { slides: [] };
 
   const timeline = visualPlan.timeline ?? [];
-  const durationsByBeat = Array.from({ length: beats.length }, () => 0);
+  const totalEditedDuration =
+    goodIntervals.length > 0
+      ? editedDurationFromGoodIntervals(goodIntervals)
+      : timeline.length > 0
+        ? editedDurationFromTimeline(timeline)
+        : take.durationMs / 1000;
 
-  if (timeline.length > 0) {
-    for (const segment of timeline) {
-      const slideIndex = script.slides.findIndex(
-        (slide) => slide.id === segment.slideId,
-      );
-      const beatIndex =
-        slideIndex >= 0 ? Math.min(slideIndex, beats.length - 1) : 0;
-      const duration = (segment.editedEnd ?? 0) - (segment.editedStart ?? 0);
-      durationsByBeat[beatIndex] += duration;
-    }
+  let durationsByBeat: number[];
+  const fromSlideEvents = beatDurationsFromSlideEvents(
+    take,
+    beats.length,
+    goodIntervals,
+    totalEditedDuration,
+  );
+  if (fromSlideEvents) {
+    durationsByBeat = fromSlideEvents;
+  } else if (timeline.length > 0) {
+    durationsByBeat = beatDurationsFromCutTimeline(timeline, beats.length, script);
   } else {
-    const events = take.slideEvents ?? [];
-    let editedCursor = 0;
-    const boundaries: Array<{
-      startMs: number;
-      endMs: number;
-      duration: number;
-    }> = [];
-    for (let beatIndex = 0; beatIndex < beats.length; beatIndex += 1) {
-      const event = events[beatIndex];
-      const nextEvent = events[beatIndex + 1];
-      const startMs = event?.atMs ?? editedCursor * 1000;
-      const endMs = nextEvent?.atMs ?? take.durationMs;
-      const duration = Math.max(0.5, (endMs - startMs) / 1000);
-      durationsByBeat[beatIndex] = duration;
-      boundaries.push({ startMs, endMs, duration });
-    }
-    void boundaries;
+    durationsByBeat = beatDurationsFromRawSlideEvents(take, beats.length);
   }
 
-  const totalFallback = take.durationMs / 1000;
   const rawSum = durationsByBeat.reduce((sum, value) => sum + value, 0);
   if (rawSum <= 0) {
-    const each = totalFallback / beats.length;
-    for (let index = 0; index < beats.length; index += 1) {
-      durationsByBeat[index] = each;
-    }
+    const each = totalEditedDuration / beats.length;
+    durationsByBeat = Array.from({ length: beats.length }, () => each);
   }
 
   const beatDurationsSeconds = durationsByBeat.map((value) =>

@@ -31,7 +31,6 @@ Hi friends, welcome back. This is Turner.
 So we are in the chapter file, at Judson Theorem 1.25.
 The statement says equivalence classes form a partition.
 The interesting part is not the headline. It is what the proof has to check.
-
 ### Visual notes
 
 Open `02_sets_and_equivalence_relations.turn`. Scroll to theorem `"equivalence classes form a partition (Judson Theorem 1.25 forward)"`.
@@ -60,7 +59,6 @@ Before the proof, look at how `Partition` is defined.
 Each cell must be nonempty and a subset of X.
 The laws ask for cover and disjointness.
 These names are already in the structure.
-
 ### Turn
 
 ```turn
@@ -76,7 +74,6 @@ structure[
     }
 }
 ```
-
 ### Visual notes
 
 Briefly show structure, then jump to the proof's `witness confirm`.
@@ -107,7 +104,6 @@ Now the proof.
 `C.1` and `C.2` discharge the cell conditions.
 `cover` and `disjoint` discharge the partition laws.
 You always know which obligation you are paying for.
-
 ### Turn
 
 ```turn
@@ -122,14 +118,12 @@ You always know which obligation you are paying for.
     }
 }
 ```
-
-Highlights:
+### Turn highlights
 
 - `C.1`
 - `C.2`
 - `cover`
 - `disjoint`
-
 ### Visual notes
 
 Expand one branch briefly, e.g. `witness hRep.witness for x in hRep` inside `C.1`, then collapse. The names are the hero.
@@ -158,9 +152,7 @@ allow-script-change: false
 So this is what I mean by side conditions you can name.
 The partition proof in our real library is readable because the obligations keep their names.
 Tell me which Judson theorem you want next.
-
 ### Visual notes
 
 Cursor on `disjoint {` inside the confirm block.
 End in the file, not on a logo.
-

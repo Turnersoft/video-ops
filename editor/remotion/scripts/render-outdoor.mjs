@@ -1,14 +1,19 @@
 #!/usr/bin/env node
+/**
+ * Outdoor composite render: build Remotion props in memory and pass them to
+ * `remotion render` — no animation-v4 mutation, no repo-wide sync.
+ */
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { scriptDirFor, animationV4CachePath, ANIMATION_V4_CACHE_REL } from './scriptSeries.mjs';
+import { scriptDirFor } from './scriptSeries.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const remotionDir = path.resolve(__dirname, '..');
-const videoOpsDir = path.join(remotionDir, '..');
+/** `video_ops` repo root (remotion lives at editor/remotion). */
+const videoOpsDir = path.resolve(remotionDir, '../..');
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
@@ -25,7 +30,7 @@ function run(command, args, options = {}) {
 
 function usage() {
   console.log(`Usage:
-node video_ops/remotion/scripts/render-outdoor.mjs <script-id> [--edit-dir path] [--format portrait|landscape|both] [--realign]
+node editor/remotion/scripts/render-outdoor.mjs <script-id> [--edit-dir path] [--format portrait|landscape|both] [--realign]
 `);
 }
 
@@ -56,6 +61,7 @@ for (let index = 3; index < process.argv.length; index += 1) {
 }
 
 const scriptDir = scriptDirFor(videoOpsDir, scriptId);
+const outdoorPostMain = path.join(videoOpsDir, 'editor/outdoor_post/main.ts');
 if (!editDir) {
   editDir = path.join(scriptDir, 'export', 'outdoor-edit-take-mrbtjdup');
 }
@@ -66,7 +72,7 @@ if (realign || !fs.existsSync(alignmentPath) || !fs.existsSync(outdoorAnimationP
   const alignArgs = [
     'run',
     '--allow-all',
-    path.join(videoOpsDir, 'outdoor_post/main.ts'),
+    outdoorPostMain,
     'align-speech-to-beats',
     scriptId,
     '--edit-dir',
@@ -81,7 +87,7 @@ if (realign || !fs.existsSync(alignmentPath) || !fs.existsSync(outdoorAnimationP
 run('deno', [
   'run',
   '--allow-all',
-  path.join(videoOpsDir, 'outdoor_post/main.ts'),
+  outdoorPostMain,
   'build-outdoor-manifest',
   scriptId,
   '--edit-dir',
@@ -89,66 +95,73 @@ run('deno', [
 ]);
 
 const manifest = readJson(path.join(editDir, 'outdoor-manifest.json'));
-const animPath = animationV4CachePath(videoOpsDir, scriptId);
-const canonical = fs.readFileSync(animPath, 'utf8');
-const outdoorSource = fs.readFileSync(outdoorAnimationPath, 'utf8');
-const animation = JSON.parse(outdoorSource);
-const scene = animation.scenes[0];
-
 console.log(
-  `[render-outdoor] using animation-outdoor.json — ${manifest.captionSegments.length} caption segments, scene ${scene.durationSeconds}s`,
+  `[render-outdoor] ${manifest.captionSegments.length} caption segments, ${manifest.editedDurationSeconds}s`,
 );
 console.log(`[render-outdoor] beat durations: ${manifest.beatDurationsSeconds.join(', ')}s`);
 
-fs.writeFileSync(animPath, `${JSON.stringify(animation, null, 2)}\n`);
+// Turn knowledge for compare beats (tracks); does not touch animation caches.
+run('npm', ['run', 'warm-knowledge', scriptId], { cwd: remotionDir });
+
+const fps = 30;
+const totalFrames = Math.max(1, Math.round(manifest.editedDurationSeconds * fps));
+const frameRange = `0-${totalFrames - 1}`;
+
+const renders = [];
+if (format === 'portrait' || format === 'both') {
+  renders.push({
+    composition: 'video-outdoor-portrait',
+    output: path.join(editDir, 'outdoor-portrait.mp4'),
+    format: 'portrait',
+  });
+}
+if (format === 'landscape' || format === 'both') {
+  renders.push({
+    composition: 'video-outdoor-landscape',
+    output: path.join(editDir, 'outdoor-landscape.mp4'),
+    format: 'landscape',
+  });
+}
 
 let status = 0;
 try {
-  run('npm', ['run', 'sync'], { cwd: remotionDir });
-  run('npm', ['run', 'warm-knowledge', scriptId], { cwd: remotionDir });
-
-  const fps = animation.composition?.fps ?? 30;
-  const totalFrames = Math.max(1, Math.round(manifest.editedDurationSeconds * fps));
-  const frameRange = `0-${totalFrames - 1}`;
-  const props = JSON.stringify({ scriptId, format: 'portrait' });
-  const propsLandscape = JSON.stringify({ scriptId, format: 'landscape' });
-
-  const renders = [];
-  if (format === 'portrait' || format === 'both') {
-    renders.push({
-      composition: 'video-outdoor-portrait',
-      output: path.join(editDir, 'outdoor-portrait.mp4'),
-      props,
-    });
-  }
-  if (format === 'landscape' || format === 'both') {
-    renders.push({
-      composition: 'video-outdoor-landscape',
-      output: path.join(editDir, 'outdoor-landscape.mp4'),
-      props: propsLandscape,
-    });
-  }
-
   for (const job of renders) {
+    const propsPath = path.join(editDir, `remotion-props-${job.format}.json`);
+    run(
+      'npx',
+      [
+        'tsx',
+        path.join(remotionDir, 'scripts/buildOutdoorRenderProps.ts'),
+        scriptId,
+        outdoorAnimationPath,
+        propsPath,
+        job.format,
+      ],
+      { cwd: remotionDir },
+    );
+
     console.log(`[render-outdoor] rendering ${job.composition} → ${job.output}`);
-    run('npx', [
-      'remotion',
-      'render',
-      job.composition,
-      job.output,
-      `--props=${job.props}`,
-      `--frames=${frameRange}`,
-      '--codec=h264',
-      '--crf=18',
-      '--log=info',
-    ], { cwd: remotionDir });
+    run(
+      'npx',
+      [
+        'remotion',
+        'render',
+        job.composition,
+        job.output,
+        `--props=${propsPath}`,
+        `--frames=${frameRange}`,
+        // Required for manim-web / Three.js WebGL in headless Chromium.
+        '--gl=angle',
+        '--codec=h264',
+        '--crf=18',
+        '--log=info',
+      ],
+      { cwd: remotionDir },
+    );
   }
 } catch (error) {
   status = 1;
   console.error(error);
-} finally {
-  fs.writeFileSync(animPath, canonical);
-  console.log(`[render-outdoor] restored ${ANIMATION_V4_CACHE_REL}`);
 }
 
 if (status !== 0) {

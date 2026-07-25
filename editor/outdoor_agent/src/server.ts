@@ -35,6 +35,7 @@ import {
   ensureDir,
   INBOX_DIR,
   outdoorScriptPath,
+  resolveStageArtifactPath,
   stageRunDir,
   takeSourceVideoPath,
   takeStageRunDir,
@@ -73,7 +74,7 @@ import {
   saveAlignLayout,
   type AlignLayout,
 } from './align-review.ts';
-import { syncStudioLayoutToOutdoor } from './sync-outdoor-animation.ts';
+import { syncOutdoorEditToAnimation, syncStudioLayoutToOutdoor } from './sync-outdoor-animation.ts';
 import { patchSocialPosts } from './stages/social.ts';
 import {
   captureCoverFromComposite,
@@ -469,8 +470,8 @@ export function createServer(options: ServerOptions = {}): OutdoorServer {
           const [, scriptId, takeId, stage, runId, fileName] = takeArtifactMatch.map(
             decodeURIComponent,
           );
-          const filePath = path.join(takeStageRunDir(scriptId, takeId, stage, runId), fileName);
-          if (!fileExists(filePath)) {
+          const filePath = resolveStageArtifactPath(scriptId, takeId, stage, runId, fileName);
+          if (!filePath) {
             return jsonResponse(404, { error: 'Artifact not found' });
           }
           return fileResponse(filePath, request);
@@ -633,6 +634,11 @@ export function createServer(options: ServerOptions = {}): OutdoorServer {
           if (!runId) {
             return jsonResponse(404, { error: 'No align run selected' });
           }
+          const outdoorAnimationPath = path.join(
+            takeStageRunDir(job.scriptId, job.takeId, 'align', runId),
+            'animation-outdoor.json',
+          );
+          syncOutdoorEditToAnimation(job.scriptId, outdoorAnimationPath);
           const review = buildAlignReview(job, runId);
           if (!review) {
             return jsonResponse(404, { error: 'Align artifacts not found' });

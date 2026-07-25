@@ -44,7 +44,6 @@ Welcome back.
 In last video we formalized the set,
 Today we formalize subset.
 The textbook says A is a subset of B when every element of A is already in B.
-
 ### Turn
 
 ```turn
@@ -55,8 +54,7 @@ relation Subset(T: Any, A B: Set<T>): PropModified {
    }
 }
 ```
-
-Highlights:
+### Turn highlights
 
 - `Set`
 
@@ -68,15 +66,13 @@ allow-script-change: false
 -->
 
 Here is the key idea, just like last time. Subset is not a new container. It is a proposition about two sets you already have. B is not built from A.
-
 ### Lean
 
 ```lean
 -- Mathlib source: mathlib4/Mathlib/Data/Set/Defs.lean (recap from last clip)
 def Set (α : Type u) := α → Prop
 ```
-
-Highlights:
+### Lean highlights
 
 - `def Set`
 - `α → Prop`
@@ -94,7 +90,6 @@ allow-script-change: false
 -->
 
 Quick reminder, this is the same Mathlib file from the last clip. You still have def Set, Set dot Mem, and the Membership instance. Subset is going to build right on top of these.
-
 ### Lean
 
 ```lean
@@ -107,8 +102,7 @@ namespace Set
   instance : Membership α (Set α) :=
     ⟨Set.Mem⟩
 ```
-
-Highlights:
+### Lean highlights
 
 - `protected def Mem`
 - `instance : Membership α (Set α)`
@@ -118,8 +112,7 @@ Highlights:
 ```turn
 as before
 ```
-
-Highlights:
+### Turn highlights
 
 - `Set`
 
@@ -131,7 +124,6 @@ allow-script-change: false
 -->
 
 First, protected def Subset. It takes s one and s two, both of type Set alpha. So it relates two sets, it does not create one.
-
 ### Lean
 
 ```lean
@@ -140,8 +132,7 @@ namespace Set
 
   protected def Subset (s₁ s₂ : Set α) :=
 ```
-
-Highlights:
+### Lean highlights
 
 - `protected def Subset`
 - `s₁ s₂ : Set α`
@@ -161,7 +152,6 @@ allow-script-change: false
 The body is for all a, a in s one implies a in s two.
 That is exactly the textbook rule.
 The double braces around a make it instance-implicit, so Lean again infer the element type for you.
-
 ### Lean
 
 ```lean
@@ -169,8 +159,7 @@ namespace Set
   protected def Subset (s₁ s₂ : Set α) :=
     ∀ ⦃a⦄, a ∈ s₁ → a ∈ s₂
 ```
-
-Highlights:
+### Lean highlights
 
 - `∀ ⦃a⦄, a ∈ s₁ → a ∈ s₂`
 ### Turn
@@ -189,14 +178,12 @@ allow-script-change: false
 Notice the in symbols here.
 They still come from Set dot Mem in the last video.
 So subset is just putting 2 of membership condition together in an implication.
-
 ### Lean
 
 ```lean
 as before
 ```
-
-Highlights:
+### Lean highlights
 
 - `a ∈ s₁`
 - `a ∈ s₂`
@@ -216,7 +203,6 @@ allow-script-change: false
 Now the registration, the same idea as Membership before.
 we implement the typeclass LE on set so that we can have use the notation >= on 2 sets.
 And again, the angle brackets make Set.Subset the implementation of the only method in typeclass LE.
-
 ### Lean
 
 ```lean
@@ -226,8 +212,7 @@ And again, the angle brackets make Set.Subset the implementation of the only met
   instance : LE (Set α) :=
     ⟨Set.Subset⟩
 ```
-
-Highlights:
+### Lean highlights
 
 - `instance : LE (Set α)`
 - `⟨Set.Subset⟩`
@@ -247,7 +232,6 @@ allow-script-change: false
 Then the typeclass HasSubset registers the subset symbol itself.
 But it use the notation from LE that we just implemented.
 So both <= notation and subset notation desugars to Set.Subset def of 2 sets
-
 ### Lean
 
 ```lean
@@ -262,8 +246,7 @@ So both <= notation and subset notation desugars to Set.Subset def of 2 sets
 
 -- A <= B and A ⊆ B desugars to Set.Subset A B
 ```
-
-Highlights:
+### Lean highlights
 
 - `instance : HasSubset (Set α)`
 - `⟨(· ≤ ·)⟩`
@@ -281,7 +264,6 @@ allow-script-change: false
 -->
 
 So that is Lean's modelling of subset. One def for the rule, two instances to register the ordering and the symbol, and a theorem tying the notation to the for-all form.
-
 ### Lean
 
 ```lean
@@ -298,8 +280,7 @@ namespace Set
 
 end Set
 ```
-
-Highlights:
+### Lean highlights
 
 - `protected def Subset`
 - `instance : LE (Set α)`
@@ -321,13 +302,11 @@ Now Turn-Lang, same rule, declared as a relation.
 relation Subset takes a type T and two sets A and B of type Set of T.
 PropModified means several proposition variants share the name.
 spoiler alert, we will talk about a special subset in next video
-
 ### Lean
 
 ```lean
 as before
 ```
-
 ### Turn
 
 ```turn
@@ -338,8 +317,7 @@ relation Subset(T: Any, A B: Set<T>): PropModified {
    }
 }
 ```
-
-Highlights:
+### Turn highlights
 
 - `relation Subset`
 - `A B: Set<T>`
@@ -355,14 +333,12 @@ allow-script-change: false
 Same mathematics, two layouts.
 Lean splits definition of Subset and its notation apart.
 Turn keeps the relation and its notation together in one block.
-
 ### Lean
 
 ```lean
 as before
 ```
-
-Highlights:
+### Lean highlights
 
 - `protected def Subset`
 - `instance : LE (Set α)`
@@ -372,8 +348,7 @@ Highlights:
 ```turn
 as before
 ```
-
-Highlights:
+### Turn highlights
 
 - `relation Subset`
 - `default`
@@ -387,13 +362,11 @@ allow-script-change: false
 
 So Next clip is proper subset, the strict version, with extra drama.
 Comment if you are stuck at anything, see you in the next one.
-
 ### Lean
 
 ```lean
 as before
 ```
-
 ### Turn
 
 ```turn
