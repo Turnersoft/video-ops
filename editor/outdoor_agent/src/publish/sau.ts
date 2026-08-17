@@ -60,6 +60,107 @@ async function runSau(args: string[]): Promise<string> {
   return runCommand(sauBin(), args);
 }
 
+const SAU_NOTE_PLATFORMS = new Set(['xiaohongshu', 'douyin', 'kuaishou']);
+
+type PublishNoteAlbumToSauParams = {
+  platform: string;
+  imagePaths: string[];
+  title: string;
+  note: string;
+  jobId: string;
+};
+
+function sauBrowserArgs(): string[] {
+  return Deno.env.get('SAU_HEADED') === '1' ? ['--headed'] : ['--headless'];
+}
+
+function hashtagsFromNote(note: string): string {
+  const tags = [...note.matchAll(/#([\p{L}\p{N}_-]+)/gu)].map((match) => match[1]);
+  return tags.slice(0, 10).join(',');
+}
+
+export function isSauNotePlatform(platform: string): boolean {
+  return SAU_NOTE_PLATFORMS.has(platform);
+}
+
+export async function publishNoteAlbumToSau({
+  platform,
+  imagePaths,
+  title,
+  note,
+  jobId,
+}: PublishNoteAlbumToSauParams): Promise<SauPublishResult> {
+  const mode = Deno.env.get('SAU_PUBLISH_MODE') ?? 'stub';
+  const publishedAt = new Date().toISOString();
+  const sauPlatform = SAU_PLATFORM_MAP[platform];
+
+  if (!sauPlatform || !isSauNotePlatform(platform)) {
+    throw new Error(
+      `${platform} does not support SAU image-note upload (use upload-note platforms only)`,
+    );
+  }
+  if (!imagePaths.length) {
+    throw new Error('At least one image is required for SAU note publish');
+  }
+
+  if (mode === 'stub') {
+    const postId = `sau-note-stub-${platform}-${Date.now().toString(36)}`;
+    return {
+      platform,
+      provider: 'social-auto-upload',
+      postId,
+      url: `https://example.invalid/${platform}/${postId}`,
+      status: 'live',
+      publishedAt,
+      jobId,
+      compositeRunId: undefined,
+      title,
+      videoPath: imagePaths[0] ?? '',
+      stub: true,
+      note: `Stub note publish (${imagePaths.length} images). Set SAU_PUBLISH_MODE=live on #/platforms.`,
+    };
+  }
+
+  const account = sauAccount(platform);
+  const args = [
+    sauPlatform,
+    'upload-note',
+    '--account',
+    account,
+    '--title',
+    title,
+    '--images',
+    ...imagePaths.map((imagePath) => path.resolve(imagePath)),
+    ...sauBrowserArgs(),
+  ];
+  const trimmedNote = note.trim();
+  if (trimmedNote) {
+    args.push('--note', trimmedNote);
+  }
+  const tags = hashtagsFromNote(trimmedNote);
+  if (tags) {
+    args.push('--tags', tags);
+  }
+
+  const output = await runSau(args);
+  const postId = `sau-note-${platform}-${Date.now().toString(36)}`;
+
+  return {
+    platform,
+    provider: 'social-auto-upload',
+    postId,
+    url: extractUrl(output) ?? `https://example.invalid/${platform}/${postId}`,
+    status: 'live',
+    publishedAt,
+    jobId,
+    compositeRunId: undefined,
+    title,
+    videoPath: imagePaths[0] ?? '',
+    stub: false,
+    sauOutput: output.slice(0, 500),
+  };
+}
+
 export async function publishToSau({
   platform,
   videoPath,
@@ -194,17 +295,63 @@ export function sauEnvDocs(): string[] {
   ];
 }
 
-export async function testSauConnection(): Promise<{ ok: boolean; message: string }> {
+export type SauLoginCheck = {
+  valid: boolean;
+  message: string;
+};
+
+export async function checkSauPlatformLogin(platform: string): Promise<SauLoginCheck> {
+  const cli = sauCliPlatform(platform);
+  if (!cli) {
+    return { valid: false, message: `${platform} is manual-only` };
+  }
+  try {
+    const output = await runSau([cli, 'check', '--account', sauAccount(platform)]);
+    const trimmed = output.trim().toLowerCase();
+    if (trimmed.includes('valid')) {
+      return { valid: true, message: 'Logged in' };
+    }
+    return {
+      valid: false,
+      message: trimmed || 'Login invalid — run login command',
+    };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    if (/invalid/i.test(message)) {
+      return { valid: false, message: 'Login invalid — run login command' };
+    }
+    return { valid: false, message };
+  }
+}
+
+export async function testSauPlatformConnection(
+  platform: string,
+): Promise<{ ok: boolean; message: string }> {
+  const login = await checkSauPlatformLogin(platform);
+  if (!login.valid) {
+    return { ok: false, message: login.message };
+  }
   if (sauPublishMode() === 'stub') {
     return {
       ok: true,
-      message: 'SAU is in stub mode — publishes will not run the CLI.',
+      message: 'Logged in — toggle SAU live on Platforms to publish',
     };
   }
+  return { ok: true, message: 'Logged in and SAU live mode enabled' };
+}
+
+export async function testSauConnection(): Promise<{ ok: boolean; message: string }> {
   try {
     const output = await runSau(['--help']);
     const snippet = output.trim().slice(0, 120) || 'sau responded';
-    return { ok: true, message: `SAU CLI reachable (${sauBin()}): ${snippet}` };
+    const mode = sauPublishMode();
+    return {
+      ok: true,
+      message:
+        mode === 'stub'
+          ? `SAU CLI reachable (${sauBin()}). ${snippet}`
+          : `SAU CLI reachable (${sauBin()}): ${snippet}`,
+    };
   } catch (error) {
     return {
       ok: false,

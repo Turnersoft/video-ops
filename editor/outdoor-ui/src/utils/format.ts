@@ -6,6 +6,8 @@ const PLATFORM_LABELS: Record<string, string> = {
   tiktok: 'TikTok',
   facebook: 'Facebook',
   bluesky: 'Bluesky',
+  threads: 'Threads',
+  reddit: 'Reddit',
   bilibili: '哔哩哔哩',
   douyin: '抖音',
   xiaohongshu: '小红书',

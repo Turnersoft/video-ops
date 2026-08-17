@@ -1,20 +1,22 @@
 import { providerFor, SUPPORTED_PLATFORMS } from './publish/index.ts';
 import {
-  hasZernioApiKey,
-  isZernioPlatform,
-  listZernioConnectedAccounts,
-  suggestedZernioAccountsJson,
-  testZernioConnection,
-  zernioAccountIdFor,
-  zernioApiKeysUrl,
-  zernioConnectGuideUrl,
-  zernioDashboardUrl,
-  zernioEnvDocs,
-  zernioPublishMode,
-  zernioSignupUrl,
-  type ZernioConnectedAccount,
-} from './publish/zernio.ts';
+  hasPostizApiKey,
+  isPostizPlatform,
+  listPostizIntegrations,
+  postizApiKeysUrl,
+  postizDashboardUrl,
+  postizDocsUrl,
+  postizEnvDocs,
+  postizIntegrationIdFor,
+  postizPublishMode,
+  postizSignupUrl,
+  suggestedPostizIntegrationTypesJson,
+  suggestedPostizIntegrationsJson,
+  testPostizConnection,
+  type PostizConnectedIntegration,
+} from './publish/postiz.ts';
 import {
+  checkSauPlatformLogin,
   isSauPlatform,
   sauAccountName,
   sauCliPlatform,
@@ -23,7 +25,14 @@ import {
   sauPublishMode,
   SAU_MANUAL_PLATFORMS,
   testSauConnection,
+  testSauPlatformConnection,
+  type SauLoginCheck,
 } from './publish/sau.ts';
+import {
+  applyPublishCredentials,
+  loadPublishCredentials,
+  savePublishCredentials,
+} from './publish-credentials.ts';
 
 export type PlatformConnectionStatus =
   | 'connected'
@@ -48,7 +57,7 @@ export type SignupStep = {
 
 export type PlatformStatus = {
   platform: string;
-  provider: 'zernio' | 'social-auto-upload' | 'unknown';
+  provider: 'postiz' | 'social-auto-upload' | 'unknown';
   mode: 'stub' | 'live';
   status: PlatformConnectionStatus;
   accountLabel: string | null;
@@ -74,27 +83,27 @@ export type PlatformsHealthResponse = {
   checkedAt: string;
   connectProgress: ConnectProgress;
   providers: {
-    zernio: {
+    postiz: {
       mode: 'stub' | 'live';
       hasApiKey: boolean;
       dashboardUrl: string;
-      signupUrl: string;
-      apiKeysUrl: string;
-      connectGuideUrl: string;
+      signupUrl?: string;
+      apiKeysUrl?: string;
+      connectGuideUrl?: string;
       envDocs: string[];
-      loginLinks: LoginLink[];
-      signupSteps: SignupStep[];
-      liveAccounts: ZernioConnectedAccount[];
-      suggestedAccountsJson: Record<string, string> | null;
-      suggestedAccountsExport: string | null;
+      loginLinks?: LoginLink[];
+      signupSteps?: SignupStep[];
+      liveIntegrations: PostizConnectedIntegration[];
+      suggestedIntegrationsJson: Record<string, string> | null;
+      suggestedIntegrationsExport: string | null;
     };
     sau: {
       mode: 'stub' | 'live';
       dashboardHint: string;
+      installHint?: string;
       envDocs: string[];
-      loginLinks: LoginLink[];
-      signupSteps: SignupStep[];
-      installHint: string;
+      loginLinks?: LoginLink[];
+      signupSteps?: SignupStep[];
     };
   };
   platforms: PlatformStatus[];
@@ -102,6 +111,8 @@ export type PlatformsHealthResponse = {
 };
 
 const SAU_REPO_URL = 'https://github.com/dreammis/social-auto-upload';
+const POSTIZ_CONNECT_GUIDE =
+  'https://docs.postiz.com/providers/overview';
 
 function maskId(value: string | null): string | null {
   if (!value) return null;
@@ -109,31 +120,35 @@ function maskId(value: string | null): string | null {
   return `${value.slice(0, 4)}…${value.slice(-2)}`;
 }
 
-function zernioSignupSteps(): SignupStep[] {
+function postizSignupSteps(): SignupStep[] {
   return [
     {
       step: 1,
-      title: 'Open Zernio',
-      detail: 'Sign up or log in at zernio.com.',
-      url: zernioSignupUrl(),
+      title: 'Start local Postiz',
+      detail:
+        'Docker: cd ~/Documents/company/postiz-docker-compose && docker compose up -d → http://localhost:4007',
+      url: 'http://localhost:4007',
     },
     {
       step: 2,
-      title: 'Create API key',
-      detail: 'Dashboard → API keys, then export ZERNIO_API_KEY on the Mac agent.',
-      url: zernioApiKeysUrl(),
+      title: 'Create Postiz account + API key',
+      detail:
+        'Sign up in the local UI → Settings → Developers → Public API. Paste the key into outdoor #/platforms.',
+      url: postizApiKeysUrl(),
     },
     {
       step: 3,
-      title: 'Connect English channels',
-      detail: 'Connect YouTube, X, LinkedIn, Instagram, TikTok, Facebook, Bluesky, Threads, Reddit, etc.',
-      url: zernioConnectGuideUrl(),
+      title: 'Add provider OAuth apps',
+      detail:
+        'Create developer apps (YouTube, X, Meta, …), put CLIENT_ID/SECRET into postiz-docker-compose env, docker compose down && up.',
+      url: POSTIZ_CONNECT_GUIDE,
     },
     {
       step: 4,
-      title: 'Sync account IDs',
-      detail: 'Sync on this page → ZERNIO_ACCOUNTS_JSON, then ZERNIO_PUBLISH_MODE=live and restart.',
-      url: zernioDashboardUrl(),
+      title: 'Connect channels + Sync',
+      detail:
+        'In Postiz UI connect each channel (OAuth). Then Sync on this page — integration IDs save and Postiz goes live.',
+      url: postizDashboardUrl(),
     },
   ];
 }
@@ -149,28 +164,25 @@ function sauSignupSteps(): SignupStep[] {
     {
       step: 2,
       title: 'Login each China platform',
-      detail: 'sau bilibili|douyin|xiaohongshu|kuaishou|tencent login --account default',
+      detail:
+        'sau bilibili|douyin|xiaohongshu|kuaishou|tencent login --account default',
       url: SAU_REPO_URL,
     },
     {
       step: 3,
       title: 'Enable live publish',
-      detail: 'export SAU_PUBLISH_MODE=live and restart outdoor agent.',
-      command: 'export SAU_ACCOUNT=default\nexport SAU_PUBLISH_MODE=live',
+      detail: 'After QR logins, toggle SAU live on this page (Save credentials).',
+      command: 'sau bilibili login --account default',
     },
   ];
 }
 
-function zernioLoginLinks(): LoginLink[] {
+function postizLoginLinks(): LoginLink[] {
   return [
-    { label: 'Open Zernio', url: zernioDashboardUrl() },
-    { label: 'API keys', url: zernioApiKeysUrl() },
-    { label: 'Connect accounts guide', url: zernioConnectGuideUrl() },
-    {
-      label: 'Copy env template',
-      command:
-        'export ZERNIO_API_KEY=…\nexport ZERNIO_ACCOUNTS_JSON=\'{"youtube":"acc_…","x":"acc_…"}\'\nexport ZERNIO_PUBLISH_MODE=live',
-    },
+    { label: 'Open Postiz', url: postizDashboardUrl() },
+    { label: 'API keys', url: postizApiKeysUrl() },
+    { label: 'Provider docs', url: POSTIZ_CONNECT_GUIDE },
+    { label: 'Public API docs', url: postizDocsUrl() },
   ];
 }
 
@@ -185,72 +197,84 @@ function sauLoginLinks(): LoginLink[] {
         'sau xiaohongshu login --account default',
         'sau kuaishou login --account default',
         'sau tencent login --account default',
-        'export SAU_PUBLISH_MODE=live',
       ].join('\n'),
     },
   ];
 }
 
-function zernioPlatformStatus(
+function postizPlatformStatus(
   platform: string,
-  liveByOutdoor: Map<string, ZernioConnectedAccount>,
+  liveByOutdoor: Map<string, PostizConnectedIntegration>,
 ): PlatformStatus {
-  const mode = zernioPublishMode();
-  const envId = zernioAccountIdFor(platform);
+  const mode = postizPublishMode();
+  const envId = postizIntegrationIdFor(platform);
   const live = liveByOutdoor.get(platform) ?? null;
   const accountId = envId ?? live?.id ?? null;
-  const hasKey = hasZernioApiKey();
+  const hasKey = hasPostizApiKey();
   const notes: string[] = [];
   let status: PlatformConnectionStatus;
 
   if (live && envId) {
     status = 'connected';
-    notes.push(`Live in Zernio as ${live.username ?? live.id}`);
+    notes.push(`Live in Postiz as ${live.name ?? live.id}`);
   } else if (live && !envId) {
     status = 'configured';
-    notes.push(`Connected in Zernio (${live.username ?? live.id}) — Sync into ZERNIO_ACCOUNTS_JSON`);
-  } else if (mode === 'stub') {
-    status = 'stub';
-    notes.push('Connect in Zernio, then set ZERNIO_PUBLISH_MODE=live');
+    notes.push(
+      `Connected in Postiz (${live.name ?? live.id}) — Sync into POSTIZ_INTEGRATIONS_JSON`,
+    );
   } else if (!hasKey) {
     status = 'missing_credentials';
-    notes.push('Set ZERNIO_API_KEY on the Mac agent');
-  } else if (!accountId) {
+    notes.push('Set POSTIZ_API_KEY on the Mac agent');
+  } else if (!live) {
     status = 'missing_credentials';
-    notes.push(`Connect ${platform} in Zernio, then Sync`);
+    notes.push(
+      envId
+        ? `Saved channel id is not connected in Postiz — reconnect ${platform}`
+        : `Connect ${platform} through this page, then Sync`,
+    );
   } else {
     status = 'configured';
-    notes.push('Account id present — Test connection to verify');
+    notes.push('Connected channel needs Sync before project publishing');
+  }
+  if (live && mode === 'stub') {
+    notes.push('Connected, but publishing is disabled until Postiz mode is live');
   }
 
   return {
     platform,
-    provider: 'zernio',
+    provider: 'postiz',
     mode,
     status,
-    accountLabel: accountId ? (live?.username ?? 'Zernio account') : null,
+    accountLabel: accountId ? (live?.name ?? 'Postiz channel') : null,
     accountMasked: maskId(accountId),
-    envHints: ['ZERNIO_API_KEY', `ZERNIO_ACCOUNTS_JSON["${platform}"]`, 'ZERNIO_PUBLISH_MODE'],
-    dashboardUrl: zernioDashboardUrl(),
+    envHints: [
+      'POSTIZ_API_KEY',
+      `POSTIZ_INTEGRATIONS_JSON["${platform}"]`,
+      'POSTIZ_PUBLISH_MODE',
+    ],
+    dashboardUrl: postizDashboardUrl(),
     loginCommand: null,
     loginLinks: [
-      { label: 'Dashboard', url: zernioDashboardUrl() },
-      { label: 'Connect guide', url: zernioConnectGuideUrl() },
+      { label: 'Dashboard', url: postizDashboardUrl() },
+      { label: 'Provider docs', url: `${POSTIZ_CONNECT_GUIDE}` },
     ],
-    signupUrl: zernioSignupUrl(),
+    signupUrl: postizSignupUrl(),
     signupSteps: [
       {
         step: 1,
-        title: `Connect ${platform} in Zernio`,
-        detail: 'Complete OAuth for this channel in Zernio.',
-        url: zernioConnectGuideUrl(),
+        title: `Connect ${platform} in Postiz`,
+        detail: 'Complete OAuth for this channel in the local Postiz UI.',
+        url: postizDashboardUrl(),
       },
     ],
     notes,
   };
 }
 
-function sauPlatformStatus(platform: string): PlatformStatus {
+function sauPlatformStatus(
+  platform: string,
+  login?: SauLoginCheck,
+): PlatformStatus {
   const mode = sauPublishMode();
   const cli = sauCliPlatform(platform);
   if (!cli) {
@@ -266,17 +290,41 @@ function sauPlatformStatus(platform: string): PlatformStatus {
       loginCommand: null,
       loginLinks: [{ label: 'SAU GitHub', url: SAU_REPO_URL }],
       signupUrl: null,
-      signupSteps: [{ step: 1, title: 'Manual publish', detail: `${platform} is not automated via SAU.` }],
+      signupSteps: [
+        {
+          step: 1,
+          title: 'Manual publish',
+          detail: `${platform} is not automated via SAU.`,
+        },
+      ],
       notes: [`${platform} is manual-only`],
     };
   }
   const account = sauAccountName(platform);
   const loginCommand = `sau ${cli} login --account ${account}`;
+  const loggedIn = login?.valid === true;
+  let status: PlatformConnectionStatus;
+  if (!loggedIn) {
+    status = 'missing_credentials';
+  } else if (mode === 'live') {
+    status = 'connected';
+  } else {
+    status = 'configured';
+  }
+  const notes: string[] = [];
+  if (!loggedIn) {
+    notes.push(login?.message ?? 'Run login command in terminal, then Refresh');
+    notes.push(`CLI: ${loginCommand}`);
+  } else if (mode === 'stub') {
+    notes.push('Logged in — toggle SAU live on this page to publish');
+  } else {
+    notes.push(`Ready to publish via ${loginCommand.replace(' login', '')}`);
+  }
   return {
     platform,
     provider: 'social-auto-upload',
     mode,
-    status: mode === 'stub' ? 'stub' : 'configured',
+    status,
     accountLabel: `SAU account (${account})`,
     accountMasked: account,
     envHints: ['SAU_BIN', 'SAU_ACCOUNT', 'SAU_PUBLISH_MODE'],
@@ -288,55 +336,104 @@ function sauPlatformStatus(platform: string): PlatformStatus {
     ],
     signupUrl: SAU_REPO_URL,
     signupSteps: [
-      { step: 1, title: `Login ${platform}`, detail: 'Run on Mac, complete QR/browser login.', command: loginCommand },
+      {
+        step: 1,
+        title: `Login ${platform}`,
+        detail: 'Run on Mac, complete QR/browser login.',
+        command: loginCommand,
+      },
     ],
-    notes: [mode === 'stub' ? 'Run login, then SAU_PUBLISH_MODE=live' : `CLI: ${loginCommand}`],
+    notes,
   };
 }
 
 function buildConnectProgress(platforms: PlatformStatus[]): ConnectProgress {
   const actionable = platforms.filter((entry) => entry.status !== 'manual');
   const ready = actionable.filter(
-    (entry) => entry.status === 'connected' || entry.status === 'configured',
+    (entry) =>
+      entry.status === 'connected' ||
+      (entry.provider === 'social-auto-upload' &&
+        entry.status === 'configured'),
   );
   const missing = actionable
-    .filter((entry) => entry.status === 'missing_credentials' || entry.status === 'stub')
+    .filter(
+      (entry) =>
+        entry.status === 'missing_credentials' || entry.status === 'stub',
+    )
     .map((entry) => entry.platform);
-  const manual = platforms.filter((entry) => entry.status === 'manual').map((entry) => entry.platform);
-  const stubOnly = actionable.length > 0 && actionable.every((entry) => entry.mode === 'stub');
-  return { total: actionable.length, ready: ready.length, missing, manual, stubOnly };
+  const manual = platforms
+    .filter((entry) => entry.status === 'manual')
+    .map((entry) => entry.platform);
+  const stubOnly =
+    actionable.length > 0 && actionable.every((entry) => entry.mode === 'stub');
+  return {
+    total: actionable.length,
+    ready: ready.length,
+    missing,
+    manual,
+    stubOnly,
+  };
 }
 
 export async function buildPlatformsHealth(): Promise<PlatformsHealthResponse> {
-  let liveAccounts: ZernioConnectedAccount[] = [];
+  await ensurePostizIntegrationsSynced();
+  let liveIntegrations: PostizConnectedIntegration[] = [];
   let suggested: Record<string, string> | null = null;
-  if (hasZernioApiKey()) {
+  if (hasPostizApiKey()) {
     try {
-      liveAccounts = await listZernioConnectedAccounts();
-      suggested = suggestedZernioAccountsJson(liveAccounts);
+      liveIntegrations = await listPostizIntegrations();
+      suggested = suggestedPostizIntegrationsJson(liveIntegrations);
     } catch (error) {
-      console.warn('[platforms] Zernio accounts:', error instanceof Error ? error.message : error);
+      console.warn(
+        '[platforms] Postiz integrations:',
+        error instanceof Error ? error.message : error,
+      );
     }
   }
-  const liveByOutdoor = new Map<string, ZernioConnectedAccount>();
-  for (const entry of liveAccounts) {
-    if (entry.outdoorPlatform && !liveByOutdoor.has(entry.outdoorPlatform)) {
+  const liveByOutdoor = new Map<string, PostizConnectedIntegration>();
+  for (const entry of liveIntegrations) {
+    if (
+      entry.outdoorPlatform &&
+      (!liveByOutdoor.has(entry.outdoorPlatform) ||
+        postizIntegrationIdFor(entry.outdoorPlatform) === entry.id)
+    ) {
       liveByOutdoor.set(entry.outdoorPlatform, entry);
     }
   }
 
+  const sauLoginByPlatform = new Map<string, SauLoginCheck>();
+  const sauPlatformsToCheck = [
+    ...SUPPORTED_PLATFORMS.filter((platform) => isSauPlatform(platform)),
+    ...SAU_MANUAL_PLATFORMS,
+  ];
+  await Promise.all(
+    sauPlatformsToCheck.map(async (platform) => {
+      if (!isSauPlatform(platform)) {
+        return;
+      }
+      try {
+        sauLoginByPlatform.set(platform, await checkSauPlatformLogin(platform));
+      } catch (error) {
+        sauLoginByPlatform.set(platform, {
+          valid: false,
+          message: error instanceof Error ? error.message : String(error),
+        });
+      }
+    }),
+  );
+
   const platforms: PlatformStatus[] = [];
   for (const platform of SUPPORTED_PLATFORMS) {
-    if (isZernioPlatform(platform)) {
+    if (isPostizPlatform(platform)) {
       if (platform === 'twitter') continue;
-      platforms.push(zernioPlatformStatus(platform, liveByOutdoor));
+      platforms.push(postizPlatformStatus(platform, liveByOutdoor));
     } else if (isSauPlatform(platform)) {
-      platforms.push(sauPlatformStatus(platform));
+      platforms.push(sauPlatformStatus(platform, sauLoginByPlatform.get(platform)));
     }
   }
   for (const platform of SAU_MANUAL_PLATFORMS) {
     if (!platforms.some((entry) => entry.platform === platform)) {
-      platforms.push(sauPlatformStatus(platform));
+      platforms.push(sauPlatformStatus(platform, sauLoginByPlatform.get(platform)));
     }
   }
 
@@ -344,21 +441,23 @@ export async function buildPlatformsHealth(): Promise<PlatformsHealthResponse> {
     checkedAt: new Date().toISOString(),
     connectProgress: buildConnectProgress(platforms),
     providers: {
-      zernio: {
-        mode: zernioPublishMode(),
-        hasApiKey: hasZernioApiKey(),
-        dashboardUrl: zernioDashboardUrl(),
-        signupUrl: zernioSignupUrl(),
-        apiKeysUrl: zernioApiKeysUrl(),
-        connectGuideUrl: zernioConnectGuideUrl(),
-        envDocs: zernioEnvDocs(),
-        loginLinks: zernioLoginLinks(),
-        signupSteps: zernioSignupSteps(),
-        liveAccounts,
-        suggestedAccountsJson: suggested && Object.keys(suggested).length ? suggested : null,
-        suggestedAccountsExport: suggested && Object.keys(suggested).length
-          ? `export ZERNIO_ACCOUNTS_JSON='${JSON.stringify(suggested)}'`
-          : null,
+      postiz: {
+        mode: postizPublishMode(),
+        hasApiKey: hasPostizApiKey(),
+        dashboardUrl: postizDashboardUrl(),
+        signupUrl: postizSignupUrl(),
+        apiKeysUrl: postizApiKeysUrl(),
+        connectGuideUrl: POSTIZ_CONNECT_GUIDE,
+        envDocs: postizEnvDocs(),
+        loginLinks: postizLoginLinks(),
+        signupSteps: postizSignupSteps(),
+        liveIntegrations,
+        suggestedIntegrationsJson:
+          suggested && Object.keys(suggested).length ? suggested : null,
+        suggestedIntegrationsExport:
+          suggested && Object.keys(suggested).length
+            ? `export POSTIZ_INTEGRATIONS_JSON='${JSON.stringify(suggested)}'`
+            : null,
       },
       sau: {
         mode: sauPublishMode(),
@@ -366,7 +465,8 @@ export async function buildPlatformsHealth(): Promise<PlatformsHealthResponse> {
         envDocs: sauEnvDocs(),
         loginLinks: sauLoginLinks(),
         signupSteps: sauSignupSteps(),
-        installHint: 'sau via ~/.local/bin — login China platforms, then SAU_PUBLISH_MODE=live.',
+        installHint:
+          'sau via ~/.local/bin — login China platforms, then SAU live on this page.',
       },
     },
     platforms,
@@ -374,24 +474,123 @@ export async function buildPlatformsHealth(): Promise<PlatformsHealthResponse> {
   };
 }
 
-export async function syncZernioAccountsSuggestion(): Promise<{
-  accounts: ZernioConnectedAccount[];
-  suggestedAccountsJson: Record<string, string>;
+export async function syncPostizIntegrationsSuggestion(): Promise<{
+  integrations: PostizConnectedIntegration[];
+  suggestedIntegrationsJson: Record<string, string>;
   exportCommand: string;
+  applied: boolean;
+  postizPublishMode: 'stub' | 'live';
 }> {
-  if (!hasZernioApiKey()) {
-    throw new Error('ZERNIO_API_KEY is not set — create a key in Zernio Dashboard → API keys');
+  if (!hasPostizApiKey()) {
+    throw new Error(
+      'POSTIZ_API_KEY is not set — paste the key on this page and Save, or create one in Postiz → Settings → Developers',
+    );
   }
-  const accounts = await listZernioConnectedAccounts();
-  const suggestedAccountsJson = suggestedZernioAccountsJson(accounts);
-  if (!Object.keys(suggestedAccountsJson).length) {
-    throw new Error('No connected Zernio accounts — connect platforms in the Zernio dashboard first');
+  const integrations = await listPostizIntegrations();
+  const suggestedIntegrationsJson = suggestedPostizIntegrationsJson(integrations);
+  const suggestedIntegrationTypesJson =
+    suggestedPostizIntegrationTypesJson(integrations);
+  if (!Object.keys(suggestedIntegrationsJson).length) {
+    throw new Error(
+      'No connected Postiz channels — connect platforms in the Postiz UI first',
+    );
   }
+  const saved = savePublishCredentials({
+    postizIntegrationsJson: suggestedIntegrationsJson,
+    postizIntegrationTypesJson: suggestedIntegrationTypesJson,
+    postizPublishMode: 'live',
+  });
   return {
-    accounts,
-    suggestedAccountsJson,
+    integrations,
+    suggestedIntegrationsJson,
+    applied: true,
+    postizPublishMode: saved.postizPublishMode,
     exportCommand:
-      `export ZERNIO_ACCOUNTS_JSON='${JSON.stringify(suggestedAccountsJson)}'\nexport ZERNIO_PUBLISH_MODE=live`,
+      `export POSTIZ_INTEGRATIONS_JSON='${JSON.stringify(suggestedIntegrationsJson)}'\nexport POSTIZ_PUBLISH_MODE=live`,
+  };
+}
+
+export async function selectPostizIntegration(
+  platform: string,
+  integrationId: string,
+): Promise<{
+  integration: PostizConnectedIntegration;
+  applied: boolean;
+}> {
+  const integrations = await listPostizIntegrations();
+  const integration = integrations.find(
+    (entry) =>
+      entry.id === integrationId && entry.outdoorPlatform === platform,
+  );
+  if (!integration) {
+    throw new Error(
+      `Postiz channel ${integrationId} is not connected as ${platform}`,
+    );
+  }
+  const current = loadPublishCredentials();
+  savePublishCredentials({
+    postizIntegrationsJson: {
+      ...current.postizIntegrationsJson,
+      [platform]: integration.id,
+    },
+    postizIntegrationTypesJson: {
+      ...current.postizIntegrationTypesJson,
+      [platform]: integration.identifier,
+    },
+    postizPublishMode: 'live',
+  });
+  return { integration, applied: true };
+}
+
+/** @deprecated Use syncPostizIntegrationsSuggestion */
+export const syncZernioAccountsSuggestion = syncPostizIntegrationsSuggestion;
+
+export async function ensurePostizIntegrationsSynced(): Promise<boolean> {
+  applyPublishCredentials();
+  if (!hasPostizApiKey()) {
+    return false;
+  }
+  const current = loadPublishCredentials();
+  if (Object.keys(current.postizIntegrationsJson ?? {}).length > 0) {
+    return false;
+  }
+  try {
+    const integrations = await listPostizIntegrations();
+    const suggestedIntegrationsJson = suggestedPostizIntegrationsJson(integrations);
+    const suggestedIntegrationTypesJson =
+      suggestedPostizIntegrationTypesJson(integrations);
+    if (!Object.keys(suggestedIntegrationsJson).length) {
+      return false;
+    }
+    savePublishCredentials({
+      postizIntegrationsJson: suggestedIntegrationsJson,
+      postizIntegrationTypesJson: suggestedIntegrationTypesJson,
+    });
+    return true;
+  } catch (error) {
+    console.warn(
+      '[platforms] Postiz auto-sync:',
+      error instanceof Error ? error.message : error,
+    );
+    return false;
+  }
+}
+
+/** Sync Postiz channels and turn on live publish for Postiz + SAU (one step before take publish). */
+export async function prepareForPublish(): Promise<{
+  postizPublishMode: 'stub' | 'live';
+  sauPublishMode: 'stub' | 'live';
+  syncedPlatforms: string[];
+  applied: boolean;
+}> {
+  applyPublishCredentials();
+  const sync = await syncPostizIntegrationsSuggestion();
+  const saved = savePublishCredentials({ sauPublishMode: 'live' });
+  return {
+    postizPublishMode: saved.postizPublishMode,
+    sauPublishMode: saved.sauPublishMode,
+    syncedPlatforms: Object.keys(sync.suggestedIntegrationsJson),
+    applied: true,
   };
 }
 
@@ -402,28 +601,40 @@ export async function testPlatformConnection(platform: string): Promise<{
   message: string;
 }> {
   const provider = providerFor(platform);
-  if (isZernioPlatform(platform)) {
-    const result = await testZernioConnection();
+  if (isPostizPlatform(platform)) {
+    const result = await testPostizConnection();
     return { platform, provider, ...result };
   }
   if (isSauPlatform(platform) || SAU_MANUAL_PLATFORMS.includes(platform)) {
     if (SAU_MANUAL_PLATFORMS.includes(platform)) {
-      return { platform, provider: 'social-auto-upload', ok: false, message: `${platform} is manual-only` };
+      return {
+        platform,
+        provider: 'social-auto-upload',
+        ok: false,
+        message: `${platform} is manual-only`,
+      };
     }
-    const result = await testSauConnection();
+    const result = await testSauPlatformConnection(platform);
     return { platform, provider, ...result };
   }
-  return { platform, provider, ok: false, message: `Unsupported platform: ${platform}` };
+  return {
+    platform,
+    provider,
+    ok: false,
+    message: `Unsupported platform: ${platform}`,
+  };
 }
 
-export async function testProviderConnection(provider: 'zernio' | 'sau'): Promise<{
+export async function testProviderConnection(
+  provider: 'postiz' | 'sau' | 'zernio',
+): Promise<{
   provider: string;
   ok: boolean;
   message: string;
 }> {
-  if (provider === 'zernio') {
-    const result = await testZernioConnection();
-    return { provider, ...result };
+  if (provider === 'postiz' || provider === 'zernio') {
+    const result = await testPostizConnection();
+    return { provider: 'postiz', ...result };
   }
   const result = await testSauConnection();
   return { provider: 'social-auto-upload', ...result };

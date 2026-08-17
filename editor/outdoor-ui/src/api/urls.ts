@@ -62,6 +62,94 @@ export function sourcePath(scriptId: string, takeId: string): string {
   return `/api/scripts/${encodeURIComponent(scriptId)}/takes/${encodeURIComponent(takeId)}/source`;
 }
 
+/** POST endpoint to reveal the take source video in Finder (macOS agent only). */
+export function sourceRevealPath(scriptId: string, takeId: string): string {
+  return `${sourcePath(scriptId, takeId)}/reveal-in-finder`;
+}
+
+/** POST endpoint to reveal a take artifact in Finder (macOS agent only). */
+export function artifactRevealPath(
+  scriptId: string,
+  takeId: string,
+  stage: PipelineStage | string,
+  runId: string,
+  fileName: string,
+): string {
+  return `${artifactPath(scriptId, takeId, stage, runId, fileName)}/reveal-in-finder`;
+}
+
+export type TakeVideoRevealTarget =
+  | { kind: 'source'; scriptId: string; takeId: string }
+  | {
+      kind: 'artifact';
+      scriptId: string;
+      takeId: string;
+      stage: PipelineStage | string;
+      runId: string;
+      fileName: string;
+    };
+
+/** Parse a take video URL (relative or absolute) into a Finder reveal target. */
+export function parseTakeVideoPath(relativeOrAbsolute: string): TakeVideoRevealTarget | null {
+  let pathname = relativeOrAbsolute;
+  try {
+    if (/^https?:\/\//i.test(relativeOrAbsolute)) {
+      pathname = new URL(relativeOrAbsolute).pathname;
+    }
+  } catch {
+    return null;
+  }
+
+  const sourceMatch = pathname.match(/^\/api\/scripts\/([^/]+)\/takes\/([^/]+)\/source$/);
+  if (sourceMatch) {
+    return {
+      kind: 'source',
+      scriptId: decodeURIComponent(sourceMatch[1]),
+      takeId: decodeURIComponent(sourceMatch[2]),
+    };
+  }
+
+  const artifactMatch = pathname.match(
+    /^\/api\/scripts\/([^/]+)\/takes\/([^/]+)\/artifacts\/([^/]+)\/([^/]+)\/(.+)$/,
+  );
+  if (artifactMatch) {
+    const [, scriptId, takeId, stage, runId, fileName] = artifactMatch.map(decodeURIComponent);
+    return {
+      kind: 'artifact',
+      scriptId,
+      takeId,
+      stage,
+      runId,
+      fileName,
+    };
+  }
+
+  return null;
+}
+
+export function revealTargetFromStageVideo(
+  scriptId: string,
+  takeId: string,
+  video: {
+    fileName?: string;
+    stage?: PipelineStage | string;
+    runId?: string | null;
+    url: string;
+  },
+): TakeVideoRevealTarget | undefined {
+  if (video.fileName && video.stage && video.runId) {
+    return {
+      kind: 'artifact',
+      scriptId,
+      takeId,
+      stage: video.stage,
+      runId: video.runId,
+      fileName: video.fileName,
+    };
+  }
+  return parseTakeVideoPath(video.url) ?? undefined;
+}
+
 /** Absolute source video URL against an agent base URL. */
 export function sourceUrl(baseUrl: string, scriptId: string, takeId: string): string {
   return joinBase(baseUrl, sourcePath(scriptId, takeId));

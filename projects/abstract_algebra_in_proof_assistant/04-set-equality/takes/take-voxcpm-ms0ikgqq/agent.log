@@ -1,0 +1,2 @@
+[2026-07-25T15:18:23.468Z] VoxCPM trial started (ref: /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrbtjdup/source.mp4)
+[2026-07-25T15:39:28.227Z] VoxCPM trial failed: Align slides to voice failed — error sending request from 127.0.0.1:50417 for http://127.0.0.1:8791/clone (127.0.0.1:8791): client error (SendRequest): connection closed before message completed

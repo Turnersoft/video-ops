@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 2,
+  "status": "review",
+  "createdAt": "2026-07-25T14:50:37.057Z",
+  "updatedAt": "2026-07-25T17:15:57.467Z",
+  "selectedRuns": {
+    "align": "align-ms0l5rh6",
+    "cut": "cut-ms0l5rh6",
+    "composite": "composite-ms0miymg"
+  },
+  "runs": {
+    "stabilize": [],
+    "cut": [
+      {
+        "runId": "cut-ms0l5rh6",
+        "status": "succeeded",
+        "createdAt": "2026-07-25T17:08:30.919Z",
+        "finishedAt": "2026-07-25T17:08:30.919Z",
+        "artifacts": {
+          "editedVideo": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-voxcpm-ms0hkqyj/pipeline/cut/cut-ms0l5rh6/edited-good-intervals.mp4"
+        }
+      },
+      {
+        "runId": "cut-ms0jgalw",
+        "status": "succeeded",
+        "createdAt": "2026-07-25T16:25:54.848Z",
+        "finishedAt": "2026-07-25T16:25:54.848Z",
+        "artifacts": {
+          "editedVideo": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-voxcpm-ms0hkqyj/pipeline/cut/cut-ms0jgalw/edited-good-intervals.mp4"
+        }
+      }
+    ],
+    "align": [
+      {
+        "runId": "align-ms0l5rh6",
+        "status": "succeeded",
+        "createdAt": "2026-07-25T17:09:11.692Z",
+        "finishedAt": "2026-07-25T17:09:11.692Z",
+        "artifacts": {
+          "narrationWav": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-voxcpm-ms0hkqyj/pipeline/align/align-ms0l5rh6/voxcpm-beats/narration.wav",
+          "animationOutdoor": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-voxcpm-ms0hkqyj/pipeline/align/align-ms0l5rh6/animation-outdoor.json"
+        }
+      },
+      {
+        "runId": "align-ms0jgalw",
+        "status": "failed",
+        "createdAt": "2026-07-25T16:26:36.605Z",
+        "finishedAt": "2026-07-25T16:26:36.605Z",
+        "artifacts": {
+          "narrationWav": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-voxcpm-ms0hkqyj/pipeline/align/align-ms0jgalw/voxcpm-beats/narration.wav",
+          "animationOutdoor": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-voxcpm-ms0hkqyj/pipeline/align/align-ms0jgalw/animation-outdoor.json"
+        },
+        "error": "node /Users/johndoe/Documents/company/video_ops/editor/remotion/scripts/render-outdoor.mjs 04-set-equality --edit-dir /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-voxcpm-ms0hkqyj/pipeline/composite/composite-ms0l06ft --format both failed (exit 1)",
+        "errorCode": "subprocess",
+        "errorTitle": "VoxCPM narration failed",
+        "errorHint": "See the stage log below for the full command output."
+      },
+      {
+        "runId": "align-ms0hkqzw",
+        "status": "failed",
+        "createdAt": "2026-07-25T14:50:37.103Z",
+        "finishedAt": "2026-07-25T14:50:37.103Z",
+        "error": "VoxCPM server not reachable at http://127.0.0.1:8791 — run npm run outdoor:all (or npm run setup:voxcpm)",
+        "errorCode": "unknown",
+        "errorTitle": "Align slides to voice failed",
+        "errorHint": "Check the stage log on Mac for details."
+      }
+    ],
+    "composite": [
+      {
+        "runId": "composite-ms0miymg",
+        "status": "succeeded",
+        "createdAt": "2026-07-25T17:15:57.467Z",
+        "finishedAt": "2026-07-25T17:15:57.467Z",
+        "artifacts": {
+          "portrait": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-voxcpm-ms0hkqyj/pipeline/composite/composite-ms0miymg/outdoor-portrait.mp4",
+          "landscape": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-voxcpm-ms0hkqyj/pipeline/composite/composite-ms0miymg/outdoor-landscape.mp4",
+          "manifest": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-voxcpm-ms0hkqyj/pipeline/composite/composite-ms0miymg/outdoor-manifest.json",
+          "portraitUrl": "/api/scripts/04-set-equality/takes/take-voxcpm-ms0hkqyj/artifacts/composite/composite-ms0miymg/outdoor-portrait.mp4",
+          "landscapeUrl": "/api/scripts/04-set-equality/takes/take-voxcpm-ms0hkqyj/artifacts/composite/composite-ms0miymg/outdoor-landscape.mp4"
+        },
+        "builtFrom": {
+          "align": "align-ms0l5rh6",
+          "cut": "cut-ms0l5rh6"
+        }
+      }
+    ],
+    "social": []
+  },
+  "autoRun": false,
+  "jobId": "job-take-voxcpm-ms0hkqyj",
+  "takeId": "take-voxcpm-ms0hkqyj",
+  "scriptId": "04-set-equality",
+  "scriptTitle": "04_set_equality",
+  "sourceVideoPath": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-voxcpm-ms0hkqyj/source.mp4",
+  "takeManifestPath": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-voxcpm-ms0hkqyj/take.json"
+}

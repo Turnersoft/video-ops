@@ -178,6 +178,22 @@ export function formatPipelineError(
   }
 
   if (
+    combined.includes('caption translate') ||
+    combined.includes('caption-translate') ||
+    combined.includes('translate-captions-local') ||
+    combined.includes('CAPTION_TRANSLATE')
+  ) {
+    return {
+      code: 'caption_translate',
+      title: 'Chinese caption translation failed',
+      message: logLine ?? 'Align could not translate spoken captions to Chinese.',
+      hint:
+        'Start npm run outdoor:all (local server on :8790), or set CAPTION_TRANSLATE_PYTHON to IndexTTS venv python. Optional cloud fallback: CAPTION_TRANSLATE_PROVIDER=openai + OPENAI_API_KEY.',
+      detail,
+    };
+  }
+
+  if (
     combined.includes('ssl') ||
     combined.includes('econnrefused') ||
     combined.includes('network') ||

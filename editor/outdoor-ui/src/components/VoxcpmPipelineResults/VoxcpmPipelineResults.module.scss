@@ -1,0 +1,87 @@
+@use '../../app' as *;
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
+
+.intro {
+  color: $muted;
+  font-size: $font-small;
+  line-height: 20px;
+}
+
+.stepCard {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  padding: $space-md;
+  border-radius: 10px;
+  background-color: rgba(15, 23, 42, 0.45);
+  border-width: 1px;
+  border-color: rgba(148, 163, 184, 0.25);
+}
+
+.stepCardActive {
+  border-color: rgba(249, 115, 22, 0.45);
+}
+
+.stepCardDone {
+  border-color: rgba(34, 197, 94, 0.35);
+}
+
+.stepCardFailed {
+  border-color: rgba(239, 68, 68, 0.45);
+}
+
+.stepHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $space-sm;
+}
+
+.stepBadge {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(249, 115, 22, 0.18);
+}
+
+.stepBadgeText {
+  color: $orange;
+  font-weight: 900;
+  font-size: $font-small;
+}
+
+.stepTitle {
+  flex: 1;
+  color: $text;
+  font-weight: 800;
+  font-size: $font-body;
+}
+
+.stepStatus {
+  font-size: $font-small;
+  font-weight: 700;
+}
+
+.meta {
+  color: $muted;
+  font-size: $font-small;
+  line-height: 18px;
+}
+
+.progressRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $space-sm;
+}
+
+.audio {
+  width: 100%;
+}

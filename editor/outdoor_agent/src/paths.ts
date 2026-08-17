@@ -156,6 +156,11 @@ export function animationMdPath(scriptId: string): string {
   return path.join(scriptDirFor(scriptId), 'animation.md');
 }
 
+/** Human-authored copy for the beat poster album. */
+export function beatPosterMdPath(scriptId: string): string {
+  return path.join(scriptDirFor(scriptId), 'beat-posters.md');
+}
+
 /** @deprecated Use seriesForScriptId */
 export function scriptCollectionFor(scriptId: string): ScriptSeriesDir {
   return seriesForScriptId(scriptId);
@@ -401,8 +406,40 @@ export function publishStatePathForTake(scriptId: string, takeId: string): strin
   return path.join(takeDir(scriptId, takeId), 'publish-state.json');
 }
 
+/** Per-episode publish thumbnails — four fixed JPG slots (see script-covers.ts). */
+export const SCRIPT_COVERS_DIR_NAME = 'covers';
+export const SCRIPT_COVERS_MANIFEST = 'covers.json';
+
+export function scriptCoversDir(scriptId: string): string {
+  return path.join(scriptDirFor(scriptId), SCRIPT_COVERS_DIR_NAME);
+}
+
+export function scriptCoversManifestPath(scriptId: string): string {
+  return path.join(scriptCoversDir(scriptId), SCRIPT_COVERS_MANIFEST);
+}
+
+export function scriptBeatPostersDir(scriptId: string): string {
+  return path.join(scriptDirFor(scriptId), 'beat-posters');
+}
+
+export function scriptBeatPostersManifestPath(scriptId: string): string {
+  return path.join(scriptBeatPostersDir(scriptId), 'manifest.json');
+}
+
+export function scriptBeatPosterPublishStatePath(scriptId: string): string {
+  return path.join(scriptBeatPostersDir(scriptId), 'publish-state.json');
+}
+
 export function takeCoversDir(scriptId: string, takeId: string): string {
   return path.join(takeDir(scriptId, takeId), 'covers');
+}
+
+export function takeSocialCardsDir(scriptId: string, takeId: string): string {
+  return path.join(takeDir(scriptId, takeId), 'social-cards');
+}
+
+export function socialCardsManifestPath(scriptId: string, takeId: string): string {
+  return path.join(takeSocialCardsDir(scriptId, takeId), 'manifest.json');
 }
 
 export function coversIndexPath(scriptId: string, takeId: string): string {

@@ -4,7 +4,7 @@
   "titleEnglish": "01_set",
   "titleChina": "01_set",
   "title": "01_set",
-  "generatedAt": "2026-07-25T02:42:48.559Z",
+  "generatedAt": "2026-07-25T08:06:04.972Z",
   "source": {},
   "english": {
     "youtube": {
@@ -39,7 +39,7 @@
   "china": {
     "bilibili": {
       "title": "01_set",
-      "body": "01_set\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论\n（请翻译为中文后发布）"
+      "body": "01_set\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
     },
     "douyin": {
       "title": "Set — Lean Mem vs Turn-Lang container (60s)",

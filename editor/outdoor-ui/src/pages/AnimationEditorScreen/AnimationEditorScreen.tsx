@@ -26,9 +26,14 @@ import {
 import { draftsFromLive, draftDiffersFromBeat } from "../../components/ScriptBeatEditorPanel/ScriptBeatEditorPanel.utils";
 import { Header } from "../../components/Header/Header";
 import { Button } from "../../components/Button/Button";
+import { ScriptCoversPanel } from "../../components/ScriptCoversPanel/ScriptCoversPanel";
 import { OrientationToggle } from "../../components/OrientationToggle/OrientationToggle";
+import { VoiceEngineToggle } from "../../components/VoiceEngineToggle/VoiceEngineToggle";
+import { LanguageToggle } from "../../components/LanguageToggle/LanguageToggle";
 import { useOutdoorUi } from "../../context/OutdoorUiContext";
 import { useOutdoorRoute } from "../../hooks/useOutdoorRoute";
+import { useScriptLanguage } from "../../hooks/useScriptLanguage";
+import { useVoiceEngine } from "../../hooks/useVoiceEngine";
 import { colors, radii, sharedStyles, spacing, typography } from "../../theme";
 import type { LiveBeat, LiveScript, StyleKit } from "../../types";
 import type {
@@ -37,6 +42,7 @@ import type {
   BeatTemplateKind,
 } from "../../types/beatStudio";
 import { beatStartFrame } from "../../utils/beatSeek";
+import type { RemotionSeekOptions } from "../../components/RemotionEmbed/RemotionEmbed.types";
 import {
   addCandidate,
   createCandidate,
@@ -63,6 +69,13 @@ import {
 } from "../../utils/animationMdFormat";
 import { computeScriptRemotionPreviewSize } from "../../utils/scriptRemotionPreviewLayout";
 import { templateConfigNeedsRemotionSync } from "../../utils/templateConfigRemotionSync";
+import { queueVoxcpmPendingSentences } from "../../utils/queueVoxcpmPending";
+import {
+  VOICE_ENGINE_LABELS,
+  VOICE_ENGINE_IDS,
+  defaultVoiceEngine,
+  type VoiceEngineId,
+} from "../../utils/voiceEngine";
 import classes from "./AnimationEditorScreen.module.scss";
 
 function resolveStyleKit(live: LiveScript | null): StyleKit {
@@ -157,6 +170,8 @@ export function AnimationEditorScreen({
   scriptId,
 }: AnimationEditorScreenProps) {
   const { api, invalidateAll, layout, onOpenFilm } = useOutdoorUi();
+  const { voiceEngine, setVoiceEngine } = useVoiceEngine();
+  const { scriptLanguage, setScriptLanguage } = useScriptLanguage();
   const layoutStyles = layoutStylesFor(layout);
   const {
     navigateToLibrary,
@@ -164,6 +179,7 @@ export function AnimationEditorScreen({
     navigateToFilm,
     navigateToScript,
     navigateToPostProcess,
+    navigateToTake,
   } = useOutdoorRoute();
 
   const [live, setLive] = useState<LiveScript | null>(null);
@@ -181,6 +197,19 @@ export function AnimationEditorScreen({
   const [previewFormat, setPreviewFormat] = useState<OutdoorPreviewFormat>("landscape");
   const [formatBusy, setFormatBusy] = useState(false);
   const [seekStatus, setSeekStatus] = useState<string | null>(null);
+  const [voxcpmAllBusy, setVoxcpmAllBusy] = useState(false);
+  const [voxcpmRegenerateBusy, setVoxcpmRegenerateBusy] = useState(false);
+  const [previewVoiceEngine, setPreviewVoiceEngineState] = useState<VoiceEngineId>(
+    defaultVoiceEngine(),
+  );
+  const [previewEnginesReady, setPreviewEnginesReady] = useState<
+    Record<VoiceEngineId, boolean>
+  >({
+    voxcpm: false,
+    indextts: false,
+  });
+  const [previewVoiceBusy, setPreviewVoiceBusy] = useState(false);
+  const [generateCloneBusy, setGenerateCloneBusy] = useState(false);
   const [beatStudio, setBeatStudio] = useState<BeatStudioDocument | null>(null);
   const dirtyRef = useRef(false);
   const previewRef = useRef<ScriptRemotionPreviewHandle | null>(null);
@@ -189,6 +218,7 @@ export function AnimationEditorScreen({
   const beatStudioRef = useRef(beatStudio);
   /** Last Remotion timeline frame (scrub / seek) — restored after preview remount. */
   const lastPreviewFrameRef = useRef<number | null>(null);
+  const previewPlayingRef = useRef(false);
   const templateConfigSyncTimerRef = useRef<ReturnType<typeof setTimeout> | null>(
     null,
   );
@@ -197,14 +227,20 @@ export function AnimationEditorScreen({
   beatStudioRef.current = beatStudio;
 
   const seekPreviewToFrame = useCallback(
-    (frame: number, statusLabel?: string) => {
+    (
+      frame: number,
+      statusLabel?: string,
+      options?: { resumePlayback?: boolean },
+    ) => {
       const safeFrame = Math.max(0, Math.round(frame));
       lastPreviewFrameRef.current = safeFrame;
       const seconds = safeFrame / 30;
       setSeekStatus(
         statusLabel ?? `Seek ${seconds.toFixed(1)}s (frame ${safeFrame})`,
       );
-      previewRef.current?.seekToFrame(safeFrame);
+      previewRef.current?.seekToFrame(safeFrame, {
+        resumePlayback: options?.resumePlayback,
+      });
       if (Platform.OS === "web" && typeof document !== "undefined") {
         const iframe = document.querySelector("iframe");
         if (!iframe?.contentWindow || !iframe.src) {
@@ -217,6 +253,7 @@ export function AnimationEditorScreen({
               type: "turn-outdoor-align-seek",
               frame: safeFrame,
               compositionId: scriptId,
+              resumePlayback: options?.resumePlayback === true,
             },
             origin,
           );
@@ -237,7 +274,17 @@ export function AnimationEditorScreen({
       seekPreviewToFrame(
         frame,
         `Beat ${index + 1} · seek ${(frame / 30).toFixed(1)}s (frame ${frame})`,
+        { resumePlayback: previewPlayingRef.current },
       );
+    },
+    [seekPreviewToFrame],
+  );
+
+  const seekPreviewFromSpoken = useCallback(
+    (frame: number, label: string, options?: RemotionSeekOptions) => {
+      seekPreviewToFrame(frame, label, {
+        resumePlayback: options?.resumePlayback ?? previewPlayingRef.current,
+      });
     },
     [seekPreviewToFrame],
   );
@@ -273,6 +320,9 @@ export function AnimationEditorScreen({
       const frame = Number(record.frame);
       if (!Number.isFinite(frame)) {
         return;
+      }
+      if (typeof record.playing === "boolean") {
+        previewPlayingRef.current = record.playing;
       }
       lastPreviewFrameRef.current = Math.max(0, Math.round(frame));
     };
@@ -401,6 +451,7 @@ export function AnimationEditorScreen({
           ...beat,
           title: draft.title || beat.title,
           say: draft.say,
+          chinese: draft.chinese,
           leanCode: draft.leanCode,
           turnCode: draft.turnCode,
           visualNotes: draft.visualNotes,
@@ -609,6 +660,7 @@ export function AnimationEditorScreen({
         const next = await api.putLiveBeat(scriptId, index, {
           title: draft.title,
           say: draft.say,
+          chinese: draft.chinese,
           leanCode: draft.leanCode,
           turnCode: draft.turnCode,
           visualNotes: encodeVisualNotesForSave(draft.visualNotes, candidate),
@@ -696,6 +748,7 @@ export function AnimationEditorScreen({
         const next = await api.putLiveBeat(scriptId, index, {
           title: draft.title,
           say: draft.say,
+          chinese: draft.chinese,
           leanCode: draft.leanCode,
           turnCode: draft.turnCode,
           visualNotes: candidate
@@ -857,6 +910,164 @@ export function AnimationEditorScreen({
     [api, formatBusy, invalidateAll, previewFormat, scriptId],
   );
 
+  const handleVoxcpmAll = useCallback(async () => {
+    if (voxcpmAllBusy) {
+      return;
+    }
+    setVoxcpmAllBusy(true);
+    setError(null);
+    try {
+      const catalog = await api.getCatalog();
+      const script = catalog.scripts.find((entry) => entry.scriptId === scriptId);
+      const referenceTakeId =
+        script?.takes.find((take) => take.hasSourceVideo)?.takeId ?? "";
+      if (!referenceTakeId) {
+        setError("Film a take first — voice clone needs a reference take.");
+        return;
+      }
+      const { queued } = await queueVoxcpmPendingSentences(api, scriptId, {
+        referenceTakeId,
+        voiceEngine,
+        scriptLanguage,
+      });
+      if (queued === 0) {
+        setStatus(`Every beat already has latest ${VOICE_ENGINE_LABELS[voiceEngine]} voice`);
+      } else {
+        setStatus(
+          `Queued ${VOICE_ENGINE_LABELS[voiceEngine]} for ${queued} pending sentence${queued === 1 ? "" : "s"}`,
+        );
+        setPreviewRevision((value) => value + 1);
+      }
+      invalidateAll();
+    } catch (voxcpmError) {
+      setError(formatOutdoorApiError(voxcpmError));
+    } finally {
+      setVoxcpmAllBusy(false);
+    }
+  }, [api, invalidateAll, scriptId, scriptLanguage, voiceEngine, voxcpmAllBusy]);
+
+  const handleVoxcpmRegenerateAll = useCallback(async () => {
+    if (voxcpmRegenerateBusy) {
+      return;
+    }
+    setVoxcpmRegenerateBusy(true);
+    setError(null);
+    try {
+      const catalog = await api.getCatalog();
+      const script = catalog.scripts.find((entry) => entry.scriptId === scriptId);
+      const referenceTakeId =
+        script?.takes.find((take) => take.hasSourceVideo)?.takeId ?? "";
+      if (!referenceTakeId) {
+        setError("Film a take first — voice clone needs a reference take.");
+        return;
+      }
+      const { queued } = await queueVoxcpmPendingSentences(api, scriptId, {
+        referenceTakeId,
+        voiceEngine,
+        scriptLanguage,
+        force: true,
+      });
+      setStatus(
+        queued > 0
+          ? `Regenerating ${queued} sentence${queued === 1 ? "" : "s"} with ${VOICE_ENGINE_LABELS[voiceEngine]}`
+          : `No sentences to regenerate with ${VOICE_ENGINE_LABELS[voiceEngine]}`,
+      );
+      setPreviewRevision((value) => value + 1);
+      invalidateAll();
+    } catch (voxcpmError) {
+      setError(formatOutdoorApiError(voxcpmError));
+    } finally {
+      setVoxcpmRegenerateBusy(false);
+    }
+  }, [api, invalidateAll, scriptId, scriptLanguage, voiceEngine, voxcpmRegenerateBusy]);
+
+  useEffect(() => {
+    if (scriptLanguage === "zh" && voiceEngine !== "voxcpm") {
+      setVoiceEngine("voxcpm");
+    }
+  }, [scriptLanguage, setVoiceEngine, voiceEngine]);
+
+  const refreshPreviewVoiceState = useCallback(async () => {
+    try {
+      const doc = await api.getVoxcpmEditor(scriptId, undefined, voiceEngine, scriptLanguage);
+      setPreviewVoiceEngineState(doc.previewVoiceEngine ?? defaultVoiceEngine());
+      setPreviewEnginesReady(
+        doc.previewEnginesReady ?? { voxcpm: false, indextts: false },
+      );
+    } catch {
+      // Preview metadata is optional until voice is generated.
+    }
+  }, [api, scriptId, scriptLanguage, voiceEngine]);
+
+  useEffect(() => {
+    if (!live) {
+      return;
+    }
+    void refreshPreviewVoiceState();
+  }, [live, previewRevision, refreshPreviewVoiceState]);
+
+  const handlePreviewVoiceEngineChange = useCallback(
+    async (engine: VoiceEngineId) => {
+      if (previewVoiceBusy || engine === previewVoiceEngine) {
+        return;
+      }
+      setPreviewVoiceBusy(true);
+      setError(null);
+      try {
+        await api.setPreviewVoiceEngine(scriptId, engine);
+        setPreviewVoiceEngineState(engine);
+        setPreviewRevision((value) => value + 1);
+        setStatus(`Remotion preview voice: ${VOICE_ENGINE_LABELS[engine]}`);
+      } catch (previewError) {
+        setError(formatOutdoorApiError(previewError));
+      } finally {
+        setPreviewVoiceBusy(false);
+        void refreshPreviewVoiceState();
+      }
+    },
+    [
+      api,
+      previewVoiceBusy,
+      previewVoiceEngine,
+      refreshPreviewVoiceState,
+      scriptId,
+    ],
+  );
+
+  const previewVoiceDisabledEngines = useMemo(
+    () =>
+      VOICE_ENGINE_IDS.filter((engine) => !(previewEnginesReady?.[engine] ?? false)),
+    [previewEnginesReady],
+  );
+
+  const handleGenerateAiCloneTake = useCallback(async () => {
+    if (generateCloneBusy) {
+      return;
+    }
+    setGenerateCloneBusy(true);
+    setError(null);
+    try {
+      const catalog = await api.getCatalog();
+      const script = catalog.scripts.find((entry) => entry.scriptId === scriptId);
+      const referenceTakeId =
+        script?.takes.find((take) => take.hasSourceVideo)?.takeId ?? "";
+      if (!referenceTakeId) {
+        setError("Film a take first — VoxCPM needs a voice reference.");
+        return;
+      }
+      const response = await api.startVoxcpmTrial(scriptId, {
+        referenceTakeId,
+        renderComposite: true,
+      });
+      invalidateAll();
+      navigateToTake(scriptId, response.takeId);
+    } catch (cloneError) {
+      setError(formatOutdoorApiError(cloneError));
+    } finally {
+      setGenerateCloneBusy(false);
+    }
+  }, [api, generateCloneBusy, invalidateAll, navigateToTake, scriptId]);
+
   const { height: windowHeight, width: windowWidth } = useWindowDimensions();
   const splitPreviewLayout = useMemo(
     () =>
@@ -891,9 +1102,16 @@ export function AnimationEditorScreen({
             },
           },
           {
+            label: generateCloneBusy ? "Creating…" : "Generate AI clone take",
+            onPress: () => {
+              void handleGenerateAiCloneTake();
+            },
+            variant: "primary",
+            disabled: generateCloneBusy || loading || !live,
+          },
+          {
             label: "Post-process",
             onPress: () => navigateToPostProcess(scriptId),
-            variant: "primary",
           },
           { label: "AI URL", onPress: navigateToPlatforms },
         ]}
@@ -935,13 +1153,57 @@ export function AnimationEditorScreen({
                 ) : (
                   <View style={styles.previewToolbarSpacer} />
                 )}
-                <OrientationToggle
-                  value={previewFormat}
-                  onChange={(format) => {
-                    void handlePreviewFormatChange(format);
-                  }}
-                  disabled={formatBusy || loading || !live}
-                />
+                <View style={styles.previewToolbarActions}>
+                  <LanguageToggle
+                    value={scriptLanguage}
+                    onChange={setScriptLanguage}
+                    disabled={loading || !live}
+                  />
+                  <VoiceEngineToggle
+                    value={voiceEngine}
+                    onChange={setVoiceEngine}
+                    disabled={loading || !live || scriptLanguage === "zh"}
+                  />
+                  <VoiceEngineToggle
+                    label="Remotion"
+                    value={previewVoiceEngine}
+                    onChange={(engine) => {
+                      void handlePreviewVoiceEngineChange(engine);
+                    }}
+                    disabled={loading || !live || previewVoiceBusy}
+                    disabledEngines={previewVoiceDisabledEngines}
+                  />
+                  <Button
+                    label={
+                      voxcpmAllBusy
+                        ? "Queuing…"
+                        : `${VOICE_ENGINE_LABELS[voiceEngine].toLowerCase()} all`
+                    }
+                    variant="primary"
+                    disabled={voxcpmAllBusy || loading || !live}
+                    onPress={() => {
+                      void handleVoxcpmAll();
+                    }}
+                  />
+                  <Button
+                    label={
+                      voxcpmRegenerateBusy
+                        ? "Regenerating…"
+                        : `Regenerate ${VOICE_ENGINE_LABELS[voiceEngine].toLowerCase()} all`
+                    }
+                    disabled={voxcpmRegenerateBusy || loading || !live}
+                    onPress={() => {
+                      void handleVoxcpmRegenerateAll();
+                    }}
+                  />
+                  <OrientationToggle
+                    value={previewFormat}
+                    onChange={(format) => {
+                      void handlePreviewFormatChange(format);
+                    }}
+                    disabled={formatBusy || loading || !live}
+                  />
+                </View>
               </View>
 
               {live ? (
@@ -979,6 +1241,12 @@ export function AnimationEditorScreen({
                       onTemplateChange={handleTemplateChange}
                       onTemplateConfigChange={handleTemplateConfigChange}
                       scriptId={scriptId}
+                      voiceEngine={voiceEngine}
+                      scriptLanguage={scriptLanguage}
+                      onPreviewAudioChanged={() => {
+                        void refreshPreviewVoiceState();
+                      }}
+                      onSeekPreviewFrame={seekPreviewFromSpoken}
                     />
                     {activeBeatState ? (
                       <BeatCandidateRail
@@ -1001,6 +1269,7 @@ export function AnimationEditorScreen({
                         beatStudio={beatStudio}
                       />
                     </View>
+                    <ScriptCoversPanel scriptId={scriptId} compact />
                   </ScrollView>
                 ) : (
                   <View style={styles.editorWrap}>
@@ -1061,6 +1330,12 @@ export function AnimationEditorScreen({
                               onTemplateChange={handleTemplateChange}
                               onTemplateConfigChange={handleTemplateConfigChange}
                               scriptId={scriptId}
+                              voiceEngine={voiceEngine}
+                              scriptLanguage={scriptLanguage}
+                              onPreviewAudioChanged={() => {
+                                void refreshPreviewVoiceState();
+                              }}
+                              onSeekPreviewFrame={seekPreviewFromSpoken}
                             />
                           </View>
                         </View>
@@ -1075,6 +1350,7 @@ export function AnimationEditorScreen({
                         beatStudio={beatStudio}
                       />
                     </View>
+                    <ScriptCoversPanel scriptId={scriptId} compact />
                   </View>
                 )
               ) : null}
@@ -1385,6 +1661,12 @@ const styles = StyleSheet.create({
   },
   previewToolbarSpacer: {
     flex: 1,
+  },
+  previewToolbarActions: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: spacing.sm,
+    flexShrink: 0,
   },
   errorHint: {
     color: colors.muted,

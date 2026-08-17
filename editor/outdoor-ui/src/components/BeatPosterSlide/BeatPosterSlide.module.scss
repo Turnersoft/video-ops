@@ -1,0 +1,561 @@
+@use '../../app' as *;
+
+.frame {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 3 / 4;
+}
+
+.frameCompact {
+  max-width: 300px;
+}
+
+.poster {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  gap: 2%;
+  overflow: hidden;
+  color: #0f172a;
+  border-radius: $radius-md;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #0f172a;
+  position: relative;
+}
+
+.posterTurn {
+  background:
+    radial-gradient(circle at 12% 10%, rgba(232, 160, 255, 0.22) 0 12%, transparent 13%),
+    radial-gradient(circle at 88% 8%, rgba(125, 211, 252, 0.28) 0 16%, transparent 17%),
+    radial-gradient(circle at 8% 92%, rgba(255, 228, 230, 0.55) 0 16%, transparent 17%),
+    linear-gradient(180deg, #eef2ff 0%, #dbeafe 46%, #fff7ed 100%);
+}
+
+.posterLean {
+  background:
+    radial-gradient(circle at 14% 12%, rgba(148, 163, 184, 0.14) 0 12%, transparent 13%),
+    radial-gradient(circle at 86% 10%, rgba(100, 116, 139, 0.1) 0 14%, transparent 15%),
+    linear-gradient(180deg, #f8fafc 0%, #f1f5f9 52%, #e2e8f0 100%);
+}
+
+.posterTurn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(37, 99, 235, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+.posterLean::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(100, 116, 139, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100, 116, 139, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+.posterZh {
+  font-family: "PingFang SC", "SF Pro Display", system-ui, sans-serif;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.titlePaper {
+  position: relative;
+  border-radius: 20px;
+  padding: 14px 14px 12px;
+  overflow: visible;
+}
+
+.posterTurn .titlePaper {
+  background: linear-gradient(180deg, #fffefb 0%, #fff1f5 52%, #ffe8ef 100%);
+  border-style: solid;
+  border-width: 3px;
+  border-color: #ff2442;
+  box-shadow:
+    4px 4px 0 rgba(255, 36, 66, 0.28),
+    0 12px 24px rgba(255, 36, 66, 0.14);
+}
+
+.posterLean .titlePaper {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 58%, #f1f5f9 100%);
+  border-style: solid;
+  border-width: 2px;
+  border-color: #94a3b8;
+  box-shadow:
+    2px 2px 0 rgba(100, 116, 139, 0.16),
+    0 8px 18px rgba(15, 23, 42, 0.08);
+}
+
+.posterTurn .titlePaper::before {
+  content: '✨';
+  position: absolute;
+  top: -10px;
+  left: 8px;
+  font-size: 16px;
+  line-height: 1;
+  transform: rotate(-14deg);
+  filter: drop-shadow(0 2px 2px rgba(15, 23, 42, 0.15));
+}
+
+.posterTurn .titlePaper::after {
+  content: '🔥';
+  position: absolute;
+  top: -8px;
+  right: 10px;
+  font-size: 14px;
+  line-height: 1;
+  transform: rotate(10deg);
+  filter: drop-shadow(0 2px 2px rgba(15, 23, 42, 0.15));
+}
+
+.title {
+  font-size: clamp(16px, 4.2vw, 24px);
+  line-height: 1.22;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+}
+
+.posterTurn .title {
+  color: #111827;
+}
+
+.posterLean .title {
+  color: #334155;
+  font-weight: 800;
+}
+
+.hintLine {
+  font-size: clamp(9px, 2vw, 11px);
+  color: #334155;
+  font-weight: 700;
+}
+
+.cards {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  justify-content: flex-start;
+}
+
+.card {
+  border-radius: 18px;
+  padding: 8px 10px;
+}
+
+.posterTurn .card {
+  background: linear-gradient(180deg, #ffffff 0%, #fff8fb 100%);
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(255, 36, 66, 0.2);
+  box-shadow:
+    3px 3px 0 rgba(255, 36, 66, 0.12),
+    0 8px 18px rgba(255, 36, 66, 0.08);
+}
+
+.posterLean .card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(148, 163, 184, 0.28);
+  box-shadow:
+    2px 2px 0 rgba(100, 116, 139, 0.1),
+    0 6px 14px rgba(15, 23, 42, 0.06);
+}
+
+.textCard {
+  flex: 0 0 auto;
+  overflow: hidden;
+  font-size: clamp(9px, 2.2vw, 12px);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.posterTurn .textCard {
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.posterLean .textCard {
+  color: #475569;
+  font-weight: 650;
+}
+
+.textCardSpacious {
+  padding: 14px 16px;
+}
+
+.textCardDense {
+  padding: 8px 10px;
+}
+
+.textCardText {
+  line-height: 1.38;
+}
+
+.posterTurn .textCardText,
+.posterTurn .textCardRich {
+  color: #1f2937;
+  font-weight: 750;
+}
+
+.posterLean .textCardText,
+.posterLean .textCardRich {
+  color: #475569;
+  font-weight: 650;
+}
+
+.textCardRich {
+  line-height: 1.38;
+}
+
+.inlineCode {
+  font-family: "SF Mono", "Menlo", monospace;
+  font-size: 0.9em;
+  font-weight: 700;
+  border-radius: 6px;
+  padding: 1px 6px;
+  white-space: nowrap;
+}
+
+.posterTurn .inlineCode {
+  background-color: #ffe566;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(255, 36, 66, 0.35);
+  color: #111827;
+}
+
+.posterLean .inlineCode {
+  background-color: #e2e8f0;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(100, 116, 139, 0.35);
+  color: #334155;
+  font-weight: 650;
+}
+
+.nextLeadCard {
+  flex: 0 0 auto;
+  margin-top: auto;
+  background: rgba(255, 255, 255, 0.72);
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(148, 163, 184, 0.45);
+  border-radius: 12px;
+  padding: 6px 8px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
+.nextLeadLabel {
+  align-self: flex-start;
+  font-size: clamp(6px, 1.25vw, 7px);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-bottom: 2px;
+  padding: 0;
+  background: transparent;
+}
+
+.nextLeadText {
+  line-height: 1.38;
+}
+
+.nextLeadRich {
+  line-height: 1.38;
+  color: #64748b;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.codeCard {
+  flex: 0 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: transparent;
+  border-width: 0;
+  box-shadow: none;
+}
+
+.codeCardAuto {
+  flex: 0 0 auto;
+}
+
+.codeCardExpand {
+  flex: 0 0 auto;
+}
+
+.editors {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.editorsSingle {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  overflow: visible;
+}
+
+.editorsSingleExpand {
+  flex: 0 0 auto;
+  overflow: visible;
+}
+
+.editorWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 0 0 auto;
+  overflow: visible;
+}
+
+.editorTitleRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 2px 2px 4px;
+  overflow: hidden;
+}
+
+.editorTitleLogo {
+  display: block;
+  height: clamp(18px, 4.5vw, 26px);
+  width: auto;
+  max-width: clamp(88px, 22vw, 120px);
+  object-fit: contain;
+  object-position: center;
+  flex-shrink: 0;
+}
+
+.turnTitleLogo {
+  height: clamp(24px, 6vw, 32px);
+  width: clamp(24px, 6vw, 32px);
+  max-width: none;
+}
+
+.leanTitleLogo {
+  /* Lean SVG stroke reads correctly on the light poster background. */
+}
+
+.editorTitleLabel {
+  font-size: clamp(18px, 4.5vw, 26px);
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #2b2a27;
+}
+
+.editorShell {
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+}
+
+.posterTurn .editorShell {
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(255, 36, 66, 0.32);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow:
+    3px 3px 0 rgba(255, 36, 66, 0.14),
+    0 8px 20px rgba(15, 23, 42, 0.1);
+}
+
+.posterLean .editorShell {
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(100, 116, 139, 0.28);
+  background: rgba(248, 250, 252, 0.96);
+  box-shadow:
+    2px 2px 0 rgba(100, 116, 139, 0.12),
+    0 6px 16px rgba(15, 23, 42, 0.08);
+}
+
+.codeSection {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+}
+
+.codeSectionDark {
+  background-color: #1e1e1e;
+}
+
+.codeSectionLight {
+  background-color: #faf9f5;
+}
+
+.paneHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 4px 8px;
+  flex-shrink: 0;
+}
+
+.paneHeaderLabel {
+  font-size: clamp(7px, 1.7vw, 9px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.paneHeaderMeta {
+  font-size: clamp(6px, 1.5vw, 8px);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  opacity: 0.78;
+}
+
+.paneHeaderDark {
+  color: #858585;
+}
+
+.paneHeaderLight {
+  color: #6b6860;
+}
+
+.editorBody {
+  overflow: hidden;
+  padding: 4px 0 6px;
+  flex: 0 0 auto;
+}
+
+.editorBodyExpand {
+  flex: 1;
+  min-height: 0;
+}
+
+.codeLine {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  padding: 0 5px;
+  overflow: hidden;
+}
+
+.lineNo {
+  width: 16px;
+  text-align: right;
+  font-size: clamp(7px, 1.75vw, 9px);
+  font-family: "SF Mono", "Menlo", monospace;
+}
+
+.lineNoDark {
+  color: #858585;
+}
+
+.lineNoLight {
+  color: #9a9488;
+}
+
+.lineText {
+  flex: 1;
+  font-size: clamp(7px, 1.75vw, 9px);
+  font-family: "SF Mono", "Menlo", monospace;
+  white-space: pre;
+  overflow: hidden;
+  tab-size: 2;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  font-size: clamp(8px, 1.9vw, 10px);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.posterTurn .footer {
+  color: #1d4ed8;
+}
+
+.posterLean .footer {
+  color: #64748b;
+  font-weight: 800;
+}
+
+.footerVs {
+  flex-shrink: 0;
+}
+
+.sparkle {
+  position: absolute;
+  font-size: 20px;
+  line-height: 1;
+  z-index: 0;
+  filter: drop-shadow(0 2px 2px rgba(15, 23, 42, 0.12));
+}
+
+.sparkleOne {
+  top: 10px;
+  right: 12px;
+  transform: rotate(-10deg);
+}
+
+.sparkleTwo {
+  bottom: 12px;
+  left: 12px;
+  transform: rotate(12deg);
+}
+
+.plainLean { color: #d4d4d4; }
+.kwLean { color: #569cd6; }
+.taLean { color: #c586c0; }
+.tyLean { color: #4ec9b0; }
+.opLean { color: #d4d4d4; }
+.stLean { color: #ce9178; }
+.cmLean { color: #6a9955; }
+
+.plainTurn { color: #2b2a27; }
+.srTurn { color: #8250df; font-weight: 600; }
+.kwTurn { color: #0550ae; font-weight: 600; }
+.taTurn { color: #953800; font-weight: 600; }
+.opTurn { color: #cf222e; }
+.dcTurn { color: #0550ae; font-weight: 600; }
+.stTurn { color: #0a3069; }
+.cmTurn { color: #6b6860; }

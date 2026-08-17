@@ -27,7 +27,9 @@ import {
 } from '../../utils/filmScript';
 import { openWebCameraStream, readWebCameraResolution } from '../../utils/webCamera';
 import { Button } from '../../components/Button/Button';
+import { LanguageToggle } from '../../components/LanguageToggle/LanguageToggle';
 import classes from './FilmScreen.module.scss';
+import { useScriptLanguage } from '../../hooks/useScriptLanguage';
 
 export type FilmScreenProps = {
   scriptId: string;
@@ -83,7 +85,9 @@ function FilmVideoPreview({
 export function FilmScreen({ scriptId }: FilmScreenProps) {
   const { api, invalidateAll } = useOutdoorUi();
   const { navigateToScript } = useOutdoorRoute();
+  const { scriptLanguage, setScriptLanguage } = useScriptLanguage();
 
+  const [liveScript, setLiveScript] = useState<LiveScript | null>(null);
   const [script, setScript] = useState<OutdoorScript | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -184,7 +188,8 @@ export function FilmScreen({ scriptId }: FilmScreenProps) {
         if (!active) {
           return;
         }
-        const filmScript = liveToFilmScript(live);
+        setLiveScript(live);
+        const filmScript = liveToFilmScript(live, scriptLanguage);
         if (!filmScript.slides.length) {
           throw new Error('Script has no beats or slides to film.');
         }
@@ -204,7 +209,15 @@ export function FilmScreen({ scriptId }: FilmScreenProps) {
       active = false;
       teardown();
     };
-  }, [api, openCamera, scriptId, teardown]);
+  }, [api, openCamera, scriptId, scriptLanguage, teardown]);
+
+  useEffect(() => {
+    if (!liveScript) {
+      return;
+    }
+    setScript(liveToFilmScript(liveScript, scriptLanguage));
+    setSlideIndex(0);
+  }, [liveScript, scriptLanguage]);
 
   useEffect(() => {
     if (!isRecording) {
@@ -502,6 +515,11 @@ export function FilmScreen({ scriptId }: FilmScreenProps) {
         </View>
 
         <View style={styles.controls}>
+          <LanguageToggle
+            value={scriptLanguage}
+            onChange={setScriptLanguage}
+            disabled={isRecording}
+          />
           <Pressable style={styles.controlBtn} onPress={handleBack} disabled={isRecording}>
             <Text style={styles.controlText}>Close</Text>
           </Pressable>

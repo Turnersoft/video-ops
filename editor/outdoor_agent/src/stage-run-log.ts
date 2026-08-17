@@ -4,6 +4,8 @@ import { fileExists } from './fs_util.ts';
 import { ensureDir, takeDir } from './paths.ts';
 
 export const STAGE_RUN_LOG = 'stage-run.log';
+export const RENDER_PORTRAIT_LOG = 'render-portrait.log';
+export const RENDER_LANDSCAPE_LOG = 'render-landscape.log';
 export const TAKE_AGENT_LOG = 'agent.log';
 
 const activeStageLogDir: { value: string | null } = { value: null };
@@ -78,6 +80,16 @@ export function readTextTail(filePath: string, maxLines = 48): string | null {
 
 export function readStageRunLogTail(logDir: string, maxLines = 48): string | null {
   return readTextTail(stageRunLogPath(logDir), maxLines);
+}
+
+export function readCompositeRenderLogTails(
+  logDir: string,
+  maxLines = 80,
+): { portrait: string | null; landscape: string | null } {
+  return {
+    portrait: readTextTail(path.join(logDir, RENDER_PORTRAIT_LOG), maxLines),
+    landscape: readTextTail(path.join(logDir, RENDER_LANDSCAPE_LOG), maxLines),
+  };
 }
 
 export function readTakeAgentLogTail(scriptId: string, takeId: string, maxLines = 32): string | null {

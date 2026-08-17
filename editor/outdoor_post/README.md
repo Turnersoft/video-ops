@@ -83,6 +83,81 @@ Outputs:
 - `speech-alignment.json` — beat boundaries from script↔speech DP alignment
 - `remotion-visual-plan.json` — slide timeline from alignment (schema v2)
 - `animation-outdoor.json` — beat `durationSeconds` extended to match your spoken take
+- `caption-zh-translations.json` — cached EN→ZH for each Whisper caption sentence
+
+Chinese burned captions translate **each spoken Whisper sentence** offline (not `animation.md` sayZh). With `npm run outdoor:all`, a local server on `:8790` uses the IndexTTS Python venv (`~/index-tts/.venv`) and `Helsinki-NLP/opus-mt-en-zh`. One-time model download: run outdoor:all once online, or set `HF_HUB_OFFLINE=0`.
+
+Optional env:
+
+- `CAPTION_TRANSLATE_URL` — default `http://127.0.0.1:8790`
+- `CAPTION_TRANSLATE_PYTHON` — default `~/index-tts/.venv/bin/python`
+- `CAPTION_TRANSLATE_PROVIDER=openai` — cloud fallback (needs `OPENAI_API_KEY`)
+
+## Voice clone (VoxCPM2)
+
+`npm run outdoor:all` also starts a local VoxCPM server on `:8791` for voice cloning experiments (separate from filmed outdoor audio and from IndexTTS studio exports).
+
+First run (one-time, needs network):
+
+```bash
+npm run setup:voxcpm
+# or: bash bin/setup-voxcpm.sh
+```
+
+Clone API (model loads on first `/clone` request; weights download once):
+
+```bash
+curl -s http://127.0.0.1:8791/health
+
+curl -s -X POST http://127.0.0.1:8791/clone \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "text": "Set equality is mutual subset.",
+    "referenceAudioPath": "projects/.../takes/take-xxx/source.webm",
+    "outputPath": ".cache/voxcpm-output/test-clone.wav"
+  }'
+```
+
+For best clone quality, pass `"promptWavPath"` + `"promptText"` (transcript of the reference clip) and optionally `"referenceAudioPath"` (ultimate clone mode).
+
+Optional env:
+
+- `VOXCPM_URL` — default `http://127.0.0.1:8791`
+- `VOXCPM_ROOT` — default `~/VoxCPM` (repo + `.venv`)
+- `VOXCPM_MODEL` — default `openbmb/VoxCPM2`
+- `VOXCPM_DEVICE` — `auto` | `mps` | `cpu` | `cuda`
+- `VOXCPM_INFERENCE_TIMESTEPS` — default `10` (lower for speed, raise for quality)
+- `VOXCPM_CFG_VALUE` — default `2.0`
+- `VOXCPM_REFERENCE_MAX_SECONDS` — default `0` (full reference; set 3–120 to trim)
+- `VOXCPM_TEXT_CHUNK_MAX_CHARS` — default `0` (no chunking; set 40–400 to split long lines)
+- `VOXCPM_SYNTHESIS_CONCURRENCY` — parallel sentence queue on the agent (default `1`)
+- `OUTDOOR_SKIP_VOXCPM=1` — skip server in `outdoor:all`
+
+## Voice clone (IndexTTS-2)
+
+Faster local alternative to VoxCPM for **English** narration. Use **VoxCPM** for Chinese (`中文`) lines. In the beat editor toolbar, use the **Voice** toggle (**IndexTTS** vs **VoxCPM**). Each engine keeps its own preview cache under `.cache/voxcpm-script/` and `.cache/indextts-script/`.
+
+`npm run outdoor:all` starts IndexTTS on `:8792` when `~/index-tts/.venv` and `~/index-tts/checkpoints` exist (same checkout used for caption translate).
+
+```bash
+curl -s http://127.0.0.1:8792/health
+
+curl -s -X POST http://127.0.0.1:8792/clone \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "text": "Set equality is mutual subset.",
+    "referenceAudioPath": "projects/.../takes/take-xxx/source.webm",
+    "outputPath": ".cache/indextts-output/test-clone.wav"
+  }'
+```
+
+Optional env:
+
+- `INDEX_TTS_URL` — default `http://127.0.0.1:8792`
+- `INDEX_TTS_ROOT` — default `~/index-tts`
+- `INDEX_TTS_DEVICE` — `auto` | `mps` | `cpu` | `cuda`
+- `INDEX_TTS_REFERENCE_MAX_SECONDS` — default `12`
+- `OUTDOOR_SKIP_INDEX_TTS=1` — skip server in `outdoor:all`
 
 ## 5. Render Outdoor Portrait + Landscape
 

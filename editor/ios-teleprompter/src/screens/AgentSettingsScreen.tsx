@@ -17,7 +17,7 @@ import {
   checkAgentHealthMessage,
   fetchInboxStatus,
   fetchPlatformsHealth,
-  syncZernioAccounts,
+  syncPostizIntegrations,
   testPlatformOrProvider,
   type ConnectProgress,
   type PlatformStatus,
@@ -73,20 +73,20 @@ export function AgentSettingsScreen({ onBack }: AgentSettingsScreenProps) {
     manual: [],
     stubOnly: true,
   });
-  const [zernioMode, setZernioMode] = useState("stub");
+  const [postizMode, setPostizMode] = useState("stub");
   const [sauMode, setSauMode] = useState("stub");
-  const [zernioHasKey, setZernioHasKey] = useState(false);
-  const [zernioSignupUrl, setZernioSignupUrl] = useState(
-    "https://zernio.com/signup",
+  const [postizHasKey, setPostizHasKey] = useState(false);
+  const [postizSignupUrl, setPostizSignupUrl] = useState(
+    "http://localhost:4007",
   );
-  const [zernioApiKeysUrl, setZernioApiKeysUrl] = useState(
-    "https://zernio.com/dashboard/api-keys",
+  const [postizApiKeysUrl, setPostizApiKeysUrl] = useState(
+    "http://localhost:4007/settings",
   );
-  const [zernioDashboardUrl, setZernioDashboardUrl] = useState(
-    "https://zernio.com/dashboard",
+  const [postizDashboardUrl, setPostizDashboardUrl] = useState(
+    "http://localhost:4007",
   );
-  const [zernioExport, setZernioExport] = useState<string | null>(null);
-  const [zernioLinks, setZernioLinks] = useState<
+  const [postizExport, setPostizExport] = useState<string | null>(null);
+  const [postizLinks, setPostizLinks] = useState<
     Array<{ label: string; url?: string; command?: string }>
   >([]);
   const [sauLinks, setSauLinks] = useState<
@@ -94,7 +94,7 @@ export function AgentSettingsScreen({ onBack }: AgentSettingsScreenProps) {
   >([]);
   const [platformsError, setPlatformsError] = useState<string | null>(null);
   const [testingTarget, setTestingTarget] = useState("");
-  const [syncingZernio, setSyncingZernio] = useState(false);
+  const [syncingPostiz, setSyncingPostiz] = useState(false);
 
   const refreshEndpoints = useCallback(async () => {
     const [agent, remotion, endpoints, savedAgent, savedRemotion, inbox] =
@@ -150,21 +150,21 @@ export function AgentSettingsScreen({ onBack }: AgentSettingsScreenProps) {
       const health = await fetchPlatformsHealth();
       setPlatformEntries(health.entries);
       setConnectProgress(health.connectProgress);
-      setZernioMode(health.providers.zernio.mode);
+      setPostizMode(health.providers.postiz.mode);
       setSauMode(health.providers.sau.mode);
-      setZernioHasKey(health.providers.zernio.hasApiKey);
-      setZernioSignupUrl(
-        health.providers.zernio.signupUrl ?? "https://zernio.com/signup",
+      setPostizHasKey(health.providers.postiz.hasApiKey);
+      setPostizSignupUrl(
+        health.providers.postiz.signupUrl ?? "http://localhost:4007",
       );
-      setZernioApiKeysUrl(
-        health.providers.zernio.apiKeysUrl ??
-          "https://zernio.com/dashboard/api-keys",
+      setPostizApiKeysUrl(
+        health.providers.postiz.apiKeysUrl ??
+          "http://localhost:4007/settings",
       );
-      setZernioDashboardUrl(
-        health.providers.zernio.dashboardUrl ?? "https://zernio.com/dashboard",
+      setPostizDashboardUrl(
+        health.providers.postiz.dashboardUrl ?? "http://localhost:4007",
       );
-      setZernioExport(health.providers.zernio.suggestedAccountsExport ?? null);
-      setZernioLinks(health.providers.zernio.loginLinks ?? []);
+      setPostizExport(health.providers.postiz.suggestedIntegrationsExport ?? null);
+      setPostizLinks(health.providers.postiz.loginLinks ?? []);
       setSauLinks(health.providers.sau.loginLinks ?? []);
       setPlatformsError(null);
     } catch (error) {
@@ -356,8 +356,7 @@ export function AgentSettingsScreen({ onBack }: AgentSettingsScreenProps) {
           Connect all platforms
         </Text>
         <Text style={styles.hint}>
-          English via Zernio · China via SAU. This app never stores publish
-          secrets — export env on the Mac agent after connecting.
+          English via Postiz · China via SAU. Paste the Postiz API key on Mac #/platforms; Sync saves channel ids there.
         </Text>
         <Text style={styles.hint}>
           Progress: {connectProgress.ready}/{connectProgress.total} ready
@@ -376,19 +375,19 @@ export function AgentSettingsScreen({ onBack }: AgentSettingsScreenProps) {
         <View style={styles.platformActions}>
           <Pressable
             style={styles.secondaryButton}
-            onPress={() => void Linking.openURL(zernioSignupUrl)}
+            onPress={() => void Linking.openURL(postizSignupUrl)}
           >
-            <Text style={styles.secondaryButtonText}>1. Open Zernio</Text>
+            <Text style={styles.secondaryButtonText}>1. Open Postiz</Text>
           </Pressable>
           <Pressable
             style={styles.secondaryButton}
-            onPress={() => void Linking.openURL(zernioApiKeysUrl)}
+            onPress={() => void Linking.openURL(postizApiKeysUrl)}
           >
             <Text style={styles.secondaryButtonText}>2. Create API key</Text>
           </Pressable>
           <Pressable
             style={styles.secondaryButton}
-            onPress={() => void Linking.openURL(zernioDashboardUrl)}
+            onPress={() => void Linking.openURL(postizDashboardUrl)}
           >
             <Text style={styles.secondaryButtonText}>
               3. Connect EN channels
@@ -396,19 +395,19 @@ export function AgentSettingsScreen({ onBack }: AgentSettingsScreenProps) {
           </Pressable>
           <Pressable
             style={styles.secondaryButton}
-            disabled={syncingZernio}
+            disabled={syncingPostiz}
             onPress={() => {
-              setSyncingZernio(true);
-              void syncZernioAccounts()
+              setSyncingPostiz(true);
+              void syncPostizIntegrations()
                 .then((result) => {
-                  setZernioExport(result.exportCommand || null);
+                  setPostizExport(result.exportCommand || null);
                   void Share.share({
                     message: result.exportCommand,
-                    title: "ZERNIO_ACCOUNTS_JSON",
+                    title: "POSTIZ_INTEGRATIONS_JSON",
                   });
                   Alert.alert(
                     "Synced",
-                    `Mapped ${Object.keys(result.suggestedAccountsJson).length} channel(s). Share/copy the export into the Mac shell, then restart the agent.`,
+                    `Mapped ${Object.keys(result.suggestedIntegrationsJson).length} channel(s). Channel ids were saved on the Mac agent (live mode).`,
                   );
                   void refreshEndpoints();
                 })
@@ -418,14 +417,14 @@ export function AgentSettingsScreen({ onBack }: AgentSettingsScreenProps) {
                     error instanceof Error ? error.message : String(error),
                   ),
                 )
-                .finally(() => setSyncingZernio(false));
+                .finally(() => setSyncingPostiz(false));
             }}
           >
             <Text style={styles.secondaryButtonText}>
-              {syncingZernio ? "Syncing…" : "4. Sync Zernio accounts"}
+              {syncingPostiz ? "Syncing…" : "4. Sync Postiz channels"}
             </Text>
           </Pressable>
-          {[...zernioLinks, ...sauLinks].map((link) => (
+          {[...postizLinks, ...sauLinks].map((link) => (
             <Pressable
               key={`${link.label}-${link.url ?? link.command}`}
               style={styles.secondaryButton}
@@ -446,29 +445,29 @@ export function AgentSettingsScreen({ onBack }: AgentSettingsScreenProps) {
             </Pressable>
           ))}
         </View>
-        {zernioExport ? (
+        {postizExport ? (
           <Pressable
             onPress={() =>
               void Share.share({
-                message: zernioExport,
-                title: "ZERNIO_ACCOUNTS_JSON",
+                message: postizExport,
+                title: "POSTIZ_INTEGRATIONS_JSON",
               })
             }
           >
             <Text style={styles.action}>
-              Share suggested ZERNIO_ACCOUNTS_JSON export
+              Share suggested POSTIZ_INTEGRATIONS_JSON export
             </Text>
           </Pressable>
         ) : (
           <Text style={styles.hint}>
-            No live Zernio accounts synced yet — set ZERNIO_API_KEY on Mac,
+            No Postiz channels synced yet — set POSTIZ_API_KEY on Mac #/platforms,
             connect channels, then Sync.
           </Text>
         )}
         <Text style={[styles.label, styles.labelSpaced]}>Provider health</Text>
         <Text style={styles.hint}>
-          Zernio: {zernioMode}
-          {zernioHasKey ? " · API key set" : " · API key missing"} · SAU:{" "}
+          Postiz: {postizMode}
+          {postizHasKey ? " · API key set" : " · API key missing"} · SAU:{" "}
           {sauMode}
         </Text>
         <View style={styles.platformActions}>
@@ -476,17 +475,17 @@ export function AgentSettingsScreen({ onBack }: AgentSettingsScreenProps) {
             style={styles.secondaryButton}
             disabled={Boolean(testingTarget)}
             onPress={() => {
-              setTestingTarget("zernio");
-              void testPlatformOrProvider("zernio")
+              setTestingTarget("postiz");
+              void testPlatformOrProvider("postiz")
                 .then((result) =>
                   Alert.alert(
-                    result.ok ? "Zernio OK" : "Zernio failed",
+                    result.ok ? "Postiz OK" : "Postiz failed",
                     result.message,
                   ),
                 )
                 .catch((error) =>
                   Alert.alert(
-                    "Zernio",
+                    "Postiz",
                     error instanceof Error ? error.message : String(error),
                   ),
                 )
@@ -494,7 +493,7 @@ export function AgentSettingsScreen({ onBack }: AgentSettingsScreenProps) {
             }}
           >
             <Text style={styles.secondaryButtonText}>
-              {testingTarget === "zernio" ? "Testing…" : "Test Zernio"}
+              {testingTarget === "postiz" ? "Testing…" : "Test Postiz"}
             </Text>
           </Pressable>
           <Pressable

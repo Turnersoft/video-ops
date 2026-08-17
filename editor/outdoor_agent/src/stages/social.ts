@@ -1,8 +1,10 @@
 import path from 'node:path';
 
+import { saveJob } from '../job-store.ts';
 import { fileExists, readJson, writeJson } from '../fs_util.ts';
 import { ensureDir, scriptDirFor, takeStageRunDir } from '../paths.ts';
 import type { OutdoorJob } from '../schema.ts';
+import { newRunId, nowIso, upsertRun } from '../schema.ts';
 import { runStageWorker } from './util.ts';
 
 type SocialPosts = Record<string, unknown> & {
@@ -21,6 +23,49 @@ export type SocialPatch = {
   english?: Record<string, { title?: string; body?: string }>;
   china?: Record<string, { title?: string; body?: string }>;
 };
+
+/** Materialize take social-posts.json from script template when the social stage was skipped. */
+export function ensureTakeSocialPack(job: OutdoorJob): string {
+  if (job.selectedRuns.social) {
+    const existing = path.join(
+      takeStageRunDir(job.scriptId, job.takeId, 'social', job.selectedRuns.social),
+      'social-posts.json',
+    );
+    if (fileExists(existing)) {
+      return existing;
+    }
+  }
+
+  const sourcePath = path.join(scriptDirFor(job.scriptId), 'social-posts.json');
+  if (!fileExists(sourcePath)) {
+    throw new Error(`social-posts.json not found for ${job.scriptId}`);
+  }
+
+  const runId = newRunId('social');
+  const outDir = takeStageRunDir(job.scriptId, job.takeId, 'social', runId);
+  ensureDir(outDir);
+  const social = readJson<SocialPosts>(sourcePath);
+  const outPath = path.join(outDir, 'social-posts.json');
+  writeJson(outPath, {
+    ...social,
+    jobId: job.jobId,
+    takeId: job.takeId,
+    scriptTitle: job.scriptTitle,
+    packagedAt: new Date().toISOString(),
+  });
+
+  upsertRun(job, 'social', runId, {
+    status: 'succeeded',
+    finishedAt: nowIso(),
+    artifacts: { socialPosts: outPath },
+    builtFrom: job.selectedRuns.composite
+      ? { composite: job.selectedRuns.composite }
+      : {},
+  });
+  job.selectedRuns.social = runId;
+  saveJob(job);
+  return outPath;
+}
 
 export async function runSocialStage(
   job: OutdoorJob,

@@ -1,0 +1,188 @@
+@use '../../app' as *;
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  margin-top: $space-sm;
+}
+.sectionEmbedded {
+  margin-top: 0;
+}
+.groupLabel {
+  color: $text;
+  font-size: $font-small;
+  font-weight: 800;
+}
+.meta {
+  color: $muted;
+  font-size: $font-small;
+  line-height: 18px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: $space-sm;
+}
+.card {
+  border-width: 1px;
+  border-color: $card-border;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: rgba(15, 23, 42, 0.55);
+  display: flex;
+  flex-direction: column;
+}
+.cardHeader {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding-inline: $space-sm;
+  padding-top: $space-sm;
+}
+.platform {
+  color: $text;
+  font-size: 12px;
+  font-weight: 800;
+}
+.badge {
+  color: $muted;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  border-radius: $radius-pill;
+  padding-inline: 8px;
+  padding-block: 2px;
+  background-color: $pill;
+}
+.badgeMissing {
+  color: #fca5a5;
+}
+.badgeLive {
+  color: #86efac;
+}
+.coverWrap {
+  width: 100%;
+  background-color: $black;
+  margin-top: 6px;
+  position: relative;
+  align-self: stretch;
+  flex-shrink: 0;
+}
+.coverFrame {
+  width: 100%;
+  line-height: 0;
+}
+.coverImage {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  vertical-align: top;
+}
+.video {
+  width: 100%;
+  max-height: 360px;
+  display: block;
+  background-color: $black;
+}
+.thumbRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding-inline: $space-sm;
+  padding-block: 6px;
+}
+.thumbImage {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  object-fit: cover;
+  background-color: $black;
+}
+.thumbMeta {
+  color: $muted;
+  font-size: 11px;
+  line-height: 15px;
+  flex: 1;
+}
+.badgeWarn {
+  color: #fcd34d;
+}
+.badgeMuted {
+  color: $muted2;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.coverMissing {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+.coverMissingLandscape {
+  aspect-ratio: 16 / 9;
+}
+.coverMissingText {
+  color: $muted;
+  font-size: 11px;
+}
+.titleOverlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.88) 100%);
+}
+.titleOnCover {
+  color: #f8fafc;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 18px;
+}
+.titleOnCoverEmpty {
+  color: #94a3b8;
+  font-style: italic;
+}
+.bodyBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: $space-sm;
+}
+.fieldLabel {
+  color: $muted2;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.titleText {
+  color: $text;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}
+.captionText {
+  color: #cbd5e1;
+  font-size: 12px;
+  line-height: 18px;
+  max-height: 140px;
+  overflow: auto;
+  white-space: pre-wrap;
+}
+.emptyTitle {
+  color: $muted2;
+  font-style: italic;
+}
+.emptyCaption {
+  color: $muted2;
+  font-style: italic;
+}

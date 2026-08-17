@@ -1,0 +1,86 @@
+@use '../../app' as *;
+
+.section {
+  display: flex;
+  gap: $space-sm;
+  margin-top: $space-sm;
+}
+.groupLabel {
+  color: $text;
+  font-size: $font-small;
+  font-weight: 800;
+  margin-top: 6px;
+}
+.meta {
+  color: $muted;
+  font-size: $font-small;
+  line-height: 18px;
+}
+.error {
+  color: #fca5a5;
+  font-size: $font-small;
+  line-height: 18px;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $space-sm;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: $space-sm;
+}
+.tile {
+  border-width: 1px;
+  border-color: $card-border;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: rgba(15, 23, 42, 0.55);
+}
+.tileMissing {
+  border-color: rgba(248, 113, 113, 0.45);
+}
+.tileLabel {
+  color: $text;
+  font-size: 11px;
+  font-weight: 700;
+  padding-inline: $space-sm;
+  padding-top: 6px;
+}
+.tileStatus {
+  color: $muted;
+  font-size: 10px;
+  padding-inline: $space-sm;
+  padding-bottom: 4px;
+}
+.portraitImage {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  display: block;
+  object-fit: contain;
+  background-color: $black;
+}
+.landscapeImage {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  object-fit: contain;
+  background-color: $black;
+}
+.imagePlaceholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: $black;
+}
+.portraitPlaceholder {
+  aspect-ratio: 9 / 16;
+}
+.tileActions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: $space-sm;
+}

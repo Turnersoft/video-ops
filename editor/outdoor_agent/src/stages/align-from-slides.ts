@@ -12,6 +12,7 @@ import {
   type GoodInterval,
   type TranscriptVerbose,
 } from "../../../outdoor_post/src/sentence-captions.ts";
+import { attachSpokenZhToCaptionSegments } from "../../../outdoor_post/src/caption_translate.ts";
 
 type AnimationBeat = {
   say?: string;
@@ -189,7 +190,7 @@ type AlignFromSlideEventsParams = {
 /**
  * Build speech-alignment + animation-outdoor from slide marker timeline.
  */
-export function alignFromSlideEvents({
+export async function alignFromSlideEvents({
   job,
   outDir,
   editedVideo,
@@ -197,7 +198,7 @@ export function alignFromSlideEvents({
   visualPlan,
   transcript,
   goodIntervals = [],
-}: AlignFromSlideEventsParams): void {
+}: AlignFromSlideEventsParams): Promise<void> {
   const scriptDir = scriptDirFor(job.scriptId);
   const animation = loadAnimationV4(job.scriptId);
   if (!animation) {
@@ -281,7 +282,7 @@ export function alignFromSlideEvents({
     ? path.relative(scriptDir, framingVideoPath).split(path.sep).join("/")
     : undefined;
 
-  const captionSegments =
+  let captionSegments =
     transcript && goodIntervals.length
       ? sentenceCaptionSegmentsFromTranscript({
           transcript,
@@ -294,12 +295,13 @@ export function alignFromSlideEvents({
           return [
             {
               text: beat.say ?? "",
-              zh: beat.sayZh ?? undefined,
               atSeconds: boundary.editedStart,
               durationSeconds: boundary.durationSeconds,
             },
           ];
         });
+
+  captionSegments = await attachSpokenZhToCaptionSegments(outDir, captionSegments);
 
   const alignment = {
     schemaVersion: 1,

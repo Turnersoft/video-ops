@@ -3,6 +3,7 @@ import { isStageStale, staleReason } from './pipeline-lineage.ts';
 import { stageErrorFieldsFromRun, firstFailedStageError } from './pipeline-error.ts';
 import { takeStageRunDir } from './paths.ts';
 import {
+  readCompositeRenderLogTails,
   readStageRunLogTail,
   readTakeAgentLogTail,
   stageRunLogExists,
@@ -30,6 +31,10 @@ export type PipelineStageSnapshot = {
   progress: StageProgress | null;
   logTail: string | null;
   logUrl: string | null;
+  renderLogTails?: {
+    portrait: string | null;
+    landscape: string | null;
+  };
   stale: boolean;
   staleReason: string | null;
 };
@@ -78,6 +83,8 @@ export function buildPipelineSnapshot(job: OutdoorJob): PipelineSnapshot {
       const run = runId ? job.runs[stage]?.find((entry) => entry.runId === runId) : undefined;
       const runDir = runId ? takeStageRunDir(job.scriptId, job.takeId, stage, runId) : null;
       const logTail = runDir ? readStageRunLogTail(runDir) : null;
+      const renderLogTails =
+        stage === 'composite' && runDir ? readCompositeRenderLogTails(runDir) : undefined;
       const errorFields = stageErrorFieldsFromRun(stage, run, logTail);
       return {
         stage,
@@ -89,6 +96,7 @@ export function buildPipelineSnapshot(job: OutdoorJob): PipelineSnapshot {
         errorHint: errorFields?.errorHint ?? run?.errorHint,
         progress: runId ? readProgress(job.jobId, stage, runId) : null,
         logTail,
+        renderLogTails,
         logUrl:
           runId && runDir && stageRunLogExists(runDir)
             ? artifactUrl(job.scriptId, job.takeId, stage, runId, STAGE_RUN_LOG)

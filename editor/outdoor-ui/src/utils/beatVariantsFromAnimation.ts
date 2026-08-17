@@ -216,6 +216,7 @@ export function draftsFromSelectedCandidates(
   return liveBeatsWithSelectedCandidates(beats, beatStudio).map((beat) => ({
     title: beat.title,
     say: beat.say,
+    chinese: beat.chinese,
     leanCode: beat.leanCode,
     turnCode: beat.turnCode,
     visualNotes: beat.visualNotes,

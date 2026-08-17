@@ -1,0 +1,13 @@
+@use '../../app' as *;
+
+.link {
+  color: $orange;
+  font-size: $font-tiny;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.linkDisabled {
+  opacity: 0.6;
+  cursor: default;
+}

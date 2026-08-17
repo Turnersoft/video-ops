@@ -16,6 +16,7 @@ import { AutoGrowTextInput } from "../AutoGrowTextInput/AutoGrowTextInput";
 import { BeatTemplateSwitcher } from "../BeatTemplateSwitcher/BeatTemplateSwitcher";
 import { KIT_CHROME, kindAccent } from "../kitThemes/kitThemes";
 import { SectionLabel } from "../SectionLabel/SectionLabel";
+import { SpokenSentencesField } from "../SpokenSentencesField/SpokenSentencesField";
 import { TemplateConfigPanel } from "../TemplateConfigPanel/TemplateConfigPanel";
 
 const CODE_MAX_LINES = 12;
@@ -24,6 +25,7 @@ const SPOKEN_MIN_LINES = 3;
 
 export function BeatEditorVisualPanel({
   beat,
+  beats,
   draft,
   beatIndex,
   styleKit,
@@ -34,6 +36,10 @@ export function BeatEditorVisualPanel({
   onTemplateChange,
   onTemplateConfigChange,
   scriptId,
+  voiceEngine = 'voxcpm',
+  scriptLanguage = 'en',
+  onPreviewAudioChanged,
+  onSeekPreviewFrame,
 }: BeatEditorVisualPanelProps) {
   const visualKind = classifyBeatVisual(beat, styleKit);
   const templateKind = template ?? mapVisualToTemplate(visualKind);
@@ -58,7 +64,22 @@ export function BeatEditorVisualPanel({
           {templateDef.label} · beat {beatIndex + 1}
         </Text>
       </View>
-      <SpokenField draft={draft} onDraftChange={onDraftChange} />
+      {scriptId ? (
+        <SpokenSentencesField
+          key={`${scriptId}-${beatIndex}-${voiceEngine}-${scriptLanguage}`}
+          scriptId={scriptId}
+          beatIndex={beatIndex}
+          say={scriptLanguage === 'zh' ? draft.chinese : draft.say}
+          beats={beats}
+          voiceEngine={voiceEngine}
+          scriptLanguage={scriptLanguage}
+          onDraftChange={onDraftChange}
+          onPreviewAudioChanged={onPreviewAudioChanged}
+          onSeekPreviewFrame={onSeekPreviewFrame}
+        />
+      ) : (
+        <SpokenField draft={draft} onDraftChange={onDraftChange} />
+      )}
       {onTemplateChange ? (
         <BeatTemplateSwitcher
           value={templateKind}

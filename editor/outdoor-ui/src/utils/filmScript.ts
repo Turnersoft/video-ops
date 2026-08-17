@@ -74,11 +74,14 @@ export function resolveFocusedSlideCode(
   return { label: focus === 'lean' ? 'Lean' : 'Turn-Lang', code };
 }
 
-export function beatsToSlides(beats: LiveBeat[]): OutdoorScriptSlide[] {
+export function beatsToSlides(
+  beats: LiveBeat[],
+  language: import('./scriptLanguage').ScriptLanguageId = 'en',
+): OutdoorScriptSlide[] {
   return beats.map((beat) => ({
     id: beat.id,
     title: beat.title,
-    body: beat.say,
+    body: language === 'zh' ? beat.chinese.trim() || beat.say : beat.say,
     leanCode: beat.leanCode,
     turnCode: beat.turnCode,
     notes: beat.visualNotes,
@@ -86,8 +89,20 @@ export function beatsToSlides(beats: LiveBeat[]): OutdoorScriptSlide[] {
   }));
 }
 
-export function liveToFilmScript(live: LiveScript): OutdoorScript {
-  const slides = live.slides?.length ? live.slides : beatsToSlides(live.beats);
+export function liveToFilmScript(
+  live: LiveScript,
+  language: import('./scriptLanguage').ScriptLanguageId = 'en',
+): OutdoorScript {
+  const slides = live.slides?.length
+    ? live.slides.map((slide, index) => {
+        const beat = live.beats[index];
+        if (!beat || language === 'en') {
+          return slide;
+        }
+        const body = beat.chinese.trim() || beat.say;
+        return body === slide.body ? slide : { ...slide, body };
+      })
+    : beatsToSlides(live.beats, language);
   return {
     schemaVersion: 1,
     id: live.id,

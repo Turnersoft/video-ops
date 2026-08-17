@@ -2,8 +2,10 @@
 
 import type { OutdoorPreviewFormat } from '../../utils/animationMdFormat';
 
+import type { RemotionSeekOptions } from '../RemotionEmbed/RemotionEmbed.types';
+
 export type ScriptRemotionPreviewHandle = {
-  seekToFrame: (frame: number) => void;
+  seekToFrame: (frame: number, options?: RemotionSeekOptions) => void;
 };
 
 export type ScriptRemotionPreviewProps = {

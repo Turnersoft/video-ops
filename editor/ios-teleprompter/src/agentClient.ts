@@ -1,11 +1,16 @@
-import * as FileSystem from 'expo-file-system/legacy';
+import * as FileSystem from "expo-file-system/legacy";
 
-import { withNgrokHeaders } from './outdoorFetch';
-import { loadAgentBaseUrl } from './agentSettings';
-import { agentFetchJson, AgentConnectionError } from './agentResponse';
-import type { TakeManifest } from './scriptSchema';
+import { withNgrokHeaders } from "./outdoorFetch";
+import { loadAgentBaseUrl } from "./agentSettings";
+import { agentFetchJson, AgentConnectionError } from "./agentResponse";
+import type { TakeManifest } from "./scriptSchema";
 
-export type PipelineStage = 'stabilize' | 'cut' | 'align' | 'composite' | 'social';
+export type PipelineStage =
+  | "stabilize"
+  | "cut"
+  | "align"
+  | "composite"
+  | "social";
 
 export type StageProgress = {
   percent: number;
@@ -16,7 +21,7 @@ export type StageProgress = {
 
 export type StageRunSummary = {
   runId: string;
-  status: 'pending' | 'running' | 'succeeded' | 'failed' | 'cancelled';
+  status: "pending" | "running" | "succeeded" | "failed" | "cancelled";
   createdAt: string;
   finishedAt?: string;
   error?: string;
@@ -50,7 +55,7 @@ export type OutdoorJobDetail = {
       platform: string;
       postId: string;
       url: string;
-      status: 'live' | 'hidden' | 'deleted' | 'pending';
+      status: "live" | "hidden" | "deleted" | "pending";
       publishedAt?: string;
       stub?: boolean;
       coverId?: string;
@@ -67,7 +72,12 @@ export type OutdoorJobDetail = {
       status: string;
       videos: Array<{ label: string; url: string }>;
       summary: string[];
-      socialTitles: Array<{ group: string; platform: string; title: string; body?: string }>;
+      socialTitles: Array<{
+        group: string;
+        platform: string;
+        title: string;
+        body?: string;
+      }>;
     }>;
   };
 };
@@ -84,7 +94,10 @@ async function agentBaseUrl(): Promise<string> {
 export async function checkAgentHealth(): Promise<boolean> {
   try {
     const baseUrl = await agentBaseUrl();
-    const payload = await agentFetchJson<{ ok?: boolean }>(baseUrl, '/api/health');
+    const payload = await agentFetchJson<{ ok?: boolean }>(
+      baseUrl,
+      "/api/health",
+    );
     return payload.ok === true;
   } catch {
     return false;
@@ -94,22 +107,33 @@ export async function checkAgentHealth(): Promise<boolean> {
 export async function checkAgentHealthMessage(): Promise<string | null> {
   try {
     const baseUrl = await agentBaseUrl();
-    const payload = await agentFetchJson<{ ok?: boolean }>(baseUrl, '/api/health');
-    return payload.ok === true ? null : `Agent at ${baseUrl} did not return ok:true`;
+    const payload = await agentFetchJson<{ ok?: boolean }>(
+      baseUrl,
+      "/api/health",
+    );
+    return payload.ok === true
+      ? null
+      : `Agent at ${baseUrl} did not return ok:true`;
   } catch (error) {
-    return error instanceof Error ? error.message : 'Agent unreachable';
+    return error instanceof Error ? error.message : "Agent unreachable";
   }
 }
 
 export async function scanInbox(): Promise<{
-  ingested: Array<{ jobId: string; takeId: string; scriptTitle?: string | null }>;
+  ingested: Array<{
+    jobId: string;
+    takeId: string;
+    scriptTitle?: string | null;
+  }>;
 }> {
   const baseUrl = await agentBaseUrl();
-  const payload = await agentFetchJson<{ ingested?: Array<{ jobId: string; takeId: string; scriptTitle?: string | null }> }>(
-    baseUrl,
-    '/api/inbox/scan',
-    { method: 'POST', body: '{}' },
-  );
+  const payload = await agentFetchJson<{
+    ingested?: Array<{
+      jobId: string;
+      takeId: string;
+      scriptTitle?: string | null;
+    }>;
+  }>(baseUrl, "/api/inbox/scan", { method: "POST", body: "{}" });
   return { ingested: payload.ingested ?? [] };
 }
 
@@ -136,12 +160,15 @@ export async function fetchInboxStatus(): Promise<{
   }>;
 }> {
   const baseUrl = await agentBaseUrl();
-  return agentFetchJson(baseUrl, '/api/inbox/status');
+  return agentFetchJson(baseUrl, "/api/inbox/status");
 }
 
 export async function listOutdoorJobs(): Promise<OutdoorJobSummary[]> {
   const baseUrl = await agentBaseUrl();
-  const payload = await agentFetchJson<{ jobs: OutdoorJobSummary[] }>(baseUrl, '/api/jobs');
+  const payload = await agentFetchJson<{ jobs: OutdoorJobSummary[] }>(
+    baseUrl,
+    "/api/jobs",
+  );
   return payload.jobs;
 }
 
@@ -171,8 +198,8 @@ export async function rerunStage(
   const response = await agentFetch(
     `/api/jobs/${encodeURIComponent(jobId)}/stages/${encodeURIComponent(stage)}/run`,
     {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ rerun: true, options }),
     },
   );
@@ -182,66 +209,82 @@ export async function rerunStage(
 }
 
 export async function syncAlignStudio(jobId: string): Promise<void> {
-  const response = await agentFetch(`/api/jobs/${encodeURIComponent(jobId)}/align-sync-studio`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: '{}',
-  });
+  const response = await agentFetch(
+    `/api/jobs/${encodeURIComponent(jobId)}/align-sync-studio`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: "{}",
+    },
+  );
   if (!response.ok) {
-    const payload = (await response.json().catch(() => ({}))) as { error?: string };
-    throw new Error(payload.error ?? 'Could not sync Remotion Studio layout');
+    const payload = (await response.json().catch(() => ({}))) as {
+      error?: string;
+    };
+    throw new Error(payload.error ?? "Could not sync Remotion Studio layout");
   }
 }
 
-export async function regenerateCompositeFromStudio(jobId: string): Promise<string> {
+export async function regenerateCompositeFromStudio(
+  jobId: string,
+): Promise<string> {
   const before = await getOutdoorJob(jobId);
-  const previousIds = new Set((before.job.runs.composite ?? []).map((run) => run.runId));
+  const previousIds = new Set(
+    (before.job.runs.composite ?? []).map((run) => run.runId),
+  );
   await syncAlignStudio(jobId);
-  await rerunStage(jobId, 'composite');
+  await rerunStage(jobId, "composite");
   const deadline = Date.now() + 5 * 60_000;
   while (Date.now() < deadline) {
     await new Promise((resolve) => setTimeout(resolve, 4000));
     const fresh = await getOutdoorJob(jobId);
     const compositeRuns = fresh.job.runs.composite ?? [];
     const succeeded = compositeRuns.find(
-      (run) => !previousIds.has(run.runId) && run.status === 'succeeded',
+      (run) => !previousIds.has(run.runId) && run.status === "succeeded",
     );
     if (succeeded) {
       await selectStageRuns(jobId, { composite: succeeded.runId });
       return succeeded.runId;
     }
-    const failed = compositeRuns.find((run) => !previousIds.has(run.runId) && run.status === 'failed');
+    const failed = compositeRuns.find(
+      (run) => !previousIds.has(run.runId) && run.status === "failed",
+    );
     if (failed) {
-      throw new Error(failed.error || 'Composite stage failed');
+      throw new Error(failed.error || "Composite stage failed");
     }
   }
-  throw new Error('Composite regenerate timed out — check Mac agent logs and refresh.');
+  throw new Error(
+    "Composite regenerate timed out — check Mac agent logs and refresh.",
+  );
 }
 
 export async function selectStageRuns(
   jobId: string,
   selectedRuns: Partial<Record<PipelineStage, string>>,
 ): Promise<void> {
-  const response = await agentFetch(`/api/jobs/${encodeURIComponent(jobId)}/selection`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ selectedRuns }),
-  });
+  const response = await agentFetch(
+    `/api/jobs/${encodeURIComponent(jobId)}/selection`,
+    {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ selectedRuns }),
+    },
+  );
   if (!response.ok) {
-    throw new Error('Could not update stage selection');
+    throw new Error("Could not update stage selection");
   }
 }
 
 export async function publishOutdoorJob(
   jobId: string,
   platform: string,
-  format?: 'portrait' | 'landscape',
+  format?: "portrait" | "landscape",
 ): Promise<{ url: string; stub?: boolean; status?: string }> {
   const response = await agentFetch(
     `/api/jobs/${encodeURIComponent(jobId)}/publish/${encodeURIComponent(platform)}`,
     {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ format }),
     },
   );
@@ -253,7 +296,7 @@ export async function publishOutdoorJob(
     throw new Error(payload.error ?? `Publish failed (${response.status})`);
   }
   return {
-    url: payload.record?.url ?? '',
+    url: payload.record?.url ?? "",
     stub: payload.record?.stub,
     status: payload.record?.status,
   };
@@ -265,11 +308,14 @@ export async function publishAllOutdoorJob(jobId: string): Promise<{
   skippedNoTitle: string[];
   failed: Array<{ platform: string; error: string }>;
 }> {
-  const response = await agentFetch(`/api/jobs/${encodeURIComponent(jobId)}/publish-all`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: '{}',
-  });
+  const response = await agentFetch(
+    `/api/jobs/${encodeURIComponent(jobId)}/publish-all`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: "{}",
+    },
+  );
   const payload = (await response.json()) as {
     published?: Array<{ platform: string }>;
     skippedLive?: string[];
@@ -289,13 +335,20 @@ export async function publishAllOutdoorJob(jobId: string): Promise<{
 }
 
 export async function fetchSocialPosts(jobId: string): Promise<SocialPosts> {
-  const response = await agentFetch(`/api/jobs/${encodeURIComponent(jobId)}/social`);
-  const payload = (await response.json()) as { social?: SocialPosts; error?: string };
+  const response = await agentFetch(
+    `/api/jobs/${encodeURIComponent(jobId)}/social`,
+  );
+  const payload = (await response.json()) as {
+    social?: SocialPosts;
+    error?: string;
+  };
   if (!response.ok) {
-    throw new Error(payload.error ?? `Social pack unavailable (${response.status})`);
+    throw new Error(
+      payload.error ?? `Social pack unavailable (${response.status})`,
+    );
   }
   if (!payload.social) {
-    throw new Error('Social pack missing');
+    throw new Error("Social pack missing");
   }
   return payload.social;
 }
@@ -317,15 +370,26 @@ export type SocialPatch = {
   china?: Record<string, { title?: string; body?: string }>;
 };
 
-export async function patchSocialPosts(jobId: string, patch: SocialPatch): Promise<SocialPosts> {
-  const response = await agentFetch(`/api/jobs/${encodeURIComponent(jobId)}/social`, {
-    method: 'PATCH',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ patch }),
-  });
-  const payload = (await response.json()) as { social?: SocialPosts; error?: string };
+export async function patchSocialPosts(
+  jobId: string,
+  patch: SocialPatch,
+): Promise<SocialPosts> {
+  const response = await agentFetch(
+    `/api/jobs/${encodeURIComponent(jobId)}/social`,
+    {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ patch }),
+    },
+  );
+  const payload = (await response.json()) as {
+    social?: SocialPosts;
+    error?: string;
+  };
   if (!response.ok) {
-    throw new Error(payload.error ?? `Could not save social edits (${response.status})`);
+    throw new Error(
+      payload.error ?? `Could not save social edits (${response.status})`,
+    );
   }
   if (!payload.social) {
     return fetchSocialPosts(jobId);
@@ -334,7 +398,7 @@ export async function patchSocialPosts(jobId: string, patch: SocialPatch): Promi
 }
 
 export async function fetchSupportedPlatforms(): Promise<string[]> {
-  const response = await agentFetch('/api/platforms');
+  const response = await agentFetch("/api/platforms");
   if (!response.ok) {
     throw new Error(`Platforms unavailable (${response.status})`);
   }
@@ -346,16 +410,18 @@ export async function fetchSupportedPlatforms(): Promise<string[]> {
     return payload.platformIds;
   }
   const raw = payload.platforms ?? [];
-  if (raw.length && typeof raw[0] === 'string') {
+  if (raw.length && typeof raw[0] === "string") {
     return raw as string[];
   }
-  return (raw as Array<{ platform: string }>).map((entry) => entry.platform).filter(Boolean);
+  return (raw as Array<{ platform: string }>)
+    .map((entry) => entry.platform)
+    .filter(Boolean);
 }
 
 export type PlatformStatus = {
   platform: string;
-  provider: 'zernio' | 'social-auto-upload' | 'unknown';
-  mode: 'stub' | 'live';
+  provider: "postiz" | "social-auto-upload" | "unknown" | "zernio";
+  mode: "stub" | "live";
   status: string;
   accountLabel: string | null;
   accountMasked: string | null;
@@ -372,24 +438,26 @@ export type ConnectProgress = {
   stubOnly: boolean;
 };
 
+type PostizProviderHealth = {
+  mode: "stub" | "live";
+  hasApiKey: boolean;
+  dashboardUrl: string;
+  signupUrl?: string;
+  apiKeysUrl?: string;
+  connectGuideUrl?: string;
+  envDocs: string[];
+  loginLinks?: Array<{ label: string; url?: string; command?: string }>;
+  suggestedIntegrationsExport?: string | null;
+};
+
 export async function fetchPlatformsHealth(): Promise<{
   checkedAt: string;
   platformIds: string[];
   connectProgress: ConnectProgress;
   providers: {
-    zernio: {
-      mode: 'stub' | 'live';
-      hasApiKey: boolean;
-      dashboardUrl: string;
-      signupUrl?: string;
-      apiKeysUrl?: string;
-      connectGuideUrl?: string;
-      envDocs: string[];
-      loginLinks?: Array<{ label: string; url?: string; command?: string }>;
-      suggestedAccountsExport?: string | null;
-    };
+    postiz: PostizProviderHealth;
     sau: {
-      mode: 'stub' | 'live';
+      mode: "stub" | "live";
       dashboardHint: string;
       installHint?: string;
       envDocs: string[];
@@ -399,7 +467,7 @@ export async function fetchPlatformsHealth(): Promise<{
   entries: PlatformStatus[];
   manualPlatforms: string[];
 }> {
-  const response = await agentFetch('/api/platforms');
+  const response = await agentFetch("/api/platforms");
   if (!response.ok) {
     throw new Error(`Platforms unavailable (${response.status})`);
   }
@@ -409,19 +477,9 @@ export async function fetchPlatformsHealth(): Promise<{
     platforms?: PlatformStatus[];
     connectProgress?: ConnectProgress;
     providers?: {
-      zernio: {
-        mode: 'stub' | 'live';
-        hasApiKey: boolean;
-        dashboardUrl: string;
-        signupUrl?: string;
-        apiKeysUrl?: string;
-        connectGuideUrl?: string;
-        envDocs: string[];
-        loginLinks?: Array<{ label: string; url?: string; command?: string }>;
-        suggestedAccountsExport?: string | null;
-      };
+      postiz: PostizProviderHealth;
       sau: {
-        mode: 'stub' | 'live';
+        mode: "stub" | "live";
         dashboardHint: string;
         installHint?: string;
         envDocs: string[];
@@ -437,41 +495,47 @@ export async function fetchPlatformsHealth(): Promise<{
       ? payload.platformIds
       : entries.map((entry) => entry.platform),
     connectProgress: payload.connectProgress ?? {
-      total: entries.filter((entry) => entry.status !== 'manual').length,
+      total: entries.filter((entry) => entry.status !== "manual").length,
       ready: entries.filter(
-        (entry) => entry.status === 'connected' || entry.status === 'configured',
+        (entry) =>
+          entry.status === "connected" || entry.status === "configured",
       ).length,
       missing: entries
-        .filter((entry) => entry.status === 'missing_credentials' || entry.status === 'stub')
+        .filter(
+          (entry) =>
+            entry.status === "missing_credentials" || entry.status === "stub",
+        )
         .map((entry) => entry.platform),
-      manual: entries.filter((entry) => entry.status === 'manual').map((entry) => entry.platform),
+      manual: entries
+        .filter((entry) => entry.status === "manual")
+        .map((entry) => entry.platform),
       stubOnly: true,
     },
     providers: payload.providers ?? {
-      zernio: {
-        mode: 'stub',
+      postiz: {
+        mode: "stub",
         hasApiKey: false,
-        dashboardUrl: 'https://zernio.com/dashboard',
+        dashboardUrl: "http://localhost:4007",
         envDocs: [],
       },
-      sau: { mode: 'stub', dashboardHint: '', envDocs: [] },
+      sau: { mode: "stub", dashboardHint: "", envDocs: [] },
     },
     entries,
     manualPlatforms: payload.manualPlatforms ?? [],
   };
 }
 
-export async function syncZernioAccounts(): Promise<{
-  suggestedAccountsJson: Record<string, string>;
+export async function syncPostizIntegrations(): Promise<{
+  suggestedIntegrationsJson: Record<string, string>;
   exportCommand: string;
 }> {
-  const response = await agentFetch('/api/platforms/zernio/sync-accounts', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: '{}',
+  const response = await agentFetch("/api/platforms/postiz/sync-integrations", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: "{}",
   });
   const payload = (await response.json()) as {
-    suggestedAccountsJson?: Record<string, string>;
+    suggestedIntegrationsJson?: Record<string, string>;
     exportCommand?: string;
     error?: string;
   };
@@ -479,19 +543,34 @@ export async function syncZernioAccounts(): Promise<{
     throw new Error(payload.error ?? `Sync failed (${response.status})`);
   }
   return {
-    suggestedAccountsJson: payload.suggestedAccountsJson ?? {},
-    exportCommand: payload.exportCommand ?? '',
+    suggestedIntegrationsJson: payload.suggestedIntegrationsJson ?? {},
+    exportCommand: payload.exportCommand ?? "",
+  };
+}
+
+/** @deprecated Use syncPostizIntegrations */
+export async function syncZernioAccounts(): Promise<{
+  suggestedAccountsJson: Record<string, string>;
+  exportCommand: string;
+}> {
+  const result = await syncPostizIntegrations();
+  return {
+    suggestedAccountsJson: result.suggestedIntegrationsJson,
+    exportCommand: result.exportCommand,
   };
 }
 
 export async function testPlatformOrProvider(
   target: string,
 ): Promise<{ ok: boolean; message: string; provider?: string | null }> {
-  const response = await agentFetch(`/api/platforms/${encodeURIComponent(target)}/test`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: '{}',
-  });
+  const response = await agentFetch(
+    `/api/platforms/${encodeURIComponent(target)}/test`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: "{}",
+    },
+  );
   const payload = (await response.json()) as {
     ok?: boolean;
     message?: string;
@@ -503,25 +582,31 @@ export async function testPlatformOrProvider(
   }
   return {
     ok: Boolean(payload.ok),
-    message: payload.message ?? '',
+    message: payload.message ?? "",
     provider: payload.provider,
   };
 }
 
-export async function hideOutdoorPost(jobId: string, platform: string): Promise<void> {
+export async function hideOutdoorPost(
+  jobId: string,
+  platform: string,
+): Promise<void> {
   const response = await agentFetch(
     `/api/jobs/${encodeURIComponent(jobId)}/publish/${encodeURIComponent(platform)}/hide`,
-    { method: 'POST' },
+    { method: "POST" },
   );
   if (!response.ok) {
     throw new Error(`Hide failed (${response.status})`);
   }
 }
 
-export async function deleteOutdoorPost(jobId: string, platform: string): Promise<void> {
+export async function deleteOutdoorPost(
+  jobId: string,
+  platform: string,
+): Promise<void> {
   const response = await agentFetch(
     `/api/jobs/${encodeURIComponent(jobId)}/publish/${encodeURIComponent(platform)}`,
-    { method: 'DELETE' },
+    { method: "DELETE" },
   );
   if (!response.ok) {
     throw new Error(`Delete failed (${response.status})`);
@@ -545,11 +630,11 @@ export type CutTranscriptLine = {
   end: number;
   text: string;
   kept: boolean;
-  kind: 'keep' | 'silence' | 'ng' | 'other';
+  kind: "keep" | "silence" | "ng" | "other";
   reason: string;
   toggleStart: number;
   toggleEnd: number;
-  toggleMode: 'bad' | 'good';
+  toggleMode: "bad" | "good";
 };
 
 export type CutReviewPayload = {
@@ -581,7 +666,9 @@ export type CutReviewPayload = {
 };
 
 export async function fetchCutReview(jobId: string): Promise<CutReviewPayload> {
-  const response = await agentFetch(`/api/jobs/${encodeURIComponent(jobId)}/cut-review`);
+  const response = await agentFetch(
+    `/api/jobs/${encodeURIComponent(jobId)}/cut-review`,
+  );
   if (!response.ok) {
     throw new Error(`Cut review unavailable (${response.status})`);
   }
@@ -590,13 +677,16 @@ export async function fetchCutReview(jobId: string): Promise<CutReviewPayload> {
 
 export async function saveCutSelection(
   jobId: string,
-  selection: CutReviewPayload['selection'],
+  selection: CutReviewPayload["selection"],
 ): Promise<CutReviewPayload> {
-  const response = await agentFetch(`/api/jobs/${encodeURIComponent(jobId)}/cut-selection`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(selection),
-  });
+  const response = await agentFetch(
+    `/api/jobs/${encodeURIComponent(jobId)}/cut-selection`,
+    {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(selection),
+    },
+  );
   if (!response.ok) {
     throw new Error(`Could not save cut selection (${response.status})`);
   }
@@ -607,15 +697,24 @@ export async function saveCutSelection(
   return payload.review;
 }
 
-export async function applyCutSelection(jobId: string): Promise<CutReviewPayload> {
-  const response = await agentFetch(`/api/jobs/${encodeURIComponent(jobId)}/cut-apply-selection`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: '{}',
-  });
+export async function applyCutSelection(
+  jobId: string,
+): Promise<CutReviewPayload> {
+  const response = await agentFetch(
+    `/api/jobs/${encodeURIComponent(jobId)}/cut-apply-selection`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: "{}",
+    },
+  );
   if (!response.ok) {
-    const payload = (await response.json().catch(() => ({}))) as { error?: string };
-    throw new Error(payload.error ?? `Could not apply cut selection (${response.status})`);
+    const payload = (await response.json().catch(() => ({}))) as {
+      error?: string;
+    };
+    throw new Error(
+      payload.error ?? `Could not apply cut selection (${response.status})`,
+    );
   }
   const payload = (await response.json()) as { review?: CutReviewPayload };
   if (!payload.review) {
@@ -627,7 +726,7 @@ export async function applyCutSelection(jobId: string): Promise<CutReviewPayload
 export async function cutReviewPreviewUrl(
   scriptId: string,
   takeId: string,
-  review: Pick<CutReviewPayload, 'previewVideoUrl' | 'sourceVideoUrl'>,
+  review: Pick<CutReviewPayload, "previewVideoUrl" | "sourceVideoUrl">,
   baseUrl: string,
 ): Promise<string> {
   const path =
@@ -637,10 +736,13 @@ export async function cutReviewPreviewUrl(
   if (/^https?:\/\//i.test(path)) {
     return path;
   }
-  return `${baseUrl.replace(/\/+$/, '')}${path.startsWith('/') ? path : `/${path}`}`;
+  return `${baseUrl.replace(/\/+$/, "")}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
-export async function sourceVideoUrl(scriptId: string, takeId: string): Promise<string> {
+export async function sourceVideoUrl(
+  scriptId: string,
+  takeId: string,
+): Promise<string> {
   const baseUrl = await loadAgentBaseUrl();
   return `${baseUrl}/api/scripts/${encodeURIComponent(scriptId)}/takes/${encodeURIComponent(takeId)}/source`;
 }
@@ -656,7 +758,7 @@ export type AlignReviewPayload = {
     schemaVersion: 1;
     updatedAt: string;
     pip: {
-      shape: 'circle' | 'rectangle';
+      shape: "circle" | "rectangle";
       x: number;
       y: number;
       w: number;
@@ -674,8 +776,8 @@ export type AlignReviewPayload = {
     beats?: Record<
       string,
       {
-        pip: AlignReviewPayload['layout']['pip'];
-        hintPanel: AlignReviewPayload['layout']['hintPanel'];
+        pip: AlignReviewPayload["layout"]["pip"];
+        hintPanel: AlignReviewPayload["layout"]["hintPanel"];
       }
     >;
   };
@@ -693,14 +795,18 @@ export type AlignReviewPayload = {
     remotionStudioUrl?: string | null;
     remotionPortraitUrl?: string | null;
     layout?: {
-      pip: AlignReviewPayload['layout']['pip'];
-      hintPanel: AlignReviewPayload['layout']['hintPanel'];
+      pip: AlignReviewPayload["layout"]["pip"];
+      hintPanel: AlignReviewPayload["layout"]["hintPanel"];
     };
   }>;
 };
 
-export async function fetchAlignReview(jobId: string): Promise<AlignReviewPayload> {
-  const response = await agentFetch(`/api/jobs/${encodeURIComponent(jobId)}/align-review`);
+export async function fetchAlignReview(
+  jobId: string,
+): Promise<AlignReviewPayload> {
+  const response = await agentFetch(
+    `/api/jobs/${encodeURIComponent(jobId)}/align-review`,
+  );
   if (!response.ok) {
     throw new Error(`Align review unavailable (${response.status})`);
   }
@@ -709,13 +815,16 @@ export async function fetchAlignReview(jobId: string): Promise<AlignReviewPayloa
 
 export async function saveAlignLayout(
   jobId: string,
-  layout: AlignReviewPayload['layout'],
+  layout: AlignReviewPayload["layout"],
 ): Promise<AlignReviewPayload> {
-  const response = await agentFetch(`/api/jobs/${encodeURIComponent(jobId)}/align-layout`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(layout),
-  });
+  const response = await agentFetch(
+    `/api/jobs/${encodeURIComponent(jobId)}/align-layout`,
+    {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(layout),
+    },
+  );
   if (!response.ok) {
     throw new Error(`Could not save align layout (${response.status})`);
   }
@@ -726,12 +835,14 @@ export async function saveAlignLayout(
   return payload.review;
 }
 
-export async function absoluteAgentUrl(relativeOrAbsolute: string): Promise<string> {
+export async function absoluteAgentUrl(
+  relativeOrAbsolute: string,
+): Promise<string> {
   if (/^https?:\/\//i.test(relativeOrAbsolute)) {
     return relativeOrAbsolute;
   }
   const baseUrl = await loadAgentBaseUrl();
-  return `${baseUrl}${relativeOrAbsolute.startsWith('/') ? '' : '/'}${relativeOrAbsolute}`;
+  return `${baseUrl}${relativeOrAbsolute.startsWith("/") ? "" : "/"}${relativeOrAbsolute}`;
 }
 
 export type CoverListItem = {
@@ -755,7 +866,9 @@ export type CoversListResponse = {
 };
 
 export async function fetchCovers(jobId: string): Promise<CoversListResponse> {
-  const response = await agentFetch(`/api/jobs/${encodeURIComponent(jobId)}/covers`);
+  const response = await agentFetch(
+    `/api/jobs/${encodeURIComponent(jobId)}/covers`,
+  );
   if (!response.ok) {
     throw new Error(`Covers unavailable (${response.status})`);
   }
@@ -765,24 +878,31 @@ export async function fetchCovers(jobId: string): Promise<CoversListResponse> {
 export async function captureCoverFromComposite(
   jobId: string,
   options: {
-    format?: 'portrait' | 'landscape';
+    format?: "portrait" | "landscape";
     atSeconds?: number;
     label?: string;
   } = {},
 ): Promise<CoversListResponse> {
-  const response = await agentFetch(`/api/jobs/${encodeURIComponent(jobId)}/covers`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      action: 'capture-composite',
-      format: options.format ?? 'portrait',
-      atSeconds: options.atSeconds ?? 1,
-      label: options.label,
-    }),
-  });
-  const payload = (await response.json()) as CoversListResponse & { error?: string };
+  const response = await agentFetch(
+    `/api/jobs/${encodeURIComponent(jobId)}/covers`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        action: "capture-composite",
+        format: options.format ?? "portrait",
+        atSeconds: options.atSeconds ?? 1,
+        label: options.label,
+      }),
+    },
+  );
+  const payload = (await response.json()) as CoversListResponse & {
+    error?: string;
+  };
   if (!response.ok) {
-    throw new Error(payload.error ?? `Cover capture failed (${response.status})`);
+    throw new Error(
+      payload.error ?? `Cover capture failed (${response.status})`,
+    );
   }
   return payload;
 }
@@ -794,23 +914,24 @@ export async function uploadCoverToAgent(
 ): Promise<CoversListResponse> {
   const baseUrl = await loadAgentBaseUrl();
   const form = new FormData();
-  form.append(
-    'cover',
-    {
-      uri: file.uri,
-      type: file.type || 'image/jpeg',
-      name: file.name || 'cover.jpg',
-    } as unknown as Blob,
-  );
-  form.append('label', label || file.name || 'cover');
-  form.append('source', 'iphone');
+  form.append("cover", {
+    uri: file.uri,
+    type: file.type || "image/jpeg",
+    name: file.name || "cover.jpg",
+  } as unknown as Blob);
+  form.append("label", label || file.name || "cover");
+  form.append("source", "iphone");
   const response = await fetch(
     `${baseUrl}/api/jobs/${encodeURIComponent(jobId)}/covers`,
-    withNgrokHeaders({ method: 'POST', body: form }),
+    withNgrokHeaders({ method: "POST", body: form }),
   );
-  const payload = (await response.json()) as CoversListResponse & { error?: string };
+  const payload = (await response.json()) as CoversListResponse & {
+    error?: string;
+  };
   if (!response.ok) {
-    throw new Error(payload.error ?? `Cover upload failed (${response.status})`);
+    throw new Error(
+      payload.error ?? `Cover upload failed (${response.status})`,
+    );
   }
   return payload;
 }
@@ -819,67 +940,84 @@ export async function patchCoverPlatformMap(
   jobId: string,
   patch: {
     platformCovers?: Record<string, string | null>;
-    batch?: { group: 'english' | 'china'; coverId: string | null; platforms: string[] };
+    batch?: {
+      group: "english" | "china";
+      coverId: string | null;
+      platforms: string[];
+    };
   },
 ): Promise<CoversListResponse> {
-  const response = await agentFetch(`/api/jobs/${encodeURIComponent(jobId)}/covers/platform-map`, {
-    method: 'PATCH',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(patch),
-  });
-  const payload = (await response.json()) as CoversListResponse & { error?: string };
+  const response = await agentFetch(
+    `/api/jobs/${encodeURIComponent(jobId)}/covers/platform-map`,
+    {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(patch),
+    },
+  );
+  const payload = (await response.json()) as CoversListResponse & {
+    error?: string;
+  };
   if (!response.ok) {
-    throw new Error(payload.error ?? `Could not update cover map (${response.status})`);
+    throw new Error(
+      payload.error ?? `Could not update cover map (${response.status})`,
+    );
   }
   return payload;
 }
 
-export async function deleteCoverFromAgent(jobId: string, coverId: string): Promise<CoversListResponse> {
+export async function deleteCoverFromAgent(
+  jobId: string,
+  coverId: string,
+): Promise<CoversListResponse> {
   const response = await agentFetch(
     `/api/jobs/${encodeURIComponent(jobId)}/covers/${encodeURIComponent(coverId)}`,
-    { method: 'DELETE' },
+    { method: "DELETE" },
   );
-  const payload = (await response.json()) as CoversListResponse & { error?: string };
+  const payload = (await response.json()) as CoversListResponse & {
+    error?: string;
+  };
   if (!response.ok) {
-    throw new Error(payload.error ?? `Could not delete cover (${response.status})`);
+    throw new Error(
+      payload.error ?? `Could not delete cover (${response.status})`,
+    );
   }
   return payload;
 }
 
-export async function uploadTakeToAgent(take: TakeManifest): Promise<{ jobId: string }> {
+export async function uploadTakeToAgent(
+  take: TakeManifest,
+): Promise<{ jobId: string }> {
   const baseUrl = await loadAgentBaseUrl();
   const form = new FormData();
-  form.append(
-    'take',
-    {
-      uri: takeManifestUri(take.takeId),
-      type: 'application/json',
-      name: `${take.takeId}.json`,
-    } as unknown as Blob,
-  );
-  form.append(
-    'video',
-    {
-      uri: take.videoUri,
-      type: 'video/mp4',
-      name: `${take.takeId}.mp4`,
-    } as unknown as Blob,
-  );
+  form.append("take", {
+    uri: takeManifestUri(take.takeId),
+    type: "application/json",
+    name: `${take.takeId}.json`,
+  } as unknown as Blob);
+  form.append("video", {
+    uri: take.videoUri,
+    type: "video/mp4",
+    name: `${take.takeId}.mp4`,
+  } as unknown as Blob);
 
-  const response = await fetch(`${baseUrl}/api/upload`, withNgrokHeaders({
-    method: 'POST',
-    body: form,
-  }));
+  const response = await fetch(
+    `${baseUrl}/api/upload`,
+    withNgrokHeaders({
+      method: "POST",
+      body: form,
+    }),
+  );
   const payload = (await response.json()) as { jobId?: string; error?: string };
   if (!response.ok) {
     throw new Error(payload.error ?? `Upload failed (${response.status})`);
   }
   if (!payload.jobId) {
-    throw new Error('Upload succeeded but no jobId returned');
+    throw new Error("Upload succeeded but no jobId returned");
   }
   return { jobId: payload.jobId };
 }
 
 function takeManifestUri(takeId: string): string {
-  return `${FileSystem.documentDirectory ?? ''}turn-outdoor-teleprompter/takes/${encodeURIComponent(takeId)}.json`;
+  return `${FileSystem.documentDirectory ?? ""}turn-outdoor-teleprompter/takes/${encodeURIComponent(takeId)}.json`;
 }

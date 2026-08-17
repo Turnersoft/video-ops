@@ -4,7 +4,7 @@ import { createElement, forwardRef, useEffect, useImperativeHandle, useRef, useS
 import { Text, View } from 'react-native';
 
 import type { RemotionCompositionPath } from '../../api/urls';
-import type { RemotionEmbedHandle, RemotionEmbedProps } from './RemotionEmbed.types';
+import type { RemotionEmbedHandle, RemotionEmbedProps, RemotionSeekOptions } from './RemotionEmbed.types';
 
 export type { RemotionEmbedHandle, RemotionEmbedProps } from './RemotionEmbed.types';
 
@@ -32,7 +32,7 @@ export const RemotionEmbed = forwardRef<RemotionEmbedHandle, RemotionEmbedProps>
     useImperativeHandle(
       ref,
       () => ({
-        seekToFrame: (frame: number, nextCompositionId: RemotionCompositionPath) => {
+        seekToFrame: (frame: number, nextCompositionId: RemotionCompositionPath, options?: RemotionSeekOptions) => {
           const iframe =
             iframeRef.current ??
             (typeof document !== 'undefined'
@@ -52,6 +52,7 @@ export const RemotionEmbed = forwardRef<RemotionEmbedHandle, RemotionEmbedProps>
               type: 'turn-outdoor-align-seek',
               frame,
               compositionId: nextCompositionId,
+              resumePlayback: options?.resumePlayback === true,
             },
             targetOrigin,
           );

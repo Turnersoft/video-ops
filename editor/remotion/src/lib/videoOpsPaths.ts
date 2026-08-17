@@ -79,6 +79,13 @@ export function videoOpsSocialPostsRelativePath(scriptId: string): string {
   return `${videoOpsScriptFolder(scriptId)}/${VIDEO_OPS_SOCIAL_POSTS_FILENAME}`;
 }
 
+/** Fixed publish thumbnail slots under each episode folder. */
+export const VIDEO_OPS_SCRIPT_COVERS_DIR = 'covers';
+
+export function videoOpsScriptCoversRelativePath(scriptId: string): string {
+  return `${videoOpsScriptFolder(scriptId)}/${VIDEO_OPS_SCRIPT_COVERS_DIR}`;
+}
+
 export function turnKnowledgeCacheStaticPath(sourceFile: string | undefined, sourceHash: string): string {
   const safe = (sourceFile ?? 'inline').replace(/[@/]/g, '_');
   return `${TURN_KNOWLEDGE_CACHE_REL}/${safe}-${sourceHash}.json`;

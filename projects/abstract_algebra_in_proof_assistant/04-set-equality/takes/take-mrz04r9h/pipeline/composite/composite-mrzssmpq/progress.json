@@ -1,6 +1,6 @@
 {
-  "percent": 25,
-  "step": "composite",
-  "message": "Rendering portrait + landscape",
-  "updatedAt": "2026-07-25T03:16:54.485Z"
+  "percent": 100,
+  "step": "done",
+  "message": "composite complete",
+  "updatedAt": "2026-07-25T03:55:11.557Z"
 }

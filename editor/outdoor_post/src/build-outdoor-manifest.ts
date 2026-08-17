@@ -1,6 +1,6 @@
 import path from 'node:path';
 
-import { zhForSegment } from './caption_zh.ts';
+import { attachSpokenZhToCaptionSegments } from './caption_translate.ts';
 import { fileExists, readJson, writeJson } from './fs_util.ts';
 import { scriptDirFor } from './paths.ts';
 
@@ -15,6 +15,12 @@ type TranscriptSegment = {
   start: number;
   end: number;
   text?: string;
+};
+
+type ScriptAnimationBeats = {
+  scenes?: Array<{
+    compare?: { beats?: Array<{ say?: string; sayZh?: string }> };
+  }>;
 };
 
 function usage(): void {
@@ -106,9 +112,7 @@ export async function runBuildOutdoorManifest(argv: string[]): Promise<void> {
 
   const visualPlan = readJson<{ timeline?: TimelineEntry[] }>(visualPlanPath);
   const transcript = readJson<{ segments?: TranscriptSegment[] }>(transcriptPath);
-  const animation = readJson<{
-    scenes?: Array<{ compare?: { beats?: Array<{ sayZh?: string }> } }>;
-  }>(animationPath);
+  const animation = readJson<ScriptAnimationBeats>(animationPath);
   const scene = animation.scenes?.[0];
   const scriptBeats = scene?.compare?.beats ?? [];
 
@@ -162,16 +166,19 @@ export async function runBuildOutdoorManifest(argv: string[]): Promise<void> {
   }> = [];
   for (let beatIndex = 0; beatIndex < mergedBeats.length; beatIndex += 1) {
     const beatSegments = segmentsByBeat[beatIndex];
-    const sayZh = scriptBeats[beatIndex]?.sayZh ?? '';
-    beatSegments.forEach((segment, segmentIndex) => {
+    beatSegments.forEach((segment) => {
       captionSegments.push({
         text: (segment.text ?? '').trim(),
-        zh: zhForSegment(sayZh, segmentIndex, beatSegments.length) || undefined,
         atSeconds: Math.round(segment.start * 100) / 100,
         durationSeconds: Math.round((segment.end - segment.start) * 100) / 100,
       });
     });
   }
+
+  const captionSegmentsWithZh = await attachSpokenZhToCaptionSegments(
+    editDir,
+    captionSegments,
+  );
 
   const videoCandidates = [
     path.join(editDir, 'edited-good-intervals.mp4'),
@@ -195,7 +202,7 @@ export async function runBuildOutdoorManifest(argv: string[]): Promise<void> {
     burnCaptions: true,
     burnCaptionsZh: true,
     beatDurationsSeconds,
-    captionSegments,
+    captionSegments: captionSegmentsWithZh,
     mergedBeats: mergedBeats.map((beat, index) => ({
       slideId: beat.slideId,
       slideTitle: beat.slideTitle,

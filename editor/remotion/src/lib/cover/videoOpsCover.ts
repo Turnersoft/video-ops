@@ -79,6 +79,7 @@ const SCRIPT_CONCEPT: Partial<Record<string, CoverConceptId>> = {
     'sets-v2-02-subset': 'subset',
     'sets-v2-03-proper-subset': 'proper-subset',
     'sets-v2-04-set-equality': 'set-equality',
+    '04-set-equality': 'set-equality',
     'sets-v2-05-empty-set': 'empty-set',
     'sets-v2-06-empty-subset-theorem': 'empty-set',
     'sets-v2-07-union': 'union',
@@ -159,10 +160,14 @@ const SHORT_LABELS: Partial<Record<string, string>> = {
 
 function episodeNumberFromScriptId(scriptId: string): string {
     const match = scriptId.match(/^(?:sets-v2|algebra|pitfalls|syntax|why-need)-(\d+)/);
-    if (!match) {
-        return '';
+    if (match) {
+        return String(parseInt(match[1], 10));
     }
-    return String(parseInt(match[1], 10));
+    const abstractMatch = scriptId.match(/^(\d+)-/);
+    if (abstractMatch) {
+        return String(parseInt(abstractMatch[1], 10));
+    }
+    return '';
 }
 
 function slugTail(scriptId: string): string {

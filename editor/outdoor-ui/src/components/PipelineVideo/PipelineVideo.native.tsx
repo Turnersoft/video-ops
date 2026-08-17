@@ -8,7 +8,7 @@ import type { PipelineVideoHandle, PipelineVideoProps } from './PipelineVideo.ty
 export type { PipelineVideoHandle, PipelineVideoProps } from './PipelineVideo.types';
 
 export const PipelineVideo = forwardRef<PipelineVideoHandle, PipelineVideoProps>(
-  function PipelineVideo({ src, label, onTimeUpdate, tall = false, tallHeight = 420 }, ref) {
+  function PipelineVideo({ src, label, onTimeUpdate, tall = false, tallHeight = 420, reveal: _reveal }, ref) {
     const player = useVideoPlayer(src, (instance) => {
       instance.loop = false;
       instance.timeUpdateEventInterval = 0.25;

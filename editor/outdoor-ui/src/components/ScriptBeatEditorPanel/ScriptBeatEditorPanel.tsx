@@ -53,6 +53,10 @@ export function ScriptBeatEditorPanel({
   onTemplateChange,
   onTemplateConfigChange,
   scriptId,
+  voiceEngine,
+  scriptLanguage,
+  onPreviewAudioChanged,
+  onSeekPreviewFrame,
 }: ScriptBeatEditorPanelProps) {
   const { layout } = useOutdoorUi();
   const layoutStyles = layoutStylesFor(layout);
@@ -137,6 +141,7 @@ export function ScriptBeatEditorPanel({
   const visualBeatEditor = useVisualPanel ? (
     <BeatEditorVisualPanel
       beat={activeBeat}
+      beats={beats}
       draft={activeDraft}
       beatIndex={clampedIndex}
       styleKit={styleKit}
@@ -147,6 +152,10 @@ export function ScriptBeatEditorPanel({
       onTemplateChange={onTemplateChange}
       onTemplateConfigChange={onTemplateConfigChange}
       scriptId={scriptId}
+      voiceEngine={voiceEngine}
+      scriptLanguage={scriptLanguage}
+      onPreviewAudioChanged={onPreviewAudioChanged}
+      onSeekPreviewFrame={onSeekPreviewFrame}
     />
   ) : null;
 

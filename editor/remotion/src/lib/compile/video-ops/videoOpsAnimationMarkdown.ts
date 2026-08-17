@@ -1763,6 +1763,7 @@ export function compileVideoOpsAnimationMarkdown(
       "socialtitleenglish",
       "socialtitlechina",
       "promotionaldescription",
+      "promotionaldescriptionchina",
     ],
     1,
     "frontmatter",

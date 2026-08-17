@@ -1,0 +1,335 @@
+@use '../../app' as *;
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
+
+.meta {
+  color: $muted;
+  font-size: $font-small;
+  line-height: 18px;
+}
+
+.platformTabs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $space-xs;
+}
+
+.platformTab {
+  border-width: 1px;
+  border-color: $card-border;
+  border-radius: 999px;
+  padding: 4px 10px;
+  background: rgba(15, 23, 42, 0.45);
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.platformTabDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.55);
+}
+
+.platformTabDotLive {
+  background: #22c55e;
+}
+
+.platformTabDotPending {
+  background: #f59e0b;
+}
+
+.platformTabDotFailed {
+  background: #f87171;
+}
+
+.platformTabDotManual {
+  background: #94a3b8;
+}
+
+.platformTabActive {
+  border-color: $orange;
+  background: rgba(249, 115, 22, 0.18);
+}
+
+.platformTabLabel {
+  color: $text;
+  font-size: $font-small;
+  font-weight: 700;
+}
+
+.layoutRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $space-md;
+  align-items: flex-start;
+}
+
+.phone {
+  flex: 0 0 auto;
+  width: min(100%, 320px);
+  border-width: 2px;
+  border-color: #334155;
+  border-radius: 28px;
+  padding: 10px 8px 14px;
+  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.phoneNotch {
+  width: 34%;
+  height: 5px;
+  border-radius: 999px;
+  background: #475569;
+  align-self: center;
+  margin-bottom: 8px;
+}
+
+.phoneScreen {
+  border-radius: 18px;
+  overflow: hidden;
+  background: #ffffff;
+  color: #0f172a;
+  display: flex;
+  flex-direction: column;
+  min-height: 520px;
+}
+
+.phoneScreenXhs {
+  background: #fafafa;
+}
+
+.phoneScreenLinkedin {
+  background: #f3f2ef;
+}
+
+.postHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px 8px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff2442 0%, #f97316 55%, #2563eb 100%);
+  flex-shrink: 0;
+}
+
+.avatarXhs {
+  border-radius: 999px;
+  border-width: 2px;
+  border-color: #ff2442;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+  min-width: 0;
+}
+
+.handle {
+  font-size: 12px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.subline {
+  font-size: 10px;
+  color: #64748b;
+}
+
+.headerMenu {
+  font-size: 16px;
+  color: #64748b;
+  line-height: 1;
+}
+
+.mediaWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: #e2e8f0;
+  overflow: hidden;
+}
+
+.mediaImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mediaMissing {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.carouselNav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(15, 23, 42, 0.55);
+  color: #fff;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carouselNavPrev {
+  left: 8px;
+}
+
+.carouselNavNext {
+  right: 8px;
+}
+
+.carouselBadge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(15, 23, 42, 0.72);
+  color: #f8fafc;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 3px 7px;
+  border-radius: 999px;
+}
+
+.carouselDots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 4px;
+}
+
+.carouselDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.carouselDotActive {
+  background: #ffffff;
+  transform: scale(1.15);
+}
+
+.postActions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px 4px;
+  font-size: 16px;
+}
+
+.postActionsXhs {
+  justify-content: space-between;
+}
+
+.albumHint {
+  margin: 0 12px 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ff2442;
+}
+
+.captionBlock {
+  padding: 0 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.captionTitle {
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 18px;
+  color: #0f172a;
+}
+
+.captionBody {
+  font-size: 12px;
+  line-height: 17px;
+  color: #334155;
+  white-space: pre-wrap;
+  max-height: 120px;
+  overflow: hidden;
+}
+
+.captionMore {
+  color: #64748b;
+  font-weight: 700;
+}
+
+.sidePanel {
+  flex: 1 1 280px;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+  padding: $space-sm;
+  border-width: 1px;
+  border-color: $card-border;
+  border-radius: $radius-md;
+  background: rgba(15, 23, 42, 0.45);
+}
+
+.sideLabel {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $muted;
+}
+
+.sideValue {
+  color: $text;
+  font-size: $font-small;
+  line-height: 18px;
+  white-space: pre-wrap;
+}
+
+.sideMeta {
+  color: $muted;
+  font-size: $font-small;
+}

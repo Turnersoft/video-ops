@@ -1,0 +1,11 @@
+{
+  "folders": [
+    {
+      "name": "marketing",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "window.title": "marketing"
+  }
+}

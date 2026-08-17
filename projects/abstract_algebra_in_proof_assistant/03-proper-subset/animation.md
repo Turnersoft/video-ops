@@ -2,8 +2,12 @@
 videoOps: 1
 scriptId: 03-proper-subset
 title: 03_proper_subset
-format: landscape
 fps: 30
+socialTitleEnglish: "3. Proper subset: ⊂ is the strict order of ⊆"
+socialTitleChina: "3. 真子集：⊂ 就是 ⊆ 的严格序"
+promotionalDescription: "Mathlib has no def SSubset on sets. ⊂ is the generic strict order: Preorder.lt is ≤ and not ≥, and on sets ≤ already means ⊆. Turn-Lang adds a proper variant: ordinary subset plus not SetEq."
+promotionalDescriptionChina: "Mathlib 没有给集合直接写 def SSubset。⊂ 是通用严格序：Preorder.lt 是 ≤ 且非 ≥，集合上的 ≤ 已经是 ⊆。Turn-Lang 加一个 proper 变体：普通子集再加上不相等。"
+format: landscape
 width: 1920
 height: 1080
 ---

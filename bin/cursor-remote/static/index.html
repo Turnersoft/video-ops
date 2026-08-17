@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#0d0d0d" />
+  <title>Cursor Remote</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <button id="back-btn" class="icon-btn hidden" type="button" aria-label="Back">←</button>
+      <h1 id="title">Cursor Remote</h1>
+      <span id="status-dot" class="status-dot" title="Agent idle"></span>
+    </header>
+
+    <main id="screen-workspaces" class="screen">
+      <p class="hint">Workspaces — tap to browse chats or send a prompt</p>
+      <div id="workspace-list" class="list"></div>
+    </main>
+
+    <main id="screen-chats" class="screen hidden">
+      <div id="chat-list" class="list"></div>
+      <button id="load-more" class="ghost-btn hidden" type="button">Load more</button>
+    </main>
+
+    <main id="screen-thread" class="screen hidden">
+      <button id="thread-load-older" class="ghost-btn hidden" type="button">Load older messages</button>
+      <div id="thread" class="thread"></div>
+      <div id="thread-scroll-spacer" class="thread-scroll-spacer" aria-hidden="true"></div>
+    </main>
+
+    <footer id="composer" class="composer hidden">
+      <textarea id="prompt-input" rows="2" placeholder="Message Cursor agent…"></textarea>
+      <button id="send-btn" type="button">Send</button>
+    </footer>
+
+    <div id="run-panel" class="run-panel hidden">
+      <div class="run-panel-head">
+        <strong>Agent running</strong>
+        <button id="run-close" type="button">×</button>
+      </div>
+      <div id="run-output" class="markdown-body"></div>
+    </div>
+  </div>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>

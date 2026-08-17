@@ -2,6 +2,10 @@
  * Sentence-level captions and source→edited timeline mapping from Whisper words.
  */
 
+import { guideSentencesFromText } from './caption_zh.ts';
+
+export { guideSentencesFromText } from './caption_zh.ts';
+
 export type CaptionSegment = {
   text: string;
   zh?: string;
@@ -163,26 +167,6 @@ function normalizeWords(transcript: TranscriptVerbose): TimedWord[] {
     .filter((entry) => entry.word && Number.isFinite(entry.start) && Number.isFinite(entry.end));
 }
 
-/** Split teleprompter / beat say text into guide sentences (newlines + punctuation). */
-export function guideSentencesFromText(text: string): string[] {
-  const lines = String(text)
-    .split(/\n+/)
-    .map((line) => line.trim())
-    .filter(Boolean);
-  const sentences: string[] = [];
-  for (const line of lines) {
-    const parts = line
-      .split(SENTENCE_SPLIT)
-      .map((part) => part.trim())
-      .filter(Boolean);
-    if (parts.length) {
-      sentences.push(...parts);
-    } else {
-      sentences.push(line);
-    }
-  }
-  return sentences.filter((sentence) => sentence.length > 0);
-}
 
 function tokenizeGuide(text: string): string[] {
   const raw = text
@@ -822,38 +806,10 @@ export function sentenceCaptionSegmentsFromTranscript({
       0.12,
       Math.round((mapped.end - mapped.start) * 100) / 100,
     );
-    let zh: string | undefined;
-    if (boundaries?.length && beats?.length) {
-      const beatIndex = boundaries.findIndex(
-        (boundary) => atSeconds >= boundary.editedStart && atSeconds < boundary.editedEnd,
-      );
-      if (beatIndex >= 0) {
-        const beat = beats[beatIndex];
-        const beatSentences = sentences
-          .map((entry) => mapSourceIntervalToEdited(entry, goodIntervals))
-          .filter((entry): entry is { start: number; end: number } => Boolean(entry))
-          .filter(
-            (entry) =>
-              entry.start >= boundaries[beatIndex].editedStart &&
-              entry.start < boundaries[beatIndex].editedEnd,
-          );
-        const segmentIndex = beatSentences.findIndex(
-          (entry) => Math.abs(entry.start - atSeconds) < 0.08,
-        );
-        if (segmentIndex >= 0 && beat?.sayZh) {
-          const parts = beat.sayZh
-            .split(/(?<=[。！？.!?])\s*/)
-            .map((part) => part.trim())
-            .filter(Boolean);
-          zh = parts[segmentIndex] ?? parts[0];
-        }
-      }
-    }
     segments.push({
       text: sentence.text,
       atSeconds,
       durationSeconds,
-      ...(zh ? { zh } : {}),
     });
   }
 

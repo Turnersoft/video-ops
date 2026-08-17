@@ -54,6 +54,7 @@ import { compareLayerFromScene } from '../compareLayerFromScene';
 import type { BeatTemplateSceneProps } from '../types';
 import { BeatFootageOverlays } from '../../components/BeatFootage/BeatFootage';
 import { PortraitPresenterBand } from '../../components/PortraitPresenterBand/PortraitPresenterBand';
+import { isVoiceOnlyOutdoorTake } from '../../components/FilmedPlaceholders/FilmedPlaceholders';
 import { TextbookPanel } from '../../components/TextbookPanel/TextbookPanel';
 import type { TextbookOverlayConfig } from '../../components/TextbookPanel/textbookOverlayTypes';
 import { LEAN_LOGO_SRC, TURN_LANG_LOGO_SRC } from '../../lib/layout/brandAssets';
@@ -392,18 +393,17 @@ function ComparePortrait({
         : PORTRAIT_EMPHASIZED_PANE_FLEX;
     const reserveTopPresenterBand =
         useOutdoorLayout() === 'portrait' && !scene.outdoorEdit;
+    const centerCompareVertically =
+        useOutdoorLayout() === 'portrait' && isVoiceOnlyOutdoorTake(scene.outdoorEdit);
 
-    return (
-        <div className={classes.portraitCompareRoot} style={scaleCss(s.scale)}>
-            {reserveTopPresenterBand ? (
-                <PortraitPresenterBand heightRatio={PORTRAIT_PRESENTER_BAND_RATIO} />
-            ) : null}
+    const paneStack = (
+        <>
             <PortraitPane
                 label="Turn-Lang Editor"
                 accent="#c4a882"
                 logoSrc={COMPARE_TURN_LOGO}
                 logoHeight={169}
-                flexGrow={topPaneFlex}
+                flexGrow={centerCompareVertically ? PORTRAIT_COMPACT_PANE_FLEX : topPaneFlex}
             >
                 <TurnCodeFromTrack
                     scriptId={scriptId}
@@ -419,7 +419,7 @@ function ComparePortrait({
                 accent={bottomMode === 'turn-render' ? '#c4a882' : '#569cd6'}
                 logoSrc={bottomMode === 'turn-render' ? COMPARE_TURN_LOGO : COMPARE_LEAN_LOGO}
                 logoHeight={bottomMode === 'turn-render' ? 169 : 144}
-                flexGrow={bottomPaneFlex}
+                flexGrow={centerCompareVertically ? PORTRAIT_COMPACT_PANE_FLEX : bottomPaneFlex}
             >
                 {bottomMode === 'turn-render' ? (
                     <SidePanelFromTrack
@@ -440,6 +440,22 @@ function ComparePortrait({
                     />
                 )}
             </PortraitPane>
+        </>
+    );
+
+    return (
+        <div
+            className={`${classes.portraitCompareRoot}${centerCompareVertically ? ` ${classes.portraitCompareRootCentered}` : ''}`}
+            style={scaleCss(s.scale)}
+        >
+            {reserveTopPresenterBand ? (
+                <PortraitPresenterBand heightRatio={PORTRAIT_PRESENTER_BAND_RATIO} />
+            ) : null}
+            {centerCompareVertically ? (
+                <div className={classes.portraitCompareStack}>{paneStack}</div>
+            ) : (
+                paneStack
+            )}
         </div>
     );
 }

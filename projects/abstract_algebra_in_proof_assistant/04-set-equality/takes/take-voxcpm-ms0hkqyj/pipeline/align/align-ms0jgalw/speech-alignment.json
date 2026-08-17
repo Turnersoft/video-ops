@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "scriptId": "04-set-equality",
+  "generatedAt": "2026-07-25T16:26:35.097Z",
+  "source": "voxcpm",
+  "editedDurationSeconds": 345.92,
+  "beatDurationsSeconds": [
+    44.48,
+    30.56,
+    63.04,
+    43.84,
+    25.12,
+    21.76,
+    35.04,
+    21.28,
+    14.72,
+    24.32,
+    21.76
+  ],
+  "boundaries": [
+    {
+      "beatIndex": 0,
+      "editedStart": 0,
+      "editedEnd": 44.48,
+      "durationSeconds": 44.48,
+      "lastSpokenWord": "",
+      "source": "voxcpm"
+    },
+    {
+      "beatIndex": 1,
+      "editedStart": 44.48,
+      "editedEnd": 75.04,
+      "durationSeconds": 30.56,
+      "lastSpokenWord": "",
+      "source": "voxcpm"
+    },
+    {
+      "beatIndex": 2,
+      "editedStart": 75.04,
+      "editedEnd": 138.08,
+      "durationSeconds": 63.04,
+      "lastSpokenWord": "",
+      "source": "voxcpm"
+    },
+    {
+      "beatIndex": 3,
+      "editedStart": 138.08,
+      "editedEnd": 181.92,
+      "durationSeconds": 43.84,
+      "lastSpokenWord": "",
+      "source": "voxcpm"
+    },
+    {
+      "beatIndex": 4,
+      "editedStart": 181.92,
+      "editedEnd": 207.04,
+      "durationSeconds": 25.12,
+      "lastSpokenWord": "",
+      "source": "voxcpm"
+    },
+    {
+      "beatIndex": 5,
+      "editedStart": 207.04,
+      "editedEnd": 228.8,
+      "durationSeconds": 21.76,
+      "lastSpokenWord": "",
+      "source": "voxcpm"
+    },
+    {
+      "beatIndex": 6,
+      "editedStart": 228.8,
+      "editedEnd": 263.84,
+      "durationSeconds": 35.04,
+      "lastSpokenWord": "",
+      "source": "voxcpm"
+    },
+    {
+      "beatIndex": 7,
+      "editedStart": 263.84,
+      "editedEnd": 285.12,
+      "durationSeconds": 21.28,
+      "lastSpokenWord": "",
+      "source": "voxcpm"
+    },
+    {
+      "beatIndex": 8,
+      "editedStart": 285.12,
+      "editedEnd": 299.84,
+      "durationSeconds": 14.72,
+      "lastSpokenWord": "",
+      "source": "voxcpm"
+    },
+    {
+      "beatIndex": 9,
+      "editedStart": 299.84,
+      "editedEnd": 324.16,
+      "durationSeconds": 24.32,
+      "lastSpokenWord": "",
+      "source": "voxcpm"
+    },
+    {
+      "beatIndex": 10,
+      "editedStart": 324.16,
+      "editedEnd": 345.92,
+      "durationSeconds": 21.76,
+      "lastSpokenWord": "",
+      "source": "voxcpm"
+    }
+  ],
+  "narrationWav": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-voxcpm-ms0hkqyj/pipeline/align/align-ms0jgalw/voxcpm-beats/narration.wav"
+}

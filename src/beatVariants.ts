@@ -1,3 +1,5 @@
+import type { VoxcpmBeatVoiceMetadata } from "./voxcpmScript.ts";
+
 /**
  * Beat variant blocks embedded in animation.md (LLM-authored).
  *
@@ -29,6 +31,8 @@ export type BeatVariantCandidateJson = {
 export type BeatVariantsBlock = {
   selected: string;
   candidates: BeatVariantCandidateJson[];
+  /** AI-clone delivery metadata. Spoken text remains the canonical beat `say`. */
+  voice?: VoxcpmBeatVoiceMetadata;
 };
 
 const BEAT_VARIANTS_FENCE_RE = /```beat-variants\s*\n([\s\S]*?)\n```/i;
@@ -137,6 +141,7 @@ function blockForStorage(block: BeatVariantsBlock): BeatVariantsBlock {
   return {
     selected: block.selected,
     candidates: block.candidates.map(candidateForStorage),
+    ...(block.voice ? { voice: block.voice } : {}),
   };
 }
 
@@ -637,9 +642,11 @@ function syncActiveCandidateContent(
 export type BeatVariantPatch = {
   title?: string;
   say?: string;
+  chinese?: string;
   leanCode?: string;
   turnCode?: string;
   visualNotes?: string;
+  voice?: VoxcpmBeatVoiceMetadata;
   selectedVariant?: string;
   /** Append a new candidate and switch the beat section to its content. */
   addVariant?: BeatVariantCandidateJson;
@@ -707,6 +714,7 @@ function renderPatchedBeatSection(
   beatIndex: number,
   block: BeatVariantsBlock,
   content: BeatVariantContent,
+  chineseOverride?: string,
 ): string {
   const syncedBlock = syncActiveCandidateContent(
     block,
@@ -723,12 +731,16 @@ function renderPatchedBeatSection(
       visualNotes: content.visualNotes,
     },
   });
+  const panes = extractPaneBodies(section);
+  if (typeof chineseOverride === 'string') {
+    panes.set('Chinese', chineseOverride);
+  }
   return renderBeatSection(
     beatIndex,
     syncedBlock,
     applied,
     extractBeatDirectives(section),
-    extractPaneBodies(section),
+    panes,
   );
 }
 
@@ -741,6 +753,9 @@ export function patchBeatSectionVariants(
   let block =
     parseBeatVariantsBlock(section) ??
     defaultBlockFromSection(section, beatIndex);
+  if (patch.voice) {
+    block = { ...block, voice: patch.voice };
+  }
 
   if (patch.addVariant) {
     const label = patch.addVariant.label.trim();
@@ -779,12 +794,13 @@ export function patchBeatSectionVariants(
         leanCode: patch.leanCode,
         turnCode: patch.turnCode,
         visualNotes: patch.visualNotes,
+        voice: patch.voice,
       });
     }
   }
 
   const content = mergeBeatContent(section, beatIndex, block, patch);
-  return renderPatchedBeatSection(section, beatIndex, block, content);
+  return renderPatchedBeatSection(section, beatIndex, block, content, patch.chinese);
 }
 
 export function applySelectedVariantToSection(

@@ -11,6 +11,7 @@ import { FilmScreen } from './pages/FilmScreen/FilmScreen';
 import { LibraryScreen } from './pages/LibraryScreen/LibraryScreen';
 import { PlatformsScreen } from './pages/PlatformsScreen/PlatformsScreen';
 import { AnimationEditorScreen } from './pages/AnimationEditorScreen/AnimationEditorScreen';
+import { BeatPosterPublishScreen } from './pages/BeatPosterPublishScreen/BeatPosterPublishScreen';
 import { ScriptDetailScreen } from './pages/ScriptDetailScreen/ScriptDetailScreen';
 import { TakePipelineScreen } from './pages/TakePipelineScreen/TakePipelineScreen';
 import type { OutdoorRoute } from './types';
@@ -48,6 +49,8 @@ function OutdoorRouteSwitch() {
       return <AnimationEditorScreen scriptId={route.scriptId} />;
     case 'post':
       return <ScriptDetailScreen scriptId={route.scriptId} mode="post" />;
+    case 'beat-posters':
+      return <BeatPosterPublishScreen scriptId={route.scriptId} />;
     case 'take':
       return <TakePipelineScreen scriptId={route.scriptId} takeId={route.takeId} />;
     case 'animation':

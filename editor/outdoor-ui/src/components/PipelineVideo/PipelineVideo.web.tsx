@@ -7,8 +7,10 @@ import type { PipelineVideoHandle, PipelineVideoProps } from './PipelineVideo.ty
 
 export type { PipelineVideoHandle, PipelineVideoProps } from './PipelineVideo.types';
 
+import { OpenInFinderLink } from '../OpenInFinderLink/OpenInFinderLink';
+
 export const PipelineVideo = forwardRef<PipelineVideoHandle, PipelineVideoProps>(
-  function PipelineVideo({ src, label, onTimeUpdate, tall = false, tallHeight = 420 }, ref) {
+  function PipelineVideo({ src, label, onTimeUpdate, tall = false, tallHeight = 420, reveal }, ref) {
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const [loadError, setLoadError] = useState<string | null>(null);
 
@@ -53,7 +55,12 @@ export const PipelineVideo = forwardRef<PipelineVideoHandle, PipelineVideoProps>
 
     return (
       <View style={webModuleStyle(classes.wrap, tall ? classes.wrapTall : null)}>
-        {label ? <Text style={webModuleStyle(classes.label)}>{label}</Text> : null}
+        {label || reveal ? (
+          <View style={webModuleStyle(classes.labelRow)}>
+            {label ? <Text style={webModuleStyle(classes.label)}>{label}</Text> : null}
+            {reveal ? <OpenInFinderLink target={reveal} /> : null}
+          </View>
+        ) : null}
         {createElement('video', {
           key: src,
           ref: videoRef,

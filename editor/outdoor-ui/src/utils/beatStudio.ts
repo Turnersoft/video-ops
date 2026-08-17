@@ -25,6 +25,7 @@ export function draftFromLiveBeat(beat: LiveBeat): DraftBeat {
   return {
     title: beat.title,
     say: beat.say,
+    chinese: beat.chinese,
     leanCode: beat.leanCode,
     turnCode: beat.turnCode,
     visualNotes: parsed ? parsed.userNotes : stripBeatStudioBlock(beat.visualNotes),

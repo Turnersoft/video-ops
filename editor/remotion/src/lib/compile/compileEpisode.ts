@@ -149,9 +149,12 @@ function overrideBeatDurationsFromVoice(
   if (!beats?.length) {
     return scene;
   }
-  const explicit =
-    scene.outdoorEdit?.beatDurationsSeconds ?? scene.voiceEdit?.beatDurationsSeconds;
   const srcs = scene.voiceEdit?.beatVoiceSrc;
+  const hasPreviewVoice = Boolean(srcs?.some((src) => typeof src === 'string' && src.trim()));
+  // Script AI-clone preview voice must win over filmed outdoorEdit timings.
+  const explicit = hasPreviewVoice
+    ? scene.voiceEdit?.beatDurationsSeconds
+    : scene.outdoorEdit?.beatDurationsSeconds ?? scene.voiceEdit?.beatDurationsSeconds;
   if (!explicit?.length && !srcs?.length) {
     return scene;
   }

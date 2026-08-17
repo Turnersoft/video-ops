@@ -185,12 +185,6 @@
     "height": 1080,
     "totalFrames": 810
   },
-  "04-set-equality": {
-    "fps": 30,
-    "width": 1920,
-    "height": 1080,
-    "totalFrames": 22193
-  },
   "04-tactics-vs-terms": {
     "fps": 30,
     "width": 1920,
@@ -538,5 +532,11 @@
     "width": 1920,
     "height": 1080,
     "totalFrames": 450
+  },
+  "04-set-equality": {
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "totalFrames": 11568
   }
 }

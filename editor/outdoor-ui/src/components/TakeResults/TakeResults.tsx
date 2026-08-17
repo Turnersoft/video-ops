@@ -7,7 +7,12 @@ import type { TakeResultsExtras, TakeResultsProps } from './TakeResults.types';
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { ActivityIndicator, Text, View } from 'react-native';
 
-import { artifactPath, sourcePath } from '../../api/urls';
+import {
+  artifactPath,
+  revealTargetFromStageVideo,
+  sourcePath,
+  type TakeVideoRevealTarget,
+} from '../../api/urls';
 import { useOutdoorUi } from '../../context/OutdoorUiContext';
 import { colors, spacing, typography } from '../../theme';
 import type {
@@ -27,6 +32,7 @@ import { CompositeBlock } from '../CompositeBlock/CompositeBlock';
 import { CutReviewPanel } from '../CutReviewPanel/CutReviewPanel';
 import { PipelineVideo } from '../PipelineVideo/PipelineVideo';
 import { SocialSetupPanel } from '../SocialSetupPanel/SocialSetupPanel';
+import { SocialPublishPreviewSection } from '../SocialPublishPreviewSection/SocialPublishPreviewSection';
 import { StabilizePanel } from '../StabilizePanel/StabilizePanel';
 import { Button } from '../Button/Button';
 import { SectionLabel } from '../SectionLabel/SectionLabel';
@@ -341,6 +347,7 @@ export function TakeResults({
         <SocialSetupPanel
           key={`social-${jobId}`}
           jobId={jobId}
+          scriptId={scriptId}
           social={stage.social ?? null}
           status={stage.status}
           covers={covers}
@@ -362,6 +369,8 @@ export function TakeResults({
     return (
       <GenericStageBlock
         key={`${stage.stage}-${stage.runId ?? 'none'}`}
+        scriptId={scriptId}
+        takeId={take.takeId}
         stage={stage}
         resolveUrl={(path) => Promise.resolve(api.absoluteUrl(path))}
       />
@@ -478,7 +487,7 @@ export function TakeResults({
     if (!results?.stages) {
       if (job && reviewFinished) {
         const selected = take.selectedRuns ?? job.selectedRuns ?? {};
-        const compositeVideos = resolvedVideos.filter((video) => video.label !== 'Source');
+        const compositeVideos = fallbackVideos.filter((video) => video.label !== 'Source');
         parts.push(
           <CompositeBlock
             key={`composite-fallback-${jobId}`}
@@ -488,7 +497,7 @@ export function TakeResults({
               stage: 'composite',
               runId: selected.composite ?? null,
               status: (selected.composite ? 'succeeded' : 'pending') as StageResultPreview['status'],
-              videos: compositeVideos.map((video) => ({ label: video.label, url: video.src })),
+              videos: compositeVideos.map((video) => ({ label: video.label, url: video.url })),
               summary: [],
               socialTitles: [],
             }}
@@ -499,22 +508,48 @@ export function TakeResults({
           parts.push(
             <View key="source-block">
               <SectionLabel>Source</SectionLabel>
-              <PipelineVideo src={sourceVideo.src} label="Source" />
+              <PipelineVideo
+                src={sourceVideo.src}
+                label="Source"
+                reveal={{ kind: 'source', scriptId, takeId: take.takeId }}
+              />
             </View>,
           );
         }
       } else if (!job && resolvedVideos.length) {
         parts.push(
           <View key="videos-fallback" style={layoutStyles.videos}>
-            {resolvedVideos.map((video) => (
-              <View key={`${video.label}-${video.src}`} style={layoutStyles.gridItemHalf}>
-                <PipelineVideo src={video.src} label={video.label} />
-              </View>
-            ))}
+            {fallbackVideos.map((video) => {
+              const resolved = resolvedVideos.find(
+                (entry) => entry.label === video.label && entry.src,
+              );
+              if (!resolved) {
+                return null;
+              }
+              const reveal =
+                video.label === 'Source'
+                  ? { kind: 'source' as const, scriptId, takeId: take.takeId }
+                  : revealTargetFromStageVideo(scriptId, take.takeId, video);
+              return (
+                <View key={`${video.label}-${video.url}`} style={layoutStyles.gridItemHalf}>
+                  <PipelineVideo src={resolved.src} label={video.label} reveal={reveal} />
+                </View>
+              );
+            })}
           </View>,
         );
       }
-      return <View style={webModuleStyle(classes.wrap)}>{parts}</View>;
+      return (
+        <View style={webModuleStyle(classes.wrap)}>
+          {parts}
+          <SocialPublishPreviewSection
+            key={`social-preview-${jobId}`}
+            scriptId={scriptId}
+            jobId={jobId}
+            publish={publish}
+          />
+        </View>
+      );
     }
 
     for (const stage of results.stages) {
@@ -528,37 +563,66 @@ export function TakeResults({
   if (!parts.length) {
     return (
       <View style={webModuleStyle(classes.wrap)}>
-        <Text style={webModuleStyle(classes.meta)}>No pipeline outputs yet. Run cut on Mac to see edited video here.</Text>
+        <Text style={webModuleStyle(classes.meta)}>
+          No pipeline outputs yet. Run cut on Mac to see edited video here.
+        </Text>
+        <SocialPublishPreviewSection
+          key={`social-preview-${jobId}`}
+          scriptId={scriptId}
+          jobId={jobId}
+          publish={publish}
+        />
       </View>
     );
   }
 
-  return <View style={webModuleStyle(classes.wrap)}>{parts}</View>;
+  return (
+    <View style={webModuleStyle(classes.wrap)}>
+      {parts}
+      <SocialPublishPreviewSection
+        key={`social-preview-${jobId}`}
+        scriptId={scriptId}
+        jobId={jobId}
+        publish={publish}
+      />
+    </View>
+  );
 }
 
 function GenericStageBlock({
+  scriptId,
+  takeId,
   stage,
   resolveUrl,
 }: {
+  scriptId: string;
+  takeId: string;
   stage: StageResultPreview;
   resolveUrl: (path: string) => Promise<string>;
 }) {
   const { layout } = useOutdoorUi();
   const layoutStyles = layoutStylesFor(layout);
-  const [videos, setVideos] = useState<Array<{ label: string; src: string }>>([]);
+  const [videos, setVideos] = useState<
+    Array<{ label: string; src: string; reveal?: TakeVideoRevealTarget }>
+  >([]);
 
   useEffect(() => {
     void (async () => {
-      const resolved: Array<{ label: string; src: string }> = [];
+      const resolved: Array<{
+        label: string;
+        src: string;
+        reveal?: TakeVideoRevealTarget;
+      }> = [];
       for (const video of stage.videos) {
         resolved.push({
           label: video.label,
           src: await resolveUrl(video.url),
+          reveal: revealTargetFromStageVideo(scriptId, takeId, video),
         });
       }
       setVideos(resolved);
     })();
-  }, [resolveUrl, stage.videos]);
+  }, [resolveUrl, scriptId, stage.videos, takeId]);
 
   return (
     <View style={webModuleStyle(classes.stageBlock)}>
@@ -572,7 +636,7 @@ function GenericStageBlock({
         {videos.length ? (
           videos.map((video) => (
             <View key={`${video.label}-${video.src}`} style={layoutStyles.gridItemHalf}>
-              <PipelineVideo src={video.src} label={video.label} />
+              <PipelineVideo src={video.src} label={video.label} reveal={video.reveal} />
             </View>
           ))
         ) : (

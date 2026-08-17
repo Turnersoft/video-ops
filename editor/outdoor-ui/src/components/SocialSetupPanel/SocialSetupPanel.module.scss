@@ -49,6 +49,10 @@
   font-size: 14px;
   min-height: 40px;
 }
+.inputDisabled {
+  color: $muted2;
+  background-color: rgba(15, 23, 42, 0.55);
+}
 .bodyInput {
   min-height: 96px;
 }
@@ -92,6 +96,41 @@
   font-size: $font-tiny;
   font-weight: 800;
   text-transform: uppercase;
+}
+.connectionReady {
+  color: $online;
+  font-size: $font-tiny;
+  font-weight: 800;
+}
+.connectionBlocked {
+  color: $offline;
+  font-size: $font-tiny;
+  font-weight: 800;
+}
+.apiMeta {
+  color: $muted;
+  font-size: $font-tiny;
+  line-height: 16px;
+}
+.blockedReason {
+  color: #fca5a5;
+  font-size: $font-tiny;
+  line-height: 16px;
+}
+.progressBlock {
+  display: flex;
+  gap: 5px;
+}
+.progressTrack {
+  height: 6px;
+  overflow: hidden;
+  border-radius: $radius-pill;
+  background-color: $pill;
+}
+.progressFill {
+  height: 100%;
+  border-radius: $radius-pill;
+  background-color: $orange;
 }
 
 

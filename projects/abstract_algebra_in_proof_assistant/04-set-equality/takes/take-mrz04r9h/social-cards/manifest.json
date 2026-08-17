@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-08-11T09:25:24.049Z",
+  "cards": [
+    {
+      "id": "landscape-en",
+      "format": "landscape",
+      "lang": "en",
+      "width": 1200,
+      "height": 630,
+      "htmlPath": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/social-cards/landscape-en.html",
+      "pngPath": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/social-cards/landscape-en.png",
+      "createdAt": "2026-08-11T09:24:37.023Z"
+    },
+    {
+      "id": "portrait-en",
+      "format": "portrait",
+      "lang": "en",
+      "width": 1080,
+      "height": 1350,
+      "htmlPath": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/social-cards/portrait-en.html",
+      "pngPath": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/social-cards/portrait-en.png",
+      "createdAt": "2026-08-11T09:25:24.049Z"
+    }
+  ]
+}

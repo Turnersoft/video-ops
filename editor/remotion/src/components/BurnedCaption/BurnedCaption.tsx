@@ -6,6 +6,7 @@ import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { scaleCss } from "../../lib/layout/scaleCss";
 import { useCompositionScale } from "../../lib/layout/useCompositionScale";
 import { useOutdoorLayout } from "../../lib/outdoor/outdoorLayoutContext";
+import { PORTRAIT_PRESENTER_BAND_RATIO } from "../../lib/outdoor/portraitLayout";
 import { useScriptStripUi } from "../../lib/context/scriptStripUiContext";
 import type { NarrationStripMode } from "../../lib/outdoor/narrationStrip";
 import type { CaptionSegment } from "../../lib/types/renderProps";
@@ -30,6 +31,7 @@ type BurnedCaptionProps = {
   sceneIndex?: number;
   beatComments?: string[];
   beatAllowScriptChange?: boolean[];
+  burnCaptionsZh?: boolean;
 };
 
 function captionTimings(
@@ -55,6 +57,7 @@ export function BurnedCaption({
   sceneIndex = 0,
   beatComments,
   beatAllowScriptChange,
+  burnCaptionsZh = true,
 }: BurnedCaptionProps) {
   const s = useCompositionScale();
   const outdoorFormat = useOutdoorLayout();
@@ -64,6 +67,7 @@ export function BurnedCaption({
   const isPreview = mode === "preview";
   const isOutdoor = Boolean(outdoorFormat);
   const isOutdoorExport = !isPreview && isOutdoor;
+  const isOutdoorBurnedCaption = isOutdoor && (isOutdoorExport || mode === "export");
   const isOutdoorPortraitCaption = isOutdoor && outdoorFormat === "portrait";
   const isOutdoorLandscapeCaption = isOutdoor && outdoorFormat === "landscape";
   const outdoorCaptionEnFontSize = s.px(
@@ -72,12 +76,8 @@ export function BurnedCaption({
   const outdoorCaptionZhFontSize = s.px(
     outdoorFormat === "portrait" ? 54 : outdoorFormat === "landscape" ? 28 : 50,
   );
-  const outdoorCaptionEnColor = isOutdoorLandscapeCaption
-    ? "#4DA6FF"
-    : "#FAF8F3";
-  const outdoorCaptionZhColor = isOutdoorLandscapeCaption
-    ? "#FFD54F"
-    : "#FAF8F3";
+  const outdoorCaptionEnColor = isOutdoor ? "#4DA6FF" : "#FAF8F3";
+  const outdoorCaptionZhColor = isOutdoor ? "#FFD54F" : "#FAF8F3";
   const [copyFeedback, setCopyFeedback] = useState("");
   const { collapsed, toggleCollapsed } = useScriptStripUi();
 
@@ -96,7 +96,7 @@ export function BurnedCaption({
   }, []);
 
   // Export with synthesized narration: one sentence at a time, timed to the audio.
-  const useSegments = !isPreview && Boolean(segments?.length);
+  const useSegments = Boolean(segments?.length) && (isOutdoorBurnedCaption || !isPreview);
   const lines = useSegments
     ? segments!.map((segment) => segment.text)
     : beatLines;
@@ -108,7 +108,7 @@ export function BurnedCaption({
     return null;
   }
 
-  if (isPreview && !PREVIEW_SCRIPT_PANEL_ENABLED) {
+  if (isPreview && !PREVIEW_SCRIPT_PANEL_ENABLED && !isOutdoorBurnedCaption) {
     return null;
   }
 
@@ -121,7 +121,8 @@ export function BurnedCaption({
   const events = starts.map((atSeconds, index) => ({ atSeconds, index }));
   const active = activeEventIndex(events, seconds);
   const line = lines[active] ?? lines[lines.length - 1];
-  const lineZh = linesZh?.[active]?.trim() ? linesZh[active] : "";
+  const lineZh =
+    burnCaptionsZh && linesZh?.[active]?.trim() ? linesZh[active] : "";
   const nextLine = active < lines.length - 1 ? (lines[active + 1] ?? "") : "";
   const fullScript = lines.join("\n\n");
 
@@ -154,19 +155,26 @@ export function BurnedCaption({
     classes.root,
     isPreview && classes.rootPreview,
     previewCollapsed && classes.rootPreviewCollapsed,
-    isOutdoorLandscapeCaption && classes.rootOutdoorLandscape,
-    isOutdoorPortraitCaption && classes.rootOutdoorPortrait,
-    isOutdoorExport && classes.rootOutdoorExport,
+    isOutdoorBurnedCaption &&
+      isOutdoorPortraitCaption &&
+      classes.rootOutdoorPortrait,
+    isOutdoorBurnedCaption &&
+      isOutdoorLandscapeCaption &&
+      classes.rootOutdoorLandscape,
   ]
     .filter(Boolean)
     .join(" ");
 
+  const presenterBandHeight = Math.round(s.height * PORTRAIT_PRESENTER_BAND_RATIO);
   const rootStyle: CSSProperties = {
     ...scaleCss(s.scale),
-    ...(isOutdoorPortraitCaption
-      ? { top: Math.max(s.px(24), Math.round(s.height / 3) - s.px(170)) }
+    ...(isOutdoorBurnedCaption && isOutdoorPortraitCaption
+      ? {
+          top: 0,
+          bottom: "unset",
+          height: presenterBandHeight,
+        }
       : {}),
-    ...(isOutdoorExport ? { height: Math.round(s.height / 3) } : {}),
   };
 
   const paragraphStyle = {
@@ -190,26 +198,26 @@ export function BurnedCaption({
 
   const exportCaptionClassName = [
     classes.exportCaption,
-    isOutdoorExport
-      ? classes.exportCaptionOutdoorExport
-      : isOutdoorPortraitCaption
-        ? classes.exportCaptionOutdoorPortrait
+    isOutdoorPortraitCaption && isOutdoorBurnedCaption
+      ? classes.exportCaptionOutdoorPortrait
+      : isOutdoorLandscapeCaption && isOutdoorBurnedCaption
+        ? classes.exportCaptionOutdoorLandscape
         : classes.exportCaptionDefault,
   ].join(" ");
 
   const captionEnClassName = [
     classes.captionEn,
-    isOutdoorExport || isOutdoorPortraitCaption
+    isOutdoorBurnedCaption || isOutdoorPortraitCaption
       ? classes.captionEnOutdoor
       : classes.captionEnDefault,
-    isOutdoorPortraitCaption && !isOutdoorExport ? classes.captionEnOutdoorPortrait : "",
+    isOutdoorPortraitCaption ? classes.captionEnOutdoorPortrait : "",
   ]
     .filter(Boolean)
     .join(" ");
 
   const captionZhClassName = [
     classes.captionZh,
-    isOutdoorExport || isOutdoorPortraitCaption
+    isOutdoorBurnedCaption || isOutdoorPortraitCaption
       ? classes.captionZhOutdoor
       : classes.captionZhDefault,
     isOutdoorLandscapeCaption ? classes.captionZhOutdoorLandscape : "",
@@ -222,7 +230,7 @@ export function BurnedCaption({
 
   return (
     <div className={rootClassName} style={rootStyle}>
-      {!isOutdoorExport ? (
+      {!isOutdoorBurnedCaption ? (
         <div
           role={previewCollapsed ? "button" : undefined}
           tabIndex={previewCollapsed ? 0 : undefined}
@@ -365,7 +373,7 @@ export function BurnedCaption({
           */}
         </div>
       ) : null}
-      {!isPreview ? (
+      {!isPreview || isOutdoorBurnedCaption ? (
         <div
           className={exportCaptionClassName}
           style={{ opacity, transform: `translateY(${captionY}px)` }}
@@ -373,7 +381,7 @@ export function BurnedCaption({
           <div
             className={captionEnClassName}
             style={{
-              ...(isOutdoorExport || isOutdoorPortraitCaption
+              ...(isOutdoorBurnedCaption || isOutdoorPortraitCaption
                 ? {
                     fontSize: outdoorCaptionEnFontSize,
                     color: outdoorCaptionEnColor,
@@ -388,7 +396,7 @@ export function BurnedCaption({
             <div
               className={captionZhClassName}
               style={{
-                ...(isOutdoorExport || isOutdoorPortraitCaption
+                ...(isOutdoorBurnedCaption || isOutdoorPortraitCaption
                   ? {
                       fontSize: outdoorCaptionZhFontSize,
                       color: outdoorCaptionZhColor,

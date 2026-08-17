@@ -1,0 +1,98 @@
+@use '../../app' as *;
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  margin-top: $space-md;
+  padding-top: $space-md;
+  border-top-width: 1px;
+  border-top-color: $card-border;
+}
+
+.headerRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-xs;
+}
+
+.meta {
+  color: $muted;
+  font-size: $font-small;
+  line-height: 18px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $space-xs;
+}
+
+.langRow {
+  display: flex;
+  flex-direction: row;
+  gap: $space-xs;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $space-md;
+}
+
+.card {
+  border-width: 1px;
+  border-color: $card-border;
+  border-radius: $radius-md;
+  background-color: rgba(15, 23, 42, 0.55);
+  padding: $space-sm;
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+}
+
+.cardTitle {
+  font-size: $font-small;
+  font-weight: 700;
+  color: $text;
+}
+
+.cardMeta {
+  font-size: $font-tiny;
+  color: $muted;
+}
+
+.previewRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $space-sm;
+  align-items: flex-start;
+}
+
+.pngPreview {
+  width: 140px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: $radius-sm;
+  border-width: 1px;
+  border-color: $card-border;
+  background: rgba(15, 23, 42, 0.5);
+}
+
+.platformRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $space-xs;
+  align-items: center;
+}
+
+.published {
+  font-size: $font-tiny;
+  color: $online;
+}

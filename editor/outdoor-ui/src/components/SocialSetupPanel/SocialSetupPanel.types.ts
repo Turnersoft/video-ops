@@ -5,6 +5,7 @@ import type { SocialPosts } from '../../types';
 
 export type SocialSetupPanelProps = {
   jobId: string;
+  scriptId: string;
   social?: SocialPosts | null;
   status?: string;
   covers?: CoversListResponse | null;

@@ -112,10 +112,18 @@ function canRunPendingStage(snapshot: PipelineSnapshot, stage: PipelineStage): b
   return previousStageSucceeded(snapshot, stage);
 }
 
-function pipelineSummary(snapshot: PipelineSnapshot): string {
+function pipelineSummary(
+  snapshot: PipelineSnapshot,
+  options: {
+    stages?: PipelineStage[];
+    stageLabels?: Partial<Record<PipelineStage, string>>;
+  } = {},
+): string {
+  const stageFilter = options.stages ?? PIPELINE_STAGES;
   return snapshot.stages
+    .filter((entry) => stageFilter.includes(entry.stage))
     .map((entry) => {
-      const label = STAGE_LABELS[entry.stage];
+      const label = options.stageLabels?.[entry.stage] ?? STAGE_LABELS[entry.stage];
       const status = entry.status ?? 'pending';
       if (status === 'succeeded') {
         return `${label} ✓`;
@@ -169,7 +177,15 @@ function snapshotUiKey(snapshot: PipelineSnapshot): string {
   });
 }
 
-export function PipelineStagesPanel({ jobId, onSnapshot }: PipelineStagesPanelProps) {
+export function PipelineStagesPanel({
+  jobId,
+  onSnapshot,
+  visibleStages,
+  panelTitle = 'Mac pipeline & logs',
+  hideFullPipelineRun = false,
+  stageLabels,
+  voxcpmTake = false,
+}: PipelineStagesPanelProps) {
   const { api } = useOutdoorUi();
   const [snapshot, setSnapshot] = useState<PipelineSnapshot | null>(null);
   const [loading, setLoading] = useState(true);
@@ -284,17 +300,25 @@ export function PipelineStagesPanel({ jobId, onSnapshot }: PipelineStagesPanelPr
     return error ? <Text style={webModuleStyle(classes.error)}>{error}</Text> : null;
   }
 
+  const stagesToShow = visibleStages ?? PIPELINE_STAGES;
+  const labelFor = (stage: PipelineStage) => stageLabels?.[stage] ?? STAGE_LABELS[stage];
+
   return (
     <View style={webModuleStyle(classes.wrap)}>
       <CollapsibleSection
-        title="Mac pipeline & logs"
-        summary={`Job ${jobStatusLabel(snapshot.jobStatus)} · ${pipelineSummary(snapshot)}`}
+        title={panelTitle}
+        summary={`Job ${jobStatusLabel(snapshot.jobStatus)} · ${pipelineSummary(snapshot, {
+          stages: stagesToShow,
+          stageLabels,
+        })}`}
         defaultOpen={pipelineActive}
       >
         {snapshot.failureTitle && snapshot.failureMessage ? (
           <View style={webModuleStyle(classes.failureBanner)}>
             <Text style={webModuleStyle(classes.failureTitle)}>
-              {snapshot.failedStage ? `${STAGE_LABELS[snapshot.failedStage]} — ` : ''}
+              {snapshot.failedStage
+                ? `${labelFor(snapshot.failedStage)} — `
+                : ''}
               {snapshot.failureTitle}
             </Text>
             <Text style={webModuleStyle(classes.failureMessage)}>{snapshot.failureMessage}</Text>
@@ -304,7 +328,7 @@ export function PipelineStagesPanel({ jobId, onSnapshot }: PipelineStagesPanelPr
           </View>
         ) : null}
 
-        {PIPELINE_STAGES.map((stage: PipelineStage) => {
+        {stagesToShow.map((stage: PipelineStage) => {
           const entry = snapshot.stages.find((item) => item.stage === stage);
           if (!entry) {
             return null;
@@ -323,15 +347,22 @@ export function PipelineStagesPanel({ jobId, onSnapshot }: PipelineStagesPanelPr
           const canRunStage =
             !controlsDisabled &&
             status !== 'running' &&
-            (status !== 'pending' || canRunPendingStage(snapshot, stage));
+            (status !== 'pending' || canRunPendingStage(snapshot, stage)) &&
+            !(voxcpmTake && stage === 'align');
           const stageActionLabel =
-            status === 'pending' ? 'Run' : 'Rerun';
+            status === 'pending'
+              ? stage === 'composite' && voxcpmTake
+                ? 'Render preview'
+                : 'Run'
+              : stage === 'composite' && voxcpmTake
+                ? 'Rerun preview'
+                : 'Rerun';
           const stageRerunning = rerunning === stage;
 
           return (
             <View key={stage} style={webModuleStyle(classes.stageRow)}>
               <View style={webModuleStyle(classes.stageTop)}>
-                <Text style={webModuleStyle(classes.stageName)}>{STAGE_LABELS[stage]}</Text>
+                <Text style={webModuleStyle(classes.stageName)}>{labelFor(stage)}</Text>
                 <View style={webModuleStyle(classes.stageActions)}>
                   {status === 'running' ? (
                 <AbortStageButton
@@ -414,7 +445,7 @@ export function PipelineStagesPanel({ jobId, onSnapshot }: PipelineStagesPanelPr
               void handleAbort();
             }}
           />
-        ) : (
+        ) : hideFullPipelineRun ? null : (
           <Button
             label={
               rerunning === 'pipeline'

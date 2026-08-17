@@ -19,6 +19,7 @@ import { computeScriptRemotionPreviewSize } from "../../utils/scriptRemotionPrev
 import {
   RemotionEmbed,
   type RemotionEmbedHandle,
+  type RemotionSeekOptions,
 } from "../RemotionEmbed/RemotionEmbed";
 
 /**
@@ -64,8 +65,8 @@ export const ScriptRemotionPreview = forwardRef<
   useImperativeHandle(
     ref,
     () => ({
-      seekToFrame: (frame: number) => {
-        embedRef.current?.seekToFrame(frame, scriptId);
+      seekToFrame: (frame: number, options?: RemotionSeekOptions) => {
+        embedRef.current?.seekToFrame(frame, scriptId, options);
       },
     }),
     [scriptId],

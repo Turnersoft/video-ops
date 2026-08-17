@@ -231,7 +231,11 @@ export function StabilizePanel({
       <View style={layoutStyles.videos}>
         {sourceSrc ? (
           <View style={layoutStyles.gridItemHalf}>
-            <PipelineVideo src={sourceSrc} label="Source (handheld)" />
+            <PipelineVideo
+              src={sourceSrc}
+              label="Source (handheld)"
+              reveal={{ kind: 'source', scriptId, takeId }}
+            />
           </View>
         ) : null}
         {running && !stabilizedSrc ? (
@@ -241,7 +245,22 @@ export function StabilizePanel({
           </View>
         ) : stabilizedSrc ? (
           <View style={layoutStyles.gridItemHalf}>
-            <PipelineVideo src={stabilizedSrc} label="Stabilized" />
+            <PipelineVideo
+              src={stabilizedSrc}
+              label="Stabilized"
+              reveal={
+                runId
+                  ? {
+                      kind: 'artifact',
+                      scriptId,
+                      takeId,
+                      stage: 'stabilize',
+                      runId,
+                      fileName: 'stabilized.mp4',
+                    }
+                  : undefined
+              }
+            />
           </View>
         ) : !running && hasSourceVideo ? (
           <View style={[webModuleStyle(classes.placeholder), layoutStyles.gridItemHalf]}>

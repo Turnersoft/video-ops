@@ -1,0 +1,11 @@
+[2026-07-25T14:50:37.099Z] VoxCPM trial started (ref: /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/source.webm)
+[2026-07-25T14:50:37.104Z] VoxCPM trial failed: Align slides to voice failed — VoxCPM server not reachable at http://127.0.0.1:8791 — run npm run outdoor:all (or npm run setup:voxcpm)
+[2026-07-25T15:43:08.312Z] VoxCPM trial retry requested
+[2026-07-25T16:26:35.740Z] VoxCPM align run align-ms0jgalw succeeded
+[2026-07-25T16:26:35.802Z] stage composite run composite-ms0l06ft started
+[2026-07-25T16:26:36.605Z] stage composite run composite-ms0l06ft failed: Remotion render failed — [2026-07-25T16:26:36.603Z] [2026-07-25T16:26:36.571Z] exit 1
+[2026-07-25T16:26:36.606Z] VoxCPM trial failed: VoxCPM narration failed — node /Users/johndoe/Documents/company/video_ops/editor/remotion/scripts/render-outdoor.mjs 04-set-equality --edit-dir /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-voxcpm-ms0hkqyj/pipeline/composite/composite-ms0l06ft --format both failed (exit 1)
+[2026-07-25T16:30:56.161Z] VoxCPM trial retry requested
+[2026-07-25T17:09:11.694Z] VoxCPM align run align-ms0l5rh6 succeeded
+[2026-07-25T17:09:11.753Z] stage composite run composite-ms0miymg started
+[2026-07-25T17:15:57.471Z] stage composite run composite-ms0miymg succeeded

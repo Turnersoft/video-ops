@@ -59,6 +59,7 @@ export function parsedScriptFromAnimationMarkdown(
         productionStatus: normalizeScriptStatus(frontmatter.status),
         audience: frontmatter.audience,
         promotionalDescription: frontmatter.promotionalDescription,
+        promotionalDescriptionChina: frontmatter.promotionalDescriptionChina,
         socialTitleEnglish: frontmatter.socialTitleEnglish,
         socialTitleChina: frontmatter.socialTitleChina,
         coreIdea: frontmatter.coreIdea,

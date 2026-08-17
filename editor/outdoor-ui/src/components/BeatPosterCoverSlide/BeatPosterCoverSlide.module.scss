@@ -1,0 +1,284 @@
+@use '../../app' as *;
+
+.frame {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 3 / 4;
+}
+
+.frameCompact {
+  max-width: 300px;
+}
+
+.poster {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 4%;
+  gap: 2%;
+  overflow: hidden;
+  color: #0f172a;
+  border-radius: $radius-md;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #0f172a;
+  position: relative;
+  background:
+    radial-gradient(circle at 12% 10%, rgba(232, 160, 255, 0.22) 0 14%, transparent 15%),
+    radial-gradient(circle at 88% 8%, rgba(125, 211, 252, 0.28) 0 16%, transparent 17%),
+    radial-gradient(circle at 8% 92%, rgba(255, 228, 230, 0.55) 0 15%, transparent 16%),
+    linear-gradient(180deg, #eef2ff 0%, #dbeafe 46%, #fff7ed 100%);
+}
+
+.codeBackdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.codePanel {
+  position: absolute;
+  margin: 0;
+  padding: 8px 10px;
+  border-width: 1px;
+  border-color: rgba(15, 23, 42, 0.1);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.48);
+  font-family: "SF Mono", "JetBrains Mono", "Menlo", monospace;
+  font-size: clamp(8px, 2vw, 10px);
+  line-height: 1.38;
+  white-space: pre;
+  color: rgba(15, 23, 42, 0.38);
+  max-width: 62%;
+  overflow: hidden;
+  user-select: none;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+.codePanelLean {
+  left: -2%;
+  top: 18%;
+  transform: rotate(-13deg);
+}
+
+.codePanelTurn {
+  right: -4%;
+  top: 48%;
+  transform: rotate(9deg);
+  color: rgba(30, 41, 59, 0.4);
+  background: rgba(255, 251, 235, 0.52);
+}
+
+.poster::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(37, 99, 235, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+.posterZh {
+  font-family: "PingFang SC", "SF Pro Display", system-ui, sans-serif;
+}
+
+.coverAvatar {
+  position: absolute;
+  right: -2%;
+  bottom: 6%;
+  width: 34%;
+  height: auto;
+  object-fit: contain;
+  z-index: 0;
+  pointer-events: none;
+  transform: rotate(8deg);
+  filter: drop-shadow(0 10px 18px rgba(15, 23, 42, 0.18));
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: clamp(4px, 1.2vw, 8px);
+  padding-top: clamp(4px, 1vw, 8px);
+  position: relative;
+  z-index: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.coverSeriesHeader {
+  display: block;
+  width: 125%;
+  max-width: 125%;
+  max-height: 32.5%;
+  height: auto;
+  object-fit: contain;
+  align-self: center;
+  background: transparent;
+  flex-shrink: 1;
+  min-height: 0;
+}
+
+.coverVsStrip {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  max-height: 33%;
+  height: auto;
+  object-fit: contain;
+  align-self: center;
+  background: transparent;
+  flex-shrink: 1;
+  min-height: 0;
+}
+
+.coverHeroTitle {
+  position: relative;
+  background: linear-gradient(180deg, #fffefb 0%, #fff1f5 52%, #ffe8ef 100%);
+  border-style: solid;
+  border-width: 3px;
+  border-color: #ff2442;
+  border-radius: 22px;
+  padding: 16px 16px 14px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  box-shadow:
+    5px 5px 0 rgba(255, 36, 66, 0.28),
+    0 14px 28px rgba(255, 36, 66, 0.16);
+  overflow: visible;
+}
+
+.coverHeroTitle::before {
+  content: '✨';
+  position: absolute;
+  top: -12px;
+  left: 10px;
+  font-size: 20px;
+  line-height: 1;
+  transform: rotate(-14deg);
+  filter: drop-shadow(0 2px 2px rgba(15, 23, 42, 0.15));
+}
+
+.coverHeroTitle::after {
+  content: '🔥';
+  position: absolute;
+  top: -10px;
+  right: 12px;
+  font-size: 18px;
+  line-height: 1;
+  transform: rotate(10deg);
+  filter: drop-shadow(0 2px 2px rgba(15, 23, 42, 0.15));
+}
+
+.coverHeroKicker {
+  margin: 0;
+  padding: 0 6px 2px;
+  font-family: "PingFang SC", "SF Pro Display", "Helvetica Neue", sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.1;
+  font-size: clamp(20px, 5.5vw, 28px);
+  color: #ff2442;
+  background: linear-gradient(transparent 58%, #ffe566 58%);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.tagline {
+  font-family: "PingFang SC", "SF Pro Display", "Helvetica Neue", sans-serif;
+  font-size: clamp(16px, 4.2vw, 22px);
+  line-height: 1.3;
+  font-weight: 800;
+  font-style: normal;
+  text-align: center;
+  color: #111827;
+  letter-spacing: 0.01em;
+  margin: 0;
+  max-width: 96%;
+}
+
+.taglineEquals {
+  display: inline-block;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  color: #ff2442;
+  background: #ffe566;
+  border-radius: 8px;
+  font-size: 1.08em;
+  margin: 0 0.1em;
+  padding: 0 5px;
+  transform: rotate(-4deg);
+  box-shadow: 0 2px 0 rgba(255, 36, 66, 0.25);
+}
+
+.beatBadge {
+  align-self: center;
+  background: #2563eb;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #0f172a;
+  border-radius: 999px;
+  padding: 5px 12px;
+  flex-shrink: 0;
+  max-width: 96%;
+  box-shadow: 0 4px 0 rgba(15, 23, 42, 0.22);
+}
+
+.beatBadgeText {
+  font-size: clamp(9px, 2.2vw, 12px);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: #eff6ff;
+  text-transform: none;
+  text-align: center;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.swipeHint {
+  font-size: clamp(11px, 2.5vw, 13px);
+  font-weight: 900;
+  color: #1d4ed8;
+  letter-spacing: 0.04em;
+}
+
+.sparkle {
+  position: absolute;
+  color: rgba(15, 23, 42, 0.55);
+  font-size: 18px;
+  z-index: 0;
+}
+
+.sparkleOne {
+  top: 10px;
+  right: 12px;
+  transform: rotate(-10deg);
+}
+
+.sparkleTwo {
+  bottom: 12px;
+  left: 12px;
+  transform: rotate(12deg);
+}

@@ -1,0 +1,80 @@
+@use '../../app' as *;
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  margin-top: $space-md;
+  padding-top: $space-md;
+  border-top-width: 1px;
+  border-top-color: $card-border;
+}
+.meta {
+  color: $muted;
+  font-size: $font-small;
+  line-height: 18px;
+}
+.actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $space-xs;
+}
+.cardGrid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $space-sm;
+}
+.card {
+  border-width: 1px;
+  border-color: $card-border;
+  border-radius: $radius-md;
+  background-color: rgba(15, 23, 42, 0.55);
+  padding: $space-xs;
+  max-width: 320px;
+}
+.cardLabel {
+  color: $muted;
+  font-size: $font-small;
+  margin-bottom: $space-xs;
+}
+.cardImage {
+  width: 100%;
+  height: auto;
+  border-radius: $radius-sm;
+  display: block;
+}
+.platformGrid {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+}
+.platformRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-xs;
+  padding: $space-xs 0;
+  border-bottom-width: 1px;
+  border-bottom-color: $card-border;
+}
+.platformName {
+  min-width: 96px;
+  font-weight: 600;
+  font-size: $font-small;
+}
+.platformMeta {
+  flex: 1;
+  color: $muted;
+  font-size: $font-small;
+}
+.thumb {
+  width: 72px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: $radius-sm;
+  border-width: 1px;
+  border-color: $card-border;
+}

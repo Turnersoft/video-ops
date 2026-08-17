@@ -38,43 +38,40 @@
   background: rgba(8, 8, 10, 0.88);
 }
 
+// Landscape outdoor: burned captions sit on the bottom edge of the frame.
 .rootOutdoorLandscape {
-  left: scaled(48px);
-  right: scaled(48px);
+  left: scaled(24px);
+  right: scaled(24px);
+  top: unset;
   bottom: 0;
   min-height: unset;
-  padding: scaled(12px) scaled(24px) scaled(28px);
-  background: transparent;
-  border-top: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-.rootOutdoorExport {
-  left: scaled(36px);
-  right: scaled(36px);
-  top: 0;
-  bottom: unset;
-  height: unset;
-  min-height: unset;
-  padding: scaled(12px) scaled(18px) scaled(20px);
+  padding: scaled(20px) scaled(32px) scaled(44px);
   background: transparent;
   border-top: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  overflow: visible;
+  z-index: 300;
 }
 
+// Portrait outdoor: burned captions sit at the bottom of the top presenter band.
 .rootOutdoorPortrait {
-  left: scaled(42px);
-  right: scaled(42px);
+  left: scaled(28px);
+  right: scaled(28px);
+  top: 0;
   bottom: unset;
   min-height: unset;
-  padding: 0 scaled(18px);
+  padding: scaled(12px) scaled(32px) scaled(28px);
   background: transparent;
   border-top: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: visible;
+  z-index: 300;
 }
 
 .toolbar {
@@ -256,12 +253,18 @@
   max-width: scaled(1200px);
 }
 
-.exportCaptionOutdoorExport {
+.exportCaptionOutdoorLandscape {
   max-width: scaled(1600px);
+  box-sizing: border-box;
+  padding: scaled(14px) scaled(20px) scaled(18px);
+  overflow: visible;
 }
 
 .exportCaptionOutdoorPortrait {
   max-width: scaled(1500px);
+  box-sizing: border-box;
+  padding: scaled(14px) scaled(20px) scaled(12px);
+  overflow: visible;
 }
 
 .captionEn {
@@ -281,6 +284,8 @@
 .captionEnOutdoor {
   font-weight: 800;
   paint-order: stroke fill;
+  overflow: visible;
+  text-overflow: unset;
   text-shadow:
     0 2px 10px rgba(0, 0, 0, 0.85),
     0 0 18px rgba(0, 0, 0, 0.6);
@@ -308,6 +313,8 @@
 .captionZhOutdoor {
   font-weight: 800;
   paint-order: stroke fill;
+  overflow: visible;
+  text-overflow: unset;
   text-shadow:
     0 2px 10px rgba(0, 0, 0, 0.82),
     0 0 16px rgba(0, 0, 0, 0.55);

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-07-25T07:20:00.880Z",
+  "slots": {
+    "portrait-en": {
+      "updatedAt": "2026-07-25T07:19:49.010Z",
+      "fileName": "portrait-en.jpg"
+    },
+    "portrait-zh": {
+      "updatedAt": "2026-07-25T07:19:53.549Z",
+      "fileName": "portrait-zh.jpg"
+    },
+    "landscape-en": {
+      "updatedAt": "2026-07-25T07:19:58.424Z",
+      "fileName": "landscape-en.jpg"
+    },
+    "landscape-zh": {
+      "updatedAt": "2026-07-25T07:20:00.880Z",
+      "fileName": "landscape-zh.jpg"
+    }
+  }
+}

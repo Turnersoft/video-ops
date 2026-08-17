@@ -34,6 +34,13 @@ export function hasFootageSrc(src: string | null | undefined): boolean {
   return Boolean(src && src.trim());
 }
 
+/** AI clone / VoxCPM: narration via audioSrc, no filmed take video. */
+export function isVoiceOnlyOutdoorTake(
+  outdoorEdit: { videoSrc?: string; audioSrc?: string } | null | undefined,
+): boolean {
+  return Boolean(outdoorEdit && !hasFootageSrc(outdoorEdit.videoSrc));
+}
+
 /** Solid green fill used inside mask / full-clip when take video is missing. */
 export function GreenAvatarFill({
   label = "YOU · filmed",

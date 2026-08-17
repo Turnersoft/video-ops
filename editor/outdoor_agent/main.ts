@@ -2,6 +2,7 @@ import { watchInbox } from './src/inbox-watcher.ts';
 import { watchScripts } from './src/scripts-watcher.ts';
 import { runStage } from './src/queue.ts';
 import { ensureDir, INBOX_DIR, listInboxDirs, SCRIPTS_DIR } from './src/paths.ts';
+import { applyPublishCredentials } from './src/publish-credentials.ts';
 import { createServer } from './src/server.ts';
 import { isPipelineStage } from './src/schema.ts';
 
@@ -55,6 +56,7 @@ export async function main(): Promise<void> {
   }
 
   ensureDir(INBOX_DIR);
+  applyPublishCredentials();
   console.log('[outdoor-agent] watching inboxes:');
   for (const dir of listInboxDirs()) {
     console.log(`  - ${dir}`);

@@ -5,24 +5,30 @@ import { WebView } from 'react-native-webview';
 import { colors, radii, typography } from '../../theme';
 import { useOutdoorUi } from '../../context/OutdoorUiContext';
 import type { RemotionCompositionPath } from '../../api/urls';
-import type { RemotionEmbedHandle, RemotionEmbedProps } from './RemotionEmbed.types';
+import type { RemotionEmbedHandle, RemotionEmbedProps, RemotionSeekOptions } from './RemotionEmbed.types';
 
 export type { RemotionEmbedHandle, RemotionEmbedProps } from './RemotionEmbed.types';
 
-function seekInjectScript(frame: number, compositionId: string): string {
+function seekInjectScript(
+  frame: number,
+  compositionId: string,
+  options?: RemotionSeekOptions,
+): string {
   const safeFrame = Math.max(0, Math.round(frame));
   const safeId = JSON.stringify(compositionId);
+  const resumePlayback = options?.resumePlayback === true ? 'true' : 'false';
   // Prefer Studio APIs directly; also postMessage for OutdoorAlignSeekBridge.
   return `(function(){
   var frame=${safeFrame};
   var compositionId=${safeId};
+  var resumePlayback=${resumePlayback};
   try {
     if (typeof window.remotion_setFrame === 'function') {
       window.remotion_setFrame(frame, compositionId, 0);
     }
   } catch (e) {}
   try {
-    window.postMessage({type:'turn-outdoor-align-seek',frame:frame,compositionId:compositionId},'*');
+    window.postMessage({type:'turn-outdoor-align-seek',frame:frame,compositionId:compositionId,resumePlayback:resumePlayback},'*');
   } catch (e) {}
 })();true;`;
 }
@@ -44,9 +50,13 @@ export const RemotionEmbed = forwardRef<RemotionEmbedHandle, RemotionEmbedProps>
     useImperativeHandle(
       ref,
       () => ({
-        seekToFrame: (frame: number, nextCompositionId: RemotionCompositionPath) => {
+        seekToFrame: (
+          frame: number,
+          nextCompositionId: RemotionCompositionPath,
+          options?: RemotionSeekOptions,
+        ) => {
           webViewRef.current?.injectJavaScript(
-            seekInjectScript(frame, String(nextCompositionId)),
+            seekInjectScript(frame, String(nextCompositionId), options),
           );
         },
       }),

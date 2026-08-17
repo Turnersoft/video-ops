@@ -1,4 +1,5 @@
 import type { LocalTakeView, VideoOpsCatalogTake } from '../types';
+import { isVoxcpmTake } from './isVoxcpmTake';
 
 export type TakeEntry = {
   takeId: string;
@@ -39,7 +40,7 @@ export function buildTakeEntries(
   });
   const numbered = chronological.map((entry, index) => ({
     ...entry,
-    label: `Take ${index + 1}`,
+    label: isVoxcpmTake(entry.takeId) ? `AI clone ${index + 1}` : `Take ${index + 1}`,
   }));
   return numbered.sort((left, right) => {
     const leftAt = left.local?.recordedAt ?? left.mac?.recordedAt ?? '';

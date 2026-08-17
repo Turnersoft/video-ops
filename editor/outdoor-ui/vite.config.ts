@@ -9,7 +9,7 @@ const rnWeb = path.resolve(__dirname, 'node_modules/react-native-web');
 
 const uiPort = Number(process.env.OUTDOOR_UI_PORT || 5173);
 const agentProxyPort = Number(
-  process.env.AGENT_INTERNAL_PORT || process.env.AGENT_PORT || 8788,
+  process.env.AGENT_INTERNAL_PORT || process.env.AGENT_PORT || 8789,
 );
 
 export default defineConfig({

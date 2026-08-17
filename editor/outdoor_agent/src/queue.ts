@@ -100,6 +100,11 @@ export async function runStage(
     if (isJobCancelled(jobId)) {
       throw new Error('Pipeline cancelled');
     }
+    if (stage === 'align' && job.takeId.startsWith('take-voxcpm-')) {
+      throw new Error(
+        'AI clone narration comes from VoxCPM — use Re-synthesize voice in the AI clone panel, or rerun Remotion composite for preview only.',
+      );
+    }
 
     const runId = params.rerun ? newRunId(stage) : job.selectedRuns[stage] ?? newRunId(stage);
     upsertRun(job, stage, runId, { status: 'running' });

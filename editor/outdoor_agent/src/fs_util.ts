@@ -11,6 +11,16 @@ export function writeJson(filePath: string, value: unknown): void {
   Deno.writeTextFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`);
 }
 
+export function writeJsonAtomic(filePath: string, value: unknown): void {
+  ensureDir(path.dirname(filePath));
+  const temporaryPath = path.join(
+    path.dirname(filePath),
+    `.${path.basename(filePath)}.${crypto.randomUUID()}.tmp`,
+  );
+  Deno.writeTextFileSync(temporaryPath, `${JSON.stringify(value, null, 2)}\n`);
+  Deno.renameSync(temporaryPath, filePath);
+}
+
 export function fileExists(filePath: string): boolean {
   try {
     Deno.statSync(filePath);

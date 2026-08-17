@@ -1,6 +1,6 @@
 import path from "node:path";
 
-import { zhForSegment } from "./caption_zh.ts";
+import { attachSpokenZhToCaptionSegments } from "./caption_translate.ts";
 import { fileExists, readJson, writeJson } from "./fs_util.ts";
 import { scriptDirFor } from "./paths.ts";
 import {
@@ -604,42 +604,17 @@ export async function runAlignSpeechToBeats(argv: string[]): Promise<void> {
       }));
 
   for (const segment of sentenceSegments) {
-    const beatIndex = boundaries.findIndex(
-      (boundary) =>
-        segment.atSeconds >= boundary.editedStart &&
-        segment.atSeconds < boundary.editedEnd,
-    );
-    const beat = beatIndex >= 0 ? beats[beatIndex] : undefined;
-    const beatSentenceCount = sentenceSegments.filter((entry) => {
-      if (beatIndex < 0) {
-        return false;
-      }
-      const boundary = boundaries[beatIndex];
-      return (
-        entry.atSeconds >= boundary.editedStart &&
-        entry.atSeconds < boundary.editedEnd
-      );
-    }).length;
-    const segmentIndexInBeat = beatIndex >= 0
-      ? sentenceSegments
-          .filter(
-            (entry) =>
-              entry.atSeconds >= boundaries[beatIndex].editedStart &&
-              entry.atSeconds < boundaries[beatIndex].editedEnd,
-          )
-          .findIndex((entry) => Math.abs(entry.atSeconds - segment.atSeconds) < 0.05)
-      : -1;
     captionSegments.push({
       text: segment.text,
       atSeconds: segment.atSeconds,
       durationSeconds: segment.durationSeconds,
-      zh:
-        beat?.sayZh && segmentIndexInBeat >= 0
-          ? zhForSegment(beat.sayZh, segmentIndexInBeat, beatSentenceCount) ||
-            undefined
-          : undefined,
     });
   }
+
+  const captionSegmentsWithZh = await attachSpokenZhToCaptionSegments(
+    editDir,
+    captionSegments,
+  );
 
   const videoSrc = path
     .relative(scriptDir, videoPath)
@@ -742,7 +717,7 @@ export async function runAlignSpeechToBeats(argv: string[]): Promise<void> {
     ...(sourceVideoSrc ? { sourceVideoSrc } : {}),
     burnCaptionsZh: true,
     beatDurationsSeconds,
-    captionSegments,
+    captionSegments: captionSegmentsWithZh,
   };
   outdoorScene.compare.beats.forEach((beat, index) => {
     beat.durationSeconds = beatDurationsSeconds[index];

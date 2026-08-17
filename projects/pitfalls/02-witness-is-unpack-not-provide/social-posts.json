@@ -4,7 +4,7 @@
   "titleEnglish": "pitfalls_02_witness_is_unpack_not_provide",
   "titleChina": "pitfalls_02_witness_is_unpack_not_provide",
   "title": "pitfalls_02_witness_is_unpack_not_provide",
-  "generatedAt": "2026-07-25T02:42:48.570Z",
+  "generatedAt": "2026-07-25T08:06:04.985Z",
   "source": {},
   "english": {
     "youtube": {
@@ -39,7 +39,7 @@
   "china": {
     "bilibili": {
       "title": "pitfalls_02_witness_is_unpack_not_provide",
-      "body": "pitfalls_02_witness_is_unpack_not_provide\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论\n（请翻译为中文后发布）"
+      "body": "pitfalls_02_witness_is_unpack_not_provide\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
     },
     "douyin": {
       "title": "You Cannot Name an Object the Proof Has Not Given You",

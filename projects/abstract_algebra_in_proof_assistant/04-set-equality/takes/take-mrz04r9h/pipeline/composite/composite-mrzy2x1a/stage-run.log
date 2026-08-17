@@ -1,0 +1,579 @@
+# stage-run 2026-07-25T05:44:52.417Z
+jobId=job-take-mrz04r9h
+scriptId=04-set-equality
+takeId=take-mrz04r9h
+stage=composite
+runId=composite-mrzy2x1a
+
+[2026-07-25T05:44:52.449Z] Starting composite
+[2026-07-25T05:44:52.480Z] Copying alignment artifacts
+[2026-07-25T05:44:52.512Z] Rendering portrait + landscape
+[2026-07-25T05:44:52.512Z] $ node /Users/johndoe/Documents/company/video_ops/editor/remotion/scripts/render-outdoor.mjs 04-set-equality --edit-dir /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/composite/composite-mrzy2x1a --format both
+[stdout] /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/composite/composite-mrzy2x1a/outdoor-manifest.json
+[stdout] [render-outdoor] 169 caption segments, 731.46s
+[stdout] [render-outdoor] beat durations: 56.22, 57.74, 171.51, 159.41, 104.85, 101.56, 80.17, 2, 2, 2, -6s
+
+[stdout] > turn-video-ops-remotion@1.0.0 warm-knowledge
+[stdout] > node scripts/warmTurnKnowledgeCache.mjs 04-set-equality
+
+[stdout] [warm-knowledge] cache hit .cache/turn-knowledge-cache/inline:04-set-equality-14a9cc06.json
+[stdout] [warm-knowledge] cache hit .cache/turn-knowledge-cache/inline:04-set-equality-58106087.json
+[stdout] [warm-knowledge] cache hit .cache/turn-knowledge-cache/inline:04-set-equality-2249c5b8.json
+[stdout] [warm-knowledge] cache hit .cache/turn-knowledge-cache/inline:04-set-equality-5915b3f6.json
+[stdout] [warm-knowledge] cache hit .cache/turn-knowledge-cache/inline:04-set-equality-a35c3b12.json
+[stdout] [warm-knowledge] cache hit .cache/turn-knowledge-cache/inline:04-set-equality-d322448b.json
+[stdout] [warm-knowledge] cache hit .cache/turn-knowledge-cache/inline:04-set-equality-ac8759f3.json
+[stdout] [warm-knowledge] cache hit .cache/turn-knowledge-cache/inline:04-set-equality-198dbb40.json
+[stdout] [warm-knowledge] cache hit .cache/turn-knowledge-cache/inline:04-set-equality-6193badc.json
+[stdout] [warm-knowledge] cache hit .cache/turn-knowledge-cache/inline:04-set-equality-a51d72e9.json
+[stdout] [buildOutdoorRenderProps] 04-set-equality portrait → /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/composite/composite-mrzy2x1a/remotion-props-portrait.json (21944 frames)
+[stdout] [buildOutdoorRenderProps] 04-set-equality landscape → /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/composite/composite-mrzy2x1a/remotion-props-landscape.json (21944 frames)
+[stdout] [render-outdoor] rendering video-outdoor-portrait → /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/composite/composite-mrzy2x1a/outdoor-portrait.mp4
+[stdout] [render-outdoor] rendering video-outdoor-landscape → /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/composite/composite-mrzy2x1a/outdoor-landscape.mp4
+[stdout] Bundling 6%
+[stdout] Bundling 6%
+[stdout] Bundling 11%
+[stdout] Bundling 12%
+[stdout] Bundling 46%
+[stdout] Bundling 46%
+[stdout] Bundling 53%
+[stdout] Bundling 54%
+[stdout] Bundling 65%
+[stdout] Bundling 65%
+[stdout] Bundling 71%
+[stdout] Bundling 71%
+[stdout] Bundling 76%
+[stdout] Bundling 76%
+[stdout] Bundling 81%
+[stdout] Bundling 87%
+[stdout] Bundling 81%
+[stdout] Bundling 87%
+[stdout] Bundling 92%
+[stdout] Bundling 92%
+[stdout] Bundling 98%
+[stdout] Bundling 100%
+[stdout] Bundling 98%
+[stdout] Bundling 100%
+[stderr] <w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/Users/johndoe/Documents/company/video_ops/editor/remotion/node_modules/.cache/webpack/remotion-production-4.0.286/6504dfc34b76c553b32352a921ebf099/1.pack_' -> '/Users/johndoe/Documents/company/video_ops/editor/remotion/node_modules/.cache/webpack/remotion-production-4.0.286/6504dfc34b76c553b32352a921ebf099/1.pack'
+[stdout] Copying public dir 13.3 MB
+[stdout] Copying public dir 13.3 MB
+[stdout] Copying public dir 108 MB
+[stdout] Copying public dir 108 MB
+[stdout] Copying public dir 120.6 MB
+[stdout] Copying public dir 120.6 MB
+[stdout] Copying public dir 130.5 MB
+[stdout] Copying public dir 130.5 MB
+[stdout] Copying public dir 130.5 MB
+[stdout] Copying public dir 130.5 MB
+[stdout] Copying public dir 307.9 MB
+[stdout] Copying public dir 307.9 MB
+[stdout] Copying public dir 442.6 MB
+[stdout] Copying public dir 442.6 MB
+[stdout] Copying public dir 444.5 MB
+[stdout] Copying public dir 444.5 MB
+[stdout] Copying public dir 616.2 MB
+[stdout] Copying public dir 616.2 MB
+[stdout] Copying public dir 616.2 MB
+[stdout] Copying public dir 616.2 MB
+[stdout] Copying public dir 787.2 MB
+[stdout] Copying public dir 787.2 MB
+[stdout] Copying public dir 787.2 MB
+[stdout] Copying public dir 787.2 MB
+[stdout] Copying public dir 958.2 MB
+[stdout] Copying public dir 958.2 MB
+[stdout] Copying public dir 958.2 MB
+[stdout] Copying public dir 958.2 MB
+[stdout] Copying public dir 1.1 GB
+[stdout] Copying public dir 1.1 GB
+[stdout] Copying public dir 1.1 GB
+[stdout] Copying public dir 1.1 GB
+[stdout] Copying public dir 1.3 GB
+[stdout] Copying public dir 1.3 GB
+[stdout] Copying public dir 1.3 GB
+[stdout] Copying public dir 1.3 GB
+[stdout] Copying public dir 1.4 GB
+[stdout] Copying public dir 1.4 GB
+[stdout] Copying public dir 1.4 GB
+[stdout] Copying public dir 1.4 GB
+[stdout] Copying public dir 1.6 GB
+[stdout] Copying public dir 1.6 GB
+[stdout] Copying public dir 1.6 GB
+[stdout] Copying public dir 1.6 GB
+[stdout] Copying public dir 1.7 GB
+[stdout] Copying public dir 1.7 GB
+[stdout] Copying public dir 1.7 GB
+[stdout] Copying public dir 1.7 GB
+[stdout] Copying public dir 1.9 GB
+[stdout] Copying public dir 1.9 GB
+[stdout] Copying public dir 1.9 GB
+[stdout] Copying public dir 1.9 GB
+[stdout] Copying public dir 2 GB
+[stdout] Copying public dir 2 GB
+[stdout] Copying public dir 2 GB
+[stdout] Copying public dir 2 GB
+[stdout] Copying public dir 2.1 GB
+[stdout] Copying public dir 2.1 GB
+[stdout] Copying public dir 2.1 GB
+[stdout] Copying public dir 2.1 GB
+[stdout] Copying public dir 2.2 GB
+[stdout] Copying public dir 2.2 GB
+[stdout] Copying public dir 2.2 GB
+[stdout] Copying public dir 2.2 GB
+[stdout] Copying public dir 2.2 GB
+[stdout] Copying public dir 2.2 GB
+[stdout] Copying public dir 2.3 GB
+[stdout] Copying public dir 2.3 GB
+[stdout] Copying public dir 2.3 GB
+[stdout] Copying public dir 2.3 GB
+[stdout] Copying public dir 2.3 GB
+[stdout] Copying public dir 2.3 GB
+[stdout] Copying public dir 2.3 GB
+[stdout] Copying public dir 2.3 GB
+[stdout] Copying public dir 2.3 GB
+[stdout] Copying public dir 2.3 GB
+[stdout] Copying public dir 2.5 GB
+[stdout] Copying public dir 2.5 GB
+[stdout] Copying public dir 2.5 GB
+[stdout] Copying public dir 2.5 GB
+[stdout] Copying public dir 2.5 GB
+[stdout] Copying public dir 2.5 GB
+[stdout] Copying public dir 2.6 GB
+[stdout] Copying public dir 2.6 GB
+[stdout] Copying public dir 2.6 GB
+[stdout] Copying public dir 2.6 GB
+[stdout] Copying public dir 2.6 GB
+[stdout] Copying public dir 2.6 GB
+[stdout] Copying public dir 2.6 GB
+[stdout] Copying public dir 2.6 GB
+[stdout] Copying public dir 2.6 GB
+[stdout] Copying public dir 2.6 GB
+[stdout] Copying public dir 2.7 GB
+[stdout] Copying public dir 2.7 GB
+[stdout] Copying public dir 2.7 GB
+[stdout] Copying public dir 2.7 GB
+[stdout] Copying public dir 2.8 GB
+[stdout] Copying public dir 2.8 GB
+[stdout] Copying public dir 2.8 GB
+[stdout] Copying public dir 2.8 GB
+[stdout] Copying public dir 2.8 GB
+[stdout] Copying public dir 2.8 GB
+[stdout] Copying public dir 2.8 GB
+[stdout] Copying public dir 2.8 GB
+[stdout] Copying public dir 2.8 GB
+[stdout] Copying public dir 2.8 GB
+[stdout] Copying public dir 2.8 GB
+[stdout] Copying public dir 2.8 GB
+[stdout] Copying public dir 2.8 GB
+[stdout] Copying public dir 2.8 GB
+[stdout] Copying public dir 2.8 GB
+[stdout] Copying public dir 2.8 GB
+[stdout] Copying public dir 3 GB
+[stdout] Copying public dir 3 GB
+[stdout] Copying public dir 3 GB
+[stdout] Copying public dir 3 GB
+[stdout] Copying public dir 3 GB
+[stdout] Copying public dir 3 GB
+[stdout] Copying public dir 3 GB
+[stdout] Copying public dir 3 GB
+[stdout] Copying public dir 3 GB
+[stdout] Copying public dir 3 GB
+[stdout] Copying public dir 3.2 GB
+[stdout] Copying public dir 3.2 GB
+[stdout] Copying public dir 3.2 GB
+[stdout] Copying public dir 3.2 GB
+[stdout] Copying public dir 3.5 GB
+[stdout] Copying public dir 3.5 GB
+[stdout] Copying public dir 3.5 GB
+[stdout] Copying public dir 3.5 GB
+[stdout] Copying public dir 3.7 GB
+[stdout] Copying public dir 3.7 GB
+[stdout] Copying public dir 3.7 GB
+[stdout] Copying public dir 3.7 GB
+[stdout] Copying public dir 3.9 GB
+[stdout] Copying public dir 3.9 GB
+[stdout] Copying public dir 3.9 GB
+[stdout] Copying public dir 3.9 GB
+[stdout] Copying public dir 4.1 GB
+[stdout] Copying public dir 4.1 GB
+[stdout] Copying public dir 4.1 GB
+[stdout] Copying public dir 4.1 GB
+[stdout] Copying public dir 4.3 GB
+[stdout] Copying public dir 4.3 GB
+[stdout] Copying public dir 4.3 GB
+[stdout] Copying public dir 4.3 GB
+[stdout] Copying public dir 4.5 GB
+[stdout] Copying public dir 4.5 GB
+[stdout] Copying public dir 4.5 GB
+[stdout] Copying public dir 4.5 GB
+[stdout] Copying public dir 4.7 GB
+[stdout] Copying public dir 4.7 GB
+[stdout] Copying public dir 4.7 GB
+[stdout] Copying public dir 4.7 GB
+[stdout] Copying public dir 4.9 GB
+[stdout] Copying public dir 4.9 GB
+[stdout] Copying public dir 4.9 GB
+[stdout] Copying public dir 4.9 GB
+[stdout] Copying public dir 5.1 GB
+[stdout] Copying public dir 5.1 GB
+[stdout] Copying public dir 5.1 GB
+[stdout] Copying public dir 5.1 GB
+[stdout] Copying public dir 5.3 GB
+[stdout] Copying public dir 5.3 GB
+[stdout] Copying public dir 5.3 GB
+[stdout] Copying public dir 5.3 GB
+[stdout] Copying public dir 5.5 GB
+[stdout] Copying public dir 5.5 GB
+[stdout] Copying public dir 5.5 GB
+[stdout] Copying public dir 5.5 GB
+[stdout] Copying public dir 5.7 GB
+[stdout] Copying public dir 5.7 GB
+[stdout] Copying public dir 5.7 GB
+[stdout] Copying public dir 5.7 GB
+[stdout] Copying public dir 5.9 GB
+[stdout] Copying public dir 5.9 GB
+[stdout] Copying public dir 5.9 GB
+[stdout] Copying public dir 5.9 GB
+[stdout] Copying public dir 6.1 GB
+[stdout] Copying public dir 6.1 GB
+[stdout] Copying public dir 6.1 GB
+[stdout] Copying public dir 6.1 GB
+[stdout] Copying public dir 6.3 GB
+[stdout] Copying public dir 6.3 GB
+[stdout] Copying public dir 6.3 GB
+[stdout] Copying public dir 6.3 GB
+[stdout] Copying public dir 6.5 GB
+[stdout] Copying public dir 6.5 GB
+[stdout] Copying public dir 6.9 GB
+[stdout] Copying public dir 6.9 GB
+[stdout] Copying public dir 6.9 GB
+[stdout] Copying public dir 6.9 GB
+[stdout] Copying public dir 7.2 GB
+[stdout] Copying public dir 7.2 GB
+[stdout] Copying public dir 7.4 GB
+[stdout] Copying public dir 7.4 GB
+[stdout] Copying public dir 7.8 GB
+[stdout] Copying public dir 7.8 GB
+[stdout] Copying public dir 7.8 GB
+[stdout] Copying public dir 7.8 GB
+[stdout] Copying public dir 8 GB
+[stdout] Copying public dir 8 GB
+[stdout] Copying public dir 8.2 GB
+[stdout] Copying public dir 8.2 GB
+[stdout] Copying public dir 8.6 GB
+[stdout] Copying public dir 8.6 GB
+[stdout] Copying public dir 8.6 GB
+[stdout] Copying public dir 8.6 GB
+[stdout] Copying public dir 8.8 GB
+[stdout] Copying public dir 8.8 GB
+[stdout] Copying public dir 9 GB
+[stdout] Copying public dir 9 GB
+[stdout] Copying public dir 9.4 GB
+[stdout] Copying public dir 9.4 GB
+[stdout] Copying public dir 9.4 GB
+[stdout] Copying public dir 9.4 GB
+[stdout] Copying public dir 9.6 GB
+[stdout] Copying public dir 9.6 GB
+[stdout] Copying public dir 9.8 GB
+[stdout] Copying public dir 9.8 GB
+[stdout] Copying public dir 10.2 GB
+[stdout] Copying public dir 10.2 GB
+[stdout] Copying public dir 10.2 GB
+[stdout] Copying public dir 10.2 GB
+[stdout] Copying public dir 10.4 GB
+[stdout] Copying public dir 10.4 GB
+[stdout] Copying public dir 10.6 GB
+[stdout] Copying public dir 10.6 GB
+[stdout] Copying public dir 10.9 GB
+[stdout] Copying public dir 10.9 GB
+[stdout] Copying public dir 10.9 GB
+[stdout] Copying public dir 10.9 GB
+[stdout] Copying public dir 11.1 GB
+[stdout] Copying public dir 11.1 GB
+[stdout] Copying public dir 11.3 GB
+[stdout] Copying public dir 11.3 GB
+[stdout] Copying public dir 11.7 GB
+[stdout] Copying public dir 11.7 GB
+[stdout] Copying public dir 11.7 GB
+[stdout] Copying public dir 11.7 GB
+[stdout] Copying public dir 11.8 GB
+[stdout] Copying public dir 11.8 GB
+[stdout] Copying public dir 11.9 GB
+[stdout] Copying public dir 11.9 GB
+[stdout] Copying public dir 12.3 GB
+[stdout] Copying public dir 12.3 GB
+[stdout] Copying public dir 12.3 GB
+[stdout] Copying public dir 12.3 GB
+[stdout] Copying public dir 12.4 GB
+[stdout] Copying public dir 12.4 GB
+[stdout] Copying public dir 12.4 GB
+[stdout] Copying public dir 12.4 GB
+[stdout] Copying public dir 12.6 GB
+[stdout] Copying public dir 12.6 GB
+[stdout] Copying public dir 12.6 GB
+[stdout] Copying public dir 12.6 GB
+[stdout] Copying public dir 12.6 GB
+[stdout] Copying public dir 12.6 GB
+[stdout] Copying public dir 12.7 GB
+[stdout] Copying public dir 12.7 GB
+[stdout] Copying public dir 12.7 GB
+[stdout] Copying public dir 12.7 GB
+[stdout] Copying public dir 12.9 GB
+[stdout] Copying public dir 12.9 GB
+[stdout] Copying public dir 13.2 GB
+[stdout] Copying public dir 13.2 GB
+[stdout] Copying public dir 13.2 GB
+[stdout] Copying public dir 13.2 GB
+[stdout] Copying public dir 13.4 GB
+[stdout] Copying public dir 13.4 GB
+[stdout] Copying public dir 13.6 GB
+[stdout] Copying public dir 13.6 GB
+[stdout] Copying public dir 13.6 GB
+[stdout] Copying public dir 13.6 GB
+[stdout] Copying public dir 13.7 GB
+[stdout] Copying public dir 13.7 GB
+[stdout] Copying public dir 13.7 GB
+[stdout] Copying public dir 13.7 GB
+[stdout] Copying public dir 13.7 GB
+[stdout] Copying public dir 13.7 GB
+[stdout] Copying public dir 13.7 GB
+[stdout] Copying public dir 13.7 GB
+[stdout] Copying public dir 13.7 GB
+[stdout] Copying public dir 13.7 GB
+[stdout] Copying public dir 13.8 GB
+[stdout] Copying public dir 13.8 GB
+[stdout] Copying public dir 13.8 GB
+[stdout] Copying public dir 13.8 GB
+[stdout] Copying public dir 13.8 GB
+[stdout] Copying public dir 13.8 GB
+[stdout] Copying public dir 13.8 GB
+[stdout] Copying public dir 13.8 GB
+[stdout] Copying public dir 13.8 GB
+[stdout] Copying public dir 13.8 GB
+[stdout] Copying public dir 13.8 GB
+[stdout] Copying public dir 13.8 GB
+[stdout] Copying public dir 13.8 GB
+[stdout] Copying public dir 13.8 GB
+[stdout] Copying public dir 13.9 GB
+[stdout] Copying public dir 13.9 GB
+[stdout] Copying public dir 13.9 GB
+[stdout] Copying public dir 13.9 GB
+[stdout] Copying public dir 13.9 GB
+[stdout] Copying public dir 13.9 GB
+[stdout] Copying public dir 14.1 GB
+[stdout] Copying public dir 14.1 GB
+[stdout] Copying public dir 14.1 GB
+[stdout] Copying public dir 14.1 GB
+[stdout] Copying public dir 14.1 GB
+[stdout] Copying public dir 14.1 GB
+[stdout] Copying public dir 14.1 GB
+[stdout] Copying public dir 14.1 GB
+[stdout] Copying public dir 14.2 GB
+[stdout] Copying public dir 14.2 GB
+[stdout] Copying public dir 14.2 GB
+[stdout] Copying public dir 14.2 GB
+[stdout] Copying public dir 14.2 GB
+[stdout] Copying public dir 14.2 GB
+[stdout] Copying public dir 14.2 GB
+[stdout] Copying public dir 14.2 GB
+[stdout] Copying public dir 14.2 GB
+[stdout] Copying public dir 14.2 GB
+[stdout] Copying public dir 14.3 GB
+[stdout] Copying public dir 14.3 GB
+[stdout] Copying public dir 14.3 GB
+[stdout] Copying public dir 14.3 GB
+[stdout] Copying public dir 14.3 GB
+[stdout] Copying public dir 14.3 GB
+[stdout] Copying public dir 14.3 GB
+[stdout] Copying public dir 14.3 GB
+[stdout] Copying public dir 14.3 GB
+[stdout] Copying public dir 14.3 GB
+[stdout] Copying public dir 14.4 GB
+[stdout] Copying public dir 14.4 GB
+[stdout] Copying public dir 14.4 GB
+[stdout] Copying public dir 14.4 GB
+[stdout] Copying public dir 14.6 GB
+[stdout] Copying public dir 14.6 GB
+[stdout] Copying public dir 14.6 GB
+[stdout] Copying public dir 14.6 GB
+[stdout] Copying public dir 14.6 GB
+[stdout] Copying public dir 14.6 GB
+[stdout] Copying public dir 14.6 GB
+[stdout] Copying public dir 14.6 GB
+[stdout] Copying public dir 14.6 GB
+[stdout] Copying public dir 14.6 GB
+[stdout] Copying public dir 14.6 GB
+[stdout] Copying public dir 14.6 GB
+[stdout] Copying public dir 14.6 GB
+[stdout] Copying public dir 14.6 GB
+[stdout] Copying public dir 14.7 GB
+[stdout] Copying public dir 14.7 GB
+[stdout] Copying public dir 14.7 GB
+[stdout] Copying public dir 14.7 GB
+[stdout] Copying public dir 14.7 GB
+[stdout] Copying public dir 14.7 GB
+[stdout] Copying public dir 14.7 GB
+[stdout] Copying public dir 14.7 GB
+[stdout] Copying public dir 14.7 GB
+[stdout] Copying public dir 14.7 GB
+[stdout] Copying public dir 14.7 GB
+[stdout] Copying public dir 14.7 GB
+[stdout] Copying public dir 14.8 GB
+[stdout] Copying public dir 14.8 GB
+[stdout] Copying public dir 14.8 GB
+[stdout] Copying public dir 14.8 GB
+[stdout] Copying public dir 14.8 GB
+[stdout] Copying public dir 14.8 GB
+[stdout] Copying public dir 15 GB
+[stdout] Copying public dir 15 GB
+[stdout] Copying public dir 15 GB
+[stdout] Copying public dir 15 GB
+[stdout] Copying public dir 15 GB
+[stdout] Copying public dir 15 GB
+[stdout] Copying public dir 15 GB
+[stdout] Copying public dir 15 GB
+[stdout] Copying public dir 15 GB
+[stdout] Copying public dir 15 GB
+[stdout] Copying public dir 15 GB
+[stdout] Copying public dir 15 GB
+[stdout] Copying public dir 15 GB
+[stdout] Copying public dir 15 GB
+[stdout] Copying public dir 15.1 GB
+[stdout] Copying public dir 15.1 GB
+[stdout] Copying public dir 15.1 GB
+[stdout] Copying public dir 15.1 GB
+[stdout] Copying public dir 15.1 GB
+[stdout] Copying public dir 15.1 GB
+[stdout] Copying public dir 15.1 GB
+[stdout] Copying public dir 15.1 GB
+[stdout] Copying public dir 15.1 GB
+[stdout] Copying public dir 15.1 GB
+[stdout] Copying public dir 15.1 GB
+[stdout] Copying public dir 15.1 GB
+[stdout] Copying public dir 15.2 GB
+[stdout] Copying public dir 15.2 GB
+[stdout] Copying public dir 15.2 GB
+[stdout] Copying public dir 15.2 GB
+[stdout] Copying public dir 15.2 GB
+[stdout] Copying public dir 15.2 GB
+[stdout] Copying public dir 15.2 GB
+[stdout] Copying public dir 15.2 GB
+[stdout] Copying public dir 15.4 GB
+[stdout] Copying public dir 15.4 GB
+[stdout] Copying public dir 15.4 GB
+[stdout] Copying public dir 15.4 GB
+[stdout] Copying public dir 15.4 GB
+[stdout] Copying public dir 15.4 GB
+[stdout] Copying public dir 15.4 GB
+[stdout] Copying public dir 15.4 GB
+[stdout] Copying public dir 15.5 GB
+[stdout] Copying public dir 15.5 GB
+[stdout] Copying public dir 15.5 GB
+[stdout] Copying public dir 15.5 GB
+[stdout] Copying public dir 15.5 GB
+[stdout] Copying public dir 15.5 GB
+[stdout] Copying public dir 15.5 GB
+[stdout] Copying public dir 15.5 GB
+[stdout] Copying public dir 15.5 GB
+[stdout] Copying public dir 15.5 GB
+[stdout] Copying public dir 15.5 GB
+[stdout] Copying public dir 15.5 GB
+[stdout] Copying public dir 15.6 GB
+[stdout] Copying public dir 15.6 GB
+[stdout] Copying public dir 15.6 GB
+[stdout] Copying public dir 15.6 GB
+[stdout] Copying public dir 15.6 GB
+[stdout] Copying public dir 15.6 GB
+[stdout] Copying public dir 15.6 GB
+[stdout] Copying public dir 15.6 GB
+[stdout] Copying public dir 15.6 GB
+[stdout] Copying public dir 15.6 GB
+[stdout] Copying public dir 15.6 GB
+[stdout] Copying public dir 15.6 GB
+[stdout] Copying public dir 15.6 GB
+[stdout] Copying public dir 15.6 GB
+[stdout] Copying public dir 15.8 GB
+[stdout] Copying public dir 15.8 GB
+[stdout] Copying public dir 15.8 GB
+[stdout] Copying public dir 15.8 GB
+[stdout] Copying public dir 15.8 GB
+[stdout] Copying public dir 15.8 GB
+[stdout] Copying public dir 15.8 GB
+[stdout] Copying public dir 15.8 GB
+[stdout] Copying public dir 16.1 GB
+[stdout] Copying public dir 16.1 GB
+[stdout] Copying public dir 16.2 GB
+[stdout] Copying public dir 16.2 GB
+[stdout] Copying public dir 16.2 GB
+[stdout] Copying public dir 16.2 GB
+[stdout] Copying public dir 16.5 GB
+[stdout] Copying public dir 16.5 GB
+[stdout] Copying public dir 16.6 GB
+[stdout] Copying public dir 16.6 GB
+[stdout] Copying public dir 16.6 GB
+[stdout] Copying public dir 16.6 GB
+[stdout] Copying public dir 16.8 GB
+[stdout] Copying public dir 16.8 GB
+[stdout] Copying public dir 16.9 GB
+[stdout] Copying public dir 16.9 GB
+[stdout] Copying public dir 16.9 GB
+[stdout] Copying public dir 16.9 GB
+[stdout] Copying public dir 16.9 GB
+[stdout] Copying public dir 16.9 GB
+[stdout] Copying public dir 17.1 GB
+[stdout] Copying public dir 17.1 GB
+[stdout] Copying public dir 17.1 GB
+[stdout] Copying public dir 17.1 GB
+[stdout] Copying public dir 17.6 GB
+[stdout] Copying public dir 17.6 GB
+[stdout] Copying public dir 17.6 GB
+[stdout] Copying public dir 17.6 GB
+[stdout] Copying public dir 18.1 GB
+[stdout] Copying public dir 18.1 GB
+[stdout] Copying public dir 18.1 GB
+[stdout] Copying public dir 18.1 GB
+[stdout] Copying public dir 18.6 GB
+[stdout] Copying public dir 18.6 GB
+[stdout] Copying public dir 18.6 GB
+[stdout] Copying public dir 18.6 GB
+[stdout] Copying public dir 19.1 GB
+[stdout] Copying public dir 19.1 GB
+[stdout] Copying public dir 19.1 GB
+[stdout] Copying public dir 19.1 GB
+[stdout] Copying public dir 19.6 GB
+[stdout] Copying public dir 19.6 GB
+[stdout] Copying public dir 19.6 GB
+[stdout] Copying public dir 19.6 GB
+[stdout] Copying public dir 20.1 GB
+[stdout] Copying public dir 20.1 GB
+
+
+[stderr] Error: ENOSPC: no space left on device, copyfile '/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/composite/composite-mrzssmpq/outdoor-landscape.mp4' -> '/var/folders/b1/tgmc12c920g_81npvzr1_qnc0000gn/T/remotion-webpack-bundle-KkWUxp/public/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/composite/composite-mrzssmpq/outdoor-landscape.mp4'
+[stderr]     at async Object.copyFile (node:internal/fs/promises:621:10)
+[stderr]     at async Promise.all (index 0)
+[stderr]     at async copyDir (/Users/johndoe/Documents/company/video_ops/editor/remotion/node_modules/@remotion/bundler/dist/copy-dir.js:31:34)
+[stderr]     at async copyDir (/Users/johndoe/Documents/company/video_ops/editor/remotion/node_modules/@remotion/bundler/dist/copy-dir.js:16:27)
+[stderr]     at async copyDir (/Users/johndoe/Documents/company/video_ops/editor/remotion/node_modules/@remotion/bundler/dist/copy-dir.js:16:27)
+[stderr]     at async copyDir (/Users/johndoe/Documents/company/video_ops/editor/remotion/node_modules/@remotion/bundler/dist/copy-dir.js:16:27)
+[stderr]     at async copyDir (/Users/johndoe/Documents/company/video_ops/editor/remotion/node_modules/@remotion/bundler/dist/copy-dir.js:16:27)
+[stderr]     at async copyDir (/Users/johndoe/Documents/company/video_ops/editor/remotion/node_modules/@remotion/bundler/dist/copy-dir.js:16:27)
+[stderr]     at async copyDir (/Users/johndoe/Documents/company/video_ops/editor/remotion/node_modules/@remotion/bundler/dist/copy-dir.js:16:27)
+[stderr]     at async copyDir (/Users/johndoe/Documents/company/video_ops/editor/remotion/node_modules/@remotion/bundler/dist/copy-dir.js:16:27)
+[stderr] Error: ENOSPC: no space left on device, copyfile '/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/composite/composite-mrzssmpq/outdoor-landscape.mp4' -> '/var/folders/b1/tgmc12c920g_81npvzr1_qnc0000gn/T/remotion-webpack-bundle-z75hnn/public/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/composite/composite-mrzssmpq/outdoor-landscape.mp4'
+[stderr]     at async Object.copyFile (node:internal/fs/promises:621:10)
+[stderr]     at async Promise.all (index 0)
+[stderr]     at async copyDir (/Users/johndoe/Documents/company/video_ops/editor/remotion/node_modules/@remotion/bundler/dist/copy-dir.js:31:34)
+[stderr]     at async copyDir (/Users/johndoe/Documents/company/video_ops/editor/remotion/node_modules/@remotion/bundler/dist/copy-dir.js:16:27)
+[stderr]     at async copyDir (/Users/johndoe/Documents/company/video_ops/editor/remotion/node_modules/@remotion/bundler/dist/copy-dir.js:16:27)
+[stderr]     at async copyDir (/Users/johndoe/Documents/company/video_ops/editor/remotion/node_modules/@remotion/bundler/dist/copy-dir.js:16:27)
+[stderr]     at async copyDir (/Users/johndoe/Documents/company/video_ops/editor/remotion/node_modules/@remotion/bundler/dist/copy-dir.js:16:27)
+[stderr]     at async copyDir (/Users/johndoe/Documents/company/video_ops/editor/remotion/node_modules/@remotion/bundler/dist/copy-dir.js:16:27)
+[stderr]     at async copyDir (/Users/johndoe/Documents/company/video_ops/editor/remotion/node_modules/@remotion/bundler/dist/copy-dir.js:16:27)
+[stderr]     at async copyDir (/Users/johndoe/Documents/company/video_ops/editor/remotion/node_modules/@remotion/bundler/dist/copy-dir.js:16:27)
+[stderr] Error: npx remotion render video-outdoor-landscape /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/composite/composite-mrzy2x1a/outdoor-landscape.mp4 --props=/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-mrz04r9h/pipeline/composite/composite-mrzy2x1a/remotion-props-landscape.json --frames=0-21943 --gl=angle --codec=h264 --crf=18 --log=info failed
+[stderr]     at ChildProcess.<anonymous> (file:///Users/johndoe/Documents/company/video_ops/editor/remotion/scripts/render-outdoor.mjs:132:16)
+[stderr]     at ChildProcess.emit (node:events:519:28)
+[stderr]     at maybeClose (node:internal/child_process:1101:16)
+[stderr]     at ChildProcess._handle.onexit (node:internal/child_process:304:5)
+[2026-07-25T05:47:15.215Z] exit 1
+[2026-07-25T05:47:15.215Z] FAILED: Remotion render failed — [2026-07-25T05:47:15.215Z] exit 1
+[2026-07-25T05:47:15.243Z] [2026-07-25T05:47:15.215Z] exit 1

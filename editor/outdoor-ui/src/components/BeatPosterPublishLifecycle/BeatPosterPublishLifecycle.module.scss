@@ -1,0 +1,214 @@
+@use '../../app' as *;
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px;
+  border-width: 1px;
+  border-color: $card-border;
+  border-radius: $radius-md;
+  background: rgba(15, 23, 42, 0.5);
+}
+
+.shellActive {
+  border-color: rgba(249, 115, 22, 0.55);
+  background: rgba(249, 115, 22, 0.08);
+}
+
+.shellLive {
+  border-color: rgba(34, 197, 94, 0.45);
+  background: rgba(34, 197, 94, 0.08);
+}
+
+.shellFailed {
+  border-color: rgba(248, 113, 113, 0.5);
+  background: rgba(248, 113, 113, 0.08);
+}
+
+.headerRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.phaseLabel {
+  font-size: $font-small;
+  font-weight: 800;
+  color: $text;
+}
+
+.phaseDetail {
+  font-size: $font-small;
+  color: $muted;
+  line-height: 18px;
+}
+
+.steps {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.step {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border-width: 1px;
+  border-color: rgba(148, 163, 184, 0.35);
+  background: rgba(15, 23, 42, 0.35);
+}
+
+.stepDone {
+  border-color: rgba(34, 197, 94, 0.45);
+  background: rgba(34, 197, 94, 0.12);
+}
+
+.stepActive {
+  border-color: rgba(249, 115, 22, 0.65);
+  background: rgba(249, 115, 22, 0.16);
+}
+
+.stepFailed {
+  border-color: rgba(248, 113, 113, 0.55);
+  background: rgba(248, 113, 113, 0.12);
+}
+
+.stepDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.65);
+}
+
+.stepDotDone {
+  background: #22c55e;
+}
+
+.stepDotActive {
+  background: $orange;
+}
+
+.stepDotFailed {
+  background: #f87171;
+}
+
+.stepText {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: $muted;
+}
+
+.stepTextDone,
+.stepTextActive {
+  color: $text;
+}
+
+.errorText {
+  font-size: $font-small;
+  color: #fca5a5;
+  line-height: 18px;
+}
+
+.errorPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 10px;
+  border-radius: $radius-sm;
+  border-width: 1px;
+  border-color: rgba(248, 113, 113, 0.35);
+  background: rgba(127, 29, 29, 0.25);
+}
+
+.errorSummary {
+  font-size: $font-small;
+  font-weight: 800;
+  color: #fecaca;
+  line-height: 18px;
+}
+
+.errorLine {
+  font-size: $font-small;
+  color: #fca5a5;
+  line-height: 18px;
+}
+
+.errorHint {
+  font-size: $font-small;
+  color: #fde68a;
+  line-height: 18px;
+}
+
+.failedChip {
+  align-self: flex-start;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border-width: 1px;
+  border-color: rgba(248, 113, 113, 0.55);
+  background: rgba(248, 113, 113, 0.14);
+}
+
+.failedChipText {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fecaca;
+}
+
+.postLink {
+  font-size: $font-small;
+  font-weight: 700;
+  color: #93c5fd;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.globalBar {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  margin-top: $space-sm;
+  padding: 12px 14px;
+  border-width: 1px;
+  border-color: $card-border;
+  border-radius: $radius-md;
+  background: rgba(15, 23, 42, 0.92);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.globalBarActive {
+  border-color: rgba(249, 115, 22, 0.55);
+}
+
+.globalBarSuccess {
+  border-color: rgba(34, 197, 94, 0.5);
+}
+
+.globalBarError {
+  border-color: rgba(248, 113, 113, 0.55);
+}
+
+.revertButton {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.revertButtonText {
+  font-size: $font-small;
+  font-weight: 700;
+  color: #fca5a5;
+  text-decoration: underline;
+  cursor: pointer;
+}

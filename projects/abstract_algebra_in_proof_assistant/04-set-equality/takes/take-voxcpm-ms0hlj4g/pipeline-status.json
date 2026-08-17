@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 2,
+  "status": "failed",
+  "createdAt": "2026-07-25T14:51:13.555Z",
+  "updatedAt": "2026-07-25T15:39:28.229Z",
+  "selectedRuns": {
+    "align": "align-ms0hlj5f"
+  },
+  "runs": {
+    "stabilize": [],
+    "cut": [],
+    "align": [
+      {
+        "runId": "align-ms0hlj5f",
+        "status": "failed",
+        "createdAt": "2026-07-25T15:39:28.229Z",
+        "finishedAt": "2026-07-25T15:39:28.229Z",
+        "error": "error sending request from 127.0.0.1:55297 for http://127.0.0.1:8791/clone (127.0.0.1:8791): client error (SendRequest): connection closed before message completed",
+        "errorCode": "unknown",
+        "errorTitle": "Align slides to voice failed",
+        "errorHint": "Check the stage log on Mac for details."
+      }
+    ],
+    "composite": [],
+    "social": []
+  },
+  "autoRun": false,
+  "jobId": "job-take-voxcpm-ms0hlj4g",
+  "takeId": "take-voxcpm-ms0hlj4g",
+  "scriptId": "04-set-equality",
+  "scriptTitle": "04_set_equality",
+  "sourceVideoPath": "",
+  "takeManifestPath": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-voxcpm-ms0hlj4g/take.json"
+}

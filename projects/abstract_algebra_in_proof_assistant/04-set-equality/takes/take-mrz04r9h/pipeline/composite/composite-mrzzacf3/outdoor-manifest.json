@@ -1,0 +1,1129 @@
+{
+  "version": 1,
+  "scriptId": "04-set-equality",
+  "source": "speech-alignment",
+  "generatedAt": "2026-07-25T06:18:38.728Z",
+  "videoSrc": "takes/take-mrz04r9h/pipeline/align/align-mrz3ygjy/edited-good-intervals.mp4",
+  "editedDurationSeconds": 731.46,
+  "burnCaptions": true,
+  "burnCaptionsZh": true,
+  "beatDurationsSeconds": [
+    56.22,
+    57.74,
+    171.51,
+    159.41,
+    104.85,
+    101.56,
+    80.17,
+    2,
+    2,
+    2,
+    -6
+  ],
+  "captionSegments": [
+    {
+      "text": "Hi friends, welcome back.",
+      "atSeconds": 0.1,
+      "durationSeconds": 1.06,
+      "zh": "嗨,朋友们,欢迎回来。"
+    },
+    {
+      "text": "The best way to digest mathematics is to formalize it.",
+      "atSeconds": 1.4,
+      "durationSeconds": 2.88,
+      "zh": "数学学的最好方法 就是把它正式化"
+    },
+    {
+      "text": "but they're going",
+      "atSeconds": 4.42,
+      "durationSeconds": 0.38,
+      "zh": "但他们走了"
+    },
+    {
+      "text": "to form a set equal",
+      "atSeconds": 4.8,
+      "durationSeconds": 1.1,
+      "zh": "窗体的设置等值"
+    },
+    {
+      "text": "the textbook definition is really simple. So set equal to the means to set a mutual subset",
+      "atSeconds": 6.76,
+      "durationSeconds": 5.46,
+      "zh": "教科书定义非常简单 。 设置为等同于设置一个共同子集的手段"
+    },
+    {
+      "text": "of each object.",
+      "atSeconds": 12.22,
+      "durationSeconds": 0.48,
+      "zh": "每个物体。"
+    },
+    {
+      "text": "But in order to formalize it, we need to understand equality in proof assistant.",
+      "atSeconds": 13.08,
+      "durationSeconds": 4.74,
+      "zh": "但是,为了正式确定这一点,我们需要理解证明助理中的平等。"
+    },
+    {
+      "text": "the system.",
+      "atSeconds": 17.82,
+      "durationSeconds": 0.54,
+      "zh": "系统。"
+    },
+    {
+      "text": "So the",
+      "atSeconds": 18.86,
+      "durationSeconds": 0.22,
+      "zh": "所以说"
+    },
+    {
+      "text": "equal sign, for example, in lean, is wired in the kernel, is not in the map net. And EQ is not a",
+      "atSeconds": 19.08,
+      "durationSeconds": 2.08,
+      "zh": "例如,在 lean 中的等号,在内核内有电线,不在地图网中。而 EQ 不是一个"
+    },
+    {
+      "text": "It is an inductive proposition in Prelude.",
+      "atSeconds": 27.12,
+      "durationSeconds": 5.44,
+      "zh": "这是Prelude的感性建议。"
+    },
+    {
+      "text": "the lean kernel.",
+      "atSeconds": 32.9,
+      "durationSeconds": 0.76,
+      "zh": "XKEP9X内核。"
+    },
+    {
+      "text": "So when A and B are both set of some alpha, we can write that A equals B, which compiles to EQ AB.",
+      "atSeconds": 34.3,
+      "durationSeconds": 7.38,
+      "zh": "所以当A和B都是一些阿尔法的组合时, 我们可以写A等于B, 编译为 EQ AB。"
+    },
+    {
+      "text": "So turn length uses the opposite way.",
+      "atSeconds": 42.22,
+      "durationSeconds": 2.5,
+      "zh": "所以转弯的长度使用相反的方式。"
+    },
+    {
+      "text": "It names set equal first, then uses the annotation to display A equals B.",
+      "atSeconds": 44.92,
+      "durationSeconds": 5.2,
+      "zh": "它首先设定名称等于,然后使用注解来显示 A 等于 B 。"
+    },
+    {
+      "text": "So we will talk about both languages one step at a time.",
+      "atSeconds": 50.12,
+      "durationSeconds": 4.14,
+      "zh": "因此,我们将一步一步地讨论两种语文。"
+    },
+    {
+      "text": "So let's look at lean's equality.",
+      "atSeconds": 54.46,
+      "durationSeconds": 1.2,
+      "zh": "让我们来看看XKEP9X的平等。"
+    },
+    {
+      "text": "So here 1 equals 1.",
+      "atSeconds": 55.98,
+      "durationSeconds": 1.32,
+      "zh": "因此,这里1等于1。"
+    },
+    {
+      "text": "It's just a expression that says that 1 is equal to 1.",
+      "atSeconds": 57.58,
+      "durationSeconds": 2.58,
+      "zh": "这只是一种表达方式 说1等于1。"
+    },
+    {
+      "text": "So lean calls expression like this a proposition.",
+      "atSeconds": 60.6,
+      "durationSeconds": 2.78,
+      "zh": "所以XKEP9X调用 表达方式像这个提议。"
+    },
+    {
+      "text": "Our turn length also comes in proposition.",
+      "atSeconds": 63.78,
+      "durationSeconds": 1.28,
+      "zh": "我们的转弯长度也提出了提案。"
+    },
+    {
+      "text": "So the key word example here just means a small mini theorem that we can prove.",
+      "atSeconds": 65.58,
+      "durationSeconds": 4.52,
+      "zh": "所以这里关键词的例子 就是我们能够证明的小迷你理论。"
+    },
+    {
+      "text": "the column size introduces the claim.",
+      "atSeconds": 70.3,
+      "durationSeconds": 3.18,
+      "zh": "索赔的列号大小。"
+    },
+    {
+      "text": "So without any context variables.",
+      "atSeconds": 73.74,
+      "durationSeconds": 1.36,
+      "zh": "因此,没有任何上下文变量。"
+    },
+    {
+      "text": "So context where we will be before the column with brackets.",
+      "atSeconds": 75.1,
+      "durationSeconds": 3.34,
+      "zh": "因此,我们将放在括号内列前面的上下文。"
+    },
+    {
+      "text": "And here the column equal sign is introducing a value for this type.",
+      "atSeconds": 78.64,
+      "durationSeconds": 6.2,
+      "zh": "在此列等号为此类型引入一个值 。"
+    },
+    {
+      "text": "I remember lean is type theory, so a value for a type is the proof for a proposition.",
+      "atSeconds": 85.02,
+      "durationSeconds": 6.56,
+      "zh": "我记得 lean 是类型理论, 所以一种类型的值是 一项提议的证据。"
+    },
+    {
+      "text": "So the word RFL here is just a TED text that tries to finish the proof by checking if both sides are already the same.",
+      "atSeconds": 91.78,
+      "durationSeconds": 6.78,
+      "zh": "所以这里的RFL字只是一个TED文本, 它试图通过检查两边是否已经相同来完成证据。"
+    },
+    {
+      "text": "So RFL almost always shows up at the end of a quality proof, except the case where you have a theorem.",
+      "atSeconds": 98.56,
+      "durationSeconds": 7.66,
+      "zh": "XKEP10X几乎总是出现在 质量证明的结尾, 除了你有一个定理的例子。"
+    },
+    {
+      "text": "So let's look at one concrete example of equality.",
+      "atSeconds": 106.42,
+      "durationSeconds": 2.92,
+      "zh": "因此,让我们看看一个具体的平等的例子。"
+    },
+    {
+      "text": "So here we have net, which is lean's name for natural number, starting at zero.",
+      "atSeconds": 109.92,
+      "durationSeconds": 6.78,
+      "zh": "因此我们这里有网络, 即 lean 的自然数字名称, 从零开始 。"
+    },
+    {
+      "text": "So if you look at how addition is defined, lean's call, net .ab is an ordinary to argument function.",
+      "atSeconds": 117.24,
+      "durationSeconds": 7,
+      "zh": "如果您查看添加的定义, lean 调用 Net.ab 是一个常见的参数函数 。"
+    },
+    {
+      "text": "There is no special macro on it.",
+      "atSeconds": 124.24,
+      "durationSeconds": 2.46,
+      "zh": "上面没有特殊的宏观。"
+    },
+    {
+      "text": "And the case is used as equal.",
+      "atSeconds": 127.28,
+      "durationSeconds": 2.12,
+      "zh": "案件以等同的方式使用。"
+    },
+    {
+      "text": "So this is a thick arrow, so not an equal sign.",
+      "atSeconds": 129.6,
+      "durationSeconds": 2.6,
+      "zh": "所以,这是一个厚箭头,所以不是一个相等的标志。"
+    },
+    {
+      "text": "The first case says that if the right argument is zero,",
+      "atSeconds": 132.54,
+      "durationSeconds": 2.56,
+      "zh": "第一个案例说,如果正确的论点是零,"
+    },
+    {
+      "text": "then we turn left as it is.",
+      "atSeconds": 135.74,
+      "durationSeconds": 2.06,
+      "zh": "然后,我们向左转,再向左转。"
+    },
+    {
+      "text": "But where does this plus sign come from?",
+      "atSeconds": 138,
+      "durationSeconds": 2.76,
+      "zh": "但这个加号是从哪里来的?"
+    },
+    {
+      "text": "So lean's presentation asks for an ad instance, which is a type class implementation of ad.",
+      "atSeconds": 141.14,
+      "durationSeconds": 8.62,
+      "zh": "lean的演示文稿要求提供 ad instance, 这是广告的分类执行 。"
+    },
+    {
+      "text": "On certain values.",
+      "atSeconds": 149.76,
+      "durationSeconds": 4.04,
+      "zh": "在某些价值观上。"
+    },
+    {
+      "text": "So here ad net means that it's about addition, it's implementing the ad type class on the natural numbers.",
+      "atSeconds": 154.18,
+      "durationSeconds": 7.62,
+      "zh": "所以这里的广告网 意味着它是关于添加, 它执行广告类型类 在自然数字上。"
+    },
+    {
+      "text": "So for natural numbers, we're going to say net ad net.",
+      "atSeconds": 162,
+      "durationSeconds": 4.4,
+      "zh": "因此,对于自然数字, 我们将说净广告网。"
+    },
+    {
+      "text": "So in the example where we have n as a natural number in the context and then follow a column after that is the proposition n plus zero equals n.",
+      "atSeconds": 166.6,
+      "durationSeconds": 9.16,
+      "zh": "因此,在举例中,在上下文中,我们以n为自然数字,然后在后面的一列后面是n+0等于n。"
+    },
+    {
+      "text": "So and the proof is a single tactic called refl.",
+      "atSeconds": 175.76,
+      "durationSeconds": 4,
+      "zh": "所以,证据就是 一种叫做报复的策略。"
+    },
+    {
+      "text": "And lean does not need a rewrite theorem first.",
+      "atSeconds": 180.3,
+      "durationSeconds": 2.68,
+      "zh": "XKEP9X 不需要首先重写定理 。"
+    },
+    {
+      "text": "So the reason that refl can just close this theorem is because refl actually required, asked the kernel for help to try to reduce the equality first.",
+      "atSeconds": 183.62,
+      "durationSeconds": 11.74,
+      "zh": "因此,反氟可以仅仅关闭这个定理的原因是 因为反氟实际上需要, 要求内核帮助 试图首先降低平等。"
+    },
+    {
+      "text": "It tried to compute,",
+      "atSeconds": 195.8,
+      "durationSeconds": 2.24,
+      "zh": "它试图计算,"
+    },
+    {
+      "text": "which is sort of a computation, to reduce the both -hand sign to see if they can be compressive to something else.",
+      "atSeconds": 198.54,
+      "durationSeconds": 6.22,
+      "zh": "这是一种计算, 来减少两个手印的符号, 看看它们是否可以压缩到其他的东西上。"
+    },
+    {
+      "text": "In this case, the addition is modeled by net dot ad, which has the matching case.",
+      "atSeconds": 204.76,
+      "durationSeconds": 6.46,
+      "zh": "在此情况下,添加的模型是净点广告,该广告有相应的案例。"
+    },
+    {
+      "text": "And you can see that the kernel just directly reduced n plus zero to n.",
+      "atSeconds": 211.72,
+      "durationSeconds": 6.28,
+      "zh": "你可以看到内核直接减少 n+0到n"
+    },
+    {
+      "text": "So and",
+      "atSeconds": 218.2,
+      "durationSeconds": 1.28,
+      "zh": "所以,所以,"
+    },
+    {
+      "text": "now the both -hand sign to go at the same term n.",
+      "atSeconds": 219.68,
+      "durationSeconds": 2.56,
+      "zh": "现在两个 - 手印符号以同义 n."
+    },
+    {
+      "text": "So refl finishes.",
+      "atSeconds": 222.54,
+      "durationSeconds": 0.64,
+      "zh": "所以,折叠完成。"
+    },
+    {
+      "text": "but if there's no matching function like this,",
+      "atSeconds": 223.46,
+      "durationSeconds": 2.66,
+      "zh": "但如果没有这样的匹配功能,"
+    },
+    {
+      "text": "you cannot close the goal by refl.",
+      "atSeconds": 226.6,
+      "durationSeconds": 3.14,
+      "zh": "你们不能以反击而达到目的。"
+    },
+    {
+      "text": "And let's see a contract example here.",
+      "atSeconds": 229.74,
+      "durationSeconds": 2.26,
+      "zh": "让我们在这里看到合同的例子。"
+    },
+    {
+      "text": "So can you believe this?",
+      "atSeconds": 232.2,
+      "durationSeconds": 1.38,
+      "zh": "你能相信吗?"
+    },
+    {
+      "text": "Just by simply reversing zero and n to zero plus n,",
+      "atSeconds": 233.84,
+      "durationSeconds": 4.3,
+      "zh": "只是简单地颠倒零和零到零 零和零"
+    },
+    {
+      "text": "the kernel now cannot reduce the automatically to n.",
+      "atSeconds": 238.34,
+      "durationSeconds": 3.8,
+      "zh": "内核现在不能自动减小到 n。"
+    },
+    {
+      "text": "And this because it does not have a high class implementation that has a matching body anymore to do that for you.",
+      "atSeconds": 242.34,
+      "durationSeconds": 6.94,
+      "zh": "这是因为它没有高等级的执行, 不再有一个匹配的机构来为你这样做。"
+    },
+    {
+      "text": "One note is that this kind of automatic reducing is often called a definitional equality.",
+      "atSeconds": 249.48,
+      "durationSeconds": 6.64,
+      "zh": "值得注意的是,这种自动减少往往被称为定义上的平等。"
+    },
+    {
+      "text": "Even though we have this thick arrow sign, it's actually an equal sign that relates to things as equal.",
+      "atSeconds": 256.46,
+      "durationSeconds": 7.4,
+      "zh": "即使我们有这个厚箭牌, 它实际上是一个等同的标志, 与等同的东西有关。"
+    },
+    {
+      "text": "So when it is used as a rewrite rule, it's actually an equality.",
+      "atSeconds": 264.06,
+      "durationSeconds": 6.06,
+      "zh": "所以当它被用作重写规则时, 它实际上是平等的。"
+    },
+    {
+      "text": "And this equality does not have a proof.",
+      "atSeconds": 270.32,
+      "durationSeconds": 1.94,
+      "zh": "这种平等没有证据。"
+    },
+    {
+      "text": "And it's not even a time.",
+      "atSeconds": 272.26,
+      "durationSeconds": 3.4,
+      "zh": "现在甚至还不是时间"
+    },
+    {
+      "text": "So it cannot have a value to prove it.",
+      "atSeconds": 276.06,
+      "durationSeconds": 2.24,
+      "zh": "因此,它没有价值来证明这一点。"
+    },
+    {
+      "text": "So that means this is actually an axiom.",
+      "atSeconds": 278.62,
+      "durationSeconds": 3.8,
+      "zh": "也就是说,这实际上是一个轴心。"
+    },
+    {
+      "text": "Even though it's not returning the equality, but it's doing an axiom.",
+      "atSeconds": 282.86,
+      "durationSeconds": 2.56,
+      "zh": "即使它没有恢复平等, 但它正在做一个轴心。"
+    },
+    {
+      "text": "And an entire theory definition equality is just like axiom.",
+      "atSeconds": 285.86,
+      "durationSeconds": 3.44,
+      "zh": "而一个完整的理论定义 平等就如同轴心一样。"
+    },
+    {
+      "text": "And propositional equality is something that we can prove.",
+      "atSeconds": 289.4,
+      "durationSeconds": 2.78,
+      "zh": "主张平等是我们能够证明的。"
+    },
+    {
+      "text": "And we must prove.",
+      "atSeconds": 292.32,
+      "durationSeconds": 0.62,
+      "zh": "我们必须证明这一点。"
+    },
+    {
+      "text": "And Lee makes a very clean separation on this.",
+      "atSeconds": 293.14,
+      "durationSeconds": 2.4,
+      "zh": "而Lee在这件事上做了个非常干净的分离"
+    },
+    {
+      "text": "Instead of modeling this n plus 0 equals n as an axiom, it actually models it as a function body that the kernel can reduce automatically.",
+      "atSeconds": 295.54,
+      "durationSeconds": 12.22,
+      "zh": "与其以 n+ 0 等值 n 做一个轴的模型, 不如将它做成一个函数体, 内核可以自动减少 。"
+    },
+    {
+      "text": "So the vector of this case, how can we prove n plus 0 plus n equal to n now in this case?",
+      "atSeconds": 307.96,
+      "durationSeconds": 5.84,
+      "zh": "那么这个案例的矢量, 在这个案例中,我们如何证明 n+ 0 + n 等于 N ?"
+    },
+    {
+      "text": "So because we cannot use raffle, that means we have to come up with another theorem.",
+      "atSeconds": 314.44,
+      "durationSeconds": 3.68,
+      "zh": "因此,因为我们不能使用拉斐尔,这意味着我们必须拿出另一个理论。"
+    },
+    {
+      "text": "So in order to prove this,",
+      "atSeconds": 318.12,
+      "durationSeconds": 2,
+      "zh": "所以为了证明这一点"
+    },
+    {
+      "text": "the conventional way in mathlet is to add a new theorem called 0 underscore n.",
+      "atSeconds": 320.68,
+      "durationSeconds": 6.44,
+      "zh": "数学中的常规方式是添加一个新的理论,称为0强调 n。"
+    },
+    {
+      "text": "And this one would just confirm that anything plus n equals n.",
+      "atSeconds": 327.64,
+      "durationSeconds": 3.24,
+      "zh": "这张会确认 任何加n等于n"
+    },
+    {
+      "text": "So this is a proven pattern that n 0 plus anything else is n.",
+      "atSeconds": 330.92,
+      "durationSeconds": 7.18,
+      "zh": "因此,这是一个经证实的模式, n0 加上其他任何东西就是n。"
+    },
+    {
+      "text": "Actually, this can be also defined as a definition equality.",
+      "atSeconds": 338.2,
+      "durationSeconds": 2.6,
+      "zh": "实际上,这也可以定义为平等的定义。"
+    },
+    {
+      "text": "So in this case, we just don't want to have a new time class anymore.",
+      "atSeconds": 341,
+      "durationSeconds": 4.72,
+      "zh": "所以在这种情况下,我们只是不想再有一个新的时间课了。"
+    },
+    {
+      "text": "That's why mathlet uses a different theorem to just handle this convenient case.",
+      "atSeconds": 345.9,
+      "durationSeconds": 7,
+      "zh": "这就是为什么数学用不同的理论 来处理这个方便的案子"
+    },
+    {
+      "text": "So this is how Lee can reduce equality.",
+      "atSeconds": 353.1,
+      "durationSeconds": 2.96,
+      "zh": "这就是李能降低平等的方式"
+    },
+    {
+      "text": "But we still haven't talked about what can be put in equality in Lee.",
+      "atSeconds": 356.46,
+      "durationSeconds": 4.84,
+      "zh": "但我们还没有讨论什么可以让李平等。"
+    },
+    {
+      "text": "Because Lee is a strongly typed language.",
+      "atSeconds": 361.44,
+      "durationSeconds": 2.32,
+      "zh": "因为Lee是一个强烈的输入语言。"
+    },
+    {
+      "text": "There are certain constraints on the things that you can put on both inside of the equation.",
+      "atSeconds": 364.22,
+      "durationSeconds": 5.54,
+      "zh": "两者在等式内 都有某些限制"
+    },
+    {
+      "text": "So everything in Lee has a type.",
+      "atSeconds": 369.96,
+      "durationSeconds": 1.7,
+      "zh": "所以李的每样东西都有一种类型"
+    },
+    {
+      "text": "Every turn has a type.",
+      "atSeconds": 372,
+      "durationSeconds": 0.78,
+      "zh": "每个转弯都有一种类型。"
+    },
+    {
+      "text": "Even a type has a type.",
+      "atSeconds": 372.82,
+      "durationSeconds": 1.06,
+      "zh": "甚至一种类型也有一种类型。"
+    },
+    {
+      "text": "So in order to compare two things in equality,",
+      "atSeconds": 373.88,
+      "durationSeconds": 4.58,
+      "zh": "所以为了比较平等中的两件事"
+    },
+    {
+      "text": "they must have the same type.",
+      "atSeconds": 378.96,
+      "durationSeconds": 1.4,
+      "zh": "它们必须具有相同的类型。"
+    },
+    {
+      "text": "So as a counter -example here, so if you compare 2 and 2, if 2 on the left hand side 2 is a natural number, but on the right hand side 2 is an integer.",
+      "atSeconds": 380.56,
+      "durationSeconds": 9.52,
+      "zh": "因此,作为反比 - 例在这里, 所以如果比较2和2, 如果左手2是自然数字, 左手2是自然数字, 但右手2是整数 。"
+    },
+    {
+      "text": "So in Lee, we cannot compare it.",
+      "atSeconds": 390.62,
+      "durationSeconds": 3.08,
+      "zh": "所以在李,我们不能比较它。"
+    },
+    {
+      "text": "Because they are until we have a way to convert them to the same type automatically.",
+      "atSeconds": 394,
+      "durationSeconds": 6.2,
+      "zh": "因为他们在等我们有办法 自动将它们转换成同型"
+    },
+    {
+      "text": "So for the set case, if two sets have the equal type alpha,",
+      "atSeconds": 400.64,
+      "durationSeconds": 6.34,
+      "zh": "因此,对于设定的情况,如果两组具有相同的阿尔法类型,"
+    },
+    {
+      "text": "and then they can be compared on both inside.",
+      "atSeconds": 407.52,
+      "durationSeconds": 2.6,
+      "zh": "然后它们就可以在两个内部进行比较。"
+    },
+    {
+      "text": "And you can see here, we have modeling a equals b as the EQ and b.",
+      "atSeconds": 410.12,
+      "durationSeconds": 5.12,
+      "zh": "你可以看到这里,我们以 XKEP13X 和 B 做一个等量b的模型。"
+    },
+    {
+      "text": "As we talk about in the first slides that the equals sign, it is an in -fix, in Lee's kernel, to convert it to a function application called EQ.",
+      "atSeconds": 415.34,
+      "durationSeconds": 16.46,
+      "zh": "正如我们在第一张幻灯片中谈到的,等值符号,在李的内核中,将它转换成一个称为 EQ 的函数应用程序,是一字字串。"
+    },
+    {
+      "text": "And it's going to produce a proposition from AMB.",
+      "atSeconds": 432.3,
+      "durationSeconds": 2.48,
+      "zh": "它将提出一个提案 由AMB提出。"
+    },
+    {
+      "text": "So even though we can have an equal sign of two types,",
+      "atSeconds": 434.88,
+      "durationSeconds": 3.58,
+      "zh": "因此,尽管我们可以有 两种类型的平等标志,"
+    },
+    {
+      "text": "we still need to define the meaning of these equals and for different types that we put on the equality, the meaning is different.",
+      "atSeconds": 438.92,
+      "durationSeconds": 8.76,
+      "zh": "我们仍然需要界定这些平等的含义,对于我们所赋予的平等的不同类型,其含义是不同的。"
+    },
+    {
+      "text": "And it is impossible to embed all of these meaning of different types of equality into this single equality symbol.",
+      "atSeconds": 447.88,
+      "durationSeconds": 10.42,
+      "zh": "而且不可能将不同类型平等的所有这些含义都嵌入这一单一的平等象征之中。"
+    },
+    {
+      "text": "So what Lee does is that we treat a equals b as a type,",
+      "atSeconds": 458.62,
+      "durationSeconds": 2.78,
+      "zh": "所以Lee做的是,我们把等於b当作一种类型,"
+    },
+    {
+      "text": "but we are going to let it mean something else by using other assumption.",
+      "atSeconds": 461.6,
+      "durationSeconds": 6.74,
+      "zh": "但是,我们将通过使用其他假设,让它意味着别的东西。"
+    },
+    {
+      "text": "So basically saying, I can convert the problem a equals b of any type to another problem,",
+      "atSeconds": 468.34,
+      "durationSeconds": 8.16,
+      "zh": "基本上,我可以把问题转换成 任何类型的b等量的问题 换成另一个问题"
+    },
+    {
+      "text": "depending on what I want to model.",
+      "atSeconds": 476.7,
+      "durationSeconds": 1.58,
+      "zh": "取决于我想做什么模特"
+    },
+    {
+      "text": "So the way to do this is to establish a few rows.",
+      "atSeconds": 478.48,
+      "durationSeconds": 2.96,
+      "zh": "因此,这样做的方法就是建立几行。"
+    },
+    {
+      "text": "So this does not feel like a native lean syntax that helps me bundles some type with other type.",
+      "atSeconds": 481.64,
+      "durationSeconds": 8.68,
+      "zh": "所以这不像是本地的 XKEP9X 语法, 帮助我用其他类型捆绑某类。"
+    },
+    {
+      "text": "This is Lee's convention.",
+      "atSeconds": 490.86,
+      "durationSeconds": 1.46,
+      "zh": "这是李的大会"
+    },
+    {
+      "text": "This is only a convenient way.",
+      "atSeconds": 492.62,
+      "durationSeconds": 1.4,
+      "zh": "这只是一种方便的方式。"
+    },
+    {
+      "text": "There's no native syntax that helps me manage propositions that are related to each other.",
+      "atSeconds": 494.02,
+      "durationSeconds": 8.64,
+      "zh": "没有任何本地语法能帮助我 管理彼此关联的主张"
+    },
+    {
+      "text": "So here, we actually say that in order to use the a equal b of two sets, we actually need to have some assumption first.",
+      "atSeconds": 503.1,
+      "durationSeconds": 10.16,
+      "zh": "因此,在这里,我们实际上说,为了使用两套b的等量b, 我们实际上需要先有一些假设。"
+    },
+    {
+      "text": "So here, we can say the theorem called EXT here.",
+      "atSeconds": 513.88,
+      "durationSeconds": 3.74,
+      "zh": "在这里,我们可以说 理论者叫EXT在这里。"
+    },
+    {
+      "text": "It takes two variable A and V with a set alpha.",
+      "atSeconds": 517.76,
+      "durationSeconds": 3.02,
+      "zh": "需要两个变数A和五 加上一个设定的阿尔法"
+    },
+    {
+      "text": "And then there is another variable called H, which is actually a proposition,",
+      "atSeconds": 520.78,
+      "durationSeconds": 3.88,
+      "zh": "然后还有另一个变数叫H, 这实际上是个提议,"
+    },
+    {
+      "text": "which is an assumption there for all X,",
+      "atSeconds": 525.24,
+      "durationSeconds": 2.48,
+      "zh": "这是所有X的假设,"
+    },
+    {
+      "text": "which have alpha,",
+      "atSeconds": 528.32,
+      "durationSeconds": 2.26,
+      "zh": "有阿尔法的,"
+    },
+    {
+      "text": "if X in a implied X in b.",
+      "atSeconds": 531.06,
+      "durationSeconds": 2.58,
+      "zh": "(b) 如果X在b.b.中含有暗示的X,则在b.中含有X。"
+    },
+    {
+      "text": "So basically, and here is a double arrow, which means a single arrow, which means a subset of relationships.",
+      "atSeconds": 533.8,
+      "durationSeconds": 7.46,
+      "zh": "基本上,这里是双箭, 意思是一箭, 意思是一箭, 意思是关系的一个子集。"
+    },
+    {
+      "text": "So it is a two way subset of relationships.",
+      "atSeconds": 541.58,
+      "durationSeconds": 1.96,
+      "zh": "所以这是关系的两个子集。"
+    },
+    {
+      "text": "So a and b are both subset of each other.",
+      "atSeconds": 544.12,
+      "durationSeconds": 1.96,
+      "zh": "所以A和B是彼此的子集"
+    },
+    {
+      "text": "And you can see that the",
+      "atSeconds": 546.08,
+      "durationSeconds": 3.32,
+      "zh": "你可以看到"
+    },
+    {
+      "text": "proof was finished by applying a theorem called Fund X.",
+      "atSeconds": 549.6,
+      "durationSeconds": 3.74,
+      "zh": "应用名为 Fund X 的定理完成了验证 。"
+    },
+    {
+      "text": "So here, a function is a rule that takes an input and gives an answer.",
+      "atSeconds": 553.54,
+      "durationSeconds": 3.86,
+      "zh": "因此,在这里,函数是一个规则, 需要输入并给出答案。"
+    },
+    {
+      "text": "And two,",
+      "atSeconds": 557.82,
+      "durationSeconds": 0.32,
+      "zh": "第二,"
+    },
+    {
+      "text": "we will talk about functioning in later videos.",
+      "atSeconds": 558.76,
+      "durationSeconds": 1.66,
+      "zh": "我们将在以后的视频中讨论功能。"
+    },
+    {
+      "text": "It is a much more solid foundation than you think.",
+      "atSeconds": 561.06,
+      "durationSeconds": 2.8,
+      "zh": "这是一个比你想的更牢固的基础。"
+    },
+    {
+      "text": "So it takes an input and gives an answer, gives an output.",
+      "atSeconds": 563.86,
+      "durationSeconds": 4.32,
+      "zh": "所以它需要输入并给出一个答案, 给出一个输出 。"
+    },
+    {
+      "text": "Two rules can look different, but still have the same answer for every input.",
+      "atSeconds": 568.64,
+      "durationSeconds": 5.4,
+      "zh": "两种规则可能看起来不同, 但每个输入的答案都是一样的。"
+    },
+    {
+      "text": "So Lean has a helper name,",
+      "atSeconds": 574.62,
+      "durationSeconds": 1.4,
+      "zh": "所以XKEP9X有一个帮手的名字"
+    },
+    {
+      "text": "Fund X, Fund EXT, for that situation.",
+      "atSeconds": 576.22,
+      "durationSeconds": 2.26,
+      "zh": "X基金,EXT基金,针对这种情况。"
+    },
+    {
+      "text": "So it works when both functions have the same kind of input and return the same kind of answers.",
+      "atSeconds": 578.68,
+      "durationSeconds": 5.42,
+      "zh": "所以当两个函数都具有相同的输入 并返回同样的答案时,它就起作用了。"
+    },
+    {
+      "text": "And the reason, Lean have to use something like a function is because set itself.",
+      "atSeconds": 584.3,
+      "durationSeconds": 5.29,
+      "zh": "Lean 之所以要使用类似函数的功能 是因为设置了它本身。"
+    },
+    {
+      "text": "Remember from last week, set itself is modeled by a function.",
+      "atSeconds": 589.59,
+      "durationSeconds": 3.7,
+      "zh": "记住上个星期,设置本身由函数模拟。"
+    },
+    {
+      "text": "So it's not modeled by a container.",
+      "atSeconds": 593.49,
+      "durationSeconds": 1.78,
+      "zh": "所以它不是用容器做模型的"
+    },
+    {
+      "text": "I like turning like that.",
+      "atSeconds": 595.59,
+      "durationSeconds": 0.9,
+      "zh": "我喜欢这样转身"
+    },
+    {
+      "text": "So that's why we really need to call out what a function is in this case.",
+      "atSeconds": 596.69,
+      "durationSeconds": 4.62,
+      "zh": "所以这就是为什么我们真的需要 指出什么是功能 在这个情况下。"
+    },
+    {
+      "text": "So if we look at turn length, so turn length calls a function equal,",
+      "atSeconds": 601.51,
+      "durationSeconds": 3.46,
+      "zh": "所以,如果我们看转折长度, 所以转折长度要求函数等于,"
+    },
+    {
+      "text": "just using a relation called function equal.",
+      "atSeconds": 605.17,
+      "durationSeconds": 2.6,
+      "zh": "使用所谓的函数等同关系。"
+    },
+    {
+      "text": "And this is the three propositions in order for this relation to be true.",
+      "atSeconds": 607.97,
+      "durationSeconds": 3.94,
+      "zh": "这是三条主张 为了让这种关系成为事实"
+    },
+    {
+      "text": "So one is that the two functions have the same kind of input, that's the return the same type of output.",
+      "atSeconds": 611.91,
+      "durationSeconds": 7.78,
+      "zh": "一种是两个函数的输入类型相同, 返回的输出类型相同。"
+    },
+    {
+      "text": "And do they give the same answer for every single input, whether it's identical input.",
+      "atSeconds": 620.29,
+      "durationSeconds": 4.32,
+      "zh": "它们是否给每一个输入都给出相同的答案, 不论输入是否相同 。"
+    },
+    {
+      "text": "And this is the exact relation we want to prove.",
+      "atSeconds": 625.07,
+      "durationSeconds": 2.24,
+      "zh": "这就是我们想要证明的确切关系。"
+    },
+    {
+      "text": "And this is what's exactly present in the textbook.",
+      "atSeconds": 627.41,
+      "durationSeconds": 2.72,
+      "zh": "而这正是教科书中的内容。"
+    },
+    {
+      "text": "And we are going to look at it in the later videos.",
+      "atSeconds": 630.49,
+      "durationSeconds": 1.98,
+      "zh": "我们将在以后的视频中看到它。"
+    },
+    {
+      "text": "So literal equality is not always the right choice for comparing",
+      "atSeconds": 632.67,
+      "durationSeconds": 5.94,
+      "zh": "因此,字面平等并不总是比较的正确选择"
+    },
+    {
+      "text": "stuff.",
+      "atSeconds": 638.81,
+      "durationSeconds": 0.42,
+      "zh": "东西。"
+    },
+    {
+      "text": "So even when two objects plays the same mathematical role.",
+      "atSeconds": 639.23,
+      "durationSeconds": 3.06,
+      "zh": "因此,即使两个对象发挥同样的数学作用。"
+    },
+    {
+      "text": "So a group is a collection of a rule for combining elements.",
+      "atSeconds": 642.83,
+      "durationSeconds": 3.2,
+      "zh": "所以组组是集合元素的一套规则。"
+    },
+    {
+      "text": "Two groups can use different elements and still have the same structure.",
+      "atSeconds": 646.53,
+      "durationSeconds": 3.48,
+      "zh": "两组人可以使用不同的要素,但结构仍然相同。"
+    },
+    {
+      "text": "So in later videos, we are going to talk about higher degree of equalities, where things are the same,",
+      "atSeconds": 650.63,
+      "durationSeconds": 8.04,
+      "zh": "所以在以后的视频中, 我们将谈论更高程度的平等, 在那里,事情是相同的,"
+    },
+    {
+      "text": "only in certain perspectives,",
+      "atSeconds": 659.13,
+      "durationSeconds": 1.4,
+      "zh": "只是在某些方面,"
+    },
+    {
+      "text": "only in certain patterns.",
+      "atSeconds": 661.05,
+      "durationSeconds": 1.5,
+      "zh": "仅在某些模式下。"
+    },
+    {
+      "text": "For example, a group can have different elements, but they work like this, but they have different cyclic behaviors,",
+      "atSeconds": 663.15,
+      "durationSeconds": 5.51,
+      "zh": "例如,一个群体可以有不同的元素, 但他们这样工作, 但他们有不同的循环行为,"
+    },
+    {
+      "text": "and they have the same number of mapping between the elements,",
+      "atSeconds": 668.86,
+      "durationSeconds": 3.8,
+      "zh": "并且各元素之间的绘图数量相同,"
+    },
+    {
+      "text": "things like that.",
+      "atSeconds": 673.16,
+      "durationSeconds": 0.56,
+      "zh": "诸如此类的事情。"
+    },
+    {
+      "text": "And this is called isomorphism,",
+      "atSeconds": 674.1,
+      "durationSeconds": 1.76,
+      "zh": "这就是所谓的无形态主义,"
+    },
+    {
+      "text": "which",
+      "atSeconds": 676.5,
+      "durationSeconds": 2.24,
+      "zh": "减去"
+    },
+    {
+      "text": "is a reversible translation between two structures.",
+      "atSeconds": 678.94,
+      "durationSeconds": 3.24,
+      "zh": "是两个结构之间的可逆翻译。"
+    },
+    {
+      "text": "So having same structure is actually accepted as the same in some higher mathematics.",
+      "atSeconds": 682.38,
+      "durationSeconds": 7.46,
+      "zh": "所以在某些高校数学中, 同一结构实际上被接受为相同结构。"
+    },
+    {
+      "text": "So we will discuss this advanced ideas later.",
+      "atSeconds": 690.04,
+      "durationSeconds": 3.7,
+      "zh": "因此,我们稍后将讨论这一先进想法。"
+    },
+    {
+      "text": "But for now, just keep one letter in mind that numbers are matched by values and set them matched by members, function matched by their mapping behavior.",
+      "atSeconds": 693.74,
+      "durationSeconds": 9.72,
+      "zh": "但现在,只要记住一个字母, 数字与价值匹配, 并设定它们与成员匹配, 功能与其绘图行为匹配。"
+    },
+    {
+      "text": "Groups are mapped by matched by their structures.",
+      "atSeconds": 703.88,
+      "durationSeconds": 4.2,
+      "zh": "各团体的分布图与其结构相匹配。"
+    },
+    {
+      "text": "And one must agree before we call these two things the same.",
+      "atSeconds": 708.72,
+      "durationSeconds": 3.26,
+      "zh": "并且我们必须达成一致 才能把这两件事都说成一样"
+    },
+    {
+      "text": "So if we just think about it, because narrow that down, and then we name it as a rule, and then we can just prove it.",
+      "atSeconds": 712.44,
+      "durationSeconds": 6.06,
+      "zh": "所以,如果我们只考虑一下, 因为缩小范围, 然后我们把它命名为一条规则, 然后我们就可以证明这一点。"
+    },
+    {
+      "text": "And this is basically how pure mathematics get advanced.",
+      "atSeconds": 718.52,
+      "durationSeconds": 3.68,
+      "zh": "这基本上就是纯数学进步的方式。"
+    },
+    {
+      "text": "So I hope you enjoyed this video, and next time we are going to talk about the empty set.",
+      "atSeconds": 722.2,
+      "durationSeconds": 4.98,
+      "zh": "所以,我希望你喜欢这段视频, 下次我们谈空的片场。"
+    },
+    {
+      "text": "Thank you very much.",
+      "atSeconds": 727.46,
+      "durationSeconds": 0.52,
+      "zh": "非常感谢。"
+    },
+    {
+      "text": "Please subscribe and like the video.",
+      "atSeconds": 728.02,
+      "durationSeconds": 1.64,
+      "zh": "请订阅并喜欢这段视频。"
+    }
+  ],
+  "mergedBeats": [
+    {
+      "slideId": "beat-01",
+      "beatIndex": 0,
+      "editedStart": 0,
+      "editedEnd": 56.22,
+      "durationSeconds": 56.22,
+      "lastSpokenWord": "time."
+    },
+    {
+      "slideId": "beat-02",
+      "beatIndex": 1,
+      "editedStart": 56.22,
+      "editedEnd": 113.96,
+      "durationSeconds": 57.74,
+      "lastSpokenWord": "quality"
+    },
+    {
+      "slideId": "beat-03",
+      "beatIndex": 2,
+      "editedStart": 113.96,
+      "editedEnd": 285.47,
+      "durationSeconds": 171.51,
+      "lastSpokenWord": "but"
+    },
+    {
+      "slideId": "beat-04",
+      "beatIndex": 3,
+      "editedStart": 285.47,
+      "editedEnd": 444.88,
+      "durationSeconds": 159.41,
+      "lastSpokenWord": "this"
+    },
+    {
+      "slideId": "beat-05",
+      "beatIndex": 4,
+      "editedStart": 444.88,
+      "editedEnd": 549.73,
+      "durationSeconds": 104.85,
+      "lastSpokenWord": "the"
+    },
+    {
+      "slideId": "beat-06",
+      "beatIndex": 5,
+      "editedStart": 549.73,
+      "editedEnd": 651.29,
+      "durationSeconds": 101.56,
+      "lastSpokenWord": "So"
+    },
+    {
+      "slideId": "beat-07",
+      "beatIndex": 6,
+      "editedStart": 651.29,
+      "editedEnd": 731.46,
+      "durationSeconds": 80.17,
+      "lastSpokenWord": "in"
+    },
+    {
+      "slideId": "beat-08",
+      "beatIndex": 7,
+      "editedStart": 731.46,
+      "editedEnd": 733.46,
+      "durationSeconds": 2,
+      "lastSpokenWord": "at"
+    },
+    {
+      "slideId": "beat-09",
+      "beatIndex": 8,
+      "editedStart": 733.46,
+      "editedEnd": 735.46,
+      "durationSeconds": 2,
+      "lastSpokenWord": "prove."
+    },
+    {
+      "slideId": "beat-10",
+      "beatIndex": 9,
+      "editedStart": 735.46,
+      "editedEnd": 737.46,
+      "durationSeconds": 2,
+      "lastSpokenWord": "same"
+    },
+    {
+      "slideId": "beat-11",
+      "beatIndex": 10,
+      "editedStart": 737.46,
+      "editedEnd": 731.46,
+      "durationSeconds": -6,
+      "lastSpokenWord": "set."
+    }
+  ]
+}

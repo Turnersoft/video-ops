@@ -1,53 +1,68 @@
+import type { VoxcpmToneId } from "../../../src/voxcpmScript";
+import type { VoiceEngineId } from "./utils/voiceEngine";
+import type { ScriptLanguageId } from "./utils/scriptLanguage";
+
 /** Pipeline and routing */
 
-export type PipelineStage = 'stabilize' | 'cut' | 'align' | 'composite' | 'social';
+export type PipelineStage =
+  | "stabilize"
+  | "cut"
+  | "align"
+  | "composite"
+  | "social";
 
 export const PIPELINE_STAGES: readonly PipelineStage[] = [
-  'stabilize',
-  'cut',
-  'align',
-  'composite',
-  'social',
+  "stabilize",
+  "cut",
+  "align",
+  "composite",
+  "social",
 ] as const;
 
 export const STAGE_LABELS: Record<PipelineStage, string> = {
-  stabilize: 'Stabilize handheld shake',
-  cut: 'Rough + smart cut',
-  align: 'Align slides to voice',
-  composite: 'Composite portrait + landscape',
-  social: 'Social copy pack',
+  stabilize: "Stabilize handheld shake",
+  cut: "Rough + smart cut",
+  align: "Align slides to voice",
+  composite: "Composite portrait + landscape",
+  social: "Social copy pack",
 };
 
-export type RunStatus = 'pending' | 'running' | 'succeeded' | 'failed' | 'cancelled';
+export type RunStatus =
+  | "pending"
+  | "running"
+  | "succeeded"
+  | "failed"
+  | "cancelled";
 
 export type PipelineErrorCode =
-  | 'cancelled'
-  | 'missing_script'
-  | 'missing_prerequisite'
-  | 'missing_file'
-  | 'transcription'
-  | 'subprocess'
-  | 'render'
-  | 'network'
-  | 'upload'
-  | 'unknown';
+  | "cancelled"
+  | "missing_script"
+  | "missing_prerequisite"
+  | "missing_file"
+  | "transcription"
+  | "subprocess"
+  | "render"
+  | "network"
+  | "upload"
+  | "unknown";
 
 export type JobStatus =
-  | 'queued'
-  | 'running'
-  | 'review'
-  | 'published'
-  | 'failed'
-  | 'ingested';
+  | "queued"
+  | "running"
+  | "review"
+  | "published"
+  | "failed"
+  | "ingested";
 
 export type OutdoorRoute =
-  | { name: 'library' }
-  | { name: 'script'; scriptId: string }
-  | { name: 'post'; scriptId: string }
-  | { name: 'take'; scriptId: string; takeId: string }
-  | { name: 'film'; scriptId: string }
-  | { name: 'animation'; scriptId: string }
-  | { name: 'platforms' };
+  | { name: "library" }
+  | { name: "script"; scriptId: string }
+  | { name: "post"; scriptId: string }
+  | { name: "beat-posters"; scriptId: string }
+  | { name: "take"; scriptId: string; takeId: string }
+  | { name: "film"; scriptId: string }
+  | { name: "animation"; scriptId: string }
+  | { name: "platforms" };
 
 export type AnimationMdDocument = {
   scriptId: string;
@@ -71,7 +86,7 @@ export type LlmSettings = {
 
 /** Outdoor script (teleprompter) */
 
-export type OutdoorScriptMode = 'manual' | 'timed';
+export type OutdoorScriptMode = "manual" | "timed";
 
 export type OutdoorScriptImage = {
   dataUri?: string;
@@ -89,7 +104,7 @@ export type OutdoorScriptSlide = {
   notes?: string;
   leanCode?: string;
   turnCode?: string;
-  codeFocus?: 'lean' | 'turn';
+  codeFocus?: "lean" | "turn";
 };
 
 export type LiveBeat = {
@@ -106,22 +121,22 @@ export type LiveBeat = {
 };
 
 export type StyleKit =
-  | 'compare'
-  | 'motion-essay'
-  | 'pitfall'
-  | 'ai-review'
-  | 'syntax-spot'
-  | 'launch-pv'
-  | 'life-essay';
+  | "compare"
+  | "motion-essay"
+  | "pitfall"
+  | "ai-review"
+  | "syntax-spot"
+  | "launch-pv"
+  | "life-essay";
 
 export type LiveScript = {
   schemaVersion: 1;
   id: string;
   title: string;
   language: string;
-  mode: 'timed';
+  mode: "timed";
   countdownSeconds: number;
-  source: 'animation.md';
+  source: "animation.md";
   /** Engineering project under projects/ (series folder id). */
   projectId?: string;
   seriesId?: string;
@@ -140,12 +155,12 @@ export type OutdoorScript = {
   countdownSeconds?: number;
   defaultFontScale?: number;
   slides: OutdoorScriptSlide[];
-  source?: 'animation.md' | string;
+  source?: "animation.md" | string;
   updatedAt?: string | null;
   beats?: LiveBeat[];
 };
 
-export type TakeMarkerKind = 'ng' | 'keep' | 'note';
+export type TakeMarkerKind = "ng" | "keep" | "note";
 
 export type TakeMarker = {
   id: string;
@@ -173,11 +188,11 @@ export type TakeManifest = {
   markers: TakeMarker[];
 };
 
-export type TakeSyncStatus = 'local' | 'queued' | 'synced' | 'exported';
+export type TakeSyncStatus = "local" | "queued" | "synced" | "exported";
 
-export type TakeDeliveryStep = 'iphone' | 'icloud' | 'mac';
+export type TakeDeliveryStep = "iphone" | "icloud" | "mac";
 
-export type TakeDeliveryStepState = 'done' | 'pending' | 'waiting';
+export type TakeDeliveryStepState = "done" | "pending" | "waiting";
 
 /** iPhone-local take row — metadata + delivery stepstones. */
 export type LocalTakeView = {
@@ -286,7 +301,7 @@ export type ScriptsResyncResult = {
 
 /** Inbox */
 
-export type InboxFileStatus = 'pending' | 'ready' | 'ingested' | 'missing-pair';
+export type InboxFileStatus = "pending" | "ready" | "ingested" | "missing-pair";
 
 export type InboxFileSighting = {
   takeId: string;
@@ -373,7 +388,30 @@ export type OutdoorJobSummary = {
   progress?: Partial<Record<PipelineStage, StageProgress | null>>;
 };
 
-export type PublishVisibility = 'live' | 'hidden' | 'deleted' | 'pending';
+export type PublishVisibility =
+  | "live"
+  | "hidden"
+  | "deleted"
+  | "pending"
+  | "failed";
+
+export type PublishProgressStage =
+  | "queued"
+  | "generating_card"
+  | "uploading_video"
+  | "uploading_image"
+  | "uploading_thumbnail"
+  | "submitting"
+  | "accepted"
+  | "published"
+  | "failed";
+
+export type PublishProgress = {
+  stage: PublishProgressStage;
+  percent: number;
+  message: string;
+  updatedAt: string;
+};
 
 export type PublishRecord = {
   platform: string;
@@ -388,6 +426,11 @@ export type PublishRecord = {
   compositeRunId?: string;
   stub?: boolean;
   coverId?: string;
+  mediaKind?: "video" | "image";
+  imagePath?: string;
+  progress?: PublishProgress;
+  error?: string;
+  postizState?: "QUEUE" | "PUBLISHED" | "ERROR" | "DRAFT";
 };
 
 export type PublishState = {
@@ -401,10 +444,21 @@ export type PublishState = {
 export type StageResultPreview = {
   stage: PipelineStage;
   runId: string | null;
-  status: RunStatus | 'pending';
-  videos: Array<{ label: string; url: string }>;
+  status: RunStatus | "pending";
+  videos: Array<{
+    label: string;
+    url: string;
+    fileName?: string;
+    stage?: PipelineStage;
+    runId?: string;
+  }>;
   summary: string[];
-  socialTitles: Array<{ group: string; platform: string; title: string; body?: string }>;
+  socialTitles: Array<{
+    group: string;
+    platform: string;
+    title: string;
+    body?: string;
+  }>;
   social?: SocialPosts | null;
   stale?: boolean;
   staleReason?: string | null;
@@ -427,7 +481,7 @@ export type OutdoorJobDetail = {
 export type PipelineStageSnapshot = {
   stage: PipelineStage;
   runId: string | null;
-  status: RunStatus | 'pending';
+  status: RunStatus | "pending";
   error?: string;
   errorCode?: PipelineErrorCode;
   errorTitle?: string;
@@ -435,6 +489,10 @@ export type PipelineStageSnapshot = {
   progress: StageProgress | null;
   logTail?: string | null;
   logUrl?: string | null;
+  renderLogTails?: {
+    portrait?: string | null;
+    landscape?: string | null;
+  };
   stale?: boolean;
   staleReason?: string | null;
 };
@@ -473,11 +531,11 @@ export type CutTranscriptLine = {
   end: number;
   text: string;
   kept: boolean;
-  kind: 'keep' | 'silence' | 'ng' | 'other';
+  kind: "keep" | "silence" | "ng" | "other";
   reason: string;
   toggleStart: number;
   toggleEnd: number;
-  toggleMode: 'bad' | 'good';
+  toggleMode: "bad" | "good";
 };
 
 export type CutSlideTranscript = {
@@ -518,7 +576,7 @@ export type CutReviewPayload = {
 
 /** Align review */
 
-export type MaskShape = 'circle' | 'rectangle';
+export type MaskShape = "circle" | "rectangle";
 
 export type AlignBoxLayout = {
   shape: MaskShape;
@@ -547,7 +605,7 @@ export type AlignHintLayout = {
 export type AlignBeatLayout = {
   pip: AlignBoxLayout;
   hintPanel: AlignHintLayout;
-  presenterMode?: 'split-crop' | 'full-clip';
+  presenterMode?: "split-crop" | "full-clip";
   scriptFullscreen?: boolean;
 };
 
@@ -619,7 +677,12 @@ export type SocialPatch = {
 
 /** Covers */
 
-export type CoverSource = 'browser' | 'iphone' | 'import' | 'duplicate' | 'composite';
+export type CoverSource =
+  | "browser"
+  | "iphone"
+  | "import"
+  | "duplicate"
+  | "composite";
 
 export type CoverMeta = {
   id: string;
@@ -649,26 +712,49 @@ export type CoversListResponse = {
 export type CoverPlatformMapPatch = {
   platformCovers?: Record<string, string | null>;
   batch?: {
-    group: 'english' | 'china';
+    group: "english" | "china";
     coverId: string | null;
     platforms: string[];
   };
 };
 
 export type CaptureCoverOptions = {
-  format?: 'portrait' | 'landscape';
+  format?: "portrait" | "landscape";
   atSeconds?: number;
   label?: string;
+};
+
+/** Script-level publish covers — four fixed JPG slots per episode folder. */
+
+export type ScriptCoverSlot =
+  | "portrait-en"
+  | "portrait-zh"
+  | "landscape-en"
+  | "landscape-zh";
+
+export type ScriptCoverSlotInfo = {
+  slot: ScriptCoverSlot;
+  fileName: string;
+  label: string;
+  exists: boolean;
+  updatedAt: string | null;
+  url: string;
+};
+
+export type ScriptCoversResponse = {
+  scriptId: string;
+  folder: string;
+  slots: ScriptCoverSlotInfo[];
 };
 
 /** Platforms */
 
 export type PlatformConnectionStatus =
-  | 'connected'
-  | 'configured'
-  | 'missing_credentials'
-  | 'manual'
-  | 'stub';
+  | "connected"
+  | "configured"
+  | "missing_credentials"
+  | "manual"
+  | "stub";
 
 export type LoginLink = {
   label: string;
@@ -686,8 +772,8 @@ export type SignupStep = {
 
 export type PlatformStatus = {
   platform: string;
-  provider: 'zernio' | 'social-auto-upload' | 'unknown';
-  mode: 'stub' | 'live';
+  provider: "postiz" | "social-auto-upload" | "unknown" | "zernio";
+  mode: "stub" | "live";
   status: PlatformConnectionStatus | string;
   accountLabel: string | null;
   accountMasked: string | null;
@@ -713,8 +799,8 @@ export type PlatformsHealthResponse = {
   platformIds: string[];
   connectProgress: ConnectProgress;
   providers: {
-    zernio: {
-      mode: 'stub' | 'live';
+    postiz: {
+      mode: "stub" | "live";
       hasApiKey: boolean;
       dashboardUrl: string;
       signupUrl?: string;
@@ -723,11 +809,12 @@ export type PlatformsHealthResponse = {
       envDocs: string[];
       loginLinks?: LoginLink[];
       signupSteps?: SignupStep[];
-      suggestedAccountsJson?: Record<string, string> | null;
-      suggestedAccountsExport?: string | null;
+      liveIntegrations?: PostizConnectedIntegration[];
+      suggestedIntegrationsJson?: Record<string, string> | null;
+      suggestedIntegrationsExport?: string | null;
     };
     sau: {
-      mode: 'stub' | 'live';
+      mode: "stub" | "live";
       dashboardHint: string;
       installHint?: string;
       envDocs: string[];
@@ -747,15 +834,267 @@ export type PlatformTestResult = {
   platform?: string;
 };
 
-export type ZernioSyncResult = {
-  accounts?: Array<{ id: string; platform: string; name: string | null }>;
-  suggestedAccountsJson: Record<string, string>;
+export type PostizSyncResult = {
+  integrations?: PostizConnectedIntegration[];
+  suggestedIntegrationsJson: Record<string, string>;
+  suggestedAccountsJson?: Record<string, string>;
   exportCommand: string;
+  applied?: boolean;
+  postizPublishMode?: "stub" | "live";
+};
+
+/** @deprecated Use PostizSyncResult */
+export type ZernioSyncResult = PostizSyncResult;
+
+export type PublishCredentialsPublic = {
+  hasPostizApiKey: boolean;
+  postizApiKeyHint: string | null;
+  postizIntegrationsJson: Record<string, string>;
+  postizIntegrationTypesJson: Record<string, string>;
+  postizIntegrationCount: number;
+  postizPublishMode: "stub" | "live";
+  postizApiBase: string;
+  postizDashboardUrl: string;
+  sauPublishMode: "stub" | "live";
+  sauAccount: string;
+  updatedAt: string;
+  storedPath: string;
+};
+
+export type PostizConnectedIntegration = {
+  id: string;
+  identifier: string;
+  outdoorPlatform: string | null;
+  name: string | null;
+  picture: string | null;
+};
+
+export type PostizIntegrationSettings = {
+  rules: string;
+  maxLength: number | null;
+  settings: unknown;
+  tools: Array<{
+    methodName: string;
+    description: string;
+  }>;
+};
+
+export type PostizRecentPost = {
+  id: string;
+  content: string;
+  publishDate: string | null;
+  releaseURL: string | null;
+  state: "QUEUE" | "PUBLISHED" | "ERROR" | "DRAFT" | "UNKNOWN";
+  integration: {
+    id: string;
+    identifier: string;
+    name: string;
+  } | null;
+};
+
+export type PostizNotification = {
+  id: string;
+  content: string;
+  link: string | null;
+  createdAt: string;
+};
+
+export type PostizOverview = {
+  checkedAt: string;
+  apiConnected: boolean;
+  message: string;
+  mode: "stub" | "live";
+  dashboardUrl: string;
+  integrations: Array<
+    PostizConnectedIntegration & {
+      settings: PostizIntegrationSettings | null;
+      settingsError: string | null;
+    }
+  >;
+  recentPosts: PostizRecentPost[];
+  notifications: PostizNotification[];
+  errors: string[];
 };
 
 /** Publish */
 
-export type PublishFormat = 'portrait' | 'landscape';
+export type PublishFormat = "portrait" | "landscape";
+
+/** Exact per-platform payload from GET /api/jobs/:id/publish-preview */
+export type PublishPlanPlatform = {
+  platform: string;
+  group: "english" | "china" | "fallback";
+  provider: "postiz" | "social-auto-upload" | null;
+  format: PublishFormat;
+  videoFileName: string;
+  videoUrl: string | null;
+  videoExists: boolean;
+  title: string;
+  body: string;
+  apiContent: string;
+  apiTitle: string | null;
+  apiSettings: Record<string, unknown> | null;
+  coverId: string | null;
+  coverUrl: string | null;
+  coverAppliesAsThumbnail: boolean;
+  canPublish: boolean;
+  blockers: string[];
+  postizMode?: "stub" | "live";
+  hasIntegration?: boolean;
+};
+
+export type PublishPlan = {
+  jobId: string;
+  scriptId: string;
+  takeId: string;
+  compositeRunId: string | null;
+  socialRunId: string | null;
+  ready: boolean;
+  error: string | null;
+  platforms: PublishPlanPlatform[];
+};
+
+export type SocialCardFormat = "portrait" | "landscape" | "square";
+
+export type SocialCardLang = "en" | "zh";
+
+export type SocialCardListItem = {
+  id: string;
+  format: SocialCardFormat;
+  lang: SocialCardLang;
+  width: number;
+  height: number;
+  pngUrl: string;
+  htmlUrl: string;
+  createdAt: string;
+};
+
+export type SocialCardPlatformRow = {
+  platform: string;
+  format: SocialCardFormat;
+  lang: SocialCardLang;
+  cardId: string | null;
+  imageUrl: string | null;
+  postizImageSupported: boolean;
+};
+
+export type SocialCardsResponse = {
+  manifest: {
+    schemaVersion?: number;
+    updatedAt: string;
+    cards: SocialCardListItem[];
+  };
+  cards: SocialCardListItem[];
+  platforms: SocialCardPlatformRow[];
+};
+
+export type BeatPosterLang = 'en' | 'zh';
+
+export type BeatPosterListItem = {
+  beatId: string;
+  beatIndex: number;
+  beatTitle: string;
+  lang: BeatPosterLang;
+  width: number;
+  height: number;
+  pngUrl: string;
+  htmlUrl: string;
+  createdAt: string;
+};
+
+export type BeatPosterBeatRow = {
+  id: string;
+  index: number;
+  title: string;
+  hasEn: boolean;
+  hasZh: boolean;
+};
+
+export type BeatPosterPublishRecord = {
+  platform: string;
+  beatId: string;
+  lang: BeatPosterLang;
+  postId?: string;
+  status: PublishVisibility | string;
+  url?: string;
+  stub?: boolean;
+  publishedAt?: string;
+  imageCount?: number;
+  error?: string;
+};
+
+export type BeatPosterPublishState = {
+  scriptId: string;
+  posts: BeatPosterPublishRecord[];
+};
+
+export type BeatPosterPublishAlbumResult = {
+  publishState: BeatPosterPublishState;
+  record: BeatPosterPublishRecord;
+};
+
+export type BeatPosterPublishAllResult = {
+  publishState: BeatPosterPublishState;
+  published: Array<{
+    platform: string;
+    postId: string;
+    url: string;
+    status: 'pending' | 'live';
+  }>;
+  failed: Array<{
+    platform: string;
+    error: string;
+    step?: string;
+    hint?: string;
+    details?: string;
+  }>;
+  skipped: Array<{ platform: string; reason: string }>;
+};
+
+export type BeatPosterRevertPublishResult = {
+  publishState: BeatPosterPublishState;
+  removed: BeatPosterPublishRecord | null;
+};
+
+export type BeatPosterPlatformPreview = {
+  platform: string;
+  lang: BeatPosterLang;
+  title: string;
+  body: string;
+  imageUrls: string[];
+  imageCount: number;
+  postizImageSupported: boolean;
+  provider: 'postiz' | 'sau' | 'manual';
+  publishMode: 'auto' | 'manual';
+  characterCount: number;
+  reviewNotes: string[];
+};
+
+export type BeatPosterPublishPreview = {
+  scriptId: string;
+  lang: BeatPosterLang;
+  beatCount: number;
+  platforms: BeatPosterPlatformPreview[];
+};
+
+export type BeatPosterPublishPreviewResponse = {
+  preview: BeatPosterPublishPreview;
+  publishState: BeatPosterPublishState;
+};
+
+export type BeatPostersResponse = {
+  manifest: {
+    schemaVersion?: number;
+    scriptId: string;
+    updatedAt: string;
+    beatCount: number;
+    posters: BeatPosterListItem[];
+  };
+  beats: BeatPosterBeatRow[];
+  posters: BeatPosterListItem[];
+  platforms: string[];
+  publishState: BeatPosterPublishState;
+};
 
 export type PublishResult = {
   url: string;
@@ -767,6 +1106,7 @@ export type PublishAllResult = {
   published: Array<{ platform: string; record?: PublishRecord }>;
   skippedLive: string[];
   skippedNoTitle: string[];
+  skippedUnavailable: Array<{ platform: string; reason: string }>;
   failed: Array<{ platform: string; error: string }>;
 };
 
@@ -781,6 +1121,89 @@ export type RunStageResponse = {
   accepted: boolean;
   jobId: string;
   stage?: PipelineStage;
+};
+
+export type VoxcpmTrialResponse = {
+  accepted: boolean;
+  jobId: string;
+  takeId: string;
+  referenceAudioPath: string;
+};
+
+export type VoxcpmHealthResponse = {
+  ok: boolean;
+  url: string;
+  loaded?: boolean;
+  device?: string;
+  error?: string;
+};
+
+export type VoxcpmLogsResponse = {
+  ok: boolean;
+  url: string;
+  lines?: string[];
+  text?: string;
+  lineCount?: number;
+  error?: string;
+};
+
+export type VoxcpmEditorSentenceStatus =
+  | "idle"
+  | "queued"
+  | "rendering"
+  | "ready"
+  | "failed";
+
+export type VoxcpmEditorSentence = {
+  id: string;
+  text: string;
+  tone: VoxcpmToneId;
+  pauseAfterMs: number;
+  fingerprint: string;
+  status: VoxcpmEditorSentenceStatus;
+  /** True when cached audio matches the current sentence text + tone + reference. */
+  hasLatestAudio: boolean;
+  /** 0–100 progress toward latest VoxCPM audio for this sentence. */
+  progressPercent: number;
+  audioUrl: string | null;
+  durationSeconds: number | null;
+  error: string | null;
+};
+
+export type VoxcpmEditorBeat = {
+  beatIndex: number;
+  beatId: string;
+  title: string;
+  sentences: VoxcpmEditorSentence[];
+  beatAudioUrl: string | null;
+  beatDurationSeconds: number | null;
+  /** Stable Remotion-relative path when preview voice has been published. */
+  previewVoiceSrc: string | null;
+  readySentenceCount: number;
+};
+
+export type VoxcpmEditorDocument = {
+  schemaVersion: 1;
+  scriptId: string;
+  title: string;
+  animationMdUpdatedAt: string | null;
+  referenceTakeId: string | null;
+  voiceEngine: VoiceEngineId;
+  scriptLanguage: ScriptLanguageId;
+  /** Engine currently wired into Remotion preview. */
+  previewVoiceEngine: VoiceEngineId;
+  /** Whether each engine has published preview WAVs. */
+  previewEnginesReady: Record<VoiceEngineId, boolean>;
+  /** Changes when preview voice files or beat durations are republished. */
+  previewRevision: string;
+  beats: VoxcpmEditorBeat[];
+};
+
+export type VoxcpmEditorRenderResponse = {
+  accepted: boolean;
+  scriptId: string;
+  beatIndex: number;
+  sentenceId?: string;
 };
 
 export type SelectionUpdateResponse = {

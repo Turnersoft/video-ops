@@ -9,6 +9,7 @@ import { ActivityIndicator, Alert, Pressable, Text, View } from 'react-native';
 
 import { AbortStageButton } from '../AbortStageButton/AbortStageButton';
 import { formatOutdoorApiError } from '../../api/client';
+import { revealTargetFromStageVideo } from '../../api/urls';
 import { useOutdoorUi } from '../../context/OutdoorUiContext';
 import { colors, sharedStyles, spacing, typography } from '../../theme';
 import type { OutdoorJob, PipelineStageSnapshot, StageResultPreview } from '../../types';
@@ -29,6 +30,43 @@ function logLineCount(text: string | null | undefined): number {
   return text.split('\n').filter((line) => line.trim()).length;
 }
 
+type SplitCompositeLog = {
+  portrait: string;
+  landscape: string;
+  shared: string;
+};
+
+function splitCompositeLog(logTail: string): SplitCompositeLog {
+  const portrait: string[] = [];
+  const landscape: string[] = [];
+  const shared: string[] = [];
+  for (const line of logTail.split('\n')) {
+    if (/\[portrait\]/i.test(line)) {
+      portrait.push(line);
+      continue;
+    }
+    if (/\[landscape\]/i.test(line)) {
+      landscape.push(line);
+      continue;
+    }
+    shared.push(line);
+  }
+  return {
+    portrait: portrait.join('\n'),
+    landscape: landscape.join('\n'),
+    shared: shared.join('\n'),
+  };
+}
+
+function latestRenderProgress(text: string): string | null {
+  const matches = [...text.matchAll(/Rendered\s+(\d+)\/(\d+)/g)];
+  const last = matches.at(-1);
+  if (!last) {
+    return null;
+  }
+  return `${last[1]}/${last[2]} frames`;
+}
+
 function shortMessage(text: string | undefined, max = 120): string | null {
   if (!text?.trim()) {
     return null;
@@ -40,7 +78,12 @@ function shortMessage(text: string | undefined, max = 120): string | null {
   return `${trimmed.slice(0, max - 1)}…`;
 }
 
-export function CompositeBlock({ jobId, job, stage }: CompositeBlockProps) {
+export function CompositeBlock({
+  jobId,
+  job,
+  stage,
+  remotionPreviewOnly = false,
+}: CompositeBlockProps) {
   const { layout,  api, invalidateAll  } = useOutdoorUi();
   const layoutStyles = layoutStylesFor(layout);
   const [busy, setBusy] = useState(false);
@@ -115,7 +158,7 @@ export function CompositeBlock({ jobId, job, stage }: CompositeBlockProps) {
       setError(null);
       notifiedRef.current = false;
       try {
-        if (options.syncStudio) {
+        if (options.syncStudio && !remotionPreviewOnly) {
           await api.syncAlignStudio(jobId);
         }
         await api.runStage(jobId, 'composite', { rerun: true });
@@ -125,7 +168,7 @@ export function CompositeBlock({ jobId, job, stage }: CompositeBlockProps) {
         setBusy(false);
       }
     },
-    [api, jobId, loadSnapshot],
+    [api, jobId, loadSnapshot, remotionPreviewOnly],
   );
 
   const selectRun = async (runId: string) => {
@@ -146,6 +189,15 @@ export function CompositeBlock({ jobId, job, stage }: CompositeBlockProps) {
   const progressDetail = shortMessage(progress?.message ?? undefined);
   const progressPercent =
     running && typeof progress?.percent === 'number' ? `${Math.round(progress.percent)}%` : null;
+  const splitLog = logTail ? splitCompositeLog(logTail) : null;
+  const portraitLog =
+    liveStage?.renderLogTails?.portrait?.trim() ||
+    splitLog?.portrait.trim() ||
+    null;
+  const landscapeLog =
+    liveStage?.renderLogTails?.landscape?.trim() ||
+    splitLog?.landscape.trim() ||
+    null;
 
   const stageEntry: PipelineStageSnapshot = liveStage ?? {
     stage: 'composite',
@@ -165,7 +217,9 @@ export function CompositeBlock({ jobId, job, stage }: CompositeBlockProps) {
       {stage?.stale && stage.staleReason && !running ? (
         <StaleBanner
           reason={stage.staleReason}
-          actionLabel="Rerun composite"
+          actionLabel={
+            remotionPreviewOnly ? 'Rerun Remotion preview only' : 'Rerun composite'
+          }
           busy={busy}
           onAction={() => void startCompositeRun()}
         />
@@ -207,10 +261,16 @@ export function CompositeBlock({ jobId, job, stage }: CompositeBlockProps) {
             busy
               ? 'Working…'
               : running
-                ? 'Rendering composite…'
-                : 'Render composite'
+                ? remotionPreviewOnly
+                  ? 'Rendering Remotion preview…'
+                  : 'Rendering composite…'
+                : remotionPreviewOnly
+                  ? 'Render Remotion preview only'
+                  : 'Render composite'
           }
-          onPress={() => void startCompositeRun({ syncStudio: true })}
+          onPress={() =>
+            void startCompositeRun({ syncStudio: !remotionPreviewOnly })
+          }
           variant="primary"
           disabled={busy || running}
         />
@@ -249,7 +309,29 @@ export function CompositeBlock({ jobId, job, stage }: CompositeBlockProps) {
 
       {summary ? <Text style={webModuleStyle(classes.meta)}>{summary}</Text> : null}
 
-      {logTail ? (
+      <View style={webModuleStyle(classes.logGrid)}>
+        <CollapsibleSection
+          title={`Portrait render (${logLineCount(portraitLog)} lines)`}
+          summary={latestRenderProgress(portraitLog ?? '') ?? progressDetail}
+          defaultOpen={running || liveStatus === 'failed'}
+        >
+          <Text style={webModuleStyle(classes.logBox)} selectable>
+            {portraitLog ?? (running ? 'Waiting for portrait render log…' : 'No portrait render log')}
+          </Text>
+        </CollapsibleSection>
+        <CollapsibleSection
+          title={`Landscape render (${logLineCount(landscapeLog)} lines)`}
+          summary={latestRenderProgress(landscapeLog ?? '') ?? progressDetail}
+          defaultOpen={running || liveStatus === 'failed'}
+        >
+          <Text style={webModuleStyle(classes.logBox)} selectable>
+            {landscapeLog ??
+              (running ? 'Waiting for landscape render log…' : 'No landscape render log')}
+          </Text>
+        </CollapsibleSection>
+      </View>
+
+      {logTail && !portraitLog && !landscapeLog ? (
         <CollapsibleSection
           title={`Composite log (${logLineCount(logTail)} lines)`}
           summary={progressDetail}
@@ -259,8 +341,10 @@ export function CompositeBlock({ jobId, job, stage }: CompositeBlockProps) {
             {logTail}
           </Text>
         </CollapsibleSection>
-      ) : running ? (
-        <Text style={webModuleStyle(classes.meta)}>Waiting for composite log…</Text>
+      ) : null}
+
+      {!portraitLog && !landscapeLog && !logTail && running ? (
+        <Text style={webModuleStyle(classes.meta)}>Waiting for composite logs…</Text>
       ) : null}
 
       <StageErrorBlock entry={stageEntry} />
@@ -271,6 +355,8 @@ export function CompositeBlock({ jobId, job, stage }: CompositeBlockProps) {
             <View key={`${video.label}-${video.url}`} style={layoutStyles.gridItemHalf}>
               <CompositeVideo
                 video={video}
+                scriptId={job?.scriptId ?? ''}
+                takeId={job?.takeId ?? ''}
                 resolveUrl={(path) => Promise.resolve(api.absoluteUrl(path))}
               />
             </View>
@@ -287,12 +373,18 @@ export function CompositeBlock({ jobId, job, stage }: CompositeBlockProps) {
 
 function CompositeVideo({
   video,
+  scriptId,
+  takeId,
   resolveUrl,
 }: {
-  video: { label: string; url: string };
+  video: StageResultPreview['videos'][number];
+  scriptId: string;
+  takeId: string;
   resolveUrl: (path: string) => Promise<string>;
 }) {
   const [src, setSrc] = useState<string | null>(null);
+  const reveal =
+    scriptId && takeId ? revealTargetFromStageVideo(scriptId, takeId, video) : undefined;
 
   useEffect(() => {
     void resolveUrl(video.url).then(setSrc);
@@ -304,7 +396,7 @@ function CompositeVideo({
 
   return (
     <View style={sharedStyles.videoCard}>
-      <PipelineVideo src={src} label={video.label} />
+      <PipelineVideo src={src} label={video.label} reveal={reveal} />
     </View>
   );
 }

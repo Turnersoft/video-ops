@@ -1,0 +1,17 @@
+@use '../../app' as *;
+
+.logBox {
+  color: $code;
+  font-family: Menlo;
+  font-size: $font-tiny;
+  line-height: 15px;
+  background-color: rgba(15, 23, 42, 0.55);
+  border-radius: 8px;
+  padding: $space-sm;
+  white-space: pre-wrap;
+}
+
+.meta {
+  color: $muted;
+  font-size: $font-small;
+}

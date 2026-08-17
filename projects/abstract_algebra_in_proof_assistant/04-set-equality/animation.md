@@ -2,13 +2,14 @@
 videoOps: 1
 scriptId: 04-set-equality
 title: 04_set_equality
-format: landscape
 fps: 30
-width: 1920
-height: 1080
 socialTitleEnglish: "4. Set equality: what the equal sign means in a proof assistant"
 socialTitleChina: "4. 集合相等：证明助手里的等号是什么意思"
-promotionalDescription: "A beginner-friendly tour of what equality means in a proof assistant: read a first Lean proof, see when Lean simplifies automatically, compare sets by their members, then choose the right rule for functions and structures."
+promotionalDescription: "Think = is obvious? Lean makes you earn it. We prove 1 = 1 with rfl, watch when Lean simplifies on its own and when it needs a library theorem, then climb the ladder: same members for sets, same answers for functions, same structure—not the same data—for groups. Episode 4 of Abstract Algebra in a Proof Assistant."
+promotionalDescriptionChina: "等号看起来理所当然，在 Lean 4 里却要一步一步挣出来。从 1 = 1 和 rfl 开始，看 Lean 什么时候自己算过去、什么时候需要库里定理；再往上——集合比成员，函数比每个输入的答案，群比结构而不是字面数据。抽象代数证明助手第 4 期，户外讲，屏幕验。"
+format: landscape
+width: 1920
+height: 1080
 ---
 
 # Scene 1: Set equality — what equals means in a proof assistant
@@ -60,18 +61,14 @@ pip-scale: 1.6767
 -->
 
 ```beat-variants
-{"selected":"A","candidates":[{"label":"A","template":"compare-dual","templateConfig":{"kind":"compare-dual","config":{"leanEnabled":true,"turnEnabled":true}},"content":{"title":"Textbook rule and how `=` is wired","say":"Hi friends, welcome back.\nThe best way to digest mathematics is to formalize it.\n\ntoday we formalize set equality.\n\nThe textbook definition is really simple, set equality means mutual subset.\n\nBut in order to formalize it, we need to understand equality in proof assistant.\n\nThe equals sign is wired in Lean kernel, not in Mathlib.\n`Eq` is not a typeclass.\nIt is an inductive proposition in Prelude.\nWhen A and B are both sets of the same kind, writing `A = B` means `Eq A B`.\nTurn-Lang takes the opposite path.\nIt names `SetEq` first, then uses `@notation` to display A equals B.\nWe will unpack both sides one small step at a time.","leanCode":"-- Lean core: lean4/src/Init/Notation.lean\n-- The = character is infix notation for Eq.\ninfix:50 \" = \" => Eq\n\n-- Lean core: lean4/src/Init/Prelude.lean\n-- Eq is an inductive predicate, not a typeclass.\ninductive Eq : α → α → Prop where\n  | refl (a : α) : Eq a a\n-- Eq.refl a : a = a\n\n-- Set equality needs no new instance for =.\nvariable {α : Type _} {A B : Set α}\n-- A = B means Eq A B","turnCode":"// Turn-Lang source: reference/function-equality.turn\n// Turn-Lang names the rule first, then attaches the equals display.\n@notation({A} ~ \" = \" ~ {B})\nrelation SetEq(T: Any, A B: Set<T>): Prop {\n    |- {\n        Subset(A, B);\n        Subset(B, A);\n    }\n}","visualNotes":"beat-template: compare-dual\nlayer: compare\nlean-render: true\nturn-render: true\ntyping: true\n\noverlay: textbook-set-equality\n\nKeep the textbook-set-equality overlay visible for the whole beat. Show the mutual-subset rule on the textbook panel, then reveal the `inductive Eq` block from Prelude on the Lean pane — not a typeclass, no hidden type. Contrast with the subset clip's `instance : LE` registration; Turn-Lang shows `@notation` on `SetEq`."}}]}
+{"selected":"A","candidates":[{"label":"A","template":"compare-dual","templateConfig":{"kind":"compare-dual","config":{"leanEnabled":true,"turnEnabled":true}},"content":{"title":"Textbook rule and how `=` is wired","say":"Hi friends, welcome back.\nThe best way to digest mathematics is to formalize it.\ntoday we formalize set equality.\nThe textbook definition is really simple, set equality means mutual subset.\nBut in order to formalize it, we need to understand equality in proof assistant.\nThe equals sign is wired in Lean kernel, not in Mathlib.\n`Eq` is not a typeclass.\nIt is an inductive proposition in Prelude.\nWhen A and B are both sets of the same kind, writing `A = B` means `Eq A B`.\nTurn-Lang takes the opposite path.\nIt names `SetEq` first, then uses `@notation` to display A equals B.\nWe will unpack both sides one small step at a time.","leanCode":"-- Lean core: lean4/src/Init/Notation.lean\n-- The = character is infix notation for Eq.\ninfix:50 \" = \" => Eq\n\n-- Lean core: lean4/src/Init/Prelude.lean\n-- Eq is an inductive predicate, not a typeclass.\ninductive Eq : α → α → Prop where\n  | refl (a : α) : Eq a a\n-- Eq.refl a : a = a\n\n-- Set equality needs no new instance for =.\nvariable {α : Type _} {A B : Set α}\n-- A = B means Eq A B","turnCode":"// Turn-Lang source: reference/function-equality.turn\n// Turn-Lang names the rule first, then attaches the equals display.\n@notation({A} ~ \" = \" ~ {B})\nrelation SetEq(T: Any, A B: Set<T>): Prop {\n    |- {\n        Subset(A, B);\n        Subset(B, A);\n    }\n}","visualNotes":"beat-template: compare-dual\nlayer: compare\nlean-render: true\nturn-render: true\ntyping: true\n\noverlay: textbook-set-equality\n\nKeep the textbook-set-equality overlay visible for the whole beat. Show the mutual-subset rule on the textbook panel, then reveal the `inductive Eq` block from Prelude on the Lean pane — not a typeclass, no hidden type. Contrast with the subset clip's `instance : LE` registration; Turn-Lang shows `@notation` on `SetEq`."}}],"voice":{"schemaVersion":1,"sentences":[{"id":"beat-01-sentence-01","tone":"reveal","pauseAfterMs":180,"fingerprint":"aiuexu"},{"id":"beat-01-sentence-02","tone":"insight","pauseAfterMs":180,"fingerprint":"1r6zqtb"},{"id":"beat-01-sentence-03","tone":"grounding","pauseAfterMs":180,"fingerprint":"10z3pvn"},{"id":"beat-01-sentence-04","tone":"grounding","pauseAfterMs":180,"fingerprint":"o8t3fg"},{"id":"beat-01-sentence-05","tone":"grounding","pauseAfterMs":180,"fingerprint":"j840ia"},{"id":"beat-01-sentence-06","tone":"grounding","pauseAfterMs":180,"fingerprint":"1lv76me"},{"id":"beat-01-sentence-07","tone":"grounding","pauseAfterMs":180,"fingerprint":"1qbmt3j"},{"id":"beat-01-sentence-08","tone":"grounding","pauseAfterMs":180,"fingerprint":"1tlc46s"},{"id":"beat-01-sentence-09","tone":"grounding","pauseAfterMs":180,"fingerprint":"fsqxu4"},{"id":"beat-01-sentence-10","tone":"grounding","pauseAfterMs":180,"fingerprint":"8otx3k"},{"id":"beat-01-sentence-11","tone":"grounding","pauseAfterMs":180,"fingerprint":"q86d56"},{"id":"beat-01-sentence-12","tone":"grounding","pauseAfterMs":0,"fingerprint":"1tof03c"}]}}
 ```
 
 Hi friends, welcome back.
 The best way to digest mathematics is to formalize it.
-
 today we formalize set equality.
-
 The textbook definition is really simple, set equality means mutual subset.
-
 But in order to formalize it, we need to understand equality in proof assistant.
-
 The equals sign is wired in Lean kernel, not in Mathlib.
 `Eq` is not a typeclass.
 It is an inductive proposition in Prelude.
@@ -125,7 +122,7 @@ relation SetEq(T: Any, A B: Set<T>): Prop {
 
 ### Chinese
 
-大家好，欢迎回来。今天问：两个集合什么时候算相同？课本说互相包含就算相等。子集那期用 `LE` typeclass 接符号；集合相等不同——等号在 Lean 的 Prelude/kernel 里就定好了，不在 Mathlib。`Eq` 是 inductive 命题：`Eq : α → α → Prop`，只有一个构造子 `refl`，给出 `Eq a a`。`Init/Notation.lean` 里 `" = "` 只是 `Eq` 的写法，所以 `a = b` 就是 `Eq a b`。集合也用同一个 `Eq`，写 `A = B` 不需要再给等号接 instance。Turn-Lang 相反：先取名 `SetEq`，再用 `@notation` 显示成等号。接下来逐步拆开。
+大家好，欢迎回来。消化数学最好的方式，就是把它形式化。今天我们要形式化集合相等。课本里的定义很简单：集合相等就是互相包含。但要形式化它，得先理解证明助手里的相等是什么意思。等号在 Lean 的内核里就已经接好了，不在 Mathlib。`Eq` 不是 typeclass。它是 Prelude 里的 inductive 命题。当 A、B 都是同一种集合时，写 `A = B` 就是 `Eq A B`。Turn-Lang 走的是相反的路。它先取名 `SetEq`，再用 `@notation` 显示成 A 等于 B。接下来我们一步一步拆开两边。
 
 ### Visual notes
 
@@ -204,7 +201,7 @@ theorem "one_equals_one" {
 
 ### Chinese
 
-回到集合之前，我们先看一句很短的 Lean——以后几乎每条证明里都会见到这种写法。`1 = 1` 是“1 等于 1”的主张。Lean 把可以证明的主张叫作命题。`example` 的意思是“这里有一个小主张要检查”，冒号引出主张，`:=` 把主张和它的证明连起来，最后的 `rfl` 在两边已经相同时完成证明。更长代码里，也是这个小模式在重复出现。
+我们来看 Lean 里的相等。`1 = 1` 是一个主张，意思是 1 等于 1。Lean 把这种表达式叫作命题。关键字 `example` 的意思是“这里有一个要证明的小命题”。冒号引出主张，不包含任何上下文变量。这里的 `:=` 引出它的证明。`rfl` 是一个 tactic，通过检查两边是否已经相同来完成证明。`rfl` 几乎总能结束关于相等的证明。
 
 ### Visual notes
 
@@ -296,7 +293,7 @@ relation Subset(T: Any, A B: Set<T>): Prop {
 
 ### Chinese
 
-下一个例子只多一个变量。`Nat.add` 仍是普通函数。真正写出加号的是 `Init/Notation.lean` 里的 `infixl:65 " + " => HAdd.hAdd`；再经 `Add Nat` 把 `add` 接到 `Nat.add`。所以 `n + 0` 会变成 `Nat.add n 0`，命中第一种情形后左边变成 n，`rfl` 就能关掉。下一例把加数次序反过来，这种自动展开就对不上了。
+下一个例子只多一个变量。`Nat` 是 Lean 对从 0 开始的自然数的叫法。来看 Lean 核心里加法是怎么定义的。`Nat.add` 是一个普通的两参数函数。上面没有特殊宏，分支用的是 `=>`，不是等号。第一种情形说：若右边是 0，就直接返回左边。那 `+` 号从哪来？Lean 的 `+` 记号需要一个 `Add` instance。对自然数，一个很短的 instance 说：`add` 字段就是 `Nat.add`。这就是全部胶水。之后 `n + 0` 就表示 `Nat.add n 0`。写 `example (n : Nat) : n + 0 = n := rfl` 时，Lean 不需要先引用重写定理。它把 `+` 展开成 `Nat.add`，命中第一种情形，左边变成 `n`。于是目标两边都是同一个项 n，`rfl` 就能结束。这种自动展开只在命中分支时才发生。下一个例子会说明它什么时候行不通。
 
 ### Visual notes
 
@@ -381,7 +378,7 @@ relation SetEq(T: Any, A B: Set<T>): Prop {
 
 ### Chinese
 
-如果把加法换成 `0 + n = n`，右边是未知的 n，`Nat.add` 对不上情形，不能靠展开，`rfl` 不够。库里用对 n 的归纳证明了这个等式，名字叫 `Nat.zero_add`：`0` 时用 `rfl`，`n+1` 时递归再用 `succ`。例子里只需写出 `Nat.zero_add n`。接下来还有一条规则，说明 Lean 什么时候允许比较两个东西。
+如果把加法改成 `0 + n = n`，情况就变了。`Nat.add` 按右边参数分情形，右边是未知的 n 时，没有可展开的分支。`rfl` 不够。库里用对 n 的归纳证明了这个缺失的事实。这个定理名叫 `Nat.zero_add`。基础情形 `n = 0` 用 `rfl`。后继情形在更小的数上递归使用 `Nat.zero_add`，两边再包上 `succ`。有了这个定理，例子只需应用：`Nat.zero_add n`。接下来还有一条规则，说明 Lean 什么时候允许我们比较两个东西。
 
 ### Visual notes
 
@@ -453,7 +450,7 @@ structure Function<domain range: Set<Any>> {
 
 ### Chinese
 
-类型是 Lean 给“这是什么东西”贴的标签。`Nat` 是从 0 开始的整数；`Int` 还包括负数。因此 Lean 不会直接比较一个 Nat 的 2 和一个 Int 的 2，必须先把其中一个转换成同一种东西。这不是假命题，而是 Lean 还不能提出的问题。两个集合的种类已经匹配，所以现在可以比较它们的成员。
+类型是 Lean 给“这是什么东西”贴的标签。`Nat` 表示从 0 开始的自然数。`Int` 表示还可以是负数的整数。因此 Lean 不会直接比较 Nat 的 2 和 Int 的 2，除非先把其中一个转换成同一种。这不是假命题，而是 Lean 还无法提出的问题。幸好我们的两个集合种类已经匹配，现在可以直接比较它们。
 
 ### Visual notes
 
@@ -471,7 +468,7 @@ Use two labeled number cards: “Nat: 0, 1, 2, …” and “Int: …, -1, 0, 1,
 font-scales: as before
 pip-shape: circle
 pip-size: 0.2137, 0.3799
-pip-position: 0.1571, 0.5546
+pip-position: 0.157, 0.5544
 pip-crop: 0.4464, 0.42
 pip-scale: 1.6767
 -->
@@ -527,7 +524,7 @@ For sets, `=` is already allowed. Beat 7 shows what that equals claim embeds.
 
 ### Chinese
 
-当 A、B 已经是同一种集合时，Lean 本来就允许写等号。`A = B` 就是普通的 `Eq A B`，和 `1 = 1` 用的是同一个相等，并不需要再给集合单独接一套 `=` 的 typeclass。难的不是“能不能写等号”，而是这个等号到底要求我们证明什么。
+一旦 A 和 B 都是同一种集合，Lean 本来就允许写等号。`A = B` 就是普通的 `Eq A B`，和 `1 = 1` 用的是同一个相等。不需要为了合法使用 `=` 再给集合单独接 typeclass。难的部分不是“能不能写”，而是含义：这个相等主张到底要我们证明什么？
 
 ### Visual notes
 
@@ -600,11 +597,11 @@ relation SetEq(T: Any, A B: Set<T>): Prop {
 
 `=` on sets is allowed by ordinary `Eq`. `Set.ext` / `SetEq` embed the mutual-containment meaning inside that equals claim.
 
-<!-- target: turn-code; needle: Subset(B, A); position: 82,38 -->
+<!-- target: turn-code; needle: Subset(B, A); position: 33.639,52.488 -->
 
 ### Chinese
 
-课本的回答是：两边互相装得下。Lean 用 `Set.ext` 把这一点收进一个相等结论：若每个元素属于 A 当且仅当属于 B，就得到 `A = B`。所以等号不是空装饰，它嵌进了“互相包含”的含义。Turn-Lang 同样打包：`SetEq` 是规则名，`@notation` 显示成 `A = B`，主体里两行就是这个等号的内涵。接下来函数会用同一模式，但比较的是答案而不是成员。
+课本的答案是：每个集合都装在另一个里面。Lean 把这一点打包成一个相等结论。`Set.ext` 说：若每个元素属于 A 当且仅当属于 B，就推出 `A = B`。所以等号不是空装饰，它嵌进了互相包含的含义。Turn-Lang 同样打包：`SetEq` 是规则名，`@notation` 把它显示成 `A = B`。主体里的两行就是这个等号显示的内核。接下来函数会用同一模式，但比较的是答案而不是成员。
 
 ### Visual notes
 
@@ -674,7 +671,7 @@ relation FunctionEq(X Y: Set<Any>, f g: Function<X, Y>): Prop {
 
 ### Chinese
 
-函数是一条“拿输入、给答案”的规则。两条规则可以写得不同，却在每个输入上给出同一个答案。Lean 的 `funext` 就处理这种情况；它要求两个函数使用匹配的输入种类和答案种类。下一步 Turn-Lang 会把这些检查写出来。
+函数是一条规则：拿一个输入，给一个答案。两条规则可以看起来不同，却在每个输入上给出相同答案。Lean 有一个叫 `funext` 的帮手处理这种情况。它要求两个函数接受相同种类的输入，并返回相同种类的答案。下一步 Turn-Lang 会把这些匹配检查写出来。
 
 ### Visual notes
 
@@ -744,7 +741,7 @@ relation FuncEq(X Y X' Y': Set<Any>, f: Function<X, Y>, g: Function<X', Y'>): Pr
 
 ### Chinese
 
-Turn-Lang 把函数规则叫作 `FuncEq`，并按顺序列出三个检查：两个函数的输入集合是否匹配？答案集合是否匹配？每个输入上的答案是否匹配？这就是我们真正要证明的关系。
+Turn-Lang 把它的函数规则叫作 `FuncEq`。它按顺序列出三个检查。两个函数是否接受相同种类的输入？是否返回相同种类的答案？是否在每个输入上都给出相同答案？这正是我们要证明的关系。
 
 ### Visual notes
 
@@ -824,7 +821,7 @@ An isomorphism says two groups have matching structure. It does not normally say
 
 ### Chinese
 
-不要因为两个对象做同一种数学工作就使用字面相等。群是一堆元素加上一条把元素组合起来的规则。两个群可以使用不同元素，却有相同结构。同构是一种可逆的翻译，它保持这条规则；“同样结构”通常不等于“完全同样的数据”。
+字面相等并不总是正确选择，即使两个对象承担相同的数学角色。群是一堆元素加上一条组合规则。两个群可以用不同元素，却有相同结构。同构是一种可逆翻译，它保持这条组合规则。所以“同样结构”通常不等于“完全同样的数据”。
 
 ### Visual notes
 
@@ -950,7 +947,7 @@ await scene.wait(0.8);
 
 ### Chinese
 
-以后我们会遇到更高级的相等。先记住这把梯子：数看数值，集合看成员，函数看答案，群看结构。叫两个对象“相同”之前，先问哪些地方必须一致，选好规则，再去证明。下一期：空集。
+以后我们会遇到把相等推得更远的更高级想法。现在先记住这把梯子。数看数值。集合看成员。函数看答案。群看结构。在叫两个东西“相同”之前，先问哪些地方必须一致。选好规则，再去证明。下一期：空集。
 
 ### Visual notes
 

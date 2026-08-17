@@ -1,4 +1,3 @@
-// /Users/johndoe/Documents/company/basic_ui/video_ops/remotion/src/lib/narrationStrip.ts
 import { getRemotionEnvironment } from 'remotion';
 
 import type { CaptionSegment, RenderScene } from '../types/renderProps';
@@ -12,11 +11,12 @@ export type NarrationStripConfig = {
     /** When present, burned captions use sentence segments instead of whole beats. */
     segments?: CaptionSegment[];
     mode: NarrationStripMode;
+    burnCaptionsZh?: boolean;
 };
 
 /**
- * Turn Outdoor embeds Remotion with `?outdoorEmbed=1` (composition canvas only).
- * Standalone Studio keeps the editable narration overlay.
+ * Turn Outdoor Align iframe uses `?outdoorEmbed=1` (composition canvas only).
+ * Used to suppress the legacy Studio script *panel* — not burned captions.
  */
 export function isOutdoorEmbedPreview(): boolean {
     if (typeof window === 'undefined') {
@@ -24,22 +24,13 @@ export function isOutdoorEmbedPreview(): boolean {
     }
     try {
         const params = new URLSearchParams(window.location.search);
-        if (params.get('outdoorEmbed') === '1') {
-            return true;
-        }
-        // Fallback when older embed URLs omit the query flag.
-        if (window.self !== window.top) {
-            return true;
-        }
+        return params.get('outdoorEmbed') === '1';
     } catch {
-        // Cross-origin / sandboxed iframe — treat as embed.
-        return true;
+        return false;
     }
-    return false;
 }
 
-/** Preview shows narration for filming; file export only when burnCaptions is true.
- * Outdoor: hide overlay only inside Turn Outdoor iframe; show editable strip in standalone Studio. */
+/** Preview shows narration for filming; file export only when burnCaptions is true. */
 export function narrationStripForScene(scene: RenderScene): NarrationStripConfig | null {
     const lines = scene.director.say;
     if (!lines.length) {
@@ -48,8 +39,9 @@ export function narrationStripForScene(scene: RenderScene): NarrationStripConfig
 
     const linesZh = scene.director.sayZh?.filter((line) => line.trim()) ?? [];
     const includeInExport = Boolean(scene.burnCaptions);
+    const burnCaptionsZh = scene.outdoorEdit?.burnCaptionsZh !== false;
     const env = getRemotionEnvironment();
-    const isOutdoor = Boolean(scene.outdoorEdit);
+    const outdoorSegments = scene.outdoorEdit?.captionSegments ?? scene.director.captionSegments;
 
     if (env.isRendering) {
         if (!includeInExport) {
@@ -59,25 +51,21 @@ export function narrationStripForScene(scene: RenderScene): NarrationStripConfig
             lines,
             linesZh: linesZh.length > 0 ? scene.director.sayZh : undefined,
             timings: scene.director.sayTimings,
-            segments: scene.outdoorEdit?.captionSegments ?? scene.director.captionSegments,
+            segments: outdoorSegments,
             mode: 'export',
+            burnCaptionsZh,
         };
     }
 
-    // Turn Outdoor Align iframe: composition only (Script|Said lives in outdoor UI).
-    if (isOutdoor && isOutdoorEmbedPreview()) {
-        return null;
-    }
-
-    // Outdoor take: ad-lib tail (e.g. subscribe CTA) lives in captionSegments, not beat `say`.
-    const outdoorSegments = scene.outdoorEdit?.captionSegments;
-    if (isOutdoor && includeInExport && outdoorSegments?.length) {
+    // Preview (Studio, outdoor embed, player): burned captions when burn-captions is on.
+    if (includeInExport) {
         return {
             lines,
             linesZh: linesZh.length > 0 ? scene.director.sayZh : undefined,
             timings: scene.director.sayTimings,
-            segments: outdoorSegments,
+            segments: outdoorSegments?.length ? outdoorSegments : undefined,
             mode: 'export',
+            burnCaptionsZh,
         };
     }
 
@@ -86,5 +74,6 @@ export function narrationStripForScene(scene: RenderScene): NarrationStripConfig
         linesZh: linesZh.length > 0 ? scene.director.sayZh : undefined,
         timings: scene.director.sayTimings,
         mode: 'preview',
+        burnCaptionsZh,
     };
 }

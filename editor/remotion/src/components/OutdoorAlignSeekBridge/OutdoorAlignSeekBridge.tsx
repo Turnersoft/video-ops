@@ -1,16 +1,18 @@
-import { useEffect } from 'react';
-import { getRemotionEnvironment, useCurrentFrame } from 'remotion';
+import { useEffect, useRef } from 'react';
+import { getRemotionEnvironment, Internals, useCurrentFrame } from 'remotion';
 
 type AlignSeekMessage = {
     type: 'turn-outdoor-align-seek';
     frame: number;
     compositionId?: string;
+    resumePlayback?: boolean;
 };
 
 type AlignFrameMessage = {
     type: 'turn-outdoor-align-frame';
     frame: number;
     compositionId?: string;
+    playing?: boolean;
 };
 
 function parseAlignSeekMessage(data: unknown): AlignSeekMessage | null {
@@ -38,10 +40,11 @@ function parseAlignSeekMessage(data: unknown): AlignSeekMessage | null {
         frame: Number(record.frame),
         compositionId:
             typeof record.compositionId === 'string' ? record.compositionId : undefined,
+        resumePlayback: record.resumePlayback === true,
     };
 }
 
-function postFrameToParent(frame: number, compositionId: string): void {
+function postFrameToParent(frame: number, compositionId: string, playing: boolean): void {
     if (typeof window === 'undefined' || window.parent === window) {
         return;
     }
@@ -49,6 +52,7 @@ function postFrameToParent(frame: number, compositionId: string): void {
         type: 'turn-outdoor-align-frame',
         frame: Math.max(0, Math.round(frame)),
         compositionId,
+        playing,
     };
     window.parent.postMessage(message, '*');
 }
@@ -64,14 +68,20 @@ export function OutdoorAlignSeekBridge({
     compositionId?: string;
 }) {
     const frame = useCurrentFrame();
+    const [playing, setPlaying, imperativePlaying] = Internals.Timeline.usePlayingState();
+    const playingRef = useRef(playing);
+
+    useEffect(() => {
+        playingRef.current = playing;
+    }, [playing]);
 
     useEffect(() => {
         const env = getRemotionEnvironment();
         if (!env.isStudio && !env.isPlayer) {
             return;
         }
-        postFrameToParent(frame, compositionId);
-    }, [compositionId, frame]);
+        postFrameToParent(frame, compositionId, playing);
+    }, [compositionId, frame, playing]);
 
     useEffect(() => {
         const env = getRemotionEnvironment();
@@ -86,6 +96,7 @@ export function OutdoorAlignSeekBridge({
             }
             const nextFrame = Math.max(0, Math.round(Number(message.frame)));
             const targetComposition = message.compositionId || compositionId;
+            const wasPlaying = playingRef.current;
             const studioWindow = window as Window & {
                 remotion_setFrame?: (frame: number, composition: string, attempt: number) => void;
             };
@@ -97,6 +108,10 @@ export function OutdoorAlignSeekBridge({
             void import('@remotion/studio')
                 .then((studio) => {
                     studio.seek(nextFrame);
+                    if (message.resumePlayback && wasPlaying) {
+                        setPlaying(true);
+                        imperativePlaying.current = true;
+                    }
                 })
                 .catch(() => {
                     // Studio API unavailable outside Remotion Studio.
@@ -105,7 +120,7 @@ export function OutdoorAlignSeekBridge({
 
         window.addEventListener('message', onMessage);
         return () => window.removeEventListener('message', onMessage);
-    }, [compositionId]);
+    }, [compositionId, imperativePlaying, setPlaying]);
 
     return null;
 }

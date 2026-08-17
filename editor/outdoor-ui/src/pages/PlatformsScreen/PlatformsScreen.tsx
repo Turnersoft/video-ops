@@ -25,6 +25,8 @@ import type {
   LlmSettings,
   PlatformStatus,
   PlatformsHealthResponse,
+  PostizOverview,
+  PublishCredentialsPublic,
   SignupStep,
 } from "../../types";
 import { fmtDate, platformLabel } from "../../utils/format";
@@ -71,14 +73,30 @@ export function PlatformsScreen() {
   const [llmBaseUrl, setLlmBaseUrl] = useState("http://192.168.3.251:1234");
   const [llmModel, setLlmModel] = useState("");
   const [llmStatus, setLlmStatus] = useState<string | null>(null);
+  const [publishCreds, setPublishCreds] = useState<PublishCredentialsPublic | null>(
+    null,
+  );
+  const [postizApiKeyDraft, setPostizApiKeyDraft] = useState("");
+  const [postizApiBaseDraft, setPostizApiBaseDraft] = useState(
+    "http://localhost:4007/api/public/v1",
+  );
+  const [postizDashboardDraft, setPostizDashboardDraft] = useState(
+    "http://localhost:4007",
+  );
+  const [postizOverview, setPostizOverview] =
+    useState<PostizOverview | null>(null);
+  const [postizLive, setPostizLive] = useState(false);
+  const [sauLive, setSauLive] = useState(false);
 
   const load = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
-      const [next, llm] = await Promise.all([
+      const [next, llm, publish, overview] = await Promise.all([
         api.getPlatformsHealth(),
         api.getLlmSettings().catch(() => null),
+        api.getPublishCredentials().catch(() => null),
+        api.getPostizOverview().catch(() => null),
       ]);
       setHealth(next);
       if (llm) {
@@ -86,6 +104,14 @@ export function PlatformsScreen() {
         setLlmModel(llm.model ?? "");
         setLlmStatus(`Local AI · updated ${llm.updatedAt}`);
       }
+      if (publish) {
+        setPublishCreds(publish);
+        setPostizLive(publish.postizPublishMode === "live");
+        setSauLive(publish.sauPublishMode === "live");
+        setPostizApiBaseDraft(publish.postizApiBase);
+        setPostizDashboardDraft(publish.postizDashboardUrl);
+      }
+      setPostizOverview(overview);
     } catch (loadError) {
       setError(
         loadError instanceof Error ? loadError.message : String(loadError),
@@ -95,6 +121,55 @@ export function PlatformsScreen() {
       setLoading(false);
     }
   }, [api]);
+
+  const handleSavePublish = useCallback(async () => {
+    setBusyAction("save-publish");
+    try {
+      const saved = await api.putPublishCredentials({
+        postizApiKey: postizApiKeyDraft.trim() || undefined,
+        postizApiBase: postizApiBaseDraft.trim(),
+        postizDashboardUrl: postizDashboardDraft.trim(),
+        postizPublishMode: postizLive ? "live" : "stub",
+        sauPublishMode: sauLive ? "live" : "stub",
+      });
+      setPublishCreds(saved);
+      setPostizApiKeyDraft("");
+      setPostizLive(saved.postizPublishMode === "live");
+      setSauLive(saved.sauPublishMode === "live");
+      if (postizLive && saved.hasPostizApiKey) {
+        try {
+          await api.syncPostizIntegrations();
+        } catch (syncError) {
+          Alert.alert(
+            "Postiz sync",
+            syncError instanceof Error ? syncError.message : String(syncError),
+          );
+        }
+      }
+      Alert.alert(
+        "Publish credentials",
+        saved.hasPostizApiKey
+          ? `Saved${saved.postizApiKeyHint ? ` (${saved.postizApiKeyHint})` : ""}. Applied without restart.`
+          : "Modes saved. Paste a Postiz API key to enable Sync.",
+      );
+      await load();
+    } catch (saveError) {
+      Alert.alert(
+        "Publish credentials",
+        saveError instanceof Error ? saveError.message : String(saveError),
+      );
+    } finally {
+      setBusyAction(null);
+    }
+  }, [
+    api,
+    load,
+    postizApiBaseDraft,
+    postizApiKeyDraft,
+    postizDashboardDraft,
+    postizLive,
+    sauLive,
+  ]);
 
   const handleSaveLlm = useCallback(async () => {
     setBusyAction("save-llm");
@@ -140,19 +215,24 @@ export function PlatformsScreen() {
     [],
   );
 
-  const handleSyncZernio = useCallback(async () => {
-    setBusyAction("sync-zernio");
+  const handleSyncPostiz = useCallback(async () => {
+    setBusyAction("sync-postiz");
     try {
-      const result = await api.syncZernioAccounts();
-      const exportCommand = result.exportCommand ?? "";
-      if (exportCommand) {
-        await copyToClipboard(exportCommand);
+      const result = await api.syncPostizIntegrations();
+      const count = Object.keys(
+        result.suggestedIntegrationsJson ??
+          result.suggestedAccountsJson ??
+          {},
+      ).length;
+      if (count) {
         Alert.alert(
-          "Zernio synced",
-          `Synced ${Object.keys(result.suggestedAccountsJson ?? {}).length} channel(s).\n\nExport copied to clipboard — paste into your Mac shell, then restart the outdoor agent.`,
+          "Postiz synced",
+          result.applied
+            ? `Saved ${count} channel(s) and set Postiz to live. No shell restart needed.`
+            : `Synced ${count} channel(s).`,
         );
       } else {
-        Alert.alert("Zernio sync", "Sync returned no accounts.");
+        Alert.alert("Postiz sync", "Sync returned no accounts.");
       }
       await load();
     } catch (syncError) {
@@ -165,12 +245,64 @@ export function PlatformsScreen() {
     }
   }, [api, load]);
 
+  const handleConnectPostiz = useCallback(
+    async (platform: string, refreshIntegrationId?: string) => {
+      setBusyAction(`connect-${platform}`);
+      try {
+        const result = await api.getPostizConnectUrl(
+          platform,
+          refreshIntegrationId,
+        );
+        await Linking.openURL(result.url);
+        Alert.alert(
+          `${platformLabel(platform)} OAuth opened`,
+          "Complete sign-in, return here, then press Sync channels. Outdoor will become the source of truth after Sync.",
+        );
+      } catch (connectError) {
+        Alert.alert(
+          `Connect ${platformLabel(platform)}`,
+          connectError instanceof Error
+            ? connectError.message
+            : String(connectError),
+        );
+      } finally {
+        setBusyAction(null);
+      }
+    },
+    [api],
+  );
+
+  const handleSelectPostiz = useCallback(
+    async (platform: string, integrationId: string) => {
+      setBusyAction(`select-${integrationId}`);
+      try {
+        await api.selectPostizIntegration(platform, integrationId);
+        await load();
+        Alert.alert(
+          "Postiz channel selected",
+          `${platformLabel(platform)} will publish through this channel.`,
+        );
+      } catch (selectError) {
+        Alert.alert(
+          "Select Postiz channel",
+          selectError instanceof Error
+            ? selectError.message
+            : String(selectError),
+        );
+      } finally {
+        setBusyAction(null);
+      }
+    },
+    [api, load],
+  );
+
   const handleTest = useCallback(
     async (target: string) => {
       setBusyAction(`test-${target}`);
       try {
         const result = await api.testPlatformOrProvider(target);
         Alert.alert(result.ok ? "OK" : "Failed", result.message || "");
+        await load();
       } catch (testError) {
         Alert.alert(
           "Test failed",
@@ -180,13 +312,13 @@ export function PlatformsScreen() {
         setBusyAction(null);
       }
     },
-    [api],
+    [api, load],
   );
 
-  const zernio = health?.providers.zernio;
+  const postiz = health?.providers.postiz;
   const sau = health?.providers.sau;
   const platforms = health?.entries ?? health?.platforms ?? [];
-  const zernioRows = platforms.filter((entry) => entry.provider === "zernio");
+  const postizRows = platforms.filter((entry) => entry.provider === "postiz");
   const sauRows = platforms.filter(
     (entry) => entry.provider === "social-auto-upload",
   );
@@ -201,7 +333,7 @@ export function PlatformsScreen() {
     <View style={[sharedStyles.screen, styles.screen]}>
       <View style={styles.headerWrap}>
         <Header
-          title="Platforms / credentials"
+          title="Platform connections"
           actions={[
             { label: "Scripts", onPress: navigateToLibrary, variant: "back" },
             {
@@ -226,41 +358,113 @@ export function PlatformsScreen() {
         {health ? (
           <>
             <Text style={sharedStyles.cardMeta}>
-              Operator console — secrets stay in Mac env. English via Zernio ·
-              China via SAU. Checked {fmtDate(health.checkedAt)}
+              Global connection console — this is not tied to any project.
+              Connect and inspect Postiz here; project Social Setup only enables
+              channels that are signed in and synced. Checked {fmtDate(health.checkedAt)}
             </Text>
 
-            <SectionLabel>Local AI (LM Studio)</SectionLabel>
+            <SectionLabel>Postiz API connection</SectionLabel>
+            <View style={styles.progressCard}>
+              <Text style={sharedStyles.cardMeta}>
+                {publishCreds?.hasPostizApiKey
+                  ? `Postiz key on agent: ${publishCreds.postizApiKeyHint ?? "set"} · ${publishCreds.postizIntegrationCount} channel id(s)`
+                  : "Paste your Postiz API key here after creating it in the local dashboard."}
+              </Text>
+              <Text
+                style={
+                  postizOverview?.apiConnected
+                    ? styles.llmStatus
+                    : sharedStyles.cardMeta
+                }
+              >
+                {postizOverview?.message ??
+                  "Save the API key, then Refresh to inspect Postiz."}
+              </Text>
+              <TextInput
+                style={styles.llmInput}
+                value={postizApiKeyDraft}
+                onChangeText={setPostizApiKeyDraft}
+                autoCapitalize="none"
+                autoCorrect={false}
+                secureTextEntry
+                placeholder={
+                  publishCreds?.hasPostizApiKey
+                    ? "Leave blank to keep existing key"
+                    : "POSTIZ_API_KEY"
+                }
+                placeholderTextColor={colors.muted}
+              />
+              <Text style={sharedStyles.cardMeta}>Postiz Public API base</Text>
+              <TextInput
+                style={styles.llmInput}
+                value={postizApiBaseDraft}
+                onChangeText={setPostizApiBaseDraft}
+                autoCapitalize="none"
+                autoCorrect={false}
+                placeholder="http://localhost:4007/api/public/v1"
+                placeholderTextColor={colors.muted}
+              />
+              <Text style={sharedStyles.cardMeta}>Optional Postiz dashboard</Text>
+              <TextInput
+                style={styles.llmInput}
+                value={postizDashboardDraft}
+                onChangeText={setPostizDashboardDraft}
+                autoCapitalize="none"
+                autoCorrect={false}
+                placeholder="http://localhost:4007"
+                placeholderTextColor={colors.muted}
+              />
+              <View style={sharedStyles.takeActions}>
+                <Button
+                  label={postizLive ? "Postiz: live" : "Postiz: stub"}
+                  onPress={() => setPostizLive((value) => !value)}
+                  variant={postizLive ? "primary" : undefined}
+                />
+                <Button
+                  label={sauLive ? "SAU: live" : "SAU: stub"}
+                  onPress={() => setSauLive((value) => !value)}
+                  variant={sauLive ? "primary" : undefined}
+                />
+                <Button
+                  label={
+                    busyAction === "save-publish" ? "Saving…" : "Save credentials"
+                  }
+                  onPress={() => {
+                    void handleSavePublish();
+                  }}
+                  disabled={busyAction === "save-publish"}
+                  variant="primary"
+                />
+              </View>
+            </View>
+
+            <SectionLabel>
+              Connected Postiz channels · {postizOverview?.integrations.length ?? 0}
+            </SectionLabel>
             <Text style={sharedStyles.cardMeta}>
-              Mac agent calls this OpenAI-compatible server for animation.md
-              edits. Change from iPhone outdoors (e.g. Tailscale
-              http://100.66.185.67:1234).
+              These are read directly from Postiz. Project publish cards are
+              enabled only after a channel appears here, is synced, and Postiz
+              mode is live.
             </Text>
-            {llmStatus ? <Text style={styles.llmStatus}>{llmStatus}</Text> : null}
-            <TextInput
-              style={styles.llmInput}
-              value={llmBaseUrl}
-              onChangeText={setLlmBaseUrl}
-              autoCapitalize="none"
-              autoCorrect={false}
-              placeholder="http://192.168.3.251:1234"
-              placeholderTextColor={colors.muted}
-            />
-            <TextInput
-              style={styles.llmInput}
-              value={llmModel}
-              onChangeText={setLlmModel}
-              autoCapitalize="none"
-              autoCorrect={false}
-              placeholder="model id (optional — first LM Studio model if empty)"
-              placeholderTextColor={colors.muted}
-            />
-            <Button
-              label={busyAction === "save-llm" ? "Saving…" : "Save LM Studio URL"}
-              onPress={() => {
-                void handleSaveLlm();
+            <PostizChannelGrid
+              overview={postizOverview}
+              selectedIntegrations={
+                publishCreds?.postizIntegrationsJson ?? {}
+              }
+              busyAction={busyAction}
+              onSelect={(platform, integrationId) => {
+                void handleSelectPostiz(platform, integrationId);
               }}
-              disabled={busyAction === "save-llm"}
+              onReconnect={(platform, integrationId) => {
+                void handleConnectPostiz(platform, integrationId);
+              }}
+              onOpenDashboard={() =>
+                openUrl(
+                  postizOverview?.dashboardUrl ??
+                    postiz?.dashboardUrl ??
+                    "http://localhost:4007",
+                )
+              }
             />
 
             {progress ? (
@@ -271,7 +475,7 @@ export function PlatformsScreen() {
                 <View style={styles.progressCard}>
                   <Text style={sharedStyles.cardMeta}>
                     {progress.stubOnly
-                      ? "Publish modes are still stub — finish logins, then set live env and restart the agent."
+                      ? "Publish modes are still stub — save credentials with live toggles after logins."
                       : "At least one provider is in live mode."}
                   </Text>
                   <Text style={sharedStyles.cardMeta}>
@@ -283,10 +487,10 @@ export function PlatformsScreen() {
                   </Text>
                   <View style={sharedStyles.takeActions}>
                     <Button
-                      label="1. Open Zernio"
+                      label="1. Open Postiz"
                       onPress={() =>
                         openUrl(
-                          zernio?.signupUrl ?? "https://zernio.com/signup",
+                          postiz?.signupUrl ?? "http://localhost:4007",
                         )
                       }
                       variant="primary"
@@ -295,9 +499,9 @@ export function PlatformsScreen() {
                       label="2. Create API key"
                       onPress={() =>
                         openUrl(
-                          zernio?.apiKeysUrl ??
-                            zernio?.dashboardUrl ??
-                            "https://zernio.com/dashboard/api-keys",
+                          postiz?.apiKeysUrl ??
+                            postiz?.dashboardUrl ??
+                            "https://postiz.com/dashboard/api-keys",
                         )
                       }
                     />
@@ -305,22 +509,22 @@ export function PlatformsScreen() {
                       label="3. Connect EN accounts"
                       onPress={() =>
                         openUrl(
-                          zernio?.connectGuideUrl ??
-                            zernio?.dashboardUrl ??
-                            "https://zernio.com/dashboard",
+                          postiz?.connectGuideUrl ??
+                            postiz?.dashboardUrl ??
+                            "https://postiz.com/dashboard",
                         )
                       }
                     />
                     <Button
                       label={
-                        busyAction === "sync-zernio"
+                        busyAction === "sync-postiz"
                           ? "Syncing…"
-                          : "4. Sync Zernio accounts"
+                          : "4. Sync Postiz channels"
                       }
                       onPress={() => {
-                        void handleSyncZernio();
+                        void handleSyncPostiz();
                       }}
-                      disabled={busyAction === "sync-zernio"}
+                      disabled={busyAction === "sync-postiz"}
                     />
                     <Button
                       label="5. SAU install"
@@ -342,28 +546,28 @@ export function PlatformsScreen() {
                       }}
                     />
                   </View>
-                  {zernio?.suggestedAccountsExport ? (
+                  {postiz?.suggestedIntegrationsExport ? (
                     <View style={styles.exportBlock}>
                       <Text style={sharedStyles.cardMeta}>
-                        Suggested from live Zernio accounts:
+                        Suggested from live Postiz channels:
                       </Text>
                       <Text style={styles.pre}>
-                        {zernio.suggestedAccountsExport}
+                        {postiz.suggestedIntegrationsExport}
                       </Text>
                       <Button
-                        label="Copy ZERNIO_ACCOUNTS_JSON export"
+                        label="Copy POSTIZ_INTEGRATIONS_JSON export"
                         onPress={() => {
                           void handleCopyCommand(
-                            zernio.suggestedAccountsExport ?? "",
-                            "ZERNIO_ACCOUNTS_JSON export",
+                            postiz.suggestedIntegrationsExport ?? "",
+                            "POSTIZ_INTEGRATIONS_JSON export",
                           );
                         }}
                       />
                     </View>
                   ) : (
                     <Text style={[sharedStyles.cardMeta, styles.exportHint]}>
-                      No live Zernio accounts synced yet — set ZERNIO_API_KEY on
-                      the agent, connect channels in Zernio, then Sync.
+                      No Postiz channels synced yet — paste API key above, connect
+                      channels in Postiz, then Sync (auto-saves + goes live).
                     </Text>
                   )}
                 </View>
@@ -372,38 +576,38 @@ export function PlatformsScreen() {
 
             <SectionLabel>Providers</SectionLabel>
             <View style={layoutStyles.grid}>
-              {zernio ? (
+              {postiz ? (
                 <View style={layoutStyles.gridItemHalf}>
                   <ProviderCard
-                    title="Zernio (English)"
+                    title="Postiz (English)"
                     meta={[
-                      `Mode: ${zernio.mode ?? "stub"}`,
-                      `API key: ${zernio.hasApiKey ? "set" : "missing"}`,
-                      `suggested export: ${zernio.suggestedAccountsExport ? "ready" : "none"}`,
+                      `Mode: ${postiz.mode ?? "stub"}`,
+                      `API key: ${postiz.hasApiKey ? "set" : "missing"}`,
+                      `suggested export: ${postiz.suggestedIntegrationsExport ? "ready" : "none"}`,
                     ]}
-                    loginLinks={zernio.loginLinks ?? []}
-                    signupSteps={zernio.signupSteps ?? []}
-                    envDocs={zernio.envDocs ?? []}
+                    loginLinks={postiz.loginLinks ?? []}
+                    signupSteps={postiz.signupSteps ?? []}
+                    envDocs={postiz.envDocs ?? []}
                     actions={[
                       {
                         label:
-                          busyAction === "sync-zernio"
+                          busyAction === "sync-postiz"
                             ? "Syncing…"
                             : "Sync accounts",
                         onPress: () => {
-                          void handleSyncZernio();
+                          void handleSyncPostiz();
                         },
-                        disabled: busyAction === "sync-zernio",
+                        disabled: busyAction === "sync-postiz",
                       },
                       {
                         label:
-                          busyAction === "test-zernio"
+                          busyAction === "test-postiz"
                             ? "Testing…"
                             : "Test connection",
                         onPress: () => {
-                          void handleTest("zernio");
+                          void handleTest("postiz");
                         },
-                        disabled: busyAction === "test-zernio",
+                        disabled: busyAction === "test-postiz",
                       },
                     ]}
                     onOpenUrl={openUrl}
@@ -445,15 +649,21 @@ export function PlatformsScreen() {
               ) : null}
             </View>
 
-            <SectionLabel>Zernio platforms</SectionLabel>
+            <SectionLabel>Postiz platforms</SectionLabel>
             <PlatformStatusGrid
-              rows={zernioRows}
+              rows={postizRows}
               onOpenUrl={openUrl}
+              onConnect={(platform) => {
+                void handleConnectPostiz(platform);
+              }}
               onTest={(platform) => {
                 void handleTest(platform);
               }}
               busyAction={busyAction}
             />
+
+            <SectionLabel>Postiz publish activity</SectionLabel>
+            <PostizActivity overview={postizOverview} onOpenUrl={openUrl} />
 
             <SectionLabel>China / SAU platforms</SectionLabel>
             <PlatformStatusGrid
@@ -467,6 +677,38 @@ export function PlatformsScreen() {
               }}
               busyAction={busyAction}
               sau
+            />
+
+            <SectionLabel>Local AI (LM Studio)</SectionLabel>
+            <Text style={sharedStyles.cardMeta}>
+              Separate global setting: the Mac agent calls this
+              OpenAI-compatible server for animation.md edits.
+            </Text>
+            {llmStatus ? <Text style={styles.llmStatus}>{llmStatus}</Text> : null}
+            <TextInput
+              style={styles.llmInput}
+              value={llmBaseUrl}
+              onChangeText={setLlmBaseUrl}
+              autoCapitalize="none"
+              autoCorrect={false}
+              placeholder="http://192.168.3.251:1234"
+              placeholderTextColor={colors.muted}
+            />
+            <TextInput
+              style={styles.llmInput}
+              value={llmModel}
+              onChangeText={setLlmModel}
+              autoCapitalize="none"
+              autoCorrect={false}
+              placeholder="model id (optional — first LM Studio model if empty)"
+              placeholderTextColor={colors.muted}
+            />
+            <Button
+              label={busyAction === "save-llm" ? "Saving…" : "Save LM Studio URL"}
+              onPress={() => {
+                void handleSaveLlm();
+              }}
+              disabled={busyAction === "save-llm"}
             />
           </>
         ) : null}
@@ -571,10 +813,208 @@ function ProviderCard({
   );
 }
 
+function PostizChannelGrid({
+  overview,
+  selectedIntegrations,
+  busyAction,
+  onSelect,
+  onReconnect,
+  onOpenDashboard,
+}: {
+  overview: PostizOverview | null;
+  selectedIntegrations: Record<string, string>;
+  busyAction: string | null;
+  onSelect: (platform: string, integrationId: string) => void;
+  onReconnect: (platform: string, integrationId: string) => void;
+  onOpenDashboard: () => void;
+}) {
+  const { layout } = useOutdoorUi();
+  const layoutStyles = layoutStylesFor(layout);
+  if (!overview?.apiConnected) {
+    return (
+      <View style={styles.progressCard}>
+        <Text style={sharedStyles.cardMeta}>
+          {overview?.message ?? "Postiz API status unavailable."}
+        </Text>
+      </View>
+    );
+  }
+  if (!overview.integrations.length) {
+    return (
+      <View style={styles.progressCard}>
+        <Text style={sharedStyles.cardMeta}>
+          No signed-in Postiz channels. Use Connect on a platform below.
+        </Text>
+        <Button label="Open Postiz (optional)" onPress={onOpenDashboard} />
+      </View>
+    );
+  }
+  return (
+    <View style={layoutStyles.grid}>
+      {overview.integrations.map((integration) => {
+        const platform = integration.outdoorPlatform;
+        const selected = Boolean(
+          platform && selectedIntegrations[platform] === integration.id,
+        );
+        return (
+          <View
+            key={integration.id}
+            style={[styles.statusCard, layoutStyles.gridItemHalf]}
+          >
+            <View style={sharedStyles.cardTop}>
+              <Text style={sharedStyles.cardTitle}>
+                {platformLabel(platform ?? integration.identifier)}
+              </Text>
+              <Badge
+                label={selected ? "active for publish" : "signed in"}
+                filmed={selected}
+              />
+            </View>
+            <Text style={sharedStyles.cardMeta}>
+              {integration.name || "Unnamed channel"} · {integration.identifier}
+            </Text>
+            {integration.settings?.maxLength ? (
+              <Text style={sharedStyles.cardMeta}>
+                Max caption: {integration.settings.maxLength} characters
+              </Text>
+            ) : null}
+            {integration.settings?.rules ? (
+              <Text style={styles.ruleText} numberOfLines={4}>
+                {integration.settings.rules}
+              </Text>
+            ) : null}
+            {integration.settings?.tools.length ? (
+              <Text style={sharedStyles.cardMeta}>
+                Postiz tools:{" "}
+                {integration.settings.tools
+                  .map((tool) => tool.methodName)
+                  .join(", ")}
+              </Text>
+            ) : null}
+            {integration.settingsError ? (
+              <Text style={styles.error}>
+                Settings: {integration.settingsError}
+              </Text>
+            ) : null}
+            <View style={sharedStyles.takeActions}>
+              {platform ? (
+                <Button
+                  label={
+                    selected
+                      ? "Active channel"
+                      : busyAction === `select-${integration.id}`
+                        ? "Selecting…"
+                        : "Use for publishing"
+                  }
+                  onPress={() => onSelect(platform, integration.id)}
+                  disabled={
+                    selected || busyAction === `select-${integration.id}`
+                  }
+                  variant={selected ? "primary" : undefined}
+                />
+              ) : null}
+              {platform ? (
+                <Button
+                  label={
+                    busyAction === `connect-${platform}`
+                      ? "Opening…"
+                      : "Reconnect OAuth"
+                  }
+                  onPress={() => onReconnect(platform, integration.id)}
+                  disabled={busyAction === `connect-${platform}`}
+                />
+              ) : null}
+              <Button label="Open Postiz (optional)" onPress={onOpenDashboard} />
+            </View>
+          </View>
+        );
+      })}
+    </View>
+  );
+}
+
+function PostizActivity({
+  overview,
+  onOpenUrl,
+}: {
+  overview: PostizOverview | null;
+  onOpenUrl: (url: string | undefined) => void;
+}) {
+  if (!overview?.apiConnected) {
+    return (
+      <Text style={sharedStyles.cardMeta}>
+        Connect the Postiz API to see queue, published/error states, and notifications.
+      </Text>
+    );
+  }
+  return (
+    <View style={styles.progressCard}>
+      {(overview.errors ?? []).map((error) => (
+        <Text key={error} style={styles.error}>
+          {error}
+        </Text>
+      ))}
+      <Text style={sharedStyles.cardTitle}>Recent posts</Text>
+      {overview.recentPosts.length ? (
+        overview.recentPosts.slice(0, 10).map((post) => (
+          <View key={post.id} style={styles.activityRow}>
+            <View style={styles.activityText}>
+              <Text style={sharedStyles.cardMeta} numberOfLines={2}>
+                {post.integration?.name ||
+                  post.integration?.identifier ||
+                  "Postiz"}{" "}
+                · {post.state}
+              </Text>
+              <Text style={styles.ruleText} numberOfLines={2}>
+                {post.content || "(no text)"}
+              </Text>
+              {post.publishDate ? (
+                <Text style={sharedStyles.cardMeta}>
+                  {fmtDate(post.publishDate)}
+                </Text>
+              ) : null}
+            </View>
+            {post.releaseURL ? (
+              <Button
+                label="Open post"
+                onPress={() => onOpenUrl(post.releaseURL ?? undefined)}
+              />
+            ) : null}
+          </View>
+        ))
+      ) : (
+        <Text style={sharedStyles.cardMeta}>No recent Postiz posts.</Text>
+      )}
+      <Text style={sharedStyles.cardTitle}>Notifications</Text>
+      {overview.notifications.length ? (
+        overview.notifications.slice(0, 8).map((notification) => (
+          <View key={notification.id} style={styles.activityRow}>
+            <View style={styles.activityText}>
+              <Text style={styles.ruleText}>{notification.content}</Text>
+              <Text style={sharedStyles.cardMeta}>
+                {fmtDate(notification.createdAt)}
+              </Text>
+            </View>
+            {notification.link ? (
+              <Button
+                label="Open"
+                onPress={() => onOpenUrl(notification.link ?? undefined)}
+              />
+            ) : null}
+          </View>
+        ))
+      ) : (
+        <Text style={sharedStyles.cardMeta}>No Postiz notifications.</Text>
+      )}
+    </View>
+  );
+}
+
 type PlatformStatusGridProps = {
   rows: PlatformStatus[];
   onOpenUrl: (url: string | undefined) => void;
   onTest: (platform: string) => void;
+  onConnect?: (platform: string) => void;
   onCopyLogin?: (command: string) => void;
   busyAction: string | null;
   sau?: boolean;
@@ -584,6 +1024,7 @@ function PlatformStatusGrid({
   rows,
   onOpenUrl,
   onTest,
+  onConnect,
   onCopyLogin,
   busyAction,
   sau = false,
@@ -594,7 +1035,7 @@ function PlatformStatusGrid({
   if (!safeRows.length) {
     return (
       <Text style={sharedStyles.cardMeta}>
-        {sau ? "No SAU platforms" : "No Zernio platforms"}
+        {sau ? "No SAU platforms" : "No Postiz platforms"}
       </Text>
     );
   }
@@ -629,6 +1070,21 @@ function PlatformStatusGrid({
             </Text>
           ))}
           <View style={sharedStyles.takeActions}>
+            {entry.provider === "postiz" &&
+            entry.status !== "connected" &&
+            entry.status !== "configured" &&
+            onConnect ? (
+              <Button
+                label={
+                  busyAction === `connect-${entry.platform}`
+                    ? "Opening OAuth…"
+                    : "Connect"
+                }
+                onPress={() => onConnect(entry.platform)}
+                disabled={busyAction === `connect-${entry.platform}`}
+                variant="primary"
+              />
+            ) : null}
             {entry.dashboardUrl ? (
               <Button
                 label="Dashboard"
@@ -745,5 +1201,22 @@ const styles = StyleSheet.create({
   statusCard: {
     ...sharedStyles.card,
     gap: spacing.xs,
+  },
+  ruleText: {
+    color: colors.text,
+    fontSize: 12,
+    lineHeight: 18,
+  },
+  activityRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: spacing.sm,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: colors.cardBorder,
+    paddingTop: spacing.sm,
+  },
+  activityText: {
+    flex: 1,
+    gap: 2,
   },
 });

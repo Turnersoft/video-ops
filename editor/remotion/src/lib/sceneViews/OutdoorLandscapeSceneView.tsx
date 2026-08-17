@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 
 import { OutdoorFilmedClipMask } from '../../components/OutdoorFilmedClipMask/OutdoorFilmedClipMask';
+import { isVoiceOnlyOutdoorTake } from '../../components/FilmedPlaceholders/FilmedPlaceholders';
 import type { OutdoorBeatLayout } from '../outdoor/resolveOutdoorBeatLayout';
 
 type OutdoorLandscapeSceneViewProps = {
@@ -26,6 +27,7 @@ export function OutdoorLandscapeSceneView({
   const presenterMode = outdoorBeatLayout.presenterMode;
   const isFullClipPresenter = !scriptFullscreen && presenterMode === 'full-clip';
   const isAvatarPlaceholder = !outdoorEdit.videoSrc.trim();
+  const voiceOnlyTake = isVoiceOnlyOutdoorTake(outdoorEdit);
   const resolvedBeatCount =
     beatCount ||
     outdoorEdit.beatDurationsSeconds?.length ||
@@ -53,17 +55,19 @@ export function OutdoorLandscapeSceneView({
         }}
       >
         {scriptFullscreen || !isFullClipPresenter ? mainContent : null}
-        <OutdoorFilmedClipMask
-          scriptId={scriptId}
-          src={outdoorEdit.videoSrc}
-          pipMask={scriptPipMask}
-          beatIndex={outdoorBeatIndex}
-          sceneIndex={sceneIndex}
-          beatCount={resolvedBeatCount}
-          persistAcrossBeats={isAvatarPlaceholder}
-          enableMaskEditing
-          layoutFormat="landscape"
-        />
+        {!voiceOnlyTake ? (
+          <OutdoorFilmedClipMask
+            scriptId={scriptId}
+            src={outdoorEdit.videoSrc}
+            pipMask={scriptPipMask}
+            beatIndex={outdoorBeatIndex}
+            sceneIndex={sceneIndex}
+            beatCount={resolvedBeatCount}
+            persistAcrossBeats={isAvatarPlaceholder}
+            enableMaskEditing
+            layoutFormat="landscape"
+          />
+        ) : null}
       </div>
     </div>
   );

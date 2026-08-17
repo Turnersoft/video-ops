@@ -2,10 +2,12 @@
 import type { ReactNode } from 'react';
 import type { LiveBeat, StyleKit } from '../../types';
 import type { BeatTemplateConfig, BeatTemplateKind } from '../../types/beatStudio';
+import type { VoiceEngineId } from '../../utils/voiceEngine';
 
 export type DraftBeat = {
   title: string;
   say: string;
+  chinese: string;
   leanCode: string;
   turnCode: string;
   visualNotes: string;
@@ -34,5 +36,14 @@ export type ScriptBeatEditorPanelProps = {
   onTemplateChange?: (kind: BeatTemplateKind) => void;
   onTemplateConfigChange?: (config: BeatTemplateConfig) => void;
   scriptId?: string;
+  voiceEngine?: VoiceEngineId;
+  scriptLanguage?: import('../../utils/scriptLanguage').ScriptLanguageId;
+  /** Fired when VoxCPM preview voice under export/voice was updated. */
+  onPreviewAudioChanged?: () => void;
+  onSeekPreviewFrame?: (
+    frame: number,
+    label: string,
+    options?: import('../RemotionEmbed/RemotionEmbed.types').RemotionSeekOptions,
+  ) => void;
   footer?: ReactNode;
 };

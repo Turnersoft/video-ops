@@ -19,7 +19,7 @@ import { useOutdoorUi } from '../../context/OutdoorUiContext';
 import { pipelineStudioHeight, layoutStylesFor } from '../../layout';
 import { colors, radii, spacing, typography } from '../../theme';
 import type { CutReviewPayload, CutTranscriptLine } from '../../types';
-import { cutReviewPreviewPath } from '../../api/urls';
+import { cutReviewPreviewPath, parseTakeVideoPath, type TakeVideoRevealTarget } from '../../api/urls';
 import { PipelineVideo, type PipelineVideoHandle } from '../PipelineVideo/PipelineVideo';
 import { StaleBanner } from '../StaleBanner/StaleBanner';
 import { Button } from '../Button/Button';
@@ -58,6 +58,7 @@ export function CutReviewPanel({
     : studioHeight;
   const [review, setReview] = useState<CutReviewPayload | null>(null);
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
+  const [videoReveal, setVideoReveal] = useState<TakeVideoRevealTarget | undefined>(undefined);
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
   const [busyLabel, setBusyLabel] = useState<string | null>(null);
@@ -69,6 +70,7 @@ export function CutReviewPanel({
   const resolvePreviewSrc = useCallback(
     async (payload: CutReviewPayload) => {
       const previewPath = cutReviewPreviewPath(payload, scriptId, takeId);
+      setVideoReveal(parseTakeVideoPath(previewPath) ?? undefined);
       return api.absoluteUrl(previewPath);
     },
     [api, scriptId, takeId],
@@ -400,6 +402,7 @@ export function CutReviewPanel({
                 ? 'Stabilized take'
                 : 'Source take'
             }
+            reveal={videoReveal}
             tall
             tallHeight={videoTallHeight}
             onTimeUpdate={handleTimeUpdate}

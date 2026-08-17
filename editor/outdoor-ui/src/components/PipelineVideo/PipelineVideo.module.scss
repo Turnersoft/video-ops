@@ -13,6 +13,12 @@
   font-size: $font-tiny;
   font-weight: 700;
 }
+.labelRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
 .error {
   color: $orange;
   font-size: $font-tiny;

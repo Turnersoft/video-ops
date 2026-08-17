@@ -51,6 +51,8 @@ export type ParsedScript = {
     audience?: string;
     localVideo?: string;
     promotionalDescription?: string;
+    /** China publish description (china platform bodies). */
+    promotionalDescriptionChina?: string;
     /** Per-platform publish title (English group). */
     socialTitleEnglish?: string;
     /** Per-platform publish title (China group). */
@@ -265,6 +267,11 @@ function parseHeaderBlock(block: string): Partial<ParsedScript> {
             case 'promotional description':
                 meta.promotionalDescription = value;
                 break;
+            case 'promotional description china':
+            case 'promotional description zh':
+            case 'promotional description chinese':
+                meta.promotionalDescriptionChina = value;
+                break;
             case 'social title english':
             case 'social title en':
                 meta.socialTitleEnglish = value;
@@ -385,6 +392,7 @@ export function parseScriptMarkdown(filename: string, raw: string): ParsedScript
         audience: header.audience,
         localVideo: header.localVideo,
         promotionalDescription: header.promotionalDescription,
+        promotionalDescriptionChina: header.promotionalDescriptionChina,
         socialTitleEnglish: header.socialTitleEnglish,
         socialTitleChina: header.socialTitleChina,
         coreIdea: header.coreIdea,

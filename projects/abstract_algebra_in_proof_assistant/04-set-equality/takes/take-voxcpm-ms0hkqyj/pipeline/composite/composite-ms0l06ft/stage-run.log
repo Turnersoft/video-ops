@@ -1,0 +1,53 @@
+# stage-run 2026-07-25T16:26:35.804Z
+jobId=job-take-voxcpm-ms0hkqyj
+scriptId=04-set-equality
+takeId=take-voxcpm-ms0hkqyj
+stage=composite
+runId=composite-ms0l06ft
+
+[2026-07-25T16:26:35.834Z] Starting composite
+[2026-07-25T16:26:35.865Z] Copying alignment artifacts
+[2026-07-25T16:26:35.896Z] Rendering portrait + landscape
+[2026-07-25T16:26:35.897Z] $ node /Users/johndoe/Documents/company/video_ops/editor/remotion/scripts/render-outdoor.mjs 04-set-equality --edit-dir /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-voxcpm-ms0hkqyj/pipeline/composite/composite-ms0l06ft --format both
+[stdout] /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-voxcpm-ms0hkqyj/pipeline/composite/composite-ms0l06ft/outdoor-manifest.json
+[stdout] [render-outdoor] 11 caption segments, 345.92s
+[stdout] [render-outdoor] beat durations: 44.48, 30.56, 63.04, 43.84, 25.12, 21.76, 35.04, 21.28, 14.72, 24.32, 21.76s
+
+[stdout] > turn-video-ops-remotion@1.0.0 warm-knowledge
+[stdout] > node scripts/warmTurnKnowledgeCache.mjs 04-set-equality
+
+[stdout] [warm-knowledge] cache hit .cache/turn-knowledge-cache/inline:04-set-equality-14a9cc06.json
+[stdout] [warm-knowledge] cache hit .cache/turn-knowledge-cache/inline:04-set-equality-58106087.json
+[stdout] [warm-knowledge] cache hit .cache/turn-knowledge-cache/inline:04-set-equality-2249c5b8.json
+[stdout] [warm-knowledge] cache hit .cache/turn-knowledge-cache/inline:04-set-equality-5915b3f6.json
+[stdout] [warm-knowledge] cache hit .cache/turn-knowledge-cache/inline:04-set-equality-a35c3b12.json
+[stdout] [warm-knowledge] cache hit .cache/turn-knowledge-cache/inline:04-set-equality-d322448b.json
+[stdout] [warm-knowledge] cache hit .cache/turn-knowledge-cache/inline:04-set-equality-ac8759f3.json
+[stdout] [warm-knowledge] cache hit .cache/turn-knowledge-cache/inline:04-set-equality-198dbb40.json
+[stdout] [warm-knowledge] cache hit .cache/turn-knowledge-cache/inline:04-set-equality-6193badc.json
+[stdout] [warm-knowledge] cache hit .cache/turn-knowledge-cache/inline:04-set-equality-a51d72e9.json
+[stderr] /Users/johndoe/Documents/company/video_ops/editor/remotion/src/lib/compile/video-ops/videoOpsAnimationMarkdown.ts:88
+[stderr]   throw new VideoOpsAnimationMarkdownError(message, line);
+[stderr]         ^
+
+[stderr] VideoOpsAnimationMarkdownError: Line 1: Unknown frontmatter directive "promotionaldescriptionchina".
+[stderr]     at fail (/Users/johndoe/Documents/company/video_ops/editor/remotion/src/lib/compile/video-ops/videoOpsAnimationMarkdown.ts:88:9)
+[stderr]     at assertKnownDirectives (/Users/johndoe/Documents/company/video_ops/editor/remotion/src/lib/compile/video-ops/videoOpsAnimationMarkdown.ts:1128:7)
+[stderr]     at compileVideoOpsAnimationMarkdown (/Users/johndoe/Documents/company/video_ops/editor/remotion/src/lib/compile/video-ops/videoOpsAnimationMarkdown.ts:1753:3)
+[stderr]     at compileEpisodeFromDir (/Users/johndoe/Documents/company/video_ops/editor/remotion/src/lib/compile/compileEpisode.ts:215:42)
+[stderr]     at <anonymous> (/Users/johndoe/Documents/company/video_ops/editor/remotion/scripts/buildOutdoorRenderProps.ts:41:18)
+[stderr]     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+[stderr]     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+[stderr]     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+[stderr]   line: 1
+[stderr] }
+
+[stderr] Node.js v22.22.3
+[stderr] Error: npx tsx /Users/johndoe/Documents/company/video_ops/editor/remotion/scripts/buildOutdoorRenderProps.ts 04-set-equality /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-voxcpm-ms0hkqyj/pipeline/composite/composite-ms0l06ft/animation-outdoor.json /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-voxcpm-ms0hkqyj/pipeline/composite/composite-ms0l06ft/remotion-props-portrait.json portrait failed
+[stderr]     at ChildProcess.<anonymous> (file:///Users/johndoe/Documents/company/video_ops/editor/remotion/scripts/render-outdoor.mjs:153:16)
+[stderr]     at ChildProcess.emit (node:events:519:28)
+[stderr]     at maybeClose (node:internal/child_process:1101:16)
+[stderr]     at ChildProcess._handle.onexit (node:internal/child_process:304:5)
+[2026-07-25T16:26:36.571Z] exit 1
+[2026-07-25T16:26:36.571Z] FAILED: Remotion render failed — [2026-07-25T16:26:36.571Z] exit 1
+[2026-07-25T16:26:36.603Z] [2026-07-25T16:26:36.571Z] exit 1

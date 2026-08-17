@@ -2,7 +2,7 @@
 
 Social title (English): 4. Set equality: what the equal sign means in a proof assistant
 Social title (China): 4. 集合相等：证明助手里的等号是什么意思
-Promotional description: A beginner-friendly tour of equality in a proof assistant: read a first Lean proof, see when Lean simplifies automatically, compare sets by members, and choose the right rule for functions and structures. Series episode 4 of Abstract Algebra in a Proof Assistant · #TurnLang #Lean4 #Mathlib #SetEquality #FormalMethods #ProofAssistant
+Promotional description: Think = is obvious? Lean makes you earn it. We prove 1 = 1 with rfl, watch when Lean simplifies on its own and when it needs a library theorem, then climb the ladder: same members for sets, same answers for functions, same structure—not the same data—for groups. Episode 4 of Abstract Algebra in a Proof Assistant · #TurnLang #Lean4 #Mathlib #SetEquality #FormalMethods #ProofAssistant
 
 Format: **v4 animated-PPT beats** · Editor: `/video-ops/editor/04-set-equality`
 

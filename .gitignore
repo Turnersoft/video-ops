@@ -45,6 +45,10 @@ ios-teleprompter/node_modules/
 
 # Compiled animation cache (from animation.md sync)
 projects/**/.cache/
+.cache/
+
+# Outdoor agent local secrets (API keys, account maps)
+editor/outdoor_agent/data/publish-credentials.json
 
 # Legacy Remotion mirror — not used (publicDir is projects/)
 public/

@@ -1,0 +1,24 @@
+@use '../../app' as *;
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  margin-top: $space-md;
+  padding-top: $space-md;
+  border-top-width: 1px;
+  border-top-color: $card-border;
+}
+.headerRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-sm;
+  flex-wrap: wrap;
+}
+.meta {
+  color: $muted;
+  font-size: $font-small;
+  line-height: 18px;
+}

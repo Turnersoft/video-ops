@@ -1,7 +1,25 @@
 export type PipelineStage = 'stabilize' | 'cut' | 'align' | 'composite' | 'social';
 export type RunStatus = 'pending' | 'running' | 'succeeded' | 'failed' | 'cancelled';
 export type JobStatus = 'queued' | 'running' | 'review' | 'published' | 'failed' | 'ingested';
-export type PublishVisibility = 'live' | 'hidden' | 'deleted' | 'pending';
+export type PublishVisibility = 'live' | 'hidden' | 'deleted' | 'pending' | 'failed';
+
+export type PublishProgressStage =
+  | 'queued'
+  | 'generating_card'
+  | 'uploading_video'
+  | 'uploading_image'
+  | 'uploading_thumbnail'
+  | 'submitting'
+  | 'accepted'
+  | 'published'
+  | 'failed';
+
+export type PublishProgress = {
+  stage: PublishProgressStage;
+  percent: number;
+  message: string;
+  updatedAt: string;
+};
 
 export type PipelineErrorCode =
   | 'cancelled'
@@ -9,6 +27,7 @@ export type PipelineErrorCode =
   | 'missing_prerequisite'
   | 'missing_file'
   | 'transcription'
+  | 'caption_translate'
   | 'subprocess'
   | 'render'
   | 'network'
@@ -65,6 +84,11 @@ export type PublishRecord = {
   compositeRunId?: string;
   stub?: boolean;
   coverId?: string;
+  mediaKind?: 'video' | 'image';
+  imagePath?: string;
+  progress?: PublishProgress;
+  error?: string;
+  postizState?: 'QUEUE' | 'PUBLISHED' | 'ERROR' | 'DRAFT';
 };
 
 export type PublishState = {

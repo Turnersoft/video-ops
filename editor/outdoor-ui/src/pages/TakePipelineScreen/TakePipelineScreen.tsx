@@ -13,6 +13,7 @@ import { formatOutdoorApiError } from '../../api/client';
 import { LocalTakeCard } from '../../components/LocalTakeCard/LocalTakeCard';
 import { PipelineStagesPanel } from '../../components/PipelineStagesPanel/PipelineStagesPanel';
 import { TakeResults } from '../../components/TakeResults/TakeResults';
+import { VoxcpmPipelineResults } from '../../components/VoxcpmPipelineResults/VoxcpmPipelineResults';
 import { Header } from '../../components/Header/Header';
 import { SectionLabel } from '../../components/SectionLabel/SectionLabel';
 import { useOutdoorUi } from '../../context/OutdoorUiContext';
@@ -20,6 +21,7 @@ import { useOutdoorRoute } from '../../hooks/useOutdoorRoute';
 import { colors, sharedStyles, spacing, typography } from '../../theme';
 import type { InboxFileSighting, LocalTakeView, VideoOpsCatalogScript } from '../../types';
 import { buildTakeEntries } from '../../utils/takeEntries';
+import { isVoxcpmTake } from '../../utils/isVoxcpmTake';
 import classes from './TakePipelineScreen.module.scss';
 
 export type TakePipelineScreenProps = {
@@ -173,6 +175,8 @@ export function TakePipelineScreen({ scriptId, takeId }: TakePipelineScreenProps
     [localTakes, meta?.takes, takeId],
   );
 
+  const syntheticTake = isVoxcpmTake(takeId);
+
   const ingest = ingestByTakeId.get(takeId) ?? null;
 
   const handleOpenFilm = useCallback(() => {
@@ -204,7 +208,7 @@ export function TakePipelineScreen({ scriptId, takeId }: TakePipelineScreenProps
   return (
     <View style={sharedStyles.screen}>
       <Header
-        title={entry?.label ?? 'Take pipeline'}
+        title={syntheticTake ? `${entry?.label ?? 'AI clone'}` : (entry?.label ?? 'Take pipeline')}
         actions={[
           {
             label: 'Back',
@@ -218,7 +222,9 @@ export function TakePipelineScreen({ scriptId, takeId }: TakePipelineScreenProps
             },
             disabled: refreshing,
           },
-          { label: 'Film', onPress: handleOpenFilm, variant: 'primary' },
+          ...(syntheticTake
+            ? []
+            : [{ label: 'Film', onPress: handleOpenFilm, variant: 'primary' as const }]),
         ]}
       />
 
@@ -276,19 +282,52 @@ export function TakePipelineScreen({ scriptId, takeId }: TakePipelineScreenProps
 
                   {entry.mac ? (
                     <View style={styles.pipelineWrap}>
-                      <SectionLabel>Results</SectionLabel>
-                      <TakeResults
-                        scriptId={scriptId}
-                        take={entry.mac}
-                        refreshTick={resultsTick}
-                      />
-                      <PipelineStagesPanel
-                        jobId={jobId}
-                        onSnapshot={handleSnapshot}
-                      />
+                      {syntheticTake ? (
+                        <>
+                          <SectionLabel>AI clone pipeline</SectionLabel>
+                          <VoxcpmPipelineResults
+                            scriptId={scriptId}
+                            take={entry.mac}
+                            refreshTick={resultsTick}
+                          />
+                          <PipelineStagesPanel
+                            jobId={jobId}
+                            onSnapshot={handleSnapshot}
+                            visibleStages={['composite', 'social']}
+                            panelTitle="Logs & rerun"
+                            hideFullPipelineRun
+                            voxcpmTake
+                            stageLabels={{
+                              composite: 'Remotion export',
+                              social: 'Publish pack',
+                            }}
+                          />
+                        </>
+                      ) : (
+                        <>
+                          <SectionLabel>Results</SectionLabel>
+                          <TakeResults
+                            scriptId={scriptId}
+                            take={entry.mac}
+                            refreshTick={resultsTick}
+                          />
+                          <PipelineStagesPanel
+                            jobId={jobId}
+                            onSnapshot={handleSnapshot}
+                          />
+                        </>
+                      )}
                       {ingest?.takeDir ? (
                         <Text style={styles.pathLine}>Mac folder: {ingest.takeDir}</Text>
                       ) : null}
+                    </View>
+                  ) : syntheticTake ? (
+                    <View style={styles.pipelineWaiting}>
+                      <SectionLabel>AI clone pipeline</SectionLabel>
+                      <Text style={sharedStyles.mutedText}>
+                        Starting synthetic take — refresh in a moment if this page opened before the
+                        Mac job was created.
+                      </Text>
                     </View>
                   ) : (
                     <View style={styles.pipelineWaiting}>

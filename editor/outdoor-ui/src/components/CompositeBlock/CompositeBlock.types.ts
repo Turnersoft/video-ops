@@ -6,4 +6,6 @@ export type CompositeBlockProps = {
   jobId: string;
   job: OutdoorJob | null;
   stage?: StageResultPreview | null;
+  /** AI clone takes: composite rerun must not touch VoxCPM or align studio sync. */
+  remotionPreviewOnly?: boolean;
 };

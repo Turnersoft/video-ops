@@ -1,3 +1,4 @@
+import { runRefreshCaptionZh } from './src/refresh-caption-zh.ts';
 import { runAiEdit } from './src/ai-edit.ts';
 import { runAlignSpeechToBeats } from './src/align-speech-to-beats.ts';
 import { runBuildOutdoorManifest } from './src/build-outdoor-manifest.ts';
@@ -11,6 +12,7 @@ Commands:
   ai-edit --video <path> --script <path> --take <path> --out-dir <dir> [--transcript <path>] [--no-render]
   align-speech-to-beats <script-id> [--edit-dir <dir>] [--retranscribe]
   build-outdoor-manifest <script-id> [--edit-dir <dir>]
+  refresh-caption-zh --edit-dir <align-or-composite-dir>
 
 Examples:
   deno task export-script 04-set-equality
@@ -37,6 +39,9 @@ export async function main(): Promise<void> {
       break;
     case 'build-outdoor-manifest':
       await runBuildOutdoorManifest(rest);
+      break;
+    case 'refresh-caption-zh':
+      await runRefreshCaptionZh(rest);
       break;
     default:
       console.error(`Unknown command: ${command}\n`);

@@ -22,6 +22,7 @@ import { useOutdoorRoute } from '../../hooks/useOutdoorRoute';
 import { colors, sharedStyles, spacing, typography } from '../../theme';
 import type { LiveBeat, LiveScript, LocalTakeView, VideoOpsCatalogScript } from '../../types';
 import { buildTakeEntries, type TakeEntry } from '../../utils/takeEntries';
+import { isVoxcpmTake } from '../../utils/isVoxcpmTake';
 import { fmtDate, fmtDuration, takeStatusLabel } from '../../utils/format';
 import classes from './ScriptDetailScreen.module.scss';
 
@@ -41,7 +42,13 @@ function TakeListCard({
   const recordedAt = entry.local?.recordedAt ?? entry.mac?.recordedAt ?? null;
   const durationMs = entry.local?.durationMs ?? entry.mac?.durationMs ?? null;
   const where =
-    entry.local && entry.mac ? 'iPhone + Mac' : entry.mac ? 'Mac pipeline' : 'On iPhone';
+    entry.local && entry.mac
+      ? 'iPhone + Mac'
+      : entry.mac
+        ? isVoxcpmTake(entry.takeId)
+          ? 'AI clone (VoxCPM)'
+          : 'Mac pipeline'
+        : 'On iPhone';
 
   return (
     <Pressable style={[sharedStyles.card, styles.listCard]} onPress={onPress}>
@@ -72,7 +79,7 @@ function TakeListCard({
             </Text>
           ) : null}
         </View>
-        <Badge label="Open" filmed={Boolean(entry.mac)} />
+        <Badge label={isVoxcpmTake(entry.takeId) ? 'AI clone' : 'Open'} filmed={Boolean(entry.mac)} />
       </View>
       {entry.local ? <TakeStepstones steps={entry.local.steps} compact /> : null}
       <Text style={styles.tapHint}>Tap to open pipeline</Text>
@@ -99,6 +106,7 @@ export function ScriptDetailScreen({
     navigateToAnimation,
     navigateToTake,
     navigateToFilm,
+    navigateToBeatPosters,
   } = useOutdoorRoute();
   const [live, setLive] = useState<LiveScript | null>(null);
   const [meta, setMeta] = useState<VideoOpsCatalogScript | null>(null);
@@ -277,7 +285,22 @@ export function ScriptDetailScreen({
               />
             </View>
 
-            <SectionLabel>Takes</SectionLabel>
+            {isPostHub ? (
+              <View style={styles.editCard}>
+                <SectionLabel>Infographic publish</SectionLabel>
+                <Text style={sharedStyles.mutedText}>
+                  Beat-by-beat infographic cards (Lean + Turn-Lang) — one album post per platform,
+                  separate from video takes.
+                </Text>
+                <Button
+                  label="Open infographic publish"
+                  variant="primary"
+                  onPress={() => navigateToBeatPosters(scriptId)}
+                />
+              </View>
+            ) : null}
+
+            <SectionLabel>{isPostHub ? 'Video takes (separate workflow)' : 'Takes'}</SectionLabel>
             {takeEntries.length === 0 ? (
               <Text style={sharedStyles.mutedText}>
                 No takes yet — tap Film to record. Each take is a card; tap to open its pipeline page.

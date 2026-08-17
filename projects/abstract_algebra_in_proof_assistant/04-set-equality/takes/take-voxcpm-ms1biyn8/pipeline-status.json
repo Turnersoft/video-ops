@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "status": "failed",
+  "createdAt": "2026-07-26T04:49:02.183Z",
+  "updatedAt": "2026-07-26T04:49:06.521Z",
+  "selectedRuns": {
+    "align": "align-ms1biyod"
+  },
+  "runs": {
+    "stabilize": [],
+    "cut": [],
+    "align": [
+      {
+        "runId": "align-ms1biyod",
+        "status": "cancelled",
+        "createdAt": "2026-07-26T04:49:06.521Z",
+        "finishedAt": "2026-07-26T04:49:06.521Z",
+        "error": "Stopped from iPhone before this stage finished.",
+        "errorCode": "cancelled",
+        "errorTitle": "Pipeline aborted"
+      }
+    ],
+    "composite": [],
+    "social": []
+  },
+  "autoRun": false,
+  "jobId": "job-take-voxcpm-ms1biyn8",
+  "takeId": "take-voxcpm-ms1biyn8",
+  "scriptId": "04-set-equality",
+  "scriptTitle": "04_set_equality",
+  "sourceVideoPath": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-voxcpm-ms1biyn8/source.mp4",
+  "takeManifestPath": "/Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/04-set-equality/takes/take-voxcpm-ms1biyn8/take.json"
+}

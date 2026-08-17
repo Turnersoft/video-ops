@@ -1,3 +1,5 @@
+import type { TakeVideoRevealTarget } from '../../api/urls';
+
 export type PipelineVideoHandle = {
   seekTo: (seconds: number) => void;
   play: () => void;
@@ -12,4 +14,6 @@ export type PipelineVideoProps = {
   tall?: boolean;
   /** Explicit pixel height when tall (defaults to ~420). */
   tallHeight?: number;
+  /** Reveal the backing file in macOS Finder via the local agent. */
+  reveal?: TakeVideoRevealTarget;
 };

@@ -3,7 +3,7 @@
  * Outdoor composite render: build Remotion props in memory and pass them to
  * `remotion render` — no animation-v4 mutation, no repo-wide sync.
  */
-import { spawnSync } from 'node:child_process';
+import { spawn, spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -123,49 +123,154 @@ if (format === 'landscape' || format === 'both') {
   });
 }
 
-let status = 0;
-try {
-  for (const job of renders) {
-    const propsPath = path.join(editDir, `remotion-props-${job.format}.json`);
-    run(
-      'npx',
-      [
-        'tsx',
-        path.join(remotionDir, 'scripts/buildOutdoorRenderProps.ts'),
-        scriptId,
-        outdoorAnimationPath,
-        propsPath,
-        job.format,
-      ],
-      { cwd: remotionDir },
-    );
+const renderLogPaths = {
+  portrait: path.join(editDir, 'render-portrait.log'),
+  landscape: path.join(editDir, 'render-landscape.log'),
+};
 
-    console.log(`[render-outdoor] rendering ${job.composition} → ${job.output}`);
-    run(
-      'npx',
-      [
-        'remotion',
-        'render',
-        job.composition,
-        job.output,
-        `--props=${propsPath}`,
-        `--frames=${frameRange}`,
-        // Required for manim-web / Three.js WebGL in headless Chromium.
-        '--gl=angle',
-        '--codec=h264',
-        '--crf=18',
-        '--log=info',
-      ],
-      { cwd: remotionDir },
-    );
+function resetRenderLogs(formats) {
+  for (const format of formats) {
+    const logPath = renderLogPaths[format];
+    if (logPath) {
+      fs.writeFileSync(logPath, '');
+    }
   }
-} catch (error) {
-  status = 1;
-  console.error(error);
 }
 
-if (status !== 0) {
-  process.exit(status);
+function appendRenderLog(format, line) {
+  const logPath = renderLogPaths[format];
+  if (logPath) {
+    fs.appendFileSync(logPath, `${line}\n`);
+  }
+}
+
+function runAsync(command, args, options = {}) {
+  return new Promise((resolve, reject) => {
+    const child = spawn(command, args, { stdio: 'inherit', shell: false, ...options });
+    child.on('error', reject);
+    child.on('close', (code) => {
+      if (code !== 0) {
+        reject(new Error(`${command} ${args.join(' ')} failed`));
+        return;
+      }
+      resolve();
+    });
+  });
+}
+
+function runAsyncLabeled(command, args, label, options = {}) {
+  return new Promise((resolve, reject) => {
+    const child = spawn(command, args, {
+      stdio: ['inherit', 'pipe', 'pipe'],
+      shell: false,
+      ...options,
+    });
+    let stdoutRemainder = '';
+    let stderrRemainder = '';
+
+    const emitPrefixedLines = (text, streamLabel, remainderKey) => {
+      const combined = (remainderKey === 'stdout' ? stdoutRemainder : stderrRemainder) + text;
+      const parts = combined.split('\n');
+      const remainder = parts.pop() ?? '';
+      if (remainderKey === 'stdout') {
+        stdoutRemainder = remainder;
+      } else {
+        stderrRemainder = remainder;
+      }
+      for (const line of parts) {
+        if (!line.trim()) {
+          continue;
+        }
+        appendRenderLog(label, line);
+        const prefixed = `[${label}] ${line}`;
+        if (streamLabel === 'stderr') {
+          console.error(prefixed);
+        } else {
+          console.log(prefixed);
+        }
+      }
+    };
+
+    child.stdout?.on('data', (chunk) => {
+      emitPrefixedLines(chunk.toString(), 'stdout', 'stdout');
+    });
+    child.stderr?.on('data', (chunk) => {
+      emitPrefixedLines(chunk.toString(), 'stderr', 'stderr');
+    });
+    child.on('error', reject);
+    child.on('close', (code) => {
+      if (stdoutRemainder.trim()) {
+        appendRenderLog(label, stdoutRemainder.trim());
+        console.log(`[${label}] ${stdoutRemainder.trim()}`);
+      }
+      if (stderrRemainder.trim()) {
+        appendRenderLog(label, stderrRemainder.trim());
+        console.error(`[${label}] ${stderrRemainder.trim()}`);
+      }
+      if (code !== 0) {
+        reject(new Error(`${command} ${args.join(' ')} failed`));
+        return;
+      }
+      resolve();
+    });
+  });
+}
+
+async function buildRenderProps(job) {
+  const propsPath = path.join(editDir, `remotion-props-${job.format}.json`);
+  await runAsync(
+    'npx',
+    [
+      'tsx',
+      path.join(remotionDir, 'scripts/buildOutdoorRenderProps.ts'),
+      scriptId,
+      outdoorAnimationPath,
+      propsPath,
+      job.format,
+    ],
+    { cwd: remotionDir },
+  );
+  return propsPath;
+}
+
+async function renderJob(job, propsPath) {
+  console.log(`[render-outdoor] rendering ${job.composition} → ${job.output}`);
+  await runAsyncLabeled(
+    'npx',
+    [
+      'remotion',
+      'render',
+      job.composition,
+      job.output,
+      `--props=${propsPath}`,
+      `--frames=${frameRange}`,
+      '--gl=angle',
+      '--codec=h264',
+      '--crf=18',
+      '--log=info',
+    ],
+    job.format,
+    { cwd: remotionDir },
+  );
+}
+
+try {
+  const propsByFormat = new Map();
+  for (const job of renders) {
+    propsByFormat.set(job.format, await buildRenderProps(job));
+  }
+  if (renders.length > 1) {
+    console.log(
+      `[render-outdoor] parallel render: ${renders.map((job) => job.format).join(' + ')}`,
+    );
+  }
+  resetRenderLogs(renders.map((job) => job.format));
+  await Promise.all(
+    renders.map((job) => renderJob(job, propsByFormat.get(job.format))),
+  );
+} catch (error) {
+  console.error(error);
+  process.exit(1);
 }
 
 console.log('[render-outdoor] done');

@@ -4,70 +4,67 @@
   "titleEnglish": "4. Set equality: what the equal sign means in a proof assistant",
   "titleChina": "4. 集合相等：证明助手里的等号是什么意思",
   "title": "4. Set equality: what the equal sign means in a proof assistant",
-  "generatedAt": "2026-07-12T14:25:26.515Z",
+  "generatedAt": "2026-07-25T08:24:29.246Z",
   "source": {
-    "promotionalDescription": "Hook: an equals glyph is not yet a complete meaning of sameness. We move from Lean’s definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang’s notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstract Algebra in a Proof Assistant · #TurnLang #Lean4 #Mathlib #SetEquality #FormalMethods #ProofAssistant",
+    "promotionalDescription": "Think = is obvious? Lean makes you earn it. We prove 1 = 1 with rfl, watch when Lean simplifies on its own and when it needs a library theorem, then climb the ladder: same members for sets, same answers for functions, same structure—not the same data—for groups. Episode 4 of Abstract Algebra in a Proof Assistant.",
+    "promotionalDescriptionChina": "等号看起来理所当然，在 Lean 4 里却要一步一步挣出来。从 1 = 1 和 rfl 开始，看 Lean 什么时候自己算过去、什么时候需要库里定理；再往上——集合比成员，函数比每个输入的答案，群比结构而不是字面数据。抽象代数证明助手第 4 期，户外讲，屏幕验。",
     "socialTitleEnglish": "4. Set equality: what the equal sign means in a proof assistant",
     "socialTitleChina": "4. 集合相等：证明助手里的等号是什么意思"
   },
   "english": {
     "youtube": {
       "title": "4. Set equality: what the equal sign means in a proof assistant",
-      "body": "Hook: an equals glyph is not yet a complete meaning of sameness. We move from Lean’s definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang’s notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstract Algebra in a Proof Assistant · #TurnLang #Lean4 #Mathlib #SetEquality #FormalMethods #ProofAssistant\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+      "body": "Think = is obvious? Lean makes you earn it. We prove 1 = 1 with rfl, watch when Lean simplifies on its own and when it needs a library theorem, then climb the ladder: same members for sets, same answers for functions, same structure—not the same data—for groups. Episode 4 of Abstract Algebra in a Proof Assistant.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
     },
     "x": {
       "title": "4. Set equality: what the equal sign means in a proof assistant",
-      "body": "Hook: an equals glyph is not yet a complete meaning of sameness. We move from Lean’s definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang’s notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstra…"
+      "body": "Think = is obvious? Lean makes you earn it. We prove 1 = 1 with rfl, watch when Lean simplifies on its own and when it needs a library theorem, then climb the ladder: same members for sets, same answers for functions, same structure—not the same data—for groups. Episode 4 of Abs…"
     },
     "linkedin": {
       "title": "4. Set equality: what the equal sign means in a proof assistant",
-      "body": "4. Set equality: what the equal sign means in a proof assistant\n\nHook: an equals glyph is not yet a complete meaning of sameness. We move from Lean’s definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang’s notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstract Algebra in a Proof Assistant · #TurnLang #Lean4 #Mathlib #SetEquality #FormalMethods #ProofAssistant\n\nThis episode is part of the Abstract Algebra in a Proof Assistant series on Turn-Lang — textbook-shaped formal mathematics you can film outdoors and verify in Lean 4 / Turn-Lang.\n\nWhat you will see in the video:\n• A textbook beat you can say on camera\n• The Lean 4 modeling choice (and what it refuses to pretend)\n• The Turn-Lang compare so the obligation is visible\n\nWatch the short, then open the linked editor if you want to step through the proof assistant view yourself.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+      "body": "4. Set equality: what the equal sign means in a proof assistant\n\nThink = is obvious? Lean makes you earn it. We prove 1 = 1 with rfl, watch when Lean simplifies on its own and when it needs a library theorem, then climb the ladder: same members for sets, same answers for functions, same structure—not the same data—for groups. Episode 4 of Abstract Algebra in a Proof Assistant.\n\nThis episode is part of the Abstract Algebra in a Proof Assistant series on Turn-Lang — textbook-shaped formal mathematics you can film outdoors and verify in Lean 4 / Turn-Lang.\n\nWhat you will see in the video:\n• A textbook beat you can say on camera\n• The Lean 4 modeling choice (and what it refuses to pretend)\n• The Turn-Lang compare so the obligation is visible\n\nWatch the short, then open the linked editor if you want to step through the proof assistant view yourself.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
     },
     "instagram": {
       "title": "4. Set equality: what the equal sign means in a proof assistant",
-      "body": "Hook: an equals glyph is not yet a complete meaning of sameness. We move from Lean’s definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang’s notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstract Algebra in a Proof Assistant · #TurnLang #Lean4 #Mathlib #SetEquality #FormalMethods #ProofAssistant\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+      "body": "Think = is obvious? Lean makes you earn it. We prove 1 = 1 with rfl, watch when Lean simplifies on its own and when it needs a library theorem, then climb the ladder: same members for sets, same answers for functions, same structure—not the same data—for groups. Episode 4 of Abstract Algebra in a Proof Assistant.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
     },
     "tiktok": {
       "title": "4. Set equality: what the equal sign means in a proof assistant",
-      "body": "Hook: an equals glyph is not yet a complete meaning of sameness. We move from Lean’s definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang’s notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstract Algebra in a Proof Assistant · #TurnLang #Lean4 #Mathlib #SetEquality #FormalMethods #ProofAssistant\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+      "body": "Think = is obvious? Lean makes you earn it. We prove 1 = 1 with rfl, watch when Lean simplifies on its own and when it needs a library theorem, then climb the ladder: same members for sets, same answers for functions, same structure—not the same data—for groups. Episode 4 of Abstract Algebra in a Proof Assistant.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
     },
     "facebook": {
       "title": "4. Set equality: what the equal sign means in a proof assistant",
-      "body": "Hook: an equals glyph is not yet a complete meaning of sameness. We move from Lean’s definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang’s notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstract Algebra in a Proof Assistant · #TurnLang #Lean4 #Mathlib #SetEquality #FormalMethods #ProofAssistant\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+      "body": "Think = is obvious? Lean makes you earn it. We prove 1 = 1 with rfl, watch when Lean simplifies on its own and when it needs a library theorem, then climb the ladder: same members for sets, same answers for functions, same structure—not the same data—for groups. Episode 4 of Abstract Algebra in a Proof Assistant.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
     },
     "bluesky": {
       "title": "4. Set equality: what the equal sign means in a proof assistant",
-      "body": "Hook: an equals glyph is not yet a complete meaning of sameness. We move from Lean’s definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang’s notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstract Algebra in a Proo…"
+      "body": "Think = is obvious? Lean makes you earn it. We prove 1 = 1 with rfl, watch when Lean simplifies on its own and when it needs a library theorem, then climb the ladder: same members for sets, same answers for functions, same structure—not the same data—for groups. Episode 4 of Abstract Algebra in a P…"
     }
   },
   "china": {
     "bilibili": {
       "title": "4. 集合相等：证明助手里的等号是什么意思",
-      "body": "Hook: an equals glyph is not yet a complete meaning of sameness. We move from Lean’s definitional versus propositional equality, through Set.ext and homogeneous Eq, to Turn-Lang’s notation-backed SetEq / FunctionEq and the higher notion of isomorphism. Series episode 4 of Abstract Algebra in a Proof Assistant · #TurnLang #Lean4 #Mathlib #SetEquality #FormalMethods #ProofAssistant\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论\n（请翻译为中文后发布）"
+      "body": "等号看起来理所当然，在 Lean 4 里却要一步一步挣出来。从 1 = 1 和 rfl 开始，看 Lean 什么时候自己算过去、什么时候需要库里定理；再往上——集合比成员，函数比每个输入的答案，群比结构而不是字面数据。抽象代数证明助手第 4 期，户外讲，屏幕验。\n\n#TurnLang #Lean4 #证明助手 #抽象代数"
     },
     "douyin": {
-      "title": "Set equality — mutual subset",
-      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+      "title": "4. 集合相等：证明助手里的等号是什么意思",
+      "body": "等号看起来理所当然，在 Lean 4 里却要一步一步挣出来。从 1 = 1 和 rfl 开始，看 Lean 什么时候自己算过去、什么时候需要库里定理；再往上——集合比成员，函数比每个输入的答案，群比结构而不是字面数据。抽象代数证明助手第 4 期，户外讲，屏幕验。\n\n#TurnLang #Lean4 #证明助手 #抽象代数"
     },
     "xiaohongshu": {
-      "title": "Set equality — mutu…",
-      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+      "title": "4. 集合相等：证明助手里的等号是什么…",
+      "body": "等号看起来理所当然，在 Lean 4 里却要一步一步挣出来。从 1 = 1 和 rfl 开始，看 Lean 什么时候自己算过去、什么时候需要库里定理；再往上——集合比成员，函数比每个输入的答案，群比结构而不是字面数据。抽象代数证明助手第 4 期，户外讲，屏幕验。\n\n#TurnLang #Lean4 #证明助手 #抽象代数"
     },
     "weibo": {
-      "title": "Set equality — mutual subset",
-      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+      "title": "4. 集合相等：证明助手里的等号是什么意思",
+      "body": "等号看起来理所当然，在 Lean 4 里却要一步一步挣出来。从 1 = 1 和 rfl 开始，看 Lean 什么时候自己算过去、什么时候需要库里定理；再往上——集合比成员，函数比每个输入的答案，群比结构而不是字面数据。抽象代数证明助手第 4 期，户外讲，屏幕验。\n\n#TurnLang #Lean4 #证明助手 #抽象代数"
     },
     "wechat_channels": {
-      "title": "Set equality — mutual subset",
-      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+      "title": "4. 集合相等：证明助手里的等号是什么意思",
+      "body": "等号看起来理所当然，在 Lean 4 里却要一步一步挣出来。从 1 = 1 和 rfl 开始，看 Lean 什么时候自己算过去、什么时候需要库里定理；再往上——集合比成员，函数比每个输入的答案，群比结构而不是字面数据。抽象代数证明助手第 4 期，户外讲，屏幕验。\n\n#TurnLang #Lean4 #证明助手 #抽象代数"
     },
     "kuaishou": {
-      "title": "Set equality — mutual subset",
-      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+      "title": "4. 集合相等：证明助手里的等号是什么意思",
+      "body": "等号看起来理所当然，在 Lean 4 里却要一步一步挣出来。从 1 = 1 和 rfl 开始，看 Lean 什么时候自己算过去、什么时候需要库里定理；再往上——集合比成员，函数比每个输入的答案，群比结构而不是字面数据。抽象代数证明助手第 4 期，户外讲，屏幕验。\n\n#TurnLang #Lean4 #证明助手 #抽象代数"
     }
-  },
-  "jobId": "job-take-mrhmharr",
-  "takeId": "take-mrhmharr",
-  "scriptTitle": "04_set_equality",
-  "packagedAt": "2026-07-12T14:38:24.855Z"
+  }
 }

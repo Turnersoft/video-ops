@@ -6,11 +6,15 @@ import {
   coversIndexPath,
   ensureDir,
   outdoorCompositeMp4Path,
+  scriptDirFor,
   takeCoversDir,
   takeStageRunDir,
 } from './paths.ts';
 import { newRunId, nowIso } from './schema.ts';
 import { runCommand } from './subprocess.ts';
+import {
+  resolveScriptCoverForPlatform,
+} from './script-covers.ts';
 
 export type CoverSource = 'browser' | 'iphone' | 'import' | 'duplicate' | 'composite';
 
@@ -177,14 +181,47 @@ export function resolveCoverFileForPlatform(jobId: string, platform: string): {
   const { scriptId, takeId } = resolveJobTake(jobId);
   const index = loadCoversIndex(scriptId, takeId);
   const coverId = index.platformCovers[platform];
-  if (!coverId) {
-    return null;
+  if (coverId) {
+    const filePath = resolveCoverFilePath(scriptId, takeId, coverId);
+    if (filePath) {
+      return { coverId, filePath };
+    }
   }
-  const filePath = resolveCoverFilePath(scriptId, takeId, coverId);
-  if (!filePath) {
-    return null;
+
+  const social = loadSocialHintForCover(scriptId, takeId, jobId);
+  const scriptCover = resolveScriptCoverForPlatform(scriptId, platform, social);
+  if (scriptCover) {
+    return {
+      coverId: `script:${scriptCover.slot}`,
+      filePath: scriptCover.filePath,
+    };
   }
-  return { coverId, filePath };
+  return null;
+}
+
+function loadSocialHintForCover(
+  scriptId: string,
+  takeId: string,
+  jobId: string,
+): {
+  english?: Record<string, unknown>;
+  china?: Record<string, unknown>;
+} {
+  const scriptSocialPath = path.join(scriptDirFor(scriptId), 'social-posts.json');
+  if (fileExists(scriptSocialPath)) {
+    return readJson(scriptSocialPath);
+  }
+  const job = loadJob(jobId);
+  if (job?.selectedRuns.social) {
+    const takeSocialPath = path.join(
+      takeStageRunDir(scriptId, takeId, 'social', job.selectedRuns.social),
+      'social-posts.json',
+    );
+    if (fileExists(takeSocialPath)) {
+      return readJson(takeSocialPath);
+    }
+  }
+  return {};
 }
 
 export function uploadCover(

@@ -6,6 +6,7 @@ import { BeatPlacementsLayer } from "../../components/BeatPlacementsLayer/BeatPl
 import { legacyStickersToPlacements } from "../../lib/placements/beatPlacements";
 import { CompareBeatVideoPanel } from "../../components/CompareBeatVideoPanel/CompareBeatVideoPanel";
 import { OutdoorFilmedClipMask } from "../../components/OutdoorFilmedClipMask/OutdoorFilmedClipMask";
+import { isVoiceOnlyOutdoorTake } from "../../components/FilmedPlaceholders/FilmedPlaceholders";
 import {
   BeatTemplateStage,
   CompareDualPortraitLayout,
@@ -74,6 +75,7 @@ export function OutdoorPortraitSceneView({
   const { fps } = useVideoConfig();
   const scriptFullscreen = outdoorBeatLayout.scriptFullscreen;
   const isAvatarPlaceholder = !outdoorEdit?.videoSrc.trim();
+  const voiceOnlyTake = isVoiceOnlyOutdoorTake(outdoorEdit);
   const activeBeatVideo = compareLayer?.beatVideos?.[outdoorBeatIndex];
   const activePlacements = useMemo(() => {
     const fromLayer = compareLayer?.beatPlacements?.[outdoorBeatIndex];
@@ -184,7 +186,7 @@ export function OutdoorPortraitSceneView({
     </div>
   );
 
-  if (scriptFullscreen && outdoorEdit) {
+  if (scriptFullscreen && outdoorEdit && !voiceOnlyTake) {
     return (
       <div style={portraitShellStyle}>
         <div style={{ position: "relative", flex: 1, minHeight: 0 }}>
@@ -216,8 +218,8 @@ export function OutdoorPortraitSceneView({
     );
   }
 
-  if (!outdoorEdit) {
-    // Studio portrait: CompareDualPortraitLayout owns the top presenter band slot.
+  if (!outdoorEdit || voiceOnlyTake) {
+    // Studio portrait, or AI clone voice-only: full frame for compare panels (no filmed band).
     return <div style={portraitShellStyle}>{beatPanel}</div>;
   }
 

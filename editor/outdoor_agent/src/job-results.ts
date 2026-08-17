@@ -26,7 +26,13 @@ export type StageResultPreview = {
   stage: PipelineStage;
   runId: string | null;
   status: RunStatus | 'pending';
-  videos: Array<{ label: string; url: string }>;
+  videos: Array<{
+    label: string;
+    url: string;
+    fileName: string;
+    stage: PipelineStage;
+    runId: string;
+  }>;
   summary: string[];
   socialTitles: Array<{ group: string; platform: string; title: string; body?: string }>;
   social?: SocialPostsPreview | null;
@@ -65,7 +71,7 @@ function videoIfExists(
   runId: string,
   fileName: string,
   label: string,
-): { label: string; url: string } | null {
+): StageResultPreview['videos'][number] | null {
   const filePath = resolveStageArtifactPath(job.scriptId, job.takeId, stage, runId, fileName);
   if (!filePath) {
     return null;
@@ -73,6 +79,9 @@ function videoIfExists(
   return {
     label,
     url: artifactUrl(job.scriptId, job.takeId, stage, runId, fileName),
+    fileName,
+    stage,
+    runId,
   };
 }
 

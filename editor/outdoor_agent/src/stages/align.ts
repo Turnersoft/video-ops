@@ -84,7 +84,7 @@ export async function runAlignStage(
           [];
         writeJson(path.join(outDir, 'cut-good-intervals.json'), goodIntervals);
       }
-      alignFromSlideEvents({
+      await alignFromSlideEvents({
         job,
         outDir,
         editedVideo,

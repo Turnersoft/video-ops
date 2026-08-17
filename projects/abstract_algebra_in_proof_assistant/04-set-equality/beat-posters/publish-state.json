@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "scriptId": "04-set-equality",
+  "posts": [
+    {
+      "platform": "linkedin",
+      "beatId": "album",
+      "lang": "en",
+      "postId": "cmsr2ci2f0000t17e8frwn5qp",
+      "url": "http://localhost:4007/posts/cmsr2ci2f0000t17e8frwn5qp",
+      "status": "pending",
+      "publishedAt": "2026-08-13T05:14:04.432Z",
+      "imageCount": 12,
+      "stub": false
+    },
+    {
+      "platform": "xiaohongshu",
+      "beatId": "album",
+      "lang": "zh",
+      "postId": "sau-note-xiaohongshu-msw3mbok",
+      "url": "https://example.invalid/xiaohongshu/sau-note-xiaohongshu-msw3mbok",
+      "status": "live",
+      "publishedAt": "2026-08-16T17:47:06.839Z",
+      "imageCount": 12,
+      "stub": false
+    }
+  ]
+}

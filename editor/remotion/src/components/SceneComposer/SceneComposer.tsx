@@ -157,6 +157,7 @@ export function SceneComposer({
                     segments={narrationStrip.segments}
                     durationSeconds={scene.durationSeconds}
                     mode={narrationStrip.mode}
+                    burnCaptionsZh={narrationStrip.burnCaptionsZh}
                     scriptId={scriptId}
                     beatComments={scene.director.beatComments}
                     beatAllowScriptChange={scene.director.beatAllowScriptChange}

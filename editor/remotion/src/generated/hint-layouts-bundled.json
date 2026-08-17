@@ -8,8 +8,8 @@
           "yPct": 38
         },
         "1|lean-code|Nat.zero_add|The terms do not reduce to the same syntax, so t": {
-          "xPct": 18,
-          "yPct": 38
+          "xPct": 20.582939086488135,
+          "yPct": 44.48728154001527
         },
         "3|turn-code|Subset(B, A)|Here '=' is notation for the named SetEq relatio": {
           "xPct": 82,
@@ -63,29 +63,37 @@
           "xPct": 21.374872139618557,
           "yPct": 43.15161073543747
         },
+        "0|lean-code|Set.Subset.antisymm|The two subset hypotheses are the two directions": {
+          "xPct": 82.67056326655985,
+          "yPct": 96
+        },
+        "5|lean-code|isomorphism|An isomorphism preserves structure; it is not no": {
+          "xPct": 28.990456436370415,
+          "yPct": 53.21314307804944
+        },
+        "1|lean-code|Nat.zero_add|`rfl` works only after Lean's conversion checker": {
+          "xPct": 22.807136115221926,
+          "yPct": 52.08968375494302
+        },
+        "1|lean-code|Nat.zero_add|`rfl` works when both sides are already the same": {
+          "xPct": 51.07478836177346,
+          "yPct": 82.9363514509515
+        },
+        "3|lean-code|Nat.zero_add|`rfl` works when Lean can simplify both sides to": {
+          "xPct": 31.874160680526643,
+          "yPct": 50.23702719803646
+        },
         "3|lean-code|Nat.zero_add|`n + 0` hits `Nat.add`'s first case. `0 + n` doe": {
-          "xPct": 26.95,
-          "yPct": 57.983
-        },
-        "5|lean-code|A = B|For sets, `=` is already allowed. Beat 7 shows w": {
-          "xPct": 27.209,
-          "yPct": 54.55
-        },
-        "6|turn-code|Subset(B, A)|`=` on sets is allowed by ordinary `Eq`. `Set.ex": {
-          "xPct": 82,
-          "yPct": 38
+          "xPct": 26.950145793116906,
+          "yPct": 57.982580006007275
         },
         "7|lean-code|funext|`funext` is Lean's helper for “same answer for e": {
-          "xPct": 24.399,
-          "yPct": 44.577
+          "xPct": 24.399136446642792,
+          "yPct": 44.57714915152559
         },
-        "9|lean-code|same group structure|An isomorphism says two groups have matching str": {
-          "xPct": 28.99,
-          "yPct": 53.213
-        },
-        "2|lean-code|Set.ext|`Set.ext` turns pointwise membership equivalence": {
-          "xPct": 28.418122157992734,
-          "yPct": 51.37314114294071
+        "5|lean-code|A = B|For sets, `=` is already allowed. Beat 7 shows w": {
+          "xPct": 27.20853613252494,
+          "yPct": 54.549920133364786
         }
       }
     }
