@@ -2,6 +2,20 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { scanVideoOpsCatalog, resolveSeriesSharedAsset } from "./catalog.ts";
+import {
+  buildCatalogNewAccountPlan,
+  listSavedPublishPlans,
+  saveNewAccountPublishPlan,
+} from "./publish-plan.ts";
+import {
+  buildMassPublishBoardFromCatalog,
+  getActiveMassDispatch,
+  listMassDispatches,
+  loadDispatch,
+  abortMassDispatch,
+  resolveMassDispatchManualItem,
+  startMassDispatch,
+} from "./mass-publish.ts";
 import { fileExists, readJson, writeJson } from "./fs_util.ts";
 import { readAnimationMd, writeAnimationMd } from "./animation-md.ts";
 import { readBeatPosterMd } from "./beat-posters/poster-md.ts";
@@ -76,6 +90,7 @@ import {
   generateAllBeatPosters,
   generateBeatPoster,
   generateBeatPosterCover,
+  getBeatPosterGenerateProgress,
   getBeatPosterPublishState,
   listBeatPosterPlatforms,
   listBeatPosters,
@@ -103,6 +118,12 @@ import {
   testPlatformConnection,
   testProviderConnection,
 } from "./platform-status.ts";
+import {
+  cancelPlatformLogin,
+  getPlatformLogin,
+  platformLoginQrPath,
+  startPlatformLogin,
+} from "./platform-login.ts";
 import {
   runDefaultPipeline,
   runStage,
@@ -220,6 +241,15 @@ export function createServer(options: ServerOptions = {}): OutdoorServer {
           (pathname === "/" || pathname === "/status")
         ) {
           return fileResponse(path.join(WEB_ROOT, "index.html"), request);
+        }
+
+        if (isRead(request.method) && pathname === "/mass-publish") {
+          return new Response(null, {
+            status: 302,
+            headers: {
+              Location: "/#/mass-publish",
+            },
+          });
         }
 
         const webAssetMatch = pathname.match(/^\/app\/(.+)$/);
@@ -472,6 +502,107 @@ export function createServer(options: ServerOptions = {}): OutdoorServer {
 
         if (request.method === "GET" && pathname === "/api/catalog") {
           return jsonResponse(200, scanVideoOpsCatalog());
+        }
+
+        if (request.method === "GET" && pathname === "/api/publish-plan") {
+          const replicaRaw = url.searchParams.get("replicaCount");
+          const plan = buildCatalogNewAccountPlan({
+            seriesId: url.searchParams.get("seriesId") ?? "all",
+            platform: url.searchParams.get("platform") ?? "any",
+            lang: url.searchParams.get("lang") ?? "zh",
+            replicaCount: replicaRaw ? Number(replicaRaw) : 1,
+          });
+          return jsonResponse(200, plan);
+        }
+
+        if (request.method === "GET" && pathname === "/api/publish-plan/saved") {
+          return jsonResponse(200, { plans: listSavedPublishPlans() });
+        }
+
+        if (request.method === "POST" && pathname === "/api/publish-plan/save") {
+          const body = await readJsonBody(request);
+          const plan = buildCatalogNewAccountPlan({
+            seriesId: typeof body.seriesId === "string" ? body.seriesId : "all",
+            platform: typeof body.platform === "string" ? body.platform : "any",
+            lang: typeof body.lang === "string" ? body.lang : "zh",
+            replicaCount: typeof body.replicaCount === "number"
+              ? body.replicaCount
+              : 1,
+          });
+          const saved = saveNewAccountPublishPlan(plan);
+          return jsonResponse(200, { ...saved, plan });
+        }
+
+        if (request.method === "GET" && pathname === "/api/mass-publish") {
+          return jsonResponse(200, buildMassPublishBoardFromCatalog({
+            seriesId: url.searchParams.get("seriesId") ?? "all",
+            lang: url.searchParams.get("lang") ?? "zh",
+          }));
+        }
+
+        if (request.method === "GET" && pathname === "/api/mass-publish/dispatch") {
+          return jsonResponse(200, {
+            dispatch: getActiveMassDispatch(),
+          });
+        }
+
+        if (request.method === "GET" && pathname === "/api/mass-publish/dispatches") {
+          return jsonResponse(200, {
+            dispatches: listMassDispatches(),
+            activeDispatch: getActiveMassDispatch(),
+          });
+        }
+
+        const massDispatchMatch = pathname.match(
+          /^\/api\/mass-publish\/dispatch\/([^/]+)$/,
+        );
+        if (massDispatchMatch && request.method === "GET") {
+          const dispatch = loadDispatch(decodeURIComponent(massDispatchMatch[1]));
+          if (!dispatch) {
+            return jsonResponse(404, { error: "Dispatch not found" });
+          }
+          return jsonResponse(200, { dispatch });
+        }
+
+        if (request.method === "POST" && pathname === "/api/mass-publish/dispatch") {
+          const body = await readJsonBody(request);
+          try {
+            const dispatch = startMassDispatch({ itemIds: body.itemIds });
+            return jsonResponse(200, { dispatch });
+          } catch (error) {
+            return jsonResponse(400, {
+              error: error instanceof Error ? error.message : String(error),
+            });
+          }
+        }
+
+        if (request.method === "POST" && pathname === "/api/mass-publish/dispatch/abort") {
+          try {
+            return jsonResponse(200, { dispatch: abortMassDispatch() });
+          } catch (error) {
+            return jsonResponse(400, {
+              error: error instanceof Error ? error.message : String(error),
+            });
+          }
+        }
+
+        const massManualMatch = pathname.match(
+          /^\/api\/mass-publish\/dispatch\/item\/([^/]+)\/manual$/,
+        );
+        if (massManualMatch && request.method === "POST") {
+          const body = await readJsonBody(request);
+          const result = body.result === "skipped" ? "skipped" : "published";
+          try {
+            const dispatch = resolveMassDispatchManualItem({
+              itemId: decodeURIComponent(massManualMatch[1]),
+              result,
+            });
+            return jsonResponse(200, { dispatch });
+          } catch (error) {
+            return jsonResponse(400, {
+              error: error instanceof Error ? error.message : String(error),
+            });
+          }
         }
 
         if (request.method === "POST" && pathname === "/api/scripts/resync") {
@@ -1092,6 +1223,16 @@ export function createServer(options: ServerOptions = {}): OutdoorServer {
               error: error instanceof Error ? error.message : String(error),
             });
           }
+        }
+
+        const beatPosterGenerateProgressMatch = pathname.match(
+          /^\/api\/scripts\/([^/]+)\/beat-posters\/generate-progress$/,
+        );
+        if (beatPosterGenerateProgressMatch && request.method === "GET") {
+          const scriptId = decodeURIComponent(beatPosterGenerateProgressMatch[1]);
+          return jsonResponse(200, {
+            progress: getBeatPosterGenerateProgress(scriptId),
+          });
         }
 
         const beatPosterAssetMatch = pathname.match(
@@ -2124,6 +2265,49 @@ export function createServer(options: ServerOptions = {}): OutdoorServer {
         ) {
           try {
             return jsonResponse(200, await syncPostizIntegrationsSuggestion());
+          } catch (error) {
+            return jsonResponse(400, {
+              error: error instanceof Error ? error.message : String(error),
+            });
+          }
+        }
+
+        const platformLoginQrMatch = pathname.match(
+          /^\/api\/platforms\/([^/]+)\/login\/qr$/,
+        );
+        if (request.method === "GET" && platformLoginQrMatch) {
+          const platform = decodeURIComponent(platformLoginQrMatch[1]);
+          const qrPath = platformLoginQrPath(platform);
+          if (!qrPath) {
+            return jsonResponse(404, { error: "QR is not ready yet" });
+          }
+          return fileResponse(qrPath, request);
+        }
+
+        const platformLoginCancelMatch = pathname.match(
+          /^\/api\/platforms\/([^/]+)\/login\/cancel$/,
+        );
+        if (request.method === "POST" && platformLoginCancelMatch) {
+          const platform = decodeURIComponent(platformLoginCancelMatch[1]);
+          return jsonResponse(200, {
+            session: cancelPlatformLogin(platform),
+          });
+        }
+
+        const platformLoginMatch = pathname.match(
+          /^\/api\/platforms\/([^/]+)\/login$/,
+        );
+        if (platformLoginMatch && (request.method === "GET" || request.method === "POST")) {
+          const platform = decodeURIComponent(platformLoginMatch[1]);
+          try {
+            if (request.method === "POST") {
+              return jsonResponse(200, {
+                session: await startPlatformLogin(platform),
+              });
+            }
+            return jsonResponse(200, {
+              session: getPlatformLogin(platform),
+            });
           } catch (error) {
             return jsonResponse(400, {
               error: error instanceof Error ? error.message : String(error),

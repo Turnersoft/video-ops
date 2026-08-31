@@ -23,20 +23,20 @@
   Any field left out falls back to auto-derived copy from animation.md.
 -->
 
-## Beat 1: Textbook subset
+## Beat 1: The sentence you already say
 
 ### Title zh
-课本：A 的元素都在 B 里
+课本那句：A 里的，都在 B 里
 
 ### English
-Last clip formalized the set. Today is subset.
+Last time we made a set into a question. Today we compare two of them.
 
-The textbook: `A` is a subset of `B` when every element of `A` is already in `B`.
+`A` is a subset of `B` when every element of `A` is already in `B`.
 
 ### Chinese
-上期把集合写清楚了。这期写子集。
+上期把集合写成一句问话。这期比较两个集合。
 
-课本：`A` 是 `B` 的子集，意思是 `A` 里的每个元素，都已经在 `B` 里。
+`A` 是 `B` 的子集，意思是：`A` 里的每个元素，本来就已经在 `B` 里。
 
 ### Turn-Lang
 ```turn
@@ -57,20 +57,20 @@ Subset is not a new box.
 ### Next zh
 子集不是一个新盒子
 
-## Beat 2: A proposition, not a container
+## Beat 2: A sentence, not a new box
 
 ### Title zh
-子集是命题，不是新容器
+子集是一句话，不是新盒子
 
 ### English
-Subset is not a new container. It is a proposition about two sets you already have.
+Subset does not build a third set. It is a sentence about two sets you already have.
 
-`B` is not built from `A`.
+`B` is not assembled from `A`. You are only asking whether `A` sits inside `B`.
 
 ### Chinese
-子集不是新容器。它是关于两个已有集合的命题。
+子集不会造出第三个集合。它是关于两个已有集合的一句话。
 
-`B` 不是从 `A` 造出来的。
+`B` 不是从 `A` 拼出来的。你只是在问：`A` 是不是待在 `B` 里面。
 
 ### Lean
 ```lean
@@ -81,25 +81,25 @@ def Set (α : Type u) := α → Prop
 lean
 
 ### Next en
-Same Mathlib file as last clip. Subset sits on top.
+You already have membership. Subset uses it twice.
 
 ### Next zh
-还是上期那个 Mathlib 文件，子集叠在上面
+“属于”已经有了。子集只是用两次
 
-## Beat 3: Same Set, Mem, Membership
+## Beat 3: You already have membership
 
 ### Title zh
-还是 Set、Mem、Membership
+“属于”已经有了
 
 ### English
-Same file as last clip: `def Set`, `Set.Mem`, and the `Membership` instance.
+Last clip gave us a set and the symbol `∈`.
 
-Subset is built on those three. No new membership story.
+Subset stands on that. No new story about belonging.
 
 ### Chinese
-还是上期那三个：`def Set`、`Set.Mem`、`Membership` 实例。
+上期已经有了集合，也有了符号 `∈`。
 
-子集叠在这上面。成员故事不用重写。
+子集就站在这上面。不用重讲“属于”是什么。
 
 ### Lean
 ```lean
@@ -114,25 +114,25 @@ namespace Set
 lean
 
 ### Next en
-First line of the new def: two sets in, no set out.
+Two sets go in. No third set comes out.
 
 ### Next zh
-新定义的第一行：进去两个集合，不造新集合
+进去两个集合，不造第三个
 
-## Beat 4: Subset relates two sets
+## Beat 4: Two sets in, no third set out
 
 ### Title zh
-Subset 连的是两个集合
+进去两个集合，不造第三个
 
 ### English
-`protected def Subset` takes `s₁` and `s₂`, both `Set α`.
+Subset takes two sets and relates them.
 
-It relates two sets. It does not create a third.
+It does not manufacture a new collection. The output is a claim: yes, or no.
 
 ### Chinese
-`protected def Subset` 吃 `s₁` 和 `s₂`，都是 `Set α`。
+子集吃进两个集合，说出它们的关系。
 
-它连两个集合，不造第三个。
+它不新造一堆东西。出来的是一句断言：是，或不是。
 
 ### Lean
 ```lean
@@ -144,25 +144,25 @@ namespace Set
 lean
 
 ### Next en
-The body is the textbook rule.
+The body is the sentence from class.
 
 ### Next zh
-函数体就是课本那句话
+函数体就是课堂上那句话
 
-## Beat 5: The body is the textbook rule
+## Beat 5: The body is the sentence from class
 
 ### Title zh
-函数体就是课本原句
+写下来，就是课堂上那句
 
 ### English
-`∀ ⦃a⦄, a ∈ s₁ → a ∈ s₂`. Every `a` in the first set is in the second.
+Every `a` in the first set is in the second.
 
-The double braces make `a` instance-implicit, so Lean infers the element.
+That is the textbook line, written so you can check it element by element.
 
 ### Chinese
-`∀ ⦃a⦄, a ∈ s₁ → a ∈ s₂`。第一个集合里的每个 `a`，都在第二个里。
+第一个集合里的每个 `a`，都在第二个里。
 
-双花括号让 `a` 变成可推断参数，元素类型 Lean 自己补。
+就是课本那一句，写成可以一个个核对的样子。
 
 ### Lean
 ```lean
@@ -175,25 +175,25 @@ namespace Set
 lean
 
 ### Next en
-Those `∈` marks are still last clip's `Set.Mem`.
+Those `∈` marks are last clip’s belonging.
 
 ### Next zh
-这些 `∈`，还是上期的 `Set.Mem`
+这些 ∈，还是上期的“属于”
 
-## Beat 6: ∈ is still Set.Mem
+## Beat 6: If it is in A, it is in B
 
 ### Title zh
-∈ 还是上期那个
+在 A 里，就在 B 里
 
 ### English
-The `∈` symbols still come from `Set.Mem`.
+The `∈` symbols are still last clip’s belonging.
 
-Subset is two membership facts, joined by implication.
+Subset is two membership facts, joined by “if … then …”.
 
 ### Chinese
-这些 `∈` 还是来自 `Set.Mem`。
+这些 `∈` 还是上期那个“属于”。
 
-子集就是两条成员事实，中间加一个蕴含。
+子集就是两条成员事实，中间加一句“如果……那么……”。
 
 ### Lean
 ```lean
@@ -205,25 +205,25 @@ protected def Subset (s₁ s₂ : Set α) :=
 lean
 
 ### Next en
-Register `≤` so two sets can use an order symbol.
+The ≤ you know from numbers can mean “inside”.
 
 ### Next zh
-再注册 ≤，两个集合才能用序符号
+数字里的 ≤，在集合上可以表示“在里面”
 
-## Beat 7: LE makes ≤ mean subset
+## Beat 7: ≤ can mean “inside”
 
 ### Title zh
-LE 一接，≤ 就是子集
+≤ 也可以表示“在里面”
 
 ### English
-Same idea as `Membership`. Implement `LE` on `Set α`, and `≤` means subset.
+On numbers, `≤` means “no larger than”. On sets, the same mark can mean subset.
 
-`⟨Set.Subset⟩` fills the only field.
+One order symbol, a new reading: inside, not smaller-as-a-number.
 
 ### Chinese
-跟 `Membership` 同一套路。在 `Set α` 上实现 `LE`，`≤` 就表示子集。
+在数字上，`≤` 表示“不比它大”。在集合上，同一个记号可以表示子集。
 
-`⟨Set.Subset⟩` 填那一个字段。
+还是序的符号，读法换成：在里面，不是数字上的更小。
 
 ### Lean
 ```lean
@@ -238,25 +238,25 @@ instance : LE (Set α) :=
 lean
 
 ### Next en
-`HasSubset` hangs the ⊆ glyph on that same `≤`.
+⊆ is that same idea with the set symbol.
 
 ### Next zh
-`HasSubset` 把 ⊆ 挂到同一个 ≤ 上
+⊆ 就是同一件事，换上集合的符号
 
-## Beat 8: ⊆ is the same ≤
+## Beat 8: ⊆ is the same idea
 
 ### Title zh
-⊆ 和 ≤，展开是同一个定义
+⊆ 和 ≤，说的是同一件事
 
 ### English
-`HasSubset` registers the subset glyph. It reuses the `LE` notation we just implemented.
+`A ⊆ B` is the subset glyph you already like.
 
-So `A ≤ B` and `A ⊆ B` both desugar to `Set.Subset A B`.
+It points at the same rule as `A ≤ B`: everything in `A` is already in `B`.
 
 ### Chinese
-`HasSubset` 注册子集符号，复用刚接上的 `LE` 记号。
+`A ⊆ B` 就是你喜欢的那个子集符号。
 
-所以 `A ≤ B` 和 `A ⊆ B` 展开都是 `Set.Subset A B`。
+它和 `A ≤ B` 指向同一条规则：`A` 里的，本来就在 `B` 里。
 
 ### Lean
 ```lean
@@ -269,25 +269,25 @@ instance : HasSubset (Set α) := ⟨(· ≤ ·)⟩
 lean
 
 ### Next en
-One def, two instances. That is Lean's subset.
+One rule. Two ways to write it.
 
 ### Next zh
-一个定义，两个实例。Lean 的子集就这些
+一条规则，两种写法
 
-## Beat 9: Lean's subset in one file
+## Beat 9: One rule, two ways to write it
 
 ### Title zh
-Lean 的子集，一张图看完
+一条规则，两种写法
 
 ### English
-One def for the rule. Two instances: order symbol, subset symbol.
+One sentence for the mathematics. Two notations so you can write it as order or as subset.
 
-Both notations point at `Set.Subset`. The rule itself is the forall.
+The rule itself is still that “for every” from class.
 
 ### Chinese
-一个定义写规则。两个实例：一个接序符号，一个接子集符号。
+数学就那一句。两套记号，让你既能写成序，也能写成子集。
 
-两套记号都指向 `Set.Subset`。规则本身就是那个全称命题。
+规则本身，还是课堂上那个“对每一个”。
 
 ### Lean
 ```lean
@@ -304,25 +304,25 @@ end Set
 lean
 
 ### Next en
-Turn-Lang: same rule, declared as a relation.
+You can also write the relation in one block.
 
 ### Next zh
-Turn-Lang：同一条规则，写成关系
+也可以把这层关系写在一块
 
-## Beat 10: Turn names the relation
+## Beat 10: Write the relation in one place
 
 ### Title zh
-Turn-Lang 把关系写在明面上
+把这层关系写在一块
 
 ### English
-Same rule, declared as `relation Subset`. It takes a type `T` and two sets `A B : Set<T>`.
+Same rule, declared as a relation between two sets.
 
-`PropModified` means several proposition variants can share the name. The strict one is next clip.
+The strict version — properly inside — waits for the next clip.
 
 ### Chinese
-同一条规则，写成 `relation Subset`。吃一个类型 `T`，再吃两个 `Set<T>`。
+还是那条规则，写成两个集合之间的关系。
 
-`PropModified` 表示好几个命题变体可以共用这个名字。严格的那个，下期再讲。
+更严格的那种——真的在里面，而且不一样——留给下期。
 
 ### Turn-Lang
 ```turn
@@ -341,7 +341,7 @@ turn
 Same math. Different layout.
 
 ### Next zh
-数学一样，版式不一样
+数学一样，摆法不一样
 
 ## Beat 11: Same math, two layouts
 
@@ -349,14 +349,14 @@ Same math. Different layout.
 同一句话，两种摆法
 
 ### English
-Lean splits the def of `Subset` from its notation. Turn keeps the relation and `@notation` in one block.
+One layout splits the rule from its symbol. The other keeps them in one block.
 
-Same forall. You read it in different places.
+You are reading the same “for every”. Only the page looks different.
 
 ### Chinese
-Lean 把 `Subset` 的定义和记号拆开。Turn 把关系和 `@notation` 放在同一块。
+一种摆法把规则和符号拆开。另一种写在同一块。
 
-都是那个全称命题。你读到的位置不一样。
+读到的都是那个“对每一个”。变的只是版式。
 
 ### Turn-Lang
 ```turn
@@ -372,25 +372,25 @@ relation Subset(T: Any, A B: Set<T>): PropModified {
 turn
 
 ### Next en
-Next clip: proper subset — the strict version.
+Next: strictly inside.
 
 ### Next zh
-下期：真子集，严格的那种
+下期：真的在里面
 
-## Beat 12: Next clip is proper subset
+## Beat 12: Next: strictly inside
 
 ### Title zh
-下期：真子集
+下期：真的在里面
 
 ### English
-Ordinary subset is `A ⊆ B`. Proper subset adds that they are not the same set.
+Ordinary subset is `A ⊆ B`. Proper subset adds: they are not the same set.
 
-That is the next clip.
+That extra honesty is the next clip.
 
 ### Chinese
-普通子集是 `A ⊆ B`。真子集还要加上：这两个集合不是同一个。
+普通子集是 `A ⊆ B`。真子集还要加一句：这两个集合不是同一个。
 
-下期就讲这个。
+多出来的那句老实话，就是下期。
 
 ### Turn-Lang
 ```turn

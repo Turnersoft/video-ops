@@ -1,0 +1,176 @@
+{
+  "id": "squat-msyu0lmi",
+  "startedAt": "2026-08-18T15:43:02.010Z",
+  "status": "cancelled",
+  "items": [
+    {
+      "id": "03-proper-subset::infographic::zh::xiaohongshu",
+      "title": "3. 真子集：⊂ 就是 ⊆ 的严格序 · 信息图 · xiaohongshu",
+      "episodeTitle": "3. 真子集：⊂ 就是 ⊆ 的严格序",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "xiaohongshu",
+      "scriptId": "03-proper-subset",
+      "status": "cancelled",
+      "progress": "Stopped",
+      "startedAt": "2026-08-18T15:43:02.011Z",
+      "error": "Stopped by Clear queue",
+      "errorDetail": "Stopped by Clear queue",
+      "finishedAt": "2026-08-18T15:43:13.310Z"
+    },
+    {
+      "id": "03-proper-subset::infographic::zh::bilibili",
+      "title": "3. 真子集：⊂ 就是 ⊆ 的严格序 · 信息图 · bilibili",
+      "episodeTitle": "3. 真子集：⊂ 就是 ⊆ 的严格序",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "bilibili",
+      "scriptId": "03-proper-subset",
+      "status": "cancelled",
+      "progress": "Stopped before start",
+      "error": "Stopped by Clear queue",
+      "errorDetail": "Stopped by Clear queue",
+      "finishedAt": "2026-08-18T15:43:11.444Z"
+    },
+    {
+      "id": "03-proper-subset::infographic::zh::douyin",
+      "title": "3. 真子集：⊂ 就是 ⊆ 的严格序 · 信息图 · douyin",
+      "episodeTitle": "3. 真子集：⊂ 就是 ⊆ 的严格序",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "douyin",
+      "scriptId": "03-proper-subset",
+      "status": "cancelled",
+      "progress": "Stopped before start",
+      "error": "Stopped by Clear queue",
+      "errorDetail": "Stopped by Clear queue",
+      "finishedAt": "2026-08-18T15:43:11.444Z"
+    },
+    {
+      "id": "03-proper-subset::infographic::zh::weibo",
+      "title": "3. 真子集：⊂ 就是 ⊆ 的严格序 · 信息图 · weibo",
+      "episodeTitle": "3. 真子集：⊂ 就是 ⊆ 的严格序",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "weibo",
+      "scriptId": "03-proper-subset",
+      "status": "cancelled",
+      "progress": "Stopped before start",
+      "error": "Stopped by Clear queue",
+      "errorDetail": "Stopped by Clear queue",
+      "finishedAt": "2026-08-18T15:43:11.444Z"
+    },
+    {
+      "id": "03-proper-subset::infographic::zh::wechat_channels",
+      "title": "3. 真子集：⊂ 就是 ⊆ 的严格序 · 信息图 · wechat_channels",
+      "episodeTitle": "3. 真子集：⊂ 就是 ⊆ 的严格序",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "wechat_channels",
+      "scriptId": "03-proper-subset",
+      "status": "cancelled",
+      "progress": "Stopped before start",
+      "error": "Stopped by Clear queue",
+      "errorDetail": "Stopped by Clear queue",
+      "finishedAt": "2026-08-18T15:43:11.444Z"
+    },
+    {
+      "id": "03-proper-subset::infographic::zh::kuaishou",
+      "title": "3. 真子集：⊂ 就是 ⊆ 的严格序 · 信息图 · kuaishou",
+      "episodeTitle": "3. 真子集：⊂ 就是 ⊆ 的严格序",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "kuaishou",
+      "scriptId": "03-proper-subset",
+      "status": "cancelled",
+      "progress": "Stopped before start",
+      "error": "Stopped by Clear queue",
+      "errorDetail": "Stopped by Clear queue",
+      "finishedAt": "2026-08-18T15:43:11.444Z"
+    }
+  ],
+  "events": [
+    {
+      "at": "2026-08-18T15:43:02.010Z",
+      "level": "info",
+      "message": "Squat started with 6 items"
+    },
+    {
+      "at": "2026-08-18T15:43:02.010Z",
+      "level": "info",
+      "message": "Running 6 uploads in click order"
+    },
+    {
+      "at": "2026-08-18T15:43:02.011Z",
+      "itemId": "03-proper-subset::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "Started xiaohongshu infographic 03-proper-subset"
+    },
+    {
+      "at": "2026-08-18T15:43:02.012Z",
+      "itemId": "03-proper-subset::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Using existing posters"
+    },
+    {
+      "at": "2026-08-18T15:43:02.013Z",
+      "itemId": "03-proper-subset::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Using 21 existing posters"
+    },
+    {
+      "at": "2026-08-18T15:43:02.033Z",
+      "itemId": "03-proper-subset::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Uploading 21 existing posters to xiaohongshu"
+    },
+    {
+      "at": "2026-08-18T15:43:11.444Z",
+      "level": "warn",
+      "message": "Clear queue: stopping squat"
+    },
+    {
+      "at": "2026-08-18T15:43:11.502Z",
+      "itemId": "03-proper-subset::infographic::zh::xiaohongshu",
+      "level": "warn",
+      "message": "xiaohongshu: Stopping upload"
+    },
+    {
+      "at": "2026-08-18T15:43:11.954Z",
+      "itemId": "03-proper-subset::infographic::zh::xiaohongshu",
+      "level": "warn",
+      "message": "xiaohongshu: Killing sau process"
+    },
+    {
+      "at": "2026-08-18T15:43:12.406Z",
+      "itemId": "03-proper-subset::infographic::zh::xiaohongshu",
+      "level": "warn",
+      "message": "xiaohongshu: Closing publisher"
+    },
+    {
+      "at": "2026-08-18T15:43:12.859Z",
+      "itemId": "03-proper-subset::infographic::zh::xiaohongshu",
+      "level": "warn",
+      "message": "xiaohongshu: Stopped"
+    },
+    {
+      "at": "2026-08-18T15:43:13.311Z",
+      "itemId": "03-proper-subset::infographic::zh::xiaohongshu",
+      "level": "warn",
+      "message": "xiaohongshu infographic stopped"
+    },
+    {
+      "at": "2026-08-18T15:43:13.312Z",
+      "level": "warn",
+      "message": "Squat stopped: 0 live, 6 stopped"
+    }
+  ],
+  "summary": {
+    "queued": 0,
+    "published": 0,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 6
+  },
+  "finishedAt": "2026-08-18T15:43:13.312Z"
+}

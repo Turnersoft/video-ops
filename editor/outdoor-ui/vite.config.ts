@@ -13,7 +13,24 @@ const agentProxyPort = Number(
 );
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    {
+      name: 'mass-publish-route',
+      configureServer(server) {
+        server.middlewares.use((req, res, next) => {
+          const pathName = req.url?.split('?')[0];
+          if (pathName === '/mass-publish' || pathName === '/mass-publish/') {
+            res.statusCode = 302;
+            res.setHeader('Location', '/#/mass-publish');
+            res.end();
+            return;
+          }
+          next();
+        });
+      },
+    },
+  ],
   optimizeDeps: {
     // Keep .web.js resolution for SafeAreaProvider (prebundle pulls native specs otherwise).
     exclude: ['react-native-safe-area-context'],

@@ -1,0 +1,178 @@
+{
+  "id": "squat-mswy4wex",
+  "startedAt": "2026-08-17T08:02:48.729Z",
+  "status": "done",
+  "items": [
+    {
+      "id": "01-set::infographic::zh::weibo",
+      "title": "1. 集合：不是一袋子东西，是一条判定 · 信息图 · weibo",
+      "episodeTitle": "1. 集合：不是一袋子东西，是一条判定",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "weibo",
+      "scriptId": "01-set",
+      "status": "published",
+      "progress": "Published",
+      "startedAt": "2026-08-17T08:02:48.730Z",
+      "url": "https://weibo.com/7931125666/RdOKdz4Jn\u001b[0m",
+      "postId": "sau-note-weibo-mswy6hdq",
+      "finishedAt": "2026-08-17T08:04:02.560Z"
+    }
+  ],
+  "events": [
+    {
+      "at": "2026-08-17T08:02:48.729Z",
+      "level": "info",
+      "message": "Squat started with 1 items"
+    },
+    {
+      "at": "2026-08-17T08:02:48.729Z",
+      "level": "info",
+      "message": "Running 1 uploads across 1 platforms in parallel"
+    },
+    {
+      "at": "2026-08-17T08:02:48.730Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "Started weibo infographic 01-set"
+    },
+    {
+      "at": "2026-08-17T08:02:48.731Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Loading script beats"
+    },
+    {
+      "at": "2026-08-17T08:02:48.737Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating cover image"
+    },
+    {
+      "at": "2026-08-17T08:02:52.404Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 1/17"
+    },
+    {
+      "at": "2026-08-17T08:02:55.600Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 2/17"
+    },
+    {
+      "at": "2026-08-17T08:02:58.168Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 3/17"
+    },
+    {
+      "at": "2026-08-17T08:03:01.298Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 4/17"
+    },
+    {
+      "at": "2026-08-17T08:03:04.565Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 5/17"
+    },
+    {
+      "at": "2026-08-17T08:03:07.734Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 6/17"
+    },
+    {
+      "at": "2026-08-17T08:03:10.902Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 7/17"
+    },
+    {
+      "at": "2026-08-17T08:03:14.094Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 8/17"
+    },
+    {
+      "at": "2026-08-17T08:03:17.324Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 9/17"
+    },
+    {
+      "at": "2026-08-17T08:03:20.505Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 10/17"
+    },
+    {
+      "at": "2026-08-17T08:03:23.651Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 11/17"
+    },
+    {
+      "at": "2026-08-17T08:03:26.256Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 12/17"
+    },
+    {
+      "at": "2026-08-17T08:03:28.805Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 13/17"
+    },
+    {
+      "at": "2026-08-17T08:03:31.989Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 14/17"
+    },
+    {
+      "at": "2026-08-17T08:03:35.271Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 15/17"
+    },
+    {
+      "at": "2026-08-17T08:03:38.467Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 16/17"
+    },
+    {
+      "at": "2026-08-17T08:03:41.028Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 17/17"
+    },
+    {
+      "at": "2026-08-17T08:03:44.360Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Uploading 18 images to weibo"
+    },
+    {
+      "at": "2026-08-17T08:04:02.560Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo published https://weibo.com/7931125666/RdOKdz4Jn\u001b[0m"
+    },
+    {
+      "at": "2026-08-17T08:04:02.561Z",
+      "level": "info",
+      "message": "Squat done: 1 live, 0 failed"
+    }
+  ],
+  "summary": {
+    "queued": 0,
+    "published": 1,
+    "failed": 0,
+    "skipped": 0
+  },
+  "finishedAt": "2026-08-17T08:04:02.561Z"
+}

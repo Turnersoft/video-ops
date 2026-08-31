@@ -3,10 +3,10 @@ videoOps: 1
 scriptId: 04-set-equality
 title: 04_set_equality
 fps: 30
-socialTitleEnglish: "4. Set equality: what the equal sign means in a proof assistant"
-socialTitleChina: "4. 集合相等：证明助手里的等号是什么意思"
-promotionalDescription: "Think = is obvious? Lean makes you earn it. We prove 1 = 1 with rfl, watch when Lean simplifies on its own and when it needs a library theorem, then climb the ladder: same members for sets, same answers for functions, same structure—not the same data—for groups. Episode 4 of Abstract Algebra in a Proof Assistant."
-promotionalDescriptionChina: "等号看起来理所当然，在 Lean 4 里却要一步一步挣出来。从 1 = 1 和 rfl 开始，看 Lean 什么时候自己算过去、什么时候需要库里定理；再往上——集合比成员，函数比每个输入的答案，群比结构而不是字面数据。抽象代数证明助手第 4 期，户外讲，屏幕验。"
+socialTitleEnglish: "4. Set equality: what the equals sign is asking"
+socialTitleChina: "4. 集合相等：等号到底在比什么"
+promotionalDescription: "The equals sign asks what has to match — members, answers, or structure. Name the layer, then the claim becomes something you can prove."
+promotionalDescriptionChina: "等号不是魔法，它只是在问两边要一样在哪。先点名层次：成员、答案，还是结构，再去证。"
 format: landscape
 width: 1920
 height: 1080

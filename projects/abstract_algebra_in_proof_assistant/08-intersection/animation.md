@@ -2,6 +2,10 @@
 videoOps: 1
 scriptId: 08-intersection
 title: 08_intersection
+socialTitleEnglish: "8. Intersection: in A and in B"
+socialTitleChina: "8. 交集：同时在两边"
+promotionalDescription: "Intersection keeps only the things that sit in both A and B."
+promotionalDescriptionChina: "交集（intersection）也是第三个集合。一个对象属于交集，意思是：它属于 A，并且属于 B。"
 format: landscape
 fps: 30
 width: 1920

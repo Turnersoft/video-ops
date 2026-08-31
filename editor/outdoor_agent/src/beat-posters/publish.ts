@@ -1,7 +1,6 @@
 import path from 'node:path';
 
 import { fileExists, readJson, writeJson } from '../fs_util.ts';
-import { buildLiveScript } from '../live-script.ts';
 import { readAnimationMd } from '../animation-md.ts';
 import {
   postizIntegrationIdFor,
@@ -12,32 +11,32 @@ import {
 } from '../publish/postiz.ts';
 import {
   publishNoteAlbumToSau,
+  publishToSau,
   sauPublishMode,
 } from '../publish/sau.ts';
-import { scriptBeatPosterPublishStatePath, scriptDirFor } from '../paths.ts';
+import { scriptBeatPosterPngPath, scriptBeatPosterPublishStatePath, scriptBeatPostersDir, scriptBeatPostersLangDir, scriptDirFor } from '../paths.ts';
+import { renderBeatPosterSlideshow } from './slideshow.ts';
 import { parseAnimationFrontmatter } from './content.ts';
 import {
   buildBeatPosterPlatformPreviews,
   BEAT_POSTER_SAU_NOTE_PLATFORMS,
+  BEAT_POSTER_SAU_VIDEO_PLATFORMS,
   isBeatPosterPostizPlatform,
+  isBeatPosterSauAutoPlatform,
   isBeatPosterSauNotePlatform,
+  isBeatPosterSauVideoPlatform,
   loadInfographicCopyFromSocial,
   listBeatPosterReviewPlatforms,
   type BeatPosterSocialPostsFile,
 } from '../../../../src/beatPosterPublishPreview.ts';
 import { beatPosterPreviewJpegUrl } from './preview-jpeg.ts';
-import {
-  generateBeatPoster,
-  generateBeatPosterCover,
-  listBeatPosters,
-} from './generate.ts';
+import { listBeatPosters } from './generate.ts';
 import type {
   BeatPosterLang,
   BeatPosterPublishPreview,
   BeatPosterPublishRecord,
   BeatPosterPublishState,
 } from './types.ts';
-import { BEAT_POSTER_COVER_ID } from './types.ts';
 import type { PublishVisibility } from '../schema.ts';
 
 const ALBUM_BEAT_ID = 'album';
@@ -68,12 +67,16 @@ function publishKey(platform: string, lang: BeatPosterLang): string {
 }
 
 export function listBeatPosterPlatforms(): string[] {
-  return [...POSTIZ_IMAGE_PLATFORMS, ...BEAT_POSTER_SAU_NOTE_PLATFORMS];
+  return [
+    ...POSTIZ_IMAGE_PLATFORMS,
+    ...BEAT_POSTER_SAU_NOTE_PLATFORMS,
+    ...BEAT_POSTER_SAU_VIDEO_PLATFORMS,
+  ];
 }
 
 export function listBeatPosterPublishPlatforms(lang: BeatPosterLang): string[] {
   return lang === 'zh'
-    ? [...BEAT_POSTER_SAU_NOTE_PLATFORMS]
+    ? [...BEAT_POSTER_SAU_NOTE_PLATFORMS, ...BEAT_POSTER_SAU_VIDEO_PLATFORMS]
     : [...POSTIZ_IMAGE_PLATFORMS];
 }
 
@@ -125,6 +128,50 @@ function sortedAlbumPosters<T extends { beatIndex: number }>(posters: T[]): T[] 
   return [...posters].sort((a, b) => a.beatIndex - b.beatIndex);
 }
 
+export function existingBeatPosterAlbumPngs(
+  scriptId: string,
+  lang: BeatPosterLang,
+): string[] {
+  const langDir = scriptBeatPostersLangDir(scriptId, lang);
+  const nestedCover = scriptBeatPosterPngPath(scriptId, 'cover', lang);
+  if (fileExists(nestedCover)) {
+    const beatNames: string[] = [];
+    for (const entry of Deno.readDirSync(langDir)) {
+      if (!entry.isFile) {
+        continue;
+      }
+      if (entry.name.startsWith('beat-') && entry.name.endsWith('.png')) {
+        beatNames.push(entry.name);
+      }
+    }
+    beatNames.sort();
+    if (!beatNames.length) {
+      throw new Error(`No beat-*.png files in beat-posters/${path.basename(langDir)}`);
+    }
+    return [nestedCover, ...beatNames.map((name) => path.join(langDir, name))];
+  }
+
+  const dir = scriptBeatPostersDir(scriptId);
+  const coverPath = path.join(dir, `cover-${lang}.png`);
+  if (!fileExists(coverPath)) {
+    throw new Error(`Missing cover PNG — generate posters in the preview first`);
+  }
+  const beatNames: string[] = [];
+  for (const entry of Deno.readDirSync(dir)) {
+    if (!entry.isFile) {
+      continue;
+    }
+    if (entry.name.startsWith('beat-') && entry.name.endsWith(`-${lang}.png`)) {
+      beatNames.push(entry.name);
+    }
+  }
+  beatNames.sort();
+  if (!beatNames.length) {
+    throw new Error(`No beat-*-${lang}.png files in beat-posters — use the previewed PNGs`);
+  }
+  return [coverPath, ...beatNames.map((name) => path.join(dir, name))];
+}
+
 export async function buildBeatPosterPublishPreview(
   scriptId: string,
   lang: BeatPosterLang,
@@ -154,18 +201,30 @@ export async function publishBeatPosterAlbum(params: {
   scriptId: string;
   lang: BeatPosterLang;
   platform: string;
+  republish?: boolean;
+  onProgress?: (message: string) => void;
+  abortKey?: string;
+  shouldAbort?: () => boolean;
 }): Promise<{ publishState: BeatPosterPublishState; record: BeatPosterPublishRecord }> {
-  const { scriptId, lang, platform } = params;
+  const { scriptId, lang, platform, republish, onProgress, abortKey, shouldAbort } = params;
+  const report = (message: string): void => {
+    onProgress?.(message);
+  };
+  const throwIfStopped = (): void => {
+    if (shouldAbort?.()) {
+      throw new Error('Stopped by Clear queue');
+    }
+  };
   if (lang === 'en' && !isBeatPosterPostizPlatform(platform)) {
     throw new Error(`${platform} is not a Postiz infographic platform for English albums`);
   }
-  if (lang === 'zh' && !isBeatPosterSauNotePlatform(platform)) {
-    throw new Error(`${platform} is not a SAU note platform for 中文 albums — use manual upload`);
+  if (lang === 'zh' && !isBeatPosterSauAutoPlatform(platform)) {
+    throw new Error(`${platform} is not a SAU platform for 中文 albums — use manual upload`);
   }
   if (lang === 'zh' && isBeatPosterPostizPlatform(platform)) {
     throw new Error(`${platform} uses Postiz for English albums only — switch language to EN`);
   }
-  if (lang === 'en' && isBeatPosterSauNotePlatform(platform)) {
+  if (lang === 'en' && isBeatPosterSauAutoPlatform(platform)) {
     throw new Error(`${platform} uses SAU for 中文 albums — switch language to 中文`);
   }
 
@@ -177,23 +236,19 @@ export async function publishBeatPosterAlbum(params: {
       (entry.status === 'live' || entry.status === 'pending'),
   );
   if (existing) {
-    throw new Error(
-      `Already published ${lang} infographic album to ${platform} — hide/delete in creator studio first`,
-    );
+    if (!republish) {
+      throw new Error(
+        `Already published ${lang} infographic album to ${platform} — hide/delete in creator studio first`,
+      );
+    }
+    existing.status = 'deleted';
+    savePublishState(state);
   }
 
-  const live = await buildLiveScript(scriptId);
-  if (!live?.beats.length) {
-    throw new Error(`No beats found for ${scriptId}`);
-  }
-
-  const imagePaths: string[] = [];
-  const cover = await generateBeatPosterCover(scriptId, lang);
-  imagePaths.push(cover.pngPath);
-  for (const beat of live.beats) {
-    const poster = await generateBeatPoster(scriptId, beat.id, lang);
-    imagePaths.push(poster.pngPath);
-  }
+  throwIfStopped();
+  report('Using existing posters');
+  const imagePaths = existingBeatPosterAlbumPngs(scriptId, lang);
+  report(`Using ${imagePaths.length} existing posters`);
 
   const preview = await buildBeatPosterPublishPreview(scriptId, lang);
   const platformPreview = preview.platforms.find((entry) => entry.platform === platform);
@@ -220,6 +275,8 @@ export async function publishBeatPosterAlbum(params: {
     if (!postizIntegrationIdFor(platform)) {
       throw new Error(`No Postiz integration for ${platform} — Sync on #/platforms`);
     }
+    throwIfStopped();
+    report(`Uploading ${imagePaths.length} images to ${platform}`);
     record = await publishImagesAlbumToPostiz({
       platform,
       imagePaths,
@@ -232,12 +289,49 @@ export async function publishBeatPosterAlbum(params: {
     if (sauPublishMode() !== 'live') {
       throw new Error('SAU is in stub mode — enable live on #/platforms');
     }
+    throwIfStopped();
+    report(`Uploading ${imagePaths.length} existing posters to ${platform}`);
     const sauResult = await publishNoteAlbumToSau({
       platform,
       imagePaths,
       title: copy.title,
       note: platformPreview?.body ?? copy.body,
       jobId: `script-${scriptId}`,
+      abortKey,
+    });
+    record = {
+      postId: sauResult.postId,
+      url: sauResult.url,
+      status: sauResult.status,
+      publishedAt: sauResult.publishedAt,
+      stub: sauResult.stub,
+    };
+  } else if (isBeatPosterSauVideoPlatform(platform)) {
+    if (sauPublishMode() !== 'live') {
+      throw new Error('SAU is in stub mode — enable live on #/platforms');
+    }
+    const slideshowPath = path.join(scriptBeatPostersDir(scriptId), `album-${lang}.mp4`);
+    throwIfStopped();
+    if (fileExists(slideshowPath)) {
+      report('Using existing slideshow');
+    } else {
+      report('Rendering slideshow from existing posters');
+      await renderBeatPosterSlideshow({
+        imagePaths,
+        outputPath: slideshowPath,
+        abortKey,
+      });
+    }
+    throwIfStopped();
+    report(`Uploading existing slideshow to ${platform}`);
+    const sauResult = await publishToSau({
+      platform,
+      videoPath: slideshowPath,
+      title: copy.title,
+      description: platformPreview?.body ?? copy.body,
+      jobId: `script-${scriptId}`,
+      compositeRunId: 'poster-album',
+      abortKey,
     });
     record = {
       postId: sauResult.postId,
@@ -330,6 +424,41 @@ export function getBeatPosterPublishState(scriptId: string): BeatPosterPublishSt
   return loadPublishState(scriptId);
 }
 
+/**
+ * Record an album you published by hand in the creator app (browser handoff).
+ * No upload happens here — the note already exists on the platform.
+ */
+export function recordManualBeatPosterAlbumPublish(params: {
+  scriptId: string;
+  lang: BeatPosterLang;
+  platform: string;
+  imageCount?: number;
+}): { publishState: BeatPosterPublishState; record: BeatPosterPublishRecord } {
+  const { scriptId, lang, platform, imageCount } = params;
+  const state = loadPublishState(scriptId);
+  const key = publishKey(platform, lang);
+  for (const entry of state.posts) {
+    if (
+      publishKey(entry.platform, entry.lang) === key &&
+      (entry.status === 'live' || entry.status === 'pending')
+    ) {
+      entry.status = 'deleted';
+    }
+  }
+  state.posts.push({
+    platform,
+    beatId: ALBUM_BEAT_ID,
+    lang,
+    postId: `manual-${platform}-${Date.now().toString(36)}`,
+    url: '',
+    status: 'live',
+    publishedAt: new Date().toISOString(),
+    imageCount,
+  });
+  savePublishState(state);
+  return { publishState: state, record: state.posts[state.posts.length - 1] };
+}
+
 export async function revertBeatPosterAlbumPublish(params: {
   scriptId: string;
   platform: string;
@@ -375,7 +504,7 @@ export function beatPosterPublishErrorPayload(
   const lower = message.toLowerCase();
   let step = 'publish';
   if (lower.includes('stub mode') || lower.includes('integration')) {
-    step = isBeatPosterSauNotePlatform(platform) ? 'sau_config' : 'postiz_config';
+    step = isBeatPosterSauAutoPlatform(platform) ? 'sau_config' : 'postiz_config';
   } else if (lower.includes('already published')) {
     step = 'duplicate_check';
   } else if (lower.includes('no beats') || lower.includes('png')) {
@@ -388,7 +517,7 @@ export function beatPosterPublishErrorPayload(
 
   let hint: string | undefined;
   if (lower.includes('stub mode')) {
-    hint = isBeatPosterSauNotePlatform(platform)
+    hint = isBeatPosterSauAutoPlatform(platform)
       ? 'Open #/platforms → switch SAU from stub to live mode, then retry.'
       : 'Open #/platforms → switch Postiz from stub to live mode, then retry.';
   } else if (lower.includes('integration')) {

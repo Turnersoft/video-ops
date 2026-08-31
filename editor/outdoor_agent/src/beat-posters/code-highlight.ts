@@ -25,7 +25,8 @@ const LEAN_TACTICS = new Set([
 const LEAN_OPERATORS = new Set(['=>', ':=', '→', '∀', '∃', '|']);
 
 const TURN_STRUCTURE = new Set([
-  'theorem', 'relation', 'proof', 'struct', 'enum', 'namespace', 'module', 'import',
+  'theorem', 'relation', 'relations', 'law', 'proof', 'struct', 'structure',
+  'enum', 'namespace', 'module', 'import',
   'use', 'notation', 'def', 'infix', 'prefix', 'postfix', 'variable', 'where',
   'match', 'let', 'if', 'then', 'else',
 ]);
@@ -156,7 +157,7 @@ function highlightTurnLine(line: string): string {
   return out;
 }
 
-export function trimCodeLines(code: string, maxLines = 9): string[] {
+export function trimCodeLines(code: string, maxLines = 64): string[] {
   return code
     .replace(/\r\n/g, '\n')
     .split('\n')
@@ -169,9 +170,8 @@ export function fitCodeLines(
   code: string,
   maxLines: number,
 ): { lines: string[]; usedLines: number } {
-  const source = trimCodeLines(code, 24);
-  const trimmed = source.slice(0, Math.max(6, maxLines));
-  return { lines: trimmed, usedLines: trimmed.length };
+  const source = trimCodeLines(code, Math.max(64, maxLines));
+  return { lines: source, usedLines: source.length };
 }
 
 export function highlightLeanCodeHtml(code: string, maxLines = 9): string {

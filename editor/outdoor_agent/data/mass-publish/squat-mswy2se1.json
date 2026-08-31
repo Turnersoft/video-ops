@@ -1,0 +1,178 @@
+{
+  "id": "squat-mswy2se1",
+  "startedAt": "2026-08-17T08:01:10.201Z",
+  "status": "failed",
+  "items": [
+    {
+      "id": "01-set::infographic::zh::weibo",
+      "title": "1. 集合：不是一袋子东西，是一条判定 · 信息图 · weibo",
+      "episodeTitle": "1. 集合：不是一袋子东西，是一条判定",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "weibo",
+      "scriptId": "01-set",
+      "status": "failed",
+      "startedAt": "2026-08-17T08:01:10.203Z",
+      "error": "weibo note failed: usage: sau [-h]",
+      "errorDetail": "sau weibo upload-note --account default --title 01 集合｜Lean 判定 vs Turn-Lang 容器 --images /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/cover-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-01-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-02-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-03-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-04-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-05-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-06-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-07-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-08-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-09-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-10-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-11-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-12-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-13-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-14-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-15-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-16-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-17-zh.png --headed --note 集合不是一袋子东西。Lean：α → Prop + Mem + ∈。Turn-Lang：容器 + relations。18 张信息图左滑。抽象代数第 1 期 #TurnLang #Lean4 #证明助手 --tags TurnLang,Lean4,证明助手 failed: usage: sau [-h]\n           {douyin,kuaishou,xiaohongshu,bilibili,tencent,weibo,youtube} ...\nsau: error: unrecognized arguments: --headed",
+      "finishedAt": "2026-08-17T08:02:06.533Z"
+    }
+  ],
+  "events": [
+    {
+      "at": "2026-08-17T08:01:10.202Z",
+      "level": "info",
+      "message": "Squat started with 1 items"
+    },
+    {
+      "at": "2026-08-17T08:01:10.202Z",
+      "level": "info",
+      "message": "Running 1 uploads across 1 platforms in parallel"
+    },
+    {
+      "at": "2026-08-17T08:01:10.203Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "Started weibo infographic 01-set"
+    },
+    {
+      "at": "2026-08-17T08:01:10.204Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Loading script beats"
+    },
+    {
+      "at": "2026-08-17T08:01:10.212Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating cover image"
+    },
+    {
+      "at": "2026-08-17T08:01:12.951Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 1/17"
+    },
+    {
+      "at": "2026-08-17T08:01:16.215Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 2/17"
+    },
+    {
+      "at": "2026-08-17T08:01:19.399Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 3/17"
+    },
+    {
+      "at": "2026-08-17T08:01:21.961Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 4/17"
+    },
+    {
+      "at": "2026-08-17T08:01:24.567Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 5/17"
+    },
+    {
+      "at": "2026-08-17T08:01:27.715Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 6/17"
+    },
+    {
+      "at": "2026-08-17T08:01:30.934Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 7/17"
+    },
+    {
+      "at": "2026-08-17T08:01:34.179Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 8/17"
+    },
+    {
+      "at": "2026-08-17T08:01:37.311Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 9/17"
+    },
+    {
+      "at": "2026-08-17T08:01:40.593Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 10/17"
+    },
+    {
+      "at": "2026-08-17T08:01:43.750Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 11/17"
+    },
+    {
+      "at": "2026-08-17T08:01:46.862Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 12/17"
+    },
+    {
+      "at": "2026-08-17T08:01:50.052Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 13/17"
+    },
+    {
+      "at": "2026-08-17T08:01:53.229Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 14/17"
+    },
+    {
+      "at": "2026-08-17T08:01:56.376Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 15/17"
+    },
+    {
+      "at": "2026-08-17T08:01:59.576Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 16/17"
+    },
+    {
+      "at": "2026-08-17T08:02:02.737Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Generating poster 17/17"
+    },
+    {
+      "at": "2026-08-17T08:02:05.950Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Uploading 18 images to weibo"
+    },
+    {
+      "at": "2026-08-17T08:02:06.533Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "error",
+      "message": "weibo infographic failed: weibo note failed: usage: sau [-h]",
+      "detail": "sau weibo upload-note --account default --title 01 集合｜Lean 判定 vs Turn-Lang 容器 --images /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/cover-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-01-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-02-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-03-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-04-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-05-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-06-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-07-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-08-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-09-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-10-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-11-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-12-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-13-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-14-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-15-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-16-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-17-zh.png --headed --note 集合不是一袋子东西。Lean：α → Prop + Mem + ∈。Turn-Lang：容器 + relations。18 张信息图左滑。抽象代数第 1 期 #TurnLang #Lean4 #证明助手 --tags TurnLang,Lean4,证明助手 failed: usage: sau [-h]\n           {douyin,kuaishou,xiaohongshu,bilibili,tencent,weibo,youtube} ...\nsau: error: unrecognized arguments: --headed"
+    },
+    {
+      "at": "2026-08-17T08:02:06.534Z",
+      "level": "error",
+      "message": "Squat failed: 0 live, 1 failed"
+    }
+  ],
+  "summary": {
+    "queued": 0,
+    "published": 0,
+    "failed": 1,
+    "skipped": 0
+  },
+  "finishedAt": "2026-08-17T08:02:06.534Z"
+}

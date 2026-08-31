@@ -2,6 +2,10 @@
 videoOps: 1
 scriptId: 07-union
 title: 07_union
+socialTitleEnglish: "7. Union: in A or in B"
+socialTitleChina: "7. 并集：在 A 里或在 B 里"
+promotionalDescription: "Union is the set of things that are in A or in B."
+promotionalDescriptionChina: "并集（union）是由两个集合造出的第三个集合。一个对象属于并集，意思是：它属于 A，或者属于 B。"
 format: landscape
 fps: 30
 width: 1920

@@ -1,8 +1,10 @@
 export {
   buildBeatPosterCaption,
+  clearBeatPosterOutputs,
   generateAllBeatPosters,
   generateBeatPoster,
   generateBeatPosterCover,
+  getBeatPosterGenerateProgress,
   listBeatPosters,
   readBeatPosterAsset,
   resolveBeatPosterFile,
@@ -26,6 +28,7 @@ export { buildBeatPosterCoverSpec, buildBeatPosterSpec, excerptBeatBody } from '
 export type {
   BeatPosterCoverSpec,
   BeatPosterFile,
+  BeatPosterGenerateProgress,
   BeatPosterLang,
   BeatPosterListItem,
   BeatPosterPlatformPreview,

@@ -3,10 +3,10 @@ videoOps: 1
 scriptId: 02-subset
 title: 02_subset
 fps: 30
-socialTitleEnglish: "2. Subset: a proposition about two sets, not a new box"
-socialTitleChina: "2. 子集：是命题，不是新盒子"
-promotionalDescription: "A is a subset of B when every element of A is already in B. Lean writes one forall, then registers ≤ and ⊆ as the same Set.Subset. Turn-Lang keeps the relation and its notation in one block."
-promotionalDescriptionChina: "A 是 B 的子集，意思是 A 里的每个元素都已经在 B 里。Lean 写一个全称命题，再把 ≤ 和 ⊆ 都接到同一个 Set.Subset。Turn-Lang 把关系和记号放在同一块。"
+socialTitleEnglish: "2. Subset: everything in A is already in B"
+socialTitleChina: "2. 子集：A 里的，本来就在 B 里"
+promotionalDescription: "Subset is the sentence you already say: everything in A is already in B. It is a claim about two sets, not a new box."
+promotionalDescriptionChina: "子集就是那句：A 里的，本来就在 B 里。它是两个集合之间的一句话，不是再造一个盒子。"
 format: landscape
 width: 1920
 height: 1080

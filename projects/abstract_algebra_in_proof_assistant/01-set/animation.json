@@ -322,7 +322,7 @@
               "code": "as before"
             },
             "turn": {
-              "code": "@notation(\"∅\")\nstructure EmptySet: Set<Any> {\n    laws {\n        no_members {\n            forall x: Any |- not (x in self)\n        }\n    }\n}",
+              "code": "@notation(\"∅\")\nstructure EmptySet: Set<Any> {\n    relations {\n        law no_members: Prop {\n            forall x: Any |- not (x in self)\n        }\n    }\n}",
               "highlights": [
                 "Set<Any>",
                 "no_members",
@@ -343,7 +343,7 @@
               "code": "as before"
             },
             "turn": {
-              "code": "@notation({A} ~ \" ∪ \" ~ {B})\nstructure Union<T: Any, A B: Set<T>>: Set<T> {\n    laws {\n        def {\n            forall x in self |- x in A or x in B\n        }\n    }\n}",
+              "code": "@notation({A} ~ \" ∪ \" ~ {B})\nstructure Union<T: Any, A B: Set<T>>: Set<T> {\n    relations {\n        law def: Prop {\n            forall x in self |- x in A or x in B\n        }\n    }\n}",
               "highlights": [
                 "Union",
                 "def",
@@ -366,7 +366,7 @@
               "code": "as before"
             },
             "turn": {
-              "code": "@notation({A} ~ \" ∪ \" ~ {B})\nstructure Union<T: Any, A B: Set<T>>: Set<T> {\n    laws {\n        def {\n            forall x in self |- x in A or x in B\n        }\n    }\n}"
+              "code": "@notation({A} ~ \" ∪ \" ~ {B})\nstructure Union<T: Any, A B: Set<T>>: Set<T> {\n    relations {\n        law def: Prop {\n            forall x in self |- x in A or x in B\n        }\n    }\n}"
             },
             "fontScales": {
               "editorFontScale": 0.7000000000000001,
@@ -382,7 +382,7 @@
               "code": "as before"
             },
             "turn": {
-              "code": "@notation({A} ~ \" ∪ \" ~ {B})\nstructure Union<T: Any, A B: Set<T>>: Set<T> {\n    laws {\n        def {\n            forall x in self |- x in A or x in B\n        }\n    }\n}",
+              "code": "@notation({A} ~ \" ∪ \" ~ {B})\nstructure Union<T: Any, A B: Set<T>>: Set<T> {\n    relations {\n        law def: Prop {\n            forall x in self |- x in A or x in B\n        }\n    }\n}",
               "highlights": [
                 "Union"
               ]

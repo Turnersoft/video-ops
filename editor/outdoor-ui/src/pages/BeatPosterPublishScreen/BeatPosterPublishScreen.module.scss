@@ -51,6 +51,50 @@
   gap: $space-xs;
 }
 
+.progressCard {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+  padding: $space-sm;
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: rgba(249, 115, 22, 0.35);
+  background-color: rgba(249, 115, 22, 0.08);
+}
+
+.progressTop {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $space-sm;
+}
+
+.progressLabel {
+  color: $text;
+  font-size: $font-small;
+  flex: 1;
+  line-height: 18px;
+}
+
+.progressTrack {
+  height: 6px;
+  border-radius: 999px;
+  background-color: rgba(148, 163, 184, 0.25);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 999px;
+  background-color: $orange;
+}
+
+.progressError {
+  color: #fca5a5;
+  font-size: $font-small;
+  line-height: 18px;
+}
+
 .carousel {
   display: flex;
   flex-direction: row;

@@ -3,10 +3,10 @@ videoOps: 1
 scriptId: 01-set
 title: 01_set
 fps: 30
-socialTitleEnglish: "1. Set: a membership test, not a bag of things"
-socialTitleChina: "1. 集合：不是一袋子东西，是一条判定"
-promotionalDescription: "A set is a well-defined collection. Lean models that as α → Prop — apply an element, get true or false. ∈ is a Membership instance. Turn-Lang writes Set as a container, then states membership with laws."
-promotionalDescriptionChina: "课本：集合是定义清楚的一堆对象。Lean 把它写成 α → Prop——丢进一个元素，吐出真或假。∈ 要靠 Membership 实例接上。Turn-Lang 直接写成容器，再用定律写成员。"
+socialTitleEnglish: "1. Set: a yes-or-no question"
+socialTitleChina: "1. 集合：先会问在不在"
+promotionalDescription: "A set is a yes-or-no question you can ask about every object. You already know the collection; the fun is writing the membership sentence so it can be checked."
+promotionalDescriptionChina: "集合是一句能对每个东西回答在或不在的话。你早就认识这个对象；有意思的是把成员那句话写成能核对的样子。"
 format: landscape
 width: 1920
 height: 1080
@@ -518,8 +518,8 @@ as before
 ```turn
 @notation("∅")
 structure EmptySet: Set<Any> {
-    laws {
-        no_members {
+    relations {
+        law no_members: Prop {
             forall x: Any |- not (x in self)
         }
     }
@@ -554,8 +554,8 @@ as before
 ```turn
 @notation({A} ~ " ∪ " ~ {B})
 structure Union<T: Any, A B: Set<T>>: Set<T> {
-    laws {
-        def {
+    relations {
+        law def: Prop {
             forall x in self |- x in A or x in B
         }
     }
@@ -591,8 +591,8 @@ as before
 ```turn
 @notation({A} ~ " ∪ " ~ {B})
 structure Union<T: Any, A B: Set<T>>: Set<T> {
-    laws {
-        def {
+    relations {
+        law def: Prop {
             forall x in self |- x in A or x in B
         }
     }
@@ -621,8 +621,8 @@ as before
 ```turn
 @notation({A} ~ " ∪ " ~ {B})
 structure Union<T: Any, A B: Set<T>>: Set<T> {
-    laws {
-        def {
+    relations {
+        law def: Prop {
             forall x in self |- x in A or x in B
         }
     }

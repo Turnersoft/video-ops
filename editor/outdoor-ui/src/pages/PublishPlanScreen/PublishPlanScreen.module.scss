@@ -1,0 +1,156 @@
+@use '../../app' as *;
+
+.screen {
+  flex: 1;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.headerWrap {
+  flex-shrink: 0;
+  z-index: 20;
+}
+
+.pageScroll {
+  flex: 1;
+  min-height: 0;
+}
+
+.body {
+  padding: $space-lg;
+  gap: $space-md;
+}
+
+.lead {
+  color: $text;
+  font-size: 15px;
+  line-height: 1.45;
+  max-width: 52rem;
+}
+
+.chipRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $space-sm;
+}
+
+.chip {
+  border-width: 1px;
+  border-color: $card-border;
+  border-radius: $radius-md;
+  padding-inline: 10px;
+  padding-block: 6px;
+  background-color: $card;
+}
+
+.chipOn {
+  border-color: $text;
+  background-color: $bg;
+}
+
+.chipText {
+  color: $text;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.error {
+  color: $offline;
+}
+
+.note {
+  color: $online;
+  font-weight: 600;
+}
+
+.spinner {
+  margin-block: $space-lg;
+}
+
+.slotRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $space-sm;
+}
+
+.slotCard {
+  border-width: 1px;
+  border-color: $card-border;
+  border-radius: $radius-md;
+  padding: $space-md;
+  background-color: $card;
+  min-width: 12rem;
+}
+
+.slotTitle {
+  color: $text;
+  font-weight: 800;
+}
+
+.slotMeta {
+  color: $muted;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.summaryRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $space-sm;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  gap: $space-sm;
+}
+
+.postCard {
+  border-width: 1px;
+  border-color: $card-border;
+  border-radius: $radius-md;
+  padding: $space-md;
+  background-color: $card;
+}
+
+.postHead {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $space-sm;
+}
+
+.postIndex {
+  color: $text;
+  font-weight: 900;
+  min-width: 2.5rem;
+}
+
+.postTitle {
+  color: $text;
+  font-size: 16px;
+  font-weight: 800;
+  margin-top: 6px;
+}
+
+.postMeta {
+  color: $muted;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.postReason {
+  color: $text;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.blockers {
+  color: $offline;
+  font-size: 12px;
+  margin-top: 6px;
+}

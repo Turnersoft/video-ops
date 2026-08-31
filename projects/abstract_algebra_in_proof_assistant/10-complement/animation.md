@@ -2,6 +2,10 @@
 videoOps: 1
 scriptId: 10-complement
 title: 10_complement
+socialTitleEnglish: "10. Complement: everything not in A"
+socialTitleChina: "10. 补集：宇宙里不在 A 的那些"
+promotionalDescription: "The complement of A is everything in the universe that is not in A."
+promotionalDescriptionChina: "补集（complement）是宇宙里不属于 A 的那些对象。课本先点名宇宙 U；Lean 的绝对补集则以类型本身为宇宙。"
 format: landscape
 fps: 30
 width: 1920

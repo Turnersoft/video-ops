@@ -1,0 +1,684 @@
+@use '../../app' as *;
+
+.screen {
+  background:
+    radial-gradient(1200px 420px at 8% -10%, rgba(249, 115, 22, 0.14), transparent 55%),
+    radial-gradient(900px 380px at 92% 0%, rgba(56, 189, 248, 0.08), transparent 50%),
+    $bg;
+}
+
+.headerWrap {
+  flex-shrink: 0;
+  z-index: 20;
+}
+
+.toolbar {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px 8px;
+  min-height: 0;
+  overflow-x: auto;
+  @include thin-scrollbar(4px);
+}
+
+.stats {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: $radius-pill;
+  border-width: 1px;
+  border-color: $card-border;
+  background-color: rgba(15, 23, 42, 0.72);
+  white-space: nowrap;
+}
+
+.statValue {
+  color: $text;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.statLabel {
+  color: $muted;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+.statPending .statValue {
+  color: #fdba74;
+}
+
+.statLive .statValue {
+  color: $online;
+}
+
+.statWait .statValue {
+  color: $muted;
+}
+
+.filters {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  @include thin-scrollbar(4px);
+}
+
+.chip {
+  flex-shrink: 0;
+  border-width: 1px;
+  border-color: $card-border;
+  border-radius: $radius-pill;
+  padding-inline: 8px;
+  padding-block: 3px;
+  background-color: $card;
+}
+
+.chipOn {
+  border-color: rgba(253, 186, 116, 0.7);
+  background-color: $run-chip-active-bg;
+}
+
+.chipText {
+  color: $text;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.chipOnText {
+  color: $run-chip-active-text;
+}
+
+.banner {
+  flex-shrink: 0;
+  padding: 0 10px 6px;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.error {
+  color: $offline;
+}
+
+.note {
+  color: $online;
+  font-weight: 600;
+}
+
+.workspace {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px 10px;
+  gap: 8px;
+}
+
+.matrixPane {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  position: relative;
+  border-width: 1px;
+  border-color: $card-border;
+  border-radius: $radius-md;
+  background-color: rgba(2, 6, 23, 0.55);
+  overflow: hidden;
+}
+
+.matrixScroll {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+  @include thin-scrollbar(8px);
+}
+
+.matrix {
+  display: grid;
+  width: max-content;
+  min-width: 100%;
+}
+
+.corner,
+.colHead,
+.episode,
+.cell {
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  border-right: 1px solid rgba(148, 163, 184, 0.12);
+  box-sizing: border-box;
+}
+
+.corner,
+.colHead {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background-color: rgba(2, 6, 23, 0.97);
+  padding: 8px 8px;
+}
+
+.corner {
+  left: 0;
+  z-index: 5;
+}
+
+.colHead {
+  text-align: center;
+  appearance: none;
+  border-top: 0;
+  border-left: 0;
+  font: inherit;
+  color: inherit;
+  cursor: default;
+}
+
+.colHeadOffline {
+  cursor: pointer;
+}
+
+.colHeadText {
+  color: $text;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.colHeadHint,
+.colHeadNew {
+  display: block;
+  width: 100%;
+  margin-top: 2px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 12px;
+  cursor: pointer;
+}
+
+.colHeadHint {
+  color: $orange;
+}
+
+.colHeadAccount {
+  display: block;
+  color: $online;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 12px;
+  margin-top: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.colHeadNew {
+  color: $muted;
+}
+
+.episode {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  padding: 8px 10px;
+  background-color: rgba(15, 23, 42, 0.96);
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+  cursor: pointer;
+  appearance: none;
+  border-top: 0;
+  border-left: 0;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+
+.episode:hover {
+  background-color: rgba(30, 41, 59, 0.96);
+}
+
+.cover {
+  width: 28px;
+  height: 38px;
+  border-radius: 4px;
+  background-color: $video-bg;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.episodeCopy {
+  min-width: 0;
+  flex: 1;
+}
+
+.episodeTitle {
+  color: $text;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.episodeMeta {
+  color: $muted;
+  font-size: 10px;
+  line-height: 13px;
+  margin-top: 1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cell {
+  padding: 6px;
+  background-color: rgba(2, 6, 23, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.lane {
+  appearance: none;
+  display: block;
+  width: 100%;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 6px;
+  padding: 4px 6px;
+  background-color: rgba(15, 23, 42, 0.7);
+  cursor: pointer;
+  min-width: 0;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+
+.lane:hover {
+  border-color: rgba(253, 186, 116, 0.45);
+}
+
+.laneOn {
+  border-color: rgba(253, 186, 116, 0.85);
+  background-color: rgba(249, 115, 22, 0.16);
+}
+
+.laneLive {
+  border-color: rgba(134, 239, 172, 0.45);
+  background-color: rgba(22, 101, 52, 0.22);
+}
+
+.laneFail {
+  border-color: rgba(252, 165, 165, 0.45);
+  background-color: rgba(127, 29, 29, 0.28);
+}
+
+.laneWait {
+  opacity: 0.62;
+}
+
+.laneRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  min-width: 0;
+}
+
+.laneKind {
+  color: $muted;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+.laneStatus {
+  font-size: 10px;
+  font-weight: 800;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.statusPending {
+  color: #fdba74;
+}
+
+.statusLive {
+  color: $online;
+}
+
+.statusFail {
+  color: $offline;
+}
+
+.statusWait {
+  color: $muted2;
+}
+
+.captionCard {
+  position: fixed;
+  z-index: 80;
+  width: 360px;
+  max-width: calc(100vw - 16px);
+  max-height: min(72vh, 560px);
+  overflow: auto;
+  pointer-events: none;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(253, 186, 116, 0.35);
+  background-color: rgba(2, 6, 23, 0.96);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  @include thin-scrollbar(6px);
+}
+
+.captionEyebrow {
+  color: $muted;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.captionTitle {
+  color: $text;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 20px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.captionBody {
+  color: $text;
+  font-size: 12px;
+  line-height: 18px;
+  margin-top: 8px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.captionLink {
+  color: $online;
+  font-size: 11px;
+  line-height: 15px;
+  margin-top: 8px;
+  word-break: break-all;
+}
+
+.captionNote {
+  color: $muted;
+  font-size: 11px;
+  line-height: 15px;
+  margin-top: 8px;
+  white-space: pre-wrap;
+}
+
+.dock {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 0;
+  max-height: 28%;
+  overflow: auto;
+  border: 1px solid rgba(253, 186, 116, 0.28);
+  border-radius: $radius-md;
+  background-color: rgba(15, 23, 42, 0.88);
+  padding: 8px 10px;
+}
+
+.dockBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-width: 0;
+}
+
+.dockTitle {
+  color: $text;
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.dockMeta {
+  color: $muted;
+  font-size: 11px;
+  line-height: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  flex: 1;
+}
+
+.dockActions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.dockHint {
+  color: $muted;
+  font-size: 10px;
+  line-height: 13px;
+  width: 100%;
+}
+
+.historyRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.historyChip {
+  border: 1px solid $card-border;
+  border-radius: $radius-pill;
+  padding: 2px 8px;
+  background-color: rgba(2, 6, 23, 0.45);
+  max-width: 220px;
+}
+
+.historyChipOn {
+  border-color: rgba(249, 115, 22, 0.7);
+  background-color: rgba(249, 115, 22, 0.12);
+}
+
+.historyChipText {
+  color: $muted;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.historyChipOnText {
+  color: $orange;
+}
+
+.queueScroll {
+  min-height: 0;
+  overflow: auto;
+  @include thin-scrollbar(6px);
+}
+
+.queueRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.queueItem {
+  border: 1px solid $card-border;
+  border-radius: 8px;
+  padding: 4px 8px;
+  background-color: rgba(2, 6, 23, 0.45);
+  max-width: 280px;
+  min-width: 0;
+}
+
+.queueItemRun {
+  border-color: rgba(249, 115, 22, 0.55);
+}
+
+.queueItemLive {
+  border-color: rgba(52, 211, 153, 0.45);
+}
+
+.queueItemFail {
+  border-color: rgba(248, 113, 113, 0.55);
+}
+
+.queueItemStop {
+  border-color: rgba(251, 191, 36, 0.55);
+}
+
+.queueItemWait {
+  border-color: rgba(96, 165, 250, 0.7);
+  background-color: rgba(37, 99, 235, 0.14);
+}
+
+.queueActions {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.queueAction {
+  border: 1px solid $card-border;
+  border-radius: 6px;
+  padding: 2px 8px;
+  background-color: rgba(2, 6, 23, 0.6);
+  color: $muted;
+  font-size: 10px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.queueActionLive {
+  border-color: rgba(52, 211, 153, 0.6);
+  color: $online;
+}
+
+.queueHead {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.queueIndex {
+  color: $orange;
+  font-weight: 900;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.queuePlatform {
+  color: $orange;
+  font-size: 10px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.queueKind {
+  color: $muted;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.queueTitle {
+  color: $text;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.queueMeta {
+  color: $muted;
+  font-size: 10px;
+  line-height: 13px;
+  margin-top: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.queueError {
+  color: $offline;
+  font-size: 10px;
+  margin-top: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.progressTrack {
+  height: 6px;
+  border-radius: $radius-pill;
+  background-color: rgba(51, 65, 85, 0.8);
+  overflow: hidden;
+  width: 88px;
+  flex-shrink: 0;
+}
+
+.progressFill {
+  height: 6px;
+  background-color: $orange;
+}
+
+.spinner {
+  margin: $space-lg auto;
+}
+
+.empty {
+  color: $muted;
+  padding: $space-lg;
+}

@@ -103,6 +103,12 @@ export type {
   PlatformStatus,
   PlatformTestResult,
   PlatformsHealthResponse,
+  NewAccountPublishPlan,
+  MassPublishBoard,
+  MassPublishItem,
+  MassDispatch,
+  MassDispatchEvent,
+  MassDispatchRef,
   PublishAllResult,
   PublishFormat,
   PublishRecord,
@@ -167,6 +173,8 @@ export {
   type AnimationEditorScreenProps,
 } from "./pages/AnimationEditorScreen/AnimationEditorScreen";
 export { PlatformsScreen } from "./pages/PlatformsScreen/PlatformsScreen";
+export { PublishPlanScreen } from "./pages/PublishPlanScreen/PublishPlanScreen";
+export { MassPublishScreen } from "./pages/MassPublishScreen/MassPublishScreen";
 
 export {
   Header,

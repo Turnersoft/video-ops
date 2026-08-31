@@ -1,6 +1,14 @@
 /**
  * Parser for `beat-posters.md` — human-authored copy for the beat poster album.
  *
+ * Optional album-cover hook:
+ *
+ *   ## Cover
+ *   ### English
+ *   The empty set is not a tiny bag.
+ *   ### Chinese
+ *   空集（empty set）不是很小的一袋子。
+ *
  * Format (per beat, matched by beat number):
  *
  *   ## Beat 1: Textbook rule and how `=` is wired
@@ -42,7 +50,13 @@ export type BeatPosterMdEntry = {
   primaryEditor?: BeatPosterPrimaryEditor;
 };
 
+export type BeatPosterMdCover = {
+  bodyEn?: string;
+  bodyZh?: string;
+};
+
 export type BeatPosterMdDocument = {
+  cover: BeatPosterMdCover;
   beats: Record<number, BeatPosterMdEntry>;
 };
 
@@ -87,56 +101,85 @@ function stripCodeFence(value: string): string {
 
 export function parseBeatPosterMd(markdown: string): BeatPosterMdDocument {
   const beats: Record<number, BeatPosterMdEntry> = {};
+  const cover: BeatPosterMdCover = {};
   let current: BeatPosterMdEntry | null = null;
+  let editingCover = false;
   let section: EntryTextKey | null = null;
   let buffer: string[] = [];
 
   const flushSection = () => {
-    if (current && section) {
-      const raw = buffer.join('\n').trim();
-      let value =
-        section === 'leanCode' || section === 'turnCode' ? stripCodeFence(raw) : raw;
-      if (section === 'primaryEditor') {
-        const editor = normalizePrimaryEditor(value);
-        if (editor) {
-          current.primaryEditor = editor;
-        }
-        return;
-      }
-      if (value) {
-        current[section] = value;
-      }
-    }
+    const raw = buffer.join('\n').trim();
     buffer = [];
+    if (!section) {
+      return;
+    }
+    const value =
+      section === 'leanCode' || section === 'turnCode' ? stripCodeFence(raw) : raw;
+    if (editingCover) {
+      if (section === 'bodyEn' && value) {
+        cover.bodyEn = value;
+      } else if (section === 'bodyZh' && value) {
+        cover.bodyZh = value;
+      }
+      return;
+    }
+    if (!current) {
+      return;
+    }
+    if (section === 'primaryEditor') {
+      const editor = normalizePrimaryEditor(value);
+      if (editor) {
+        current.primaryEditor = editor;
+      }
+    } else if (value) {
+      current[section] = value;
+    }
   };
-  const flushBeat = () => {
+  const flushBlock = () => {
     flushSection();
     if (current) {
       beats[current.beat] = current;
     }
     current = null;
+    editingCover = false;
     section = null;
   };
 
   for (const line of markdown.replace(/\r\n/g, '\n').split('\n')) {
+    if (/^##\s+Cover\b/i.test(line)) {
+      flushBlock();
+      editingCover = true;
+      continue;
+    }
     const beatMatch = line.match(/^##\s+Beat\s+(\d+)\s*:\s*(.+)$/i);
     if (beatMatch) {
-      flushBeat();
+      flushBlock();
       current = { beat: Number(beatMatch[1]), titleEn: beatMatch[2].trim() };
       continue;
     }
     const sectionMatch = line.match(/^###\s+(.+?)\s*$/);
-    if (sectionMatch && current) {
+    if (sectionMatch && (current || editingCover)) {
       flushSection();
       section = SECTION_KEYS[sectionMatch[1].trim().toLowerCase()] ?? null;
       continue;
     }
-    if (current && section) {
+    if ((current || editingCover) && section) {
       buffer.push(line);
     }
   }
-  flushBeat();
-  return { beats };
+  flushBlock();
+  return { cover, beats };
+}
+
+/** Cover hook from beat-posters.md, if authored. */
+export function beatPosterMdCoverCopy(
+  doc: BeatPosterMdDocument | null | undefined,
+  lang: 'en' | 'zh',
+): string {
+  if (lang === 'zh') {
+    return doc?.cover.bodyZh?.trim() || doc?.cover.bodyEn?.trim() || '';
+  }
+  return doc?.cover.bodyEn?.trim() || '';
 }
 
 /** Look up authored copy for a 0-based beat index. */

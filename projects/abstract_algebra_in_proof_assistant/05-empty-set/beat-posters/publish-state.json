@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "scriptId": "05-empty-set",
+  "posts": [
+    {
+      "platform": "bilibili",
+      "beatId": "album",
+      "lang": "zh",
+      "postId": "sau-bilibili-album-zh",
+      "url": "https://example.invalid/bilibili/sau-bilibili-album-zh",
+      "status": "live",
+      "publishedAt": "2026-08-30T16:00:21.225Z",
+      "imageCount": 11,
+      "stub": false
+    },
+    {
+      "platform": "douyin",
+      "beatId": "album",
+      "lang": "zh",
+      "postId": "sau-note-douyin-mtg00g68",
+      "url": "https://example.invalid/douyin/sau-note-douyin-mtg00g68",
+      "status": "live",
+      "publishedAt": "2026-08-30T16:00:54.977Z",
+      "imageCount": 11,
+      "stub": false
+    }
+  ]
+}

@@ -5,7 +5,9 @@ import { fileExists, readJson, writeJson } from '../fs_util.ts';
 import { buildLiveScript } from '../live-script.ts';
 import {
   ensureDir,
+  scriptBeatPosterPngPath,
   scriptBeatPostersDir,
+  scriptBeatPostersLangDir,
   scriptBeatPostersManifestPath,
   seriesDirFor,
   seriesForScriptId,
@@ -15,17 +17,108 @@ import { screenshotHtmlFile } from '../social-cards/render.ts';
 import { buildBeatPosterCoverSpec, buildBeatPosterSpec, parseAnimationFrontmatter } from './content.ts';
 import { buildBeatPosterCoverHtml, buildBeatPosterHtml } from './template.ts';
 import { readBeatPosterMd } from './poster-md.ts';
-import { beatPosterMdEntryFor, parseBeatPosterMd } from '../../../../src/beatPosterMd.ts';
+import { beatPosterMdCoverCopy, beatPosterMdEntryFor, parseBeatPosterMd } from '../../../../src/beatPosterMd.ts';
 import type {
   BeatPosterFile,
+  BeatPosterGenerateProgress,
   BeatPosterLang,
   BeatPosterListItem,
   BeatPostersManifest,
 } from './types.ts';
 import { BEAT_POSTER_COVER_ID, BEAT_POSTER_HEIGHT, BEAT_POSTER_WIDTH } from './types.ts';
 
-function posterFileName(beatId: string, lang: BeatPosterLang): string {
-  return `${beatId}-${lang}`;
+const LANG_FOLDERS = new Set(['english', 'chinese']);
+
+export function isRetainedBeatPosterRootFile(name: string): boolean {
+  return name === 'publish-state.json' || /^album-.+\.mp4$/i.test(name);
+}
+
+const generateProgressByScript = new Map<string, BeatPosterGenerateProgress>();
+
+function idleGenerateProgress(scriptId: string): BeatPosterGenerateProgress {
+  return {
+    scriptId,
+    status: 'idle',
+    current: 0,
+    total: 0,
+    percent: 0,
+    label: 'Idle',
+    updatedAt: nowIso(),
+  };
+}
+
+function setGenerateProgress(
+  scriptId: string,
+  patch: Partial<BeatPosterGenerateProgress> & Pick<BeatPosterGenerateProgress, 'status' | 'label'>,
+): BeatPosterGenerateProgress {
+  const prev = generateProgressByScript.get(scriptId) ?? idleGenerateProgress(scriptId);
+  const next: BeatPosterGenerateProgress = {
+    ...prev,
+    ...patch,
+    scriptId,
+    updatedAt: nowIso(),
+  };
+  generateProgressByScript.set(scriptId, next);
+  return next;
+}
+
+export function getBeatPosterGenerateProgress(scriptId: string): BeatPosterGenerateProgress {
+  return generateProgressByScript.get(scriptId) ?? idleGenerateProgress(scriptId);
+}
+
+/** Remove generated poster assets; keep publish-state.json and album-*.mp4. */
+export function clearBeatPosterOutputs(scriptId: string): number {
+  const dir = scriptBeatPostersDir(scriptId);
+  if (!fileExists(dir)) {
+    saveManifest(scriptId, emptyManifest(scriptId));
+    return 0;
+  }
+  let removed = 0;
+  for (const entry of Deno.readDirSync(dir)) {
+    if (isRetainedBeatPosterRootFile(entry.name)) {
+      continue;
+    }
+    const entryPath = path.join(dir, entry.name);
+    if (entry.isDirectory && LANG_FOLDERS.has(entry.name)) {
+      Deno.removeSync(entryPath, { recursive: true });
+      removed += 1;
+      continue;
+    }
+    if (entry.isFile) {
+      Deno.removeSync(entryPath);
+      removed += 1;
+    }
+  }
+  saveManifest(scriptId, emptyManifest(scriptId));
+  return removed;
+}
+
+function resolvedPosterFile(scriptId: string, entry: BeatPosterFile): BeatPosterFile {
+  const nested = scriptBeatPosterPngPath(scriptId, entry.beatId, entry.lang);
+  if (fileExists(nested)) {
+    return { ...entry, pngPath: nested, htmlPath: '' };
+  }
+  return entry;
+}
+
+async function screenshotHtmlToPng(
+  html: string,
+  pngPath: string,
+  width: number,
+  height: number,
+): Promise<void> {
+  const htmlPath = await Deno.makeTempFile({ prefix: 'beat-poster-', suffix: '.html' });
+  try {
+    Deno.writeTextFileSync(htmlPath, html);
+    ensureDir(path.dirname(pngPath));
+    await screenshotHtmlFile(htmlPath, pngPath, width, height);
+  } finally {
+    try {
+      Deno.removeSync(htmlPath);
+    } catch {
+      // temp HTML is only for Chromium; do not keep it in the album folder
+    }
+  }
 }
 
 function loadSeriesTitle(scriptId: string): string {
@@ -114,13 +207,10 @@ export async function generateBeatPoster(
     poster: beatPosterMdEntryFor(posterDoc, beat.index),
   });
 
-  const dir = scriptBeatPostersDir(scriptId);
+  const dir = scriptBeatPostersLangDir(scriptId, lang);
   ensureDir(dir);
-  const baseName = posterFileName(beatId, lang);
-  const htmlPath = path.join(dir, `${baseName}.html`);
-  const pngPath = path.join(dir, `${baseName}.png`);
-  Deno.writeTextFileSync(htmlPath, buildBeatPosterHtml(spec));
-  await screenshotHtmlFile(htmlPath, pngPath, spec.width, spec.height);
+  const pngPath = scriptBeatPosterPngPath(scriptId, beatId, lang);
+  await screenshotHtmlToPng(buildBeatPosterHtml(spec), pngPath, spec.width, spec.height);
   try {
     const { exportBeatPosterPreviewJpeg } = await import('./preview-jpeg.ts');
     await exportBeatPosterPreviewJpeg(scriptId, beatId, lang);
@@ -135,7 +225,7 @@ export async function generateBeatPoster(
     lang,
     width: spec.width,
     height: spec.height,
-    htmlPath,
+    htmlPath: '',
     pngPath,
     createdAt,
   };
@@ -164,24 +254,23 @@ export async function generateBeatPosterCover(
   const md = readAnimationMd(scriptId);
   const frontmatter = md.exists ? parseAnimationFrontmatter(md.markdown) : {};
   const seriesTitle = loadSeriesTitle(scriptId);
+  const posterMd = readBeatPosterMd(scriptId);
+  const posterDoc = posterMd.exists ? parseBeatPosterMd(posterMd.markdown) : null;
+  const coverEn = beatPosterMdCoverCopy(posterDoc, 'en');
+  const coverZh = beatPosterMdCoverCopy(posterDoc, 'zh');
   const spec = buildBeatPosterCoverSpec({
     scriptId,
     lang,
     seriesTitle,
     episodeTitleEn: frontmatter.socialTitleEnglish ?? live.title,
     episodeTitleZh: frontmatter.socialTitleChina ?? frontmatter.socialTitleEnglish ?? live.title,
-    promotionalDescriptionEn: frontmatter.promotionalDescription,
-    promotionalDescriptionZh: frontmatter.promotionalDescriptionChina,
+    promotionalDescriptionEn: coverEn || frontmatter.promotionalDescription,
+    promotionalDescriptionZh: coverZh || frontmatter.promotionalDescriptionChina,
     beatCount: live.beats.length,
   });
 
-  const dir = scriptBeatPostersDir(scriptId);
-  ensureDir(dir);
-  const baseName = posterFileName(BEAT_POSTER_COVER_ID, lang);
-  const htmlPath = path.join(dir, `${baseName}.html`);
-  const pngPath = path.join(dir, `${baseName}.png`);
-  Deno.writeTextFileSync(htmlPath, buildBeatPosterCoverHtml(spec));
-  await screenshotHtmlFile(htmlPath, pngPath, spec.width, spec.height);
+  const pngPath = scriptBeatPosterPngPath(scriptId, BEAT_POSTER_COVER_ID, lang);
+  await screenshotHtmlToPng(buildBeatPosterCoverHtml(spec), pngPath, spec.width, spec.height);
   try {
     const { exportBeatPosterPreviewJpeg } = await import('./preview-jpeg.ts');
     await exportBeatPosterPreviewJpeg(scriptId, BEAT_POSTER_COVER_ID, lang);
@@ -196,7 +285,7 @@ export async function generateBeatPosterCover(
     lang,
     width: spec.width,
     height: spec.height,
-    htmlPath,
+    htmlPath: '',
     pngPath,
     createdAt,
   };
@@ -243,11 +332,8 @@ export async function saveUploadedBeatPosterPng(
     throw new Error('pngBase64 is not a PNG');
   }
 
-  const dir = scriptBeatPostersDir(scriptId);
-  ensureDir(dir);
-  const baseName = posterFileName(beatId, lang);
-  const htmlPath = path.join(dir, `${baseName}.html`);
-  const pngPath = path.join(dir, `${baseName}.png`);
+  const pngPath = scriptBeatPosterPngPath(scriptId, beatId, lang);
+  ensureDir(path.dirname(pngPath));
   Deno.writeFileSync(pngPath, bytes);
   try {
     const { exportBeatPosterPreviewJpeg } = await import('./preview-jpeg.ts');
@@ -266,7 +352,7 @@ export async function saveUploadedBeatPosterPng(
     lang,
     width: BEAT_POSTER_WIDTH,
     height: BEAT_POSTER_HEIGHT,
-    htmlPath,
+    htmlPath: '',
     pngPath,
     createdAt,
   };
@@ -284,19 +370,88 @@ export async function saveUploadedBeatPosterPng(
 }
 
 export async function generateAllBeatPosters(scriptId: string): Promise<BeatPostersManifest> {
+  const existing = getBeatPosterGenerateProgress(scriptId);
+  if (existing.status === 'clearing' || existing.status === 'running') {
+    throw new Error(`Beat poster generation already in progress for ${scriptId}`);
+  }
+
   const live = await buildLiveScript(scriptId);
   if (!live?.beats.length) {
+    setGenerateProgress(scriptId, {
+      status: 'error',
+      current: 0,
+      total: 0,
+      percent: 0,
+      label: 'No beats found',
+      error: `No beats found for ${scriptId}`,
+    });
     throw new Error(`No beats found for ${scriptId}`);
   }
-  for (const lang of ['en', 'zh'] as BeatPosterLang[]) {
-    await generateBeatPosterCover(scriptId, lang);
-  }
-  for (const beat of live.beats) {
+
+  const total = 2 + live.beats.length * 2;
+  let current = 0;
+  const advance = (label: string) => {
+    current += 1;
+    setGenerateProgress(scriptId, {
+      status: 'running',
+      current,
+      total,
+      percent: Math.round((current / total) * 100),
+      label,
+    });
+  };
+
+  try {
+    setGenerateProgress(scriptId, {
+      status: 'clearing',
+      current: 0,
+      total,
+      percent: 0,
+      label: 'Clearing old posters…',
+      error: undefined,
+    });
+    clearBeatPosterOutputs(scriptId);
+
+    setGenerateProgress(scriptId, {
+      status: 'running',
+      current: 0,
+      total,
+      percent: 0,
+      label: 'Generating covers…',
+    });
+
     for (const lang of ['en', 'zh'] as BeatPosterLang[]) {
-      await generateBeatPoster(scriptId, beat.id, lang);
+      await generateBeatPosterCover(scriptId, lang);
+      advance(`cover (${lang})`);
     }
+    for (const beat of live.beats) {
+      for (const lang of ['en', 'zh'] as BeatPosterLang[]) {
+        await generateBeatPoster(scriptId, beat.id, lang);
+        advance(`${beat.id} (${lang})`);
+      }
+    }
+
+    setGenerateProgress(scriptId, {
+      status: 'done',
+      current: total,
+      total,
+      percent: 100,
+      label: `Done — ${total} posters`,
+      error: undefined,
+    });
+    return loadManifest(scriptId);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    setGenerateProgress(scriptId, {
+      status: 'error',
+      current,
+      total,
+      percent: total > 0 ? Math.round((current / total) * 100) : 0,
+      label: 'Generate failed',
+      error: message,
+    });
+    throw error;
   }
-  return loadManifest(scriptId);
 }
 
 export function resolveBeatPosterFile(
@@ -308,10 +463,14 @@ export function resolveBeatPosterFile(
   const entry = manifest.posters.find(
     (poster) => poster.beatId === beatId && poster.lang === lang,
   );
-  if (!entry || !fileExists(entry.pngPath)) {
+  if (!entry) {
     return null;
   }
-  return entry;
+  const resolved = resolvedPosterFile(scriptId, entry);
+  if (!fileExists(resolved.pngPath)) {
+    return null;
+  }
+  return resolved;
 }
 
 export function readBeatPosterAsset(
@@ -327,11 +486,17 @@ export function readBeatPosterAsset(
   if (!entry) {
     return null;
   }
-  const filePath = ext === 'png' ? entry.pngPath : entry.htmlPath;
-  if (!fileExists(filePath)) {
+  if (ext === 'html') {
+    if (!entry.htmlPath || !fileExists(entry.htmlPath)) {
+      return null;
+    }
+    return { filePath: entry.htmlPath };
+  }
+  const resolved = resolvedPosterFile(scriptId, entry);
+  if (!fileExists(resolved.pngPath)) {
     return null;
   }
-  return { filePath };
+  return { filePath: resolved.pngPath };
 }
 
 export async function listBeatPosters(scriptId: string): Promise<{
@@ -353,6 +518,7 @@ export async function listBeatPosters(scriptId: string): Promise<{
   titleByBeatId.set(BEAT_POSTER_COVER_ID, 'Cover');
 
   const posters: BeatPosterListItem[] = manifest.posters
+    .map((poster) => resolvedPosterFile(scriptId, poster))
     .filter((poster) => fileExists(poster.pngPath))
     .map((poster) => ({
       ...poster,
@@ -394,7 +560,7 @@ export async function buildBeatPosterCaption(
     ? (beat.chinese.trim() || beat.say.trim())
     : beat.say.trim();
   const footer = lang === 'zh'
-    ? '完整逐拍系列见 turn-lang.com'
+    ? '左滑看完整逐拍系列'
     : 'Full beat-by-beat series at turn-lang.com';
   const hashtags = lang === 'zh'
     ? '#TurnLang #Lean4 #形式化数学 #证明助手'

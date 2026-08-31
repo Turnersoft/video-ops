@@ -23,20 +23,20 @@
   Any field left out falls back to auto-derived copy from animation.md.
 -->
 
-## Beat 1: A set is a membership rule
+## Beat 1: You already know what a set is
 
 ### Title zh
-集合，先把成员规则说清楚
+集合，你早就见过
 
 ### English
-Textbook: a set is a well-defined collection. The objects are elements.
+A set is a well-defined collection. The things inside are its elements.
 
-What we actually need is the rule: for each `x`, is it in or not?
+The interesting part: “well-defined” means you can answer, for every object, in or not.
 
 ### Chinese
-课本：集合就是定义清楚的一堆对象，里面的东西叫元素。
+课本里，集合就是定义清楚的一堆对象，里面的叫元素。
 
-咱们真正要写清楚的，是这条规则：每个 `x`，在不在里面？
+有意思的地方在于：定义清楚，就是对每个东西都能回答——在，还是不在。
 
 ### Turn-Lang
 ```turn
@@ -48,25 +48,25 @@ structure[T] Set<T: Any> {
 turn
 
 ### Next en
-Lean does not store a bag. It stores a test.
+So a set is less a bag, more a question.
 
 ### Next zh
-Lean 不存一袋子东西，它存的是判定
+所以集合不太像袋子，更像一个问题
 
-## Beat 2: Lean's Set is a test, not a bag
+## Beat 2: A set is a yes-or-no question
 
 ### Title zh
-Lean 的集合：α 进去，Prop 出来
+集合是一句能不能进的问话
 
 ### English
-Mathlib writes `def Set (α : Type u) := α → Prop`.
+Think of a set as a question you can ask about every object: does it belong?
 
-One element in, true or false out. That is a membership test, not a list of members.
+Not a bag you rummage through. A test with a yes or a no.
 
 ### Chinese
-Mathlib 写成 `def Set (α : Type u) := α → Prop`。
+把集合想成一句能对每个东西问的话：它算不算里面的？
 
-丢进一个元素，吐出真或假。这是判定，不是成员清单。
+不是去袋子里翻。是一次能回答“在”或“不在”的判定。
 
 ### Lean
 ```lean
@@ -78,25 +78,25 @@ def Set (α : Type u) := α → Prop
 lean
 
 ### Next en
-Make one concrete set: odd integers.
+Make it concrete: the odd integers.
 
 ### Next zh
-先写一个具体的：奇数集合
+先看一个你熟的：奇数
 
-## Beat 3: Name a concrete set
+## Beat 3: Name a set you already like
 
 ### Title zh
-先给这个集合起个名
+先给奇数集合起个名
 
 ### English
-`oddIntegers : Set Int` fixes the element type as `Int`.
+Call it `oddIntegers`. The elements are integers — the set you already picture.
 
-The colon labels the name. `:=` says the definition continues.
+A name lets you point at the idea before you write the rule.
 
 ### Chinese
-`oddIntegers : Set Int` 把元素类型钉成 `Int`。
+先叫它 `oddIntegers`。元素是整数——就是你脑子里那堆奇数。
 
-冒号是类型标签，`:=` 表示定义接着往下写。
+先起名，再写规则。这样你知道自己在谈哪一个集合。
 
 ### Lean
 ```lean
@@ -109,25 +109,25 @@ def oddIntegers : Set Int :=
 lean
 
 ### Next en
-The body is an anonymous function.
+The rule is the one from class: is n odd?
 
 ### Next zh
-函数体是一个匿名函数
+规则就是课堂上那句：n 是不是奇数？
 
-## Beat 4: Membership is a function body
+## Beat 4: Membership is the rule you already say
 
 ### Title zh
-成员条件，写在函数体里
+成员条件，就是那句“是不是奇数”
 
 ### English
-`fun n => n % 2 = 1` is Lean's anonymous function.
+An integer belongs when it is odd. That is the whole set.
 
-When that proposition is true, `n` belongs to the set.
+Write the test once. Every later claim is just asking it again.
 
 ### Chinese
-`fun n => n % 2 = 1` 就是 Lean 的匿名函数。
+一个整数在不在里面，就看它是不是奇数。集合就是这句。
 
-这个命题为真，`n` 就在这个集合里。
+规则只写一次。后面每一次“属于”，都是再问同一句话。
 
 ### Lean
 ```lean
@@ -139,25 +139,25 @@ def oddIntegers : Set Int :=
 lean
 
 ### Next en
-Apply the set, and you get a Prop — not a badge that says "member".
+The name “set” does not add extra magic.
 
 ### Next zh
-套上去，你得到的是 Prop，不是“成员”两个字
+叫“集合”，并不会多出一层魔法
 
-## Beat 5: The name Set is only a label
+## Beat 5: The name is a label, not extra meaning
 
 ### Title zh
-叫 Set，并不自动等于“属于”
+名字是标签，不是额外含义
 
 ### English
-`oddIntegers n` is just a `Prop`. Lean does not force you to read it as membership.
+Calling it a set does not smuggle in new mathematics.
 
-Rename `def Set` and that story is gone. The name is a label, not extra meaning.
+The set is the question. The name just lets you talk about it.
 
 ### Chinese
-`oddIntegers n` 只是一个 `Prop`。Lean 不会强迫你把它读成“属于”。
+把它叫做集合，并不会偷偷多出新的数学。
 
-把 `def Set` 改个名，这层意思就没了。名字是标签，不是额外语义。
+集合就是那句问话。名字只是方便你提起它。
 
 ### Lean
 ```lean
@@ -171,25 +171,25 @@ def oddIntegers : Set Int :=
 lean
 
 ### Next en
-Next: put a name on membership itself.
+Next: give “belongs to” its own name.
 
 ### Next zh
 下一步：给“属于”单独起名
 
-## Beat 6: Namespace gives you Set.Mem
+## Beat 6: Give “belongs to” a name
 
 ### Title zh
-namespace 一开，名字变成 Set.Mem
+给“属于”起个能说出口的名字
 
 ### English
-Mathlib opens `namespace Set`. Names inside get the `Set.` prefix.
+Mathematicians name the membership test so they can say it out loud.
 
-That is why you read `Set.Mem`, not bare `Mem`. `end Set` closes the block.
+Same question as before: is this object in that set?
 
 ### Chinese
-Mathlib 打开 `namespace Set`，里面的名字自动带 `Set.` 前缀。
+给“属于”起个名字，你才能把那句话拿出来讲。
 
-所以你读到的是 `Set.Mem`，不是光秃秃的 `Mem`。`end Set` 关掉这块。
+问的还是同一件事：这个东西，在不在那个集合里？
 
 ### Lean
 ```lean
@@ -203,25 +203,25 @@ end Set
 lean
 
 ### Next en
-`protected` locks the name to the dotted form.
+Membership is just asking the question.
 
 ### Next zh
-`protected` 把名字锁在带点的写法上
+“属于”其实就是再问那句话
 
-## Beat 7: Mem is just apply the set
+## Beat 7: Belonging is just asking the question
 
 ### Title zh
-Mem 其实就是把集合套上去
+属于，就是把问话再问一遍
 
 ### English
-`protected def Mem` takes a set `s` and an element `a`, and returns `s a`.
+“a belongs to s” means: ask s about a.
 
-That is membership as a named function. The symbol `∈` is still missing.
+The familiar symbol `∈` is still waiting. The idea is already here.
 
 ### Chinese
-`protected def Mem` 吃一个集合 `s` 和一个元素 `a`，返回 `s a`。
+“a 属于 s”，意思就是：拿 s 去问 a。
 
-“属于”有了函数名。符号 `∈` 还没接上。
+课本上的 `∈` 还没出场。意思已经在了。
 
 ### Lean
 ```lean
@@ -236,25 +236,25 @@ end Set
 lean
 
 ### Next en
-`∈` is a kernel notation wired to a typeclass.
+Now hang the symbol you already use in class.
 
 ### Next zh
-`∈` 是内核记号，接到一个 typeclass 上
+把课堂上那个 ∈ 接上去
 
-## Beat 8: ∈ lives on Membership
+## Beat 8: ∈ is the symbol from class
 
 ### Title zh
-∈ 挂在 Membership 上
+∈，就是课堂上那个符号
 
 ### English
-`∈` is notation in Lean's core. It desugars to `Membership.mem`.
+`∈` is the mark you already write on paper.
 
-`outParam` on the element type means Lean infers it. Set still has to implement the class.
+Underneath, it still asks the same yes-or-no question.
 
 ### Chinese
-`∈` 是 Lean 内核里的记号，展开成 `Membership.mem`。
+`∈` 就是你本子上一直在写的那个符号。
 
-元素类型上的 `outParam` 让 Lean 自己推断。Set 还得实现这个类。
+底下问的，还是同一句：在，还是不在。
 
 ### Lean
 ```lean
@@ -270,25 +270,25 @@ notation:50 a:50 " ∈ " b:50 => Membership.mem b a
 lean
 
 ### Next en
-One instance wires Set to that class.
+One connection, and the sentence from class works.
 
 ### Next zh
-一个 instance，把 Set 接上去
+接上一次，课堂上那句话就能写了
 
-## Beat 9: One instance, one field
+## Beat 9: One connection, and the sentence works
 
 ### Title zh
-一个 instance，只填一个字段
+接上一次，那句话就能写
 
 ### English
-`instance : Membership α (Set α) := ⟨Set.Mem⟩` fills the only field.
+Connect the symbol to the membership test, and `a ∈ s` means what you think it means.
 
-`α` is whatever `Set α` already allows. Angle brackets are the one-field shortcut.
+No new set theory. Just the notation you already trust.
 
 ### Chinese
-`instance : Membership α (Set α) := ⟨Set.Mem⟩` 只填那一个字段。
+把符号接到那句问话上，`a ∈ s` 就是你想的那个意思。
 
-`α` 就是 `Set α` 已经允许的元素类型。尖括号是单字段的省事写法。
+没有新的集合论。只是把你早就信任的记号接好。
 
 ### Lean
 ```lean
@@ -300,25 +300,25 @@ instance : Membership α (Set α) :=
 lean
 
 ### Next en
-Now `a ∈ s` is a proposition.
+Now `a ∈ s` is a claim you can check.
 
 ### Next zh
-现在 `a ∈ s` 才是一个命题
+现在 `a ∈ s` 是一句能检查的话
 
-## Beat 10: a ∈ s is a proposition
+## Beat 10: a ∈ s is a claim you can check
 
 ### Title zh
-写成 a ∈ s，得到的是命题
+a ∈ s，是一句能判定的话
 
 ### English
-After the instance, `a ∈ s` constructs a `Prop`.
+`a ∈ s` is not a decoration. It is a claim: true, or not.
 
-It is `Membership.mem s a`, which is `Set.Mem s a`, which is `s a`.
+That is why a set can enter a proof. You can be right or wrong about membership.
 
 ### Chinese
-实例接上之后，`a ∈ s` 构造的是一个 `Prop`。
+`a ∈ s` 不是装饰。它是一句断言：对，或者不对。
 
-它就是 `Membership.mem s a`，也就是 `Set.Mem s a`，也就是 `s a`。
+集合能走进证明，就是因为“属于”可以判对错。
 
 ### Lean
 ```lean
@@ -329,25 +329,25 @@ example (s : Set α) (a : α) : Prop := a ∈ s
 lean
 
 ### Next en
-Same notation on the odd-integer set.
+Same symbol on the odd integers.
 
 ### Next zh
-奇数集合也是这套记号
+奇数集合，用的还是同一个 ∈
 
-## Beat 11: Same ∈ on oddIntegers
+## Beat 11: Same ∈ on the odd integers
 
 ### Title zh
 奇数集合，同一个 ∈
 
 ### English
-`n ∈ oddIntegers` is the same notation, now on a concrete set.
+`n ∈ oddIntegers` is the same symbol, now on a set you already like.
 
-No new operator. The instance already covers every `Set α`.
+No new operator. Oddness is still the only test.
 
 ### Chinese
-`n ∈ oddIntegers` 还是同一个记号，只是套在具体集合上。
+`n ∈ oddIntegers` 还是同一个符号，只是问的是奇数集合。
 
-没有新算符。那个 instance 已经覆盖所有 `Set α`。
+没有新算符。判定还是那一句：是不是奇数。
 
 ### Lean
 ```lean
@@ -358,25 +358,25 @@ example (n : Int) : Prop := n ∈ oddIntegers
 lean
 
 ### Next en
-Three layers: constructor, wrapper, notation.
+Three layers, one idea.
 
 ### Next zh
-三层：构造、包装、记号
+三层写法，一个意思
 
-## Beat 12: Lean's three layers
+## Beat 12: Three layers, one idea
 
 ### Title zh
-Lean 的集合，就这三层
+三层写法，一个意思
 
 ### English
-Function type first: `Set α := α → Prop`. Then `Mem` wraps apply. Then the instance gives `∈`.
+A question about every object. A name for belonging. The symbol `∈`.
 
-That is the whole Lean model of a set in this clip.
+That is the whole picture of a set in this clip.
 
 ### Chinese
-先是函数类型：`Set α := α → Prop`。再是 `Mem` 把套用包起来。最后 instance 给出 `∈`。
+对每个东西的一句问话。给“属于”起的名。再加上符号 `∈`。
 
-这期 Lean 这边的集合模型，就这三层。
+这期对集合的理解，就这一幅图。
 
 ### Lean
 ```lean
@@ -393,25 +393,25 @@ instance : Membership α (Set α) := ⟨Set.Mem⟩
 lean
 
 ### Next en
-Turn-Lang starts from a container.
+Another way to write a set: start with a box.
 
 ### Next zh
-Turn-Lang 从容器讲起
+另一种写法：先摆出一个盒子
 
-## Beat 13: Turn writes a container
+## Beat 13: Or start with a box, then the rule
 
 ### Title zh
-Turn-Lang 直接写成容器
+也可以先摆盒子，再写规矩
 
 ### English
-Turn-Lang models `Set` as a `structure`. The `[T]` mark makes it a container, so `in` is available.
+You can also start with a container, then write who may enter.
 
-No `Mem`, no `Membership` instance. `x in s` is built-in.
+`x in s` is the same membership idea, said from the box outward.
 
 ### Chinese
-Turn-Lang 用 `structure` 建 `Set`。方括号 `[T]` 标明这是容器，所以能用 `in`。
+也可以先摆一个容器，再写谁能进去。
 
-没有 `Mem`，也没有 `Membership` 实例。`x in s` 是内建的。
+`x in s` 还是“属于”，只是从盒子往外说。
 
 ### Turn-Lang
 ```turn
@@ -425,32 +425,32 @@ structure[T] Set<T: Any> {
 turn
 
 ### Next en
-A law states what belongs — starting with empty.
+Empty set: the box nobody enters.
 
 ### Next zh
-定律写清谁在里面——先看空集
+空集：谁都不许进的盒子
 
-## Beat 14: EmptySet is a law
+## Beat 14: Empty set — nobody is in
 
 ### Title zh
-空集：一条定律就写完
+空集：谁都不在里面
 
 ### English
-`EmptySet` inherits `Set`. The law `no_members` says: for every `x`, `x` is not in `self`.
+The empty set is not a mystery. It is a rule: for every `x`, `x` is not in.
 
-A law is a requirement every instance of the structure must satisfy.
+Once membership is a question, “nobody” is just answering no every time.
 
 ### Chinese
-`EmptySet` 继承 `Set`。定律 `no_members` 说：对每个 `x`，`x` 都不在 `self` 里。
+空集并不神秘。它就是一条规矩：对每个 `x`，都不在里面。
 
-定律就是这个结构的每个实例都必须满足的要求。
+“属于”变成问句之后，“谁都没有”只是每次都答不。
 
 ### Turn-Lang
 ```turn
 @notation("∅")
 structure EmptySet: Set<Any> {
-    laws {
-        no_members {
+    relations {
+        law no_members: Prop {
             forall x: Any |- not (x in self)
         }
     }
@@ -461,32 +461,32 @@ structure EmptySet: Set<Any> {
 turn
 
 ### Next en
-Union uses the same pattern.
+Union uses the same kind of rule.
 
 ### Next zh
-并集也是同一套写法
+并集，也是同一类规矩
 
-## Beat 15: Union is the same pattern
+## Beat 15: Union is the same kind of rule
 
 ### Title zh
-并集：还是定律写成员
+并集：在 A 或在 B
 
 ### English
-`Union` is a `Set` whose law says: `x` is in the union when `x` is in `A` or in `B`.
+`x` is in the union when `x` is in `A` or in `B`.
 
-Same container, different law. That is how this clip models a set on both sides.
+Same kind of question as oddness. Only the answer changes.
 
 ### Chinese
-`Union` 也是一个 `Set`，定律写：`x` 在并集里，当且仅当它在 `A` 或在 `B`。
+`x` 在并集里，意思是它在 `A` 里，或在 `B` 里。
 
-同一个容器，换一条定律。两边的集合模型，这期就对到这儿。
+和“是不是奇数”是同一类问句。变的只是怎么回答。
 
 ### Turn-Lang
 ```turn
 @notation({A} ~ " ∪ " ~ {B})
 structure Union<T: Any, A B: Set<T>>: Set<T> {
-    laws {
-        def {
+    relations {
+        law def: Prop {
             forall x in self |- x in A or x in B
         }
     }
@@ -497,25 +497,25 @@ structure Union<T: Any, A B: Set<T>>: Set<T> {
 turn
 
 ### Next en
-Keep the two pictures. Next clip is subset.
+Keep both pictures. Next: subset.
 
 ### Next zh
-两张图先记住。下期讲子集
+两张图先记住。下一期：子集
 
-## Beat 16: Two pictures of the same set
+## Beat 16: Same set, two ways to write it
 
 ### Title zh
-同一集合，两种写法
+同一个集合，两种写法
 
 ### English
-Lean: a test `α → Prop`, then `Mem`, then `∈`. Turn-Lang: a container, then laws.
+One picture starts from a test. The other starts from a box, then a rule.
 
-Same textbook object. Different place to put the membership rule.
+Same textbook object. You choose where to put the membership sentence.
 
 ### Chinese
-Lean：先写成判定 `α → Prop`，再接 `Mem` 和 `∈`。Turn-Lang：先写成容器，再用定律。
+一张图从判定写起。另一张先摆盒子，再写规矩。
 
-课本是同一个对象。成员规则放的位置不一样。
+课本是同一个对象。成员那句话，放的位置可以不一样。
 
 ### Lean
 ```lean
@@ -527,25 +527,25 @@ instance : Membership α (Set α) := ⟨Set.Mem⟩
 lean
 
 ### Next en
-Next clip: subset.
+Next clip: when is one set inside another?
 
 ### Next zh
-下期：子集
+下期：一个集合什么时候在另一个里面？
 
-## Beat 17: Next clip is subset
+## Beat 17: Next: when is one set inside another?
 
 ### Title zh
-下期：子集
+下期：什么时候算“在里面”
 
 ### English
 We have a set. Next we relate two of them: every element of `A` already lies in `B`.
 
-That is subset. See you in the next clip.
+That is subset — the next sentence you already know.
 
 ### Chinese
 集合有了。下一步是两个集合的关系：`A` 里的每个元素，都已经在 `B` 里。
 
-那就是子集。下期见。
+那就是子集。下一句你其实也会。
 
 ### Turn-Lang
 ```turn

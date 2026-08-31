@@ -9,6 +9,10 @@ import { beatPosterBrandLogoUrl } from '../../utils/beatPosterBrandLogos';
 import { webClassName, webModuleStyle } from '../../utils/webClassName';
 import { highlightCodeLines } from '../../utils/beatPosterCodeHighlight';
 import type { HighlightToken } from '../../utils/beatPosterCodeHighlight';
+import {
+  BEAT_POSTER_PREVIEW_FONT_SCALE,
+  MIN_EDITOR_FONT_SIZE,
+} from '../../../../../src/beatPosterLayout';
 
 function tokenClass(dialect: 'lean' | 'turn', kind: HighlightToken['kind']): string | null {
   if (dialect === 'lean') {
@@ -108,7 +112,7 @@ function CodeEditorPane({
     return null;
   }
   const logoUrl = beatPosterBrandLogoUrl(dialect);
-  const highlighted = highlightCodeLines(code, dialect, 30);
+  const highlighted = highlightCodeLines(code, dialect, 64);
   const paneHeaderClass = dialect === 'lean' ? classes.paneHeaderDark : classes.paneHeaderLight;
   return (
     <View style={webModuleStyle(classes.editorWrap)}>
@@ -146,7 +150,7 @@ function CodeEditorPane({
                 classes.editorBody,
                 autoHeight ? null : classes.editorBodyExpand,
               ),
-              { fontSize: editorFontSize * 0.42 },
+              { fontSize: Math.max(editorFontSize, MIN_EDITOR_FONT_SIZE) * BEAT_POSTER_PREVIEW_FONT_SCALE },
             ]}
           >
             {highlighted.map((lineTokens, lineIndex) => (

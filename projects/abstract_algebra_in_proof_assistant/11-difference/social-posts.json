@@ -1,9 +1,9 @@
 {
   "version": 1,
   "scriptId": "11-difference",
-  "titleEnglish": "11_difference",
-  "titleChina": "11_difference",
-  "title": "11_difference",
+  "titleEnglish": "11. Difference: in A, but not in B",
+  "titleChina": "11. 差集：在 A 里，但不在 B 里",
+  "title": "11. Difference: in A, but not in B",
   "generatedAt": "2026-07-25T08:06:05.044Z",
   "source": {},
   "english": {
@@ -38,28 +38,64 @@
   },
   "china": {
     "bilibili": {
-      "title": "11_difference",
-      "body": "11_difference\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+      "title": "11. 差集：在 A 里，但不在 B 里",
+      "body": "差集不是把 B 从盒子里挖走。它是一条规矩：在 A 里，同时不在 B 里。\n\n#证明助手 #抽象代数 #形式化数学"
     },
     "douyin": {
-      "title": "Difference — elements in A not in B",
-      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+      "title": "11. 差集：在 A 里，但不在 B 里",
+      "body": "差集是在 A 里、但不在 B 里的那些。\n\n#证明助手 #抽象代数"
     },
     "xiaohongshu": {
-      "title": "Difference — elemen…",
-      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+      "title": "11. 差集：在 A 里，但不在 B 里",
+      "body": "差集是在 A 里、但不在 B 里的那些。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享"
     },
     "weibo": {
-      "title": "Difference — elements in A not in B",
-      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+      "title": "11. 差集：在 A 里，但不在 B 里",
+      "body": "差集是在 A 里、但不在 B 里的那些。\n\n#证明助手 #抽象代数"
     },
     "wechat_channels": {
-      "title": "Difference — elements in A not in B",
-      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+      "title": "11. 差集：在 A 里，但不在 B 里",
+      "body": "差集是在 A 里、但不在 B 里的那些。\n\n#证明助手 #抽象代数"
+    },
+    "wechat": {
+      "title": "11. 差集：在 A 里，但不在 B 里",
+      "body": "差集不是把 B 从盒子里挖走。它是一条规矩：在 A 里，同时不在 B 里。\n\n#证明助手 #抽象代数"
     },
     "kuaishou": {
-      "title": "Difference — elements in A not in B",
-      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+      "title": "11. 差集：在 A 里，但不在 B 里",
+      "body": "差集是在 A 里、但不在 B 里的那些。\n\n#证明助手 #抽象代数"
+    }
+  },
+  "infographic": {
+    "china": {
+      "xiaohongshu": {
+        "title": "11. 差集：在 A 里，但不在 B 里",
+        "body": "差集不是把 B 从盒子里挖走。它是一条规矩：在 A 里，同时不在 B 里。\n\n左滑 10 张看完。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享"
+      },
+      "bilibili": {
+        "title": "【信息图】11. 差集：在 A 里，但不在 B 里",
+        "body": "差集不是把 B 从盒子里挖走。它是一条规矩：在 A 里，同时不在 B 里。\n\n10 张信息图左滑看完。\n\n#证明助手 #抽象代数 #形式化数学"
+      },
+      "douyin": {
+        "title": "11. 差集：在 A 里，但不在 B 里",
+        "body": "差集不是把 B 从盒子里挖走。它是一条规矩：在 A 里，同时不在 B 里。\n\n左滑 10 张看完。\n\n#证明助手 #抽象代数 #干货分享"
+      },
+      "weibo": {
+        "title": "11. 差集：在 A 里，但不在 B 里",
+        "body": "差集不是把 B 从盒子里挖走。它是一条规矩：在 A 里，同时不在 B 里。 左滑 10 张看完。 #证明助手 #抽象代数"
+      },
+      "wechat_channels": {
+        "title": "11. 差集：在 A 里，但不在 B 里（10 张）",
+        "body": "差集不是把 B 从盒子里挖走。它是一条规矩：在 A 里，同时不在 B 里。\n\n10 张信息图。"
+      },
+      "wechat": {
+        "title": "11. 差集：在 A 里，但不在 B 里",
+        "body": "差集不是把 B 从盒子里挖走。它是一条规矩：在 A 里，同时不在 B 里。\n\n10 张信息图按拍序插入。"
+      },
+      "kuaishou": {
+        "title": "11. 差集：在 A 里，但不在 B 里",
+        "body": "差集不是把 B 从盒子里挖走。它是一条规矩：在 A 里，同时不在 B 里。 左滑 10 张看完。\n\n#证明助手 #抽象代数"
+      }
     }
   }
 }

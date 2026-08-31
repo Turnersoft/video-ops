@@ -30,6 +30,7 @@ import { useOutdoorRoute } from '../../hooks/useOutdoorRoute';
 import { sharedStyles, colors, typography, spacing } from '../../theme';
 import { StyleSheet } from 'react-native';
 import type {
+  BeatPosterGenerateProgress,
   BeatPosterPublishPreview,
   BeatPostersResponse,
   LiveBeat,
@@ -38,7 +39,7 @@ import type {
 } from '../../types';
 import { buildBeatPosterCoverSlideProps } from '../../utils/beatPosterCoverModel';
 import { liveBeatToPosterSlideProps } from '../../utils/beatPosterModel';
-import { beatPosterMdEntryFor, parseBeatPosterMd } from '../../../../../src/beatPosterMd';
+import { beatPosterMdCoverCopy, beatPosterMdEntryFor, parseBeatPosterMd } from '../../../../../src/beatPosterMd';
 import type { BeatPosterMdDocument } from '../../../../../src/beatPosterMd';
 import {
   buildBeatPosterPublishPreviewLocal,
@@ -46,11 +47,8 @@ import {
   BEAT_POSTER_COVER_ID,
 } from '../../../../../src/beatPosterPublishPreview';
 import {
-  captureBeatPosterPngFromDom,
   captureBeatPosterSlidesFromDom,
   listBeatPosterExportRoots,
-  listBeatPosterFullExportItems,
-  pngDataUrlToBase64,
 } from '../../utils/beatPosterSlideCapture';
 import { platformLabel, publishStatusLabel } from '../../utils/format';
 import {
@@ -107,6 +105,9 @@ export function BeatPosterPublishScreen({ scriptId }: BeatPosterPublishScreenPro
   const [capturingPreview, setCapturingPreview] = useState(false);
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState<string | null>(null);
+  const [generateProgress, setGenerateProgress] = useState<BeatPosterGenerateProgress | null>(
+    null,
+  );
   const [posterIndex, setPosterIndex] = useState(0);
   const carouselRef = useRef<ScrollView>(null);
   const [error, setError] = useState<string | null>(null);
@@ -183,12 +184,15 @@ export function BeatPosterPublishScreen({ scriptId }: BeatPosterPublishScreenPro
       const promoZh =
         frontmatter.match(/^promotionalDescriptionChina:\s*"([^"]+)"/m)?.[1]?.trim() ??
         frontmatter.match(/^promotionalDescriptionChina:\s*(.+)$/m)?.[1]?.trim();
+      const parsedPosterMd = posterMdDoc?.markdown ? parseBeatPosterMd(posterMdDoc.markdown) : null;
+      setPosterMd(parsedPosterMd);
+      const coverEn = beatPosterMdCoverCopy(parsedPosterMd, 'en');
+      const coverZh = beatPosterMdCoverCopy(parsedPosterMd, 'zh');
       setEpisodeTitleEn(socialEn || catalogMeta?.title || liveScript.title);
       setEpisodeTitleZh(socialZh || socialEn || catalogMeta?.title || liveScript.title);
-      setPromotionalDescriptionEn(promoEn || '');
-      setPromotionalDescriptionZh(promoZh || promoEn || '');
+      setPromotionalDescriptionEn(coverEn || promoEn || '');
+      setPromotionalDescriptionZh(coverZh || promoZh || coverEn || promoEn || '');
       setPosters(posterPayload);
-      setPosterMd(posterMdDoc?.markdown ? parseBeatPosterMd(posterMdDoc.markdown) : null);
 
       const beatIds = (liveScript.beats ?? []).map((beat) => beat.id);
       const jpegImageUrls = [
@@ -248,6 +252,10 @@ export function BeatPosterPublishScreen({ scriptId }: BeatPosterPublishScreenPro
     setLoading(true);
     void load();
   }, [load, refreshKey]);
+
+  useEffect(() => {
+    setGenerateProgress(null);
+  }, [scriptId]);
 
   const beats = live?.beats ?? [];
   const coverSlide = useMemo(
@@ -477,43 +485,57 @@ export function BeatPosterPublishScreen({ scriptId }: BeatPosterPublishScreenPro
 
   const handleGenerate = useCallback(async () => {
     setBusy('generate');
+    setGenerateProgress({
+      scriptId,
+      status: 'clearing',
+      current: 0,
+      total: 0,
+      percent: 0,
+      label: 'Starting…',
+      updatedAt: new Date().toISOString(),
+    });
+    const pollId = globalThis.setInterval(() => {
+      void api
+        .getBeatPosterGenerateProgress(scriptId)
+        .then((progress) => {
+          setGenerateProgress(progress);
+        })
+        .catch(() => null);
+    }, 400);
     try {
-      if (Platform.OS !== 'web') {
-        const next = await api.generateBeatPosters(scriptId);
-        setPosters(next);
-        Alert.alert('Infographics ready', `Generated ${next.posters.length} PNGs.`);
-        return;
-      }
-      await new Promise<void>((resolve) => {
-        requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
-      });
-      const items = listBeatPosterFullExportItems();
-      if (items.length === 0) {
-        throw new Error('On-screen poster frames were not ready — refresh and try again.');
-      }
-      for (const item of items) {
-        const dataUrl = await captureBeatPosterPngFromDom(item.root);
-        await api.uploadBeatPosterPng(
-          scriptId,
-          item.beatId,
-          item.lang,
-          pngDataUrlToBase64(dataUrl),
-        );
-      }
-      await api.syncBeatPosterPreviewJpegs(scriptId).catch(() => null);
-      const next = await api.getBeatPosters(scriptId);
+      const next = await api.generateBeatPosters(scriptId);
       setPosters(next);
-      const previewPayload = await api.getBeatPosterPublishPreview(scriptId, lang);
-      if (previewPayload.preview) {
+      await api.syncBeatPosterPreviewJpegs(scriptId).catch(() => null);
+      const previewPayload = await api.getBeatPosterPublishPreview(scriptId, lang).catch(() => null);
+      if (previewPayload?.preview) {
         setPreview(previewPayload.preview);
+      }
+      const finalProgress = await api.getBeatPosterGenerateProgress(scriptId).catch(() => null);
+      if (finalProgress) {
+        setGenerateProgress(finalProgress);
+      } else {
+        setGenerateProgress({
+          scriptId,
+          status: 'done',
+          current: next.posters.length,
+          total: next.posters.length,
+          percent: 100,
+          label: `Done — ${next.posters.length} posters`,
+          updatedAt: new Date().toISOString(),
+        });
       }
       Alert.alert(
         'Infographics ready',
-        `Captured ${items.length} PNGs from the live preview (EN + 中文).`,
+        `Wrote ${next.posters.length} PNGs to beat-posters/english and beat-posters/chinese (cover + ${next.beats.length} beats × EN + 中文).`,
       );
     } catch (generateError) {
+      const failedProgress = await api.getBeatPosterGenerateProgress(scriptId).catch(() => null);
+      if (failedProgress) {
+        setGenerateProgress(failedProgress);
+      }
       Alert.alert('Generate failed', formatOutdoorApiError(generateError));
     } finally {
+      globalThis.clearInterval(pollId);
       setBusy(null);
     }
   }, [api, lang, scriptId]);
@@ -836,15 +858,51 @@ export function BeatPosterPublishScreen({ scriptId }: BeatPosterPublishScreenPro
               onPress={() => {
                 void load();
               }}
-              disabled={loading}
+              disabled={loading || busy === 'generate'}
             />
           </View>
+          {generateProgress &&
+          (busy === 'generate' ||
+            generateProgress.status === 'done' ||
+            generateProgress.status === 'error' ||
+            generateProgress.status === 'running' ||
+            generateProgress.status === 'clearing') ? (
+            <View style={webModuleStyle(classes.progressCard)}>
+              <View style={webModuleStyle(classes.progressTop)}>
+                {busy === 'generate' ? <ActivityIndicator color={colors.orange} /> : null}
+                <Text style={webModuleStyle(classes.progressLabel)}>
+                  {generateProgress.percent > 0 ? `${generateProgress.percent}% · ` : ''}
+                  {generateProgress.label}
+                  {generateProgress.total > 0
+                    ? ` (${generateProgress.current}/${generateProgress.total})`
+                    : ''}
+                </Text>
+              </View>
+              <View style={webModuleStyle(classes.progressTrack)}>
+                <View
+                  style={[
+                    webModuleStyle(classes.progressFill),
+                    {
+                      width: `${Math.max(
+                        0,
+                        Math.min(100, generateProgress.percent || (busy === 'generate' ? 4 : 0)),
+                      )}%`,
+                    },
+                  ]}
+                />
+              </View>
+              {generateProgress.error ? (
+                <Text style={webModuleStyle(classes.progressError)}>{generateProgress.error}</Text>
+              ) : null}
+            </View>
+          ) : null}
 
           <View style={webModuleStyle(classes.section)}>
             <SectionLabel>Publish checklist</SectionLabel>
             <View style={webModuleStyle(classes.checklist)}>
               <Text style={webModuleStyle(classes.checklistItem)}>
-                1. Generate infographics — captures the on-screen posters to beat-posters/ (cover + every beat, EN + 中文).
+                1. Generate infographics — writes cover + every beat into beat-posters/english and
+                beat-posters/chinese (EN + 中文), and removes leftover root PNGs/HTML.
               </Text>
               <Text style={webModuleStyle(classes.checklistItem)}>
                 2. Pick language — English and 中文 are separate albums with separate captions.
@@ -1145,7 +1203,7 @@ export function BeatPosterPublishScreen({ scriptId }: BeatPosterPublishScreenPro
             <SectionLabel>Publish album</SectionLabel>
             <Text style={webModuleStyle(classes.meta)}>
               {lang === 'en'
-                ? `Posts all ${carouselSlides.length} infographics (cover + beats) to Postiz. PNGs are regenerated from the server template on each publish (click Generate to preview files first). Connect platforms on #/platforms first.`
+                ? `Posts all ${carouselSlides.length} infographics (cover + beats) to Postiz using the PNGs from Generate. Connect platforms on #/platforms first.`
                 : `中文专辑 — SAU 自动发 12 张图文到已登录的小红书 / 抖音 / 快手（#/platforms 开启 SAU live）。每次发布会重新生成 PNG。`}
             </Text>
             {autoPlatforms.length > 0 ? (

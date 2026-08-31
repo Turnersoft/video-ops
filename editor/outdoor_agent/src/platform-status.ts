@@ -28,6 +28,7 @@ import {
   testSauPlatformConnection,
   type SauLoginCheck,
 } from './publish/sau.ts';
+import { loginKindForPlatform } from './platform-login.ts';
 import {
   applyPublishCredentials,
   loadPublishCredentials,
@@ -65,6 +66,7 @@ export type PlatformStatus = {
   envHints: string[];
   dashboardUrl: string | null;
   loginCommand: string | null;
+  loginKind: 'qr' | 'portal' | 'browser' | null;
   loginLinks: LoginLink[];
   signupUrl: string | null;
   signupSteps: SignupStep[];
@@ -165,7 +167,7 @@ function sauSignupSteps(): SignupStep[] {
       step: 2,
       title: 'Login each China platform',
       detail:
-        'sau bilibili|douyin|xiaohongshu|kuaishou|tencent login --account default',
+        'Use Login on this page or Mass publish — the QR appears in the UI. No terminal needed.',
       url: SAU_REPO_URL,
     },
     {
@@ -254,6 +256,7 @@ function postizPlatformStatus(
     ],
     dashboardUrl: postizDashboardUrl(),
     loginCommand: null,
+    loginKind: loginKindForPlatform(platform),
     loginLinks: [
       { label: 'Dashboard', url: postizDashboardUrl() },
       { label: 'Provider docs', url: `${POSTIZ_CONNECT_GUIDE}` },
@@ -288,21 +291,27 @@ function sauPlatformStatus(
       envHints: sauEnvDocs(),
       dashboardUrl: null,
       loginCommand: null,
+      loginKind: loginKindForPlatform(platform),
       loginLinks: [{ label: 'SAU GitHub', url: SAU_REPO_URL }],
       signupUrl: null,
       signupSteps: [
         {
           step: 1,
-          title: 'Manual publish',
-          detail: `${platform} is not automated via SAU.`,
+          title: platform === 'wechat' ? 'Login 微信公众号' : 'Manual publish',
+          detail: platform === 'wechat'
+            ? 'Press Login and sign in at mp.weixin.qq.com. Publishing stays manual.'
+            : `${platform} is not automated via SAU.`,
         },
       ],
-      notes: [`${platform} is manual-only`],
+      notes: platform === 'wechat'
+        ? ['Login opens 微信公众号. Publishing stays manual.']
+        : [`${platform} is manual-only`],
     };
   }
   const account = sauAccountName(platform);
   const loginCommand = `sau ${cli} login --account ${account}`;
   const loggedIn = login?.valid === true;
+  const accountLabel = loggedIn ? (login?.accountName ?? 'Logged in') : null;
   let status: PlatformConnectionStatus;
   if (!loggedIn) {
     status = 'missing_credentials';
@@ -313,34 +322,33 @@ function sauPlatformStatus(
   }
   const notes: string[] = [];
   if (!loggedIn) {
-    notes.push(login?.message ?? 'Run login command in terminal, then Refresh');
-    notes.push(`CLI: ${loginCommand}`);
+    notes.push(login?.message ?? 'Login expired or missing — use Login on this page');
+    notes.push('QR appears here. You do not need the SAU CLI.');
   } else if (mode === 'stub') {
-    notes.push('Logged in — toggle SAU live on this page to publish');
+    notes.push(`Logged in as ${accountLabel} — toggle SAU live on this page to publish`);
   } else {
-    notes.push(`Ready to publish via ${loginCommand.replace(' login', '')}`);
+    notes.push(`Ready to publish as ${accountLabel}`);
   }
   return {
     platform,
     provider: 'social-auto-upload',
     mode,
     status,
-    accountLabel: `SAU account (${account})`,
-    accountMasked: account,
+    accountLabel,
+    accountMasked: accountLabel,
     envHints: ['SAU_BIN', 'SAU_ACCOUNT', 'SAU_PUBLISH_MODE'],
     dashboardUrl: null,
     loginCommand,
+    loginKind: loginKindForPlatform(platform),
     loginLinks: [
       { label: 'SAU GitHub', url: SAU_REPO_URL },
-      { label: 'Copy login', command: loginCommand },
     ],
     signupUrl: SAU_REPO_URL,
     signupSteps: [
       {
         step: 1,
         title: `Login ${platform}`,
-        detail: 'Run on Mac, complete QR/browser login.',
-        command: loginCommand,
+        detail: 'Press Login on this page and scan the QR.',
       },
     ],
     notes,
@@ -417,6 +425,7 @@ export async function buildPlatformsHealth(): Promise<PlatformsHealthResponse> {
         sauLoginByPlatform.set(platform, {
           valid: false,
           message: error instanceof Error ? error.message : String(error),
+          accountName: null,
         });
       }
     }),

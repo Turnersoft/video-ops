@@ -1,0 +1,308 @@
+{
+  "id": "squat-msx6guh0",
+  "startedAt": "2026-08-17T11:56:03.012Z",
+  "status": "done",
+  "items": [
+    {
+      "id": "02-subset::infographic::zh::xiaohongshu",
+      "title": "2. 子集：是命题，不是新盒子 · 信息图 · xiaohongshu",
+      "episodeTitle": "2. 子集：是命题，不是新盒子",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "xiaohongshu",
+      "scriptId": "02-subset",
+      "status": "published",
+      "progress": "Published",
+      "startedAt": "2026-08-17T11:56:03.013Z",
+      "url": "https://example.invalid/xiaohongshu/sau-note-xiaohongshu-msx6hu6v",
+      "postId": "sau-note-xiaohongshu-msx6hu6v",
+      "finishedAt": "2026-08-17T11:56:49.304Z"
+    },
+    {
+      "id": "02-subset::infographic::zh::bilibili",
+      "title": "2. 子集：是命题，不是新盒子 · 信息图 · bilibili",
+      "episodeTitle": "2. 子集：是命题，不是新盒子",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "bilibili",
+      "scriptId": "02-subset",
+      "status": "published",
+      "progress": "Published",
+      "startedAt": "2026-08-17T11:56:49.305Z",
+      "url": "https://example.invalid/bilibili/sau-bilibili-album-zh",
+      "postId": "sau-bilibili-album-zh",
+      "finishedAt": "2026-08-17T11:56:52.988Z"
+    },
+    {
+      "id": "02-subset::infographic::zh::douyin",
+      "title": "2. 子集：是命题，不是新盒子 · 信息图 · douyin",
+      "episodeTitle": "2. 子集：是命题，不是新盒子",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "douyin",
+      "scriptId": "02-subset",
+      "status": "published",
+      "progress": "Published",
+      "startedAt": "2026-08-17T11:56:52.988Z",
+      "url": "https://example.invalid/douyin/sau-note-douyin-msx6imu5",
+      "postId": "sau-note-douyin-msx6imu5",
+      "finishedAt": "2026-08-17T11:57:26.430Z"
+    },
+    {
+      "id": "02-subset::infographic::zh::weibo",
+      "title": "2. 子集：是命题，不是新盒子 · 信息图 · weibo",
+      "episodeTitle": "2. 子集：是命题，不是新盒子",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "weibo",
+      "scriptId": "02-subset",
+      "status": "published",
+      "progress": "Published",
+      "startedAt": "2026-08-17T11:57:26.431Z",
+      "url": "https://weibo.com/7931125666/RdQh3sfsq",
+      "postId": "sau-note-weibo-msx6iy6b",
+      "finishedAt": "2026-08-17T11:57:41.124Z"
+    },
+    {
+      "id": "02-subset::infographic::zh::wechat_channels",
+      "title": "2. 子集：是命题，不是新盒子 · 信息图 · wechat_channels",
+      "episodeTitle": "2. 子集：是命题，不是新盒子",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "wechat_channels",
+      "scriptId": "02-subset",
+      "status": "failed",
+      "startedAt": "2026-08-17T11:57:41.125Z",
+      "error": "tencent note failed: 未找到视频号图文发布入口，请确认账号已开通图文/图片发布",
+      "errorDetail": "sau tencent upload-note --account default --title 02 子集：是命题，不是新盒子（13 张） --images /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/cover-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-01-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-02-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-03-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-04-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-05-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-06-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-07-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-08-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-09-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-10-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-11-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-12-zh.png --headed --note 子集不是新容器。A 是 B 的子集，就是 A 里每个元素都已经在 B 里。\n\n13 张信息图。 failed: 未找到视频号图文发布入口，请确认账号已开通图文/图片发布",
+      "finishedAt": "2026-08-17T11:57:59.689Z"
+    },
+    {
+      "id": "02-subset::infographic::zh::kuaishou",
+      "title": "2. 子集：是命题，不是新盒子 · 信息图 · kuaishou",
+      "episodeTitle": "2. 子集：是命题，不是新盒子",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "kuaishou",
+      "scriptId": "02-subset",
+      "status": "published",
+      "progress": "Published",
+      "startedAt": "2026-08-17T11:57:59.690Z",
+      "url": "https://example.invalid/kuaishou/sau-note-kuaishou-msx6k2bx",
+      "postId": "sau-note-kuaishou-msx6k2bx",
+      "finishedAt": "2026-08-17T11:58:33.166Z"
+    }
+  ],
+  "events": [
+    {
+      "at": "2026-08-17T11:56:03.013Z",
+      "level": "info",
+      "message": "Squat started with 6 items"
+    },
+    {
+      "at": "2026-08-17T11:56:03.013Z",
+      "level": "info",
+      "message": "Running 6 uploads in click order"
+    },
+    {
+      "at": "2026-08-17T11:56:03.014Z",
+      "itemId": "02-subset::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "Started xiaohongshu infographic 02-subset"
+    },
+    {
+      "at": "2026-08-17T11:56:03.015Z",
+      "itemId": "02-subset::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Using existing posters"
+    },
+    {
+      "at": "2026-08-17T11:56:03.016Z",
+      "itemId": "02-subset::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Using 13 existing posters"
+    },
+    {
+      "at": "2026-08-17T11:56:03.033Z",
+      "itemId": "02-subset::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Uploading 13 existing posters to xiaohongshu"
+    },
+    {
+      "at": "2026-08-17T11:56:49.305Z",
+      "itemId": "02-subset::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu published https://example.invalid/xiaohongshu/sau-note-xiaohongshu-msx6hu6v"
+    },
+    {
+      "at": "2026-08-17T11:56:49.306Z",
+      "itemId": "02-subset::infographic::zh::bilibili",
+      "level": "info",
+      "message": "Started bilibili infographic 02-subset"
+    },
+    {
+      "at": "2026-08-17T11:56:49.307Z",
+      "itemId": "02-subset::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Using existing posters"
+    },
+    {
+      "at": "2026-08-17T11:56:49.308Z",
+      "itemId": "02-subset::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Using 13 existing posters"
+    },
+    {
+      "at": "2026-08-17T11:56:49.326Z",
+      "itemId": "02-subset::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Using existing slideshow"
+    },
+    {
+      "at": "2026-08-17T11:56:49.326Z",
+      "itemId": "02-subset::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Uploading existing slideshow to bilibili"
+    },
+    {
+      "at": "2026-08-17T11:56:52.988Z",
+      "itemId": "02-subset::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili published https://example.invalid/bilibili/sau-bilibili-album-zh"
+    },
+    {
+      "at": "2026-08-17T11:56:52.988Z",
+      "itemId": "02-subset::infographic::zh::douyin",
+      "level": "info",
+      "message": "Started douyin infographic 02-subset"
+    },
+    {
+      "at": "2026-08-17T11:56:52.990Z",
+      "itemId": "02-subset::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Using existing posters"
+    },
+    {
+      "at": "2026-08-17T11:56:52.991Z",
+      "itemId": "02-subset::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Using 13 existing posters"
+    },
+    {
+      "at": "2026-08-17T11:56:53.014Z",
+      "itemId": "02-subset::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Uploading 13 existing posters to douyin"
+    },
+    {
+      "at": "2026-08-17T11:57:26.430Z",
+      "itemId": "02-subset::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin published https://example.invalid/douyin/sau-note-douyin-msx6imu5"
+    },
+    {
+      "at": "2026-08-17T11:57:26.431Z",
+      "itemId": "02-subset::infographic::zh::weibo",
+      "level": "info",
+      "message": "Started weibo infographic 02-subset"
+    },
+    {
+      "at": "2026-08-17T11:57:26.432Z",
+      "itemId": "02-subset::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Using existing posters"
+    },
+    {
+      "at": "2026-08-17T11:57:26.433Z",
+      "itemId": "02-subset::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Using 13 existing posters"
+    },
+    {
+      "at": "2026-08-17T11:57:26.451Z",
+      "itemId": "02-subset::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Uploading 13 existing posters to weibo"
+    },
+    {
+      "at": "2026-08-17T11:57:41.124Z",
+      "itemId": "02-subset::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo published https://weibo.com/7931125666/RdQh3sfsq"
+    },
+    {
+      "at": "2026-08-17T11:57:41.125Z",
+      "itemId": "02-subset::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "Started wechat_channels infographic 02-subset"
+    },
+    {
+      "at": "2026-08-17T11:57:41.126Z",
+      "itemId": "02-subset::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Using existing posters"
+    },
+    {
+      "at": "2026-08-17T11:57:41.127Z",
+      "itemId": "02-subset::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Using 13 existing posters"
+    },
+    {
+      "at": "2026-08-17T11:57:41.147Z",
+      "itemId": "02-subset::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Uploading 13 existing posters to wechat_channels"
+    },
+    {
+      "at": "2026-08-17T11:57:59.689Z",
+      "itemId": "02-subset::infographic::zh::wechat_channels",
+      "level": "error",
+      "message": "wechat_channels infographic failed: tencent note failed: 未找到视频号图文发布入口，请确认账号已开通图文/图片发布",
+      "detail": "sau tencent upload-note --account default --title 02 子集：是命题，不是新盒子（13 张） --images /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/cover-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-01-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-02-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-03-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-04-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-05-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-06-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-07-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-08-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-09-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-10-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-11-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/02-subset/beat-posters/beat-12-zh.png --headed --note 子集不是新容器。A 是 B 的子集，就是 A 里每个元素都已经在 B 里。\n\n13 张信息图。 failed: 未找到视频号图文发布入口，请确认账号已开通图文/图片发布"
+    },
+    {
+      "at": "2026-08-17T11:57:59.690Z",
+      "itemId": "02-subset::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "Started kuaishou infographic 02-subset"
+    },
+    {
+      "at": "2026-08-17T11:57:59.691Z",
+      "itemId": "02-subset::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "kuaishou: Using existing posters"
+    },
+    {
+      "at": "2026-08-17T11:57:59.692Z",
+      "itemId": "02-subset::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "kuaishou: Using 13 existing posters"
+    },
+    {
+      "at": "2026-08-17T11:57:59.710Z",
+      "itemId": "02-subset::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "kuaishou: Uploading 13 existing posters to kuaishou"
+    },
+    {
+      "at": "2026-08-17T11:58:33.166Z",
+      "itemId": "02-subset::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "kuaishou published https://example.invalid/kuaishou/sau-note-kuaishou-msx6k2bx"
+    },
+    {
+      "at": "2026-08-17T11:58:33.167Z",
+      "level": "info",
+      "message": "Squat done: 5 live, 1 failed"
+    }
+  ],
+  "summary": {
+    "queued": 0,
+    "published": 5,
+    "failed": 1,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "finishedAt": "2026-08-17T11:58:33.167Z"
+}

@@ -2,6 +2,10 @@
 videoOps: 1
 scriptId: 06-empty-subset-theorem
 title: 06_empty_subset_theorem
+socialTitleEnglish: "6. The empty set is a subset of every set"
+socialTitleChina: "6. 空集是任何集合的子集"
+promotionalDescription: "The empty set is a subset of every set, because it has no counterexample."
+promotionalDescriptionChina: "空集是任何集合的子集。子集关系要求：若某元素属于空集，则它也属于那个集合；空集里没有元素，所以没有反例。"
 format: landscape
 fps: 30
 width: 1920

@@ -1,0 +1,167 @@
+{
+  "id": "squat-mt1ler5w",
+  "startedAt": "2026-08-20T14:05:24.356Z",
+  "status": "done",
+  "items": [
+    {
+      "id": "04-set-equality::infographic::zh::douyin",
+      "title": "4. 集合相等：证明助手里的等号是什么意思 · 信息图 · douyin",
+      "episodeTitle": "4. 集合相等：证明助手里的等号是什么意思",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "douyin",
+      "scriptId": "04-set-equality",
+      "status": "published",
+      "progress": "Published",
+      "startedAt": "2026-08-20T14:05:24.357Z",
+      "url": "https://example.invalid/douyin/sau-note-douyin-mt1lhe8r",
+      "postId": "sau-note-douyin-mt1lhe8r",
+      "finishedAt": "2026-08-20T14:07:27.581Z"
+    },
+    {
+      "id": "04-set-equality::infographic::zh::weibo",
+      "title": "4. 集合相等：证明助手里的等号是什么意思 · 信息图 · weibo",
+      "episodeTitle": "4. 集合相等：证明助手里的等号是什么意思",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "weibo",
+      "scriptId": "04-set-equality",
+      "status": "published",
+      "progress": "Published",
+      "startedAt": "2026-08-20T14:07:27.581Z",
+      "url": "https://weibo.com/7931125666/RejpGhKsh",
+      "postId": "sau-note-weibo-mt1liv4f",
+      "finishedAt": "2026-08-20T14:08:36.114Z"
+    },
+    {
+      "id": "04-set-equality::infographic::zh::kuaishou",
+      "title": "4. 集合相等：证明助手里的等号是什么意思 · 信息图 · kuaishou",
+      "episodeTitle": "4. 集合相等：证明助手里的等号是什么意思",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "kuaishou",
+      "scriptId": "04-set-equality",
+      "status": "published",
+      "progress": "Published",
+      "startedAt": "2026-08-20T14:08:36.116Z",
+      "url": "https://example.invalid/kuaishou/sau-note-kuaishou-mt1lkz79",
+      "postId": "sau-note-kuaishou-mt1lkz79",
+      "finishedAt": "2026-08-20T14:10:14.710Z"
+    }
+  ],
+  "events": [
+    {
+      "at": "2026-08-20T14:05:24.356Z",
+      "level": "info",
+      "message": "Squat started with 3 items"
+    },
+    {
+      "at": "2026-08-20T14:05:24.357Z",
+      "level": "info",
+      "message": "Running 3 uploads in click order"
+    },
+    {
+      "at": "2026-08-20T14:05:24.357Z",
+      "itemId": "04-set-equality::infographic::zh::douyin",
+      "level": "info",
+      "message": "Started douyin infographic 04-set-equality"
+    },
+    {
+      "at": "2026-08-20T14:05:24.358Z",
+      "itemId": "04-set-equality::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Using existing posters"
+    },
+    {
+      "at": "2026-08-20T14:05:24.359Z",
+      "itemId": "04-set-equality::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Using 12 existing posters"
+    },
+    {
+      "at": "2026-08-20T14:05:24.376Z",
+      "itemId": "04-set-equality::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Uploading 12 existing posters to douyin"
+    },
+    {
+      "at": "2026-08-20T14:07:27.581Z",
+      "itemId": "04-set-equality::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin published https://example.invalid/douyin/sau-note-douyin-mt1lhe8r"
+    },
+    {
+      "at": "2026-08-20T14:07:27.582Z",
+      "itemId": "04-set-equality::infographic::zh::weibo",
+      "level": "info",
+      "message": "Started weibo infographic 04-set-equality"
+    },
+    {
+      "at": "2026-08-20T14:07:27.582Z",
+      "itemId": "04-set-equality::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Using existing posters"
+    },
+    {
+      "at": "2026-08-20T14:07:27.583Z",
+      "itemId": "04-set-equality::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Using 12 existing posters"
+    },
+    {
+      "at": "2026-08-20T14:07:27.604Z",
+      "itemId": "04-set-equality::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Uploading 12 existing posters to weibo"
+    },
+    {
+      "at": "2026-08-20T14:08:36.115Z",
+      "itemId": "04-set-equality::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo published https://weibo.com/7931125666/RejpGhKsh"
+    },
+    {
+      "at": "2026-08-20T14:08:36.116Z",
+      "itemId": "04-set-equality::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "Started kuaishou infographic 04-set-equality"
+    },
+    {
+      "at": "2026-08-20T14:08:36.117Z",
+      "itemId": "04-set-equality::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "kuaishou: Using existing posters"
+    },
+    {
+      "at": "2026-08-20T14:08:36.119Z",
+      "itemId": "04-set-equality::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "kuaishou: Using 12 existing posters"
+    },
+    {
+      "at": "2026-08-20T14:08:36.141Z",
+      "itemId": "04-set-equality::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "kuaishou: Uploading 12 existing posters to kuaishou"
+    },
+    {
+      "at": "2026-08-20T14:10:14.712Z",
+      "itemId": "04-set-equality::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "kuaishou published https://example.invalid/kuaishou/sau-note-kuaishou-mt1lkz79"
+    },
+    {
+      "at": "2026-08-20T14:10:14.713Z",
+      "level": "info",
+      "message": "Squat done: 3 live, 0 failed"
+    }
+  ],
+  "summary": {
+    "queued": 0,
+    "published": 3,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "finishedAt": "2026-08-20T14:10:14.712Z"
+}

@@ -302,6 +302,7 @@
   background: transparent;
   border-width: 0;
   box-shadow: none;
+  border-top-left-radius: 0;
 }
 
 .codeCardAuto {
@@ -454,9 +455,10 @@
 }
 
 .editorBody {
-  overflow: hidden;
+  overflow: visible;
   padding: 4px 0 6px;
   flex: 0 0 auto;
+  line-height: 1.2;
 }
 
 .editorBodyExpand {
@@ -465,17 +467,21 @@
 }
 
 .codeLine {
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
+  display: grid;
+  grid-template-columns: 2.25em 1fr;
+  column-gap: 0.4em;
+  align-items: start;
   padding: 0 5px;
-  overflow: hidden;
+  line-height: 1.2;
+  overflow: visible;
 }
 
 .lineNo {
-  width: 16px;
+  width: auto;
   text-align: right;
-  font-size: clamp(7px, 1.75vw, 9px);
+  white-space: nowrap;
+  line-height: 1.2;
+  font-size: 1em;
   font-family: "SF Mono", "Menlo", monospace;
 }
 
@@ -488,11 +494,13 @@
 }
 
 .lineText {
-  flex: 1;
-  font-size: clamp(7px, 1.75vw, 9px);
+  min-width: 0;
+  font-size: 1em;
   font-family: "SF Mono", "Menlo", monospace;
-  white-space: pre;
-  overflow: hidden;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  line-height: 1.2;
+  overflow: visible;
   tab-size: 2;
 }
 

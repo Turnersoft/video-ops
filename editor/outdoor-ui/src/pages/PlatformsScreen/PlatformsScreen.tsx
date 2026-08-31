@@ -17,12 +17,15 @@ import { Header } from "../../components/Header/Header";
 import { Button } from "../../components/Button/Button";
 import { Badge } from "../../components/Badge/Badge";
 import { SectionLabel } from "../../components/SectionLabel/SectionLabel";
+import { PlatformLoginPanel } from "../../components/PlatformLoginPanel/PlatformLoginPanel";
 import { useOutdoorUi } from "../../context/OutdoorUiContext";
 import { useOutdoorRoute } from "../../hooks/useOutdoorRoute";
+import { usePlatformLogin } from "../../hooks/usePlatformLogin";
 import { colors, radii, sharedStyles, spacing } from "../../theme";
 import type {
   LoginLink,
   LlmSettings,
+  PlatformLoginSession,
   PlatformStatus,
   PlatformsHealthResponse,
   PostizOverview,
@@ -65,7 +68,7 @@ async function copyToClipboard(text: string): Promise<boolean> {
 export function PlatformsScreen() {
   const { layout,  api } = useOutdoorUi();
   const layoutStyles = layoutStylesFor(layout);
-  const { navigateToLibrary } = useOutdoorRoute();
+  const { navigateToLibrary, navigateToPublishPlan, navigateToMassPublish } = useOutdoorRoute();
   const [health, setHealth] = useState<PlatformsHealthResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -121,6 +124,11 @@ export function PlatformsScreen() {
       setLoading(false);
     }
   }, [api]);
+
+  const handleLoginSucceeded = useCallback(() => {
+    void load();
+  }, [load]);
+  const login = usePlatformLogin(handleLoginSucceeded);
 
   const handleSavePublish = useCallback(async () => {
     setBusyAction("save-publish");
@@ -336,6 +344,8 @@ export function PlatformsScreen() {
           title="Platform connections"
           actions={[
             { label: "Scripts", onPress: navigateToLibrary, variant: "back" },
+            { label: "Publish plan", onPress: navigateToPublishPlan },
+            { label: "Mass publish", onPress: navigateToMassPublish },
             {
               label: loading ? "Refreshing…" : "Refresh",
               onPress: () => {
@@ -654,11 +664,12 @@ export function PlatformsScreen() {
               rows={postizRows}
               onOpenUrl={openUrl}
               onConnect={(platform) => {
-                void handleConnectPostiz(platform);
+                void login.start(platform);
               }}
               onTest={(platform) => {
                 void handleTest(platform);
               }}
+              login={login}
               busyAction={busyAction}
             />
 
@@ -672,9 +683,10 @@ export function PlatformsScreen() {
               onTest={(platform) => {
                 void handleTest(platform);
               }}
-              onCopyLogin={(command) => {
-                void handleCopyCommand(command, "Login command");
+              onLogin={(platform) => {
+                void login.start(platform);
               }}
+              login={login}
               busyAction={busyAction}
               sau
             />
@@ -1015,7 +1027,15 @@ type PlatformStatusGridProps = {
   onOpenUrl: (url: string | undefined) => void;
   onTest: (platform: string) => void;
   onConnect?: (platform: string) => void;
-  onCopyLogin?: (command: string) => void;
+  onLogin?: (platform: string) => void;
+  login?: {
+    platform: string | null;
+    session: PlatformLoginSession | null;
+    qrUrl: string | null;
+    error: string | null;
+    busy: boolean;
+    cancel: () => void;
+  };
   busyAction: string | null;
   sau?: boolean;
 };
@@ -1025,7 +1045,8 @@ function PlatformStatusGrid({
   onOpenUrl,
   onTest,
   onConnect,
-  onCopyLogin,
+  onLogin,
+  login,
   busyAction,
   sau = false,
 }: PlatformStatusGridProps) {
@@ -1060,9 +1081,7 @@ function PlatformStatusGrid({
           </View>
           <Text style={sharedStyles.cardMeta}>
             mode {entry.mode}
-            {entry.accountMasked
-              ? ` · ${entry.accountLabel ?? "account"} ${entry.accountMasked}`
-              : ""}
+            {entry.accountLabel ? ` · ${entry.accountLabel}` : ""}
           </Text>
           {(entry.notes ?? []).map((note) => (
             <Text key={note} style={sharedStyles.cardMeta}>
@@ -1100,10 +1119,22 @@ function PlatformStatusGrid({
                   onPress={() => onOpenUrl(link.url)}
                 />
               ))}
-            {sau && entry.loginCommand && onCopyLogin ? (
+            {sau && entry.loginKind && onLogin ? (
               <Button
-                label="Copy login"
-                onPress={() => onCopyLogin(entry.loginCommand ?? "")}
+                label={
+                  login?.busy && login.platform === entry.platform
+                    ? "Opening…"
+                    : entry.status === "missing_credentials" || entry.status === "manual"
+                      ? "Login"
+                      : "New account"
+                }
+                variant={
+                  entry.status === "missing_credentials" || entry.status === "manual"
+                    ? "primary"
+                    : "default"
+                }
+                onPress={() => onLogin(entry.platform)}
+                disabled={login?.busy === true}
               />
             ) : null}
             <Button
@@ -1117,6 +1148,17 @@ function PlatformStatusGrid({
               }
             />
           </View>
+          {login && login.platform === entry.platform ? (
+            <PlatformLoginPanel
+              session={login.session}
+              qrUrl={login.qrUrl}
+              error={login.error}
+              busy={login.busy}
+              onCancel={() => {
+                void login.cancel();
+              }}
+            />
+          ) : null}
         </View>
       ))}
     </View>

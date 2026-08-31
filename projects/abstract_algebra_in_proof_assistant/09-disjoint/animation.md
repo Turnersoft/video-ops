@@ -2,6 +2,10 @@
 videoOps: 1
 scriptId: 09-disjoint
 title: 09_disjoint
+socialTitleEnglish: "9. Disjoint: no members in common"
+socialTitleChina: "9. 不相交：没有公共成员"
+promotionalDescription: "Two sets are disjoint when their intersection is empty."
+promotionalDescriptionChina: "不相交（disjoint）不是第三个集合，而是一句关于两个集合的话：它们的交集等于空集，也就是没有任何公共元素。"
 format: landscape
 fps: 30
 width: 1920

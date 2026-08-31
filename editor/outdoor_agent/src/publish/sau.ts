@@ -1,5 +1,6 @@
 import path from 'node:path';
 
+import { REPO_ROOT } from '../paths.ts';
 import type { PublishRecord } from '../schema.ts';
 import { runCommand } from '../subprocess.ts';
 
@@ -19,8 +20,17 @@ const SAU_PLATFORM_MAP: Record<string, string | null> = {
   xiaohongshu: 'xiaohongshu',
   kuaishou: 'kuaishou',
   wechat_channels: 'tencent',
-  weibo: null,
+  wechat: null,
+  weibo: 'weibo',
 };
+
+const SAU_VIDEO_PLATFORMS = new Set([
+  'xiaohongshu',
+  'bilibili',
+  'douyin',
+  'kuaishou',
+  'wechat_channels',
+]);
 
 type PublishToSauParams = {
   platform: string;
@@ -31,6 +41,7 @@ type PublishToSauParams = {
   compositeRunId: string;
   thumbnailPath?: string;
   coverId?: string;
+  abortKey?: string;
 };
 
 type SauPublishResult = PublishRecord & {
@@ -47,8 +58,24 @@ type SauPostActionResult = {
   stub?: boolean;
 };
 
-function sauBin(): string {
+export function sauBin(): string {
   return Deno.env.get('SAU_BIN') ?? 'sau';
+}
+
+export function sauRepoRoot(): string {
+  const fromEnv = Deno.env.get('SAU_REPO')?.trim();
+  if (fromEnv) {
+    return fromEnv;
+  }
+  return path.join(REPO_ROOT, 'social-auto-upload');
+}
+
+export function sauCookiePath(platform: string): string | null {
+  const cli = sauCliPlatform(platform);
+  if (!cli) {
+    return null;
+  }
+  return path.join(sauRepoRoot(), 'cookies', `${cli}_${sauAccount(platform)}.json`);
 }
 
 function sauAccount(platform: string): string {
@@ -56,11 +83,42 @@ function sauAccount(platform: string): string {
   return Deno.env.get(key) ?? Deno.env.get('SAU_ACCOUNT') ?? 'default';
 }
 
-async function runSau(args: string[]): Promise<string> {
-  return runCommand(sauBin(), args);
+async function runSau(args: string[], abortKey?: string): Promise<string> {
+  return runCommand(sauBin(), args, abortKey ? { abortKey } : undefined);
 }
 
-const SAU_NOTE_PLATFORMS = new Set(['xiaohongshu', 'douyin', 'kuaishou']);
+async function runBilibiliUpload(args: string[], abortKey?: string): Promise<string> {
+  const lines = biliupLines();
+  let lastError: unknown;
+  for (const line of lines) {
+    try {
+      return await runSau([...args, '--line', line], abortKey);
+    } catch (error) {
+      lastError = error;
+      const message = error instanceof Error ? error.message : String(error);
+      if (!/certificate is expired|Request failed after|invalid peer certificate/i.test(message)) {
+        throw error;
+      }
+      console.warn(`[sau] bilibili line ${line} failed, trying the next CDN`);
+    }
+  }
+  throw lastError instanceof Error ? lastError : new Error(String(lastError));
+}
+
+const SAU_NOTE_PLATFORMS = new Set([
+  'xiaohongshu',
+  'douyin',
+  'kuaishou',
+  'wechat_channels',
+  'weibo',
+]);
+
+const SAU_BROWSER_NOTE_PLATFORMS = new Set([
+  'xiaohongshu',
+  'douyin',
+  'kuaishou',
+  'wechat_channels',
+]);
 
 type PublishNoteAlbumToSauParams = {
   platform: string;
@@ -68,10 +126,16 @@ type PublishNoteAlbumToSauParams = {
   title: string;
   note: string;
   jobId: string;
+  abortKey?: string;
 };
 
 function sauBrowserArgs(): string[] {
-  return Deno.env.get('SAU_HEADED') === '1' ? ['--headed'] : ['--headless'];
+  return Deno.env.get('SAU_HEADLESS') === '1' ? ['--headless'] : ['--headed'];
+}
+
+function biliupLines(): string[] {
+  const raw = Deno.env.get('SAU_BILIBILI_LINES') ?? 'bda2,tx,alia,cnbldsa';
+  return raw.split(',').map((line) => line.trim()).filter(Boolean);
 }
 
 function hashtagsFromNote(note: string): string {
@@ -89,6 +153,7 @@ export async function publishNoteAlbumToSau({
   title,
   note,
   jobId,
+  abortKey,
 }: PublishNoteAlbumToSauParams): Promise<SauPublishResult> {
   const mode = Deno.env.get('SAU_PUBLISH_MODE') ?? 'stub';
   const publishedAt = new Date().toISOString();
@@ -131,7 +196,7 @@ export async function publishNoteAlbumToSau({
     title,
     '--images',
     ...imagePaths.map((imagePath) => path.resolve(imagePath)),
-    ...sauBrowserArgs(),
+    ...(SAU_BROWSER_NOTE_PLATFORMS.has(platform) ? sauBrowserArgs() : []),
   ];
   const trimmedNote = note.trim();
   if (trimmedNote) {
@@ -142,14 +207,14 @@ export async function publishNoteAlbumToSau({
     args.push('--tags', tags);
   }
 
-  const output = await runSau(args);
+  const output = await runSau(args, abortKey);
   const postId = `sau-note-${platform}-${Date.now().toString(36)}`;
 
   return {
     platform,
     provider: 'social-auto-upload',
     postId,
-    url: extractUrl(output) ?? `https://example.invalid/${platform}/${postId}`,
+    url: extractSauPublishedUrl(output) ?? `https://example.invalid/${platform}/${postId}`,
     status: 'live',
     publishedAt,
     jobId,
@@ -170,14 +235,15 @@ export async function publishToSau({
   compositeRunId,
   thumbnailPath,
   coverId,
+  abortKey,
 }: PublishToSauParams): Promise<SauPublishResult> {
   const mode = Deno.env.get('SAU_PUBLISH_MODE') ?? 'stub';
   const publishedAt = new Date().toISOString();
   const sauPlatform = SAU_PLATFORM_MAP[platform];
 
-  if (!sauPlatform) {
+  if (!sauPlatform || !SAU_VIDEO_PLATFORMS.has(platform)) {
     throw new Error(
-      `Platform ${platform} is not supported by social-auto-upload yet (weibo needs manual publish)`,
+      `Platform ${platform} does not support SAU video upload`,
     );
   }
 
@@ -223,14 +289,16 @@ export async function publishToSau({
     args.push('--tid', Deno.env.get('SAU_BILIBILI_TID') ?? '249');
   }
 
-  const output = await runSau(args);
+  const output = sauPlatform === 'bilibili'
+    ? await runBilibiliUpload(args, abortKey)
+    : await runSau(args, abortKey);
   const postId = `sau-${platform}-${path.basename(videoPath, path.extname(videoPath))}`;
 
   return {
     platform,
     provider: 'social-auto-upload',
     postId,
-    url: extractUrl(output) ?? `https://example.invalid/${platform}/${postId}`,
+    url: extractSauPublishedUrl(output) ?? `https://example.invalid/${platform}/${postId}`,
     status: 'live',
     publishedAt,
     jobId,
@@ -243,9 +311,13 @@ export async function publishToSau({
   };
 }
 
-function extractUrl(output: string): string | null {
-  const match = /https?:\/\/[^\s]+/i.exec(output);
-  return match?.[0] ?? null;
+export function extractSauPublishedUrl(output: string): string | null {
+  const cleaned = output.replace(/\u001b\[[0-9;]*m/g, '');
+  const match = /https?:\/\/[^\s<>"']+/i.exec(cleaned);
+  if (!match) {
+    return null;
+  }
+  return match[0].replace(/[)\].,;]+$/g, '');
 }
 
 export async function hideSauPost(platform: string, postId: string): Promise<SauPostActionResult> {
@@ -268,6 +340,10 @@ export function isSauPlatform(platform: string): boolean {
   return Boolean(SAU_PLATFORM_MAP[platform]);
 }
 
+export function isSauVideoPlatform(platform: string): boolean {
+  return SAU_VIDEO_PLATFORMS.has(platform);
+}
+
 export function sauPublishMode(): 'stub' | 'live' {
   return (Deno.env.get('SAU_PUBLISH_MODE') ?? 'stub') === 'live' ? 'live' : 'stub';
 }
@@ -281,7 +357,7 @@ export function sauCliPlatform(platform: string): string | null {
 }
 
 export function sauDashboardHint(): string {
-  return 'Use the social-auto-upload CLI: sau <platform> login --account <name>';
+  return 'Login China platforms from #/platforms or #/mass-publish — QR appears in the page.';
 }
 
 export function sauEnvDocs(): string[] {
@@ -291,36 +367,63 @@ export function sauEnvDocs(): string[] {
     'SAU_ACCOUNT_<PLATFORM> — optional per-platform override (e.g. SAU_ACCOUNT_BILIBILI)',
     'SAU_PUBLISH_MODE — stub|live (default stub)',
     'SAU_BILIBILI_TID — Bilibili partition id (default 249)',
-    'Login: sau bilibili login --account default (repeat per platform)',
+    'Login: use Login on #/platforms or #/mass-publish (QR in the page)',
   ];
 }
 
 export type SauLoginCheck = {
   valid: boolean;
   message: string;
+  accountName: string | null;
 };
+
+export function parseSauCheckOutput(output: string): SauLoginCheck {
+  const lines = output
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  for (let index = lines.length - 1; index >= 0; index -= 1) {
+    const match = /^(valid|invalid)\b(.*)$/i.exec(lines[index] ?? '');
+    if (!match) {
+      continue;
+    }
+    const valid = match[1].toLowerCase() === 'valid';
+    const accountName = match[2].trim() || null;
+    return {
+      valid,
+      accountName: valid ? accountName : null,
+      message: valid
+        ? accountName
+          ? `Logged in as ${accountName}`
+          : 'Logged in'
+        : 'Login invalid — run login command',
+    };
+  }
+  return {
+    valid: false,
+    accountName: null,
+    message: output.trim() || 'Login invalid — run login command',
+  };
+}
 
 export async function checkSauPlatformLogin(platform: string): Promise<SauLoginCheck> {
   const cli = sauCliPlatform(platform);
   if (!cli) {
-    return { valid: false, message: `${platform} is manual-only` };
+    return { valid: false, message: `${platform} is manual-only`, accountName: null };
   }
   try {
     const output = await runSau([cli, 'check', '--account', sauAccount(platform)]);
-    const trimmed = output.trim().toLowerCase();
-    if (trimmed.includes('valid')) {
-      return { valid: true, message: 'Logged in' };
-    }
-    return {
-      valid: false,
-      message: trimmed || 'Login invalid — run login command',
-    };
+    return parseSauCheckOutput(output);
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     if (/invalid/i.test(message)) {
-      return { valid: false, message: 'Login invalid — run login command' };
+      return {
+        valid: false,
+        message: 'Login invalid — run login command',
+        accountName: null,
+      };
     }
-    return { valid: false, message };
+    return { valid: false, message, accountName: null };
   }
 }
 

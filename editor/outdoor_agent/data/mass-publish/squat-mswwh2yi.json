@@ -1,0 +1,95 @@
+{
+  "id": "squat-mswwh2yi",
+  "startedAt": "2026-08-17T07:16:17.850Z",
+  "status": "failed",
+  "items": [
+    {
+      "id": "01-set::infographic::zh::bilibili",
+      "title": "1. 集合：不是一袋子东西，是一条判定 · 信息图 · bilibili",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "bilibili",
+      "scriptId": "01-set",
+      "status": "failed",
+      "startedAt": "2026-08-17T07:16:17.851Z",
+      "error": "sau bilibili upload-video --account default --file /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/album-zh.mp4 --title 【信息图】01 集合：判定 vs 容器 --desc Lean：α → Prop，再包装 Mem，再接到 ∈。\n\nTurn-Lang：structure 写成容器，relations 里写谁在里面。\n\n18 张专辑左滑看完。抽象代数第 1 期\n\n#TurnLang #Lean4 #证明助手 #抽象代数 --tid 249 failed: Error: \u001b[1mUnknown Error\u001b[22m\n├╴at \u001b[3mcrates/biliup-cli/src/uploader.rs:557:14\u001b[23m\n│\n├─▶ \u001b[1mRequest failed after 5 retries\u001b[22m\n│   ╰╴at \u001b[3mcrates/biliup-cli/src/uploader.rs:557:14\u001b[23m\n│\n├─▶ \u001b[1merror sending request for url (https://upos-cs-upcdnbldsa.bilivideo.com/ugcever/n260817admv5omcokvope3e1ra3iv6f2.mp4?uploads&output=json)\u001b[22m\n│   ╰╴at \u001b[3mcrates/biliup-cli/src/uploader.rs:557:14\u001b[23m\n│\n├─▶ \u001b[1mclient error (Connect)\u001b[22m\n│   ╰╴at \u001b[3mcrates/biliup-cli/src/uploader.rs:557:14\u001b[23m\n│\n╰─▶ \u001b[1minvalid peer certificate: Other(OtherError(\"“*.bilivideo.com” certificate is expired: -67818\"))\u001b[22m\n    ╰╴at \u001b[3mcrates/biliup-cli/src/uploader.rs:557:14\u001b[23m\n",
+      "finishedAt": "2026-08-17T07:19:29.656Z"
+    },
+    {
+      "id": "01-set::infographic::zh::douyin",
+      "title": "1. 集合：不是一袋子东西，是一条判定 · 信息图 · douyin",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "douyin",
+      "scriptId": "01-set",
+      "status": "failed",
+      "startedAt": "2026-08-17T07:19:29.657Z",
+      "error": "sau douyin upload-note --account default --title 集合不是一袋子｜18 张信息图 --images /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/cover-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-01-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-02-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-03-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-04-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-05-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-06-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-07-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-08-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-09-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-10-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-11-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-12-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-13-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-14-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-15-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-16-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-17-zh.png --headless --note Lean 写成判定，Turn-Lang 写成容器 🔥\n\n18 张左滑：Mem / ∈ 怎么接上，空集和并集怎么写\n抽象代数第 1 期\n\n#TurnLang #Lean4 #证明助手 #抽象代数 #干货 --tags TurnLang,Lean4,证明助手,抽象代数,干货 failed: Locator.wait_for: Timeout 120000ms exceeded.\nCall log:\n  - waiting for locator(\"input[placeholder*=\\\"填写作品标题\\\"]\").first to be visible\n  - waiting for locator(\"input[placeholder*=\\\"填写作品标题\\\"]\").first\n\n",
+      "finishedAt": "2026-08-17T07:22:41.477Z"
+    },
+    {
+      "id": "01-set::infographic::zh::kuaishou",
+      "title": "1. 集合：不是一袋子东西，是一条判定 · 信息图 · kuaishou",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "kuaishou",
+      "scriptId": "01-set",
+      "status": "failed",
+      "startedAt": "2026-08-17T07:22:41.477Z",
+      "error": "Agent restarted before this squat finished",
+      "errorDetail": "Agent restarted before this squat finished"
+    },
+    {
+      "id": "01-set::infographic::zh::wechat_channels",
+      "title": "1. 集合：不是一袋子东西，是一条判定 · 信息图 · wechat_channels",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "wechat_channels",
+      "scriptId": "01-set",
+      "status": "failed",
+      "error": "Agent restarted before this squat finished",
+      "errorDetail": "Agent restarted before this squat finished"
+    },
+    {
+      "id": "01-set::infographic::zh::xiaohongshu",
+      "title": "1. 集合：不是一袋子东西，是一条判定 · 信息图 · xiaohongshu",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "xiaohongshu",
+      "scriptId": "01-set",
+      "status": "failed",
+      "error": "Agent restarted before this squat finished",
+      "errorDetail": "Agent restarted before this squat finished"
+    }
+  ],
+  "summary": {
+    "queued": 0,
+    "published": 0,
+    "failed": 5,
+    "skipped": 0
+  },
+  "finishedAt": "2026-08-17T07:52:37.036Z",
+  "events": [
+    {
+      "at": "2026-08-17T07:52:37.036Z",
+      "itemId": "01-set::infographic::zh::kuaishou",
+      "level": "error",
+      "message": "kuaishou infographic aborted: agent restarted",
+      "detail": "Agent restarted before this squat finished"
+    },
+    {
+      "at": "2026-08-17T07:52:37.037Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "error",
+      "message": "wechat_channels infographic aborted: agent restarted",
+      "detail": "Agent restarted before this squat finished"
+    },
+    {
+      "at": "2026-08-17T07:52:37.037Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "error",
+      "message": "xiaohongshu infographic aborted: agent restarted",
+      "detail": "Agent restarted before this squat finished"
+    }
+  ]
+}

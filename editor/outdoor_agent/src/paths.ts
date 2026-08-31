@@ -422,6 +422,23 @@ export function scriptBeatPostersDir(scriptId: string): string {
   return path.join(scriptDirFor(scriptId), 'beat-posters');
 }
 
+export function beatPosterLangFolderName(lang: 'en' | 'zh'): 'english' | 'chinese' {
+  return lang === 'zh' ? 'chinese' : 'english';
+}
+
+export function scriptBeatPostersLangDir(scriptId: string, lang: 'en' | 'zh'): string {
+  return path.join(scriptBeatPostersDir(scriptId), beatPosterLangFolderName(lang));
+}
+
+/** Album PNG written by Generate infographics: beat-posters/english/cover.png */
+export function scriptBeatPosterPngPath(
+  scriptId: string,
+  beatId: string,
+  lang: 'en' | 'zh',
+): string {
+  return path.join(scriptBeatPostersLangDir(scriptId, lang), `${beatId}.png`);
+}
+
 export function scriptBeatPostersManifestPath(scriptId: string): string {
   return path.join(scriptBeatPostersDir(scriptId), 'manifest.json');
 }

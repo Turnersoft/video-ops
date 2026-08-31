@@ -13,6 +13,7 @@ const PLATFORM_LABELS: Record<string, string> = {
   xiaohongshu: '小红书',
   weibo: '微博',
   wechat_channels: '视频号',
+  wechat: '微信公众号',
   kuaishou: '快手',
 };
 

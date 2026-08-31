@@ -1,0 +1,677 @@
+{
+  "id": "squat-mswygtiq",
+  "startedAt": "2026-08-17T08:12:04.850Z",
+  "status": "failed",
+  "items": [
+    {
+      "id": "01-set::infographic::zh::xiaohongshu",
+      "title": "1. 集合：不是一袋子东西，是一条判定 · 信息图 · xiaohongshu",
+      "episodeTitle": "1. 集合：不是一袋子东西，是一条判定",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "xiaohongshu",
+      "scriptId": "01-set",
+      "status": "published",
+      "progress": "Published",
+      "startedAt": "2026-08-17T08:12:04.851Z",
+      "url": "https://example.invalid/xiaohongshu/sau-note-xiaohongshu-mswyincz",
+      "postId": "sau-note-xiaohongshu-mswyincz",
+      "finishedAt": "2026-08-17T08:13:30.180Z"
+    },
+    {
+      "id": "01-set::infographic::zh::bilibili",
+      "title": "1. 集合：不是一袋子东西，是一条判定 · 信息图 · bilibili",
+      "episodeTitle": "1. 集合：不是一袋子东西，是一条判定",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "bilibili",
+      "scriptId": "01-set",
+      "status": "published",
+      "progress": "Published",
+      "startedAt": "2026-08-17T08:13:30.180Z",
+      "url": "https://example.invalid/bilibili/sau-bilibili-album-zh",
+      "postId": "sau-bilibili-album-zh",
+      "finishedAt": "2026-08-17T08:14:33.276Z"
+    },
+    {
+      "id": "01-set::infographic::zh::douyin",
+      "title": "1. 集合：不是一袋子东西，是一条判定 · 信息图 · douyin",
+      "episodeTitle": "1. 集合：不是一袋子东西，是一条判定",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "douyin",
+      "scriptId": "01-set",
+      "status": "published",
+      "progress": "Published",
+      "startedAt": "2026-08-17T08:14:33.277Z",
+      "url": "https://example.invalid/douyin/sau-note-douyin-mswylr1m",
+      "postId": "sau-note-douyin-mswylr1m",
+      "finishedAt": "2026-08-17T08:15:54.923Z"
+    },
+    {
+      "id": "01-set::infographic::zh::wechat_channels",
+      "title": "1. 集合：不是一袋子东西，是一条判定 · 信息图 · wechat_channels",
+      "episodeTitle": "1. 集合：不是一袋子东西，是一条判定",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "wechat_channels",
+      "scriptId": "01-set",
+      "status": "failed",
+      "startedAt": "2026-08-17T08:15:54.924Z",
+      "error": "tencent note failed: 未找到视频号图文发布入口，请确认账号已开通图文/图片发布",
+      "errorDetail": "sau tencent upload-note --account default --title 01 集合：不是一袋子，是一条判定（18 张） --images /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/cover-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-01-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-02-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-03-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-04-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-05-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-06-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-07-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-08-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-09-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-10-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-11-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-12-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-13-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-14-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-15-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-16-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-17-zh.png --headed --note Lean 把集合写成判定，再接 Membership。Turn-Lang 写成容器，规则写在 relations 里。\n\n18 张信息图，从课本到空集、并集。\n\n抽象代数第 1 期 failed: 未找到视频号图文发布入口，请确认账号已开通图文/图片发布",
+      "finishedAt": "2026-08-17T08:17:07.422Z"
+    },
+    {
+      "id": "01-set::infographic::zh::kuaishou",
+      "title": "1. 集合：不是一袋子东西，是一条判定 · 信息图 · kuaishou",
+      "episodeTitle": "1. 集合：不是一袋子东西，是一条判定",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "kuaishou",
+      "scriptId": "01-set",
+      "status": "failed",
+      "startedAt": "2026-08-17T08:17:07.425Z",
+      "error": "Agent restarted before this squat finished",
+      "errorDetail": "Agent restarted before this squat finished"
+    }
+  ],
+  "events": [
+    {
+      "at": "2026-08-17T08:12:04.850Z",
+      "level": "info",
+      "message": "Squat started with 5 items"
+    },
+    {
+      "at": "2026-08-17T08:12:04.851Z",
+      "level": "info",
+      "message": "Running 5 uploads in click order"
+    },
+    {
+      "at": "2026-08-17T08:12:04.851Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "Started xiaohongshu infographic 01-set"
+    },
+    {
+      "at": "2026-08-17T08:12:04.852Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Loading script beats"
+    },
+    {
+      "at": "2026-08-17T08:12:04.858Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Generating cover image"
+    },
+    {
+      "at": "2026-08-17T08:12:07.459Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Generating poster 1/17"
+    },
+    {
+      "at": "2026-08-17T08:12:10.534Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Generating poster 2/17"
+    },
+    {
+      "at": "2026-08-17T08:12:13.639Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Generating poster 3/17"
+    },
+    {
+      "at": "2026-08-17T08:12:16.701Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Generating poster 4/17"
+    },
+    {
+      "at": "2026-08-17T08:12:19.829Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Generating poster 5/17"
+    },
+    {
+      "at": "2026-08-17T08:12:22.881Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Generating poster 6/17"
+    },
+    {
+      "at": "2026-08-17T08:12:25.968Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Generating poster 7/17"
+    },
+    {
+      "at": "2026-08-17T08:12:29.045Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Generating poster 8/17"
+    },
+    {
+      "at": "2026-08-17T08:12:32.213Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Generating poster 9/17"
+    },
+    {
+      "at": "2026-08-17T08:12:35.254Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Generating poster 10/17"
+    },
+    {
+      "at": "2026-08-17T08:12:38.284Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Generating poster 11/17"
+    },
+    {
+      "at": "2026-08-17T08:12:41.514Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Generating poster 12/17"
+    },
+    {
+      "at": "2026-08-17T08:12:44.971Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Generating poster 13/17"
+    },
+    {
+      "at": "2026-08-17T08:12:48.082Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Generating poster 14/17"
+    },
+    {
+      "at": "2026-08-17T08:12:51.165Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Generating poster 15/17"
+    },
+    {
+      "at": "2026-08-17T08:12:54.254Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Generating poster 16/17"
+    },
+    {
+      "at": "2026-08-17T08:12:57.305Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Generating poster 17/17"
+    },
+    {
+      "at": "2026-08-17T08:13:00.375Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Uploading 18 images to xiaohongshu"
+    },
+    {
+      "at": "2026-08-17T08:13:30.180Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu published https://example.invalid/xiaohongshu/sau-note-xiaohongshu-mswyincz"
+    },
+    {
+      "at": "2026-08-17T08:13:30.181Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "Started bilibili infographic 01-set"
+    },
+    {
+      "at": "2026-08-17T08:13:30.181Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Loading script beats"
+    },
+    {
+      "at": "2026-08-17T08:13:30.184Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Generating cover image"
+    },
+    {
+      "at": "2026-08-17T08:13:33.341Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Generating poster 1/17"
+    },
+    {
+      "at": "2026-08-17T08:13:36.471Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Generating poster 2/17"
+    },
+    {
+      "at": "2026-08-17T08:13:39.573Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Generating poster 3/17"
+    },
+    {
+      "at": "2026-08-17T08:13:42.617Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Generating poster 4/17"
+    },
+    {
+      "at": "2026-08-17T08:13:45.682Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Generating poster 5/17"
+    },
+    {
+      "at": "2026-08-17T08:13:48.879Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Generating poster 6/17"
+    },
+    {
+      "at": "2026-08-17T08:13:52.024Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Generating poster 7/17"
+    },
+    {
+      "at": "2026-08-17T08:13:55.338Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Generating poster 8/17"
+    },
+    {
+      "at": "2026-08-17T08:13:58.870Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Generating poster 9/17"
+    },
+    {
+      "at": "2026-08-17T08:14:01.998Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Generating poster 10/17"
+    },
+    {
+      "at": "2026-08-17T08:14:05.149Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Generating poster 11/17"
+    },
+    {
+      "at": "2026-08-17T08:14:08.215Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Generating poster 12/17"
+    },
+    {
+      "at": "2026-08-17T08:14:11.410Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Generating poster 13/17"
+    },
+    {
+      "at": "2026-08-17T08:14:14.758Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Generating poster 14/17"
+    },
+    {
+      "at": "2026-08-17T08:14:17.829Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Generating poster 15/17"
+    },
+    {
+      "at": "2026-08-17T08:14:20.987Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Generating poster 16/17"
+    },
+    {
+      "at": "2026-08-17T08:14:23.998Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Generating poster 17/17"
+    },
+    {
+      "at": "2026-08-17T08:14:27.144Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Rendering slideshow for bilibili"
+    },
+    {
+      "at": "2026-08-17T08:14:30.418Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Uploading slideshow to bilibili"
+    },
+    {
+      "at": "2026-08-17T08:14:33.277Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili published https://example.invalid/bilibili/sau-bilibili-album-zh"
+    },
+    {
+      "at": "2026-08-17T08:14:33.277Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "Started douyin infographic 01-set"
+    },
+    {
+      "at": "2026-08-17T08:14:33.278Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Loading script beats"
+    },
+    {
+      "at": "2026-08-17T08:14:33.281Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Generating cover image"
+    },
+    {
+      "at": "2026-08-17T08:14:36.396Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Generating poster 1/17"
+    },
+    {
+      "at": "2026-08-17T08:14:39.479Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Generating poster 2/17"
+    },
+    {
+      "at": "2026-08-17T08:14:42.541Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Generating poster 3/17"
+    },
+    {
+      "at": "2026-08-17T08:14:45.574Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Generating poster 4/17"
+    },
+    {
+      "at": "2026-08-17T08:14:48.637Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Generating poster 5/17"
+    },
+    {
+      "at": "2026-08-17T08:14:51.745Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Generating poster 6/17"
+    },
+    {
+      "at": "2026-08-17T08:14:54.835Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Generating poster 7/17"
+    },
+    {
+      "at": "2026-08-17T08:14:57.904Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Generating poster 8/17"
+    },
+    {
+      "at": "2026-08-17T08:15:00.976Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Generating poster 9/17"
+    },
+    {
+      "at": "2026-08-17T08:15:04.034Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Generating poster 10/17"
+    },
+    {
+      "at": "2026-08-17T08:15:07.102Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Generating poster 11/17"
+    },
+    {
+      "at": "2026-08-17T08:15:09.580Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Generating poster 12/17"
+    },
+    {
+      "at": "2026-08-17T08:15:12.761Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Generating poster 13/17"
+    },
+    {
+      "at": "2026-08-17T08:15:15.886Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Generating poster 14/17"
+    },
+    {
+      "at": "2026-08-17T08:15:19.053Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Generating poster 15/17"
+    },
+    {
+      "at": "2026-08-17T08:15:22.156Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Generating poster 16/17"
+    },
+    {
+      "at": "2026-08-17T08:15:25.221Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Generating poster 17/17"
+    },
+    {
+      "at": "2026-08-17T08:15:28.387Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Uploading 18 images to douyin"
+    },
+    {
+      "at": "2026-08-17T08:15:54.923Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin published https://example.invalid/douyin/sau-note-douyin-mswylr1m"
+    },
+    {
+      "at": "2026-08-17T08:15:54.924Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "Started wechat_channels infographic 01-set"
+    },
+    {
+      "at": "2026-08-17T08:15:54.925Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Loading script beats"
+    },
+    {
+      "at": "2026-08-17T08:15:54.928Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Generating cover image"
+    },
+    {
+      "at": "2026-08-17T08:15:58.109Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Generating poster 1/17"
+    },
+    {
+      "at": "2026-08-17T08:16:01.217Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Generating poster 2/17"
+    },
+    {
+      "at": "2026-08-17T08:16:04.324Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Generating poster 3/17"
+    },
+    {
+      "at": "2026-08-17T08:16:07.424Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Generating poster 4/17"
+    },
+    {
+      "at": "2026-08-17T08:16:10.526Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Generating poster 5/17"
+    },
+    {
+      "at": "2026-08-17T08:16:13.655Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Generating poster 6/17"
+    },
+    {
+      "at": "2026-08-17T08:16:16.823Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Generating poster 7/17"
+    },
+    {
+      "at": "2026-08-17T08:16:20.012Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Generating poster 8/17"
+    },
+    {
+      "at": "2026-08-17T08:16:23.341Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Generating poster 9/17"
+    },
+    {
+      "at": "2026-08-17T08:16:26.501Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Generating poster 10/17"
+    },
+    {
+      "at": "2026-08-17T08:16:29.690Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Generating poster 11/17"
+    },
+    {
+      "at": "2026-08-17T08:16:32.926Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Generating poster 12/17"
+    },
+    {
+      "at": "2026-08-17T08:16:36.087Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Generating poster 13/17"
+    },
+    {
+      "at": "2026-08-17T08:16:39.305Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Generating poster 14/17"
+    },
+    {
+      "at": "2026-08-17T08:16:42.663Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Generating poster 15/17"
+    },
+    {
+      "at": "2026-08-17T08:16:45.993Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Generating poster 16/17"
+    },
+    {
+      "at": "2026-08-17T08:16:49.259Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Generating poster 17/17"
+    },
+    {
+      "at": "2026-08-17T08:16:52.485Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Uploading 18 images to wechat_channels"
+    },
+    {
+      "at": "2026-08-17T08:17:07.424Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "error",
+      "message": "wechat_channels infographic failed: tencent note failed: 未找到视频号图文发布入口，请确认账号已开通图文/图片发布",
+      "detail": "sau tencent upload-note --account default --title 01 集合：不是一袋子，是一条判定（18 张） --images /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/cover-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-01-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-02-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-03-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-04-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-05-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-06-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-07-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-08-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-09-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-10-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-11-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-12-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-13-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-14-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-15-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-16-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-17-zh.png --headed --note Lean 把集合写成判定，再接 Membership。Turn-Lang 写成容器，规则写在 relations 里。\n\n18 张信息图，从课本到空集、并集。\n\n抽象代数第 1 期 failed: 未找到视频号图文发布入口，请确认账号已开通图文/图片发布"
+    },
+    {
+      "at": "2026-08-17T08:17:07.425Z",
+      "itemId": "01-set::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "Started kuaishou infographic 01-set"
+    },
+    {
+      "at": "2026-08-17T08:17:07.426Z",
+      "itemId": "01-set::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "kuaishou: Loading script beats"
+    },
+    {
+      "at": "2026-08-17T08:17:07.429Z",
+      "itemId": "01-set::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "kuaishou: Generating cover image"
+    },
+    {
+      "at": "2026-08-17T08:17:10.836Z",
+      "itemId": "01-set::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "kuaishou: Generating poster 1/17"
+    },
+    {
+      "at": "2026-08-17T08:17:14.062Z",
+      "itemId": "01-set::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "kuaishou: Generating poster 2/17"
+    },
+    {
+      "at": "2026-08-17T08:17:17.239Z",
+      "itemId": "01-set::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "kuaishou: Generating poster 3/17"
+    },
+    {
+      "at": "2026-08-17T08:21:09.620Z",
+      "itemId": "01-set::infographic::zh::kuaishou",
+      "level": "error",
+      "message": "kuaishou infographic aborted: agent restarted",
+      "detail": "Agent restarted before this squat finished"
+    }
+  ],
+  "summary": {
+    "queued": 0,
+    "published": 3,
+    "failed": 2,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "finishedAt": "2026-08-17T08:21:09.620Z"
+}

@@ -1,0 +1,218 @@
+{
+  "id": "squat-msx44n67",
+  "startedAt": "2026-08-17T10:50:34.447Z",
+  "status": "cancelled",
+  "items": [
+    {
+      "id": "02-subset::infographic::zh::xiaohongshu",
+      "title": "2. 子集：是命题，不是新盒子 · 信息图 · xiaohongshu",
+      "episodeTitle": "2. 子集：是命题，不是新盒子",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "xiaohongshu",
+      "scriptId": "02-subset",
+      "status": "published",
+      "progress": "Published",
+      "startedAt": "2026-08-17T10:50:34.449Z",
+      "url": "https://example.invalid/xiaohongshu/sau-note-xiaohongshu-msx46pha",
+      "postId": "sau-note-xiaohongshu-msx46pha",
+      "finishedAt": "2026-08-17T10:52:10.752Z"
+    },
+    {
+      "id": "02-subset::infographic::zh::bilibili",
+      "title": "2. 子集：是命题，不是新盒子 · 信息图 · bilibili",
+      "episodeTitle": "2. 子集：是命题，不是新盒子",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "bilibili",
+      "scriptId": "02-subset",
+      "status": "cancelled",
+      "progress": "Stopping upload",
+      "startedAt": "2026-08-17T10:52:10.754Z",
+      "error": "Stopped by Clear queue",
+      "errorDetail": "Stopped by Clear queue",
+      "finishedAt": "2026-08-17T10:52:25.866Z"
+    },
+    {
+      "id": "02-subset::infographic::zh::douyin",
+      "title": "2. 子集：是命题，不是新盒子 · 信息图 · douyin",
+      "episodeTitle": "2. 子集：是命题，不是新盒子",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "douyin",
+      "scriptId": "02-subset",
+      "status": "cancelled",
+      "progress": "Stopped before start",
+      "error": "Stopped by Clear queue",
+      "errorDetail": "Stopped by Clear queue",
+      "finishedAt": "2026-08-17T10:52:24.051Z"
+    },
+    {
+      "id": "02-subset::infographic::zh::weibo",
+      "title": "2. 子集：是命题，不是新盒子 · 信息图 · weibo",
+      "episodeTitle": "2. 子集：是命题，不是新盒子",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "weibo",
+      "scriptId": "02-subset",
+      "status": "cancelled",
+      "progress": "Stopped before start",
+      "error": "Stopped by Clear queue",
+      "errorDetail": "Stopped by Clear queue",
+      "finishedAt": "2026-08-17T10:52:24.051Z"
+    },
+    {
+      "id": "02-subset::infographic::zh::wechat_channels",
+      "title": "2. 子集：是命题，不是新盒子 · 信息图 · wechat_channels",
+      "episodeTitle": "2. 子集：是命题，不是新盒子",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "wechat_channels",
+      "scriptId": "02-subset",
+      "status": "cancelled",
+      "progress": "Stopped before start",
+      "error": "Stopped by Clear queue",
+      "errorDetail": "Stopped by Clear queue",
+      "finishedAt": "2026-08-17T10:52:24.051Z"
+    },
+    {
+      "id": "02-subset::infographic::zh::kuaishou",
+      "title": "2. 子集：是命题，不是新盒子 · 信息图 · kuaishou",
+      "episodeTitle": "2. 子集：是命题，不是新盒子",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "kuaishou",
+      "scriptId": "02-subset",
+      "status": "cancelled",
+      "progress": "Stopped before start",
+      "error": "Stopped by Clear queue",
+      "errorDetail": "Stopped by Clear queue",
+      "finishedAt": "2026-08-17T10:52:24.051Z"
+    }
+  ],
+  "events": [
+    {
+      "at": "2026-08-17T10:50:34.448Z",
+      "level": "info",
+      "message": "Squat started with 6 items"
+    },
+    {
+      "at": "2026-08-17T10:50:34.449Z",
+      "level": "info",
+      "message": "Running 6 uploads in click order"
+    },
+    {
+      "at": "2026-08-17T10:50:34.449Z",
+      "itemId": "02-subset::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "Started xiaohongshu infographic 02-subset"
+    },
+    {
+      "at": "2026-08-17T10:50:34.450Z",
+      "itemId": "02-subset::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Using existing posters"
+    },
+    {
+      "at": "2026-08-17T10:50:34.451Z",
+      "itemId": "02-subset::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Using 13 existing posters"
+    },
+    {
+      "at": "2026-08-17T10:50:34.467Z",
+      "itemId": "02-subset::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Uploading 13 existing posters to xiaohongshu"
+    },
+    {
+      "at": "2026-08-17T10:52:10.753Z",
+      "itemId": "02-subset::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu published https://example.invalid/xiaohongshu/sau-note-xiaohongshu-msx46pha"
+    },
+    {
+      "at": "2026-08-17T10:52:10.754Z",
+      "itemId": "02-subset::infographic::zh::bilibili",
+      "level": "info",
+      "message": "Started bilibili infographic 02-subset"
+    },
+    {
+      "at": "2026-08-17T10:52:10.755Z",
+      "itemId": "02-subset::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Using existing posters"
+    },
+    {
+      "at": "2026-08-17T10:52:10.756Z",
+      "itemId": "02-subset::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Using 13 existing posters"
+    },
+    {
+      "at": "2026-08-17T10:52:10.774Z",
+      "itemId": "02-subset::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Rendering slideshow from existing posters"
+    },
+    {
+      "at": "2026-08-17T10:52:13.907Z",
+      "itemId": "02-subset::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Uploading existing slideshow to bilibili"
+    },
+    {
+      "at": "2026-08-17T10:52:24.051Z",
+      "level": "warn",
+      "message": "Clear queue: stopping squat"
+    },
+    {
+      "at": "2026-08-17T10:52:24.056Z",
+      "itemId": "02-subset::infographic::zh::bilibili",
+      "level": "warn",
+      "message": "bilibili: Stopping upload"
+    },
+    {
+      "at": "2026-08-17T10:52:24.508Z",
+      "itemId": "02-subset::infographic::zh::bilibili",
+      "level": "warn",
+      "message": "bilibili: Killing sau process"
+    },
+    {
+      "at": "2026-08-17T10:52:24.961Z",
+      "itemId": "02-subset::infographic::zh::bilibili",
+      "level": "warn",
+      "message": "bilibili: Closing publisher"
+    },
+    {
+      "at": "2026-08-17T10:52:25.414Z",
+      "itemId": "02-subset::infographic::zh::bilibili",
+      "level": "warn",
+      "message": "bilibili: Stopped"
+    },
+    {
+      "at": "2026-08-17T10:52:25.587Z",
+      "level": "warn",
+      "message": "Clear queue: stopping squat"
+    },
+    {
+      "at": "2026-08-17T10:52:25.866Z",
+      "itemId": "02-subset::infographic::zh::bilibili",
+      "level": "warn",
+      "message": "bilibili infographic stopped"
+    },
+    {
+      "at": "2026-08-17T10:52:25.867Z",
+      "level": "warn",
+      "message": "Squat stopped: 1 live, 5 stopped"
+    }
+  ],
+  "summary": {
+    "queued": 0,
+    "published": 1,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 5
+  },
+  "finishedAt": "2026-08-17T10:52:25.867Z"
+}

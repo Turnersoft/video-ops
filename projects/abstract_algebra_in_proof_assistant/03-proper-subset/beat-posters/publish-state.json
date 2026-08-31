@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "scriptId": "03-proper-subset",
+  "posts": [
+    {
+      "platform": "xiaohongshu",
+      "beatId": "album",
+      "lang": "zh",
+      "postId": "sau-note-xiaohongshu-msyy3rcl",
+      "url": "https://example.invalid/xiaohongshu/sau-note-xiaohongshu-msyy3rcl",
+      "status": "live",
+      "publishedAt": "2026-08-18T17:36:47.285Z",
+      "imageCount": 15,
+      "stub": false
+    },
+    {
+      "platform": "bilibili",
+      "beatId": "album",
+      "lang": "zh",
+      "postId": "sau-bilibili-album-zh",
+      "url": "https://example.invalid/bilibili/sau-bilibili-album-zh",
+      "status": "live",
+      "publishedAt": "2026-08-18T17:37:34.909Z",
+      "imageCount": 15,
+      "stub": false
+    },
+    {
+      "platform": "douyin",
+      "beatId": "album",
+      "lang": "zh",
+      "postId": "sau-note-douyin-msyy4sc9",
+      "url": "https://example.invalid/douyin/sau-note-douyin-msyy4sc9",
+      "status": "live",
+      "publishedAt": "2026-08-18T17:37:37.985Z",
+      "imageCount": 15,
+      "stub": false
+    },
+    {
+      "platform": "weibo",
+      "beatId": "album",
+      "lang": "zh",
+      "postId": "sau-note-weibo-msyy51n2",
+      "url": "https://weibo.com/7931125666/Re1VSepGl",
+      "status": "live",
+      "publishedAt": "2026-08-18T17:38:15.845Z",
+      "imageCount": 15,
+      "stub": false
+    },
+    {
+      "platform": "kuaishou",
+      "beatId": "album",
+      "lang": "zh",
+      "postId": "sau-note-kuaishou-msyy6bzu",
+      "url": "https://example.invalid/kuaishou/sau-note-kuaishou-msyy6bzu",
+      "status": "live",
+      "publishedAt": "2026-08-18T17:38:54.733Z",
+      "imageCount": 15,
+      "stub": false
+    }
+  ]
+}

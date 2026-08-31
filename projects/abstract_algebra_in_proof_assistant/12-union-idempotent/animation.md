@@ -2,6 +2,10 @@
 videoOps: 1
 scriptId: 12-union-idempotent
 title: 12_union_idempotent
+socialTitleEnglish: "12. Union with itself is itself"
+socialTitleChina: "12. 自己和自己并，还是自己"
+promotionalDescription: "A union A is still A. Putting a set next to itself does not grow it."
+promotionalDescriptionChina: "并集是幂等的：一个集合与自己做并，得到的还是它自己。写成符号就是 A ∪ A = A。"
 format: landscape
 fps: 30
 width: 1920

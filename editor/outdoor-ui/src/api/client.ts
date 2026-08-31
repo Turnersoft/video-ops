@@ -25,6 +25,7 @@ import type {
   PipelineStage,
   PipelineSnapshot,
   PlatformTestResult,
+  PlatformLoginSession,
   PlatformsHealthResponse,
   PostizOverview,
   PublishAllResult,
@@ -39,6 +40,7 @@ import type {
   ScriptCoverSlot,
   ScriptCoversResponse,
   BeatPostersResponse,
+  BeatPosterGenerateProgress,
   BeatPosterLang,
   BeatPosterPublishAlbumResult,
   BeatPosterPublishAllResult,
@@ -62,6 +64,12 @@ import type {
   UploadTakeResult,
   VideoOpsCatalog,
   VideoOpsCatalogSeries,
+  NewAccountPublishPlan,
+  SaveNewAccountPublishPlanResult,
+  SavedPublishPlanRef,
+  MassPublishBoard,
+  MassDispatchListResponse,
+  MassDispatchResponse,
 } from "../types";
 import type { BeatStudioDocument } from "../types/beatStudio";
 import type { DraftBeat } from "../components/ScriptBeatEditorPanel/ScriptBeatEditorPanel.types";
@@ -341,6 +349,109 @@ export class OutdoorApi {
   }
 
   // —— Catalog ——
+
+  async getNewAccountPublishPlan(params: {
+    seriesId?: string;
+    platform?: string;
+    lang?: "en" | "zh";
+    replicaCount?: number;
+  } = {}): Promise<NewAccountPublishPlan> {
+    const query = new URLSearchParams();
+    if (params.seriesId) {
+      query.set("seriesId", params.seriesId);
+    }
+    if (params.platform) {
+      query.set("platform", params.platform);
+    }
+    if (params.lang) {
+      query.set("lang", params.lang);
+    }
+    if (params.replicaCount) {
+      query.set("replicaCount", String(params.replicaCount));
+    }
+    const suffix = query.toString();
+    return this.fetchJson<NewAccountPublishPlan>(
+      `/api/publish-plan${suffix ? `?${suffix}` : ""}`,
+    );
+  }
+
+  async saveNewAccountPublishPlan(params: {
+    seriesId?: string;
+    platform?: string;
+    lang?: "en" | "zh";
+    replicaCount?: number;
+  } = {}): Promise<SaveNewAccountPublishPlanResult> {
+    return this.fetchJson<SaveNewAccountPublishPlanResult>(
+      "/api/publish-plan/save",
+      {
+        method: "POST",
+        body: params,
+      },
+    );
+  }
+
+  async listSavedPublishPlans(): Promise<SavedPublishPlanRef[]> {
+    const payload = await this.fetchJson<{ plans: SavedPublishPlanRef[] }>(
+      "/api/publish-plan/saved",
+    );
+    return payload.plans ?? [];
+  }
+
+  async getMassPublishBoard(params: {
+    seriesId?: string;
+    lang?: "en" | "zh" | "all";
+  } = {}): Promise<MassPublishBoard> {
+    const query = new URLSearchParams();
+    if (params.seriesId) {
+      query.set("seriesId", params.seriesId);
+    }
+    if (params.lang) {
+      query.set("lang", params.lang);
+    }
+    const suffix = query.toString();
+    return this.fetchJson<MassPublishBoard>(
+      `/api/mass-publish${suffix ? `?${suffix}` : ""}`,
+    );
+  }
+
+  async startMassPublishDispatch(itemIds: string[]): Promise<MassDispatchResponse> {
+    return this.fetchJson<MassDispatchResponse>("/api/mass-publish/dispatch", {
+      method: "POST",
+      body: { itemIds },
+    });
+  }
+
+  async getMassPublishDispatch(id?: string): Promise<MassDispatchResponse> {
+    const path = id
+      ? `/api/mass-publish/dispatch/${encodeURIComponent(id)}`
+      : "/api/mass-publish/dispatch";
+    return this.fetchJson<MassDispatchResponse>(path);
+  }
+
+  async listMassPublishDispatches(): Promise<MassDispatchListResponse> {
+    return this.fetchJson<MassDispatchListResponse>("/api/mass-publish/dispatches");
+  }
+
+  async abortMassPublishDispatch(): Promise<MassDispatchResponse> {
+    return this.fetchJson<MassDispatchResponse>("/api/mass-publish/dispatch/abort", {
+      method: "POST",
+      body: {},
+    });
+  }
+
+  /** Resolve a paused browser-handoff cell and resume the squat. */
+  async resolveMassPublishManualItem(
+    itemId: string,
+    result: "published" | "skipped",
+  ): Promise<MassDispatchResponse> {
+    return this.fetchJson<MassDispatchResponse>(
+      `/api/mass-publish/dispatch/item/${encodeURIComponent(itemId)}/manual`,
+      {
+        method: "POST",
+        body: { result },
+      },
+    );
+  }
 
   async getCatalog(): Promise<VideoOpsCatalog> {
     const catalog = await this.fetchJson<VideoOpsCatalog>(
@@ -1213,6 +1324,40 @@ export class OutdoorApi {
     );
   }
 
+  async startPlatformLogin(
+    platform: string,
+  ): Promise<{ session: PlatformLoginSession }> {
+    return this.fetchJson(`/api/platforms/${encodeURIComponent(platform)}/login`, {
+      method: "POST",
+      body: {},
+    });
+  }
+
+  async getPlatformLogin(
+    platform: string,
+  ): Promise<{ session: PlatformLoginSession | null }> {
+    return this.fetchJson(`/api/platforms/${encodeURIComponent(platform)}/login`);
+  }
+
+  async cancelPlatformLogin(
+    platform: string,
+  ): Promise<{ session: PlatformLoginSession | null }> {
+    return this.fetchJson(
+      `/api/platforms/${encodeURIComponent(platform)}/login/cancel`,
+      {
+        method: "POST",
+        body: {},
+      },
+    );
+  }
+
+  platformLoginQrUrl(platform: string, cacheBust?: string): string {
+    const stamp = cacheBust ? `?t=${encodeURIComponent(cacheBust)}` : "";
+    return this.absoluteUrl(
+      `/api/platforms/${encodeURIComponent(platform)}/login/qr${stamp}`,
+    );
+  }
+
   // —— Publish ——
 
   async getPublishPreview(jobId: string): Promise<PublishPlan> {
@@ -1288,6 +1433,15 @@ export class OutdoorApi {
       `/api/scripts/${encodeURIComponent(scriptId)}/beat-posters`,
       { method: "POST", body: {} },
     );
+  }
+
+  async getBeatPosterGenerateProgress(
+    scriptId: string,
+  ): Promise<BeatPosterGenerateProgress> {
+    const payload = await this.fetchJson<{ progress: BeatPosterGenerateProgress }>(
+      `/api/scripts/${encodeURIComponent(scriptId)}/beat-posters/generate-progress`,
+    );
+    return payload.progress;
   }
 
   async uploadBeatPosterPng(

@@ -1,13 +1,33 @@
 import type { BeatPosterCoverSpec, BeatPosterLang, BeatPosterSpec } from './types.ts';
 import { highlightLeanCodeHtml, highlightTurnCodeHtml } from './code-highlight.ts';
-import { REPO_ROOT } from '../paths.ts';
+import { VIDEO_OPS_ROOT } from '../paths.ts';
+import {
+  BEAT_POSTER_PREVIEW_FONT_SCALE,
+  MIN_EDITOR_FONT_SIZE,
+} from '../../../../src/beatPosterLayout.ts';
 import path from 'node:path';
 
-const LEAN_LOGO_PATH = path.join(REPO_ROOT, 'video_ops', 'projects', 'compare', 'shared', 'lean.svg');
-const TURN_LOGO_PATH = path.join(REPO_ROOT, 'video_ops', 'projects', 'compare', 'shared', 'turn-lang-logo.png');
+/** Same brand files the React preview uses — do not recolor; light-blue stroke vanishes on the card. */
+const LEAN_LOGO_PATH = path.join(
+  VIDEO_OPS_ROOT,
+  'editor',
+  'outdoor-ui',
+  'src',
+  'assets',
+  'brand',
+  'lean.svg',
+);
+const TURN_LOGO_PATH = path.join(
+  VIDEO_OPS_ROOT,
+  'editor',
+  'outdoor-ui',
+  'src',
+  'assets',
+  'brand',
+  'turn-lang-logo.png',
+);
 const COVER_HEADER_EN_PATH = path.join(
-  REPO_ROOT,
-  'video_ops',
+  VIDEO_OPS_ROOT,
   'editor',
   'outdoor-ui',
   'src',
@@ -16,8 +36,7 @@ const COVER_HEADER_EN_PATH = path.join(
   'series-header-en.png',
 );
 const COVER_HEADER_ZH_PATH = path.join(
-  REPO_ROOT,
-  'video_ops',
+  VIDEO_OPS_ROOT,
   'editor',
   'outdoor-ui',
   'src',
@@ -26,8 +45,7 @@ const COVER_HEADER_ZH_PATH = path.join(
   'series-header-zh.png',
 );
 const COVER_VS_BADGE_PATH = path.join(
-  REPO_ROOT,
-  'video_ops',
+  VIDEO_OPS_ROOT,
   'editor',
   'outdoor-ui',
   'src',
@@ -36,8 +54,7 @@ const COVER_VS_BADGE_PATH = path.join(
   'vs-badge.png',
 );
 const COVER_AVATAR_PATH = path.join(
-  REPO_ROOT,
-  'video_ops',
+  VIDEO_OPS_ROOT,
   'editor',
   'outdoor-ui',
   'src',
@@ -69,12 +86,23 @@ function pngLogoDataUri(filePath: string): string {
   }
 }
 
-const LEAN_LOGO_URI = svgLogoDataUri(LEAN_LOGO_PATH, '#93c5fd');
+const LEAN_LOGO_URI = svgLogoDataUri(LEAN_LOGO_PATH);
 const TURN_LOGO_URI = pngLogoDataUri(TURN_LOGO_PATH);
 const COVER_HEADER_EN_URI = pngLogoDataUri(COVER_HEADER_EN_PATH);
 const COVER_HEADER_ZH_URI = pngLogoDataUri(COVER_HEADER_ZH_PATH);
 const COVER_VS_BADGE_URI = pngLogoDataUri(COVER_VS_BADGE_PATH);
 const COVER_AVATAR_URI = pngLogoDataUri(COVER_AVATAR_PATH);
+
+/** React preview is a 420px frame; layout font sizes are for 1080 and then * 0.42. */
+const PREVIEW_FRAME_WIDTH = 420;
+
+function previewScale(width: number): number {
+  return width / PREVIEW_FRAME_WIDTH;
+}
+
+function previewToExportPx(previewPx: number, width: number): number {
+  return Math.round(previewPx * previewScale(width));
+}
 
 function escapeHtml(value: string): string {
   return value
@@ -105,7 +133,7 @@ function nextLeadCard(spec: BeatPosterSpec): string {
     return '';
   }
   const label = spec.lang === 'zh' ? '下一篇' : 'Up next';
-  const fontSize = Math.round(spec.layout.paragraphFontSize * 0.52);
+  const fontSize = previewToExportPx(Math.max(spec.layout.paragraphFontSize * 0.3, 11), spec.width);
   return `<article class="next-lead-card" style="flex:0 0 auto; transform:rotate(${spec.decorations.cardTilt * 0.25}deg); font-size:${fontSize}px">
     <p class="next-lead-label">${label}</p>
     <p class="next-lead-text">${renderRichInline(spec.nextLead)}</p>
@@ -116,7 +144,8 @@ function paragraphCards(spec: BeatPosterSpec): string {
   const spacious = spec.layout.codeCardAutoHeight ? ' text-card-spacious' : '';
   return spec.paragraphs
     .map((paragraph) => {
-      return `<article class="card text-card${spacious}" style="flex:0 0 auto; font-size:${spec.layout.paragraphFontSize}px"><p>${renderRichInline(paragraph)}</p></article>`;
+      const fontSize = previewToExportPx(Math.max(spec.layout.paragraphFontSize * 0.42, 13), spec.width);
+      return `<article class="card text-card${spacious}" style="flex:0 0 auto; font-size:${fontSize}px"><p>${renderRichInline(paragraph)}</p></article>`;
     })
     .join('');
 }
@@ -133,12 +162,16 @@ function editorBlock(spec: BeatPosterSpec, kind: 'lean' | 'turn', autoHeight = f
     ? `<img class="editor-title-logo ${kind}-title-logo" src="${logoUri}" alt="${label}" />`
     : `<span class="logo-chip ${kind}-chip">${kind === 'lean' ? 'λ' : 'T'}</span>`;
   const html = kind === 'lean'
-    ? highlightLeanCodeHtml(code, 30)
-    : highlightTurnCodeHtml(code, 30);
+    ? highlightLeanCodeHtml(code, 64)
+    : highlightTurnCodeHtml(code, 64);
   const bodyClass = autoHeight ? 'editor-body' : 'editor-body editor-body-expand';
   const sectionClass = kind === 'lean' ? 'code-section dark' : 'code-section light';
   const headerClass = kind === 'lean' ? 'pane-header dark' : 'pane-header light';
-  return `<div class="editor-wrap ${kind}" style="font-size:${spec.layout.editorFontSize}px">
+  const editorPx = previewToExportPx(
+    Math.max(spec.layout.editorFontSize, MIN_EDITOR_FONT_SIZE) * BEAT_POSTER_PREVIEW_FONT_SCALE,
+    spec.width,
+  );
+  return `<div class="editor-wrap ${kind}" style="font-size:${editorPx}px">
     <div class="editor-title-row">${logoImg}<span class="editor-title-label">${label}</span></div>
     <div class="editor-shell">
       <div class="${sectionClass}">
@@ -165,6 +198,17 @@ function codeSection(spec: BeatPosterSpec): string {
 /** Scrapbook-style poster — tilted cards + code editors (4:3 portrait). */
 export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
   const beatTitle = escapeHtml(spec.beatTitle);
+  const titlePx = previewToExportPx(Math.max(spec.layout.titleFontSize * 0.42, 22), spec.width);
+  const logoH = previewToExportPx(32, spec.width);
+  const logoMaxW = previewToExportPx(160, spec.width);
+  const editorLabelPx = previewToExportPx(26, spec.width);
+  const sparklePx = previewToExportPx(20, spec.width);
+  const sparkleInset = previewToExportPx(12, spec.width);
+  const gridPx = previewToExportPx(28, spec.width);
+  const footerPx = previewToExportPx(12, spec.width);
+  const titleEmojiPx = previewToExportPx(16, spec.width);
+  const titleEmojiSm = previewToExportPx(14, spec.width);
+  const titleEmojiNudge = previewToExportPx(10, spec.width);
   const isTurnPoster = spec.layout.primaryEditor === 'turn';
   const posterTone = isTurnPoster ? 'poster-turn' : 'poster-lean';
   const sparkle = isTurnPoster && spec.decorations.sparkle
@@ -190,22 +234,22 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
       color: #0f172a;
       display: flex;
       flex-direction: column;
-      padding: 40px 36px 30px;
-      gap: 14px;
+      padding: 5%;
+      gap: 2%;
       position: relative;
       border: 2px solid #0f172a;
     }
     body.poster-turn {
       background:
-        radial-gradient(circle at 12% 10%, rgba(232, 160, 255, 0.22) 0 70px, transparent 71px),
-        radial-gradient(circle at 88% 8%, rgba(125, 211, 252, 0.28) 0 92px, transparent 93px),
-        radial-gradient(circle at 8% 92%, rgba(255, 228, 230, 0.55) 0 96px, transparent 97px),
+        radial-gradient(circle at 12% 10%, rgba(232, 160, 255, 0.22) 0 12%, transparent 13%),
+        radial-gradient(circle at 88% 8%, rgba(125, 211, 252, 0.28) 0 16%, transparent 17%),
+        radial-gradient(circle at 8% 92%, rgba(255, 228, 230, 0.55) 0 16%, transparent 17%),
         linear-gradient(180deg, #eef2ff 0%, #dbeafe 46%, #fff7ed 100%);
     }
     body.poster-lean {
       background:
-        radial-gradient(circle at 14% 12%, rgba(148, 163, 184, 0.14) 0 64px, transparent 65px),
-        radial-gradient(circle at 86% 10%, rgba(100, 116, 139, 0.1) 0 72px, transparent 73px),
+        radial-gradient(circle at 14% 12%, rgba(148, 163, 184, 0.14) 0 12%, transparent 13%),
+        radial-gradient(circle at 86% 10%, rgba(100, 116, 139, 0.1) 0 14%, transparent 15%),
         linear-gradient(180deg, #f8fafc 0%, #f1f5f9 52%, #e2e8f0 100%);
     }
     body.poster-turn::before {
@@ -215,7 +259,7 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
       background-image:
         linear-gradient(rgba(37, 99, 235, 0.08) 1px, transparent 1px),
         linear-gradient(90deg, rgba(37, 99, 235, 0.08) 1px, transparent 1px);
-      background-size: 42px 42px;
+      background-size: ${gridPx}px ${gridPx}px;
       pointer-events: none;
     }
     body.poster-lean::before {
@@ -225,7 +269,7 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
       background-image:
         linear-gradient(rgba(100, 116, 139, 0.06) 1px, transparent 1px),
         linear-gradient(90deg, rgba(100, 116, 139, 0.06) 1px, transparent 1px);
-      background-size: 42px 42px;
+      background-size: ${gridPx}px ${gridPx}px;
       pointer-events: none;
     }
     .header {
@@ -252,7 +296,7 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
     }
     body.poster-lean .title-paper {
       background: linear-gradient(180deg, #ffffff 0%, #f8fafc 58%, #f1f5f9 100%);
-      border: 2px solid #94a3b8;
+      border: 3px solid #334155;
       box-shadow:
         3px 3px 0 rgba(100, 116, 139, 0.16),
         0 10px 22px rgba(15, 23, 42, 0.08);
@@ -260,9 +304,9 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
     body.poster-turn .title-paper::before {
       content: '✨';
       position: absolute;
-      top: -14px;
-      left: 12px;
-      font-size: 24px;
+      top: -${titleEmojiNudge}px;
+      left: ${titleEmojiNudge}px;
+      font-size: ${titleEmojiPx}px;
       line-height: 1;
       transform: rotate(-14deg);
       filter: drop-shadow(0 2px 2px rgba(15, 23, 42, 0.15));
@@ -270,9 +314,9 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
     body.poster-turn .title-paper::after {
       content: '🔥';
       position: absolute;
-      top: -12px;
-      right: 14px;
-      font-size: 22px;
+      top: -${previewToExportPx(8, spec.width)}px;
+      right: ${titleEmojiNudge}px;
+      font-size: ${titleEmojiSm}px;
       line-height: 1;
       transform: rotate(10deg);
       filter: drop-shadow(0 2px 2px rgba(15, 23, 42, 0.15));
@@ -282,7 +326,7 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
       content: none;
     }
     h1 {
-      font-size: ${spec.layout.titleFontSize}px;
+      font-size: ${titlePx}px;
       line-height: 1.22;
       font-weight: 900;
       letter-spacing: 0.01em;
@@ -342,7 +386,7 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
       font-weight: 700;
       border-radius: 8px;
       padding: 1px 6px;
-      white-space: nowrap;
+      white-space: pre-wrap;
     }
     body.poster-turn .inline-code {
       background: #ffe566;
@@ -391,6 +435,7 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
       background: transparent;
       border: none;
       box-shadow: none;
+      border-top-left-radius: 0;
     }
     .code-card-auto {
       flex: 0 0 auto;
@@ -423,20 +468,20 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
     }
     .editor-title-logo {
       display: block;
-      height: 34px;
+      height: ${logoH}px;
       width: auto;
-      max-width: 120px;
+      max-width: ${logoMaxW}px;
       object-fit: contain;
       object-position: center;
       flex-shrink: 0;
     }
     .turn-title-logo {
-      width: 36px;
-      height: 36px;
+      width: ${logoH}px;
+      height: ${logoH}px;
       max-width: none;
     }
     .editor-title-label {
-      font-size: 34px;
+      font-size: ${editorLabelPx}px;
       line-height: 1;
       font-weight: 800;
       letter-spacing: 0.02em;
@@ -507,10 +552,10 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
     .lean-chip { background: #111827; color: #93c5fd; }
     .turn-chip { background: #f7c948; color: #111827; }
     .editor-body {
-      overflow: hidden;
+      overflow: visible;
       font-family: "SF Mono", "JetBrains Mono", "Menlo", monospace;
       font-size: 1em;
-      line-height: 1.42;
+      line-height: 1.2;
       padding: 8px 0 10px;
       flex: 0 0 auto;
     }
@@ -519,23 +564,27 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
       min-height: 0;
     }
     .code-line {
-      display: flex;
-      gap: 10px;
+      display: grid;
+      grid-template-columns: 2.25em 1fr;
+      column-gap: 0.6em;
+      align-items: start;
       padding: 0 10px;
-      white-space: pre;
-      overflow: hidden;
+      line-height: 1.2;
     }
     .ln {
-      width: 22px;
-      flex-shrink: 0;
+      width: auto;
       text-align: right;
+      white-space: nowrap;
+      line-height: 1.2;
       user-select: none;
     }
     .code-section.dark .ln { color: #858585; }
     .code-section.light .ln { color: #9a9488; }
     .tx {
       min-width: 0;
-      white-space: pre;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      line-height: 1.2;
       tab-size: 2;
     }
     .code-section.dark .kw { color: #569cd6; }
@@ -557,10 +606,10 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      gap: 12px;
+      gap: ${previewToExportPx(8, spec.width)}px;
       position: relative;
       z-index: 1;
-      font-size: 18px;
+      font-size: ${footerPx}px;
       font-weight: 900;
       letter-spacing: 0.04em;
       flex-shrink: 0;
@@ -572,13 +621,13 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
     }
     .sparkle {
       position: absolute;
-      font-size: 28px;
+      font-size: ${sparklePx}px;
       line-height: 1;
       z-index: 0;
       filter: drop-shadow(0 2px 2px rgba(15, 23, 42, 0.12));
     }
-    .s1 { top: 20px; right: 22px; transform: rotate(-10deg); }
-    .s2 { bottom: 20px; left: 22px; transform: rotate(12deg); }
+    .s1 { top: ${sparkleInset}px; right: ${sparkleInset}px; transform: rotate(-10deg); }
+    .s2 { bottom: ${sparkleInset}px; left: ${sparkleInset}px; transform: rotate(12deg); }
   </style>
 </head>
 <body class="${posterTone}">
@@ -628,6 +677,49 @@ export function buildBeatPosterCoverHtml(spec: BeatPosterCoverSpec): string {
       <p class="cover-hero-kicker">${coverHeadline}</p>
       <p class="cover-hero-hook">${tagline}</p>
     </article>`;
+  const w = spec.width;
+  const sparklePx = previewToExportPx(18, w);
+  const sparkleInset = previewToExportPx(12, w);
+  const gridPx = previewToExportPx(28, w);
+  const swipeHintPx = previewToExportPx(13, w);
+  const frameBorderPx = previewToExportPx(2, w);
+  const bodyGapPx = previewToExportPx(8, w);
+  const bodyPadTopPx = previewToExportPx(8, w);
+  const heroBorderPx = previewToExportPx(3, w);
+  const heroRadiusPx = previewToExportPx(22, w);
+  const heroPadX = previewToExportPx(16, w);
+  const heroPadTop = previewToExportPx(16, w);
+  const heroPadBottom = previewToExportPx(14, w);
+  const heroGapPx = previewToExportPx(8, w);
+  const heroShadowHard = previewToExportPx(5, w);
+  const heroShadowBlur = previewToExportPx(14, w);
+  const heroShadowSpread = previewToExportPx(28, w);
+  const heroEmojiL = previewToExportPx(20, w);
+  const heroEmojiS = previewToExportPx(18, w);
+  const heroEmojiTopL = previewToExportPx(12, w);
+  const heroEmojiTopR = previewToExportPx(10, w);
+  const heroEmojiInsetL = previewToExportPx(10, w);
+  const heroEmojiInsetR = previewToExportPx(12, w);
+  const kickerPx = previewToExportPx(28, w);
+  const kickerPadX = previewToExportPx(6, w);
+  const kickerPadY = previewToExportPx(2, w);
+  const taglinePx = previewToExportPx(22, w);
+  const equalsRadius = previewToExportPx(8, w);
+  const equalsPadX = previewToExportPx(5, w);
+  const equalsShadow = previewToExportPx(2, w);
+  const badgeBorderPx = previewToExportPx(2, w);
+  const badgePadY = previewToExportPx(5, w);
+  const badgePadX = previewToExportPx(12, w);
+  const badgeShadow = previewToExportPx(4, w);
+  const badgePx = previewToExportPx(12, w);
+  const codePadY = previewToExportPx(8, w);
+  const codePadX = previewToExportPx(10, w);
+  const codeRadius = previewToExportPx(10, w);
+  const codePx = previewToExportPx(10, w);
+  const codeShadowY = previewToExportPx(6, w);
+  const codeShadowBlur = previewToExportPx(18, w);
+  const avatarShadowY = previewToExportPx(10, w);
+  const avatarShadowBlur = previewToExportPx(18, w);
 
   return `<!DOCTYPE html>
 <html lang="${spec.lang === 'zh' ? 'zh-CN' : 'en'}">
@@ -645,16 +737,16 @@ export function buildBeatPosterCoverHtml(spec: BeatPosterCoverSpec): string {
       font-family: "PingFang SC", "SF Pro Display", "Segoe UI", system-ui, sans-serif;
       color: #0f172a;
       background:
-        radial-gradient(circle at 12% 10%, rgba(232, 160, 255, 0.22) 0 72px, transparent 73px),
-        radial-gradient(circle at 88% 8%, rgba(125, 211, 252, 0.28) 0 96px, transparent 97px),
-        radial-gradient(circle at 6% 92%, rgba(255, 228, 230, 0.55) 0 98px, transparent 99px),
+        radial-gradient(circle at 12% 10%, rgba(232, 160, 255, 0.22) 0 14%, transparent 15%),
+        radial-gradient(circle at 88% 8%, rgba(125, 211, 252, 0.28) 0 16%, transparent 17%),
+        radial-gradient(circle at 6% 92%, rgba(255, 228, 230, 0.55) 0 15%, transparent 16%),
         linear-gradient(180deg, #eef2ff 0%, #dbeafe 46%, #fff7ed 100%);
       display: flex;
       flex-direction: column;
-      padding: 48px 42px 32px;
-      gap: 12px;
+      padding: 4%;
+      gap: 2%;
       position: relative;
-      border: 2px solid #0f172a;
+      border: ${frameBorderPx}px solid #0f172a;
     }
     body::before {
       content: '';
@@ -663,7 +755,7 @@ export function buildBeatPosterCoverHtml(spec: BeatPosterCoverSpec): string {
       background-image:
         linear-gradient(rgba(37, 99, 235, 0.08) 1px, transparent 1px),
         linear-gradient(90deg, rgba(37, 99, 235, 0.08) 1px, transparent 1px);
-      background-size: 42px 42px;
+      background-size: ${gridPx}px ${gridPx}px;
       pointer-events: none;
     }
     .code-backdrop {
@@ -676,19 +768,19 @@ export function buildBeatPosterCoverHtml(spec: BeatPosterCoverSpec): string {
     .code-panel {
       position: absolute;
       margin: 0;
-      padding: 12px 14px;
+      padding: ${codePadY}px ${codePadX}px;
       border: 1px solid rgba(15, 23, 42, 0.1);
-      border-radius: 12px;
+      border-radius: ${codeRadius}px;
       background: rgba(255, 255, 255, 0.48);
       font-family: "SF Mono", "JetBrains Mono", "Menlo", monospace;
-      font-size: 16px;
+      font-size: ${codePx}px;
       line-height: 1.38;
       white-space: pre;
       color: rgba(15, 23, 42, 0.38);
       max-width: 62%;
       overflow: hidden;
       user-select: none;
-      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+      box-shadow: 0 ${codeShadowY}px ${codeShadowBlur}px rgba(15, 23, 42, 0.06);
     }
     .code-panel.lean {
       left: -2%;
@@ -708,8 +800,8 @@ export function buildBeatPosterCoverHtml(spec: BeatPosterCoverSpec): string {
       flex-direction: column;
       align-items: stretch;
       justify-content: flex-start;
-      gap: 14px;
-      padding-top: 8px;
+      gap: ${bodyGapPx}px;
+      padding-top: ${bodyPadTopPx}px;
       position: relative;
       z-index: 1;
       min-height: 0;
@@ -749,47 +841,49 @@ export function buildBeatPosterCoverHtml(spec: BeatPosterCoverSpec): string {
       z-index: 0;
       pointer-events: none;
       transform: rotate(8deg);
-      filter: drop-shadow(0 10px 18px rgba(15, 23, 42, 0.18));
+      filter: drop-shadow(0 ${avatarShadowY}px ${avatarShadowBlur}px rgba(15, 23, 42, 0.18));
     }
     .cover-hero-title {
       position: relative;
       background: linear-gradient(180deg, #fffefb 0%, #fff1f5 52%, #ffe8ef 100%);
-      border: 3px solid #ff2442;
-      border-radius: 26px;
+      border: ${heroBorderPx}px solid #ff2442;
+      border-radius: ${heroRadiusPx}px;
       box-shadow:
-        6px 6px 0 rgba(255, 36, 66, 0.28),
-        0 16px 32px rgba(255, 36, 66, 0.16);
-      padding: 22px 24px 20px;
+        ${heroShadowHard}px ${heroShadowHard}px 0 rgba(255, 36, 66, 0.28),
+        0 ${heroShadowBlur}px ${heroShadowSpread}px rgba(255, 36, 66, 0.16);
+      padding: ${heroPadTop}px ${heroPadX}px ${heroPadBottom}px;
       flex-shrink: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      gap: ${heroGapPx}px;
       overflow: visible;
     }
     .cover-hero-title::before {
       content: '✨';
       position: absolute;
-      top: -14px;
-      left: 16px;
-      font-size: 28px;
+      top: -${heroEmojiTopL}px;
+      left: ${heroEmojiInsetL}px;
+      font-size: ${heroEmojiL}px;
       line-height: 1;
       transform: rotate(-14deg);
+      filter: drop-shadow(0 2px 2px rgba(15, 23, 42, 0.15));
     }
     .cover-hero-title::after {
       content: '🔥';
       position: absolute;
-      top: -12px;
-      right: 18px;
-      font-size: 26px;
+      top: -${heroEmojiTopR}px;
+      right: ${heroEmojiInsetR}px;
+      font-size: ${heroEmojiS}px;
       line-height: 1;
       transform: rotate(10deg);
+      filter: drop-shadow(0 2px 2px rgba(15, 23, 42, 0.15));
     }
     .cover-hero-kicker {
       margin: 0;
-      padding: 0 8px 2px;
+      padding: 0 ${kickerPadX}px ${kickerPadY}px;
       font-family: "PingFang SC", "SF Pro Display", "Helvetica Neue", sans-serif;
-      font-size: ${Math.round(spec.layout.headlineFontSize * 0.44)}px;
+      font-size: ${kickerPx}px;
       font-weight: 900;
       letter-spacing: 0.04em;
       text-transform: uppercase;
@@ -803,7 +897,7 @@ export function buildBeatPosterCoverHtml(spec: BeatPosterCoverSpec): string {
     .cover-hero-hook {
       margin: 0;
       font-family: "PingFang SC", "SF Pro Display", "Helvetica Neue", sans-serif;
-      font-size: ${Math.round(spec.layout.taglineFontSize * 1.05)}px;
+      font-size: ${taglinePx}px;
       line-height: 1.3;
       font-weight: 800;
       font-style: normal;
@@ -820,26 +914,26 @@ export function buildBeatPosterCoverHtml(spec: BeatPosterCoverSpec): string {
       font-weight: 900;
       color: #ff2442;
       background: #ffe566;
-      border-radius: 8px;
+      border-radius: ${equalsRadius}px;
       font-size: 1.08em;
       margin: 0 0.1em;
-      padding: 0 6px;
+      padding: 0 ${equalsPadX}px;
       transform: rotate(-4deg);
-      box-shadow: 0 2px 0 rgba(255, 36, 66, 0.25);
+      box-shadow: 0 ${equalsShadow}px 0 rgba(255, 36, 66, 0.25);
     }
     .beat-badge {
       align-self: center;
       transform: rotate(${spec.decorations.cardTilt * 0.45}deg);
       background: #2563eb;
-      border: 2px solid #0f172a;
+      border: ${badgeBorderPx}px solid #0f172a;
       border-radius: 999px;
-      padding: 8px 18px;
+      padding: ${badgePadY}px ${badgePadX}px;
       flex-shrink: 0;
       max-width: 92%;
-      box-shadow: 0 5px 0 rgba(15, 23, 42, 0.22);
+      box-shadow: 0 ${badgeShadow}px 0 rgba(15, 23, 42, 0.22);
     }
     .beat-badge span {
-      font-size: 19px;
+      font-size: ${badgePx}px;
       font-weight: 900;
       letter-spacing: 0.04em;
       color: #eff6ff;
@@ -856,7 +950,7 @@ export function buildBeatPosterCoverHtml(spec: BeatPosterCoverSpec): string {
       flex-shrink: 0;
     }
     .swipe-hint {
-      font-size: 18px;
+      font-size: ${swipeHintPx}px;
       font-weight: 900;
       color: #1d4ed8;
       letter-spacing: 0.04em;
@@ -864,11 +958,11 @@ export function buildBeatPosterCoverHtml(spec: BeatPosterCoverSpec): string {
     .sparkle {
       position: absolute;
       color: rgba(15, 23, 42, 0.55);
-      font-size: 26px;
+      font-size: ${sparklePx}px;
       z-index: 0;
     }
-    .s1 { top: 20px; right: 22px; transform: rotate(-10deg); }
-    .s2 { bottom: 20px; left: 22px; transform: rotate(12deg); }
+    .s1 { top: ${sparkleInset}px; right: ${sparkleInset}px; transform: rotate(-10deg); }
+    .s2 { bottom: ${sparkleInset}px; left: ${sparkleInset}px; transform: rotate(12deg); }
   </style>
 </head>
 <body>

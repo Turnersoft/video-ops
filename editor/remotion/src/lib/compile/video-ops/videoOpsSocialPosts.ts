@@ -17,6 +17,7 @@ export const CHINA_SOCIAL_PLATFORMS = [
     'xiaohongshu',
     'weibo',
     'wechat_channels',
+    'wechat',
     'kuaishou',
 ] as const;
 
@@ -229,6 +230,11 @@ function chinaPostForPlatform(
         case 'wechat_channels':
             return {
                 title: truncate(title, 60),
+                body: `${body}\n\n${zhTags}`,
+            };
+        case 'wechat':
+            return {
+                title: truncate(title, 64),
                 body: `${body}\n\n${zhTags}`,
             };
         case 'kuaishou':

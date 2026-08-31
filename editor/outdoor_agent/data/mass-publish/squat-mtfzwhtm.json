@@ -1,0 +1,263 @@
+{
+  "id": "squat-mtfzwhtm",
+  "startedAt": "2026-08-30T15:59:53.146Z",
+  "status": "done",
+  "items": [
+    {
+      "id": "05-empty-set::infographic::zh::xiaohongshu",
+      "title": "5. 空集：里面什么都没有 · 信息图 · xiaohongshu",
+      "episodeTitle": "5. 空集：里面什么都没有",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "xiaohongshu",
+      "scriptId": "05-empty-set",
+      "status": "failed",
+      "startedAt": "2026-08-30T15:59:53.149Z",
+      "error": "xiaohongshu note failed: not logged in",
+      "errorDetail": "sau xiaohongshu upload-note --account default --title 5. 空集：里面什么都没有 --images /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/cover-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-01-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-02-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-03-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-04-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-05-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-06-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-07-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-08-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-09-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-10-zh.png --headed --note 空集不是很小的一袋子东西。它是一条规矩：拿来谁，回答都不在里面。\n\n左滑 10 张看完。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享 --tags 证明助手,抽象代数,数学笔记,干货分享 failed: Xiaohongshu cookie is missing or expired: /Users/johndoe/Documents/company/social-auto-upload/cookies/xiaohongshu_default.json. Run `sau xiaohongshu login --account default` first.",
+      "finishedAt": "2026-08-30T16:00:18.042Z"
+    },
+    {
+      "id": "05-empty-set::infographic::zh::bilibili",
+      "title": "5. 空集：里面什么都没有 · 信息图 · bilibili",
+      "episodeTitle": "5. 空集：里面什么都没有",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "bilibili",
+      "scriptId": "05-empty-set",
+      "status": "published",
+      "progress": "Published",
+      "startedAt": "2026-08-30T16:00:18.043Z",
+      "url": "https://example.invalid/bilibili/sau-bilibili-album-zh",
+      "postId": "sau-bilibili-album-zh",
+      "finishedAt": "2026-08-30T16:00:54.955Z"
+    },
+    {
+      "id": "05-empty-set::infographic::zh::douyin",
+      "title": "5. 空集：里面什么都没有 · 信息图 · douyin",
+      "episodeTitle": "5. 空集：里面什么都没有",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "douyin",
+      "scriptId": "05-empty-set",
+      "status": "published",
+      "progress": "Published",
+      "startedAt": "2026-08-30T16:00:54.956Z",
+      "url": "https://example.invalid/douyin/sau-note-douyin-mtg00g68",
+      "postId": "sau-note-douyin-mtg00g68",
+      "finishedAt": "2026-08-30T16:02:57.633Z"
+    },
+    {
+      "id": "05-empty-set::infographic::zh::weibo",
+      "title": "5. 空集：里面什么都没有 · 信息图 · weibo",
+      "episodeTitle": "5. 空集：里面什么都没有",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "weibo",
+      "scriptId": "05-empty-set",
+      "status": "failed",
+      "startedAt": "2026-08-30T16:02:57.635Z",
+      "error": "weibo note failed: not logged in",
+      "errorDetail": "sau weibo upload-note --account default --title 5. 空集：里面什么都没有 --images /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/cover-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-01-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-02-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-03-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-04-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-05-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-06-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-07-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-08-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-09-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-10-zh.png --note 空集不是很小的一袋子东西。它是一条规矩：拿来谁，回答都不在里面。 左滑 10 张看完。 #证明助手 #抽象代数 --tags 证明助手,抽象代数 failed: Weibo cookie is missing or expired: /Users/johndoe/Documents/company/social-auto-upload/cookies/weibo_default.json. Run `sau weibo login --account default` first.",
+      "finishedAt": "2026-08-30T16:03:02.567Z"
+    },
+    {
+      "id": "05-empty-set::infographic::zh::kuaishou",
+      "title": "5. 空集：里面什么都没有 · 信息图 · kuaishou",
+      "episodeTitle": "5. 空集：里面什么都没有",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "kuaishou",
+      "scriptId": "05-empty-set",
+      "status": "failed",
+      "startedAt": "2026-08-30T16:03:02.568Z",
+      "error": "kuaishou note failed: not logged in",
+      "errorDetail": "sau kuaishou upload-note --account default --title 5. 空集：里面什么都没有 --images /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/cover-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-01-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-02-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-03-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-04-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-05-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-06-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-07-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-08-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-09-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-10-zh.png --headed --note 空集不是很小的一袋子东西。它是一条规矩：拿来谁，回答都不在里面。 左滑 10 张看完。\n\n#证明助手 #抽象代数 --tags 证明助手,抽象代数 failed: Kuaishou cookie is missing or expired: /Users/johndoe/Documents/company/social-auto-upload/cookies/kuaishou_default.json. Run `sau kuaishou login --account default` first.",
+      "finishedAt": "2026-08-30T16:03:34.279Z"
+    }
+  ],
+  "events": [
+    {
+      "at": "2026-08-30T15:59:53.148Z",
+      "level": "info",
+      "message": "Squat started with 5 items"
+    },
+    {
+      "at": "2026-08-30T15:59:53.148Z",
+      "level": "info",
+      "message": "Running 5 uploads in click order"
+    },
+    {
+      "at": "2026-08-30T15:59:53.149Z",
+      "itemId": "05-empty-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "Started xiaohongshu infographic 05-empty-set"
+    },
+    {
+      "at": "2026-08-30T15:59:53.150Z",
+      "itemId": "05-empty-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Using existing posters"
+    },
+    {
+      "at": "2026-08-30T15:59:53.151Z",
+      "itemId": "05-empty-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Using 11 existing posters"
+    },
+    {
+      "at": "2026-08-30T15:59:53.166Z",
+      "itemId": "05-empty-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Uploading 11 existing posters to xiaohongshu"
+    },
+    {
+      "at": "2026-08-30T16:00:18.043Z",
+      "itemId": "05-empty-set::infographic::zh::xiaohongshu",
+      "level": "error",
+      "message": "xiaohongshu infographic failed: xiaohongshu note failed: not logged in",
+      "detail": "sau xiaohongshu upload-note --account default --title 5. 空集：里面什么都没有 --images /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/cover-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-01-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-02-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-03-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-04-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-05-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-06-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-07-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-08-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-09-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-10-zh.png --headed --note 空集不是很小的一袋子东西。它是一条规矩：拿来谁，回答都不在里面。\n\n左滑 10 张看完。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享 --tags 证明助手,抽象代数,数学笔记,干货分享 failed: Xiaohongshu cookie is missing or expired: /Users/johndoe/Documents/company/social-auto-upload/cookies/xiaohongshu_default.json. Run `sau xiaohongshu login --account default` first."
+    },
+    {
+      "at": "2026-08-30T16:00:18.044Z",
+      "itemId": "05-empty-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "Started bilibili infographic 05-empty-set"
+    },
+    {
+      "at": "2026-08-30T16:00:18.044Z",
+      "itemId": "05-empty-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Using existing posters"
+    },
+    {
+      "at": "2026-08-30T16:00:18.045Z",
+      "itemId": "05-empty-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Using 11 existing posters"
+    },
+    {
+      "at": "2026-08-30T16:00:18.061Z",
+      "itemId": "05-empty-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Rendering slideshow from existing posters"
+    },
+    {
+      "at": "2026-08-30T16:00:21.225Z",
+      "itemId": "05-empty-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Uploading existing slideshow to bilibili"
+    },
+    {
+      "at": "2026-08-30T16:00:54.956Z",
+      "itemId": "05-empty-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili published https://example.invalid/bilibili/sau-bilibili-album-zh"
+    },
+    {
+      "at": "2026-08-30T16:00:54.957Z",
+      "itemId": "05-empty-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "Started douyin infographic 05-empty-set"
+    },
+    {
+      "at": "2026-08-30T16:00:54.958Z",
+      "itemId": "05-empty-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Using existing posters"
+    },
+    {
+      "at": "2026-08-30T16:00:54.959Z",
+      "itemId": "05-empty-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Using 11 existing posters"
+    },
+    {
+      "at": "2026-08-30T16:00:54.977Z",
+      "itemId": "05-empty-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Uploading 11 existing posters to douyin"
+    },
+    {
+      "at": "2026-08-30T16:02:57.634Z",
+      "itemId": "05-empty-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin published https://example.invalid/douyin/sau-note-douyin-mtg00g68"
+    },
+    {
+      "at": "2026-08-30T16:02:57.635Z",
+      "itemId": "05-empty-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "Started weibo infographic 05-empty-set"
+    },
+    {
+      "at": "2026-08-30T16:02:57.636Z",
+      "itemId": "05-empty-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Using existing posters"
+    },
+    {
+      "at": "2026-08-30T16:02:57.637Z",
+      "itemId": "05-empty-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Using 11 existing posters"
+    },
+    {
+      "at": "2026-08-30T16:02:57.656Z",
+      "itemId": "05-empty-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Uploading 11 existing posters to weibo"
+    },
+    {
+      "at": "2026-08-30T16:03:02.568Z",
+      "itemId": "05-empty-set::infographic::zh::weibo",
+      "level": "error",
+      "message": "weibo infographic failed: weibo note failed: not logged in",
+      "detail": "sau weibo upload-note --account default --title 5. 空集：里面什么都没有 --images /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/cover-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-01-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-02-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-03-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-04-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-05-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-06-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-07-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-08-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-09-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-10-zh.png --note 空集不是很小的一袋子东西。它是一条规矩：拿来谁，回答都不在里面。 左滑 10 张看完。 #证明助手 #抽象代数 --tags 证明助手,抽象代数 failed: Weibo cookie is missing or expired: /Users/johndoe/Documents/company/social-auto-upload/cookies/weibo_default.json. Run `sau weibo login --account default` first."
+    },
+    {
+      "at": "2026-08-30T16:03:02.569Z",
+      "itemId": "05-empty-set::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "Started kuaishou infographic 05-empty-set"
+    },
+    {
+      "at": "2026-08-30T16:03:02.571Z",
+      "itemId": "05-empty-set::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "kuaishou: Using existing posters"
+    },
+    {
+      "at": "2026-08-30T16:03:02.571Z",
+      "itemId": "05-empty-set::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "kuaishou: Using 11 existing posters"
+    },
+    {
+      "at": "2026-08-30T16:03:02.587Z",
+      "itemId": "05-empty-set::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "kuaishou: Uploading 11 existing posters to kuaishou"
+    },
+    {
+      "at": "2026-08-30T16:03:34.280Z",
+      "itemId": "05-empty-set::infographic::zh::kuaishou",
+      "level": "error",
+      "message": "kuaishou infographic failed: kuaishou note failed: not logged in",
+      "detail": "sau kuaishou upload-note --account default --title 5. 空集：里面什么都没有 --images /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/cover-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-01-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-02-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-03-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-04-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-05-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-06-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-07-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-08-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-09-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/05-empty-set/beat-posters/beat-10-zh.png --headed --note 空集不是很小的一袋子东西。它是一条规矩：拿来谁，回答都不在里面。 左滑 10 张看完。\n\n#证明助手 #抽象代数 --tags 证明助手,抽象代数 failed: Kuaishou cookie is missing or expired: /Users/johndoe/Documents/company/social-auto-upload/cookies/kuaishou_default.json. Run `sau kuaishou login --account default` first."
+    },
+    {
+      "at": "2026-08-30T16:03:34.280Z",
+      "level": "info",
+      "message": "Squat done: 2 live, 3 failed"
+    }
+  ],
+  "summary": {
+    "queued": 0,
+    "published": 2,
+    "failed": 3,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "finishedAt": "2026-08-30T16:03:34.280Z"
+}

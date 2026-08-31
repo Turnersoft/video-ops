@@ -62,7 +62,9 @@ export type OutdoorRoute =
   | { name: "take"; scriptId: string; takeId: string }
   | { name: "film"; scriptId: string }
   | { name: "animation"; scriptId: string }
-  | { name: "platforms" };
+  | { name: "platforms" }
+  | { name: "publish-plan" }
+  | { name: "mass-publish" };
 
 export type AnimationMdDocument = {
   scriptId: string;
@@ -780,6 +782,7 @@ export type PlatformStatus = {
   envHints?: string[];
   dashboardUrl?: string | null;
   loginCommand?: string | null;
+  loginKind?: "qr" | "portal" | "browser" | null;
   loginLinks?: LoginLink[];
   signupUrl?: string | null;
   signupSteps?: SignupStep[];
@@ -832,6 +835,28 @@ export type PlatformTestResult = {
   message: string;
   provider?: string | null;
   platform?: string;
+};
+
+export type PlatformLoginKind = "qr" | "portal" | "browser";
+
+export type PlatformLoginStatus =
+  | "starting"
+  | "waiting_scan"
+  | "waiting_portal"
+  | "succeeded"
+  | "failed"
+  | "cancelled";
+
+export type PlatformLoginSession = {
+  platform: string;
+  provider: "postiz" | "social-auto-upload";
+  kind: PlatformLoginKind;
+  status: PlatformLoginStatus;
+  message: string;
+  qrImageUrl: string | null;
+  portalUrl: string | null;
+  startedAt: string;
+  updatedAt: string;
 };
 
 export type PostizSyncResult = {
@@ -1096,6 +1121,17 @@ export type BeatPostersResponse = {
   publishState: BeatPosterPublishState;
 };
 
+export type BeatPosterGenerateProgress = {
+  scriptId: string;
+  status: "idle" | "clearing" | "running" | "done" | "error";
+  current: number;
+  total: number;
+  percent: number;
+  label: string;
+  error?: string;
+  updatedAt: string;
+};
+
 export type PublishResult = {
   url: string;
   stub?: boolean;
@@ -1222,4 +1258,196 @@ export type UploadTakeResult = {
 export type HealthResponse = {
   ok: boolean;
   service?: string;
+};
+
+export type NewAccountPublishPlanPost = {
+  index: number;
+  seriesId: string;
+  seriesTitle: string;
+  scriptId: string;
+  episodeIndex: number | null;
+  episodeTitle: string;
+  kind: "infographic" | "video";
+  lang: "en" | "zh";
+  title: string;
+  reason: string;
+  ready: boolean;
+  blockers: string[];
+};
+
+export type NewAccountPublishPlanAccountSlot = {
+  accountId: string;
+  label: string;
+  platform: string;
+  connected: boolean;
+};
+
+export type NewAccountPublishPlan = {
+  schemaVersion: 1;
+  mode: "new-account";
+  createdAt: string;
+  seriesId: string;
+  platform: string;
+  lang: "en" | "zh";
+  accountSlots: NewAccountPublishPlanAccountSlot[];
+  posts: NewAccountPublishPlanPost[];
+  summary: {
+    episodeCount: number;
+    postCount: number;
+    readyCount: number;
+    blockedCount: number;
+  };
+};
+
+export type SavedPublishPlanRef = {
+  id: string;
+  path: string;
+};
+
+export type SaveNewAccountPublishPlanResult = {
+  id: string;
+  path: string;
+  plan: NewAccountPublishPlan;
+};
+
+export type MassPublishKind = "infographic" | "video";
+export type MassPublishLang = "en" | "zh";
+export type MassPublishStatus = "pending" | "published" | "failed" | "blocked";
+export type MassPublishProvider = "postiz" | "sau" | "manual" | "browser";
+export type MassPublishMode = "auto" | "manual";
+export type MassDispatchItemStatus =
+  | "queued"
+  | "running"
+  /** Creator page is open; the squat waits for you to publish or skip. */
+  | "awaiting_manual"
+  | "published"
+  | "failed"
+  | "skipped"
+  | "cancelled";
+
+export type MassPublishItem = {
+  id: string;
+  seriesId: string;
+  seriesTitle: string;
+  scriptId: string;
+  episodeIndex: number | null;
+  episodeTitle: string;
+  kind: MassPublishKind;
+  lang: MassPublishLang;
+  platform: string;
+  title: string;
+  captionTitle?: string;
+  captionBody?: string;
+  ready: boolean;
+  blockers: string[];
+  provider: MassPublishProvider;
+  publishMode: MassPublishMode;
+  status: MassPublishStatus;
+  canDispatch: boolean;
+  publishedAt: string | null;
+  url: string | null;
+  openUrl?: string | null;
+  postId: string | null;
+  stub: boolean;
+  jobId: string | null;
+  takeId: string | null;
+  coverUrl: string | null;
+};
+
+export type MassPublishEpisodeRow = {
+  scriptId: string;
+  seriesId: string;
+  seriesTitle: string;
+  episodeIndex: number | null;
+  episodeTitle: string;
+  coverUrl: string | null;
+  infographicReady: boolean;
+  videoReady: boolean;
+  infographicBlockers: string[];
+  videoBlockers: string[];
+  jobId: string | null;
+  takeId: string | null;
+  itemIds: string[];
+};
+
+export type MassDispatchEvent = {
+  at: string;
+  itemId?: string;
+  level: "info" | "warn" | "error";
+  message: string;
+  detail?: string;
+};
+
+export type MassDispatchItem = {
+  id: string;
+  title: string;
+  episodeTitle?: string;
+  kind: MassPublishKind;
+  lang: MassPublishLang;
+  platform: string;
+  scriptId: string;
+  status: MassDispatchItemStatus;
+  progress?: string;
+  error?: string;
+  errorDetail?: string;
+  url?: string;
+  postId?: string;
+  startedAt?: string;
+  finishedAt?: string;
+};
+
+export type MassDispatch = {
+  id: string;
+  startedAt: string;
+  finishedAt?: string;
+  status: "running" | "waiting" | "done" | "failed" | "cancelled";
+  items: MassDispatchItem[];
+  events?: MassDispatchEvent[];
+  summary: {
+    queued: number;
+    awaiting: number;
+    published: number;
+    failed: number;
+    skipped: number;
+    cancelled: number;
+  };
+};
+
+export type MassDispatchRef = {
+  id: string;
+  startedAt: string;
+  finishedAt?: string;
+  status: MassDispatch["status"];
+  summary: MassDispatch["summary"];
+};
+
+export type MassPublishBoard = {
+  schemaVersion: 1;
+  generatedAt: string;
+  seriesId: string;
+  lang: MassPublishLang | "all";
+  platforms: string[];
+  episodes: MassPublishEpisodeRow[];
+  items: MassPublishItem[];
+  summary: {
+    episodeCount: number;
+    itemCount: number;
+    pendingAuto: number;
+    pendingManual: number;
+    published: number;
+    blocked: number;
+    failed: number;
+    posterPending: number;
+    videoPending: number;
+  };
+  activeDispatch: MassDispatch | null;
+};
+
+export type MassDispatchResponse = {
+  dispatch: MassDispatch | null;
+};
+
+export type MassDispatchListResponse = {
+  dispatches: MassDispatchRef[];
+  activeDispatch: MassDispatch | null;
 };

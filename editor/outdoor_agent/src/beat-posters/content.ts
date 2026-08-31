@@ -315,6 +315,7 @@ export function buildBeatPosterSpec(params: {
     hasCode: requestedCodeLines > 0,
     hasNextLead: Boolean(nextLead.trim()),
     titleUnits: estimateTextUnits(title),
+    codeText: shownCodeDraft,
   });
 
   const leanFitFinal = fitCodeLines(leanSource.trim(), cardLayout.maxCodeLines || 20);

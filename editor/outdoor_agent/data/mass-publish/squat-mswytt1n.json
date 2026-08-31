@@ -1,0 +1,337 @@
+{
+  "id": "squat-mswytt1n",
+  "startedAt": "2026-08-17T08:22:10.763Z",
+  "status": "cancelled",
+  "items": [
+    {
+      "id": "01-set::infographic::zh::xiaohongshu",
+      "title": "1. 集合：不是一袋子东西，是一条判定 · 信息图 · xiaohongshu",
+      "episodeTitle": "1. 集合：不是一袋子东西，是一条判定",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "xiaohongshu",
+      "scriptId": "01-set",
+      "status": "published",
+      "progress": "Published",
+      "startedAt": "2026-08-17T08:22:10.764Z",
+      "url": "https://example.invalid/xiaohongshu/sau-note-xiaohongshu-mswyu9xu",
+      "postId": "sau-note-xiaohongshu-mswyu9xu",
+      "finishedAt": "2026-08-17T08:22:32.659Z"
+    },
+    {
+      "id": "01-set::infographic::zh::bilibili",
+      "title": "1. 集合：不是一袋子东西，是一条判定 · 信息图 · bilibili",
+      "episodeTitle": "1. 集合：不是一袋子东西，是一条判定",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "bilibili",
+      "scriptId": "01-set",
+      "status": "published",
+      "progress": "Published",
+      "startedAt": "2026-08-17T08:22:32.660Z",
+      "url": "https://example.invalid/bilibili/sau-bilibili-album-zh",
+      "postId": "sau-bilibili-album-zh",
+      "finishedAt": "2026-08-17T08:22:34.835Z"
+    },
+    {
+      "id": "01-set::infographic::zh::douyin",
+      "title": "1. 集合：不是一袋子东西，是一条判定 · 信息图 · douyin",
+      "episodeTitle": "1. 集合：不是一袋子东西，是一条判定",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "douyin",
+      "scriptId": "01-set",
+      "status": "published",
+      "progress": "Published",
+      "startedAt": "2026-08-17T08:22:34.836Z",
+      "url": "https://example.invalid/douyin/sau-note-douyin-mswyuups",
+      "postId": "sau-note-douyin-mswyuups",
+      "finishedAt": "2026-08-17T08:22:59.585Z"
+    },
+    {
+      "id": "01-set::infographic::zh::weibo",
+      "title": "1. 集合：不是一袋子东西，是一条判定 · 信息图 · weibo",
+      "episodeTitle": "1. 集合：不是一袋子东西，是一条判定",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "weibo",
+      "scriptId": "01-set",
+      "status": "published",
+      "progress": "Published",
+      "startedAt": "2026-08-17T08:22:59.586Z",
+      "url": "https://weibo.com/7931125666/RdOS0izUg",
+      "postId": "sau-note-weibo-mswyv58i",
+      "finishedAt": "2026-08-17T08:23:13.222Z"
+    },
+    {
+      "id": "01-set::infographic::zh::wechat_channels",
+      "title": "1. 集合：不是一袋子东西，是一条判定 · 信息图 · wechat_channels",
+      "episodeTitle": "1. 集合：不是一袋子东西，是一条判定",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "wechat_channels",
+      "scriptId": "01-set",
+      "status": "failed",
+      "startedAt": "2026-08-17T08:23:13.224Z",
+      "error": "tencent note failed: 未找到视频号图文发布入口，请确认账号已开通图文/图片发布",
+      "errorDetail": "sau tencent upload-note --account default --title 01 集合：不是一袋子，是一条判定（18 张） --images /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/cover-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-01-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-02-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-03-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-04-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-05-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-06-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-07-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-08-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-09-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-10-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-11-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-12-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-13-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-14-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-15-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-16-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-17-zh.png --headed --note Lean 把集合写成判定，再接 Membership。Turn-Lang 写成容器，规则写在 relations 里。\n\n18 张信息图，从课本到空集、并集。\n\n抽象代数第 1 期 failed: 未找到视频号图文发布入口，请确认账号已开通图文/图片发布",
+      "finishedAt": "2026-08-17T08:23:27.733Z"
+    },
+    {
+      "id": "01-set::infographic::zh::kuaishou",
+      "title": "1. 集合：不是一袋子东西，是一条判定 · 信息图 · kuaishou",
+      "episodeTitle": "1. 集合：不是一袋子东西，是一条判定",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "kuaishou",
+      "scriptId": "01-set",
+      "status": "cancelled",
+      "progress": "Stopped",
+      "startedAt": "2026-08-17T08:23:27.734Z",
+      "error": "Stopped by Clear queue",
+      "errorDetail": "Stopped by Clear queue",
+      "finishedAt": "2026-08-17T08:27:21.163Z"
+    }
+  ],
+  "events": [
+    {
+      "at": "2026-08-17T08:22:10.764Z",
+      "level": "info",
+      "message": "Squat started with 6 items"
+    },
+    {
+      "at": "2026-08-17T08:22:10.764Z",
+      "level": "info",
+      "message": "Running 6 uploads in click order"
+    },
+    {
+      "at": "2026-08-17T08:22:10.764Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "Started xiaohongshu infographic 01-set"
+    },
+    {
+      "at": "2026-08-17T08:22:10.766Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Using existing posters"
+    },
+    {
+      "at": "2026-08-17T08:22:10.767Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Using 18 existing posters"
+    },
+    {
+      "at": "2026-08-17T08:22:10.790Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Uploading 18 existing posters to xiaohongshu"
+    },
+    {
+      "at": "2026-08-17T08:22:32.660Z",
+      "itemId": "01-set::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu published https://example.invalid/xiaohongshu/sau-note-xiaohongshu-mswyu9xu"
+    },
+    {
+      "at": "2026-08-17T08:22:32.660Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "Started bilibili infographic 01-set"
+    },
+    {
+      "at": "2026-08-17T08:22:32.661Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Using existing posters"
+    },
+    {
+      "at": "2026-08-17T08:22:32.662Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Using 18 existing posters"
+    },
+    {
+      "at": "2026-08-17T08:22:32.688Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Using existing slideshow"
+    },
+    {
+      "at": "2026-08-17T08:22:32.688Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Uploading existing slideshow to bilibili"
+    },
+    {
+      "at": "2026-08-17T08:22:34.836Z",
+      "itemId": "01-set::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili published https://example.invalid/bilibili/sau-bilibili-album-zh"
+    },
+    {
+      "at": "2026-08-17T08:22:34.836Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "Started douyin infographic 01-set"
+    },
+    {
+      "at": "2026-08-17T08:22:34.837Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Using existing posters"
+    },
+    {
+      "at": "2026-08-17T08:22:34.838Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Using 18 existing posters"
+    },
+    {
+      "at": "2026-08-17T08:22:34.862Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin: Uploading 18 existing posters to douyin"
+    },
+    {
+      "at": "2026-08-17T08:22:59.585Z",
+      "itemId": "01-set::infographic::zh::douyin",
+      "level": "info",
+      "message": "douyin published https://example.invalid/douyin/sau-note-douyin-mswyuups"
+    },
+    {
+      "at": "2026-08-17T08:22:59.586Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "Started weibo infographic 01-set"
+    },
+    {
+      "at": "2026-08-17T08:22:59.588Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Using existing posters"
+    },
+    {
+      "at": "2026-08-17T08:22:59.589Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Using 18 existing posters"
+    },
+    {
+      "at": "2026-08-17T08:22:59.614Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo: Uploading 18 existing posters to weibo"
+    },
+    {
+      "at": "2026-08-17T08:23:13.223Z",
+      "itemId": "01-set::infographic::zh::weibo",
+      "level": "info",
+      "message": "weibo published https://weibo.com/7931125666/RdOS0izUg"
+    },
+    {
+      "at": "2026-08-17T08:23:13.224Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "Started wechat_channels infographic 01-set"
+    },
+    {
+      "at": "2026-08-17T08:23:13.225Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Using existing posters"
+    },
+    {
+      "at": "2026-08-17T08:23:13.226Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Using 18 existing posters"
+    },
+    {
+      "at": "2026-08-17T08:23:13.247Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Uploading 18 existing posters to wechat_channels"
+    },
+    {
+      "at": "2026-08-17T08:23:27.734Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "error",
+      "message": "wechat_channels infographic failed: tencent note failed: 未找到视频号图文发布入口，请确认账号已开通图文/图片发布",
+      "detail": "sau tencent upload-note --account default --title 01 集合：不是一袋子，是一条判定（18 张） --images /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/cover-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-01-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-02-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-03-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-04-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-05-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-06-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-07-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-08-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-09-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-10-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-11-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-12-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-13-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-14-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-15-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-16-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-17-zh.png --headed --note Lean 把集合写成判定，再接 Membership。Turn-Lang 写成容器，规则写在 relations 里。\n\n18 张信息图，从课本到空集、并集。\n\n抽象代数第 1 期 failed: 未找到视频号图文发布入口，请确认账号已开通图文/图片发布"
+    },
+    {
+      "at": "2026-08-17T08:23:27.734Z",
+      "itemId": "01-set::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "Started kuaishou infographic 01-set"
+    },
+    {
+      "at": "2026-08-17T08:23:27.735Z",
+      "itemId": "01-set::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "kuaishou: Using existing posters"
+    },
+    {
+      "at": "2026-08-17T08:23:27.736Z",
+      "itemId": "01-set::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "kuaishou: Using 18 existing posters"
+    },
+    {
+      "at": "2026-08-17T08:23:27.757Z",
+      "itemId": "01-set::infographic::zh::kuaishou",
+      "level": "info",
+      "message": "kuaishou: Uploading 18 existing posters to kuaishou"
+    },
+    {
+      "at": "2026-08-17T08:27:19.271Z",
+      "level": "warn",
+      "message": "Clear queue: stopping squat"
+    },
+    {
+      "at": "2026-08-17T08:27:19.353Z",
+      "itemId": "01-set::infographic::zh::kuaishou",
+      "level": "warn",
+      "message": "kuaishou: Stopping upload"
+    },
+    {
+      "at": "2026-08-17T08:27:19.806Z",
+      "itemId": "01-set::infographic::zh::kuaishou",
+      "level": "warn",
+      "message": "kuaishou: Killing sau process"
+    },
+    {
+      "at": "2026-08-17T08:27:20.259Z",
+      "itemId": "01-set::infographic::zh::kuaishou",
+      "level": "warn",
+      "message": "kuaishou: Closing publisher"
+    },
+    {
+      "at": "2026-08-17T08:27:20.712Z",
+      "itemId": "01-set::infographic::zh::kuaishou",
+      "level": "warn",
+      "message": "kuaishou: Stopped"
+    },
+    {
+      "at": "2026-08-17T08:27:21.164Z",
+      "itemId": "01-set::infographic::zh::kuaishou",
+      "level": "warn",
+      "message": "kuaishou infographic stopped"
+    },
+    {
+      "at": "2026-08-17T08:27:21.166Z",
+      "level": "warn",
+      "message": "Squat stopped: 4 live, 1 stopped"
+    }
+  ],
+  "summary": {
+    "queued": 0,
+    "published": 4,
+    "failed": 1,
+    "skipped": 0,
+    "cancelled": 1
+  },
+  "finishedAt": "2026-08-17T08:27:21.165Z"
+}

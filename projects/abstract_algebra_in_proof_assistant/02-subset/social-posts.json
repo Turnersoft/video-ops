@@ -2,8 +2,8 @@
   "version": 1,
   "scriptId": "02-subset",
   "titleEnglish": "02_subset",
-  "titleChina": "02_subset",
-  "title": "02_subset",
+  "titleChina": "2. 子集：是命题，不是新盒子",
+  "title": "2. Subset: a proposition about two sets, not a new box",
   "generatedAt": "2026-07-25T08:06:04.983Z",
   "source": {},
   "english": {
@@ -38,28 +38,56 @@
   },
   "china": {
     "bilibili": {
-      "title": "02_subset",
-      "body": "02_subset\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+      "title": "2. 子集：是命题，不是新盒子",
+      "body": "A 是 B 的子集，意思很朴素：A 里的每个东西，本来就已经在 B 里。子集不是再造一个集合，只是两个集合之间的一句话。\n\n#证明助手 #抽象代数 #形式化数学"
     },
     "douyin": {
-      "title": "Subset — relation, not a new set",
-      "body": "Subset — relation, not a new set\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+      "title": "2. 子集：是命题，不是新盒子",
+      "body": "子集不是新盒子，是两个集合之间的一句话。\n\n#证明助手 #抽象代数"
     },
     "xiaohongshu": {
-      "title": "Subset — relation,…",
-      "body": "Subset — relation, not a new set\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+      "title": "2. 子集：是命题，不是新盒子",
+      "body": "子集不是再造一个集合。A 是 B 的子集，就是 A 里的每个东西都已经在 B 里。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享"
     },
     "weibo": {
-      "title": "Subset — relation, not a new set",
-      "body": "Subset — relation, not a new set\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+      "title": "2. 子集：是命题，不是新盒子",
+      "body": "子集是一句话，不是新盒子。A 里的每个东西，都已经在 B 里。\n\n#证明助手 #抽象代数"
     },
     "wechat_channels": {
-      "title": "Subset — relation, not a new set",
-      "body": "Subset — relation, not a new set\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+      "title": "2. 子集：是命题，不是新盒子",
+      "body": "A 是 B 的子集：A 里的每个元素都已经在 B 里。\n\n#证明助手 #抽象代数"
     },
     "kuaishou": {
-      "title": "Subset — relation, not a new set",
-      "body": "Subset — relation, not a new set\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+      "title": "2. 子集：是命题，不是新盒子",
+      "body": "子集不是新盒子，是一句命题。\n\n#证明助手 #抽象代数"
+    }
+  },
+  "infographic": {
+    "china": {
+      "xiaohongshu": {
+        "title": "子集是一句话｜不是新盒子",
+        "body": "子集不是再造一个集合。\n\nA 是 B 的子集，就是一句很朴素的话：A 里的每个东西，本来就已经在 B 里。\n\n证明助手里，这句话可以写成一条关系，记号只是方便读写，不必另起一个盒子。\n\n左滑 13 张看完。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享"
+      },
+      "bilibili": {
+        "title": "【信息图】02 子集：是命题，不是新盒子",
+        "body": "子集不是新容器。A 是 B 的子集，意思是 A 里每个元素都已经在 B 里。证明助手里先把这句话写清楚，再给它一个好读的记号。\n\n13 张信息图左滑看完。\n\n#证明助手 #抽象代数 #形式化数学"
+      },
+      "douyin": {
+        "title": "子集是一句话｜13 张信息图",
+        "body": "不是新盒子，是两个集合之间的一句话。左滑 13 张看完。\n\n#证明助手 #抽象代数 #干货分享"
+      },
+      "weibo": {
+        "title": "02 子集｜是命题，不是新盒子",
+        "body": "子集是一句话，不是新盒子。A 里的每个东西都已经在 B 里。13 张信息图左滑。#证明助手 #抽象代数"
+      },
+      "wechat_channels": {
+        "title": "02 子集：是命题，不是新盒子（13 张）",
+        "body": "子集不是新容器。A 是 B 的子集，就是 A 里每个元素都已经在 B 里。\n\n13 张信息图。"
+      },
+      "kuaishou": {
+        "title": "子集是一句话｜13 张讲清楚",
+        "body": "不是新盒子。13 张左滑看完。\n\n#证明助手 #抽象代数"
+      }
     }
   }
 }

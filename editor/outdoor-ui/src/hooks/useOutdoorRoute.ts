@@ -17,6 +17,8 @@ export type OutdoorRouteApi = {
   navigate: (route: OutdoorRoute) => void;
   navigateToLibrary: () => void;
   navigateToPlatforms: () => void;
+  navigateToPublishPlan: () => void;
+  navigateToMassPublish: () => void;
   navigateToScript: (scriptId: string) => void;
   navigateToPostProcess: (scriptId: string) => void;
   navigateToBeatPosters: (scriptId: string) => void;
@@ -79,6 +81,12 @@ export function parseRoute(rawHash?: string): OutdoorRoute {
   if (parts[0] === 'platforms' || parts[0] === 'credentials') {
     return { name: 'platforms' };
   }
+  if (parts[0] === 'publish-plan') {
+    return { name: 'publish-plan' };
+  }
+  if (parts[0] === 'mass-publish') {
+    return { name: 'mass-publish' };
+  }
   return { name: 'library' };
 }
 
@@ -98,6 +106,10 @@ export function routeToHash(route: OutdoorRoute): string {
       return `#/animation/${encodeURIComponent(route.scriptId)}`;
     case 'platforms':
       return '#/platforms';
+    case 'publish-plan':
+      return '#/publish-plan';
+    case 'mass-publish':
+      return '#/mass-publish';
     case 'film':
       return `#/film/${encodeURIComponent(route.scriptId)}`;
     default: {
@@ -121,6 +133,11 @@ function useOutdoorHashRoute(): OutdoorRouteApi {
       setRoute(parseRoute());
     };
 
+    const path = window.location.pathname.replace(/\/$/, '');
+    if (path === '/mass-publish' && window.location.hash !== '#/mass-publish') {
+      window.location.replace(`${window.location.origin}/#/mass-publish`);
+    }
+
     window.addEventListener('hashchange', onHashChange);
     setRoute(parseRoute());
     return () => {
@@ -142,6 +159,8 @@ function useOutdoorHashRoute(): OutdoorRouteApi {
 
   const navigateToLibrary = useCallback(() => navigate({ name: 'library' }), [navigate]);
   const navigateToPlatforms = useCallback(() => navigate({ name: 'platforms' }), [navigate]);
+  const navigateToPublishPlan = useCallback(() => navigate({ name: 'publish-plan' }), [navigate]);
+  const navigateToMassPublish = useCallback(() => navigate({ name: 'mass-publish' }), [navigate]);
   const navigateToScript = useCallback(
     (scriptId: string) => navigate({ name: 'script', scriptId }),
     [navigate],
@@ -173,6 +192,8 @@ function useOutdoorHashRoute(): OutdoorRouteApi {
       navigate,
       navigateToLibrary,
       navigateToPlatforms,
+      navigateToPublishPlan,
+      navigateToMassPublish,
       navigateToScript,
       navigateToPostProcess,
       navigateToBeatPosters,
@@ -185,6 +206,8 @@ function useOutdoorHashRoute(): OutdoorRouteApi {
       navigate,
       navigateToLibrary,
       navigateToPlatforms,
+      navigateToPublishPlan,
+      navigateToMassPublish,
       navigateToScript,
       navigateToPostProcess,
       navigateToBeatPosters,
@@ -204,6 +227,8 @@ function useOutdoorStateRoute(initialRoute: OutdoorRoute): OutdoorRouteApi {
 
   const navigateToLibrary = useCallback(() => navigate({ name: 'library' }), [navigate]);
   const navigateToPlatforms = useCallback(() => navigate({ name: 'platforms' }), [navigate]);
+  const navigateToPublishPlan = useCallback(() => navigate({ name: 'publish-plan' }), [navigate]);
+  const navigateToMassPublish = useCallback(() => navigate({ name: 'mass-publish' }), [navigate]);
   const navigateToScript = useCallback(
     (scriptId: string) => navigate({ name: 'script', scriptId }),
     [navigate],
@@ -235,6 +260,8 @@ function useOutdoorStateRoute(initialRoute: OutdoorRoute): OutdoorRouteApi {
       navigate,
       navigateToLibrary,
       navigateToPlatforms,
+      navigateToPublishPlan,
+      navigateToMassPublish,
       navigateToScript,
       navigateToPostProcess,
       navigateToBeatPosters,
@@ -247,6 +274,8 @@ function useOutdoorStateRoute(initialRoute: OutdoorRoute): OutdoorRouteApi {
       navigate,
       navigateToLibrary,
       navigateToPlatforms,
+      navigateToPublishPlan,
+      navigateToMassPublish,
       navigateToScript,
       navigateToPostProcess,
       navigateToBeatPosters,

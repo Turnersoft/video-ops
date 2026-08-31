@@ -23,6 +23,39 @@
       "publishedAt": "2026-08-16T17:47:06.839Z",
       "imageCount": 12,
       "stub": false
+    },
+    {
+      "platform": "douyin",
+      "beatId": "album",
+      "lang": "zh",
+      "postId": "sau-note-douyin-mt1lhe8r",
+      "url": "https://example.invalid/douyin/sau-note-douyin-mt1lhe8r",
+      "status": "live",
+      "publishedAt": "2026-08-20T14:05:24.376Z",
+      "imageCount": 12,
+      "stub": false
+    },
+    {
+      "platform": "weibo",
+      "beatId": "album",
+      "lang": "zh",
+      "postId": "sau-note-weibo-mt1liv4f",
+      "url": "https://weibo.com/7931125666/RejpGhKsh",
+      "status": "live",
+      "publishedAt": "2026-08-20T14:07:27.604Z",
+      "imageCount": 12,
+      "stub": false
+    },
+    {
+      "platform": "kuaishou",
+      "beatId": "album",
+      "lang": "zh",
+      "postId": "sau-note-kuaishou-mt1lkz79",
+      "url": "https://example.invalid/kuaishou/sau-note-kuaishou-mt1lkz79",
+      "status": "live",
+      "publishedAt": "2026-08-20T14:08:36.141Z",
+      "imageCount": 12,
+      "stub": false
     }
   ]
 }

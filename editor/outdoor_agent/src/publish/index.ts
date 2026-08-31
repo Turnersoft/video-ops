@@ -84,6 +84,7 @@ type SocialPosts = {
 
 type PublishOptions = {
   format?: "portrait" | "landscape";
+  republish?: boolean;
 };
 
 export type PublishAllResult = {
@@ -159,6 +160,23 @@ export function canPublish(jobId: string, platform: string): boolean {
       (post.status === "live" || post.status === "pending"),
   );
   return !active;
+}
+
+function retireLivePosts(jobId: string, platform: string): void {
+  const state = loadPublishState(jobId);
+  let changed = false;
+  for (const post of state.posts) {
+    if (
+      post.platform === platform &&
+      (post.status === "live" || post.status === "pending")
+    ) {
+      post.status = "deleted";
+      changed = true;
+    }
+  }
+  if (changed) {
+    savePublishState(state);
+  }
 }
 
 export function assertReadyToPublish(jobId: string): ReadyToPublish {
@@ -553,9 +571,12 @@ export async function publishJob(
     throw new Error(`Unsupported platform: ${platform}`);
   }
   if (!canPublish(jobId, platform)) {
-    throw new Error(
-      `Cannot publish to ${platform} while a live post exists. Hide or delete it first.`,
-    );
+    if (!options.republish) {
+      throw new Error(
+        `Cannot publish to ${platform} while a live post exists. Hide or delete it first.`,
+      );
+    }
+    retireLivePosts(jobId, platform);
   }
 
   const { job, portrait, landscape, socialPath } = assertReadyToPublish(jobId);

@@ -23,18 +23,38 @@ export const BEAT_POSTER_CHINA_PLATFORMS = [
   'douyin',
   'weibo',
   'wechat_channels',
+  'wechat',
   'kuaishou',
 ] as const;
 
-/** Image-note carousel via social-auto-upload `upload-note`. */
+/**
+ * Image-note carousel via social-auto-upload `upload-note`.
+ *
+ * 小红书 is deliberately absent: it rejects automated uploads, so its albums go
+ * through the browser handoff (see MASS_PUBLISH_BROWSER_HANDOFF_PLATFORMS).
+ */
 export const BEAT_POSTER_SAU_NOTE_PLATFORMS = [
-  'xiaohongshu',
   'douyin',
   'kuaishou',
+  'wechat_channels',
+  'weibo',
+] as const;
+
+/** Poster album becomes a silent slideshow, then SAU `upload-video`. */
+export const BEAT_POSTER_SAU_VIDEO_PLATFORMS = [
+  'bilibili',
 ] as const;
 
 export function isBeatPosterSauNotePlatform(platform: string): boolean {
   return (BEAT_POSTER_SAU_NOTE_PLATFORMS as readonly string[]).includes(platform);
+}
+
+export function isBeatPosterSauVideoPlatform(platform: string): boolean {
+  return (BEAT_POSTER_SAU_VIDEO_PLATFORMS as readonly string[]).includes(platform);
+}
+
+export function isBeatPosterSauAutoPlatform(platform: string): boolean {
+  return isBeatPosterSauNotePlatform(platform) || isBeatPosterSauVideoPlatform(platform);
 }
 
 export type BeatPosterSocialPostsFile = {
@@ -121,7 +141,7 @@ export function beatPosterAlbumApiPngUrls(
 
 function albumSuffix(lang: BeatPosterLang, imageCount: number): string {
   if (lang === 'zh') {
-    return `\n\n${imageCount} 张信息图（含封面）— 完整系列见 turn-lang.com`;
+    return `\n\n${imageCount} 张信息图（含封面），左滑看完。`;
   }
   return `\n\n${imageCount} infographic slides (incl. cover) — full beat-by-beat series at turn-lang.com`;
 }
@@ -198,15 +218,31 @@ export function reviewNotesForBeatPosterPlatform(platform: string, lang: BeatPos
         'Upload order: cover first, then beat-01 … beat-11 (match carousel order).',
         platform === 'xiaohongshu'
           ? '小红书: image carousel note · title maps to note headline, body to note text.'
-          : 'Image carousel note — check platform image-count limits before publishing.',
+          : platform === 'wechat_channels'
+            ? '视频号: photo album · cover first, then each beat. Needs 图文/图片 publish on the account.'
+            : 'Image carousel note — check platform image-count limits before publishing.',
+      ];
+    }
+    if (isBeatPosterSauVideoPlatform(platform)) {
+      return [
+        'Auto via SAU upload-video when SAU is live on #/platforms.',
+        'Album is stitched into a silent slideshow (cover first, then each beat).',
+        '哔哩哔哩: slideshow video · partition from SAU_BILIBILI_TID (default 249).',
+      ];
+    }
+    if (platform === 'xiaohongshu') {
+      return [
+        'Browser handoff: queue it on #/mass-publish and the squat opens 小红书 creator with this caption on the clipboard.',
+        'Upload order: cover first, then beat-01 … beat-11 (match carousel order).',
+        '小红书 blocks automated uploads — drop the PNGs in yourself, then mark the cell live.',
       ];
     }
     return [
       'Manual upload: save PNG album from beat-posters/ and paste this caption in the creator app.',
       'Upload order: cover first, then beat-01 … beat-11 (match carousel order).',
-      platform === 'bilibili'
-        ? '哔哩哔哩: dynamic post or column · attach all 12 images as an album.'
-        : 'Check platform image-count limits before uploading.',
+      platform === 'wechat'
+        ? '微信公众号: 图文文章，封面作头图，其余 PNG 按拍序插入。需在公众号后台手动发。'
+        : 'Manual China lane — paste the album in the creator app.',
     ];
   }
 
@@ -247,7 +283,7 @@ export function buildBeatPosterPlatformPreviews(params: {
       scriptId,
     });
     const postizImageSupported = isBeatPosterPostizPlatform(platform);
-    const sauNoteSupported = isBeatPosterSauNotePlatform(platform);
+    const sauAutoSupported = isBeatPosterSauAutoPlatform(platform);
     const fullText = `${copy.title}\n\n${copy.body}`.trim();
     return {
       platform,
@@ -257,8 +293,8 @@ export function buildBeatPosterPlatformPreviews(params: {
       imageUrls,
       imageCount,
       postizImageSupported,
-      provider: postizImageSupported ? 'postiz' : sauNoteSupported ? 'sau' : 'manual',
-      publishMode: postizImageSupported || sauNoteSupported ? 'auto' : 'manual',
+      provider: postizImageSupported ? 'postiz' : sauAutoSupported ? 'sau' : 'manual',
+      publishMode: postizImageSupported || sauAutoSupported ? 'auto' : 'manual',
       characterCount: fullText.length,
       reviewNotes: reviewNotesForBeatPosterPlatform(platform, lang),
     };

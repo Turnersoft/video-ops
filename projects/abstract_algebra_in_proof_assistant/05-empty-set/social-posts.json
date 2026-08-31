@@ -1,9 +1,9 @@
 {
   "version": 1,
   "scriptId": "05-empty-set",
-  "titleEnglish": "05_empty_set",
-  "titleChina": "05_empty_set",
-  "title": "05_empty_set",
+  "titleEnglish": "5. Empty set: nothing is in it",
+  "titleChina": "5. 空集：里面什么都没有",
+  "title": "5. Empty set: nothing is in it",
   "generatedAt": "2026-07-25T08:06:05.010Z",
   "source": {},
   "english": {
@@ -38,28 +38,64 @@
   },
   "china": {
     "bilibili": {
-      "title": "05_empty_set",
-      "body": "05_empty_set\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+      "title": "5. 空集：里面什么都没有",
+      "body": "空集不是很小的一袋子东西。它是一条规矩：拿来谁，回答都不在里面。\n\n#证明助手 #抽象代数 #形式化数学"
     },
     "douyin": {
-      "title": "Empty set — specialized structure",
-      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+      "title": "5. 空集：里面什么都没有",
+      "body": "空集里什么都没有。不是很小的集合，是一条规矩：谁都不在里面。\n\n#证明助手 #抽象代数"
     },
     "xiaohongshu": {
-      "title": "Empty set — special…",
-      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+      "title": "5. 空集：里面什么都没有",
+      "body": "空集里什么都没有。不是很小的集合，是一条规矩：谁都不在里面。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享"
     },
     "weibo": {
-      "title": "Empty set — specialized structure",
-      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+      "title": "5. 空集：里面什么都没有",
+      "body": "空集里什么都没有。不是很小的集合，是一条规矩：谁都不在里面。\n\n#证明助手 #抽象代数"
     },
     "wechat_channels": {
-      "title": "Empty set — specialized structure",
-      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+      "title": "5. 空集：里面什么都没有",
+      "body": "空集里什么都没有。不是很小的集合，是一条规矩：谁都不在里面。\n\n#证明助手 #抽象代数"
+    },
+    "wechat": {
+      "title": "5. 空集：里面什么都没有",
+      "body": "空集不是很小的一袋子东西。它是一条规矩：拿来谁，回答都不在里面。\n\n#证明助手 #抽象代数"
     },
     "kuaishou": {
-      "title": "Empty set — specialized structure",
-      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+      "title": "5. 空集：里面什么都没有",
+      "body": "空集里什么都没有。不是很小的集合，是一条规矩：谁都不在里面。\n\n#证明助手 #抽象代数"
+    }
+  },
+  "infographic": {
+    "china": {
+      "xiaohongshu": {
+        "title": "5. 空集：里面什么都没有",
+        "body": "空集不是很小的一袋子东西。它是一条规矩：拿来谁，回答都不在里面。\n\n左滑 10 张看完。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享"
+      },
+      "bilibili": {
+        "title": "【信息图】5. 空集：里面什么都没有",
+        "body": "空集不是很小的一袋子东西。它是一条规矩：拿来谁，回答都不在里面。\n\n10 张信息图左滑看完。\n\n#证明助手 #抽象代数 #形式化数学"
+      },
+      "douyin": {
+        "title": "5. 空集：里面什么都没有",
+        "body": "空集不是很小的一袋子东西。它是一条规矩：拿来谁，回答都不在里面。\n\n左滑 10 张看完。\n\n#证明助手 #抽象代数 #干货分享"
+      },
+      "weibo": {
+        "title": "5. 空集：里面什么都没有",
+        "body": "空集不是很小的一袋子东西。它是一条规矩：拿来谁，回答都不在里面。 左滑 10 张看完。 #证明助手 #抽象代数"
+      },
+      "wechat_channels": {
+        "title": "5. 空集：里面什么都没有（10 张）",
+        "body": "空集不是很小的一袋子东西。它是一条规矩：拿来谁，回答都不在里面。\n\n10 张信息图。"
+      },
+      "wechat": {
+        "title": "5. 空集：里面什么都没有",
+        "body": "空集不是很小的一袋子东西。它是一条规矩：拿来谁，回答都不在里面。\n\n10 张信息图按拍序插入。"
+      },
+      "kuaishou": {
+        "title": "5. 空集：里面什么都没有",
+        "body": "空集不是很小的一袋子东西。它是一条规矩：拿来谁，回答都不在里面。 左滑 10 张看完。\n\n#证明助手 #抽象代数"
+      }
     }
   }
 }

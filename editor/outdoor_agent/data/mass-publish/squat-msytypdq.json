@@ -1,0 +1,207 @@
+{
+  "id": "squat-msytypdq",
+  "startedAt": "2026-08-18T15:41:33.566Z",
+  "status": "cancelled",
+  "items": [
+    {
+      "id": "03-proper-subset::infographic::zh::xiaohongshu",
+      "title": "3. 真子集：⊂ 就是 ⊆ 的严格序 · 信息图 · xiaohongshu",
+      "episodeTitle": "3. 真子集：⊂ 就是 ⊆ 的严格序",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "xiaohongshu",
+      "scriptId": "03-proper-subset",
+      "status": "failed",
+      "startedAt": "2026-08-18T15:41:33.569Z",
+      "error": "xiaohongshu note failed: Keyboard.press: Target page, context or browser has been closed",
+      "errorDetail": "sau xiaohongshu upload-note --account default --title 真子集｜比普通子集多一句 --images /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/cover-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-01-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-02-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-03-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-04-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-05-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-06-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-07-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-08-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-09-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-10-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-11-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-12-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-13-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-14-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-15-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-16-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-17-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-18-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-19-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-20-zh.png --headed --note 真子集不是另起一套定义。\n\n它就是普通子集，再加上两边并不一样：A 被 B 包含，但 B 并不被 A 包含。\n\n下一期再专门讲集合相等。左滑 15 张看完。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享 --tags 证明助手,抽象代数,数学笔记,干货分享 failed: Keyboard.press: Target page, context or browser has been closed",
+      "finishedAt": "2026-08-18T15:42:02.141Z"
+    },
+    {
+      "id": "03-proper-subset::infographic::zh::bilibili",
+      "title": "3. 真子集：⊂ 就是 ⊆ 的严格序 · 信息图 · bilibili",
+      "episodeTitle": "3. 真子集：⊂ 就是 ⊆ 的严格序",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "bilibili",
+      "scriptId": "03-proper-subset",
+      "status": "cancelled",
+      "progress": "Stopped",
+      "startedAt": "2026-08-18T15:42:02.143Z",
+      "error": "Stopped by Clear queue",
+      "errorDetail": "Stopped by Clear queue",
+      "finishedAt": "2026-08-18T15:42:05.974Z"
+    },
+    {
+      "id": "03-proper-subset::infographic::zh::douyin",
+      "title": "3. 真子集：⊂ 就是 ⊆ 的严格序 · 信息图 · douyin",
+      "episodeTitle": "3. 真子集：⊂ 就是 ⊆ 的严格序",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "douyin",
+      "scriptId": "03-proper-subset",
+      "status": "cancelled",
+      "progress": "Stopped before start",
+      "error": "Stopped by Clear queue",
+      "errorDetail": "Stopped by Clear queue",
+      "finishedAt": "2026-08-18T15:42:03.809Z"
+    },
+    {
+      "id": "03-proper-subset::infographic::zh::weibo",
+      "title": "3. 真子集：⊂ 就是 ⊆ 的严格序 · 信息图 · weibo",
+      "episodeTitle": "3. 真子集：⊂ 就是 ⊆ 的严格序",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "weibo",
+      "scriptId": "03-proper-subset",
+      "status": "cancelled",
+      "progress": "Stopped before start",
+      "error": "Stopped by Clear queue",
+      "errorDetail": "Stopped by Clear queue",
+      "finishedAt": "2026-08-18T15:42:03.809Z"
+    },
+    {
+      "id": "03-proper-subset::infographic::zh::wechat_channels",
+      "title": "3. 真子集：⊂ 就是 ⊆ 的严格序 · 信息图 · wechat_channels",
+      "episodeTitle": "3. 真子集：⊂ 就是 ⊆ 的严格序",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "wechat_channels",
+      "scriptId": "03-proper-subset",
+      "status": "cancelled",
+      "progress": "Stopped before start",
+      "error": "Stopped by Clear queue",
+      "errorDetail": "Stopped by Clear queue",
+      "finishedAt": "2026-08-18T15:42:03.809Z"
+    },
+    {
+      "id": "03-proper-subset::infographic::zh::kuaishou",
+      "title": "3. 真子集：⊂ 就是 ⊆ 的严格序 · 信息图 · kuaishou",
+      "episodeTitle": "3. 真子集：⊂ 就是 ⊆ 的严格序",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "kuaishou",
+      "scriptId": "03-proper-subset",
+      "status": "cancelled",
+      "progress": "Stopped before start",
+      "error": "Stopped by Clear queue",
+      "errorDetail": "Stopped by Clear queue",
+      "finishedAt": "2026-08-18T15:42:03.809Z"
+    }
+  ],
+  "events": [
+    {
+      "at": "2026-08-18T15:41:33.567Z",
+      "level": "info",
+      "message": "Squat started with 6 items"
+    },
+    {
+      "at": "2026-08-18T15:41:33.568Z",
+      "level": "info",
+      "message": "Running 6 uploads in click order"
+    },
+    {
+      "at": "2026-08-18T15:41:33.569Z",
+      "itemId": "03-proper-subset::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "Started xiaohongshu infographic 03-proper-subset"
+    },
+    {
+      "at": "2026-08-18T15:41:33.570Z",
+      "itemId": "03-proper-subset::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Using existing posters"
+    },
+    {
+      "at": "2026-08-18T15:41:33.571Z",
+      "itemId": "03-proper-subset::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Using 21 existing posters"
+    },
+    {
+      "at": "2026-08-18T15:41:33.592Z",
+      "itemId": "03-proper-subset::infographic::zh::xiaohongshu",
+      "level": "info",
+      "message": "xiaohongshu: Uploading 21 existing posters to xiaohongshu"
+    },
+    {
+      "at": "2026-08-18T15:42:02.142Z",
+      "itemId": "03-proper-subset::infographic::zh::xiaohongshu",
+      "level": "error",
+      "message": "xiaohongshu infographic failed: xiaohongshu note failed: Keyboard.press: Target page, context or browser has been closed",
+      "detail": "sau xiaohongshu upload-note --account default --title 真子集｜比普通子集多一句 --images /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/cover-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-01-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-02-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-03-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-04-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-05-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-06-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-07-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-08-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-09-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-10-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-11-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-12-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-13-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-14-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-15-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-16-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-17-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-18-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-19-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/03-proper-subset/beat-posters/beat-20-zh.png --headed --note 真子集不是另起一套定义。\n\n它就是普通子集，再加上两边并不一样：A 被 B 包含，但 B 并不被 A 包含。\n\n下一期再专门讲集合相等。左滑 15 张看完。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享 --tags 证明助手,抽象代数,数学笔记,干货分享 failed: Keyboard.press: Target page, context or browser has been closed"
+    },
+    {
+      "at": "2026-08-18T15:42:02.143Z",
+      "itemId": "03-proper-subset::infographic::zh::bilibili",
+      "level": "info",
+      "message": "Started bilibili infographic 03-proper-subset"
+    },
+    {
+      "at": "2026-08-18T15:42:02.144Z",
+      "itemId": "03-proper-subset::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Using existing posters"
+    },
+    {
+      "at": "2026-08-18T15:42:02.145Z",
+      "itemId": "03-proper-subset::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Using 21 existing posters"
+    },
+    {
+      "at": "2026-08-18T15:42:02.170Z",
+      "itemId": "03-proper-subset::infographic::zh::bilibili",
+      "level": "info",
+      "message": "bilibili: Rendering slideshow from existing posters"
+    },
+    {
+      "at": "2026-08-18T15:42:03.808Z",
+      "level": "warn",
+      "message": "Clear queue: stopping squat"
+    },
+    {
+      "at": "2026-08-18T15:42:04.165Z",
+      "itemId": "03-proper-subset::infographic::zh::bilibili",
+      "level": "warn",
+      "message": "bilibili: Stopping upload"
+    },
+    {
+      "at": "2026-08-18T15:42:04.618Z",
+      "itemId": "03-proper-subset::infographic::zh::bilibili",
+      "level": "warn",
+      "message": "bilibili: Killing sau process"
+    },
+    {
+      "at": "2026-08-18T15:42:05.070Z",
+      "itemId": "03-proper-subset::infographic::zh::bilibili",
+      "level": "warn",
+      "message": "bilibili: Closing publisher"
+    },
+    {
+      "at": "2026-08-18T15:42:05.522Z",
+      "itemId": "03-proper-subset::infographic::zh::bilibili",
+      "level": "warn",
+      "message": "bilibili: Stopped"
+    },
+    {
+      "at": "2026-08-18T15:42:05.974Z",
+      "itemId": "03-proper-subset::infographic::zh::bilibili",
+      "level": "warn",
+      "message": "bilibili infographic stopped"
+    },
+    {
+      "at": "2026-08-18T15:42:05.975Z",
+      "level": "warn",
+      "message": "Squat stopped: 0 live, 5 stopped"
+    }
+  ],
+  "summary": {
+    "queued": 0,
+    "published": 0,
+    "failed": 1,
+    "skipped": 0,
+    "cancelled": 5
+  },
+  "finishedAt": "2026-08-18T15:42:05.975Z"
+}

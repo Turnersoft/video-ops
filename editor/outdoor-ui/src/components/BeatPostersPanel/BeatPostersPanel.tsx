@@ -80,7 +80,7 @@ export function BeatPostersPanel({
       setData(next);
       Alert.alert(
         'Beat posters',
-        `Generated ${next.posters.length} PNGs (${liveBeats.length} beats × EN + 中文).`,
+        `Generated ${next.posters.length} PNGs in beat-posters/english and beat-posters/chinese (${liveBeats.length} beats × EN + 中文).`,
       );
     } catch (error) {
       Alert.alert(

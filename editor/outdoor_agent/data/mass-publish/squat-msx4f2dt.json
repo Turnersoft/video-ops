@@ -1,0 +1,77 @@
+{
+  "id": "squat-msx4f2dt",
+  "startedAt": "2026-08-17T10:58:40.721Z",
+  "status": "failed",
+  "items": [
+    {
+      "id": "01-set::infographic::zh::wechat_channels",
+      "title": "1. 集合：不是一袋子东西，是一条判定 · 信息图 · wechat_channels",
+      "episodeTitle": "1. 集合：不是一袋子东西，是一条判定",
+      "kind": "infographic",
+      "lang": "zh",
+      "platform": "wechat_channels",
+      "scriptId": "01-set",
+      "status": "failed",
+      "startedAt": "2026-08-17T10:58:40.722Z",
+      "error": "tencent note failed: not logged in",
+      "errorDetail": "sau tencent upload-note --account default --title 01 集合：不是一袋子，是一条判定（18 张） --images /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/cover-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-01-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-02-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-03-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-04-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-05-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-06-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-07-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-08-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-09-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-10-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-11-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-12-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-13-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-14-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-15-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-16-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-17-zh.png --headed --note 课本里集合是一堆对象。证明助手里，它可以是一条判定，也可以写成容器，把谁在里面的规矩写清楚。\n\n18 张信息图，从课本到空集、并集。 failed: Tencent/WeChat Channels cookie is missing or expired: /Users/johndoe/Documents/company/social-auto-upload/cookies/tencent_default.json. Run `sau tencent login --account default` first.",
+      "finishedAt": "2026-08-17T10:59:26.593Z"
+    }
+  ],
+  "events": [
+    {
+      "at": "2026-08-17T10:58:40.721Z",
+      "level": "info",
+      "message": "Squat started with 1 items"
+    },
+    {
+      "at": "2026-08-17T10:58:40.722Z",
+      "level": "info",
+      "message": "Running 1 uploads in click order"
+    },
+    {
+      "at": "2026-08-17T10:58:40.722Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "Started wechat_channels infographic 01-set"
+    },
+    {
+      "at": "2026-08-17T10:58:40.723Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Using existing posters"
+    },
+    {
+      "at": "2026-08-17T10:58:40.724Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Using 18 existing posters"
+    },
+    {
+      "at": "2026-08-17T10:58:40.755Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "info",
+      "message": "wechat_channels: Uploading 18 existing posters to wechat_channels"
+    },
+    {
+      "at": "2026-08-17T10:59:26.593Z",
+      "itemId": "01-set::infographic::zh::wechat_channels",
+      "level": "error",
+      "message": "wechat_channels infographic failed: tencent note failed: not logged in",
+      "detail": "sau tencent upload-note --account default --title 01 集合：不是一袋子，是一条判定（18 张） --images /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/cover-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-01-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-02-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-03-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-04-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-05-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-06-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-07-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-08-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-09-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-10-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-11-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-12-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-13-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-14-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-15-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-16-zh.png /Users/johndoe/Documents/company/video_ops/projects/abstract_algebra_in_proof_assistant/01-set/beat-posters/beat-17-zh.png --headed --note 课本里集合是一堆对象。证明助手里，它可以是一条判定，也可以写成容器，把谁在里面的规矩写清楚。\n\n18 张信息图，从课本到空集、并集。 failed: Tencent/WeChat Channels cookie is missing or expired: /Users/johndoe/Documents/company/social-auto-upload/cookies/tencent_default.json. Run `sau tencent login --account default` first."
+    },
+    {
+      "at": "2026-08-17T10:59:26.594Z",
+      "level": "error",
+      "message": "Squat failed: 0 live, 1 failed"
+    }
+  ],
+  "summary": {
+    "queued": 0,
+    "published": 0,
+    "failed": 1,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "finishedAt": "2026-08-17T10:59:26.594Z"
+}

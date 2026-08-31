@@ -43,89 +43,89 @@
   },
   "china": {
     "bilibili": {
-      "title": "4. 集合相等：证明助手里的等号是什么意思",
-      "body": "等号看起来理所当然，在 Lean 4 里却要一步一步挣出来。从 1 = 1 和 rfl 开始，看 Lean 什么时候自己算过去、什么时候需要库里定理；再往上——集合比成员，函数比每个输入的答案，群比结构而不是字面数据。抽象代数证明助手第 4 期，户外讲，屏幕验。\n\n#TurnLang #Lean4 #证明助手 #抽象代数"
+      "title": "4. 集合相等：等号到底在比什么",
+      "body": "等号看起来理所当然，证明助手里却要讲清楚比的是什么。从一等于一开始，看它什么时候自己认，什么时候还要补一句理由；再往上——集合比对成员，函数比每个输入的答案，群比的是结构，不是字面数据。\n\n#证明助手 #抽象代数 #形式化数学"
     },
     "douyin": {
-      "title": "4. 集合相等：证明助手里的等号是什么意思",
-      "body": "等号看起来理所当然，在 Lean 4 里却要一步一步挣出来。从 1 = 1 和 rfl 开始，看 Lean 什么时候自己算过去、什么时候需要库里定理；再往上——集合比成员，函数比每个输入的答案，群比结构而不是字面数据。抽象代数证明助手第 4 期，户外讲，屏幕验。\n\n#TurnLang #Lean4 #证明助手 #抽象代数"
+      "title": "4. 集合相等：等号到底在比什么",
+      "body": "等号看起来理所当然，证明助手里却要讲清楚比的是什么。集合比对成员，函数比每个输入的答案。\n\n#证明助手 #抽象代数"
     },
     "xiaohongshu": {
-      "title": "4. 集合相等：证明助手里的等号是什么…",
-      "body": "等号看起来理所当然，在 Lean 4 里却要一步一步挣出来。从 1 = 1 和 rfl 开始，看 Lean 什么时候自己算过去、什么时候需要库里定理；再往上——集合比成员，函数比每个输入的答案，群比结构而不是字面数据。抽象代数证明助手第 4 期，户外讲，屏幕验。\n\n#TurnLang #Lean4 #证明助手 #抽象代数"
+      "title": "4. 集合相等：等号到底在比什么",
+      "body": "等号看起来理所当然，证明助手里却要讲清楚比的是什么。集合比对成员，函数比每个输入的答案。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享"
     },
     "weibo": {
-      "title": "4. 集合相等：证明助手里的等号是什么意思",
-      "body": "等号看起来理所当然，在 Lean 4 里却要一步一步挣出来。从 1 = 1 和 rfl 开始，看 Lean 什么时候自己算过去、什么时候需要库里定理；再往上——集合比成员，函数比每个输入的答案，群比结构而不是字面数据。抽象代数证明助手第 4 期，户外讲，屏幕验。\n\n#TurnLang #Lean4 #证明助手 #抽象代数"
+      "title": "4. 集合相等：等号到底在比什么",
+      "body": "等号看起来理所当然，证明助手里却要讲清楚比的是什么。集合比对成员，函数比每个输入的答案。\n\n#证明助手 #抽象代数"
     },
     "wechat_channels": {
-      "title": "4. 集合相等：证明助手里的等号是什么意思",
-      "body": "等号看起来理所当然，在 Lean 4 里却要一步一步挣出来。从 1 = 1 和 rfl 开始，看 Lean 什么时候自己算过去、什么时候需要库里定理；再往上——集合比成员，函数比每个输入的答案，群比结构而不是字面数据。抽象代数证明助手第 4 期，户外讲，屏幕验。\n\n#TurnLang #Lean4 #证明助手 #抽象代数"
+      "title": "4. 集合相等：等号到底在比什么",
+      "body": "等号看起来理所当然，证明助手里却要讲清楚比的是什么。集合比对成员，函数比每个输入的答案。\n\n#证明助手 #抽象代数"
     },
     "kuaishou": {
-      "title": "4. 集合相等：证明助手里的等号是什么意思",
-      "body": "等号看起来理所当然，在 Lean 4 里却要一步一步挣出来。从 1 = 1 和 rfl 开始，看 Lean 什么时候自己算过去、什么时候需要库里定理；再往上——集合比成员，函数比每个输入的答案，群比结构而不是字面数据。抽象代数证明助手第 4 期，户外讲，屏幕验。\n\n#TurnLang #Lean4 #证明助手 #抽象代数"
+      "title": "4. 集合相等：等号到底在比什么",
+      "body": "等号看起来理所当然，证明助手里却要讲清楚比的是什么。\n\n#证明助手 #抽象代数"
     }
   },
   "infographic": {
     "english": {
       "instagram": {
-        "title": "Turn-Lang is replacing Lean — swipe the album →",
-        "body": "Lean had its run. Turn-Lang names the rule, shows `=`, proves what the textbook says — no kernel archaeology.\n\n12 slides: old Lean beats → **Turn-Lang SetEq** → function checks spelled out loud. Ep. 4 · set equality.\n\nturn-lang.com\n\n#TurnLang #Lean4 #ProofAssistant #AbstractAlgebra #FormalMethods #MathEducation"
+        "title": "What does = compare? 12 slides",
+        "body": "The equals sign looks obvious. In a proof assistant you still have to say what is being compared.\n\nSets compare members. Functions compare answers. Groups compare structure, not the same data.\n\n#ProofAssistant #AbstractAlgebra #MathEducation"
       },
       "tiktok": {
-        "title": "Turn-Lang > Lean for set equality — swipe",
-        "body": "We're done hiding equality in the kernel. Turn-Lang puts SetEq on the page. 12 slides, beat by beat. Ep. 4.\n\n#TurnLang #Lean4 #ProofAssistant #FormalMethods #STEM"
+        "title": "What does = compare? Swipe",
+        "body": "Name the rule, then prove it. 12 slides on set equality.\n\n#ProofAssistant #AbstractAlgebra"
       },
       "x": {
-        "title": "Turn-Lang replaces Lean — 12-slide album",
-        "body": "Lean welded `=` into Prelude. Turn-Lang names the relation first — SetEq, FuncEq, all visible.\n\nNew album: 12 slides on set equality. The handoff is the story. Ep. 4.\n\n#TurnLang #Lean4 #FormalMethods"
+        "title": "Set equality: what = is asking",
+        "body": "Members for sets. Answers for functions. Structure for groups. 12-slide album, Ep. 4.\n\n#ProofAssistant #AbstractAlgebra"
       },
       "linkedin": {
-        "title": "Set equality — why we're moving from Lean to Turn-Lang",
-        "body": "Lean makes you earn `=` through kernel wiring, hidden theorems, and tactics that guess for you.\n\nTurn-Lang is the replacement: name the rule, bind `@notation` to `=`, list what must agree. Same textbook math — finally readable on screen.\n\n12-slide album (cover + 11 beats): Lean's last lessons → Turn-Lang SetEq → function equality spelled out.\n\nEp. 4 · Abstract Algebra in a Proof Assistant · turn-lang.com\n\n#TurnLang #Lean4 #FormalMethods #ProofAssistant #AbstractAlgebra"
+        "title": "Set equality — what the equal sign is asking",
+        "body": "The equals sign looks obvious. In a proof assistant you still have to say what must agree: members for sets, answers for functions, structure for groups.\n\n12-slide album (cover + 11 beats). Ep. 4 · Abstract Algebra in a Proof Assistant.\n\n#ProofAssistant #AbstractAlgebra #FormalMethods"
       },
       "facebook": {
-        "title": "Turn-Lang is the upgrade — swipe the album",
-        "body": "Lean had thirty years. Turn-Lang names SetEq, shows `=`, proves mutual subset — no digging in Prelude.\n\n12 infographic slides: the handoff from Lean ceremony to Turn-Lang clarity. Ep. 4 · turn-lang.com\n\n#TurnLang #Lean4 #ProofAssistant #AbstractAlgebra"
+        "title": "What does = compare? 12 slides",
+        "body": "Sets compare members. Functions compare answers. Groups compare structure.\n\n#ProofAssistant #AbstractAlgebra"
       },
       "threads": {
-        "title": "Turn-Lang > Lean — set equality album",
-        "body": "Stop hiding equality in the kernel. Turn-Lang puts the rule on the label. 12 slides · Ep. 4.\n\n#TurnLang #Lean4 #AbstractAlgebra"
+        "title": "What does = compare?",
+        "body": "Name the rule, then prove it. 12 slides · Ep. 4.\n\n#ProofAssistant #AbstractAlgebra"
       },
       "bluesky": {
-        "title": "Turn-Lang replaces Lean — set equality album",
-        "body": "Lean: `=` wired in kernel, meaning buried in Set.ext. Turn-Lang: SetEq first, notation second. 12 slides — the upgrade story. Ep. 4."
+        "title": "Set equality album",
+        "body": "The equals sign looks obvious until you say what is being compared. 12 slides · Ep. 4."
       },
       "reddit": {
-        "title": "We're replacing Lean with Turn-Lang for textbook formalization — 12-slide album on set equality",
-        "body": "Episode 4 is a swipeable album about why Turn-Lang is the successor to Lean for textbook-shaped formal math.\n\nLean slides: kernel Eq, rfl ceremony, library theorems you shouldn't need to hunt.\nTurn-Lang slides: SetEq + @notation, function checks written out loud.\n\nSame A = B from the book — different formalization philosophy. Turn-Lang names the obligation before it spends the glyph.\n\nturn-lang.com"
+        "title": "12-slide album: what the equal sign is asking in a proof assistant",
+        "body": "Episode 4 is a swipeable album about set equality.\n\nSame A = B from the book — the album writes the rule first, then the symbol.\n\nSets compare members. Functions compare answers. Groups compare structure, not the same data."
       }
     },
     "china": {
       "xiaohongshu": {
-        "title": "Turn-Lang 接班 Lean｜集合相等 12 张 🔥",
-        "body": "Lean 把 `=` 焊进内核，含义藏进定理——够了。\n\nTurn-Lang 升级：先 `SetEq`，再显示 `=`，课本规则摆桌上 ✨\n\n👉 左滑 12 张：Lean 最后一课 → **Turn-Lang 集合/函数相等全写清**\n\nEp. 4 · turn-lang.com\n\n#TurnLang #Lean4 #证明助手 #抽象代数 #形式化数学 #干货"
+        "title": "等号到底在比什么｜12 张讲清楚",
+        "body": "等号看起来理所当然，证明助手里却要讲清楚比的是什么。\n\n集合比对成员：两边是不是同一些东西。函数比每个输入的答案。群比的是结构，不是字面数据。\n\n左滑 12 张，把相等这件事摊开看。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享"
       },
       "bilibili": {
-        "title": "【信息图】Turn-Lang 替换 Lean：04 集合相等",
-        "body": "Lean 时代：内核 Eq、rfl 仪式、库定理考古。\n\nTurn-Lang 接班：命名 SetEq，`@notation` 显示 `=`，函数检查全列出。\n\n12 张专辑左滑看完。抽象代数第 4 期 · turn-lang.com\n\n#TurnLang #Lean4 #证明助手 #抽象代数"
+        "title": "【信息图】04 集合相等：等号到底在比什么",
+        "body": "等号看起来理所当然，证明助手里却要讲清楚比的是什么。集合比对成员，函数比每个输入的答案，规则先写明白，记号只是方便读写。\n\n12 张信息图左滑看完。\n\n#证明助手 #抽象代数 #形式化数学"
       },
       "douyin": {
-        "title": "Turn-Lang 替换 Lean｜12 张信息图",
-        "body": "不等了——Turn-Lang 把相等规则写明白 🔥\n\n12 张：Lean 旧课 → Turn-Lang SetEq 升级\nEp. 4\n\n#TurnLang #Lean4 #证明助手 #抽象代数 #干货"
+        "title": "等号到底在比什么｜12 张信息图",
+        "body": "集合比对成员，函数比每个输入的答案。左滑 12 张看完。\n\n#证明助手 #抽象代数 #干货分享"
       },
       "weibo": {
-        "title": "Turn-Lang 接班 Lean｜04 集合相等专辑",
-        "body": "Lean 藏含义，Turn-Lang 把 SetEq 贴标签上。12 张信息图逐拍交接：内核 Eq → Turn-Lang 命名规则 → 函数相等写清楚。Ep. 4 #TurnLang #Lean4 #证明助手"
+        "title": "04 集合相等｜等号到底在比什么",
+        "body": "等号看起来理所当然，证明助手里却要讲清楚比的是什么。12 张信息图左滑。#证明助手 #抽象代数"
       },
       "wechat_channels": {
-        "title": "Turn-Lang 替换 Lean：04 集合相等（12 张专辑）",
-        "body": "Lean 把相等焊进内核；Turn-Lang 先命名规则，再显示 =。\n\n12 张信息图：Lean 最后一轮 → Turn-Lang SetEq / 函数检查全可见。\n\n抽象代数第 4 期 · turn-lang.com"
+        "title": "04 集合相等：等号到底在比什么（12 张）",
+        "body": "等号看起来理所当然，证明助手里却要讲清楚比的是什么。集合比对成员，函数比每个输入的答案。\n\n12 张信息图。"
       },
       "kuaishou": {
-        "title": "Turn-Lang 升级 Lean｜集合相等 12 张",
-        "body": "Turn-Lang 接班 Lean！12 张左滑：SetEq 上屏，= 只是记号。Ep. 4\n\n#TurnLang #Lean4 #证明助手 #抽象代数"
+        "title": "等号到底在比什么｜12 张讲清楚",
+        "body": "集合比对成员，函数比每个输入的答案。12 张左滑看完。\n\n#证明助手 #抽象代数"
       }
     }
   }

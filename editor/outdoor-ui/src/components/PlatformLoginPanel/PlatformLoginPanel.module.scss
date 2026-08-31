@@ -1,0 +1,78 @@
+@use '../../app' as *;
+
+.panel {
+  gap: 8px;
+  padding: 10px 12px;
+  min-width: 0;
+  max-width: 100%;
+  border-radius: $radius-md;
+  border-width: 1px;
+  border-color: $card-border;
+  background-color: rgba(15, 23, 42, 0.92);
+}
+
+.head {
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.title {
+  color: $text;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.status {
+  color: $orange;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.statusOk {
+  color: $online;
+}
+
+.message {
+  color: $muted;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.error {
+  color: $offline;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.qr {
+  display: block;
+  width: min(140px, 100%);
+  max-width: 100%;
+  height: auto;
+  max-height: 140px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  align-self: center;
+  margin: 0 auto;
+  border-radius: 8px;
+  background-color: $white;
+}
+
+.portalWrap {
+  gap: 8px;
+}
+
+.portal {
+  width: 100%;
+  min-height: 280px;
+  border: 0;
+  border-radius: 8px;
+  background-color: $video-bg;
+}
+
+.actions {
+  flex-direction: row;
+  gap: 8px;
+}

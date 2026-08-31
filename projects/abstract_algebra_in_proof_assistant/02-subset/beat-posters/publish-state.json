@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "scriptId": "02-subset",
+  "posts": [
+    {
+      "platform": "xiaohongshu",
+      "beatId": "album",
+      "lang": "zh",
+      "postId": "sau-note-xiaohongshu-msx46pha",
+      "url": "https://example.invalid/xiaohongshu/sau-note-xiaohongshu-msx46pha",
+      "status": "deleted",
+      "publishedAt": "2026-08-17T10:50:34.467Z",
+      "imageCount": 13,
+      "stub": false
+    },
+    {
+      "platform": "xiaohongshu",
+      "beatId": "album",
+      "lang": "zh",
+      "postId": "sau-note-xiaohongshu-msx6hu6v",
+      "url": "https://example.invalid/xiaohongshu/sau-note-xiaohongshu-msx6hu6v",
+      "status": "live",
+      "publishedAt": "2026-08-17T11:56:03.033Z",
+      "imageCount": 13,
+      "stub": false
+    },
+    {
+      "platform": "bilibili",
+      "beatId": "album",
+      "lang": "zh",
+      "postId": "sau-bilibili-album-zh",
+      "url": "https://example.invalid/bilibili/sau-bilibili-album-zh",
+      "status": "live",
+      "publishedAt": "2026-08-17T11:56:49.326Z",
+      "imageCount": 13,
+      "stub": false
+    },
+    {
+      "platform": "douyin",
+      "beatId": "album",
+      "lang": "zh",
+      "postId": "sau-note-douyin-msx6imu5",
+      "url": "https://example.invalid/douyin/sau-note-douyin-msx6imu5",
+      "status": "live",
+      "publishedAt": "2026-08-17T11:56:53.014Z",
+      "imageCount": 13,
+      "stub": false
+    },
+    {
+      "platform": "weibo",
+      "beatId": "album",
+      "lang": "zh",
+      "postId": "sau-note-weibo-msx6iy6b",
+      "url": "https://weibo.com/7931125666/RdQh3sfsq",
+      "status": "live",
+      "publishedAt": "2026-08-17T11:57:26.451Z",
+      "imageCount": 13,
+      "stub": false
+    },
+    {
+      "platform": "kuaishou",
+      "beatId": "album",
+      "lang": "zh",
+      "postId": "sau-note-kuaishou-msx6k2bx",
+      "url": "https://example.invalid/kuaishou/sau-note-kuaishou-msx6k2bx",
+      "status": "live",
+      "publishedAt": "2026-08-17T11:57:59.710Z",
+      "imageCount": 13,
+      "stub": false
+    }
+  ]
+}

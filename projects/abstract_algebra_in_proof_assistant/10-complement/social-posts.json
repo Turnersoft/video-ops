@@ -1,9 +1,9 @@
 {
   "version": 1,
   "scriptId": "10-complement",
-  "titleEnglish": "10_complement",
-  "titleChina": "10_complement",
-  "title": "10_complement",
+  "titleEnglish": "10. Complement: everything not in A",
+  "titleChina": "10. 补集：宇宙里不在 A 的那些",
+  "title": "10. Complement: everything not in A",
   "generatedAt": "2026-07-25T08:06:05.038Z",
   "source": {},
   "english": {
@@ -38,28 +38,64 @@
   },
   "china": {
     "bilibili": {
-      "title": "10_complement",
-      "body": "10_complement\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+      "title": "10. 补集：宇宙里不在 A 的那些",
+      "body": "补集要先有一个宇宙。A 的补集，就是宇宙里那些不在 A 里的东西。\n\n#证明助手 #抽象代数 #形式化数学"
     },
     "douyin": {
-      "title": "Complement — structure relative to universe U",
-      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+      "title": "10. 补集：宇宙里不在 A 的那些",
+      "body": "补集是宇宙里所有不在 A 里的东西。\n\n#证明助手 #抽象代数"
     },
     "xiaohongshu": {
-      "title": "Complement — struct…",
-      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+      "title": "10. 补集：宇宙里不在 A 的那些",
+      "body": "补集是宇宙里所有不在 A 里的东西。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享"
     },
     "weibo": {
-      "title": "Complement — structure relative to universe U",
-      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+      "title": "10. 补集：宇宙里不在 A 的那些",
+      "body": "补集是宇宙里所有不在 A 里的东西。\n\n#证明助手 #抽象代数"
     },
     "wechat_channels": {
-      "title": "Complement — structure relative to universe U",
-      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+      "title": "10. 补集：宇宙里不在 A 的那些",
+      "body": "补集是宇宙里所有不在 A 里的东西。\n\n#证明助手 #抽象代数"
+    },
+    "wechat": {
+      "title": "10. 补集：宇宙里不在 A 的那些",
+      "body": "补集要先有一个宇宙。A 的补集，就是宇宙里那些不在 A 里的东西。\n\n#证明助手 #抽象代数"
     },
     "kuaishou": {
-      "title": "Complement — structure relative to universe U",
-      "body": "One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.\n\n#TurnLang #形式化方法 #抽象代数"
+      "title": "10. 补集：宇宙里不在 A 的那些",
+      "body": "补集是宇宙里所有不在 A 里的东西。\n\n#证明助手 #抽象代数"
+    }
+  },
+  "infographic": {
+    "china": {
+      "xiaohongshu": {
+        "title": "10. 补集：宇宙里不在 A 的那些",
+        "body": "补集要先有一个宇宙。A 的补集，就是宇宙里那些不在 A 里的东西。\n\n左滑 10 张看完。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享"
+      },
+      "bilibili": {
+        "title": "【信息图】10. 补集：宇宙里不在 A 的那些",
+        "body": "补集要先有一个宇宙。A 的补集，就是宇宙里那些不在 A 里的东西。\n\n10 张信息图左滑看完。\n\n#证明助手 #抽象代数 #形式化数学"
+      },
+      "douyin": {
+        "title": "10. 补集：宇宙里不在 A 的那些",
+        "body": "补集要先有一个宇宙。A 的补集，就是宇宙里那些不在 A 里的东西。\n\n左滑 10 张看完。\n\n#证明助手 #抽象代数 #干货分享"
+      },
+      "weibo": {
+        "title": "10. 补集：宇宙里不在 A 的那些",
+        "body": "补集要先有一个宇宙。A 的补集，就是宇宙里那些不在 A 里的东西。 左滑 10 张看完。 #证明助手 #抽象代数"
+      },
+      "wechat_channels": {
+        "title": "10. 补集：宇宙里不在 A 的那些（10 张）",
+        "body": "补集要先有一个宇宙。A 的补集，就是宇宙里那些不在 A 里的东西。\n\n10 张信息图。"
+      },
+      "wechat": {
+        "title": "10. 补集：宇宙里不在 A 的那些",
+        "body": "补集要先有一个宇宙。A 的补集，就是宇宙里那些不在 A 里的东西。\n\n10 张信息图按拍序插入。"
+      },
+      "kuaishou": {
+        "title": "10. 补集：宇宙里不在 A 的那些",
+        "body": "补集要先有一个宇宙。A 的补集，就是宇宙里那些不在 A 里的东西。 左滑 10 张看完。\n\n#证明助手 #抽象代数"
+      }
     }
   }
 }

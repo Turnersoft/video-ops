@@ -58,7 +58,7 @@ const CONCEPT_COLORS: Record<string, { titleColor: string; titleStroke: string }
 
 function excerptTagline(text: string, maxLen: number): string {
   const normalized = text.replace(/\s+/g, ' ').trim();
-  const first = normalized.split(/(?<=[.!?。！？])\s+/u)[0]?.trim() ?? normalized;
+  const first = normalized.split(/(?<=[.!?。！？])\s*/u)[0]?.trim() ?? normalized;
   if (first.length <= maxLen) {
     return first;
   }

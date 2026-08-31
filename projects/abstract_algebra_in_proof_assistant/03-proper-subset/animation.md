@@ -3,10 +3,10 @@ videoOps: 1
 scriptId: 03-proper-subset
 title: 03_proper_subset
 fps: 30
-socialTitleEnglish: "3. Proper subset: ⊂ is the strict order of ⊆"
-socialTitleChina: "3. 真子集：⊂ 就是 ⊆ 的严格序"
-promotionalDescription: "Mathlib has no def SSubset on sets. ⊂ is the generic strict order: Preorder.lt is ≤ and not ≥, and on sets ≤ already means ⊆. Turn-Lang adds a proper variant: ordinary subset plus not SetEq."
-promotionalDescriptionChina: "Mathlib 没有给集合直接写 def SSubset。⊂ 是通用严格序：Preorder.lt 是 ≤ 且非 ≥，集合上的 ≤ 已经是 ⊆。Turn-Lang 加一个 proper 变体：普通子集再加上不相等。"
+socialTitleEnglish: "3. Proper subset: the sentence from class, written so a computer can check it"
+socialTitleChina: "3. 真子集：课堂上那句，写成电脑能检查"
+promotionalDescription: "You already know proper subset from class: inside, but not the same set."
+promotionalDescriptionChina: "真子集就是课堂上那句：在里面，但不是同一个。"
 format: landscape
 width: 1920
 height: 1080
@@ -17,7 +17,7 @@ height: 1080
 <!--
 layout: dual-panel
 burn-captions: true
-visual-notes: 15 beats — proper subset via order theory. Per-beat visualNotes on each compare beat.
+visual-notes: 20 beats — class sentence, why Boolean algebra is the yes/no package, then Turn writes the sentence first.
 teleprompter.position: below-canvas
 pace.syllables-per-second: 3.6
 pace.pause-after-beat: 0.4
@@ -36,36 +36,148 @@ aata-excerpt: sets-proper-subset-definition
 placement: center
 -->
 
-## Beat 1: Continues sets-v2-02-subset
+## Beat 1: The sentence from class
 
 <!--
 overlay: textbook-proper-subset
-duration: 25.3
+duration: 16
 font.editor: 0.7
 font.lean: 0.8
 font.render: 0.85
 allow-script-change: false
 -->
 
-Hi friends, Welcome back.
-Last clip was ordinary subset
-Today, is about proper subset.
-The textbook definition looks very simple,
-But please be warned, that Lean is about to get 5x more difficult on this concept.
-Because we don't have a direct concept of proper subset at all.
-Let me show you how they actually do it.
+Hi friends, welcome back.
+Last time was ordinary subset. Today is proper subset.
+You already know this from class: A is a proper subset of B when A is inside B, and they are not the same set.
+That is it. A textbook does not ask where the symbol lives.
 ### Lean
 
 ```lean
--- Textbook: A ⊊ B  ⇔  A ⊆ B  and  A ≠ B
-
--- Now search Mathlib for `def SSubset` on sets…
--- …there is none. Proper subset is never defined directly. 😳
+-- From class:
+--   A ⊊ B  ⇔  A ⊆ B  and  A ≠ B
 ```
 ### Lean highlights
 
-- `there is none`
-- `never defined directly`
+- `A ⊊ B`
+- `A ⊆ B  and  A ≠ B`
+### Turn
+
+```turn
+relation Subset(T: Any, A B: Set<T>): PropModified {
+    @notation({A} ~ " ⊆ " ~ {B})
+    default: Prop {
+        forall x: T |- x in A -> x in B
+    }
+}
+```
+### Chinese
+
+大家好，欢迎回来。上期是普通子集。这期是真子集。课堂上你就会：A 在 B 里面，并且不是同一个集合。就这一句。
+### Visual notes
+
+Textbook overlay. Sentence from class first.
+
+## Beat 2: A computer needs the rule written down
+
+<!--
+duration: 16
+font.editor: 0.7
+font.lean: 0.8
+font.render: 0.85
+allow-script-change: false
+-->
+
+In class, the teacher fills in the gaps.
+A computer checking a proof cannot.
+If nobody writes the rule, the computer does not have proper subset at all.
+### Lean
+
+```lean
+-- In class: you already know what ⊊ means.
+-- On a computer: no written rule, no idea.
+```
+### Lean highlights
+
+- `no written rule`
+### Turn
+
+```turn
+relation Subset(T: Any, A B: Set<T>): PropModified {
+    @notation({A} ~ " ⊆ " ~ {B})
+    default: Prop {
+        forall x: T |- x in A -> x in B
+    }
+}
+```
+### Chinese
+
+课堂上老师会补全没说清的地方。电脑检查证明，不会补。没人写成规则，电脑那边就没有真子集。
+### Visual notes
+
+A computer needs the rule written down.
+
+## Beat 3: Lean never wrote that classroom sentence
+
+<!--
+duration: 16
+font.editor: 0.7
+font.lean: 0.8
+font.render: 0.85
+allow-script-change: false
+-->
+
+Look for a line that says proper subset means inside and not equal.
+Lean’s set folder does not have it.
+The sentence from class was never copied in.
+Lean will borrow a bigger toolkit to get it back.
+### Lean
+
+```lean
+-- From class: A ⊊ B  ⇔  A ⊆ B  and  A ≠ B
+
+-- In Lean’s set folder: there is no such line.
+```
+### Lean highlights
+
+- `there is no such line`
+### Turn
+
+```turn
+relation Subset(T: Any, A B: Set<T>): PropModified {
+    @notation({A} ~ " ⊆ " ~ {B})
+    default: Prop {
+        forall x: T |- x in A -> x in B
+    }
+}
+```
+### Chinese
+
+去找“真子集等于在里面并且不相等”这一行。Lean 的集合文件夹里没有。课堂上那句没被抄进去。
+### Visual notes
+
+Lean’s set folder has no classroom sentence.
+
+## Beat 4: Turn writes the class sentence first
+
+<!--
+duration: 18
+font.editor: 0.7
+font.lean: 0.8
+font.render: 0.85
+allow-script-change: false
+-->
+
+First difference.
+Turn-Lang writes what you said in class: inside, and not the same set.
+No extra toolkit yet.
+The computer can still check it. The words are just where a student looks first.
+### Lean
+
+```lean
+-- From class: A ⊊ B  ⇔  A ⊆ B  and  A ≠ B
+-- Lean has not written this on sets yet.
+```
 ### Turn
 
 ```turn
@@ -76,524 +188,584 @@ relation Subset(T: Any, A B: Set<T>): PropModified {
     },
     @notation({A} ~ " ⊊ " ~ {B})
     proper: Prop {
-        |- {
-            default(A, B);
-            not SetEq(A, B);
-        }
+        |- { default(A, B); not SetEq(A, B); }
     }
 }
 ```
 ### Turn highlights
 
 - `proper`
-- `⊊`
+- `not SetEq`
 ### Chinese
 
-大家好，欢迎回来。上期是普通子集。今天讲真子集。课本定义很简单，但 Lean 没有直接定义这一概念，难度会高很多。来看它实际怎么做的。
+第一个差别。Turn-Lang 写下课堂上那句：在里面，并且不是同一个。还不用额外工具。电脑照样能检查。
 ### Visual notes
 
-Continues sets-v2-02-subset. Textbook overlay center. Hook: Lean has no proper-subset def — glow Turn ⊊ vs Lean “never defined directly”.
+Turn writes the class sentence first.
 
-## Beat 2: Turn: as before (beat-0 block)
+## Beat 5: ⊆ already works like ≤
 
 <!--
-duration: 23
+duration: 16
 font.editor: 0.7
 font.lean: 0.8
 font.render: 0.85
 allow-script-change: false
 -->
 
-it look like subset to start with.
-But nowhere in the library is proper subset spelled out.
-Instead Lean call out an exotic theory called order theory, where the the strict subset symbol will be binded there instead, (not in the set theory folder).
-Let me pull up the real source code here.
+Lean takes the long way.
+Last time: on two sets, less-than-or-equal already means inside.
+So subset is already an order, the way less-than-or-equal is an order on numbers.
+Keep this: less-than-or-equal means subset.
 ### Lean
 
 ```lean
--- Question: where is Lean's definition of ⊂ (proper subset)?
--- Surprise: there isn't one written for sets.
--- ⊂ is inherited from generic order theory. Let's trace it.
-```
-### Lean highlights
+protected def Subset (s₁ s₂ : Set α) :=
+  ∀ ⦃a⦄, a ∈ s₁ → a ∈ s₂
 
-- `⊂`
-- `there isn't one`
-### Turn
-
-```turn
-as before
-```
-### Chinese
-
-看起来仍像子集，但库里从未写清真子集。Lean 借用序理论，严格子集符号在那里绑定，不在集合论文件夹。我来拉出真正的源码。
-### Visual notes
-
-Turn: as before (beat-0 block). Lean: order-theory reveal — no full Mathlib paste yet.
-
-## Beat 3: Turn: as before
-
-<!--
-duration: 30.8
-font.editor: 0.7
-font.lean: 0.8
-font.render: 0.85
-allow-script-change: false
--->
-
-Quick recap from last clip.
-We implemented the LE instance so we could write less-than-or-equal sign on two sets to mean a subset relation, and back then it just looked like a notation convention.
-But that one instance is what makes subset an order operation on sets, and today we will tell the full story.
-So keep this in mind, subset is modelled by less-than-or-equal-to.
-### Lean
-
-```lean
--- Mathlib source: mathlib4/Mathlib/Data/Set/Defs.lean (recap from last clip)
-  protected def Subset (s₁ s₂ : Set α) :=
-    ∀ ⦃a⦄, a ∈ s₁ → a ∈ s₂
-
-  instance : LE (Set α) :=
-    ⟨Set.Subset⟩          -- last clip: looked like notation; really declares ≤ = ⊆
+instance : LE (Set α) :=
+  ⟨Set.Subset⟩
 ```
 ### Lean highlights
 
 - `instance : LE (Set α)`
-- `⟨Set.Subset⟩`
 ### Turn
 
 ```turn
-as before
+relation Subset(T: Any, A B: Set<T>): PropModified {
+    @notation({A} ~ " ⊆ " ~ {B})
+    default: Prop {
+        forall x: T |- x in A -> x in B
+    }
+}
 ```
 ### Chinese
 
-快速回顾上期：LE 实例让两集合的 ≤ 表示子集，当时像记号约定，实则把子集建成集合上的序。记住：≤ 就是 ⊆。
+Lean 走远路。上期：两个集合上写 ≤，意思已经是在里面。记住：≤ 就是 ⊆。
 ### Visual notes
 
-Turn: as before. Lean: Defs.lean recap — glow instance LE / ⟨Set.Subset⟩.
+⊆ already works like ≤.
 
-## Beat 4: Turn: as before
+## Beat 6: In class, “inside” already feels like ≤
 
 <!--
-duration: 37.8
+duration: 16
 font.editor: 0.7
 font.lean: 0.8
 font.render: 0.85
 allow-script-change: false
 -->
 
-Now for proper subset.
-Just like Membership held the in operator last time, two built-in typeclasses hold the meaning of ordering.
-LT holds less-than symbol, and HasSSubset holds the strict subset symbol.
-But Look closely, they are both  just empty template for notation.
-We still don't have the logical statement about proper subset.
-and the instinct here is to model proper subset using less-than operator
-so should we just go ahead and  implement LT on set to finish the job?
+You already use three facts.
+Every set is inside itself.
+If A is inside B and B is inside C, then A is inside C.
+If each is inside the other, they are the same set.
+Nobody calls that Boolean algebra in class. You still use it.
 ### Lean
 
 ```lean
--- Lean core source: lean4/src/Init/Prelude.lean
-
---   class LT (α : Type u) where
---     lt : α → α → Prop
-
--- Lean core source: lean4/src/Init/Core.lean
-
---   class HasSSubset (α : Type u) where
---     SSubset : α → α → Prop
-
---   infix:50 " ⊂ " => SSubset
+-- Facts from class:
+--   A ⊆ A
+--   A ⊆ B ⊆ C  →  A ⊆ C
+--   A ⊆ B and B ⊆ A  →  A = B
 ```
 ### Lean highlights
 
-- `lean4/src/Init/Prelude.lean`
+- `A ⊆ A`
+- `A = B`
+### Turn
+
+```turn
+relation Subset(T: Any, A B: Set<T>): PropModified {
+    @notation({A} ~ " ⊆ " ~ {B})
+    default: Prop {
+        forall x: T |- x in A -> x in B
+    }
+}
+```
+### Chinese
+
+你早就在用三件事：自己在自己里面；一串能接；互相在里面就是同一个。课堂上没人叫它布尔代数。你照样会用。
+### Visual notes
+
+Class facts. No Boolean algebra named yet.
+
+## Beat 7: ⊂ and < start as empty marks
+
+<!--
+duration: 16
+font.editor: 0.7
+font.lean: 0.8
+font.render: 0.85
+allow-script-change: false
+-->
+
+Less-than is the mark for strictly smaller.
+The other mark is for strictly inside.
+At first both marks are empty.
+A computer will not guess the sentence from class. Someone has to fill them in.
+### Lean
+
+```lean
+-- lean4/src/Init/Prelude.lean
+class LT (α : Type u) where
+  lt : α → α → Prop
+
+-- lean4/src/Init/Core.lean
+class HasSSubset (α : Type u) where
+  SSubset : α → α → Prop
+infix:50 " ⊂ " => SSubset
+```
+### Lean highlights
+
 - `class LT`
-- `lean4/src/Init/Core.lean`
-- `class HasSSubset`
-- `SSubset`
-- `" ⊂ " => SSubset`
+- `" ⊂ "`
 ### Turn
 
 ```turn
-as before
+relation Subset(T: Any, A B: Set<T>): PropModified {
+    @notation({A} ~ " ⊆ " ~ {B})
+    default: Prop {
+        forall x: T |- x in A -> x in B
+    }
+}
 ```
 ### Chinese
 
-真子集方面，LT 承载 <，HasSSubset 承载 ⊂，但都只是空槽，还没有真子集的逻辑表述。直觉是在 Set 上实现 LT 来完成吗？
+< 是严格更小的记号。⊂ 是严格在里面的记号。一开始两个都是空的。电脑不会猜课堂上那句。
 ### Visual notes
 
-Turn: as before. Lean: Init.Prelude LT + Init.Core HasSSubset empty slots; glow ⊂ infix.
+⊂ and < start empty.
 
-## Beat 5: Turn: as before
-
-<!--
-duration: 62.1
-font.editor: 0.7000000000000001
-font.lean: 0.8
-font.render: 0.8500000000000001
-allow-script-change: false
--->
-
-the answer is no!
-Mathematically, Set plays many roles, and in Mathlib those roles form many hierarchys of typeclasses
-When your roles fit in one of its hierarchy, you should only implement the most specific one, and everything upstream in the hierarchy will just apply automatically.
-SO LT is too far upstream to implement directly.
-And in this LT hierachy, The most specific typeclass is Boolean algebra, and Boolean algebra extends distributive lattice, which extends lattice, then semilattice, then partial order, and finally preorder, and preorder extends LT.
-That's why we implement Boolean algebra on Set, instead of LT, and the less-than method comes down from LT from the hierarchy.
-this is how turn-lang model hierarchy, but it is quite different and we will talk about it in later videos
-### Lean
-
-```lean
--- Where does < come from? Follow the `extends` ladder
--- (Order/BooleanAlgebra, Order/Lattice.lean, Order/Defs.lean):
---   BooleanAlgebra α  extends  DistribLattice α, HasCompl α, …
---   DistribLattice α  extends  Lattice α
---   Lattice α         extends  SemilatticeSup α, SemilatticeInf α
---   SemilatticeSup α  extends  PartialOrder α
---   PartialOrder α    extends  Preorder α      -- ← Preorder owns <
---   Preorder α        extends  LE α, LT α
-
--- Set α's most specific role is BooleanAlgebra — so < comes for free.
-```
-### Lean highlights
-
-- `BooleanAlgebra α  extends  DistribLattice α`
-- `PartialOrder α    extends  Preorder α`
-- `Preorder owns <`
-- `most specific role is BooleanAlgebra`
-### Turn
-
-```turn
-as before
-```
-### Chinese
-
-不要！集合在 Mathlib 有多重角色和类型类层级。应只实现最具体的 BooleanAlgebra，< 从 Preorder 层级传下来，而不是直接实现 LT。
-### Visual notes
-
-Turn: as before. Lean: extends ladder — BooleanAlgebra is Set’s most specific role; Preorder owns <.
-
-## Beat 6: Turn: as before
+## Beat 8: The shortcut Lean will not take
 
 <!--
-duration: 33.2
+duration: 16
 font.editor: 0.7
 font.lean: 0.8
 font.render: 0.85
 allow-script-change: false
 -->
 
-And if you look at the typeclass Preorder which is the second to last at the middle of the hierarchy,
-Here it define what less-than mean,
-And remember, to truly implement a typeclass, we need to have actualy implementation for every methods inside a typeclass.
-But here, less-than has a default definition.
-So [here] this one line is the source statement of proper subset, but it has nothing to do with set yet.
+The easy idea: let less-than on sets mean inside, but not equal. Then you are done.
+Lean will not do that.
+Sets can do more than compare — and that extra toolkit is why Boolean algebra shows up.
 ### Lean
 
 ```lean
--- Mathlib source: mathlib4/Mathlib/Order/Defs.lean
+-- Easy idea: let < on sets mean “⊆ and not equal”.
+-- Done?
 
+-- Lean says no.
+```
+### Lean highlights
+
+- `Lean says no`
+### Turn
+
+```turn
+relation Subset(T: Any, A B: Set<T>): PropModified {
+    @notation({A} ~ " ⊆ " ~ {B})
+    default: Prop {
+        forall x: T |- x in A -> x in B
+    }
+}
+```
+### Chinese
+
+最省事的想法：让集合上的 < 表示在里面但不相等。Lean 不这么做。集合还有别的运算，布尔代数就从这儿出场。
+### Visual notes
+
+Lean will not take the one-line shortcut.
+
+## Beat 9: Sets also have ∪, ∩, and complement
+
+<!--
+duration: 16
+font.editor: 0.7
+font.lean: 0.8
+font.render: 0.85
+allow-script-change: false
+-->
+
+You do not only ask which set is inside which.
+You also take union, intersection, and complement.
+Those are the same three moves as yes-and-no: or, and, not.
+That package is what people call a Boolean algebra.
+### Lean
+
+```lean
+-- Sets are not only compared.
+-- They also have ∪, ∩, and complement.
+-- Same three moves as yes / no: or, and, not.
+```
+### Lean highlights
+
+- `∪, ∩, and complement`
+- `or, and, not`
+### Turn
+
+```turn
+relation Subset(T: Any, A B: Set<T>): PropModified {
+    @notation({A} ~ " ⊆ " ~ {B})
+    default: Prop {
+        forall x: T |- x in A -> x in B
+    }
+}
+```
+### Chinese
+
+你不只问谁在谁里面。你还会做并集、交集、补集。这三步和“对或错”是同一套：或者、并且、否定。这套东西就叫布尔代数。
+### Visual notes
+
+Union, intersection, complement = or, and, not.
+
+## Beat 10: Why we need Boolean algebra
+
+<!--
+duration: 16
+font.editor: 0.7
+font.lean: 0.8
+font.render: 0.85
+allow-script-change: false
+-->
+
+If you already have the yes-and-no package, you get strictly smaller for free.
+The same way less-than comes with less-or-equal on numbers.
+That is why Lean uses Boolean algebra on sets, instead of writing one extra line for proper subset.
+### Lean
+
+```lean
+-- Boolean algebra includes order.
+-- Order includes <.
+-- So ⊂ can arrive with the package,
+-- instead of as a one-line extra definition.
+```
+### Lean highlights
+
+- `arrive with the package`
+### Turn
+
+```turn
+relation Subset(T: Any, A B: Set<T>): PropModified {
+    @notation({A} ~ " ⊆ " ~ {B})
+    default: Prop {
+        forall x: T |- x in A -> x in B
+    }
+}
+```
+### Chinese
+
+如果你已经有“对或错”那一套，就会白送“严格更小”。所以 Lean 在集合上用布尔代数，而不是再单独写一行。
+### Visual notes
+
+Why Boolean algebra: the package includes <.
+
+## Beat 11: The package is stacked
+
+<!--
+duration: 14
+font.editor: 0.7
+font.lean: 0.8
+font.render: 0.85
+allow-script-change: false
+-->
+
+Boolean algebra includes union and intersection.
+Those include the order less-or-equal.
+That includes strictly-less.
+Plug in the whole package, and strictly smaller shows up. You do not define it a second time.
+### Lean
+
+```lean
+-- Boolean algebra  includes  union / intersection
+-- those include            ≤
+-- ≤ includes               <
+```
+### Lean highlights
+
+- `≤ includes <`
+### Turn
+
+```turn
+relation Subset(T: Any, A B: Set<T>): PropModified {
+    @notation({A} ~ " ⊆ " ~ {B})
+    default: Prop {
+        forall x: T |- x in A -> x in B
+    }
+}
+```
+### Chinese
+
+布尔代数里有并和交。并和交里有 ≤。≤ 里有 <。整套接上，严格更小自己出现。
+### Visual notes
+
+The package is stacked.
+
+## Beat 12: What < means — not about sets yet
+
+<!--
+duration: 14
+font.editor: 0.7
+font.lean: 0.8
+font.render: 0.85
+allow-script-change: false
+-->
+
+For numbers, a is less than b when a is less-or-equal, and not the other way around.
+The same shape works for any order.
+We have not used sets yet.
+### Lean
+
+```lean
+-- mathlib4/Mathlib/Order/Defs.lean
 class Preorder (α : Type u) extends LE α, LT α where
   le_refl  : ∀ a : α, a ≤ a
   le_trans : ∀ a b c : α, a ≤ b → b ≤ c → a ≤ c
   lt := fun a b => a ≤ b ∧ ¬b ≤ a
-  lt_iff_le_not_le : ∀ a b : α, a < b ↔ a ≤ b ∧ ¬b ≤ a := by intros; rfl
 ```
 ### Lean highlights
 
-- `mathlib4/Mathlib/Order/Defs.lean`
-- `Preorder`
-- `lt := fun a b => a ≤ b ∧ ¬b ≤ a`
+- `a ≤ b ∧ ¬b ≤ a`
 ### Turn
 
 ```turn
-as before
+relation Subset(T: Any, A B: Set<T>): PropModified {
+    @notation({A} ~ " ⊆ " ~ {B})
+    default: Prop {
+        forall x: T |- x in A -> x in B
+    }
+}
 ```
 ### Chinese
 
-看 Preorder：这里用默认式定义 < 的含义。a≤b 且非 b≤a——这是真子集的源头，此时与集合无关。
+对数字来说，a < b 就是 a ≤ b，并且不能反过来。任何序都是这个形状。现在还没用到集合。
 ### Visual notes
 
-Turn: as before. Lean: Order/Defs Preorder.lt default — glow lt := a ≤ b ∧ ¬b ≤ a.
+What < means. Not about sets yet.
 
-## Beat 7: Turn: as before
-
-<!--
-duration: 51.8
-font.editor: 0.7000000000000001
-font.lean: 0.7000000000000001
-font.render: 0.8500000000000001
-allow-script-change: false
--->
-
-so! we just need to implment boolean algebra on set.
-notice we we just overide the LT method
-and be careful we must override with the same shape of function because method in typeclass have a prescribed type.
-and here we can replace less-than-or-equal with subset and lean allows it because the former is built using the latter.
-So now less-than finally have the proper subset meaning.
-but it is not an implication yet. it is a function.
-Lastly, HasSSubset binds the strict subset symbol to less-than.
-but we are not done, yet, in order for lean to use the proper subset symbol without calling .lt from a set, mathlib creates 2 theorems
-### Lean
-
-```lean
--- The layer that's easy to miss: Set doesn't build this — it INHERITS it.
--- Set α := α → Prop, and Prop is a BooleanAlgebra, so α → Prop is one
--- pointwise. Set pulls it in with `inferInstance`, then relabels fields:
-
--- Mathlib source: mathlib4/Mathlib/Order/BooleanAlgebra/Set.lean
-instance instBooleanAlgebra : BooleanAlgebra (Set α) :=
-  { (inferInstance : BooleanAlgebra (α → Prop)) with
-    le  := (· ≤ ·),                    -- ≤ is ⊆
-    lt  := fun s t => s ⊆ t ∧ ¬t ⊆ s,  -- < is ⊆ and not ⊇
-    sup := (· ∪ ·),  inf := (· ∩ ·),
-    compl := (·ᶜ),  top := univ,  bot := ∅,  sdiff := (· \ ·) }
-
-instance : HasSSubset (Set α) :=
-  ⟨(· < ·)⟩                            -- ⊂ is <
-```
-### Lean highlights
-
-- `inferInstance : BooleanAlgebra (α → Prop)`
-- `instBooleanAlgebra`
-- `lt  := fun s t => s ⊆ t ∧ ¬t ⊆ s`
-- `instance : HasSSubset (Set α)`
-- `⟨(· < ·)⟩`
-### Turn
-
-```turn
-as before
-```
-### Chinese
-
-在 Set 上继承 Boolean algebra 并覆写 lt：s⊆t 且非 t⊆s；HasSSubset 把 ⊂ 绑到 <。还需两个定理把课本表述和定义连在一起。
-### Visual notes
-
-Turn: as before. Lean: BooleanAlgebra/Set — inferInstance from α→Prop; lt := ⊆∧¬⊇; HasSSubset wires ⊂.
-
-## Beat 8: Turn: as before
+## Beat 13: A set is already yes-or-no
 
 <!--
-duration: 34
+duration: 16
 font.editor: 0.7
 font.lean: 0.8
 font.render: 0.85
 allow-script-change: false
 -->
 
-because only these 2 theorems put the Proper Subset and Subset in one statement
-Notice the second one is the one introduced in the textbook
-the first theorem is copied from the lt method.
-the second theorem is what textbook articulated.
-That rfl means try to proof by reflexivity, which try to find theorem that matches the goal or the reduced form of the goal.
-In this case this theorem is just Lt from our boolean algebra implementation
+A set answers one question about every object: in, or not?
+Yes-or-no already is Boolean algebra.
+So sets already have the package.
+Lean does not rebuild union and complement from scratch.
 ### Lean
 
 ```lean
--- Mathlib source: mathlib4/Mathlib/Data/Set/Basic.lean
-namespace Set
-variable {α : Type u} {s t : Set α}
+-- A set answers yes or no for every object.
+-- Yes / no already is Boolean algebra.
+-- So the package is already there.
+```
+### Lean highlights
 
-theorem ssubset_def : (s ⊂ t) = (s ⊆ t ∧ ¬t ⊆ s) :=
-  rfl                       -- true BY DEFINITION, not via a proof
+- `yes or no`
+- `package is already there`
+### Turn
+
+```turn
+structure[T] Set<T: Any> {
+}
+```
+### Chinese
+
+集合对每个东西只问一句：在，还是不在？在或不在本来就是布尔代数。所以集合本来就有这套工具。
+### Visual notes
+
+A set is already yes-or-no.
+
+## Beat 14: Then < on sets means proper subset
+
+<!--
+duration: 16
+font.editor: 0.7
+font.lean: 0.8
+font.render: 0.85
+allow-script-change: false
+-->
+
+Lean takes the package, then reads it on sets.
+Less-or-equal means inside.
+Strictly-less means inside one way, not the other.
+The other mark is that same strictly-less.
+The sentence from class is now something a computer can check.
+### Lean
+
+```lean
+-- mathlib4/Mathlib/Order/BooleanAlgebra/Set.lean
+instance instBooleanAlgebra : BooleanAlgebra (Set α) :=
+  { (inferInstance : BooleanAlgebra (α → Prop)) with
+    le := (· ≤ ·),
+    lt := fun s t => s ⊆ t ∧ ¬t ⊆ s }
+
+instance : HasSSubset (Set α) := ⟨(· < ·)⟩
+```
+### Lean highlights
+
+- `lt := fun s t => s ⊆ t ∧ ¬t ⊆ s`
+### Turn
+
+```turn
+structure[T] Set<T: Any> {
+}
+```
+### Chinese
+
+Lean 接上这套工具，再读到集合上。≤ 表示在里面。< 表示这边在里面、反过来不在。课堂上那句，现在电脑也能检查。
+### Visual notes
+
+Then < on sets means proper subset.
+
+## Beat 15: The package vs the sentence from class
+
+<!--
+duration: 16
+font.editor: 0.7
+font.lean: 0.8
+font.render: 0.85
+allow-script-change: false
+-->
+
+The package says: A is a proper subset of B when A is inside B, and B is not inside A.
+Class says: inside, and not the same set.
+A computer can prove those two sentences match.
+### Lean
+
+```lean
+-- mathlib4/Mathlib/Data/Set/Basic.lean
+theorem ssubset_def : (s ⊂ t) = (s ⊆ t ∧ ¬t ⊆ s) := rfl
 
 protected theorem ssubset_iff_subset_ne :
   s ⊂ t ↔ s ⊆ t ∧ s ≠ t
 ```
 ### Lean highlights
 
-- `ssubset_def`
-- `rfl`
-- `BY DEFINITION`
 - `ssubset_iff_subset_ne`
-- `s ⊆ t ∧ s ≠ t`
 ### Turn
 
 ```turn
-as before
+relation Subset(T: Any, A B: Set<T>): PropModified {
+    @notation({A} ~ " ⊊ " ~ {B})
+    proper: Prop {
+        |- { default(A, B); not SetEq(A, B); }
+    }
+}
 ```
 ### Chinese
 
-两个定理把真子集与子集放在同一陈述里；ssubset_def 用 rfl 证明，因为两边按定义相等。
+工具包说：A 在 B 里，并且 B 不在 A 里。课堂上说：在里面，并且不是同一个。电脑可以证明这两句是同一句话。
 ### Visual notes
 
-Turn: as before. Lean: Basic.lean — ssubset_def rfl + ssubset_iff_subset_ne textbook bridge.
+Package wording vs class wording.
 
-## Beat 9: Turn: as before
-
-<!--
-duration: 28.6
-font.editor: 0.7000000000000001
-font.lean: 0.65
-font.render: 0.8500000000000001
-allow-script-change: false
--->
-
-So this is the full picture.
-The strict subset symbol lives in Lean's kernel, and the meaning of strict less-than lives in Preorder in Mathlib's order theory.
-for Set, Mathlib does not redefine anything. It inherits the whole Boolean algebra into set,
-And finally make the proper subset symbol unwrap to the less than operation
-So across many theories, proper subset finally emerges
-### Lean
-
-```lean
--- 1. Lean core (lean4/src/Init/Core.lean) — the symbol slot
---   class HasSSubset (α) where SSubset : α → α → Prop
---   infix:50 " ⊂ " => SSubset
-
--- 2. Mathlib (mathlib4/Mathlib/Order/Defs.lean) — the meaning of <
---   class Preorder extends LE α, LT α where
---     lt := fun a b => a ≤ b ∧ ¬b ≤ a
-
--- 3. Mathlib (Order/BooleanAlgebra/Set.lean) — Set inherits it ALL from α → Prop:
-instance instBooleanAlgebra : BooleanAlgebra (Set α) :=
-  { (inferInstance : BooleanAlgebra (α → Prop)) with
-    le := (· ≤ ·), lt := fun s t => s ⊆ t ∧ ¬t ⊆ s, sup := (· ∪ ·), compl := (·ᶜ) }
-
-instance : HasSSubset (Set α) := ⟨(· < ·)⟩
-```
-### Lean highlights
-
-- `class HasSSubset`
-- `lt := fun a b => a ≤ b ∧ ¬b ≤ a`
-- `inferInstance : BooleanAlgebra (α → Prop)`
-- `instBooleanAlgebra`
-- `⟨(· < ·)⟩`
-### Turn
-
-```turn
-as before
-```
-### Chinese
-
-完整图景：⊂ 符号在 Lean 内核，< 含义在 Preorder，Set 继承 Boolean algebra 后真子集自然出现。
-### Visual notes
-
-Turn: as before. Lean: three-file summary (Core + Defs + Set.lean).
-
-## Beat 10: Turn: as before
+## Beat 16: ⊂ is just the < of ⊆
 
 <!--
-duration: 34.1
+duration: 14
 font.editor: 0.7
 font.lean: 0.8
 font.render: 0.85
 allow-script-change: false
 -->
 
-So the question is, why does lean do that?
-And The surprising answer is this allow proper subset to reuse theorems from theorem directly.
-for example
-subset has the property of being reflexive, transitive, and it is antisymmetric,
-Proper subset is precisely a strict order becasue it is irreflexive
-and all there properties are already proven for the order theory operation like the less-than operation.
-so this is very time-saving
+Subset works like less-or-equal on numbers.
+The matching strictly-less on sets is proper subset.
+Boolean algebra was only there so this match is given to you, not written by hand.
 ### Lean
 
 ```lean
--- "Free lemmas" is a side effect. The real reason: ⊆ IS a partial order.
---   le_refl     : s ⊆ s
---   le_trans    : s ⊆ t → t ⊆ u → s ⊆ u
---   le_antisymm : s ⊆ t → t ⊆ s → s = t     -- this is set extensionality!
-
--- And every partial order induces exactly ONE strict order:
-theorem lt_iff_le_and_ne : a < b ↔ a ≤ b ∧ a ≠ b
--- On sets that reads:  s ⊂ t ↔ s ⊆ t ∧ s ≠ t
--- So ⊂ is not borrowed from < — it IS the strict order of ⊆.
+-- On numbers:  a < b  ↔  a ≤ b and a ≠ b
+-- On sets:     s ⊂ t  ↔  s ⊆ t and s ≠ t
 ```
 ### Lean highlights
 
-- `le_antisymm : s ⊆ t → t ⊆ s → s = t`
-- `set extensionality`
-- `lt_iff_le_and_ne`
-- `it IS the strict order of ⊆`
+- `s ⊂ t  ↔  s ⊆ t and s ≠ t`
 ### Turn
 
 ```turn
-as before
+relation Subset(T: Any, A B: Set<T>): PropModified {
+    @notation({A} ~ " ⊊ " ~ {B})
+    proper: Prop {
+        |- { default(A, B); not SetEq(A, B); }
+    }
+}
 ```
 ### Chinese
 
-为什么值得？⊆ 是偏序，真子集是其严格序，序理论引理（不可自反、传递、⊆/⊂ 链式等）自动可用；注意任意集合在 ⊂ 下并非 well-founded。
+⊆ 就像数字里的 ≤。配上的那个 <，在集合上就是 ⊂。用布尔代数，只是为了把这个对应白送给你。
 ### Visual notes
 
-Turn: as before. Lean: partial-order payoff — le_antisymm / lt_iff_le_and_ne; ⊂ IS strict order of ⊆.
+⊂ is the < of ⊆.
 
-## Beat 11: Turn: as before
+## Beat 17: The usual facts, for free
 
 <!--
-duration: 10.1
-font.editor: 0.6000000000000001
-font.lean: 0.7000000000000001
-font.render: 0.8500000000000001
+duration: 14
+font.editor: 0.7
+font.lean: 0.8
+font.render: 0.85
 allow-script-change: false
 -->
 
-so just to show them on the screen, if you were to define they manully for proper subset.
-and it looks like we don't want to do that.
+A set is not a proper subset of itself.
+You cannot have both directions at once.
+Chains still work.
+In class these feel obvious. On a computer they arrive once the package is plugged in.
 ### Lean
 
 ```lean
--- Does ⊂ carry enough to be worth it? These fire on sets constantly:
-theorem lt_irrefl       (s : Set α) : ¬ s ⊂ s
-theorem lt_asymm        : s ⊂ t → ¬ t ⊂ s
-@[trans] theorem lt_trans       : s ⊂ t → t ⊂ u → s ⊂ u
-@[trans] theorem lt_of_le_of_lt : s ⊆ t → t ⊂ u → s ⊂ u   -- chain ⊆ then ⊂
-@[trans] theorem lt_of_lt_of_le : s ⊂ t → t ⊆ u → s ⊂ u   -- chain ⊂ then ⊆
-
--- + Set α is a complete Boolean algebra: ∪ / ∩ are ⊆-monotone,
---   complement flips strict order:  s ⊂ t ↔ tᶜ ⊂ sᶜ
--- caveat: Set α is NOT well-founded under ⊂ (∞ descending chains),
---         so ⊂-strong-induction is a Finset / finite-set tool.
+theorem lt_irrefl (s : Set α) : ¬ s ⊂ s
+theorem lt_asymm : s ⊂ t → ¬ t ⊂ s
+theorem lt_trans : s ⊂ t → t ⊂ u → s ⊂ u
 ```
 ### Lean highlights
 
 - `lt_irrefl`
-- `lt_of_le_of_lt`
-- `lt_of_lt_of_le`
-- `tᶜ ⊂ sᶜ`
-- `NOT well-founded`
+- `lt_trans`
 ### Turn
 
 ```turn
-as before
+relation Subset(T: Any, A B: Set<T>): PropModified {
+    @notation({A} ~ " ⊊ " ~ {B})
+    proper: Prop {
+        |- { default(A, B); not SetEq(A, B); }
+    }
+}
 ```
 ### Chinese
 
-若手写在 Set 上重复定义真子集及其引理，工作量很大——我们不想那样做。
+集合不是自己的真子集。不能两边同时成立。一串还能接。课堂上觉得这是废话。电脑上，工具包接上，这些就有了。
 ### Visual notes
 
-Turn: as before. Lean: strict-order toolkit lemmas; NOT well-founded caveat in comment.
+Usual facts arrive with the package.
 
-## Beat 12: Turn: NEW — Subset default only (no proper yet)
+## Beat 18: Turn writes a relation, not a toolkit first
 
 <!--
-duration: 18.7
+duration: 16
 font.editor: 0.75
 font.lean: 0.65
-font.render: 0.8500000000000001
+font.render: 0.85
 allow-script-change: false
 -->
 
-So now let's compare with Turn-Lang.
-Last clip we introduced relation Subset with a default variant for just the ordinary subset.
-Now the PropModified lets you put several variants that shares a single relation name.
+Second difference, now that you saw Lean’s road.
+Turn-Lang just names subset as a relation.
+The everyday version is written first.
+You do not need Boolean algebra on the page before the class sentence can appear.
 ### Lean
 
 ```lean
--- 1. Lean core (lean4/src/Init/Core.lean) — the symbol slot
---   class HasSSubset (α) where SSubset : α → α → Prop
---   infix:50 " ⊂ " => SSubset
-
--- 2. Mathlib (mathlib4/Mathlib/Order/Defs.lean) — the meaning of <
---   class Preorder extends LE α, LT α where
---     lt := fun a b => a ≤ b ∧ ¬b ≤ a
-
--- 3. Mathlib (Order/BooleanAlgebra/Set.lean) — Set inherits it ALL from α → Prop:
-instance instBooleanAlgebra : BooleanAlgebra (Set α) :=
-  { (inferInstance : BooleanAlgebra (α → Prop)) with
-    le := (· ≤ ·), lt := fun s t => s ⊆ t ∧ ¬t ⊆ s, sup := (· ∪ ·), compl := (·ᶜ) }
-
-instance : HasSSubset (Set α) := ⟨(· < ·)⟩
+-- Lean got ⊂ by plugging in Boolean algebra.
+-- Turn does not take that long way first.
 ```
 ### Turn
 
@@ -608,38 +780,32 @@ relation Subset(T: Any, A B: Set<T>): PropModified {
 ### Turn highlights
 
 - `relation Subset`
-- `default`
-- `PropModified`
 ### Chinese
 
-对比 Turn-Lang：上期有 relation Subset 的 default 变体；PropModified 让多个变体共享同一关系名。
+看过 Lean 的远路，第二个差别就清楚了。Turn-Lang 只是给子集起个关系名。日常版本先写上。不必先接布尔代数。
 ### Visual notes
 
-Turn: NEW — Subset default only (no proper yet). Lean: as before (3-file summary).
+Turn writes a relation first.
 
-## Beat 13: Turn: full proper + SetEq block
+## Beat 19: Proper subset is the class sentence, in one place
 
 <!--
-duration: 74.1
-font.editor: 0.7000000000000001
+duration: 16
+font.editor: 0.7
 font.lean: 0.65
-font.render: 0.8500000000000001
+font.render: 0.85
 allow-script-change: false
 -->
 
-So for proper subset we will jsut put in a variant called "proper" which reuses default version and adds a not SetEq statement.
-and SetEq is just a mutual subset relation between A and B, which we will formalize in the next video  when we talk about equality systematically ......
-.....
-So Turn-Lang states this very explicitly, but does it no worry about the same problem Lean has?
-the answer is yes, we still have the same work to do, but not now.
-So as we came across more perspectives on what a set essentially is in other you know more foundamental theory, we will add all of  these pespectives to the turn-lang structure of Set using special blocks inside the structure block.
-And you will see them when we get there
-But for now we want to keep our mind focused because that is the most helpful way to appreciate the concept itself without worry about the modelling underneath.
-And that's what only turn-lang allows us to do
+Add not-equal to everyday subset.
+That is the sentence from class, and a computer can check it.
+Lean got the same sentence by plugging in Boolean algebra.
+Turn wrote the sentence first. The toolkit can wait.
 ### Lean
 
 ```lean
-as before
+-- Lean: ⊂ arrived with Boolean algebra.
+-- Turn: the class sentence is in one block.
 ```
 ### Turn
 
@@ -651,13 +817,46 @@ relation Subset(T: Any, A B: Set<T>): PropModified {
     },
     @notation({A} ~ " ⊊ " ~ {B})
     proper: Prop {
-        |- {
-            default(A, B);
-            not SetEq(A, B);
-        }
+        |- { default(A, B); not SetEq(A, B); }
     }
 }
+```
+### Turn highlights
 
+- `proper`
+- `not SetEq`
+### Chinese
+
+在日常子集上加上不相等。就是课堂上那句，电脑也能检查。Lean 靠布尔代数找回同一句。Turn 先写这一句。
+### Visual notes
+
+Proper subset is the class sentence in one block.
+
+## Beat 20: One class sentence, two ways to write it
+
+<!--
+duration: 16
+font.editor: 0.7
+font.lean: 0.65
+font.render: 0.85
+allow-script-change: false
+-->
+
+In class, proper subset is one sentence.
+A computer needs that sentence written down.
+Lean borrows Boolean algebra so the extra mark works like less-than next to subset.
+Turn writes the sentence first.
+Next time: what the equals sign is asking. See you there.
+### Lean
+
+```lean
+-- From class: A ⊊ B  ⇔  A ⊆ B and A ≠ B
+-- Lean: use Boolean algebra, then ⊂ works like < next to ⊆
+-- Turn: write the sentence first
+```
+### Turn
+
+```turn
 relation SetEq(T: Any, A B: Set<T>): Prop {
     |- {
         Subset(A, B);
@@ -667,50 +866,10 @@ relation SetEq(T: Any, A B: Set<T>): Prop {
 ```
 ### Turn highlights
 
-- `proper`
-- `default(A, B)`
-- `not SetEq(A, B)`
 - `SetEq`
 ### Chinese
 
-真子集用 proper 变体：复用 default 并加 not SetEq。Turn 写得很直白；底层多视角建模以后再加。
+课堂上，真子集就是一句。电脑需要把这句写下来。Lean 借用布尔代数。Turn 先写这一句。下期讲集合相等。
 ### Visual notes
 
-Turn: full proper + SetEq block. Lean: as before.
-
-## Beat 14: CTA next clip
-
-<!--
-duration: 5.7
-font.editor: 0.7000000000000001
-font.lean: 0.65
-font.render: 0.8500000000000001
-allow-script-change: false
--->
-
-Next clip is set equality.
-Please leave a Comment if you are stuck at any step, see you in the next one.
-### Lean
-
-```lean
-as before
-```
-### Lean highlights
-
-- `class HasSSubset`
-- `lt := fun a b => a ≤ b ∧ ¬b ≤ a`
-### Turn
-
-```turn
-as before
-```
-### Turn highlights
-
-- `proper`
-- `default`
-### Chinese
-
-下期讲集合相等。卡住请留言，下期见。
-### Visual notes
-
-CTA next clip. Both panes: as before; optional glow Turn proper.
+One class sentence, two ways to write it.

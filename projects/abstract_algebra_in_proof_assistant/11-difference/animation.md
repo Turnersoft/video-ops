@@ -2,6 +2,10 @@
 videoOps: 1
 scriptId: 11-difference
 title: 11_difference
+socialTitleEnglish: "11. Difference: in A, but not in B"
+socialTitleChina: "11. 差集：在 A 里，但不在 B 里"
+promotionalDescription: "The difference A minus B is the things in A that are not in B."
+promotionalDescriptionChina: "差集（difference）是第三个集合。一个对象属于差集 A \\ B，意思是：它属于 A，并且不属于 B。"
 format: landscape
 fps: 30
 width: 1920

@@ -96,6 +96,18 @@ export type BeatPostersManifest = {
   posters: BeatPosterFile[];
 };
 
+/** Live progress while POST /beat-posters clears + regenerates PNGs. */
+export type BeatPosterGenerateProgress = {
+  scriptId: string;
+  status: 'idle' | 'clearing' | 'running' | 'done' | 'error';
+  current: number;
+  total: number;
+  percent: number;
+  label: string;
+  error?: string;
+  updatedAt: string;
+};
+
 export type BeatPosterPublishRecord = {
   platform: string;
   /** `album` when all beat posters ship in one post. */
@@ -103,7 +115,7 @@ export type BeatPosterPublishRecord = {
   lang: BeatPosterLang;
   postId: string;
   url: string;
-  status: 'pending' | 'live' | 'failed';
+  status: 'pending' | 'live' | 'failed' | 'deleted';
   publishedAt: string;
   imageCount?: number;
   stub?: boolean;

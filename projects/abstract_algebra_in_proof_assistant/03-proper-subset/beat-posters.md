@@ -23,419 +23,138 @@
   Any field left out falls back to auto-derived copy from animation.md.
 -->
 
-## Beat 1: No def SSubset on sets
+## Beat 1: The sentence from class
 
 ### Title zh
-课本很简单，Mathlib 没直接写
+
+课堂上那句，你早就知道
 
 ### English
-Last clip was ordinary subset. Today is proper subset: `A ⊊ B` means `A ⊆ B` and `A ≠ B`.
 
-Search Mathlib for `def SSubset` on sets — there isn't one. The concept is not defined directly.
+You already know this from class: `A ⊊ B` means `A` is inside `B`, and they are not the same set.
+
+That is it. A textbook does not ask where the symbol lives.
 
 ### Chinese
-上期是普通子集。这期是真子集：`A ⊊ B` 就是 `A ⊆ B` 并且 `A ≠ B`。
 
-去 Mathlib 搜集合上的 `def SSubset`——没有。这个概念没有被直接定义。
+课堂上你就会：`A ⊊ B` 表示 `A` 在 `B` 里面，并且不是同一个集合。
+
+就这一句。课本不会问这个符号写在哪一页。
 
 ### Lean
-```lean
--- Textbook: A ⊊ B  ⇔  A ⊆ B  and  A ≠ B
 
--- Search Mathlib for `def SSubset` on sets:
--- there is none.
+```lean
+-- From class:
+--   A ⊊ B  ⇔  A ⊆ B  and  A ≠ B
 ```
 
 ### Editor
+
 lean
 
 ### Next en
-So where is ⊂ actually bound?
+
+A computer cannot use “you know what I mean”.
 
 ### Next zh
-那 ⊂ 到底绑在哪？
 
-## Beat 2: ⊂ is bound in order theory
+电脑听不懂“你懂我意思”
+
+## Beat 2: A computer needs the rule written down
 
 ### Title zh
-⊂ 绑在序理论，不在集合文件夹
+
+电脑要检查，就得写成规则
 
 ### English
-It still looks like subset. The library never spells out proper subset for sets.
 
-Lean binds the strict-subset symbol in order theory, not in the set-theory folder.
+In class, the teacher fills in the gaps. A computer checking a proof cannot.
+
+If nobody writes the rule, the computer does not have proper subset at all.
 
 ### Chinese
-看起来还是子集。库里没有给集合单独写清真子集。
 
-严格子集符号绑在序理论里，不在集合论那个文件夹。
+课堂上老师会补全没说清的地方。电脑检查证明，不会补。
+
+没人写成规则，电脑那边就没有真子集。
 
 ### Lean
+
 ```lean
--- Where is Lean's definition of ⊂ on sets?
--- There isn't one written for sets.
--- ⊂ is inherited from generic order theory.
+-- In class: you already know what ⊊ means.
+-- On a computer: no written rule, no idea.
 ```
 
 ### Editor
+
 lean
 
 ### Next en
-Remember last clip: ≤ on sets already means ⊆.
+
+Lean’s first surprise: that rule is missing.
 
 ### Next zh
-先记住上期：集合上的 ≤ 已经是 ⊆
 
-## Beat 3: ≤ on sets already means ⊆
+Lean 的第一下：那条规则不见了
+
+## Beat 3: Lean never wrote that classroom sentence
 
 ### Title zh
-集合上的 ≤，就是 ⊆
+
+Lean 没把课堂上那句写下来
 
 ### English
-Last clip: the `LE` instance lets you write `≤` on two sets, and it means subset.
 
-That instance is what makes subset an order on sets. Keep this: `≤` is `⊆`.
+Look for a line that says “proper subset means inside and not equal.” Lean’s set folder does not have it.
+
+The sentence from class was never copied in. Lean will borrow a bigger toolkit to get it back.
 
 ### Chinese
-上期那个 `LE` 实例，让两个集合能写 `≤`，意思就是子集。
 
-子集因此成了集合上的序。记住：`≤` 就是 `⊆`。
+去找“真子集 = 在里面并且不相等”这一行。Lean 的集合文件夹里没有。
+
+课堂上那句没被抄进去。Lean 会借一套更大的工具，把它找回来。
 
 ### Lean
-```lean
-protected def Subset (s₁ s₂ : Set α) :=
-  ∀ ⦃a⦄, a ∈ s₁ → a ∈ s₂
 
-instance : LE (Set α) :=
-  ⟨Set.Subset⟩
+```lean
+-- From class: A ⊊ B  ⇔  A ⊆ B  and  A ≠ B
+
+-- In Lean’s set folder: there is no such line.
 ```
 
 ### Editor
+
 lean
 
 ### Next en
-`LT` and `HasSSubset` are notation slots, not the set statement.
+
+Turn-Lang starts with the sentence from class.
 
 ### Next zh
-`LT` 和 `HasSSubset` 只是记号槽，还不是集合上的那句话
 
-## Beat 4: Two empty notation slots
+Turn-Lang 从课堂上那句写起
 
-### Title zh
-两个记号槽，还没有那句话
-
-### English
-`LT` holds `<`. `HasSSubset` holds `⊂`. Both are empty templates for notation.
-
-There is still no logical statement about proper subset on sets. Should we implement `LT` on `Set`?
-
-### Chinese
-`LT` 承载 `<`，`HasSSubset` 承载 `⊂`。两者都只是记号的空槽。
-
-集合上的真子集命题还没写。要不要直接在 `Set` 上实现 `LT`？
-
-### Lean
-```lean
--- lean4/src/Init/Prelude.lean
-class LT (α : Type u) where
-  lt : α → α → Prop
-
--- lean4/src/Init/Core.lean
-class HasSSubset (α : Type u) where
-  SSubset : α → α → Prop
-infix:50 " ⊂ " => SSubset
-```
-
-### Editor
-lean
-
-### Next en
-No. Implement the most specific role, not `LT`.
-
-### Next zh
-不要。实现最具体的角色，别直接实现 LT
-
-## Beat 5: Implement BooleanAlgebra, not LT
+## Beat 4: Turn writes the class sentence first
 
 ### Title zh
-实现最具体的 BooleanAlgebra
+
+Turn-Lang 先写课堂上那句
 
 ### English
-`Set` plays many roles in Mathlib. Those roles sit in typeclass hierarchies.
 
-If you fit a hierarchy, implement the most specific class. For this ladder that is `BooleanAlgebra`. `LT` is too far upstream; `<` comes down from `Preorder`.
+First difference. Turn-Lang writes what you said in class: inside, and not the same set.
 
-### Chinese
-`Set` 在 Mathlib 里有多重角色，角色落在类型类层级上。
-
-对得上某条层级，就只实现最具体的那个。这条梯子上是 `BooleanAlgebra`。`LT` 太靠上，`<` 从 `Preorder` 传下来。
-
-### Lean
-```lean
--- BooleanAlgebra α  extends  DistribLattice α
--- Lattice α         extends  SemilatticeSup α
--- PartialOrder α    extends  Preorder α
--- Preorder α        extends  LE α, LT α
--- Set's most specific role here: BooleanAlgebra
-```
-
-### Editor
-lean
-
-### Next en
-Open `Preorder`. That default `lt` is the source line.
-
-### Next zh
-打开 Preorder。默认的 lt，就是源头那一行
-
-## Beat 6: Preorder writes what < means
-
-### Title zh
-Preorder 写出 < 是什么意思
-
-### English
-`Preorder` gives `<` a default: `a ≤ b ∧ ¬ b ≤ a`.
-
-That is the source statement of the strict order. It is not about sets yet.
+No extra toolkit yet. The computer can still check it — the words are just where a student looks first.
 
 ### Chinese
-`Preorder` 给 `<` 一个默认定义：`a ≤ b ∧ ¬ b ≤ a`。
 
-这是严格序的源头那一行。这时候还跟集合无关。
+第一个差别。Turn-Lang 写下课堂上那句：在里面，并且不是同一个。
 
-### Lean
-```lean
--- mathlib4/Mathlib/Order/Defs.lean
-class Preorder (α : Type u) extends LE α, LT α where
-  le_refl  : ∀ a : α, a ≤ a
-  le_trans : ∀ a b c : α, a ≤ b → b ≤ c → a ≤ c
-  lt := fun a b => a ≤ b ∧ ¬b ≤ a
-```
-
-### Editor
-lean
-
-### Next en
-Set inherits Boolean algebra, then relabels `lt`.
-
-### Next zh
-Set 继承 Boolean algebra，再给 lt 换标签
-
-## Beat 7: Set inherits, then relabels lt
-
-### Title zh
-Set 继承过来，再把 lt 写成子集
-
-### English
-`Set α` is `α → Prop`, and `Prop` is a `BooleanAlgebra`, so the function type already is one. Set pulls it in with `inferInstance`.
-
-Then it relabels: `lt` is `s ⊆ t ∧ ¬ t ⊆ s`. `HasSSubset` binds `⊂` to `<`.
-
-### Chinese
-`Set α` 就是 `α → Prop`，`Prop` 已经是 `BooleanAlgebra`，函数类型点点继承。Set 用 `inferInstance` 接进来。
-
-然后换标签：`lt` 写成 `s ⊆ t ∧ ¬ t ⊆ s`。`HasSSubset` 把 `⊂` 绑到 `<`。
-
-### Lean
-```lean
--- mathlib4/Mathlib/Order/BooleanAlgebra/Set.lean
-instance instBooleanAlgebra : BooleanAlgebra (Set α) :=
-  { (inferInstance : BooleanAlgebra (α → Prop)) with
-    le := (· ≤ ·),
-    lt := fun s t => s ⊆ t ∧ ¬t ⊆ s }
-
-instance : HasSSubset (Set α) := ⟨(· < ·)⟩
-```
-
-### Editor
-lean
-
-### Next en
-Two theorems put ⊂ next to ⊆.
-
-### Next zh
-两条定理，把 ⊂ 和 ⊆ 放在同一句话里
-
-## Beat 8: Two theorems, one is the textbook
-
-### Title zh
-两条定理，一条就是课本
-
-### English
-`ssubset_def` says `s ⊂ t` equals `s ⊆ t ∧ ¬ t ⊆ s`. The proof is `rfl`: same by definition.
-
-`ssubset_iff_subset_ne` is the textbook form: `s ⊆ t ∧ s ≠ t`.
-
-### Chinese
-`ssubset_def` 说 `s ⊂ t` 等于 `s ⊆ t ∧ ¬ t ⊆ s`。证明是 `rfl`：按定义就是同一件事。
-
-`ssubset_iff_subset_ne` 才是课本写法：`s ⊆ t ∧ s ≠ t`。
-
-### Lean
-```lean
--- mathlib4/Mathlib/Data/Set/Basic.lean
-theorem ssubset_def : (s ⊂ t) = (s ⊆ t ∧ ¬t ⊆ s) := rfl
-
-protected theorem ssubset_iff_subset_ne :
-  s ⊂ t ↔ s ⊆ t ∧ s ≠ t
-```
-
-### Editor
-lean
-
-### Next en
-Three files, then ⊂ appears on sets.
-
-### Next zh
-三个文件走完，集合上才有 ⊂
-
-## Beat 9: Three files, then ⊂ on sets
-
-### Title zh
-三个文件，集合上才出现 ⊂
-
-### English
-The `⊂` slot lives in Lean's core. The meaning of `<` lives in `Preorder`.
-
-Set does not redefine the strict order. It inherits Boolean algebra, then unwraps `⊂` to `<`.
-
-### Chinese
-`⊂` 的槽位在 Lean 内核。`<` 的含义在 `Preorder`。
-
-Set 没有重写严格序。它继承 Boolean algebra，再把 `⊂` 展开成 `<`。
-
-### Lean
-```lean
--- 1. Init/Core.lean — HasSSubset slot, infix ⊂
--- 2. Order/Defs.lean — Preorder.lt := ≤ ∧ ¬≥
--- 3. BooleanAlgebra/Set.lean — inherit, then ⊂ := <
-instance : HasSSubset (Set α) := ⟨(· < ·)⟩
-```
-
-### Editor
-lean
-
-### Next en
-Why bother? ⊆ is a partial order. ⊂ is its strict order.
-
-### Next zh
-图什么？⊆ 是偏序，⊂ 就是它的严格序
-
-## Beat 10: ⊂ is the strict order of ⊆
-
-### Title zh
-⊂ 就是 ⊆ 的严格序
-
-### English
-`⊆` is reflexive, transitive, and antisymmetric. Antisymmetry here is set extensionality.
-
-Every partial order induces one strict order. On sets that reads: `s ⊂ t ↔ s ⊆ t ∧ s ≠ t`.
-
-### Chinese
-`⊆` 自反、传递、反对称。这里的反对称就是集合外延。
-
-每个偏序恰好诱导一个严格序。落到集合上：`s ⊂ t ↔ s ⊆ t ∧ s ≠ t`。
-
-### Lean
-```lean
--- le_refl / le_trans / le_antisymm on ⊆
--- le_antisymm : s ⊆ t → t ⊆ s → s = t
-
-theorem lt_iff_le_and_ne : a < b ↔ a ≤ b ∧ a ≠ b
--- on sets: s ⊂ t ↔ s ⊆ t ∧ s ≠ t
-```
-
-### Editor
-lean
-
-### Next en
-Those lemmas already exist. You would rather not rewrite them.
-
-### Next zh
-这些引理已经有了。你不会想手写一遍
-
-## Beat 11: Lemmas you would rather not rewrite
-
-### Title zh
-这些引理，你不会想手写
-
-### English
-Irreflexive, asymmetric, transitive, and the mixed chains with `⊆` — already proved for `<`.
-
-One caveat from the clip: `Set α` is not well-founded under `⊂`.
-
-### Chinese
-不自反、不对称、传递，还有和 `⊆` 混着走的链式——`<` 上已经证过。
-
-这期有一句提醒：一般的 `Set α` 在 `⊂` 下并不是良基的。
-
-### Lean
-```lean
-theorem lt_irrefl (s : Set α) : ¬ s ⊂ s
-theorem lt_asymm : s ⊂ t → ¬ t ⊂ s
-theorem lt_trans : s ⊂ t → t ⊂ u → s ⊂ u
--- Set α is NOT well-founded under ⊂
-```
-
-### Editor
-lean
-
-### Next en
-Turn-Lang: one relation, several variants.
-
-### Next zh
-Turn-Lang：一个关系，几个变体
-
-## Beat 12: PropModified shares the name
-
-### Title zh
-PropModified：几个变体共用一个名
-
-### English
-Last clip: `relation Subset` with a `default` variant for ordinary subset.
-
-`PropModified` lets several variants share one relation name. Proper is the next variant.
-
-### Chinese
-上期：`relation Subset` 的 `default` 变体，就是普通子集。
-
-`PropModified` 让几个变体共用一个关系名。真子集是下一个变体。
+还不用额外工具。电脑照样能检查——只是话写在学生先看见的地方。
 
 ### Turn-Lang
-```turn
-relation Subset(T: Any, A B: Set<T>): PropModified {
-    @notation({A} ~ " ⊆ " ~ {B})
-    default: Prop {
-        forall x: T |- x in A -> x in B
-    }
-}
-```
 
-### Editor
-turn
-
-### Next en
-`proper` reuses `default` and adds `not SetEq`.
-
-### Next zh
-proper 复用 default，再加上 not SetEq
-
-## Beat 13: proper is default plus not SetEq
-
-### Title zh
-真子集：普通子集，再加不相等
-
-### English
-The `proper` variant reuses `default` and adds `not SetEq`. `SetEq` is mutual subset; next clip formalizes it.
-
-Turn states the textbook condition in one block. The hierarchy work Lean did is still work — just not in this clip.
-
-### Chinese
-`proper` 变体复用 `default`，再加上 `not SetEq`。`SetEq` 就是互相包含，下期系统讲。
-
-Turn 把课本条件写在一块。Lean 那套层级工作以后还要做，只是不在这期做。
-
-### Turn-Lang
 ```turn
 relation Subset(T: Any, A B: Set<T>): PropModified {
     @notation({A} ~ " ⊆ " ~ {B})
@@ -450,30 +169,634 @@ relation Subset(T: Any, A B: Set<T>): PropModified {
 ```
 
 ### Editor
+
 turn
 
 ### Next en
-Next clip: set equality.
+
+Lean takes the long way. First, ⊆ already works like ≤.
 
 ### Next zh
-下期：集合相等
 
-## Beat 14: Next clip is set equality
+Lean 走远路。先记住：⊆ 已经像 ≤
+
+## Beat 5: ⊆ already works like ≤
 
 ### Title zh
-下期：集合相等
+
+⊆ 已经像数字里的 ≤
 
 ### English
-Proper subset needed `SetEq`. Next clip is what `=` means on sets.
 
-See you there.
+Last time: on two sets, `≤` already means “inside.”
+
+So subset is already an order, the way `≤` is an order on numbers. Keep this: `≤` means `⊆`.
 
 ### Chinese
-真子集已经用到 `SetEq`。下期就讲集合上的 `=` 是什么意思。
 
-下期见。
+上期：两个集合上写 `≤`，意思已经是“在里面”。
+
+所以子集已经是一种序，就像数字里的 `≤`。记住：`≤` 就是 `⊆`。
+
+### Lean
+
+```lean
+protected def Subset (s₁ s₂ : Set α) :=
+  ∀ ⦃a⦄, a ∈ s₁ → a ∈ s₂
+
+instance : LE (Set α) :=
+  ⟨Set.Subset⟩
+```
+
+### Editor
+
+lean
+
+### Next en
+
+In class, “inside” already feels like an order.
+
+### Next zh
+
+课堂上，“在里面”本来就像一种序
+
+## Beat 6: In class, “inside” already feels like ≤
+
+### Title zh
+
+课堂上，“在里面”本来就像 ≤
+
+### English
+
+You already use three facts: every set is inside itself. If `A` is inside `B` and `B` is inside `C`, then `A` is inside `C`. If each is inside the other, they are the same set.
+
+Nobody calls that Boolean algebra in class. You still use it.
+
+### Chinese
+
+你早就在用三件事：每个集合都在自己里面；`A` 在 `B` 里、`B` 在 `C` 里，则 `A` 在 `C` 里；互相在里面，就是同一个。
+
+课堂上没人叫它布尔代数。你照样会用。
+
+### Lean
+
+```lean
+-- Facts from class:
+--   A ⊆ A
+--   A ⊆ B ⊆ C  →  A ⊆ C
+--   A ⊆ B and B ⊆ A  →  A = B
+```
+
+### Editor
+
+lean
+
+### Next en
+
+On the computer, ⊂ and < start empty.
+
+### Next zh
+
+在电脑上，⊂ 和 < 先是空的
+
+## Beat 7: ⊂ and < start as empty marks
+
+### Title zh
+
+⊂ 和 < 先是空记号
+
+### English
+
+`<` is the mark for “strictly smaller.” `⊂` is the mark for “strictly inside.” At first both marks are empty.
+
+A computer will not guess the sentence from class. Someone has to fill them in.
+
+### Chinese
+
+`<` 是“严格更小”的记号。`⊂` 是“严格在里面”的记号。一开始两个都是空的。
+
+电脑不会猜课堂上那句。得有人填进去。
+
+### Lean
+
+```lean
+-- lean4/src/Init/Prelude.lean
+class LT (α : Type u) where
+  lt : α → α → Prop
+
+-- lean4/src/Init/Core.lean
+class HasSSubset (α : Type u) where
+  SSubset : α → α → Prop
+infix:50 " ⊂ " => SSubset
+```
+
+### Editor
+
+lean
+
+### Next en
+
+Shortcut: just let < mean proper subset?
+
+### Next zh
+
+捷径：让 < 直接表示真子集？
+
+## Beat 8: The shortcut Lean will not take
+
+### Title zh
+
+Lean 不走的那条捷径
+
+### English
+
+The easy idea: let `<` on sets mean “inside, but not equal.” Then you are done.
+
+Lean will not do that. Sets can do more than compare — and that extra toolkit is why Boolean algebra shows up.
+
+### Chinese
+
+最省事的想法：让集合上的 `<` 表示“在里面，但不相等”。然后就结束了。
+
+Lean 不这么做。集合不只是拿来比大小——多出来的那些运算，就是布尔代数出场的原因。
+
+### Lean
+
+```lean
+-- Easy idea: let < on sets mean “⊆ and not equal”.
+-- Done?
+
+-- Lean says no.
+```
+
+### Editor
+
+lean
+
+### Next en
+
+Sets also have union, intersection, complement.
+
+### Next zh
+
+集合还有并、交、补
+
+## Beat 9: Sets also have ∪, ∩, and complement
+
+### Title zh
+
+集合还有并、交、补
+
+### English
+
+You do not only ask which set is inside which. You also take union, intersection, and complement.
+
+Those are the same three moves as yes-and-no: or, and, not. That package is what people call a Boolean algebra.
+
+### Chinese
+
+你不只问谁在谁里面。你还会做并集、交集、补集。
+
+这三步和“对或错”是同一套：或者、并且、否定。这套东西就叫布尔代数。
+
+### Lean
+
+```lean
+-- Sets are not only compared.
+-- They also have ∪, ∩, and complement.
+-- Same three moves as yes / no: or, and, not.
+```
+
+### Editor
+
+lean
+
+### Next en
+
+That package already includes “strictly smaller”.
+
+### Next zh
+
+这套工具里，已经有“严格更小”
+
+## Beat 10: Why we need Boolean algebra
+
+### Title zh
+
+为什么需要布尔代数
+
+### English
+
+If you already have the yes-and-no package, you get “strictly smaller” for free — the way `<` comes with `≤` on numbers.
+
+That is why Lean uses Boolean algebra on sets, instead of writing one extra line for `⊂`.
+
+### Chinese
+
+如果你已经有“对或错”那一套，就会白送“严格更小”——就像数字里有了 `≤`，就有 `<`。
+
+所以 Lean 在集合上用布尔代数，而不是再单独写一行 `⊂`。
+
+### Lean
+
+```lean
+-- Boolean algebra includes order.
+-- Order includes <.
+-- So ⊂ can arrive with the package,
+-- instead of as a one-line extra definition.
+```
+
+### Editor
+
+lean
+
+### Next en
+
+The package is stacked, like number facts.
+
+### Next zh
+
+这套工具是叠起来的，像数字性质
+
+## Beat 11: The package is stacked
+
+### Title zh
+
+这套工具是叠起来的
+
+### English
+
+Boolean algebra includes the lattice of union and intersection. That includes the order `≤`. That includes `<`.
+
+Plug in the whole package, and “strictly smaller” shows up. You do not define it a second time.
+
+### Chinese
+
+布尔代数里有并和交。并和交里有序 `≤`。序里有 `<`。
+
+整套接上，“严格更小”自己出现。不必再定义一次。
+
+### Lean
+
+```lean
+-- Boolean algebra  includes  union / intersection
+-- those include            ≤
+-- ≤ includes               <
+```
+
+### Editor
+
+lean
+
+### Next en
+
+What < means, for any order.
+
+### Next zh
+
+对任何序，< 是什么意思
+
+## Beat 12: What < means — not about sets yet
+
+### Title zh
+
+< 是什么意思——还没轮到集合
+
+### English
+
+For numbers, `a < b` means `a ≤ b` and not the other way around.
+
+The same shape works for any order. We have not used sets yet.
+
+### Chinese
+
+对数字来说，`a < b` 就是 `a ≤ b`，并且不能反过来。
+
+任何序都是这个形状。现在还没用到集合。
+
+### Lean
+
+```lean
+-- mathlib4/Mathlib/Order/Defs.lean
+class Preorder (α : Type u) extends LE α, LT α where
+  le_refl  : ∀ a : α, a ≤ a
+  le_trans : ∀ a b c : α, a ≤ b → b ≤ c → a ≤ c
+  lt := fun a b => a ≤ b ∧ ¬b ≤ a
+```
+
+### Editor
+
+lean
+
+### Next en
+
+Why sets already have that package.
+
+### Next zh
+
+为什么集合本来就有这套工具
+
+## Beat 13: A set is already yes-or-no
+
+### Title zh
+
+集合本来就是“在或不在”
+
+### English
+
+A set answers one question about every object: in, or not?
+
+Yes-or-no already is Boolean algebra. So sets already have the package. Lean does not rebuild union and complement from scratch.
+
+### Chinese
+
+集合对每个东西只问一句：在，还是不在？
+
+“在或不在”本来就是布尔代数。所以集合本来就有这套工具。Lean 不用从零再造并和补。
+
+### Lean
+
+```lean
+-- A set answers yes or no for every object.
+-- Yes / no already is Boolean algebra.
+-- So the package is already there.
+```
+
+### Editor
+
+lean
+
+### Next en
+
+Then < on sets means proper subset.
+
+### Next zh
+
+于是集合上的 <，就是真子集
+
+## Beat 14: Then < on sets means proper subset
+
+### Title zh
+
+于是 < 就表示真子集
+
+### English
+
+Lean takes the package, then reads it on sets: `≤` means inside, `<` means inside one way, not the other.
+
+`⊂` is that same `<`. The sentence from class is now something a computer can check.
+
+### Chinese
+
+Lean 接上这套工具，再读到集合上：`≤` 表示在里面，`<` 表示这边在里面、反过来不在。
+
+`⊂` 就是这个 `<`。课堂上那句，现在电脑也能检查。
+
+### Lean
+
+```lean
+-- mathlib4/Mathlib/Order/BooleanAlgebra/Set.lean
+instance instBooleanAlgebra : BooleanAlgebra (Set α) :=
+  { (inferInstance : BooleanAlgebra (α → Prop)) with
+    le := (· ≤ ·),
+    lt := fun s t => s ⊆ t ∧ ¬t ⊆ s }
+
+instance : HasSSubset (Set α) := ⟨(· < ·)⟩
+```
+
+### Editor
+
+lean
+
+### Next en
+
+Two lines: the package vs the sentence from class.
+
+### Next zh
+
+两行：工具包的说法，对上课堂上那句
+
+## Beat 15: The package vs the sentence from class
+
+### Title zh
+
+工具包的说法，对上课堂上那句
+
+### English
+
+The package says: `s ⊂ t` means `s` is inside `t`, and `t` is not inside `s`.
+
+Class says: inside, and not the same set. A computer can prove those two sentences match.
+
+### Chinese
+
+工具包说：`s ⊂ t` 表示 `s` 在 `t` 里，并且 `t` 不在 `s` 里。
+
+课堂上说：在里面，并且不是同一个。电脑可以证明这两句是同一句话。
+
+### Lean
+
+```lean
+-- mathlib4/Mathlib/Data/Set/Basic.lean
+theorem ssubset_def : (s ⊂ t) = (s ⊆ t ∧ ¬t ⊆ s) := rfl
+
+protected theorem ssubset_iff_subset_ne :
+  s ⊂ t ↔ s ⊆ t ∧ s ≠ t
+```
+
+### Editor
+
+lean
+
+### Next en
+
+Why the long way was worth it.
+
+### Next zh
+
+绕远路，图的是什么
+
+## Beat 16: ⊂ is just the < of ⊆
+
+### Title zh
+
+⊂ 就是 ⊆ 的那个 <
+
+### English
+
+`⊆` works like `≤` on numbers. The matching `<` on sets is `⊂`.
+
+Boolean algebra was only there so this match is given to you, not written by hand.
+
+### Chinese
+
+`⊆` 就像数字里的 `≤`。配上的那个 `<`，在集合上就是 `⊂`。
+
+用布尔代数，只是为了把这个对应白送给你，不用手写。
+
+### Lean
+
+```lean
+-- On numbers:  a < b  ↔  a ≤ b and a ≠ b
+-- On sets:     s ⊂ t  ↔  s ⊆ t and s ≠ t
+```
+
+### Editor
+
+lean
+
+### Next en
+
+The usual facts come with it.
+
+### Next zh
+
+那些顺口的事实，会跟着来
+
+## Beat 17: The usual facts, for free
+
+### Title zh
+
+那些顺口的事实，白送
+
+### English
+
+A set is not a proper subset of itself. You cannot have both `A ⊂ B` and `B ⊂ A`. Chains still work.
+
+In class these feel obvious. On a computer they arrive once the package is plugged in.
+
+### Chinese
+
+集合不是自己的真子集。不能同时 `A ⊂ B` 又 `B ⊂ A`。一串还能接下去。
+
+课堂上觉得这是废话。电脑上，工具包接上，这些就有了。
+
+### Lean
+
+```lean
+theorem lt_irrefl (s : Set α) : ¬ s ⊂ s
+theorem lt_asymm : s ⊂ t → ¬ t ⊂ s
+theorem lt_trans : s ⊂ t → t ⊂ u → s ⊂ u
+```
+
+### Editor
+
+lean
+
+### Next en
+
+Turn never took that long way first.
+
+### Next zh
+
+Turn 没有先走那条远路
+
+## Beat 18: Turn writes a relation, not a toolkit first
+
+### Title zh
+
+Turn 先写关系，不先接工具包
+
+### English
+
+Second difference, now that you saw Lean’s road. Turn-Lang just names “subset” as a relation.
+
+The everyday version is written first. You do not need Boolean algebra on the page before the class sentence can appear.
+
+### Chinese
+
+看过 Lean 的远路，第二个差别就清楚了。Turn-Lang 只是给“子集”起个关系名。
+
+日常那个版本先写上。不必先在纸上接布尔代数，课堂上那句就能出现。
 
 ### Turn-Lang
+
+```turn
+relation Subset(T: Any, A B: Set<T>): PropModified {
+    @notation({A} ~ " ⊆ " ~ {B})
+    default: Prop {
+        forall x: T |- x in A -> x in B
+    }
+}
+```
+
+### Editor
+
+turn
+
+### Next en
+
+Proper subset is that relation, plus not equal.
+
+### Next zh
+
+真子集：这个关系，再加上不相等
+
+## Beat 19: Proper subset is the class sentence, in one place
+
+### Title zh
+
+真子集：课堂上那句，写在一块
+
+### English
+
+Add “not equal” to everyday subset. That is the sentence from class, and a computer can check it.
+
+Lean got the same sentence by plugging in Boolean algebra. Turn wrote the sentence first. The toolkit can wait.
+
+### Chinese
+
+在日常子集上加上“不相等”。就是课堂上那句，电脑也能检查。
+
+Lean 靠接上布尔代数找回同一句。Turn 先写这一句。工具包可以以后再说。
+
+### Turn-Lang
+
+```turn
+relation Subset(T: Any, A B: Set<T>): PropModified {
+    @notation({A} ~ " ⊆ " ~ {B})
+    default: Prop {
+        forall x: T |- x in A -> x in B
+    },
+    @notation({A} ~ " ⊊ " ~ {B})
+    proper: Prop {
+        |- { default(A, B); not SetEq(A, B); }
+    }
+}
+```
+
+### Editor
+
+turn
+
+### Next en
+
+One class sentence. Two ways to write it.
+
+### Next zh
+
+课堂上同一句，两种写法
+
+## Beat 20: One class sentence, two ways to write it
+
+### Title zh
+
+课堂上同一句，两种写法
+
+### English
+
+In class, proper subset is one sentence. A computer needs that sentence written down.
+
+Lean borrows Boolean algebra so `⊂` works like `<` next to `⊆`. Turn writes the sentence first. Next time: what `=` is asking.
+
+### Chinese
+
+课堂上，真子集就是一句。电脑需要把这句写下来。
+
+Lean 借用布尔代数，让 `⊂` 像 `⊆` 旁边的 `<`。Turn 先写这一句。下期：等号在问什么。
+
+### Turn-Lang
+
 ```turn
 relation SetEq(T: Any, A B: Set<T>): Prop {
     |- {
@@ -484,10 +807,13 @@ relation SetEq(T: Any, A B: Set<T>): Prop {
 ```
 
 ### Editor
+
 turn
 
 ### Next en
+
 Next: set equality.
 
 ### Next zh
+
 下期：集合相等

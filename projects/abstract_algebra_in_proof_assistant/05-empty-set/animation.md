@@ -2,6 +2,10 @@
 videoOps: 1
 scriptId: 05-empty-set
 title: 05_empty_set
+socialTitleEnglish: "5. Empty set: nothing is in it"
+socialTitleChina: "5. 空集：对每个对象，都不在里面"
+promotionalDescription: "The empty set is not a tiny bag. It is a membership rule: nobody belongs."
+promotionalDescriptionChina: "空集（empty set）不是很小的一袋子。它是一条成员条件：对每一个对象，答案都是不属于这个集合。"
 format: landscape
 fps: 30
 width: 1920

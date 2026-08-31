@@ -10,6 +10,8 @@ import type { OutdoorLayout } from './layout';
 import { FilmScreen } from './pages/FilmScreen/FilmScreen';
 import { LibraryScreen } from './pages/LibraryScreen/LibraryScreen';
 import { PlatformsScreen } from './pages/PlatformsScreen/PlatformsScreen';
+import { PublishPlanScreen } from './pages/PublishPlanScreen/PublishPlanScreen';
+import { MassPublishScreen } from './pages/MassPublishScreen/MassPublishScreen';
 import { AnimationEditorScreen } from './pages/AnimationEditorScreen/AnimationEditorScreen';
 import { BeatPosterPublishScreen } from './pages/BeatPosterPublishScreen/BeatPosterPublishScreen';
 import { ScriptDetailScreen } from './pages/ScriptDetailScreen/ScriptDetailScreen';
@@ -57,6 +59,10 @@ function OutdoorRouteSwitch() {
       return <AnimationEditorScreen scriptId={route.scriptId} />;
     case 'platforms':
       return <PlatformsScreen />;
+    case 'publish-plan':
+      return <PublishPlanScreen />;
+    case 'mass-publish':
+      return <MassPublishScreen />;
     case 'film':
       return null;
     default: {

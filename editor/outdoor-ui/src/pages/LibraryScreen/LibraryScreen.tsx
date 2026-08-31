@@ -68,7 +68,7 @@ export function LibraryScreen() {
     onOpenSettings,
     offlineFilming,
   } = useOutdoorUi();
-  const { navigateToPlatforms, navigateToScript } = useOutdoorRoute();
+  const { navigateToPlatforms, navigateToPublishPlan, navigateToMassPublish, navigateToScript } = useOutdoorRoute();
   const [catalog, setCatalog] = useState<VideoOpsCatalog | null>(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -165,6 +165,8 @@ export function LibraryScreen() {
   const headerActions = [
     { label: "Mac", onPress: onOpenSettings },
     { label: "Platforms", onPress: navigateToPlatforms },
+    { label: "Publish plan", onPress: navigateToPublishPlan },
+    { label: "Mass publish", onPress: navigateToMassPublish },
     {
       label: refreshing ? "Refreshing…" : "Refresh",
       onPress: () => {

@@ -2,8 +2,8 @@
   "version": 1,
   "scriptId": "03-proper-subset",
   "titleEnglish": "03_proper_subset",
-  "titleChina": "03_proper_subset",
-  "title": "03_proper_subset",
+  "titleChina": "3. 真子集：⊂ 就是 ⊆ 的严格序",
+  "title": "3. Proper subset: ⊂ is the strict order of ⊆",
   "generatedAt": "2026-07-25T08:06:04.991Z",
   "source": {},
   "english": {
@@ -38,28 +38,56 @@
   },
   "china": {
     "bilibili": {
-      "title": "03_proper_subset",
-      "body": "03_proper_subset\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+      "title": "3. 真子集：比普通子集多一句不相等",
+      "body": "真子集不是另起一套定义。它就是普通子集，再加上两边并不一样：A 被 B 包含，但 B 并不被 A 包含。\n\n#证明助手 #抽象代数 #形式化数学"
     },
     "douyin": {
-      "title": "Proper subset — variant on the same relation",
-      "body": "Proper subset — variant on the same relation\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+      "title": "3. 真子集：比普通子集多一句不相等",
+      "body": "真子集 = 普通子集，再加不相等。\n\n#证明助手 #抽象代数"
     },
     "xiaohongshu": {
-      "title": "Proper subset — var…",
-      "body": "Proper subset — variant on the same relation\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+      "title": "3. 真子集：比普通子集多一句不相等",
+      "body": "真子集不是另起一套定义。已经是子集，而且反过来不是。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享"
     },
     "weibo": {
-      "title": "Proper subset — variant on the same relation",
-      "body": "Proper subset — variant on the same relation\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+      "title": "3. 真子集：比普通子集多一句不相等",
+      "body": "真子集就是普通子集，再加上两边不一样。\n\n#证明助手 #抽象代数"
     },
     "wechat_channels": {
-      "title": "Proper subset — variant on the same relation",
-      "body": "Proper subset — variant on the same relation\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+      "title": "3. 真子集：比普通子集多一句不相等",
+      "body": "真子集不是另起炉灶。普通子集，再加上不相等。\n\n#证明助手 #抽象代数"
     },
     "kuaishou": {
-      "title": "Proper subset — variant on the same relation",
-      "body": "Proper subset — variant on the same relation\n\n#TurnLang #Lean4 #Lean #Mathlib #形式化方法 #形式化数学 #证明助手 #抽象代数 #完全形式化 #类型论"
+      "title": "3. 真子集：比普通子集多一句不相等",
+      "body": "真子集：普通子集，再加不相等。\n\n#证明助手 #抽象代数"
+    }
+  },
+  "infographic": {
+    "china": {
+      "xiaohongshu": {
+        "title": "真子集｜比普通子集多一句",
+        "body": "真子集不是另起一套定义。\n\n它就是普通子集，再加上两边并不一样：A 被 B 包含，但 B 并不被 A 包含。\n\n下一期再专门讲集合相等。左滑 15 张看完。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享"
+      },
+      "bilibili": {
+        "title": "【信息图】03 真子集：比普通子集多一句不相等",
+        "body": "真子集不是另起炉灶。已经是子集，而且反过来不是。证明助手里，这句话可以复用子集，再补上不相等。\n\n15 张信息图左滑看完。\n\n#证明助手 #抽象代数 #形式化数学"
+      },
+      "douyin": {
+        "title": "真子集｜15 张信息图",
+        "body": "不是另起炉灶，是普通子集的严格版。左滑 15 张看完。\n\n#证明助手 #抽象代数 #干货分享"
+      },
+      "weibo": {
+        "title": "03 真子集｜比普通子集多一句不相等",
+        "body": "真子集 = 普通子集 + 不相等。15 张信息图左滑。#证明助手 #抽象代数"
+      },
+      "wechat_channels": {
+        "title": "03 真子集：比普通子集多一句不相等（15 张）",
+        "body": "真子集不是另起一套定义。普通子集，再加上两边不一样。\n\n15 张信息图。"
+      },
+      "kuaishou": {
+        "title": "真子集｜15 张讲清楚",
+        "body": "普通子集，再加不相等。15 张左滑看完。\n\n#证明助手 #抽象代数"
+      }
     }
   }
 }
