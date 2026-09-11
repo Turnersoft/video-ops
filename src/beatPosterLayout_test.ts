@@ -3,7 +3,7 @@ import {
   MIN_EDITOR_FONT_SIZE,
   estimateTextUnits,
   fitBeatPosterCardLayout,
-} from './beatPosterLayout.ts';
+} from "./beatPosterLayout.ts";
 
 function assert(condition: boolean, message: string): void {
   if (!condition) {
@@ -12,9 +12,9 @@ function assert(condition: boolean, message: string): void {
 }
 
 const crowdedParagraphs = [
-  'The aim is the classroom empty set, so Lean still wants the glyph `∅` on the page.',
-  'It does not invent a type `EmptySet`. It keeps `Set α`, then attaches `∅` through a typeclass.',
-  'That typeclass is `EmptyCollection`, from Lean core in `Init/Core.lean`. One field, `emptyCollection : α`, and `∅` is its notation.',
+  "The aim is the classroom empty set, so Lean still wants the glyph `∅` on the page.",
+  "It does not invent a type `EmptySet`. It keeps `Set α`, then attaches `∅` through a typeclass.",
+  "That typeclass is `EmptyCollection`, from Lean core in `Init/Core.lean`. One field, `emptyCollection : α`, and `∅` is its notation.",
 ];
 
 const beat3Code = `-- lean4/src/Init/Core.lean
@@ -30,14 +30,17 @@ notation "∅" => EmptyCollection.emptyCollection
 def Set (α : Type u) := α → Prop
 instance : EmptyCollection (Set α) := ⟨fun _ ↦ False⟩`;
 
-Deno.test('crowded poster code stays at or above the readable floor', () => {
-  for (const [name, code] of [['beat3', beat3Code], ['beat4', beat4Code]] as const) {
+Deno.test("crowded poster code stays at or above the readable floor", () => {
+  for (const [name, code] of [
+    ["beat3", beat3Code],
+    ["beat4", beat4Code],
+  ] as const) {
     const layout = fitBeatPosterCardLayout({
       paragraphs: crowdedParagraphs,
-      codeLines: code.split('\n').length,
+      codeLines: code.split("\n").length,
       hasCode: true,
       hasNextLead: true,
-      titleUnits: estimateTextUnits('Lean hangs ∅ on the empty set'),
+      titleUnits: estimateTextUnits("Lean hangs ∅ on the empty set"),
       codeText: code,
     });
     assert(
@@ -52,14 +55,14 @@ Deno.test('crowded poster code stays at or above the readable floor', () => {
   }
 });
 
-Deno.test('short snippets can still grow above the floor', () => {
+Deno.test("short snippets can still grow above the floor", () => {
   const layout = fitBeatPosterCardLayout({
-    paragraphs: ['A set is a yes-or-no question.'],
+    paragraphs: ["A set is a yes-or-no question."],
     codeLines: 1,
     hasCode: true,
     hasNextLead: true,
     titleUnits: 20,
-    codeText: 'def Set (α : Type u) := α → Prop',
+    codeText: "def Set (α : Type u) := α → Prop",
   });
   assert(
     layout.editorFontSize > MIN_EDITOR_FONT_SIZE,
@@ -67,8 +70,10 @@ Deno.test('short snippets can still grow above the floor', () => {
   );
 });
 
-Deno.test('a very long line wraps instead of shrinking below the floor', () => {
-  const longLine = 'instance : EmptyCollection (Set α) := ⟨fun _ ↦ False⟩  '.repeat(4).trim();
+Deno.test("a very long line wraps instead of shrinking below the floor", () => {
+  const longLine = "instance : EmptyCollection (Set α) := ⟨fun _ ↦ False⟩  "
+    .repeat(4)
+    .trim();
   const layout = fitBeatPosterCardLayout({
     paragraphs: crowdedParagraphs,
     codeLines: 1,

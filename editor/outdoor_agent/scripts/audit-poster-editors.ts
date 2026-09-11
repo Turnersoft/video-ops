@@ -18,6 +18,7 @@ for (const beat of live!.beats) {
     episodeTitleEn: '',
     episodeTitleZh: '',
     poster,
+    beatCount: live!.beats.length,
   });
   const bodyPreview = en.paragraphs.join(' | ').slice(0, 80);
   const codePreview = (en.turnCode || en.leanCode).split('\n').slice(0, 2).join(' / ');

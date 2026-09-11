@@ -32,10 +32,17 @@
  * shown on the poster (default: the beat's code from animation.md).
  * Optional `### Editor` (`lean` or `turn`) pins which pane to show when copy
  * names both dialects but one side should lead the card.
+ * Optional `### Proof` is a tactic chain: `open` seeds the start goal; each
+ * later block is a tactic (first line label, remaining lines the after-goal).
+ * Before-goal is the previous after. Blank line between steps.
+ * `label :: goal` is also accepted. When omitted, Turn `proof { … }` and
+ * Lean `:= by` tactics are extracted automatically.
+ * Each tactic becomes one poster: full before/after goals with context +
+ * claim, unused context grayed, tactic in the middle.
  * Any field left out falls back to the auto-derived copy.
  */
 
-export type BeatPosterPrimaryEditor = 'lean' | 'turn';
+export type BeatPosterPrimaryEditor = "lean" | "turn";
 
 export type BeatPosterMdEntry = {
   beat: number;
@@ -48,6 +55,8 @@ export type BeatPosterMdEntry = {
   leanCode?: string;
   turnCode?: string;
   primaryEditor?: BeatPosterPrimaryEditor;
+  /** Raw `### Proof` body; parsed into proof-panel steps. */
+  proofMarkdown?: string;
 };
 
 export type BeatPosterMdCover = {
@@ -60,43 +69,50 @@ export type BeatPosterMdDocument = {
   beats: Record<number, BeatPosterMdEntry>;
 };
 
-type EntryTextKey = Exclude<keyof BeatPosterMdEntry, 'beat'>;
+type EntryTextKey = Exclude<keyof BeatPosterMdEntry, "beat">;
 
 const SECTION_KEYS: Record<string, EntryTextKey> = {
-  title: 'titleEn',
-  'title en': 'titleEn',
-  'title zh': 'titleZh',
-  english: 'bodyEn',
-  'body en': 'bodyEn',
-  chinese: 'bodyZh',
-  'body zh': 'bodyZh',
-  'next en': 'nextEn',
-  'next zh': 'nextZh',
-  lean: 'leanCode',
-  turn: 'turnCode',
-  'turn-lang': 'turnCode',
-  editor: 'primaryEditor',
-  'editor en': 'primaryEditor',
-  'editor zh': 'primaryEditor',
+  title: "titleEn",
+  "title en": "titleEn",
+  "title zh": "titleZh",
+  english: "bodyEn",
+  "body en": "bodyEn",
+  chinese: "bodyZh",
+  "body zh": "bodyZh",
+  "next en": "nextEn",
+  "next zh": "nextZh",
+  lean: "leanCode",
+  turn: "turnCode",
+  "turn-lang": "turnCode",
+  editor: "primaryEditor",
+  "editor en": "primaryEditor",
+  "editor zh": "primaryEditor",
+  proof: "proofMarkdown",
 };
 
-function normalizePrimaryEditor(value: string): BeatPosterPrimaryEditor | undefined {
+function normalizePrimaryEditor(
+  value: string,
+): BeatPosterPrimaryEditor | undefined {
   const normalized = value.trim().toLowerCase();
-  if (normalized === 'lean' || normalized === 'turn' || normalized === 'turn-lang') {
-    return normalized === 'turn-lang' ? 'turn' : normalized;
+  if (
+    normalized === "lean" ||
+    normalized === "turn" ||
+    normalized === "turn-lang"
+  ) {
+    return normalized === "turn-lang" ? "turn" : normalized;
   }
   return undefined;
 }
 
 function stripCodeFence(value: string): string {
-  const lines = value.split('\n');
-  if (lines[0]?.trim().startsWith('```')) {
+  const lines = value.split("\n");
+  if (lines[0]?.trim().startsWith("```")) {
     lines.shift();
-    if (lines.length && lines[lines.length - 1].trim() === '```') {
+    if (lines.length && lines[lines.length - 1].trim() === "```") {
       lines.pop();
     }
   }
-  return lines.join('\n').trim();
+  return lines.join("\n").trim();
 }
 
 export function parseBeatPosterMd(markdown: string): BeatPosterMdDocument {
@@ -108,17 +124,19 @@ export function parseBeatPosterMd(markdown: string): BeatPosterMdDocument {
   let buffer: string[] = [];
 
   const flushSection = () => {
-    const raw = buffer.join('\n').trim();
+    const raw = buffer.join("\n").trim();
     buffer = [];
     if (!section) {
       return;
     }
     const value =
-      section === 'leanCode' || section === 'turnCode' ? stripCodeFence(raw) : raw;
+      section === "leanCode" || section === "turnCode"
+        ? stripCodeFence(raw)
+        : raw;
     if (editingCover) {
-      if (section === 'bodyEn' && value) {
+      if (section === "bodyEn" && value) {
         cover.bodyEn = value;
-      } else if (section === 'bodyZh' && value) {
+      } else if (section === "bodyZh" && value) {
         cover.bodyZh = value;
       }
       return;
@@ -126,7 +144,7 @@ export function parseBeatPosterMd(markdown: string): BeatPosterMdDocument {
     if (!current) {
       return;
     }
-    if (section === 'primaryEditor') {
+    if (section === "primaryEditor") {
       const editor = normalizePrimaryEditor(value);
       if (editor) {
         current.primaryEditor = editor;
@@ -145,7 +163,7 @@ export function parseBeatPosterMd(markdown: string): BeatPosterMdDocument {
     section = null;
   };
 
-  for (const line of markdown.replace(/\r\n/g, '\n').split('\n')) {
+  for (const line of markdown.replace(/\r\n/g, "\n").split("\n")) {
     if (/^##\s+Cover\b/i.test(line)) {
       flushBlock();
       editingCover = true;
@@ -174,12 +192,12 @@ export function parseBeatPosterMd(markdown: string): BeatPosterMdDocument {
 /** Cover hook from beat-posters.md, if authored. */
 export function beatPosterMdCoverCopy(
   doc: BeatPosterMdDocument | null | undefined,
-  lang: 'en' | 'zh',
+  lang: "en" | "zh",
 ): string {
-  if (lang === 'zh') {
-    return doc?.cover.bodyZh?.trim() || doc?.cover.bodyEn?.trim() || '';
+  if (lang === "zh") {
+    return doc?.cover.bodyZh?.trim() || doc?.cover.bodyEn?.trim() || "";
   }
-  return doc?.cover.bodyEn?.trim() || '';
+  return doc?.cover.bodyEn?.trim() || "";
 }
 
 /** Look up authored copy for a 0-based beat index. */

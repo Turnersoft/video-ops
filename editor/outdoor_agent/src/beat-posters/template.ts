@@ -4,7 +4,15 @@ import { VIDEO_OPS_ROOT } from '../paths.ts';
 import {
   BEAT_POSTER_PREVIEW_FONT_SCALE,
   MIN_EDITOR_FONT_SIZE,
+  PROOF_EDITOR_FONT_SIZE,
 } from '../../../../src/beatPosterLayout.ts';
+import { proofGoalKicker, proofMoveDisplay, proofStepKindLabel, proofUsesKicker } from '../../../../src/beatPosterProof.ts';
+import type {
+  ProofContextFlap,
+  ProofDisplayMark,
+  ProofDisplaySpan,
+  ProofGoalCardView,
+} from '../../../../src/beatPosterProof.ts';
 import path from 'node:path';
 
 /** Same brand files the React preview uses — do not recolor; light-blue stroke vanishes on the card. */
@@ -185,7 +193,105 @@ function editorBlock(spec: BeatPosterSpec, kind: 'lean' | 'turn', autoHeight = f
   </div>`;
 }
 
+function proofSpanClass(mark: ProofDisplayMark): string {
+  switch (mark) {
+    case 'plain':
+      return '';
+    case 'dim':
+      return 'proof-dim';
+    case 'changed':
+      return 'proof-changed';
+    case 'used':
+      return 'proof-used';
+    default: {
+      const _never: never = mark;
+      return _never;
+    }
+  }
+}
+
+function proofSpansHtml(spans: ProofDisplaySpan[], closed = false): string {
+  const body = spans.map((span) => {
+    const cls = proofSpanClass(span.mark);
+    if (!cls) {
+      return escapeHtml(span.text);
+    }
+    return `<span class="${cls}">${escapeHtml(span.text)}</span>`;
+  }).join('');
+  const wrapClass = closed ? 'proof-goal-text proof-after closed' : 'proof-goal-text';
+  return `<div class="${wrapClass}">${body}</div>`;
+}
+
+function proofFlapHtml(flap: ProofContextFlap): string {
+  const stacked = flap.stacked ? 'proof-flap stacked' : 'proof-flap current';
+  return `<div class="${stacked}">${proofSpansHtml([{ text: flap.text, mark: flap.mark }])}</div>`;
+}
+
+function proofGoalCardHtml(
+  view: ProofGoalCardView,
+  kicker: string,
+  variant: 'before' | 'after' | 'closed',
+): string {
+  if (view.flaps.length === 0 && view.claim.length === 0) {
+    return '';
+  }
+  const cardClass = variant === 'closed'
+    ? 'proof-goal-card proof-goal-card-closed'
+    : variant === 'after'
+      ? 'proof-goal-card proof-goal-card-after'
+      : 'proof-goal-card';
+  const flaps = view.flaps.length > 0
+    ? `<div class="proof-rolodex">${view.flaps.map(proofFlapHtml).join('')}</div>`
+    : '';
+  const turnstile = view.closed ? '' : '<span class="proof-turnstile">⊢</span>';
+  return `<div class="${cardClass}">
+      <div class="proof-goal-kicker">${escapeHtml(kicker)}</div>
+      ${flaps}
+      <div class="proof-claim-face">${turnstile}${proofSpansHtml(view.claim, view.closed)}</div>
+    </div>`;
+}
+
+function proofPanelBlock(spec: BeatPosterSpec): string {
+  if (spec.proofSteps.length === 0) {
+    return '';
+  }
+  const kind = spec.layout.primaryEditor;
+  const editorPx = previewToExportPx(
+    PROOF_EDITOR_FONT_SIZE * BEAT_POSTER_PREVIEW_FONT_SCALE,
+    spec.width,
+  );
+  const lastIndex = spec.proofSteps.length - 1;
+  const closingProof = spec.proofPartIndex === spec.proofPartCount - 1;
+  const stepsHtml = spec.proofSteps
+    .map((step, index) => {
+      const view = proofMoveDisplay(step, closingProof && index === lastIndex);
+      const afterVariant = view.after.closed ? 'closed' : 'after';
+      const uses = view.usedOutsideGoal.length > 0
+        ? `<div class="proof-uses-row"><span class="proof-uses-kicker">${escapeHtml(proofUsesKicker(spec.lang))}</span>${
+          view.usedOutsideGoal.map((name) => `<span class="proof-uses-chip">${escapeHtml(name)}</span>`).join('')
+        }</div>`
+        : '';
+      return `<div class="proof-move">
+        ${proofGoalCardHtml(view.before, proofGoalKicker(spec.lang, 'before'), 'before')}
+        <div class="proof-tactic">
+          <div class="proof-step-label">${escapeHtml(step.label)}</div>
+          ${uses}
+        </div>
+        ${proofGoalCardHtml(view.after, proofGoalKicker(spec.lang, 'after'), afterVariant)}
+      </div>`;
+    })
+    .join('');
+  return `<div class="proof-stage ${kind}" style="font-size:${editorPx}px">
+    <div class="proof-body">${stepsHtml}</div>
+  </div>`;
+}
+
 function codeSection(spec: BeatPosterSpec): string {
+  if (spec.proofSteps.length > 0) {
+    return `<article class="card code-card code-card-auto" style="flex:0 0 auto">
+    <div class="editors single">${proofPanelBlock(spec)}</div>
+  </article>`;
+  }
   const code = spec.layout.primaryEditor === 'lean' ? spec.leanCode : spec.turnCode;
   if (!code.trim()) {
     return '';
@@ -198,7 +304,13 @@ function codeSection(spec: BeatPosterSpec): string {
 /** Scrapbook-style poster — tilted cards + code editors (4:3 portrait). */
 export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
   const beatTitle = escapeHtml(spec.beatTitle);
-  const titlePx = previewToExportPx(Math.max(spec.layout.titleFontSize * 0.42, 22), spec.width);
+  const isProofPoster = spec.proofSteps.length > 0;
+  const titlePx = previewToExportPx(
+    isProofPoster
+      ? spec.layout.titleFontSize * 0.42
+      : Math.max(spec.layout.titleFontSize * 0.42, 22),
+    spec.width,
+  );
   const logoH = previewToExportPx(32, spec.width);
   const logoMaxW = previewToExportPx(160, spec.width);
   const editorLabelPx = previewToExportPx(26, spec.width);
@@ -210,8 +322,10 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
   const titleEmojiSm = previewToExportPx(14, spec.width);
   const titleEmojiNudge = previewToExportPx(10, spec.width);
   const isTurnPoster = spec.layout.primaryEditor === 'turn';
-  const posterTone = isTurnPoster ? 'poster-turn' : 'poster-lean';
-  const sparkle = isTurnPoster && spec.decorations.sparkle
+  const posterTone = `${isTurnPoster ? 'poster-turn' : 'poster-lean'}${isProofPoster ? ' proof-poster' : ''}`;
+  const sparkle = isProofPoster
+    ? ''
+    : isTurnPoster && spec.decorations.sparkle
     ? '<div class="sparkle s1">✨</div><div class="sparkle s2">🔥</div>'
     : isTurnPoster
     ? '<div class="sparkle s1">✧</div>'
@@ -281,25 +395,30 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
       flex-shrink: 0;
     }
     .title-paper {
-      transform: rotate(${spec.decorations.titleTilt}deg);
+      transform: rotate(${isProofPoster ? 0 : spec.decorations.titleTilt}deg);
       position: relative;
-      border-radius: 22px;
-      padding: 16px 18px 14px;
+      border-radius: ${isProofPoster ? previewToExportPx(12, spec.width) : 22}px;
+      padding: ${isProofPoster ? `${previewToExportPx(8, spec.width)}px ${previewToExportPx(10, spec.width)}px` : '16px 18px 14px'};
       overflow: visible;
+      display: flex;
+      flex-direction: ${isProofPoster ? 'row' : 'column'};
+      align-items: ${isProofPoster ? 'center' : 'flex-start'};
+      justify-content: ${isProofPoster ? 'space-between' : 'flex-start'};
+      gap: ${previewToExportPx(isProofPoster ? 8 : 8, spec.width)}px;
     }
     body.poster-turn .title-paper {
-      background: linear-gradient(180deg, #fffefb 0%, #fff1f5 52%, #ffe8ef 100%);
-      border: 3px solid #ff2442;
-      box-shadow:
+      background: ${isProofPoster ? 'rgba(255, 255, 255, 0.86)' : 'linear-gradient(180deg, #fffefb 0%, #fff1f5 52%, #ffe8ef 100%)'};
+      border: ${isProofPoster ? '1px' : '3px'} solid ${isProofPoster ? 'rgba(255, 36, 66, 0.35)' : '#ff2442'};
+      box-shadow: ${isProofPoster ? 'none' : `
         5px 5px 0 rgba(255, 36, 66, 0.28),
-        0 14px 28px rgba(255, 36, 66, 0.16);
+        0 14px 28px rgba(255, 36, 66, 0.16)`};
     }
     body.poster-lean .title-paper {
       background: linear-gradient(180deg, #ffffff 0%, #f8fafc 58%, #f1f5f9 100%);
-      border: 3px solid #334155;
-      box-shadow:
+      border: ${isProofPoster ? '1px' : '3px'} solid #334155;
+      box-shadow: ${isProofPoster ? 'none' : `
         3px 3px 0 rgba(100, 116, 139, 0.16),
-        0 10px 22px rgba(15, 23, 42, 0.08);
+        0 10px 22px rgba(15, 23, 42, 0.08)`};
     }
     body.poster-turn .title-paper::before {
       content: '✨';
@@ -322,7 +441,9 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
       filter: drop-shadow(0 2px 2px rgba(15, 23, 42, 0.15));
     }
     body.poster-lean .title-paper::before,
-    body.poster-lean .title-paper::after {
+    body.poster-lean .title-paper::after,
+    body.proof-poster .title-paper::before,
+    body.proof-poster .title-paper::after {
       content: none;
     }
     h1 {
@@ -334,6 +455,29 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
     }
     body.poster-turn h1 { color: #111827; }
     body.poster-lean h1 { color: #334155; font-weight: 800; }
+    body.proof-poster h1 { font-weight: 800; flex: 1 1 auto; min-width: 0; }
+    .step-kind-chip {
+      font-size: ${previewToExportPx(10, spec.width)}px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      padding: ${previewToExportPx(3, spec.width)}px ${previewToExportPx(8, spec.width)}px;
+    }
+    body.poster-turn .step-kind-chip {
+      color: #be123c;
+      background: #ffe4e6;
+      border: 1px solid rgba(255, 36, 66, 0.35);
+    }
+    body.poster-lean .step-kind-chip {
+      color: #334155;
+      background: #e2e8f0;
+      border: 1px solid rgba(100, 116, 139, 0.35);
+    }
+    body.proof-poster .step-kind-chip {
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
     .cards {
       flex: 1 1 0;
       display: flex;
@@ -563,6 +707,164 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
       flex: 1;
       min-height: 0;
     }
+    body.proof-poster .cards {
+      overflow: hidden;
+    }
+    body.proof-poster .card.code-card {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      padding: 0;
+      overflow: hidden;
+    }
+    .proof-body {
+      display: flex;
+      flex-direction: column;
+      gap: ${previewToExportPx(8, spec.width)}px;
+      padding: 0;
+      font-family: "SF Mono", "JetBrains Mono", "Menlo", monospace;
+    }
+    .proof-stage {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .proof-move {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: ${previewToExportPx(6, spec.width)}px;
+    }
+    .proof-goal-card {
+      border-radius: ${previewToExportPx(8, spec.width)}px;
+      padding: ${previewToExportPx(5, spec.width)}px ${previewToExportPx(6, spec.width)}px ${previewToExportPx(6, spec.width)}px;
+      background: #1e1e1e;
+      border: ${previewToExportPx(1, spec.width)}px solid rgba(212, 212, 212, 0.14);
+    }
+    .proof-goal-card-after {
+      border-color: rgba(220, 220, 170, 0.32);
+      background: #1f221c;
+    }
+    .proof-goal-card-closed {
+      border-color: rgba(78, 201, 176, 0.4);
+      background: #17211f;
+    }
+    .proof-goal-kicker {
+      font-size: 0.68em;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #858585;
+      margin-bottom: ${previewToExportPx(3, spec.width)}px;
+    }
+    .proof-rolodex {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: ${previewToExportPx(2, spec.width)}px;
+    }
+    .proof-flap {
+      position: relative;
+      border-radius: ${previewToExportPx(5, spec.width)}px;
+      overflow: hidden;
+      padding: ${previewToExportPx(1, spec.width)}px ${previewToExportPx(6, spec.width)}px;
+    }
+    .proof-flap.stacked {
+      margin-bottom: -${previewToExportPx(2, spec.width)}px;
+      opacity: 0.5;
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 0.78em;
+    }
+    .proof-flap.current {
+      z-index: 1;
+      margin-bottom: ${previewToExportPx(2, spec.width)}px;
+      background: rgba(220, 220, 170, 0.1);
+      border: ${previewToExportPx(1, spec.width)}px solid rgba(220, 220, 170, 0.3);
+      padding: ${previewToExportPx(2, spec.width)}px ${previewToExportPx(6, spec.width)}px;
+    }
+    .proof-claim-face {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: ${previewToExportPx(5, spec.width)}px;
+      z-index: 2;
+      padding: ${previewToExportPx(4, spec.width)}px ${previewToExportPx(6, spec.width)}px;
+      border-radius: ${previewToExportPx(6, spec.width)}px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .proof-turnstile {
+      color: #7dd3fc;
+      font-size: 1em;
+      font-weight: 700;
+      line-height: 1.28;
+      flex-shrink: 0;
+    }
+    .proof-tactic {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: ${previewToExportPx(3, spec.width)}px;
+    }
+    .proof-step-label {
+      color: #c586c0;
+      font-size: 0.88em;
+      font-weight: 650;
+      line-height: 1.25;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      text-align: center;
+      background: rgba(197, 134, 192, 0.14);
+      border-radius: 999px;
+      padding: ${previewToExportPx(3, spec.width)}px ${previewToExportPx(8, spec.width)}px;
+    }
+    .proof-uses-row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: ${previewToExportPx(3, spec.width)}px;
+    }
+    .proof-uses-kicker {
+      font-size: 0.65em;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #64748b;
+    }
+    .proof-uses-chip {
+      font-size: 0.78em;
+      font-weight: 650;
+      color: #082f49;
+      background: #7dd3fc;
+      border-radius: 999px;
+      padding: ${previewToExportPx(1, spec.width)}px ${previewToExportPx(6, spec.width)}px;
+    }
+    .proof-goal-text {
+      color: #d4d4d4;
+      font-family: "SF Mono", "JetBrains Mono", "Menlo", monospace;
+      font-size: 1em;
+      line-height: 1.28;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+    .proof-dim { color: #6b7280; }
+    .proof-changed {
+      color: #dcdcaa;
+      background: rgba(220, 220, 170, 0.22);
+      border-radius: 2px;
+    }
+    .proof-used {
+      color: #082f49;
+      background: #7dd3fc;
+      border-radius: 2px;
+      font-weight: 700;
+    }
+    .proof-after.closed {
+      color: #4ec9b0;
+      font-style: italic;
+    }
     .code-line {
       display: grid;
       grid-template-columns: 2.25em 1fr;
@@ -605,7 +907,7 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
     .footer {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: space-between;
       gap: ${previewToExportPx(8, spec.width)}px;
       position: relative;
       z-index: 1;
@@ -618,6 +920,11 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
     body.poster-lean .footer { color: #64748b; font-weight: 800; }
     .footer .vs {
       flex-shrink: 0;
+    }
+    .footer .page {
+      flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.08em;
     }
     .sparkle {
       position: absolute;
@@ -635,6 +942,9 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
   <header class="header">
     <div class="title-paper">
       <h1>${beatTitle}</h1>
+      ${spec.proofSteps.length > 0
+        ? `<span class="step-kind-chip">${escapeHtml(proofStepKindLabel(spec.layout.primaryEditor, spec.lang))}</span>`
+        : ''}
     </div>
   </header>
   <section class="cards">
@@ -643,6 +953,7 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
     ${nextLeadCard(spec)}
   </section>
   <footer class="footer">
+    <span class="page">${escapeHtml(spec.pageLabel)}</span>
     <span class="vs">Lean 4 vs Turn-Lang</span>
   </footer>
 </body>
@@ -654,6 +965,7 @@ export function buildBeatPosterCoverHtml(spec: BeatPosterCoverSpec): string {
   const coverHeadline = escapeHtml(spec.coverHeadline);
   const tagline = renderCoverTaglineHtml(spec.tagline);
   const beatCountLabel = escapeHtml(spec.beatCountLabel);
+  const pageLabel = escapeHtml(spec.pageLabel);
   const swipeHint = escapeHtml(spec.swipeHint);
   const seriesHeaderUri = spec.lang === 'zh' ? COVER_HEADER_ZH_URI : COVER_HEADER_EN_URI;
   const seriesHeaderAlt = spec.lang === 'zh' ? '抽象代数系列' : 'Abstract Algebra in Proof Assistants';
@@ -942,12 +1254,21 @@ export function buildBeatPosterCoverHtml(spec: BeatPosterCoverSpec): string {
     }
     .footer {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
-      gap: 4px;
+      justify-content: flex-start;
+      gap: ${previewToExportPx(10, w)}px;
       position: relative;
       z-index: 1;
       flex-shrink: 0;
+    }
+    .page {
+      flex-shrink: 0;
+      font-size: ${swipeHintPx}px;
+      font-weight: 900;
+      color: #1d4ed8;
+      letter-spacing: 0.08em;
+      font-variant-numeric: tabular-nums;
     }
     .swipe-hint {
       font-size: ${swipeHintPx}px;
@@ -976,6 +1297,7 @@ export function buildBeatPosterCoverHtml(spec: BeatPosterCoverSpec): string {
     <div class="beat-badge"><span>${beatCountLabel}</span></div>
   </div>
   <footer class="footer">
+    <p class="page">${pageLabel}</p>
     <p class="swipe-hint">${swipeHint}</p>
   </footer>
 </body>

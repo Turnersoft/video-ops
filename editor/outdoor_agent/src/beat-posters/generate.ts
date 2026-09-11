@@ -2,7 +2,7 @@ import path from 'node:path';
 
 import { readAnimationMd } from '../animation-md.ts';
 import { fileExists, readJson, writeJson } from '../fs_util.ts';
-import { buildLiveScript } from '../live-script.ts';
+import { buildLiveScript, type LiveScript } from '../live-script.ts';
 import {
   ensureDir,
   scriptBeatPosterPngPath,
@@ -14,15 +14,18 @@ import {
 } from '../paths.ts';
 import { nowIso } from '../schema.ts';
 import { screenshotHtmlFile } from '../social-cards/render.ts';
-import { buildBeatPosterCoverSpec, buildBeatPosterSpec, parseAnimationFrontmatter } from './content.ts';
+import { buildBeatPosterCoverSpec, buildBeatPosterSpecs, parseAnimationFrontmatter, stampBeatPosterAlbumPages } from './content.ts';
 import { buildBeatPosterCoverHtml, buildBeatPosterHtml } from './template.ts';
 import { readBeatPosterMd } from './poster-md.ts';
 import { beatPosterMdCoverCopy, beatPosterMdEntryFor, parseBeatPosterMd } from '../../../../src/beatPosterMd.ts';
+import type { BeatPosterMdDocument } from '../../../../src/beatPosterMd.ts';
+import { parentBeatIdFromPosterId } from '../../../../src/beatPosterProof.ts';
 import type {
   BeatPosterFile,
   BeatPosterGenerateProgress,
   BeatPosterLang,
   BeatPosterListItem,
+  BeatPosterSpec,
   BeatPostersManifest,
 } from './types.ts';
 import { BEAT_POSTER_COVER_ID, BEAT_POSTER_HEIGHT, BEAT_POSTER_WIDTH } from './types.ts';
@@ -167,6 +170,31 @@ function saveManifest(scriptId: string, manifest: BeatPostersManifest): void {
   writeJson(scriptBeatPostersManifestPath(scriptId), manifest);
 }
 
+function albumSpecsForLang(
+  scriptId: string,
+  live: LiveScript,
+  lang: BeatPosterLang,
+  seriesTitle: string,
+  frontmatter: Record<string, string>,
+  posterDoc: BeatPosterMdDocument | null,
+): BeatPosterSpec[] {
+  return stampBeatPosterAlbumPages(
+    live.beats.flatMap((entry) =>
+      buildBeatPosterSpecs({
+        scriptId,
+        beat: entry,
+        nextBeat: live.beats.find((item) => item.index === entry.index + 1) ?? null,
+        lang,
+        seriesTitle,
+        episodeTitleEn: frontmatter.socialTitleEnglish ?? live.title,
+        episodeTitleZh: frontmatter.socialTitleChina ?? frontmatter.socialTitleEnglish ?? live.title,
+        poster: beatPosterMdEntryFor(posterDoc, entry.index),
+        beatCount: live.beats.length,
+      })
+    ),
+  );
+}
+
 function posterAssetUrl(
   scriptId: string,
   beatId: string,
@@ -185,7 +213,9 @@ export async function generateBeatPoster(
   if (!live?.beats.length) {
     throw new Error(`No beats found for ${scriptId} — sync animation.md first`);
   }
-  const beat = live.beats.find((entry) => entry.id === beatId);
+  const knownIds = live.beats.map((entry) => entry.id);
+  const parentId = parentBeatIdFromPosterId(beatId, knownIds);
+  const beat = live.beats.find((entry) => entry.id === parentId);
   if (!beat) {
     throw new Error(`Beat not found: ${beatId}`);
   }
@@ -193,58 +223,85 @@ export async function generateBeatPoster(
   const md = readAnimationMd(scriptId);
   const frontmatter = md.exists ? parseAnimationFrontmatter(md.markdown) : {};
   const seriesTitle = loadSeriesTitle(scriptId);
-  const nextBeat = live.beats.find((entry) => entry.index === beat.index + 1) ?? null;
   const posterMd = readBeatPosterMd(scriptId);
   const posterDoc = posterMd.exists ? parseBeatPosterMd(posterMd.markdown) : null;
-  const spec = buildBeatPosterSpec({
+  const allSpecs = albumSpecsForLang(
     scriptId,
-    beat,
-    nextBeat,
+    live,
     lang,
     seriesTitle,
-    episodeTitleEn: frontmatter.socialTitleEnglish ?? live.title,
-    episodeTitleZh: frontmatter.socialTitleChina ?? frontmatter.socialTitleEnglish ?? live.title,
-    poster: beatPosterMdEntryFor(posterDoc, beat.index),
-  });
+    frontmatter,
+    posterDoc,
+  );
+  const specs = allSpecs.filter((spec) => spec.beatId === beat.id);
+  if (specs.length === 0) {
+    throw new Error(`No poster spec for ${beat.id}`);
+  }
 
   const dir = scriptBeatPostersLangDir(scriptId, lang);
   ensureDir(dir);
-  const pngPath = scriptBeatPosterPngPath(scriptId, beatId, lang);
-  await screenshotHtmlToPng(buildBeatPosterHtml(spec), pngPath, spec.width, spec.height);
-  try {
-    const { exportBeatPosterPreviewJpeg } = await import('./preview-jpeg.ts');
-    await exportBeatPosterPreviewJpeg(scriptId, beatId, lang);
-  } catch {
-    // preview JPEG is best-effort for the web UI
+  const written = new Set<string>();
+  const createdAt = nowIso();
+  const entries: BeatPosterFile[] = [];
+  for (const spec of specs) {
+    const pngPath = scriptBeatPosterPngPath(scriptId, spec.posterId, lang);
+    await screenshotHtmlToPng(buildBeatPosterHtml(spec), pngPath, spec.width, spec.height);
+    written.add(`${spec.posterId}.png`);
+    entries.push({
+      beatId: spec.posterId,
+      beatIndex: beat.index,
+      lang,
+      width: spec.width,
+      height: spec.height,
+      htmlPath: '',
+      pngPath,
+      createdAt,
+    });
   }
 
-  const createdAt = nowIso();
-  const entry: BeatPosterFile = {
-    beatId,
-    beatIndex: beat.index,
-    lang,
-    width: spec.width,
-    height: spec.height,
-    htmlPath: '',
-    pngPath,
-    createdAt,
-  };
+  for (const entry of Deno.readDirSync(dir)) {
+    if (!entry.isFile || !entry.name.endsWith('.png')) {
+      continue;
+    }
+    const stem = entry.name.slice(0, -4);
+    if (parentBeatIdFromPosterId(stem, knownIds) !== beat.id) {
+      continue;
+    }
+    if (!written.has(entry.name)) {
+      Deno.removeSync(path.join(dir, entry.name));
+    }
+  }
 
   const manifest = loadManifest(scriptId);
-  const key = `${beatId}:${lang}`;
-  manifest.posters = manifest.posters.filter(
-    (poster) => `${poster.beatId}:${poster.lang}` !== key,
-  );
-  manifest.posters.push(entry);
+  manifest.posters = manifest.posters.filter((poster) => {
+    if (poster.lang !== lang) {
+      return true;
+    }
+    return parentBeatIdFromPosterId(poster.beatId, knownIds) !== beat.id;
+  });
+  manifest.posters.push(...entries);
   manifest.beatCount = live.beats.length;
   manifest.updatedAt = createdAt;
   saveManifest(scriptId, manifest);
-  return entry;
+  try {
+    const { exportBeatPosterPreviewJpeg } = await import('./preview-jpeg.ts');
+    for (const spec of specs) {
+      await exportBeatPosterPreviewJpeg(scriptId, spec.posterId, lang);
+    }
+  } catch {
+    // preview JPEG is best-effort for the web UI
+  }
+  const last = entries[entries.length - 1];
+  if (!last) {
+    throw new Error(`No posters written for ${beat.id}`);
+  }
+  return last;
 }
 
 export async function generateBeatPosterCover(
   scriptId: string,
   lang: BeatPosterLang,
+  posterSlideCount?: number,
 ): Promise<BeatPosterFile> {
   const live = await buildLiveScript(scriptId);
   if (!live?.beats.length) {
@@ -258,6 +315,14 @@ export async function generateBeatPosterCover(
   const posterDoc = posterMd.exists ? parseBeatPosterMd(posterMd.markdown) : null;
   const coverEn = beatPosterMdCoverCopy(posterDoc, 'en');
   const coverZh = beatPosterMdCoverCopy(posterDoc, 'zh');
+  const slideCount = posterSlideCount ?? albumSpecsForLang(
+    scriptId,
+    live,
+    lang,
+    seriesTitle,
+    frontmatter,
+    posterDoc,
+  ).length;
   const spec = buildBeatPosterCoverSpec({
     scriptId,
     lang,
@@ -266,17 +331,11 @@ export async function generateBeatPosterCover(
     episodeTitleZh: frontmatter.socialTitleChina ?? frontmatter.socialTitleEnglish ?? live.title,
     promotionalDescriptionEn: coverEn || frontmatter.promotionalDescription,
     promotionalDescriptionZh: coverZh || frontmatter.promotionalDescriptionChina,
-    beatCount: live.beats.length,
+    beatCount: slideCount,
   });
 
   const pngPath = scriptBeatPosterPngPath(scriptId, BEAT_POSTER_COVER_ID, lang);
   await screenshotHtmlToPng(buildBeatPosterCoverHtml(spec), pngPath, spec.width, spec.height);
-  try {
-    const { exportBeatPosterPreviewJpeg } = await import('./preview-jpeg.ts');
-    await exportBeatPosterPreviewJpeg(scriptId, BEAT_POSTER_COVER_ID, lang);
-  } catch {
-    // preview JPEG is best-effort for the web UI
-  }
 
   const createdAt = nowIso();
   const entry: BeatPosterFile = {
@@ -299,6 +358,12 @@ export async function generateBeatPosterCover(
   manifest.beatCount = live.beats.length;
   manifest.updatedAt = createdAt;
   saveManifest(scriptId, manifest);
+  try {
+    const { exportBeatPosterPreviewJpeg } = await import('./preview-jpeg.ts');
+    await exportBeatPosterPreviewJpeg(scriptId, BEAT_POSTER_COVER_ID, lang);
+  } catch {
+    // preview JPEG is best-effort for the web UI
+  }
   return entry;
 }
 
@@ -323,8 +388,12 @@ export async function saveUploadedBeatPosterPng(
   if (!live?.beats.length) {
     throw new Error(`No beats found for ${scriptId}`);
   }
-  if (beatId !== BEAT_POSTER_COVER_ID && !live.beats.some((beat) => beat.id === beatId)) {
-    throw new Error(`Beat not found: ${beatId}`);
+  if (beatId !== BEAT_POSTER_COVER_ID) {
+    const knownIds = live.beats.map((beat) => beat.id);
+    const parentId = parentBeatIdFromPosterId(beatId, knownIds);
+    if (!live.beats.some((beat) => beat.id === parentId)) {
+      throw new Error(`Beat not found: ${beatId}`);
+    }
   }
 
   const bytes = decodePngBase64(pngBase64);
@@ -335,16 +404,12 @@ export async function saveUploadedBeatPosterPng(
   const pngPath = scriptBeatPosterPngPath(scriptId, beatId, lang);
   ensureDir(path.dirname(pngPath));
   Deno.writeFileSync(pngPath, bytes);
-  try {
-    const { exportBeatPosterPreviewJpeg } = await import('./preview-jpeg.ts');
-    await exportBeatPosterPreviewJpeg(scriptId, beatId, lang);
-  } catch {
-    // preview JPEG is best-effort for the web UI
-  }
 
   const beatIndex = beatId === BEAT_POSTER_COVER_ID
     ? -1
-    : (live.beats.find((beat) => beat.id === beatId)?.index ?? 0);
+    : (live.beats.find((beat) =>
+      beat.id === parentBeatIdFromPosterId(beatId, live.beats.map((entry) => entry.id))
+    )?.index ?? 0);
   const createdAt = nowIso();
   const entry: BeatPosterFile = {
     beatId,
@@ -366,6 +431,12 @@ export async function saveUploadedBeatPosterPng(
   manifest.beatCount = live.beats.length;
   manifest.updatedAt = createdAt;
   saveManifest(scriptId, manifest);
+  try {
+    const { exportBeatPosterPreviewJpeg } = await import('./preview-jpeg.ts');
+    await exportBeatPosterPreviewJpeg(scriptId, beatId, lang);
+  } catch {
+    // preview JPEG is best-effort for the web UI
+  }
   return entry;
 }
 
@@ -388,6 +459,13 @@ export async function generateAllBeatPosters(scriptId: string): Promise<BeatPost
     throw new Error(`No beats found for ${scriptId}`);
   }
 
+  const md = readAnimationMd(scriptId);
+  const frontmatter = md.exists ? parseAnimationFrontmatter(md.markdown) : {};
+  const seriesTitle = loadSeriesTitle(scriptId);
+  const posterMd = readBeatPosterMd(scriptId);
+  const posterDoc = posterMd.exists ? parseBeatPosterMd(posterMd.markdown) : null;
+  const specsEn = albumSpecsForLang(scriptId, live, 'en', seriesTitle, frontmatter, posterDoc);
+  const posterSlideCount = specsEn.length;
   const total = 2 + live.beats.length * 2;
   let current = 0;
   const advance = (label: string) => {
@@ -421,7 +499,7 @@ export async function generateAllBeatPosters(scriptId: string): Promise<BeatPost
     });
 
     for (const lang of ['en', 'zh'] as BeatPosterLang[]) {
-      await generateBeatPosterCover(scriptId, lang);
+      await generateBeatPosterCover(scriptId, lang, posterSlideCount);
       advance(`cover (${lang})`);
     }
     for (const beat of live.beats) {
@@ -512,6 +590,7 @@ export async function listBeatPosters(scriptId: string): Promise<{
 }> {
   const live = await buildLiveScript(scriptId);
   const manifest = loadManifest(scriptId);
+  const knownIds = (live?.beats ?? []).map((beat) => beat.id);
   const titleByBeatId = new Map(
     (live?.beats ?? []).map((beat) => [beat.id, beat.title.trim() || `Beat ${beat.index + 1}`]),
   );
@@ -522,7 +601,9 @@ export async function listBeatPosters(scriptId: string): Promise<{
     .filter((poster) => fileExists(poster.pngPath))
     .map((poster) => ({
       ...poster,
-      beatTitle: titleByBeatId.get(poster.beatId) ?? poster.beatId,
+      beatTitle: titleByBeatId.get(
+        parentBeatIdFromPosterId(poster.beatId, knownIds),
+      ) ?? poster.beatId,
       pngUrl: posterAssetUrl(scriptId, poster.beatId, poster.lang, 'png'),
       htmlUrl: posterAssetUrl(scriptId, poster.beatId, poster.lang, 'html'),
     }));
@@ -531,8 +612,12 @@ export async function listBeatPosters(scriptId: string): Promise<{
     id: beat.id,
     index: beat.index,
     title: beat.title.trim() || `Beat ${beat.index + 1}`,
-    hasEn: Boolean(resolveBeatPosterFile(scriptId, beat.id, 'en')),
-    hasZh: Boolean(resolveBeatPosterFile(scriptId, beat.id, 'zh')),
+    hasEn: posters.some((poster) =>
+      poster.lang === 'en' && parentBeatIdFromPosterId(poster.beatId, knownIds) === beat.id
+    ),
+    hasZh: posters.some((poster) =>
+      poster.lang === 'zh' && parentBeatIdFromPosterId(poster.beatId, knownIds) === beat.id
+    ),
   }));
 
   return { manifest, beats, posters };

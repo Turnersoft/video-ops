@@ -69,6 +69,7 @@ export function BeatPosterCoverSlide({
   tagline,
   beatCountLabel,
   swipeHint,
+  pageLabel,
   decorations,
   backgroundLeanCode,
   backgroundTurnCode,
@@ -152,6 +153,7 @@ export function BeatPosterCoverSlide({
         </View>
 
         <View style={webModuleStyle(classes.footer)}>
+          <Text style={webModuleStyle(classes.pageLabel)}>{pageLabel}</Text>
           <Text style={webModuleStyle(classes.swipeHint)}>{swipeHint}</Text>
         </View>
       </View>

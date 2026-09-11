@@ -47,6 +47,18 @@ ios-teleprompter/node_modules/
 projects/**/.cache/
 .cache/
 
+# Generated beat-poster album (rebuild with `npm run beat-posters`).
+# Source of truth is beat-posters.md; keep publish-state.json.
+projects/**/beat-posters/*.html
+projects/**/beat-posters/**/*.html
+projects/**/beat-posters/*.png
+projects/**/beat-posters/**/*.png
+projects/**/beat-posters/*.jpg
+projects/**/beat-posters/**/*.jpg
+projects/**/beat-posters/*.jpeg
+projects/**/beat-posters/**/*.jpeg
+projects/**/beat-posters/manifest.json
+
 # Outdoor agent local secrets (API keys, account maps)
 editor/outdoor_agent/data/publish-credentials.json
 

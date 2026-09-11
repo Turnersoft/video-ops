@@ -16,6 +16,15 @@
     ### Lean        (optional) fenced code block overriding the poster's Lean pane
     ### Turn-Lang   (optional) fenced code block overriding the poster's Turn pane
     ### Editor      (optional) `lean` or `turn` — pins which code pane to show
+    ### Proof       (optional) tactic chain. `open` is the start goal; each
+                    later block is a tactic (label, then the after-goal).
+                    Before-goal is the previous after. Blank line between
+                    steps. Omit to auto-extract from Turn `proof { }` or
+                    Lean `:= by`. Each tactic is its own poster: full
+                    before/after goals (context stack + current claim),
+                    unused context grayed like a flip-clock, tactic in
+                    the middle. Highlights mark what the tactic used and
+                    what changed.
 
   A blank line inside English/Chinese starts a new text card (max 3).
   Keep each block to 1–2 short sentences — the card auto-fits font size,
@@ -179,6 +188,16 @@ theorem "Empty subset of every set" {
 }
 ```
 
+### Proof
+
+open
+forall S: Set<Any> |- Subset(EmptySet, S)
+
+unfold Subset at goal
+forall S: Set<Any> |- forall x: Any |- x in EmptySet -> x in S
+
+contradiction goal.1 by EmptySet.no_members
+
 ### Editor
 
 turn
@@ -219,6 +238,16 @@ theorem "Empty subset of every set" {
   contradiction goal.1 by EmptySet.no_members
 }
 ```
+
+### Proof
+
+open
+forall S: Set<Any> |- Subset(EmptySet, S)
+
+unfold Subset at goal
+forall S: Set<Any> |- forall x: Any |- x in EmptySet -> x in S
+
+contradiction goal.1 by EmptySet.no_members
 
 ### Editor
 

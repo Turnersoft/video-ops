@@ -46,6 +46,63 @@ function shellClass(platform: string): string | null {
   return null;
 }
 
+async function copyToClipboard(text: string): Promise<boolean> {
+  if (Platform.OS !== 'web' || typeof navigator === 'undefined' || !navigator.clipboard) {
+    return false;
+  }
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function CopyableSideField({
+  label,
+  value,
+}: {
+  label: string;
+  value: string;
+}) {
+  const [status, setStatus] = useState<'idle' | 'copied' | 'failed'>('idle');
+
+  useEffect(() => {
+    setStatus('idle');
+  }, [value]);
+
+  const handleCopy = async () => {
+    if (!value.trim()) {
+      return;
+    }
+    const ok = await copyToClipboard(value);
+    setStatus(ok ? 'copied' : 'failed');
+    globalThis.setTimeout(() => setStatus('idle'), 1400);
+  };
+
+  const copyLabel = status === 'copied' ? 'Copied' : status === 'failed' ? 'Failed' : 'Copy';
+
+  return (
+    <>
+      <View style={webModuleStyle(classes.sideLabelRow)}>
+        <Text style={webModuleStyle(classes.sideLabel)}>{label}</Text>
+        {value.trim() ? (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={`Copy ${label}`}
+            onPress={() => {
+              void handleCopy();
+            }}
+          >
+            <Text style={webModuleStyle(classes.sideCopy)}>{copyLabel}</Text>
+          </Pressable>
+        ) : null}
+      </View>
+      <Text style={webModuleStyle(classes.sideValue)}>{value}</Text>
+    </>
+  );
+}
+
 function truncateCaption(body: string, max = 180): { text: string; truncated: boolean } {
   const normalized = body.trim();
   if (normalized.length <= max) {
@@ -291,10 +348,8 @@ export function BeatPosterSocialFeedPreview({
         <View style={webModuleStyle(classes.sidePanel)}>
           <Text style={webModuleStyle(classes.sideLabel)}>Platform</Text>
           <Text style={webModuleStyle(classes.sideValue)}>{platformLabel(activeRow.platform)}</Text>
-          <Text style={webModuleStyle(classes.sideLabel)}>Post title</Text>
-          <Text style={webModuleStyle(classes.sideValue)}>{activeRow.title}</Text>
-          <Text style={webModuleStyle(classes.sideLabel)}>Caption sent on publish</Text>
-          <Text style={webModuleStyle(classes.sideValue)}>{activeRow.body}</Text>
+          <CopyableSideField label="Post title" value={activeRow.title} />
+          <CopyableSideField label="Caption sent on publish" value={activeRow.body} />
           <Text style={webModuleStyle(classes.sideMeta)}>
             {activeRow.imageCount} images ·{' '}
             {(activeRow.characterCount ?? `${activeRow.title}\n\n${activeRow.body}`.length)} chars ·{' '}

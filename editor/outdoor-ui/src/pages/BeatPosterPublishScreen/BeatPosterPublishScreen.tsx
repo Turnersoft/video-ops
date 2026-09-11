@@ -38,7 +38,7 @@ import type {
   VideoOpsCatalogScript,
 } from '../../types';
 import { buildBeatPosterCoverSlideProps } from '../../utils/beatPosterCoverModel';
-import { liveBeatToPosterSlideProps } from '../../utils/beatPosterModel';
+import { liveBeatToPosterSlides, stampPosterSlidePages } from '../../utils/beatPosterModel';
 import { beatPosterMdCoverCopy, beatPosterMdEntryFor, parseBeatPosterMd } from '../../../../../src/beatPosterMd';
 import type { BeatPosterMdDocument } from '../../../../../src/beatPosterMd';
 import {
@@ -194,16 +194,29 @@ export function BeatPosterPublishScreen({ scriptId }: BeatPosterPublishScreenPro
       setPromotionalDescriptionZh(coverZh || promoZh || coverEn || promoEn || '');
       setPosters(posterPayload);
 
-      const beatIds = (liveScript.beats ?? []).map((beat) => beat.id);
+      const albumPosterIds = stampPosterSlidePages(
+        (liveScript.beats ?? []).flatMap((beat, index) =>
+          liveBeatToPosterSlides({
+            beat,
+            nextBeat: liveScript.beats[index + 1] ?? null,
+            lang,
+            seriesTitle: seriesEntry?.title?.trim() || 'Turn-Lang',
+            episodeTitleEn: socialEn || catalogMeta?.title || liveScript.title,
+            episodeTitleZh: socialZh || socialEn || catalogMeta?.title || liveScript.title,
+            poster: beatPosterMdEntryFor(parsedPosterMd, beat.index),
+            beatCount: liveScript.beats.length,
+          })
+        ),
+      ).map((slide) => slide.posterId);
       const jpegImageUrls = [
         beatPosterPreviewJpegUrl(scriptId, BEAT_POSTER_COVER_ID, lang),
-        ...beatIds.map((beatId) => beatPosterPreviewJpegUrl(scriptId, beatId, lang)),
+        ...albumPosterIds.map((posterId) => beatPosterPreviewJpegUrl(scriptId, posterId, lang)),
       ];
       await api.syncBeatPosterPreviewJpegs(scriptId).catch(() => null);
 
       const apiImageUrls = (posterPayload?.posters ?? [])
         .filter((poster) => poster.lang === lang)
-        .sort((a, b) => a.beatIndex - b.beatIndex)
+        .sort((a, b) => a.beatIndex - b.beatIndex || a.beatId.localeCompare(b.beatId))
         .map((poster) => beatPosterPreviewJpegUrl(scriptId, poster.beatId, lang));
 
       const imageUrlsForPreview = apiImageUrls.length > 0 ? apiImageUrls : jpegImageUrls;
@@ -222,7 +235,7 @@ export function BeatPosterPublishScreen({ scriptId }: BeatPosterPublishScreenPro
           buildBeatPosterPublishPreviewLocal({
             scriptId,
             lang,
-            beatIds,
+            beatIds: albumPosterIds,
             social: socialPayload,
             fallbacks: {
               socialTitleEnglish: socialEn || catalogMeta?.title || liveScript.title,
@@ -258,43 +271,20 @@ export function BeatPosterPublishScreen({ scriptId }: BeatPosterPublishScreenPro
   }, [scriptId]);
 
   const beats = live?.beats ?? [];
-  const coverSlide = useMemo(
-    () =>
-      buildBeatPosterCoverSlideProps({
-        scriptId,
-        lang,
-        seriesTitle,
-        episodeTitleEn: episodeTitleEn || meta?.title || live?.title || scriptId,
-        episodeTitleZh: episodeTitleZh || episodeTitleEn || meta?.title || live?.title || scriptId,
-        promotionalDescriptionEn,
-        promotionalDescriptionZh,
-        beatCount: beats.length,
-        seed: `${scriptId}:cover:${lang}`,
-      }),
-    [
-      beats.length,
-      episodeTitleEn,
-      episodeTitleZh,
-      lang,
-      live?.title,
-      meta?.title,
-      promotionalDescriptionEn,
-      promotionalDescriptionZh,
-      scriptId,
-      seriesTitle,
-    ],
-  );
   const beatPosterSlides = useMemo(() => {
-    return beats.map((beat: LiveBeat, index: number) =>
-      liveBeatToPosterSlideProps({
-        beat,
-        nextBeat: beats[index + 1] ?? null,
-        lang,
-        seriesTitle,
-        episodeTitleEn: episodeTitleEn || meta?.title || live?.title || scriptId,
-        episodeTitleZh: episodeTitleZh || episodeTitleEn || meta?.title || live?.title || scriptId,
-        poster: beatPosterMdEntryFor(posterMd, beat.index),
-      }),
+    return stampPosterSlidePages(
+      beats.flatMap((beat: LiveBeat, index: number) =>
+        liveBeatToPosterSlides({
+          beat,
+          nextBeat: beats[index + 1] ?? null,
+          lang,
+          seriesTitle,
+          episodeTitleEn: episodeTitleEn || meta?.title || live?.title || scriptId,
+          episodeTitleZh: episodeTitleZh || episodeTitleEn || meta?.title || live?.title || scriptId,
+          poster: beatPosterMdEntryFor(posterMd, beat.index),
+          beatCount: beats.length,
+        }),
+      ),
     );
   }, [
     beats,
@@ -307,6 +297,32 @@ export function BeatPosterPublishScreen({ scriptId }: BeatPosterPublishScreenPro
     scriptId,
     seriesTitle,
   ]);
+  const coverSlide = useMemo(
+    () =>
+      buildBeatPosterCoverSlideProps({
+        scriptId,
+        lang,
+        seriesTitle,
+        episodeTitleEn: episodeTitleEn || meta?.title || live?.title || scriptId,
+        episodeTitleZh: episodeTitleZh || episodeTitleEn || meta?.title || live?.title || scriptId,
+        promotionalDescriptionEn,
+        promotionalDescriptionZh,
+        beatCount: beatPosterSlides.length,
+        seed: `${scriptId}:cover:${lang}`,
+      }),
+    [
+      beatPosterSlides.length,
+      episodeTitleEn,
+      episodeTitleZh,
+      lang,
+      live?.title,
+      meta?.title,
+      promotionalDescriptionEn,
+      promotionalDescriptionZh,
+      scriptId,
+      seriesTitle,
+    ],
+  );
   const carouselSlides = useMemo(
     () => [{ kind: 'cover' as const, cover: coverSlide }, ...beatPosterSlides.map((slide) => ({ kind: 'beat' as const, slide }))],
     [beatPosterSlides, coverSlide],
@@ -314,6 +330,20 @@ export function BeatPosterPublishScreen({ scriptId }: BeatPosterPublishScreenPro
   const exportPacks = useMemo(() => {
     const langs: BeatPosterLang[] = ['en', 'zh'];
     return langs.map((packLang) => {
+      const slides: BeatPosterSlideProps[] = stampPosterSlidePages(
+        beats.flatMap((beat: LiveBeat, index: number) =>
+          liveBeatToPosterSlides({
+            beat,
+            nextBeat: beats[index + 1] ?? null,
+            lang: packLang,
+            seriesTitle,
+            episodeTitleEn: episodeTitleEn || meta?.title || live?.title || scriptId,
+            episodeTitleZh: episodeTitleZh || episodeTitleEn || meta?.title || live?.title || scriptId,
+            poster: beatPosterMdEntryFor(posterMd, beat.index),
+            beatCount: beats.length,
+          }),
+        ),
+      );
       const cover: BeatPosterCoverSlideProps = buildBeatPosterCoverSlideProps({
         scriptId,
         lang: packLang,
@@ -322,20 +352,9 @@ export function BeatPosterPublishScreen({ scriptId }: BeatPosterPublishScreenPro
         episodeTitleZh: episodeTitleZh || episodeTitleEn || meta?.title || live?.title || scriptId,
         promotionalDescriptionEn,
         promotionalDescriptionZh,
-        beatCount: beats.length,
+        beatCount: slides.length,
         seed: `${scriptId}:cover:${packLang}`,
       });
-      const slides: BeatPosterSlideProps[] = beats.map((beat: LiveBeat, index: number) =>
-        liveBeatToPosterSlideProps({
-          beat,
-          nextBeat: beats[index + 1] ?? null,
-          lang: packLang,
-          seriesTitle,
-          episodeTitleEn: episodeTitleEn || meta?.title || live?.title || scriptId,
-          episodeTitleZh: episodeTitleZh || episodeTitleEn || meta?.title || live?.title || scriptId,
-          poster: beatPosterMdEntryFor(posterMd, beat.index),
-        }),
-      );
       return { lang: packLang, cover, slides };
     });
   }, [
@@ -953,11 +972,10 @@ export function BeatPosterPublishScreen({ scriptId }: BeatPosterPublishScreenPro
                     </View>
                   );
                 }
-                const beat = beats[index - 1];
                 const slide = entry.slide;
                 return (
                   <View
-                    key={beat?.id ?? `slide-${index}`}
+                    key={slide.posterId}
                     style={webModuleStyle(classes.carouselItem)}
                   >
                     {Platform.OS === 'web'
@@ -1003,14 +1021,14 @@ export function BeatPosterPublishScreen({ scriptId }: BeatPosterPublishScreenPro
                     },
                     createElement(BeatPosterCoverSlide, pack.cover),
                   ),
-                  ...pack.slides.map((slide, slideIndex) =>
+                  ...pack.slides.map((slide) =>
                     createElement(
                       'div',
                       {
-                        key: `export-${pack.lang}-${beats[slideIndex]?.id ?? slideIndex}`,
+                        key: `export-${pack.lang}-${slide.posterId}`,
                         className: webClassName(classes.exportRackItem),
                         'data-beat-poster-full-export': 'true',
-                        'data-beat-id': beats[slideIndex]?.id,
+                        'data-beat-id': slide.posterId,
                         'data-lang': pack.lang,
                       },
                       createElement(BeatPosterSlide, slide),

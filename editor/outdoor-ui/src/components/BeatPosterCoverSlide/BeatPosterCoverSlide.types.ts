@@ -11,6 +11,7 @@ export type BeatPosterCoverSlideProps = {
   titleStroke: string;
   tagline: string;
   beatCountLabel: string;
+  pageLabel: string;
   swipeHint: string;
   vsLabel: string;
   backgroundLeanCode: string;

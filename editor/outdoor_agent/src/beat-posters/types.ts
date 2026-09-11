@@ -1,3 +1,5 @@
+import type { BeatPosterProofDeclaration, BeatPosterProofStep } from '../../../../src/beatPosterProof.ts';
+
 export type BeatPosterLang = 'en' | 'zh';
 
 /** Cover slide id — sorts before beat posters in albums. */
@@ -11,6 +13,8 @@ export type BeatPosterSpec = {
   scriptId: string;
   beatIndex: number;
   beatId: string;
+  /** File stem; equals beatId unless a proof split this beat. */
+  posterId: string;
   lang: BeatPosterLang;
   width: number;
   height: number;
@@ -21,10 +25,16 @@ export type BeatPosterSpec = {
   paragraphs: string[];
   leanCode: string;
   turnCode: string;
+  /** When non-empty, the poster shows a proof panel instead of the code editor. */
+  proofSteps: BeatPosterProofStep[];
+  proofDeclaration: BeatPosterProofDeclaration | null;
+  proofPartIndex: number;
+  proofPartCount: number;
   narrativeFooter: string;
   turnLangHint: string;
   /** Lead-in to the next beat (e.g. "Next: what = asks you to prove →"). */
   nextLead: string;
+  pageLabel: string;
   decorations: {
     titleTilt: number;
     cardTilt: number;
@@ -61,6 +71,7 @@ export type BeatPosterCoverSpec = {
   titleStroke: string;
   tagline: string;
   beatCountLabel: string;
+  pageLabel: string;
   swipeHint: string;
   vsLabel: string;
   backgroundLeanCode: string;

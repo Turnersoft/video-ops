@@ -20,6 +20,7 @@ export type BeatPosterCoverContent = {
   tagline: string;
   beatCount: number;
   beatCountLabel: string;
+  pageLabel: string;
   swipeHint: string;
   vsLabel: string;
   backgroundLeanCode: string;
@@ -144,7 +145,41 @@ export function coverDecorations(seed: string): BeatPosterCoverDecorations {
 
 /** Album page count: cover slide + one infographic per beat. */
 export function beatPosterAlbumPageCount(beatCount: number): number {
-  return beatCount + 1;
+  return Math.max(1, beatCount + 1);
+}
+
+/** Cover is page 1; the first beat is page 2. */
+export function beatPosterAlbumPageNumber(
+  kind: 'cover' | 'beat',
+  beatIndex = 0,
+): number {
+  switch (kind) {
+    case 'cover':
+      return 1;
+    case 'beat':
+      return Math.max(0, beatIndex) + 2;
+    default: {
+      const _never: never = kind;
+      return _never;
+    }
+  }
+}
+
+export function formatBeatPosterPageLabel(page: number, pageCount: number): string {
+  const total = Math.max(1, pageCount);
+  const current = Math.min(Math.max(1, page), total);
+  return `${current} / ${total}`;
+}
+
+export function beatPosterPageLabel(params: {
+  kind: 'cover' | 'beat';
+  beatIndex?: number;
+  beatCount: number;
+}): string {
+  return formatBeatPosterPageLabel(
+    beatPosterAlbumPageNumber(params.kind, params.beatIndex ?? 0),
+    beatPosterAlbumPageCount(params.beatCount),
+  );
 }
 
 /** Rough swipe-album read time from page count (~25s per card). */
@@ -194,6 +229,7 @@ export function buildBeatPosterCoverContent(params: {
     tagline,
     beatCount,
     beatCountLabel,
+    pageLabel: beatPosterPageLabel({ kind: 'cover', beatCount }),
     swipeHint,
     vsLabel: 'Lean 4 vs Turn-Lang',
     backgroundLeanCode: COVER_BACKGROUND_LEAN,

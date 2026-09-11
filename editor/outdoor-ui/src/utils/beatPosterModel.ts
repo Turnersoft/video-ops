@@ -1,9 +1,16 @@
 import type { LiveBeat } from '../types';
 import type { BeatPosterLang, BeatPosterSlideProps } from '../components/BeatPosterSlide/BeatPosterSlide.types';
-import { fitBeatPosterCardLayout, estimateTextUnits } from '../../../../src/beatPosterLayout';
+import { fitBeatPosterCardLayout, estimateTextUnits, PROOF_EDITOR_FONT_SIZE, PROOF_TITLE_FONT_SIZE } from '../../../../src/beatPosterLayout';
 import { pickPrimaryEditor, tokenInCode } from '../../../../src/beatPosterEditorPick';
 import { buildNextLeadSentence } from '../../../../src/beatPosterNextLead';
 import type { BeatPosterMdEntry } from '../../../../src/beatPosterMd';
+import { beatPosterPageLabel, formatBeatPosterPageLabel } from '../../../../src/beatPosterCover';
+import {
+  planBeatPosterProofParts,
+  proofPanelLayoutText,
+  proofStepHeadline,
+  resolveBeatPosterProof,
+} from '../../../../src/beatPosterProof';
 import { fitCodeLines, highlightCodeLines } from './beatPosterCodeHighlight';
 
 const TURN_LANG_HINTS_EN = [
@@ -209,7 +216,7 @@ function authoredParagraphs(body: string): string[] {
   return [...blocks.slice(0, 2), blocks.slice(2).join(' ')];
 }
 
-export function liveBeatToPosterSlideProps(params: {
+export function liveBeatToPosterSlides(params: {
   beat: LiveBeat;
   nextBeat?: LiveBeat | null;
   lang: BeatPosterLang;
@@ -217,8 +224,9 @@ export function liveBeatToPosterSlideProps(params: {
   episodeTitleEn: string;
   episodeTitleZh: string;
   poster?: BeatPosterMdEntry | null;
-}): BeatPosterSlideProps {
-  const { beat, nextBeat, lang, seriesTitle, episodeTitleEn, episodeTitleZh, poster } = params;
+  beatCount: number;
+}): BeatPosterSlideProps[] {
+  const { beat, nextBeat, lang, seriesTitle, episodeTitleEn, episodeTitleZh, poster, beatCount } = params;
   const episodeTitle = lang === 'zh' ? (episodeTitleZh || episodeTitleEn) : episodeTitleEn;
   const hints = lang === 'zh' ? TURN_LANG_HINTS_ZH : TURN_LANG_HINTS_EN;
   const seed = `${seriesTitle}:${beat.id}:${lang}`;
@@ -249,6 +257,13 @@ export function liveBeatToPosterSlideProps(params: {
   });
   const editorMode: 'single' = 'single';
   const shownCodeDraft = primaryEditor === 'lean' ? leanFit.lines.join('\n') : turnFit.lines.join('\n');
+  const proof = resolveBeatPosterProof({
+    proofMarkdown: poster?.proofMarkdown,
+    leanCode: leanSource,
+    turnCode: turnSource,
+    primaryEditor,
+  });
+  const proofMoves = proof.moves;
   const paragraphs = authoredBody
     ? authoredParagraphs(authoredBody)
     : posterParagraphs(scoringSentences, lang, shownCodeDraft);
@@ -269,54 +284,109 @@ export function liveBeatToPosterSlideProps(params: {
     ? chineseTitle(beat)
     : stripMathFences(beat.title).trim() || `Beat ${beat.index + 1}`);
 
-  const requestedCodeLines = primaryEditor === 'lean' ? leanLines : turnLines;
-  const cardLayout = fitBeatPosterCardLayout({
+  const parts = planBeatPosterProofParts({
+    beatId: beat.id,
+    moves: proofMoves,
     paragraphs,
-    codeLines: requestedCodeLines,
-    hasCode: requestedCodeLines > 0,
-    hasNextLead: Boolean(nextLead.trim()),
-    titleUnits: estimateTextUnits(beatTitle),
-    codeText: shownCodeDraft,
+    nextLead,
+    title: beatTitle,
+    declaration: proof.declaration,
   });
 
-  const leanFitFinal = fitCodeLines(leanSource.trim(), cardLayout.maxCodeLines || 20);
-  const turnFitFinal = fitCodeLines(turnSource.trim(), cardLayout.maxCodeLines || 20);
-  const shownLeanLines = primaryEditor === 'lean' && leanFitFinal.usedLines ? leanFitFinal.usedLines : 0;
-  const shownTurnLines = primaryEditor === 'turn' && turnFitFinal.usedLines ? turnFitFinal.usedLines : 0;
+  return parts.map((part) => {
+    const shownProof = part.moves;
+    const partTitle = shownProof.length > 0
+      ? proofStepHeadline({
+        lang,
+        partIndex: part.partIndex,
+        partCount: part.partCount,
+      })
+      : beatTitle;
+    const layoutCodeText = shownProof.length > 0
+      ? proofPanelLayoutText({
+        moves: shownProof,
+        closingLast: part.partIndex === part.partCount - 1,
+        declaration: proof.declaration,
+      })
+      : shownCodeDraft;
+    const requestedCodeLines = shownProof.length > 0
+      ? layoutCodeText.split('\n').length
+      : (primaryEditor === 'lean' ? leanLines : turnLines);
+    const cardLayout = fitBeatPosterCardLayout({
+      paragraphs: part.paragraphs,
+      codeLines: requestedCodeLines,
+      hasCode: requestedCodeLines > 0,
+      hasNextLead: Boolean(part.nextLead.trim()),
+      titleUnits: estimateTextUnits(partTitle),
+      codeText: layoutCodeText,
+    });
 
-  return {
-    lang,
-    seriesTitle,
-    episodeTitle,
-    beatTitle,
-    paragraphs,
-    leanCode: shownLeanLines ? leanFitFinal.lines.join('\n') : '',
-    turnCode: shownTurnLines ? turnFitFinal.lines.join('\n') : '',
-    narrativeFooter: '',
-    turnLangHint: hints[beat.index % hints.length] ?? hints[0],
-    nextLead,
-    decorations: {
-      titleTilt: tiltFor(seed, 1),
-      cardTilt: tiltFor(seed, 2),
-      leanTilt: tiltFor(seed, 3),
-      turnTilt: tiltFor(seed, 4),
-      sparkle: (seededVariant(seed) % 3) === 1,
-    },
-    layout: {
-      titleFontSize: fitTitleSize(beatTitle),
-      paragraphFontSize: cardLayout.paragraphFontSize,
-      textCardFlex: cardLayout.textCardFlex,
-      codeCardFlex: cardLayout.codeCardFlex,
-      codeCardAutoHeight: cardLayout.codeCardAutoHeight,
-      leanFlex,
-      turnFlex,
-      leanLines: shownLeanLines,
-      turnLines: shownTurnLines,
-      editorMode,
-      primaryEditor,
-      editorFontSize: cardLayout.editorFontSize,
-    },
-  };
+    const leanFitFinal = fitCodeLines(leanSource.trim(), cardLayout.maxCodeLines || 20);
+    const turnFitFinal = fitCodeLines(turnSource.trim(), cardLayout.maxCodeLines || 20);
+    const shownLeanLines = primaryEditor === 'lean' && leanFitFinal.usedLines ? leanFitFinal.usedLines : 0;
+    const shownTurnLines = primaryEditor === 'turn' && turnFitFinal.usedLines ? turnFitFinal.usedLines : 0;
+
+    return {
+      lang,
+      seriesTitle,
+      episodeTitle,
+      beatTitle: partTitle,
+      paragraphs: part.paragraphs,
+      leanCode: shownLeanLines ? leanFitFinal.lines.join('\n') : '',
+      turnCode: shownTurnLines ? turnFitFinal.lines.join('\n') : '',
+      proofDeclaration: proof.declaration,
+      proofSteps: shownProof,
+      proofPartIndex: part.partIndex,
+      proofPartCount: part.partCount,
+      posterId: part.posterId,
+      narrativeFooter: '',
+      turnLangHint: hints[beat.index % hints.length] ?? hints[0],
+      nextLead: part.nextLead,
+      pageLabel: beatPosterPageLabel({ kind: 'beat', beatIndex: beat.index, beatCount }),
+      decorations: {
+        titleTilt: tiltFor(seed, 1),
+        cardTilt: tiltFor(seed, 2),
+        leanTilt: tiltFor(seed, 3),
+        turnTilt: tiltFor(seed, 4),
+        sparkle: shownProof.length > 0 ? false : (seededVariant(seed) % 3) === 1,
+      },
+      layout: {
+        titleFontSize: shownProof.length > 0 ? PROOF_TITLE_FONT_SIZE : fitTitleSize(partTitle),
+        paragraphFontSize: cardLayout.paragraphFontSize,
+        textCardFlex: cardLayout.textCardFlex,
+        codeCardFlex: cardLayout.codeCardFlex,
+        codeCardAutoHeight: cardLayout.codeCardAutoHeight,
+        leanFlex,
+        turnFlex,
+        leanLines: shownLeanLines,
+        turnLines: shownTurnLines,
+        editorMode,
+        primaryEditor,
+        editorFontSize: shownProof.length > 0 ? PROOF_EDITOR_FONT_SIZE : cardLayout.editorFontSize,
+      },
+    };
+  });
+}
+
+export function stampPosterSlidePages(slides: BeatPosterSlideProps[]): BeatPosterSlideProps[] {
+  const pageCount = slides.length + 1;
+  return slides.map((slide, index) => ({
+    ...slide,
+    pageLabel: formatBeatPosterPageLabel(index + 2, pageCount),
+  }));
+}
+
+export function liveBeatToPosterSlideProps(params: {
+  beat: LiveBeat;
+  nextBeat?: LiveBeat | null;
+  lang: BeatPosterLang;
+  seriesTitle: string;
+  episodeTitleEn: string;
+  episodeTitleZh: string;
+  poster?: BeatPosterMdEntry | null;
+  beatCount: number;
+}): BeatPosterSlideProps {
+  return liveBeatToPosterSlides(params)[0];
 }
 
 export { highlightCodeLines };

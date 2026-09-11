@@ -1,3 +1,5 @@
+import type { BeatPosterProofDeclaration, BeatPosterProofStep } from '../../../../../src/beatPosterProof';
+
 export type BeatPosterLang = 'en' | 'zh';
 
 export type BeatPosterDecorations = {
@@ -16,9 +18,17 @@ export type BeatPosterSlideProps = {
   paragraphs: string[];
   leanCode: string;
   turnCode: string;
+  proofDeclaration: BeatPosterProofDeclaration | null;
+  /** When non-empty, the poster shows a proof panel instead of the code editor. */
+  proofSteps: BeatPosterProofStep[];
+  proofPartIndex: number;
+  proofPartCount: number;
+  /** File stem for capture / generate; equals the beat id unless split. */
+  posterId: string;
   narrativeFooter: string;
   turnLangHint: string;
   nextLead: string;
+  pageLabel: string;
   decorations: BeatPosterDecorations;
   layout: {
     titleFontSize: number;

@@ -124,8 +124,8 @@ function loadInfographicCopy(
   });
 }
 
-function sortedAlbumPosters<T extends { beatIndex: number }>(posters: T[]): T[] {
-  return [...posters].sort((a, b) => a.beatIndex - b.beatIndex);
+function sortedAlbumPosters<T extends { beatIndex: number; beatId: string }>(posters: T[]): T[] {
+  return [...posters].sort((a, b) => a.beatIndex - b.beatIndex || a.beatId.localeCompare(b.beatId));
 }
 
 export function existingBeatPosterAlbumPngs(

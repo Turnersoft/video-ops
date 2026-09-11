@@ -20,7 +20,7 @@ import { Button } from '../Button/Button';
 import { SectionLabel } from '../SectionLabel/SectionLabel';
 import { useOutdoorUi } from '../../context/OutdoorUiContext';
 import type { BeatPostersResponse } from '../../types';
-import { liveBeatToPosterSlideProps } from '../../utils/beatPosterModel';
+import { liveBeatToPosterSlides, stampPosterSlidePages } from '../../utils/beatPosterModel';
 import { platformLabel } from '../../utils/format';
 
 const POSTIZ_IMAGE_PLATFORMS = [
@@ -72,6 +72,22 @@ export function BeatPostersPanel({
     }
     return map;
   }, [data?.posters, lang]);
+
+  const slides = useMemo(() => {
+    return stampPosterSlidePages(
+      liveBeats.flatMap((beat, index) =>
+        liveBeatToPosterSlides({
+          beat,
+          nextBeat: liveBeats[index + 1] ?? null,
+          lang,
+          seriesTitle,
+          episodeTitleEn,
+          episodeTitleZh,
+          beatCount: liveBeats.length,
+        }),
+      ),
+    );
+  }, [episodeTitleEn, episodeTitleZh, lang, liveBeats, seriesTitle]);
 
   const handleGenerateAll = useCallback(async () => {
     setBusy('generate-all');
@@ -170,18 +186,10 @@ export function BeatPostersPanel({
       ) : null}
       <ScrollView horizontal={false}>
         <View style={webModuleStyle(classes.grid)}>
-          {liveBeats.map((beat, index) => {
-            const slide = liveBeatToPosterSlideProps({
-              beat,
-              nextBeat: liveBeats[index + 1] ?? null,
-              lang,
-              seriesTitle,
-              episodeTitleEn,
-              episodeTitleZh,
-            });
-            const png = posterByBeat.get(beat.id);
+          {slides.map((slide) => {
+            const png = posterByBeat.get(slide.posterId);
             return (
-              <View key={`${beat.id}-${lang}`} style={webModuleStyle(classes.card)}>
+              <View key={`${slide.posterId}-${lang}`} style={webModuleStyle(classes.card)}>
                 <Text style={webModuleStyle(classes.cardTitle)}>
                   {slide.beatTitle}
                 </Text>
@@ -194,15 +202,15 @@ export function BeatPostersPanel({
                   {png && Platform.OS === 'web' ? (
                     createElement('img', {
                       src: api.absoluteUrl(png.pngUrl),
-                      alt: `${beat.id}-${lang}`,
+                      alt: `${slide.posterId}-${lang}`,
                       className: webClassName(classes.pngPreview),
                     })
                   ) : null}
                 </View>
                 <View style={webModuleStyle(classes.platformRow)}>
                   {POSTIZ_IMAGE_PLATFORMS.map((platform) => {
-                    const published = publishFor(beat.id, platform);
-                    const key = `publish-${beat.id}-${platform}`;
+                    const published = publishFor(slide.posterId, platform);
+                    const key = `publish-${slide.posterId}-${platform}`;
                     return (
                       <Pressable key={platform}>
                         <Button
@@ -214,7 +222,7 @@ export function BeatPostersPanel({
                                 : platformLabel(platform)
                           }
                           onPress={() => {
-                            void handlePublish(beat.id, platform);
+                            void handlePublish(slide.posterId, platform);
                           }}
                           disabled={Boolean(busy) || Boolean(published)}
                         />

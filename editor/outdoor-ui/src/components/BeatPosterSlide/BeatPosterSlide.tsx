@@ -2,7 +2,7 @@ export type { BeatPosterSlideProps } from './BeatPosterSlide.types';
 
 import classes from './BeatPosterSlide.module.scss';
 import type { BeatPosterSlideProps } from './BeatPosterSlide.types';
-import { createElement } from 'react';
+import { createElement, type ReactNode } from 'react';
 import { Platform, Text, View } from 'react-native';
 
 import { beatPosterBrandLogoUrl } from '../../utils/beatPosterBrandLogos';
@@ -13,6 +13,19 @@ import {
   BEAT_POSTER_PREVIEW_FONT_SCALE,
   MIN_EDITOR_FONT_SIZE,
 } from '../../../../../src/beatPosterLayout';
+import {
+  proofGoalKicker,
+  proofMoveDisplay,
+  proofStepKindLabel,
+  proofUsesKicker,
+} from '../../../../../src/beatPosterProof';
+import type {
+  BeatPosterProofStep,
+  ProofContextFlap,
+  ProofDisplayMark,
+  ProofDisplaySpan,
+  ProofGoalCardView,
+} from '../../../../../src/beatPosterProof';
 
 function tokenClass(dialect: 'lean' | 'turn', kind: HighlightToken['kind']): string | null {
   if (dialect === 'lean') {
@@ -199,17 +212,234 @@ function CodeEditorPane({
   );
 }
 
+function proofDom(
+  tag: 'div' | 'span',
+  className: string | null,
+  children: ReactNode,
+  key?: string,
+) {
+  if (Platform.OS === 'web') {
+    return createElement(tag, { key, className: webClassName(className) }, children);
+  }
+  return (
+    <Text key={key} style={webModuleStyle(className)}>
+      {children}
+    </Text>
+  );
+}
+
+function proofMarkClass(mark: ProofDisplayMark): string | null {
+  switch (mark) {
+    case 'plain':
+      return null;
+    case 'dim':
+      return classes.proofDim;
+    case 'changed':
+      return classes.proofChanged;
+    case 'used':
+      return classes.proofUsed;
+    default: {
+      const _never: never = mark;
+      return _never;
+    }
+  }
+}
+
+function ProofGoalLine({
+  spans,
+  closed = false,
+}: {
+  spans: ProofDisplaySpan[];
+  closed?: boolean;
+}) {
+  if (spans.length === 0) {
+    return null;
+  }
+  if (Platform.OS === 'web') {
+    return createElement(
+      'div',
+      {
+        className: webClassName(
+          classes.proofGoalText,
+          closed ? classes.proofAfterClosed : null,
+        ),
+      },
+      ...spans.map((span, index) =>
+        createElement(
+          'span',
+          {
+            key: `g-${index}`,
+            className: webClassName(proofMarkClass(span.mark)),
+          },
+          span.text,
+        ),
+      ),
+    );
+  }
+  return (
+    <Text style={webModuleStyle(classes.proofGoalText, closed ? classes.proofAfterClosed : null)}>
+      {spans.map((span, index) => (
+        <Text key={`g-${index}`} style={webModuleStyle(proofMarkClass(span.mark))}>
+          {span.text}
+        </Text>
+      ))}
+    </Text>
+  );
+}
+
+function ProofFlap({ flap }: { flap: ProofContextFlap }) {
+  return (
+    <View
+      style={webModuleStyle(
+        classes.proofFlap,
+        flap.stacked ? classes.proofFlapStacked : classes.proofFlapCurrent,
+      )}
+    >
+      <ProofGoalLine spans={[{ text: flap.text, mark: flap.mark }]} />
+    </View>
+  );
+}
+
+function ProofGoalCard({
+  view,
+  kicker,
+  variant,
+}: {
+  view: ProofGoalCardView;
+  kicker: string;
+  variant: 'before' | 'after' | 'closed';
+}) {
+  if (view.flaps.length === 0 && view.claim.length === 0) {
+    return null;
+  }
+  const cardClass = variant === 'closed'
+    ? classes.proofGoalCardClosed
+    : variant === 'after'
+      ? classes.proofGoalCardAfter
+      : null;
+  return (
+    <View style={webModuleStyle(classes.proofGoalCard, cardClass)}>
+      {proofDom('div', classes.proofGoalKicker, kicker)}
+      {view.flaps.length > 0
+        ? (
+          <View style={webModuleStyle(classes.proofRolodex)}>
+            {view.flaps.map((flap, index) => (
+              <ProofFlap key={`flap-${index}`} flap={flap} />
+            ))}
+          </View>
+        )
+        : null}
+      <View style={webModuleStyle(classes.proofClaimFace)}>
+        {view.closed ? null : proofDom('span', classes.proofTurnstile, '⊢')}
+        <ProofGoalLine spans={view.claim} closed={view.closed} />
+      </View>
+    </View>
+  );
+}
+
+function ProofMoveBlock({
+  step,
+  isLastMove,
+  lang,
+}: {
+  step: BeatPosterProofStep;
+  isLastMove: boolean;
+  lang: 'en' | 'zh';
+}) {
+  const view = proofMoveDisplay(step, isLastMove);
+  const afterVariant = view.after.closed ? 'closed' : 'after';
+  return (
+    <View style={webModuleStyle(classes.proofMove)}>
+      <ProofGoalCard
+        view={view.before}
+        kicker={proofGoalKicker(lang, 'before')}
+        variant="before"
+      />
+      <View style={webModuleStyle(classes.proofTactic)}>
+        {proofDom('div', classes.proofStepLabel, step.label)}
+        {view.usedOutsideGoal.length > 0
+          ? (
+            <View style={webModuleStyle(classes.proofUsesRow)}>
+              {proofDom('span', classes.proofUsesKicker, proofUsesKicker(lang))}
+              {view.usedOutsideGoal.map((name) => (
+                proofDom('span', classes.proofUsesChip, name, name)
+              ))}
+            </View>
+          )
+          : null}
+      </View>
+      <ProofGoalCard
+        view={view.after}
+        kicker={proofGoalKicker(lang, 'after')}
+        variant={afterVariant}
+      />
+    </View>
+  );
+}
+
+function ProofPanelPane({
+  steps,
+  partIndex,
+  partCount,
+  lang,
+  editorFontSize,
+}: {
+  steps: BeatPosterProofStep[];
+  partIndex: number;
+  partCount: number;
+  lang: 'en' | 'zh';
+  editorFontSize: number;
+}) {
+  const lastIndex = steps.length - 1;
+  const closingProof = partIndex === partCount - 1;
+  const fontSize = editorFontSize * BEAT_POSTER_PREVIEW_FONT_SCALE;
+  const moves = steps.map((step, index) => (
+    <ProofMoveBlock
+      key={`proof-${index}`}
+      step={step}
+      isLastMove={closingProof && index === lastIndex}
+      lang={lang}
+    />
+  ));
+  if (Platform.OS === 'web') {
+    return createElement(
+      'div',
+      { className: webClassName(classes.editorWrap, classes.proofStage) },
+      createElement(
+        'div',
+        {
+          className: webClassName(classes.proofBody),
+          style: { fontSize: `${fontSize}px` },
+        },
+        moves,
+      ),
+    );
+  }
+  return (
+    <View style={webModuleStyle(classes.editorWrap, classes.proofStage)}>
+      <View style={[webModuleStyle(classes.proofBody), { fontSize }]}>
+        {moves}
+      </View>
+    </View>
+  );
+}
+
 export function BeatPosterSlide({
   lang,
   beatTitle,
   paragraphs,
   leanCode,
   turnCode,
+  proofSteps = [],
+  proofPartIndex = 0,
+  proofPartCount = 1,
   nextLead,
+  pageLabel,
   decorations,
   layout,
   compact = false,
 }: BeatPosterSlideProps) {
+  const showProofPanel = proofSteps.length > 0;
   return (
     <View
       style={webModuleStyle(classes.frame, compact ? classes.frameCompact : null)}
@@ -219,18 +449,21 @@ export function BeatPosterSlide({
         classes.poster,
         lang === 'zh' ? classes.posterZh : null,
         layout.primaryEditor === 'turn' ? classes.posterTurn : classes.posterLean,
+        showProofPanel ? classes.posterProof : null,
       )}>
-        <Text style={webModuleStyle(classes.sparkle, classes.sparkleOne)}>
-          {layout.primaryEditor === 'turn' && decorations.sparkle ? '✨' : '✧'}
-        </Text>
-        {layout.primaryEditor === 'turn' && decorations.sparkle ? (
+        {showProofPanel ? null : (
+          <Text style={webModuleStyle(classes.sparkle, classes.sparkleOne)}>
+            {layout.primaryEditor === 'turn' && decorations.sparkle ? '✨' : '✧'}
+          </Text>
+        )}
+        {!showProofPanel && layout.primaryEditor === 'turn' && decorations.sparkle ? (
           <Text style={webModuleStyle(classes.sparkle, classes.sparkleTwo)}>🔥</Text>
         ) : null}
         <View style={webModuleStyle(classes.header)}>
           <View
             style={[
               webModuleStyle(classes.titlePaper),
-              { transform: [{ rotate: `${decorations.titleTilt}deg` }] },
+              showProofPanel ? null : { transform: [{ rotate: `${decorations.titleTilt}deg` }] },
             ]}
           >
             <Text
@@ -241,6 +474,13 @@ export function BeatPosterSlide({
             >
               {beatTitle}
             </Text>
+            {showProofPanel
+              ? (
+                <Text style={webModuleStyle(classes.stepKindChip)}>
+                  {proofStepKindLabel(layout.primaryEditor, lang)}
+                </Text>
+              )
+              : null}
           </View>
         </View>
 
@@ -271,7 +511,21 @@ export function BeatPosterSlide({
               </Text>
             </View>
           ))}
-          {leanCode.trim() || turnCode.trim() ? (
+          {showProofPanel ? (
+            <View
+              style={webModuleStyle(classes.card, classes.codeCard, classes.codeCardAuto)}
+            >
+              <View style={webModuleStyle(classes.editors, classes.editorsSingle)}>
+                <ProofPanelPane
+                  steps={proofSteps}
+                  partIndex={proofPartIndex}
+                  partCount={proofPartCount}
+                  lang={lang}
+                  editorFontSize={layout.editorFontSize}
+                />
+              </View>
+            </View>
+          ) : leanCode.trim() || turnCode.trim() ? (
             <View
               style={webModuleStyle(classes.card, classes.codeCard, classes.codeCardAuto)}
             >
@@ -310,6 +564,7 @@ export function BeatPosterSlide({
         </View>
 
         <View style={webModuleStyle(classes.footer)}>
+          <Text style={webModuleStyle(classes.pageLabel)}>{pageLabel}</Text>
           <Text style={webModuleStyle(classes.footerVs)}>Lean 4 vs Turn-Lang</Text>
         </View>
       </View>

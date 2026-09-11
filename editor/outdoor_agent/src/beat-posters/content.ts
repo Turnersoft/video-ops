@@ -2,17 +2,25 @@ import type { LiveBeat } from '../live-script.ts';
 import type { BeatPosterCoverSpec, BeatPosterLang, BeatPosterSpec } from './types.ts';
 import { BEAT_POSTER_HEIGHT, BEAT_POSTER_WIDTH } from './types.ts';
 import { fitCodeLines } from './code-highlight.ts';
-import { estimateTextUnits, fitBeatPosterCardLayout } from '../../../../src/beatPosterLayout.ts';
+import { estimateTextUnits, fitBeatPosterCardLayout, PROOF_EDITOR_FONT_SIZE, PROOF_TITLE_FONT_SIZE } from '../../../../src/beatPosterLayout.ts';
 import { pickPrimaryEditor, tokenInCode } from '../../../../src/beatPosterEditorPick.ts';
 import { buildNextLeadSentence } from '../../../../src/beatPosterNextLead.ts';
 import type { BeatPosterMdEntry } from '../../../../src/beatPosterMd.ts';
 import {
+  beatPosterPageLabel,
   buildBeatPosterCoverContent,
   coverDecorations,
   fitCoverHeadlineSize,
   fitCoverSubtitleSize,
   fitCoverTaglineSize,
+  formatBeatPosterPageLabel,
 } from '../../../../src/beatPosterCover.ts';
+import {
+  planBeatPosterProofParts,
+  proofPanelLayoutText,
+  proofStepHeadline,
+  resolveBeatPosterProof,
+} from '../../../../src/beatPosterProof.ts';
 
 const TITLE_FALLBACK_ZH: Record<string, string> = {
   'Textbook rule and how = is wired': '课本公式里，等号是怎么接线的',
@@ -244,7 +252,7 @@ function fitTitleSize(title: string): number {
   return 34;
 }
 
-export function buildBeatPosterSpec(params: {
+export function buildBeatPosterSpecs(params: {
   scriptId: string;
   beat: LiveBeat;
   nextBeat?: LiveBeat | null;
@@ -253,8 +261,9 @@ export function buildBeatPosterSpec(params: {
   episodeTitleEn: string;
   episodeTitleZh: string;
   poster?: BeatPosterMdEntry | null;
-}): BeatPosterSpec {
-  const { scriptId, beat, nextBeat, lang, seriesTitle, episodeTitleEn, episodeTitleZh, poster } = params;
+  beatCount: number;
+}): BeatPosterSpec[] {
+  const { scriptId, beat, nextBeat, lang, seriesTitle, episodeTitleEn, episodeTitleZh, poster, beatCount } = params;
   const episodeTitle = lang === 'zh'
     ? (episodeTitleZh || episodeTitleEn)
     : episodeTitleEn;
@@ -294,6 +303,13 @@ export function buildBeatPosterSpec(params: {
   });
   const editorMode: 'single' = 'single';
   const shownCodeDraft = primaryEditor === 'lean' ? leanFit.lines.join('\n') : turnFit.lines.join('\n');
+  const proof = resolveBeatPosterProof({
+    proofMarkdown: poster?.proofMarkdown,
+    leanCode: leanSource,
+    turnCode: turnSource,
+    primaryEditor,
+  });
+  const proofMoves = proof.moves;
   const paragraphs = authoredBody
     ? authoredParagraphs(authoredBody)
     : posterParagraphs(scoringSentences, lang, shownCodeDraft);
@@ -308,59 +324,115 @@ export function buildBeatPosterSpec(params: {
     zhTitle: nextBeat && lang === 'zh' ? chineseTitle(nextBeat) : undefined,
   });
 
-  const requestedCodeLines = primaryEditor === 'lean' ? leanLines : turnLines;
-  const cardLayout = fitBeatPosterCardLayout({
+  const parts = planBeatPosterProofParts({
+    beatId: beat.id,
+    moves: proofMoves,
     paragraphs,
-    codeLines: requestedCodeLines,
-    hasCode: requestedCodeLines > 0,
-    hasNextLead: Boolean(nextLead.trim()),
-    titleUnits: estimateTextUnits(title),
-    codeText: shownCodeDraft,
+    nextLead,
+    title,
+    declaration: proof.declaration,
   });
 
-  const leanFitFinal = fitCodeLines(leanSource.trim(), cardLayout.maxCodeLines || 20);
-  const turnFitFinal = fitCodeLines(turnSource.trim(), cardLayout.maxCodeLines || 20);
-  const shownLeanLines = primaryEditor === 'lean' && leanFitFinal.usedLines ? leanFitFinal.usedLines : 0;
-  const shownTurnLines = primaryEditor === 'turn' && turnFitFinal.usedLines ? turnFitFinal.usedLines : 0;
+  return parts.map((part) => {
+    const shownProof = part.moves;
+    const partTitle = shownProof.length > 0
+      ? proofStepHeadline({
+        lang,
+        partIndex: part.partIndex,
+        partCount: part.partCount,
+      })
+      : title;
+    const layoutCodeText = shownProof.length > 0
+      ? proofPanelLayoutText({
+        moves: shownProof,
+        closingLast: part.partIndex === part.partCount - 1,
+        declaration: proof.declaration,
+      })
+      : shownCodeDraft;
+    const requestedCodeLines = shownProof.length > 0
+      ? layoutCodeText.split('\n').length
+      : (primaryEditor === 'lean' ? leanLines : turnLines);
+    const cardLayout = fitBeatPosterCardLayout({
+      paragraphs: part.paragraphs,
+      codeLines: requestedCodeLines,
+      hasCode: requestedCodeLines > 0,
+      hasNextLead: Boolean(part.nextLead.trim()),
+      titleUnits: estimateTextUnits(partTitle),
+      codeText: layoutCodeText,
+    });
 
-  return {
-    scriptId,
-    beatIndex: beat.index,
-    beatId: beat.id,
-    lang,
-    width: BEAT_POSTER_WIDTH,
-    height: BEAT_POSTER_HEIGHT,
-    seriesTitle,
-    episodeTitle,
-    beatTitle: title,
-    paragraphs,
-    leanCode: shownLeanLines ? leanFitFinal.lines.join('\n') : '',
-    turnCode: shownTurnLines ? turnFitFinal.lines.join('\n') : '',
-    narrativeFooter: '',
-    turnLangHint: lang === 'zh' ? 'turn-lang.com · 看懂证明' : 'turn-lang.com · formal math, outdoors',
-    nextLead,
-    decorations: {
-      titleTilt: tiltFor(seed, 1),
-      cardTilt: tiltFor(seed, 2),
-      leanTilt: tiltFor(seed, 3),
-      turnTilt: tiltFor(seed, 4),
-      sparkle: (seededVariant(seed) % 3) === 1,
-    },
-    layout: {
-      titleFontSize: fitTitleSize(title),
-      paragraphFontSize: cardLayout.paragraphFontSize,
-      textCardFlex: cardLayout.textCardFlex,
-      codeCardFlex: cardLayout.codeCardFlex,
-      codeCardAutoHeight: cardLayout.codeCardAutoHeight,
-      leanFlex,
-      turnFlex,
-      leanLines: shownLeanLines,
-      turnLines: shownTurnLines,
-      editorMode,
-      primaryEditor,
-      editorFontSize: cardLayout.editorFontSize,
-    },
-  };
+    const leanFitFinal = fitCodeLines(leanSource.trim(), cardLayout.maxCodeLines || 20);
+    const turnFitFinal = fitCodeLines(turnSource.trim(), cardLayout.maxCodeLines || 20);
+    const shownLeanLines = primaryEditor === 'lean' && leanFitFinal.usedLines ? leanFitFinal.usedLines : 0;
+    const shownTurnLines = primaryEditor === 'turn' && turnFitFinal.usedLines ? turnFitFinal.usedLines : 0;
+
+    return {
+      scriptId,
+      beatIndex: beat.index,
+      beatId: beat.id,
+      posterId: part.posterId,
+      lang,
+      width: BEAT_POSTER_WIDTH,
+      height: BEAT_POSTER_HEIGHT,
+      seriesTitle,
+      episodeTitle,
+      beatTitle: partTitle,
+      paragraphs: part.paragraphs,
+      leanCode: shownLeanLines ? leanFitFinal.lines.join('\n') : '',
+      turnCode: shownTurnLines ? turnFitFinal.lines.join('\n') : '',
+      proofDeclaration: proof.declaration,
+      proofSteps: shownProof,
+      proofPartIndex: part.partIndex,
+      proofPartCount: part.partCount,
+      narrativeFooter: '',
+      turnLangHint: lang === 'zh' ? 'turn-lang.com · 看懂证明' : 'turn-lang.com · formal math, outdoors',
+      nextLead: part.nextLead,
+      pageLabel: beatPosterPageLabel({ kind: 'beat', beatIndex: beat.index, beatCount }),
+      decorations: {
+        titleTilt: tiltFor(seed, 1),
+        cardTilt: tiltFor(seed, 2),
+        leanTilt: tiltFor(seed, 3),
+        turnTilt: tiltFor(seed, 4),
+        sparkle: shownProof.length > 0 ? false : (seededVariant(seed) % 3) === 1,
+      },
+      layout: {
+        titleFontSize: shownProof.length > 0 ? PROOF_TITLE_FONT_SIZE : fitTitleSize(partTitle),
+        paragraphFontSize: cardLayout.paragraphFontSize,
+        textCardFlex: cardLayout.textCardFlex,
+        codeCardFlex: cardLayout.codeCardFlex,
+        codeCardAutoHeight: cardLayout.codeCardAutoHeight,
+        leanFlex,
+        turnFlex,
+        leanLines: shownLeanLines,
+        turnLines: shownTurnLines,
+        editorMode,
+        primaryEditor,
+        editorFontSize: shownProof.length > 0 ? PROOF_EDITOR_FONT_SIZE : cardLayout.editorFontSize,
+      },
+    };
+  });
+}
+
+export function stampBeatPosterAlbumPages(specs: BeatPosterSpec[]): BeatPosterSpec[] {
+  const pageCount = specs.length + 1;
+  return specs.map((spec, index) => ({
+    ...spec,
+    pageLabel: formatBeatPosterPageLabel(index + 2, pageCount),
+  }));
+}
+
+export function buildBeatPosterSpec(params: {
+  scriptId: string;
+  beat: LiveBeat;
+  nextBeat?: LiveBeat | null;
+  lang: BeatPosterLang;
+  seriesTitle: string;
+  episodeTitleEn: string;
+  episodeTitleZh: string;
+  poster?: BeatPosterMdEntry | null;
+  beatCount: number;
+}): BeatPosterSpec {
+  return buildBeatPosterSpecs(params)[0];
 }
 
 export function buildBeatPosterCoverSpec(params: {
@@ -412,6 +484,7 @@ export function buildBeatPosterCoverSpec(params: {
     titleStroke: content.titleStroke,
     tagline: content.tagline,
     beatCountLabel: content.beatCountLabel,
+    pageLabel: content.pageLabel,
     swipeHint: content.swipeHint,
     vsLabel: content.vsLabel,
     backgroundLeanCode: content.backgroundLeanCode,

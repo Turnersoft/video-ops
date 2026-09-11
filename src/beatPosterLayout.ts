@@ -20,7 +20,7 @@ export function estimateTextUnits(text: string): number {
 }
 
 function baseParagraphSize(paragraphs: string[]): number {
-  const joined = paragraphs.join(' ');
+  const joined = paragraphs.join(" ");
   const units = estimateTextUnits(joined);
   if (units <= 120) return 26;
   if (units <= 180) return 24;
@@ -30,7 +30,7 @@ function baseParagraphSize(paragraphs: string[]): number {
 
 /** Headline-scale copy when the editor is compact and text should dominate. */
 function spaciousParagraphSize(paragraphs: string[]): number {
-  const units = estimateTextUnits(paragraphs.join(' '));
+  const units = estimateTextUnits(paragraphs.join(" "));
   if (units <= 80) return 38;
   if (units <= 140) return 34;
   if (units <= 200) return 30;
@@ -45,6 +45,10 @@ function spaciousParagraphSize(paragraphs: string[]): number {
  */
 export const BEAT_POSTER_PREVIEW_FONT_SCALE = 0.42;
 export const MIN_EDITOR_FONT_SIZE = 22;
+/** Proof posters stack two goals; keep type smaller so the full sequent fits. */
+export const PROOF_EDITOR_FONT_SIZE = 14;
+/** Compact heading: 36 × 0.42 preview ≈ 39px on the 1080 export. */
+export const PROOF_TITLE_FONT_SIZE = 36;
 const MAX_EDITOR_FONT_SIZE = 48;
 const PREVIEW_FRAME_WIDTH = 420;
 const EXPORT_POSTER_WIDTH = 1080;
@@ -54,7 +58,7 @@ const EDITOR_LINE_UNITS_AT_MIN = 2.15;
 
 function longestCodeLineLength(codeText: string): number {
   let longest = 0;
-  for (const line of codeText.replace(/\r\n/g, '\n').split('\n')) {
+  for (const line of codeText.replace(/\r\n/g, "\n").split("\n")) {
     if (line.length > longest) {
       longest = line.length;
     }
@@ -70,22 +74,33 @@ function maxEditorFontWithoutWrap(codeText: string): number {
   }
   const maxDisplayPx = CODE_TEXT_WIDTH_PX / (longest * MONO_CHAR_EM);
   const size = Math.floor(
-    maxDisplayPx / (BEAT_POSTER_PREVIEW_FONT_SCALE * (EXPORT_POSTER_WIDTH / PREVIEW_FRAME_WIDTH)),
+    maxDisplayPx /
+      (BEAT_POSTER_PREVIEW_FONT_SCALE *
+        (EXPORT_POSTER_WIDTH / PREVIEW_FRAME_WIDTH)),
   );
   return Math.max(MIN_EDITOR_FONT_SIZE, Math.min(MAX_EDITOR_FONT_SIZE, size));
 }
 
 function displayEditorPx(editorFontSize: number): number {
-  return editorFontSize * BEAT_POSTER_PREVIEW_FONT_SCALE * (EXPORT_POSTER_WIDTH / PREVIEW_FRAME_WIDTH);
+  return (
+    editorFontSize *
+    BEAT_POSTER_PREVIEW_FONT_SCALE *
+    (EXPORT_POSTER_WIDTH / PREVIEW_FRAME_WIDTH)
+  );
 }
 
 function charsThatFit(editorFontSize: number): number {
-  return Math.max(1, Math.floor(CODE_TEXT_WIDTH_PX / (displayEditorPx(editorFontSize) * MONO_CHAR_EM)));
+  return Math.max(
+    1,
+    Math.floor(
+      CODE_TEXT_WIDTH_PX / (displayEditorPx(editorFontSize) * MONO_CHAR_EM),
+    ),
+  );
 }
 
 function visualCodeLineCount(codeText: string, editorFontSize: number): number {
   const maxChars = charsThatFit(editorFontSize);
-  const lines = codeText.replace(/\r\n/g, '\n').split('\n');
+  const lines = codeText.replace(/\r\n/g, "\n").split("\n");
   let total = 0;
   for (const line of lines) {
     total += Math.max(1, Math.ceil(Math.max(line.length, 1) / maxChars));
@@ -98,7 +113,8 @@ function editorHeightFits(
   editorFontSize: number,
   availableUnits: number,
 ): boolean {
-  const perLine = EDITOR_LINE_UNITS_AT_MIN * (editorFontSize / MIN_EDITOR_FONT_SIZE);
+  const perLine =
+    EDITOR_LINE_UNITS_AT_MIN * (editorFontSize / MIN_EDITOR_FONT_SIZE);
   return visualLines * perLine <= availableUnits;
 }
 
@@ -106,7 +122,10 @@ function minEditorHeightUnits(codeText: string): number {
   if (!codeText.trim()) {
     return 0;
   }
-  return visualCodeLineCount(codeText, MIN_EDITOR_FONT_SIZE) * EDITOR_LINE_UNITS_AT_MIN;
+  return (
+    visualCodeLineCount(codeText, MIN_EDITOR_FONT_SIZE) *
+    EDITOR_LINE_UNITS_AT_MIN
+  );
 }
 
 function fitEditorFontSize(params: {
@@ -139,7 +158,8 @@ function estimateFixedHeightUnits(params: {
   hasCode: boolean;
   titleUnits: number;
 }): number {
-  const { paragraphCount, paragraphUnits, hasNextLead, hasCode, titleUnits } = params;
+  const { paragraphCount, paragraphUnits, hasNextLead, hasCode, titleUnits } =
+    params;
   let fixed = 12.5; // poster padding + column gaps
   fixed += 10 + Math.min(titleUnits * 0.3, 8); // title paper + heading
   fixed += 4.5; // footer strip
@@ -186,11 +206,11 @@ export function fitBeatPosterCardLayout(params: {
   codeText?: string;
 }): BeatPosterCardLayout {
   const { paragraphs, hasCode } = params;
-  const paragraphUnits = estimateTextUnits(paragraphs.join(' '));
+  const paragraphUnits = estimateTextUnits(paragraphs.join(" "));
   const hasNextLead = params.hasNextLead ?? false;
   const titleUnits = params.titleUnits ?? 24;
   const requestedCodeLines = params.codeLines;
-  const codeText = params.codeText ?? '';
+  const codeText = params.codeText ?? "";
 
   const maxCodeLines = fitBeatPosterMaxCodeLines({
     paragraphCount: paragraphs.length,
@@ -206,13 +226,14 @@ export function fitBeatPosterCardLayout(params: {
   const codeCardAutoHeight = hasCode && effectiveCodeLines > 0;
   const availableUnits = Math.max(
     minEditorHeightUnits(codeText),
-    100 - estimateFixedHeightUnits({
-      paragraphCount: paragraphs.length,
-      paragraphUnits,
-      hasNextLead,
-      hasCode,
-      titleUnits,
-    }),
+    100 -
+      estimateFixedHeightUnits({
+        paragraphCount: paragraphs.length,
+        paragraphUnits,
+        hasNextLead,
+        hasCode,
+        titleUnits,
+      }),
   );
 
   let codeCardFlex: number;
@@ -248,4 +269,34 @@ export function fitBeatPosterCardLayout(params: {
     editorFontSize,
     maxCodeLines: effectiveCodeLines,
   };
+}
+
+/**
+ * True when the panel text cannot fit the leftover poster height even at the
+ * readable font floor (wrapping allowed). Used to split a proof across posters.
+ */
+export function beatPosterPanelOverflowsAtMinFont(params: {
+  paragraphs: string[];
+  hasNextLead: boolean;
+  titleUnits: number;
+  panelText: string;
+}): boolean {
+  const panelText = params.panelText.trim();
+  if (!panelText) {
+    return false;
+  }
+  const paragraphUnits = estimateTextUnits(params.paragraphs.join(" "));
+  const availableUnits = Math.max(
+    0,
+    100 -
+      estimateFixedHeightUnits({
+        paragraphCount: params.paragraphs.length,
+        paragraphUnits,
+        hasNextLead: params.hasNextLead,
+        hasCode: true,
+        titleUnits: params.titleUnits,
+      }),
+  );
+  const visualLines = visualCodeLineCount(panelText, MIN_EDITOR_FONT_SIZE);
+  return !editorHeightFits(visualLines, MIN_EDITOR_FONT_SIZE, availableUnits);
 }

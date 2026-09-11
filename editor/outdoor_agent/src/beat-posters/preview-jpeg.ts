@@ -4,9 +4,8 @@ import { fileURLToPath } from 'node:url';
 import { fileExists } from '../fs_util.ts';
 import { runCommand } from '../subprocess.ts';
 import type { BeatPosterLang } from './types.ts';
-import { resolveBeatPosterFile } from './generate.ts';
+import { listBeatPosters, resolveBeatPosterFile } from './generate.ts';
 import { BEAT_POSTER_COVER_ID } from './types.ts';
-import { buildLiveScript } from '../live-script.ts';
 
 const WEB_ROOT = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -78,23 +77,14 @@ export async function syncBeatPosterPreviewJpegs(scriptId: string): Promise<{
   exported: number;
   urls: string[];
 }> {
-  const live = await buildLiveScript(scriptId);
-  const beatIds = (live?.beats ?? []).map((beat) => beat.id);
-  const targets: Array<{ beatId: string; lang: BeatPosterLang }> = [];
-  for (const lang of ['en', 'zh'] as BeatPosterLang[]) {
-    targets.push({ beatId: BEAT_POSTER_COVER_ID, lang });
-    for (const beatId of beatIds) {
-      targets.push({ beatId, lang });
-    }
-  }
-
+  const { posters } = await listBeatPosters(scriptId);
   const urls: string[] = [];
   let exported = 0;
-  for (const target of targets) {
-    const jpegPath = await exportBeatPosterPreviewJpeg(scriptId, target.beatId, target.lang);
+  for (const poster of posters) {
+    const jpegPath = await exportBeatPosterPreviewJpeg(scriptId, poster.beatId, poster.lang);
     if (jpegPath) {
       exported += 1;
-      urls.push(beatPosterPreviewJpegUrl(scriptId, target.beatId, target.lang));
+      urls.push(beatPosterPreviewJpegUrl(scriptId, poster.beatId, poster.lang));
     }
   }
   return { exported, urls };
