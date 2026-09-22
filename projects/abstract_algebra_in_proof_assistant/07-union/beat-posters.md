@@ -265,6 +265,18 @@ Same “or”. Three places to look it up.
 
 “或者”是同一句。三处的查找入口不同。
 
+### Lean
+
+```lean
+protected def union (s t : Set α) :=
+  {a | a ∈ s ∨ a ∈ t}
+instance : Union (Set α) := ⟨Set.union⟩
+```
+
+### Editor
+
+lean
+
 ### Next en
 
 Do not treat mem_union as the model.
@@ -281,13 +293,13 @@ mem_union 只是把定义展开
 
 ### English
 
-If you only show `a ∈ s ∪ t ↔ a ∈ s ∨ a ∈ t`, you hide how Lean built the set.
+If you only show the membership iff, you hide how Lean built the set.
 
 The model is `Set.union`. That two-way arrow is just the unfolding, like Turn’s `unfold Union.def`.
 
 ### Chinese
 
-如果只出示 `a ∈ s ∪ t ↔ a ∈ s ∨ a ∈ t`，就藏起了 Lean 怎样造出这个集合。
+如果只出示成员条件的双向，就藏起了 Lean 怎样造出这个集合。
 
 建模是 `Set.union`。那条双向只是把定义展开，相当于 Turn-Lang 里的 `unfold Union.def`。
 

@@ -197,7 +197,8 @@ Turn-Lang 把这条定理叫做 `Empty subset of every set`。断言是 `Subset(
 
 ```turn
 theorem "Empty subset of every set" {
-  forall S: Set<Any> |- Subset(EmptySet, S)
+  forall S: Set<Any> |-
+    Subset(EmptySet, S)
 }
 ```
 
@@ -235,7 +236,8 @@ The premise is already false. Cite `EmptySet.no_members`. Do not rewrite “nobo
 
 ```turn
 theorem "Empty subset of every set" {
-  forall S: Set<Any> |- Subset(EmptySet, S)
+  forall S: Set<Any> |-
+    Subset(EmptySet, S)
 } proof {
   unfold Subset at goal
   contradiction goal.1 by EmptySet.no_members
@@ -349,7 +351,8 @@ Turn-Lang 并不写成 `theorem empty_subset(S)`。它写成课堂上的标题�
 
 ```turn
 theorem "Empty subset of every set" {
-    forall S: Set<Any> |- Subset(EmptySet, S)
+    forall S: Set<Any> |-
+      Subset(EmptySet, S)
 }
 ```
 
