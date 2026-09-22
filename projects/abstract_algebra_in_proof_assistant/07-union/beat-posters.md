@@ -7,6 +7,10 @@
   Social / publish captions (per platform) live in social-posts.json under
   the "infographic" key — not in this file. Video captions use "english"/"china".
 
+  Cover hook (the sentence on the album cover):
+    ## Cover
+    ### English / ### Chinese
+
   Per beat:
     ### Title zh    Chinese title override (EN title comes from the heading)
     ### English     Body card copy, EN. `code` spans render highlighted.
@@ -22,6 +26,16 @@
   always staying larger than the code font.
   Any field left out falls back to auto-derived copy from animation.md.
 -->
+
+## Cover
+
+### English
+
+A third set, not a sentence about two.
+
+### Chinese
+
+第三个集合，不是关于两个集合的一句话。
 
 ## Beat 1: Open the book — union
 
@@ -59,13 +73,13 @@ A third set, not a sentence about two.
 
 Subset was a sentence about two sets. Union is a new set you can test membership on.
 
-Once `A` and `B` are fixed, `A ∪ B` is fixed.
+Two guest lists: you are on the combined list if you are on A or on B. Once `A` and `B` are fixed, `A ∪ B` is fixed.
 
 ### Chinese
 
 子集关系是关于两个已有集合的一句话。并集是一个新的集合，你可以问“属不属于”。
 
-集合 `A` 和集合 `B` 一旦确定，并集 `A ∪ B` 也就确定了。
+两份来宾名单：你在合并名单上，意思是在 A 或者在 B。集合 `A` 和 `B` 一旦确定，并集 `A ∪ B` 也就确定了。
 
 ### Next en
 
@@ -96,7 +110,8 @@ The aim is classroom `∪`. Lean keeps `Set α`, then hangs `∪` on sets throug
 ### Lean
 
 ```lean
-protected def union (s t : Set α) := {a | a ∈ s ∨ a ∈ t}
+protected def union (s t : Set α) :=
+  {a | a ∈ s ∨ a ∈ t}
 infixl:65 " ∪ " => Union.union
 instance : Union (Set α) := ⟨Set.union⟩
 ```
@@ -107,13 +122,13 @@ lean
 
 ### Next en
 
-How Mathlib uses ∪.
+How Mathlib uses union.
 
 ### Next zh
 
 Mathlib 怎样使用并集
 
-## Beat 4: How Mathlib uses ∪
+## Beat 4: How Mathlib uses union
 
 ### Title zh
 
@@ -121,21 +136,21 @@ Mathlib 怎样使用并集
 
 ### English
 
-`mem_union` only unfolds the definition. Lattice lemmas then treat `∪` as a supremum.
+`mem_union` only unfolds the definition. Later proofs cite that “or”; they do not rebuild the set.
 
-Idempotence, associativity, and De Morgan all ride that one predicate.
+Later theorems about union all start from that one membership test. We do not prove those today.
 
 ### Chinese
 
-引理 `mem_union` 只是把定义展开。格上的引理再把 `∪` 当成上确界来用。
+引理 `mem_union` 只是把定义展开。后面的证明引用这句“或者”，不再重造这个集合。
 
-幂等、结合律、德摩根定律，都骑在这一条成员条件上。
+后面关于并集的定理，都从这一条成员条件出发。今天不证那些。
 
 ### Lean
 
 ```lean
 -- unfolding, not a second model
-theorem mem_union {s t : Set α} :
+theorem mem_union :
     a ∈ s ∪ t ↔ a ∈ s ∨ a ∈ t
 ```
 
@@ -159,7 +174,7 @@ Turn 给并集起名，并写下定律 def
 
 ### English
 
-`Union<T, A, B>` _is_ the union set. Its only law is the classroom “or”.
+`Union<T, A, B>` is the union set. Its only law is the classroom “or”.
 
 Later proofs write `unfold Union.def`. That is the lookup.
 
@@ -176,7 +191,8 @@ Later proofs write `unfold Union.def`. That is the lookup.
 structure Union<T: Any, A B: Set<T>>: Set<T> {
     relations {
         law def: Prop {
-            forall x in self |- x in A or x in B
+            forall x in self |-
+              x in A or x in B
         }
     }
 }
@@ -188,38 +204,35 @@ turn
 
 ### Next en
 
-Where the AATA file unfolds Union.def.
+Where later proofs unfold Union.def.
 
 ### Next zh
 
-AATA 文件在哪里展开 Union.def
+后面的证明在哪里展开 Union.def
 
-## Beat 6: Where the AATA file unfolds Union.def
+## Beat 6: Where later proofs unfold Union.def
 
 ### Title zh
 
-AATA 文件在哪里展开 Union.def
+后面的证明在哪里展开 Union.def
 
 ### English
 
-Theorem `basic set` proves `SetEq(Union(A, A), A)` by unfolding `Union.def` and splitting the “or”.
+Later, `A ∪ A = A` unfolds `Union.def`, then splits the “or”.
 
-De Morgan does the same: `unfold Union.def at h.2`. One law, many theorems.
+We do not prove that today. I just want you to see where the file looks.
 
 ### Chinese
 
-定理 `basic set` 证明 `SetEq(Union(A, A), A)` 时，先展开 `Union.def`，再把“或者”拆开。
+后面写 `A ∪ A = A` 时，先展开 `Union.def`，再把“或者”拆开。
 
-德摩根定律也是如此：`unfold Union.def at h.2`。一条定律，很多条定理。
+今天不证那条。我只想让你看见文件往哪里找。
 
 ### Turn-Lang
 
 ```turn
-first: SetEq(Union(A, A), A) proof {
-  unfold SetEq
-  unfold Union.def at h
-  split_assumption_disjunction h
-}
+first: SetEq(Union(A, A), A)
+-- unfold Union.def, then split the or
 ```
 
 ### Editor
@@ -242,15 +255,27 @@ Textbook vs Lean vs Turn.
 
 ### English
 
-Textbook: a set-builder and a glyph. Lean: redefine the predicate on `Set α`. Turn: a named structure whose `def` law you unfold.
+Textbook: a set-builder and a mark on the page. Lean: rewrite the membership test on `Set α`. Turn: a named structure whose `def` law you unfold.
 
-Same “or”. Three lookups.
+Same “or”. Three places to look it up.
 
 ### Chinese
 
 课本给集合表示和一个记号。Lean 在集合类型 `Set α` 上改写成员条件。Turn-Lang 给一个有名字的结构，证明时展开它的定律 `def`。
 
-“或者”是同一句。三处的查找方式不同。
+“或者”是同一句。三处的查找入口不同。
+
+### Lean
+
+```lean
+protected def union (s t : Set α) :=
+  {a | a ∈ s ∨ a ∈ t}
+instance : Union (Set α) := ⟨Set.union⟩
+```
+
+### Editor
+
+lean
 
 ### Next en
 
@@ -268,20 +293,21 @@ mem_union 只是把定义展开
 
 ### English
 
-If you only show `a ∈ s ∪ t ↔ a ∈ s ∨ a ∈ t`, you hid how Lean built the set.
+If you only show the membership iff, you hide how Lean built the set.
 
-The model is `Set.union`. The biconditional is a corollary, like Turn’s `unfold Union.def`.
+The model is `Set.union`. That two-way arrow is just the unfolding, like Turn’s `unfold Union.def`.
 
 ### Chinese
 
-如果只出示 `a ∈ s ∪ t ↔ a ∈ s ∨ a ∈ t`，就藏起了 Lean 怎样造出这个集合。
+如果只出示成员条件的双向，就藏起了 Lean 怎样造出这个集合。
 
-建模是 `Set.union`。这条双向只是推论，相当于 Turn-Lang 里的 `unfold Union.def`。
+建模是 `Set.union`。那条双向只是把定义展开，相当于 Turn-Lang 里的 `unfold Union.def`。
 
 ### Lean
 
 ```lean
-protected def union (s t : Set α) := {a | a ∈ s ∨ a ∈ t}
+protected def union (s t : Set α) :=
+  {a | a ∈ s ∨ a ∈ t}
 ```
 
 ### Editor
@@ -332,13 +358,13 @@ Next: intersection, the “and” twin.
 
 Same constructed-set pattern. Only the joining word changes: “and” instead of “or”.
 
-The AATA file will write `Intersect` with a conjunction block, then unfold `Intersect.def`.
+Turn-Lang will write `Intersect` with “and”, then unfold `Intersect.def`.
 
 ### Chinese
 
 还是“造出一个集合”这一套路。变的只是连接词：把“或者”换成“并且”。
 
-AATA 文件会把交集写成带合取块的 `Intersect`，再展开 `Intersect.def`。
+Turn-Lang 会把交集写成带“并且”的 `Intersect`，再展开 `Intersect.def`。
 
 ### Next en
 

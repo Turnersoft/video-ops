@@ -7,6 +7,10 @@
   Social / publish captions (per platform) live in social-posts.json under
   the "infographic" key — not in this file. Video captions use "english"/"china".
 
+  Cover hook (the sentence on the album cover):
+    ## Cover
+    ### English / ### Chinese
+
   Per beat:
     ### Title zh    Chinese title override (EN title comes from the heading)
     ### English     Body card copy, EN. `code` spans render highlighted.
@@ -32,6 +36,16 @@
   Any field left out falls back to auto-derived copy from animation.md.
 -->
 
+## Cover
+
+### English
+
+The if never opens.
+
+### Chinese
+
+那个“如果”永远打不开。
+
 ## Beat 1: Open the book — a theorem about the empty set
 
 ### Title zh
@@ -42,21 +56,21 @@
 
 The textbook states: the empty set is a subset of every set.
 
-It treats the line as obvious. It does not say which definition to unfold.
+It treats the line as obvious. It does not say where later proofs should look it up.
 
 ### Chinese
 
 课本写：空集是任何集合的子集。
 
-课本把这句当成显然。它没有说该展开哪一条定义。
+课本把这句当成显然。它没有说后面的证明该到哪里去引用它。
 
 ### Next en
 
-What “subset” asked last clips.
+What subset was asking two clips ago.
 
 ### Next zh
 
-上一集的子集关系在问什么
+两集之前，子集关系在问什么
 
 ## Beat 2: Subset is an implication
 
@@ -107,7 +121,8 @@ Lean 已经把 `⊆` 和 `∅` 挂在 `Set α` 上。这条定理只是把两处
 ```lean
 instance : HasSubset (Set α) := ⟨Set.Subset⟩
 instance : EmptyCollection (Set α) := ⟨fun _ => False⟩
-theorem empty_subset (s : Set α) : ∅ ⊆ s
+theorem empty_subset (s : Set α) :
+    ∅ ⊆ s
 ```
 
 ### Editor
@@ -116,11 +131,11 @@ lean
 
 ### Next en
 
-How Mathlib files the corollary.
+How Mathlib names that unfolding.
 
 ### Next zh
 
-Mathlib 怎样收录这条推论
+Mathlib 怎样给这次展开起名
 
 ## Beat 4: How Mathlib uses empty_subset
 
@@ -130,21 +145,22 @@ Mathlib 怎样使用 empty_subset
 
 ### English
 
-`empty_subset` names that unfolding. Later proofs cite it instead of rebuilding `False → _`.
+`empty_subset` names that unfolding. Later proofs cite it instead of rewriting `False → _` each time.
 
-Same story as `not_mem_empty`: a corollary of the model, used throughout `Data.Set`.
+Same story as last clip’s `not_mem_empty`: a name for the model, not a new empty set.
 
 ### Chinese
 
-引理 `empty_subset` 只是给这次展开起名。后面的证明引用它，而不再重写 `False → _`。
+引理 `empty_subset` 只是给这次展开起名。后面的证明引用它，而不再每次重写 `False → _`。
 
-这和 `not_mem_empty` 是同一件事：建模的推论，在 `Data.Set` 里反复使用。
+这和上期的 `not_mem_empty` 是同一件事：给建模起名，不是再造一个空集。
 
 ### Lean
 
 ```lean
 -- Mathlib/Data/Set/Basic.lean
-theorem empty_subset (s : Set α) : ∅ ⊆ s
+theorem empty_subset (s : Set α) :
+    ∅ ⊆ s
 ```
 
 ### Editor
@@ -167,13 +183,13 @@ Turn 写下有名字的定理
 
 ### English
 
-The AATA file names it `Empty subset of every set`. The claim is `Subset(EmptySet, S)`.
+Turn-Lang names it `Empty subset of every set`. The claim is `Subset(EmptySet, S)`.
 
 No invented identifier. The name is the classroom sentence.
 
 ### Chinese
 
-AATA 文件把这条定理叫做 `Empty subset of every set`。断言是 `Subset(EmptySet, S)`。
+Turn-Lang 把这条定理叫做 `Empty subset of every set`。断言是 `Subset(EmptySet, S)`。
 
 没有另造一个函数名。定理的名字就是课堂上的那句话。
 
@@ -181,22 +197,10 @@ AATA 文件把这条定理叫做 `Empty subset of every set`。断言是 `Subset
 
 ```turn
 theorem "Empty subset of every set" {
-  forall S: Set<Any> |- Subset(EmptySet, S)
-} proof {
-  unfold Subset at goal
-  contradiction goal.1 by EmptySet.no_members
+  forall S: Set<Any> |-
+    Subset(EmptySet, S)
 }
 ```
-
-### Proof
-
-open
-forall S: Set<Any> |- Subset(EmptySet, S)
-
-unfold Subset at goal
-forall S: Set<Any> |- forall x: Any |- x in EmptySet -> x in S
-
-contradiction goal.1 by EmptySet.no_members
 
 ### Editor
 
@@ -218,21 +222,22 @@ The proof cites last clip’s law.
 
 ### English
 
-Unfold `Subset`. Assume a counterexample. Contradict with `EmptySet.no_members`.
+Unfold `Subset`. The leftover claim is: if `x` is in empty, then `x` is in `S`.
 
-That is how Turn uses the empty set: by name, not by rewriting “nobody is in”.
+The premise is already false. Cite `EmptySet.no_members`. Do not rewrite “nobody is in” by hand.
 
 ### Chinese
 
-先展开子集关系 `Subset`。再假设有反例。最后用 `EmptySet.no_members` 得出矛盾。
+先展开子集关系 `Subset`。剩下的断言是：如果 `x` 在空集里，那么 `x` 在 `S` 里。
 
-Turn-Lang 使用空集的方式就是点名引用，而不是把“谁都不在里面”再写一遍。
+前提已经为假。引用 `EmptySet.no_members`。不必手写“谁都不在里面”。
 
 ### Turn-Lang
 
 ```turn
 theorem "Empty subset of every set" {
-  forall S: Set<Any> |- Subset(EmptySet, S)
+  forall S: Set<Any> |-
+    Subset(EmptySet, S)
 } proof {
   unfold Subset at goal
   contradiction goal.1 by EmptySet.no_members
@@ -269,23 +274,21 @@ Later proofs copy this pattern.
 
 ### English
 
-`A \ A = ∅` and the symmetric-difference example both end with `contradiction … by EmptySet.no_members`.
+`A \ A = ∅` ends the same way: `contradiction … by EmptySet.no_members`.
 
-The empty-subset proof is the first time the file shows that library move.
+Today is the first time the file points at that named law.
 
 ### Chinese
 
-`A \ A = ∅`，以及对称差的例子，结尾都是 `contradiction … by EmptySet.no_members`。
+`A \ A = ∅` 的结尾也是 `contradiction … by EmptySet.no_members`。
 
-空集是子集这条证明，是整份文件第一次演示这个库用法。
+空集是子集这条证明，是整份文件第一次点名引用那条定律。
 
 ### Turn-Lang
 
 ```turn
-third: SetEq(Difference(A, A), EmptySet) proof {
-  unfold Difference.def at goal.1
-  contradiction goal.1 by EmptySet.no_members
-}
+third: SetEq(Difference(A, A), EmptySet)
+-- same close: contradiction … by EmptySet.no_members
 ```
 
 ### Editor
@@ -320,11 +323,11 @@ Same vacuous fact. Three different lookups.
 
 ### Next en
 
-Do not invent a new Turn theorem syntax.
+Turn writes the classroom sentence.
 
 ### Next zh
 
-不要给 Turn 另造一套定理写法
+Turn 写成课堂上的那句话
 
 ## Beat 9: The statement is a classroom sentence
 
@@ -336,19 +339,20 @@ Do not invent a new Turn theorem syntax.
 
 Turn does not write `theorem empty_subset(S)`. It writes a classroom title, then a proof that uses the empty-set law.
 
-That is the library style for the rest of AATA sets.
+That is the style for the rest of this chapter.
 
 ### Chinese
 
 Turn-Lang 并不写成 `theorem empty_subset(S)`。它写成课堂上的标题，再用空集的定律做证明。
 
-AATA 集合这一章后面的定理，都是这个库风格。
+这一章后面的定理，都是这个写法。
 
 ### Turn-Lang
 
 ```turn
 theorem "Empty subset of every set" {
-    forall S: Set<Any> |- Subset(EmptySet, S)
+    forall S: Set<Any> |-
+      Subset(EmptySet, S)
 }
 ```
 

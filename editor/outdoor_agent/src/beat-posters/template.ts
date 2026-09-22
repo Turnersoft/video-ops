@@ -344,7 +344,7 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
       overflow: hidden;
     }
     body {
-      font-family: "PingFang SC", "SF Pro Display", "Segoe UI", system-ui, sans-serif;
+      font-family: "PingFang SC", "SF Pro Display", "Noto Sans", "DejaVu Sans", "Segoe UI", system-ui, sans-serif;
       color: #0f172a;
       display: flex;
       flex-direction: column;
@@ -525,7 +525,7 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
     body.poster-turn .text-card p { color: #1f2937; font-weight: 750; }
     body.poster-lean .text-card p { color: #475569; font-weight: 650; }
     .inline-code {
-      font-family: "SF Mono", "JetBrains Mono", "Menlo", monospace;
+      font-family: "SF Mono", "JetBrains Mono", "Menlo", "DejaVu Sans Mono", "Noto Sans Mono", monospace;
       font-size: 0.9em;
       font-weight: 700;
       border-radius: 8px;
@@ -697,7 +697,7 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
     .turn-chip { background: #f7c948; color: #111827; }
     .editor-body {
       overflow: visible;
-      font-family: "SF Mono", "JetBrains Mono", "Menlo", monospace;
+      font-family: "SF Mono", "JetBrains Mono", "Menlo", "DejaVu Sans Mono", "Noto Sans Mono", monospace;
       font-size: 1em;
       line-height: 1.2;
       padding: 8px 0 10px;
@@ -722,7 +722,7 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
       flex-direction: column;
       gap: ${previewToExportPx(8, spec.width)}px;
       padding: 0;
-      font-family: "SF Mono", "JetBrains Mono", "Menlo", monospace;
+      font-family: "SF Mono", "JetBrains Mono", "Menlo", "DejaVu Sans Mono", "Noto Sans Mono", monospace;
     }
     .proof-stage {
       display: flex;
@@ -841,7 +841,7 @@ export function buildBeatPosterHtml(spec: BeatPosterSpec): string {
     }
     .proof-goal-text {
       color: #d4d4d4;
-      font-family: "SF Mono", "JetBrains Mono", "Menlo", monospace;
+      font-family: "SF Mono", "JetBrains Mono", "Menlo", "DejaVu Sans Mono", "Noto Sans Mono", monospace;
       font-size: 1em;
       line-height: 1.28;
       white-space: pre-wrap;
@@ -1046,7 +1046,7 @@ export function buildBeatPosterCoverHtml(spec: BeatPosterCoverSpec): string {
       overflow: hidden;
     }
     body {
-      font-family: "PingFang SC", "SF Pro Display", "Segoe UI", system-ui, sans-serif;
+      font-family: "PingFang SC", "SF Pro Display", "Noto Sans", "DejaVu Sans", "Segoe UI", system-ui, sans-serif;
       color: #0f172a;
       background:
         radial-gradient(circle at 12% 10%, rgba(232, 160, 255, 0.22) 0 14%, transparent 15%),
@@ -1084,7 +1084,7 @@ export function buildBeatPosterCoverHtml(spec: BeatPosterCoverSpec): string {
       border: 1px solid rgba(15, 23, 42, 0.1);
       border-radius: ${codeRadius}px;
       background: rgba(255, 255, 255, 0.48);
-      font-family: "SF Mono", "JetBrains Mono", "Menlo", monospace;
+      font-family: "SF Mono", "JetBrains Mono", "Menlo", "DejaVu Sans Mono", "Noto Sans Mono", monospace;
       font-size: ${codePx}px;
       line-height: 1.38;
       white-space: pre;
@@ -1194,7 +1194,7 @@ export function buildBeatPosterCoverHtml(spec: BeatPosterCoverSpec): string {
     .cover-hero-kicker {
       margin: 0;
       padding: 0 ${kickerPadX}px ${kickerPadY}px;
-      font-family: "PingFang SC", "SF Pro Display", "Helvetica Neue", sans-serif;
+      font-family: "PingFang SC", "SF Pro Display", "Noto Sans", "DejaVu Sans", "Helvetica Neue", sans-serif;
       font-size: ${kickerPx}px;
       font-weight: 900;
       letter-spacing: 0.04em;
@@ -1208,7 +1208,7 @@ export function buildBeatPosterCoverHtml(spec: BeatPosterCoverSpec): string {
     }
     .cover-hero-hook {
       margin: 0;
-      font-family: "PingFang SC", "SF Pro Display", "Helvetica Neue", sans-serif;
+      font-family: "PingFang SC", "SF Pro Display", "Noto Sans", "DejaVu Sans", "Helvetica Neue", sans-serif;
       font-size: ${taglinePx}px;
       line-height: 1.3;
       font-weight: 800;
