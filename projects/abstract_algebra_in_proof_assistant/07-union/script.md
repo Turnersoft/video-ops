@@ -1,83 +1,14 @@
 # Union — constructed set with a def law
 
-Playlist: abstract algebra: formalized from scratch with turn-lang — script_v2 serial
+Social title (English): 7. Union: in A or in B
+Social title (China): 7. 并集：在 A 里或在 B 里
+Promotional description: Union is not two boxes glued together. It is a third set: you are in it if you are in A or in B. Lean hangs ∪ on Set α; Turn names Union and writes law def. Episode 7 of Abstract Algebra in a Proof Assistant · #TurnLang #Lean4 #Mathlib #Union #SetTheory #FormalMethods #ProofAssistant
 
-Title: Union — constructed set with a def law
+Format: **v4 animated-PPT beats** · Editor: `/video-ops/editor/07-union`
 
-Promotional description: One Judson §1.2 idea from the Sets lecture, split for filming. Textbook beat → your intuition on camera → Lean 4 vs Turn-Lang compare. Teleprompter lives below the editor canvas.
+**Authoring:** edit [`animation.md`](./animation.md). It contains the spoken script, Lean/Turn-Lang code, highlights, visual notes, and Chinese captions. See [`../../../docs/animation-markdown-language.md`](../../../docs/animation-markdown-language.md).
 
-Status: Script
+Assumes viewer just watched [06-empty-subset-theorem](../06-empty-subset-theorem/script.md). **10 beats:** textbook set-builder → a third set, not a sentence → Lean’s `Set.union` plus `Union` wiring → `mem_union` unfolds → Turn names `Union` and writes `def` → where AATA unfolds `Union.def` → textbook vs Lean vs Turn → don’t treat `mem_union` as the model → the constructed set is still a set → next: intersection.
 
-Education core: L1–L2
-Patience: short (~90s)
-Hook type: textbook → intuition → compare
-Turn wedge: named structures and relations match Judson bold terms
-
-Series order: script_v2 sets #07-union
-
-Builds on: (published) 2026-5-26-  1.1 Sets: Abstract Algebra formalized from scratch with Turn-Lang
-
-Source file: `script/shared/reference/02_sets_and_equivalence_relations.turn`
-
-Lean source: `script/shared/reference/judson_sets.lean`
-
-Filming: use `/video-ops/editor/07-union` — script panel under canvas; overlay off.
-
-## Scene 1: Textbook anchor
-
-Duration: 14s
-
-Say:
-
-> Open the book — Judson Abstract Algebra, section one point two, Sets.
-> A ∪ B = { x | x ∈ A or x ∈ B }.
-> This is the bold definition we are formalizing today — one clip, one idea.
-
-Show on screen:
-
-Textbook beat on math board: Judson §1.2 — Union
-
-Visual notes:
-
-math-focus only. No code.
-
-## Scene 2: Intuition — your voice
-
-Duration: 20s
-
-Say:
-
-> Union produces a new set deterministically from A and B.
-> Structure with generics A, B — not a relation.
-> Def law matches textbook or exactly.
-
-Show on screen:
-
-Chapter beat — short labels matching your spoken intuition.
-
-Visual notes:
-
-Film yourself; canvas stays on beat text. Script reads from panel below preview.
-
-## Scene 3: Lean vs Turn compare
-
-Duration: 28s
-
-Say:
-
-> Textbook set-builder with or.
-> Turn: Union structure + def law.
-> Lean: mem_union_iff biconditional.
-> Symbolic modeling: proposition defines behavior of the structure.
-
-Show on screen:
-
-Side-by-side compare: Lean 4 (left) vs Turn-Lang (right).
-
-Visual notes:
-
-Caption beats sync editor highlights on both columns.
-
-## Final Takeaway
-
-Union — constructed set with a def law: A ∪ B = { x | x ∈ A or x ∈ B }. Turn names the formal object; Lean uses Mathlib lemmas — same meaning, different pedagogy.
+**Lean excerpt:** `Set.union` in `Mathlib/Data/Set/Defs.lean` — the “or” predicate; `mem_union` is the unfolding.
+**Turn-Lang excerpt:** `structure Union<T, A, B>` inheriting `Set<T>`, with law `def` matching the classroom “or”.

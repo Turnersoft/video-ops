@@ -4,42 +4,47 @@
   "titleEnglish": "7. Union: in A or in B",
   "titleChina": "7. 并集：在 A 里或在 B 里",
   "title": "7. Union: in A or in B",
-  "generatedAt": "2026-07-25T08:06:05.028Z",
-  "source": {},
+  "generatedAt": "2026-09-22T08:30:00.000Z",
+  "source": {
+    "promotionalDescription": "Union is not two boxes glued together. It is a third set: you are in it if you are in A or in B.",
+    "promotionalDescriptionChina": "并集不是把两个盒子焊在一起。它是第三个集合：你在 A 里，或者在 B 里，就算在里面。",
+    "socialTitleEnglish": "7. Union: in A or in B",
+    "socialTitleChina": "7. 并集：在 A 里或在 B 里"
+  },
   "english": {
     "youtube": {
-      "title": "07_union",
-      "body": "07_union\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+      "title": "7. Union: in A or in B",
+      "body": "Union is not two boxes glued together. It is a third set: you are in it if you are in A or in B.\n\nLean keeps Set α and hangs ∪ through the Union typeclass. Set.union is the “or” predicate; mem_union only unfolds it. Turn-Lang names Union and writes law def — later proofs look up unfold Union.def.\n\nEpisode 7 of Abstract Algebra in a Proof Assistant.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
     },
     "x": {
-      "title": "07_union",
-      "body": "07_union #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+      "title": "7. Union: in A or in B",
+      "body": "Union is a third set, not a sentence about two. You are in it if you are in A or in B. Lean hangs ∪ on Set α; Turn names Union. Ep. 7."
     },
     "linkedin": {
-      "title": "07_union",
-      "body": "07_union\n\n07_union\n\nThis episode is part of the Abstract Algebra in a Proof Assistant series on Turn-Lang — textbook-shaped formal mathematics you can film outdoors and verify in Lean 4 / Turn-Lang.\n\nWhat you will see in the video:\n• A textbook beat you can say on camera\n• The Lean 4 modeling choice (and what it refuses to pretend)\n• The Turn-Lang compare so the obligation is visible\n\nWatch the short, then open the linked editor if you want to step through the proof assistant view yourself.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+      "title": "7. Union: in A or in B",
+      "body": "7. Union: in A or in B\n\nUnion is not two boxes glued together. It is a third set: you are in it if you are in A or in B.\n\nLean keeps Set α and hangs ∪ through a typeclass. Turn-Lang names Union and writes law def, so later proofs unfold Union.def.\n\nThis episode is part of the Abstract Algebra in a Proof Assistant series on Turn-Lang — textbook-shaped formal mathematics you can film outdoors and verify in Lean 4 / Turn-Lang.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
     },
     "instagram": {
-      "title": "07_union",
-      "body": "07_union\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+      "title": "7. Union: in A or in B",
+      "body": "Union is a third set, not a sentence about two. You are in it if you are in A or in B.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
     },
     "tiktok": {
-      "title": "07_union",
-      "body": "07_union\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+      "title": "7. Union: in A or in B",
+      "body": "Two guest lists. You are in the union if you are on A or on B.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
     },
     "facebook": {
-      "title": "07_union",
-      "body": "07_union\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+      "title": "7. Union: in A or in B",
+      "body": "Union is not two boxes glued together. It is a third set: you are in it if you are in A or in B.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
     },
     "bluesky": {
-      "title": "07_union",
-      "body": "07_union #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+      "title": "7. Union: in A or in B",
+      "body": "Union is a third set, not a sentence about two. You are in it if you are in A or in B. Ep. 7."
     }
   },
   "china": {
     "bilibili": {
       "title": "7. 并集：在 A 里或在 B 里",
-      "body": "并集不是把两个盒子焊在一起。它是一条规矩：在 A 里，或者在 B 里，就算在并集里。\n\n#证明助手 #抽象代数 #形式化数学"
+      "body": "并集不是把两个盒子焊在一起。它是第三个集合：你在 A 里，或者在 B 里，就算在里面。Lean 把 ∪ 挂在 Set α 上。Turn-Lang 给并集起名，并写下定律 def。\n\n#证明助手 #抽象代数 #形式化数学"
     },
     "douyin": {
       "title": "7. 并集：在 A 里或在 B 里",
@@ -47,7 +52,7 @@
     },
     "xiaohongshu": {
       "title": "7. 并集：在 A 里或在 B 里",
-      "body": "并集是两边的人都能进来。在 A 里或者在 B 里，就算在里面。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享"
+      "body": "并集不是把两个盒子焊在一起。它是第三个集合：在 A 里，或者在 B 里，就算在里面。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享"
     },
     "weibo": {
       "title": "7. 并集：在 A 里或在 B 里",
@@ -67,34 +72,68 @@
     }
   },
   "infographic": {
+    "english": {
+      "instagram": {
+        "title": "Union is a third set",
+        "body": "Subset was a sentence about two sets. Union is a new set you can test membership on.\n\nYou are in A ∪ B if you are in A or in B.\n\n#ProofAssistant #AbstractAlgebra #MathEducation"
+      },
+      "tiktok": {
+        "title": "Union: in A or in B",
+        "body": "A third set, not a sentence about two. Swipe the album.\n\n#ProofAssistant #AbstractAlgebra"
+      },
+      "x": {
+        "title": "Union: in A or in B",
+        "body": "Two guest lists. You are in the union if you are on A or on B. Ep. 7 album.\n\n#ProofAssistant #AbstractAlgebra"
+      },
+      "linkedin": {
+        "title": "Union — a constructed set, not a claim",
+        "body": "Subset was a sentence about two sets you already had. Union is a third set: membership is “in A or in B.”\n\nLean hangs ∪ on Set α. Turn-Lang names Union and writes law def.\n\nSwipeable album. Ep. 7 · Abstract Algebra in a Proof Assistant.\n\n#ProofAssistant #AbstractAlgebra #FormalMethods"
+      },
+      "facebook": {
+        "title": "Union is a third set",
+        "body": "You are in A ∪ B if you are in A or in B.\n\n#ProofAssistant #AbstractAlgebra"
+      },
+      "threads": {
+        "title": "Union: in A or in B",
+        "body": "A third set, not a sentence about two. Ep. 7 album.\n\n#ProofAssistant #AbstractAlgebra"
+      },
+      "bluesky": {
+        "title": "Union album",
+        "body": "Union is a third set, not a sentence about two. You are in it if you are in A or in B. Ep. 7."
+      },
+      "reddit": {
+        "title": "Album: union is a third set, not a sentence about two",
+        "body": "Episode 7 is a swipeable album about union.\n\nThe textbook writes a set-builder. Lean’s model is the “or” predicate on Set α. Turn names Union and unfolds Union.def.\n\nmem_union is the unfolding, not a second model."
+      }
+    },
     "china": {
       "xiaohongshu": {
-        "title": "7. 并集：在 A 里或在 B 里",
-        "body": "并集不是把两个盒子焊在一起。它是一条规矩：在 A 里，或者在 B 里，就算在并集里。\n\n左滑 10 张看完。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享"
+        "title": "并集是第三个集合｜不是一句话",
+        "body": "并集不是把两个盒子焊在一起。它是一条规矩：在 A 里，或者在 B 里，就算在并集里。\n\n左滑看完：Lean 挂 ∪，Turn 写下 Union.def。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享"
       },
       "bilibili": {
         "title": "【信息图】7. 并集：在 A 里或在 B 里",
-        "body": "并集不是把两个盒子焊在一起。它是一条规矩：在 A 里，或者在 B 里，就算在并集里。\n\n10 张信息图左滑看完。\n\n#证明助手 #抽象代数 #形式化数学"
+        "body": "并集不是把两个盒子焊在一起。它是一条规矩：在 A 里，或者在 B 里，就算在并集里。\n\n信息图左滑看完。\n\n#证明助手 #抽象代数 #形式化数学"
       },
       "douyin": {
         "title": "7. 并集：在 A 里或在 B 里",
-        "body": "并集不是把两个盒子焊在一起。它是一条规矩：在 A 里，或者在 B 里，就算在并集里。\n\n左滑 10 张看完。\n\n#证明助手 #抽象代数 #干货分享"
+        "body": "并集不是把两个盒子焊在一起。它是一条规矩：在 A 里，或者在 B 里，就算在并集里。\n\n左滑看完。\n\n#证明助手 #抽象代数 #干货分享"
       },
       "weibo": {
         "title": "7. 并集：在 A 里或在 B 里",
-        "body": "并集不是把两个盒子焊在一起。它是一条规矩：在 A 里，或者在 B 里，就算在并集里。 左滑 10 张看完。 #证明助手 #抽象代数"
+        "body": "并集不是把两个盒子焊在一起。它是一条规矩：在 A 里，或者在 B 里，就算在并集里。 左滑看完。 #证明助手 #抽象代数"
       },
       "wechat_channels": {
-        "title": "7. 并集：在 A 里或在 B 里（10 张）",
-        "body": "并集不是把两个盒子焊在一起。它是一条规矩：在 A 里，或者在 B 里，就算在并集里。\n\n10 张信息图。"
+        "title": "7. 并集：在 A 里或在 B 里",
+        "body": "并集不是把两个盒子焊在一起。它是一条规矩：在 A 里，或者在 B 里，就算在并集里。\n\n信息图。"
       },
       "wechat": {
         "title": "7. 并集：在 A 里或在 B 里",
-        "body": "并集不是把两个盒子焊在一起。它是一条规矩：在 A 里，或者在 B 里，就算在并集里。\n\n10 张信息图按拍序插入。"
+        "body": "并集不是把两个盒子焊在一起。它是一条规矩：在 A 里，或者在 B 里，就算在并集里。\n\n信息图按拍序插入。"
       },
       "kuaishou": {
         "title": "7. 并集：在 A 里或在 B 里",
-        "body": "并集不是把两个盒子焊在一起。它是一条规矩：在 A 里，或者在 B 里，就算在并集里。 左滑 10 张看完。\n\n#证明助手 #抽象代数"
+        "body": "并集不是把两个盒子焊在一起。它是一条规矩：在 A 里，或者在 B 里，就算在并集里。 左滑看完。\n\n#证明助手 #抽象代数"
       }
     }
   }

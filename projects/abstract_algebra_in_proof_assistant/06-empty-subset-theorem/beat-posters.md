@@ -7,6 +7,10 @@
   Social / publish captions (per platform) live in social-posts.json under
   the "infographic" key — not in this file. Video captions use "english"/"china".
 
+  Cover hook (the sentence on the album cover):
+    ## Cover
+    ### English / ### Chinese
+
   Per beat:
     ### Title zh    Chinese title override (EN title comes from the heading)
     ### English     Body card copy, EN. `code` spans render highlighted.
@@ -32,6 +36,16 @@
   Any field left out falls back to auto-derived copy from animation.md.
 -->
 
+## Cover
+
+### English
+
+The if never opens.
+
+### Chinese
+
+那个“如果”永远打不开。
+
 ## Beat 1: Open the book — a theorem about the empty set
 
 ### Title zh
@@ -52,11 +66,11 @@ It treats the line as obvious. It does not say which definition to unfold.
 
 ### Next en
 
-What “subset” asked last clips.
+What subset was asking two clips ago.
 
 ### Next zh
 
-上一集的子集关系在问什么
+两集之前，子集关系在问什么
 
 ## Beat 2: Subset is an implication
 
@@ -182,21 +196,8 @@ AATA 文件把这条定理叫做 `Empty subset of every set`。断言是 `Subset
 ```turn
 theorem "Empty subset of every set" {
   forall S: Set<Any> |- Subset(EmptySet, S)
-} proof {
-  unfold Subset at goal
-  contradiction goal.1 by EmptySet.no_members
 }
 ```
-
-### Proof
-
-open
-forall S: Set<Any> |- Subset(EmptySet, S)
-
-unfold Subset at goal
-forall S: Set<Any> |- forall x: Any |- x in EmptySet -> x in S
-
-contradiction goal.1 by EmptySet.no_members
 
 ### Editor
 
@@ -218,15 +219,15 @@ The proof cites last clip’s law.
 
 ### English
 
-Unfold `Subset`. Assume a counterexample. Contradict with `EmptySet.no_members`.
+Unfold `Subset`. The leftover claim is: if `x` is in empty, then `x` is in `S`.
 
-That is how Turn uses the empty set: by name, not by rewriting “nobody is in”.
+The premise is already false. Cite `EmptySet.no_members`. Do not rewrite “nobody is in” by hand.
 
 ### Chinese
 
-先展开子集关系 `Subset`。再假设有反例。最后用 `EmptySet.no_members` 得出矛盾。
+先展开子集关系 `Subset`。剩下的断言是：如果 `x` 在空集里，那么 `x` 在 `S` 里。
 
-Turn-Lang 使用空集的方式就是点名引用，而不是把“谁都不在里面”再写一遍。
+前提已经为假。引用 `EmptySet.no_members`。不必手写“谁都不在里面”。
 
 ### Turn-Lang
 
@@ -282,10 +283,8 @@ The empty-subset proof is the first time the file shows that library move.
 ### Turn-Lang
 
 ```turn
-third: SetEq(Difference(A, A), EmptySet) proof {
-  unfold Difference.def at goal.1
-  contradiction goal.1 by EmptySet.no_members
-}
+third: SetEq(Difference(A, A), EmptySet)
+-- same close: contradiction … by EmptySet.no_members
 ```
 
 ### Editor

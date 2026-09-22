@@ -4,50 +4,55 @@
   "titleEnglish": "6. The empty set is a subset of every set",
   "titleChina": "6. 空集是任何集合的子集",
   "title": "6. The empty set is a subset of every set",
-  "generatedAt": "2026-07-25T08:06:05.018Z",
-  "source": {},
+  "generatedAt": "2026-09-22T08:30:00.000Z",
+  "source": {
+    "promotionalDescription": "The book calls ∅ ⊆ S obvious. Subset is an if-then, and empty never opens the if. We prove it by unfolding, then citing last clip’s no_members law.",
+    "promotionalDescriptionChina": "课本把空集是任何集合的子集写成显然。子集是一个蕴涵：如果在空集里，就在那边。空集里没有元素，前提永远打不开。今天把这句证出来。",
+    "socialTitleEnglish": "6. The empty set is a subset of every set",
+    "socialTitleChina": "6. 空集是任何集合的子集"
+  },
   "english": {
     "youtube": {
-      "title": "06_empty_subset_theorem",
-      "body": "06_empty_subset_theorem\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+      "title": "6. The empty set is a subset of every set",
+      "body": "The book calls ∅ ⊆ S obvious. Subset is an if-then: if x is in empty, then x is in S. There is no such x, so the if never opens — vacuous truth.\n\nLean unfolds ⊆ and False, then names the corollary empty_subset. Turn-Lang writes the classroom sentence, unfolds Subset, and cites EmptySet.no_members from last clip.\n\nEpisode 6 of Abstract Algebra in a Proof Assistant.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
     },
     "x": {
-      "title": "06_empty_subset_theorem",
-      "body": "06_empty_subset_theorem #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+      "title": "6. The empty set is a subset of every set",
+      "body": "The book calls ∅ ⊆ S obvious. Subset is an if-then, and empty never opens the if. Lean names empty_subset; Turn cites EmptySet.no_members. Ep. 6."
     },
     "linkedin": {
-      "title": "06_empty_subset_theorem",
-      "body": "06_empty_subset_theorem\n\n06_empty_subset_theorem\n\nThis episode is part of the Abstract Algebra in a Proof Assistant series on Turn-Lang — textbook-shaped formal mathematics you can film outdoors and verify in Lean 4 / Turn-Lang.\n\nWhat you will see in the video:\n• A textbook beat you can say on camera\n• The Lean 4 modeling choice (and what it refuses to pretend)\n• The Turn-Lang compare so the obligation is visible\n\nWatch the short, then open the linked editor if you want to step through the proof assistant view yourself.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+      "title": "6. The empty set is a subset of every set",
+      "body": "6. The empty set is a subset of every set\n\nThe book calls ∅ ⊆ S obvious. Subset is an if-then: if x is in empty, then x is in S. There is no such x, so the if never opens.\n\nLean unfolds ⊆ and False, then names the corollary empty_subset. Turn-Lang writes the classroom sentence and cites EmptySet.no_members.\n\nThis episode is part of the Abstract Algebra in a Proof Assistant series on Turn-Lang — textbook-shaped formal mathematics you can film outdoors and verify in Lean 4 / Turn-Lang.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
     },
     "instagram": {
-      "title": "06_empty_subset_theorem",
-      "body": "06_empty_subset_theorem\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+      "title": "6. The empty set is a subset of every set",
+      "body": "The book calls ∅ ⊆ S obvious. Subset is an if-then, and empty never opens the if.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
     },
     "tiktok": {
-      "title": "06_empty_subset_theorem",
-      "body": "06_empty_subset_theorem\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+      "title": "6. The empty set is a subset of every set",
+      "body": "The book calls ∅ ⊆ S obvious. The if never opens.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
     },
     "facebook": {
-      "title": "06_empty_subset_theorem",
-      "body": "06_empty_subset_theorem\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+      "title": "6. The empty set is a subset of every set",
+      "body": "The book calls ∅ ⊆ S obvious. Subset is an if-then, and empty never opens the if. Lean names empty_subset; Turn cites EmptySet.no_members.\n\n#TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
     },
     "bluesky": {
-      "title": "06_empty_subset_theorem",
-      "body": "06_empty_subset_theorem #TurnLang #FormalMethods #FormalMathematics #ProofAssistant #ProofAssistants #Lean4 #Lean #Mathlib #AbstractAlgebra #InteractiveTheoremProving #TypeTheory"
+      "title": "6. The empty set is a subset of every set",
+      "body": "The book calls ∅ ⊆ S obvious. Subset is an if-then, and empty never opens the if. Ep. 6."
     }
   },
   "china": {
     "bilibili": {
       "title": "6. 空集是任何集合的子集",
-      "body": "空集是任何集合的子集。要当子集，得保证里面的每个东西都已经在那边。空集里一个都没有，这句话自然成立。\n\n#证明助手 #抽象代数 #形式化数学"
+      "body": "课本把空集是任何集合的子集写成显然。子集是一个蕴涵：如果在空集里，就在那边。空集里没有元素，前提永远打不开。Lean 展开 ⊆ 和 False，再给推论起名。Turn-Lang 写成课堂上的那句话，再引用上期的 no_members。\n\n#证明助手 #抽象代数 #形式化数学"
     },
     "douyin": {
       "title": "6. 空集是任何集合的子集",
-      "body": "空集是任何集合的子集。里面没有东西，也就挑不出反例。\n\n#证明助手 #抽象代数"
+      "body": "空集是任何集合的子集。里面没有东西，也就挑不出反例。那个“如果”永远打不开。\n\n#证明助手 #抽象代数"
     },
     "xiaohongshu": {
       "title": "6. 空集是任何集合的子集",
-      "body": "空集是任何集合的子集。里面没有东西，也就挑不出反例。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享"
+      "body": "空集是任何集合的子集。子集要问：如果在这边，就在那边。空集里一个都没有，这句话自然成立。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享"
     },
     "weibo": {
       "title": "6. 空集是任何集合的子集",
@@ -67,34 +72,68 @@
     }
   },
   "infographic": {
+    "english": {
+      "instagram": {
+        "title": "Why ∅ ⊆ S? The if never opens",
+        "body": "The book calls it obvious. Subset is an if-then: if x is in empty, then x is in S. There is no such x.\n\nLean unfolds False. Turn cites EmptySet.no_members.\n\n#ProofAssistant #AbstractAlgebra #MathEducation"
+      },
+      "tiktok": {
+        "title": "Why ∅ ⊆ every set?",
+        "body": "The if never opens. Swipe the album.\n\n#ProofAssistant #AbstractAlgebra"
+      },
+      "x": {
+        "title": "Empty subset of every set",
+        "body": "Vacuous truth: subset is an if-then, and empty never opens the if. Ep. 6 album.\n\n#ProofAssistant #AbstractAlgebra"
+      },
+      "linkedin": {
+        "title": "The empty set is a subset of every set",
+        "body": "The textbook line looks free. In a proof assistant you still unfold something: ⊆ is an implication, ∅ answers False, and the leftover arrow never fires.\n\nSwipeable album (cover + beats). Ep. 6 · Abstract Algebra in a Proof Assistant.\n\n#ProofAssistant #AbstractAlgebra #FormalMethods"
+      },
+      "facebook": {
+        "title": "Why ∅ ⊆ S? The if never opens",
+        "body": "Subset is an if-then. Empty never opens the if.\n\n#ProofAssistant #AbstractAlgebra"
+      },
+      "threads": {
+        "title": "Why ∅ ⊆ S?",
+        "body": "The if never opens. Ep. 6 album.\n\n#ProofAssistant #AbstractAlgebra"
+      },
+      "bluesky": {
+        "title": "Empty subset album",
+        "body": "The book calls ∅ ⊆ S obvious. Subset is an if-then, and empty never opens the if. Ep. 6."
+      },
+      "reddit": {
+        "title": "Album: why the empty set is a subset of every set",
+        "body": "Episode 6 is a swipeable album about the first theorem after EmptySet.\n\nSubset asks an implication. Empty never supplies a premise. Lean names empty_subset; Turn unfolds Subset and cites EmptySet.no_members."
+      }
+    },
     "china": {
       "xiaohongshu": {
-        "title": "6. 空集是任何集合的子集",
-        "body": "空集是任何集合的子集。要当子集，得保证里面的每个东西都已经在那边。空集里一个都没有，这句话自然成立。\n\n左滑 10 张看完。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享"
+        "title": "空集是任何集合的子集｜那个如果打不开",
+        "body": "课本把空集是任何集合的子集写成显然。子集是一个蕴涵：如果在空集里，就在那边。空集里没有元素，前提永远打不开。\n\n左滑看完：Lean 展开 False，Turn 引用 no_members。\n\n#证明助手 #抽象代数 #数学笔记 #干货分享"
       },
       "bilibili": {
         "title": "【信息图】6. 空集是任何集合的子集",
-        "body": "空集是任何集合的子集。要当子集，得保证里面的每个东西都已经在那边。空集里一个都没有，这句话自然成立。\n\n10 张信息图左滑看完。\n\n#证明助手 #抽象代数 #形式化数学"
+        "body": "空集是任何集合的子集。要当子集，得保证里面的每个东西都已经在那边。空集里一个都没有，这句话自然成立。\n\n信息图左滑看完。\n\n#证明助手 #抽象代数 #形式化数学"
       },
       "douyin": {
         "title": "6. 空集是任何集合的子集",
-        "body": "空集是任何集合的子集。要当子集，得保证里面的每个东西都已经在那边。空集里一个都没有，这句话自然成立。\n\n左滑 10 张看完。\n\n#证明助手 #抽象代数 #干货分享"
+        "body": "空集是任何集合的子集。里面没有东西，也就挑不出反例。\n\n左滑看完。\n\n#证明助手 #抽象代数 #干货分享"
       },
       "weibo": {
         "title": "6. 空集是任何集合的子集",
-        "body": "空集是任何集合的子集。要当子集，得保证里面的每个东西都已经在那边。空集里一个都没有，这句话自然成立。 左滑 10 张看完。 #证明助手 #抽象代数"
+        "body": "空集是任何集合的子集。要当子集，得保证里面的每个东西都已经在那边。空集里一个都没有，这句话自然成立。 左滑看完。 #证明助手 #抽象代数"
       },
       "wechat_channels": {
-        "title": "6. 空集是任何集合的子集（10 张）",
-        "body": "空集是任何集合的子集。要当子集，得保证里面的每个东西都已经在那边。空集里一个都没有，这句话自然成立。\n\n10 张信息图。"
+        "title": "6. 空集是任何集合的子集",
+        "body": "空集是任何集合的子集。要当子集，得保证里面的每个东西都已经在那边。空集里一个都没有，这句话自然成立。\n\n信息图。"
       },
       "wechat": {
         "title": "6. 空集是任何集合的子集",
-        "body": "空集是任何集合的子集。要当子集，得保证里面的每个东西都已经在那边。空集里一个都没有，这句话自然成立。\n\n10 张信息图按拍序插入。"
+        "body": "空集是任何集合的子集。要当子集，得保证里面的每个东西都已经在那边。空集里一个都没有，这句话自然成立。\n\n信息图按拍序插入。"
       },
       "kuaishou": {
         "title": "6. 空集是任何集合的子集",
-        "body": "空集是任何集合的子集。要当子集，得保证里面的每个东西都已经在那边。空集里一个都没有，这句话自然成立。 左滑 10 张看完。\n\n#证明助手 #抽象代数"
+        "body": "空集是任何集合的子集。要当子集，得保证里面的每个东西都已经在那边。空集里一个都没有，这句话自然成立。 左滑看完。\n\n#证明助手 #抽象代数"
       }
     }
   }

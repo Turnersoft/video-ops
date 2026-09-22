@@ -7,6 +7,10 @@
   Social / publish captions (per platform) live in social-posts.json under
   the "infographic" key — not in this file. Video captions use "english"/"china".
 
+  Cover hook (the sentence on the album cover):
+    ## Cover
+    ### English / ### Chinese
+
   Per beat:
     ### Title zh    Chinese title override (EN title comes from the heading)
     ### English     Body card copy, EN. `code` spans render highlighted.
@@ -22,6 +26,16 @@
   always staying larger than the code font.
   Any field left out falls back to auto-derived copy from animation.md.
 -->
+
+## Cover
+
+### English
+
+A third set, not a sentence about two.
+
+### Chinese
+
+第三个集合，不是关于两个集合的一句话。
 
 ## Beat 1: Open the book — union
 
@@ -59,13 +73,13 @@ A third set, not a sentence about two.
 
 Subset was a sentence about two sets. Union is a new set you can test membership on.
 
-Once `A` and `B` are fixed, `A ∪ B` is fixed.
+Two guest lists: you are on the combined list if you are on A or on B. Once `A` and `B` are fixed, `A ∪ B` is fixed.
 
 ### Chinese
 
 子集关系是关于两个已有集合的一句话。并集是一个新的集合，你可以问“属不属于”。
 
-集合 `A` 和集合 `B` 一旦确定，并集 `A ∪ B` 也就确定了。
+两份来宾名单：你在合并名单上，意思是在 A 或者在 B。集合 `A` 和 `B` 一旦确定，并集 `A ∪ B` 也就确定了。
 
 ### Next en
 
@@ -215,11 +229,8 @@ De Morgan does the same: `unfold Union.def at h.2`. One law, many theorems.
 ### Turn-Lang
 
 ```turn
-first: SetEq(Union(A, A), A) proof {
-  unfold SetEq
-  unfold Union.def at h
-  split_assumption_disjunction h
-}
+first: SetEq(Union(A, A), A)
+-- unfold Union.def, then split the or
 ```
 
 ### Editor
