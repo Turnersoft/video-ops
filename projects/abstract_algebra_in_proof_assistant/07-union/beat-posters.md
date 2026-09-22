@@ -173,7 +173,7 @@ Turn 给并集起名，并写下定律 def
 
 ### English
 
-`Union<T, A, B>` _is_ the union set. Its only law is the classroom “or”.
+`Union<T, A, B>` is the union set. Its only law is the classroom “or”.
 
 Later proofs write `unfold Union.def`. That is the lookup.
 
